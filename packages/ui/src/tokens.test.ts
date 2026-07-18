@@ -4,12 +4,7 @@ import { breakpoints, gridStagger, motionDurations } from "./tokens";
 
 describe("tokens", () => {
 	it("breakpoints ascend mobile → wide", () => {
-		const values = [
-			breakpoints.mobile,
-			breakpoints.tablet,
-			breakpoints.desktop,
-			breakpoints.wide,
-		];
+		const values = [breakpoints.mobile, breakpoints.tablet, breakpoints.desktop, breakpoints.wide];
 		expect([...values].sort((a, b) => a - b)).toEqual(values);
 		expect(breakpoints.mobile).toBe(0);
 	});

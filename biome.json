@@ -29,6 +29,16 @@
 	},
 	"overrides": [
 		{
+			"includes": ["packages/ui/src/tokens.css"],
+			"linter": {
+				"rules": {
+					"complexity": {
+						"noImportantStyles": "off"
+					}
+				}
+			}
+		},
+		{
 			"includes": ["**/*.svelte"],
 			"linter": {
 				"rules": {
