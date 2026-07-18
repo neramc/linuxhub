@@ -5,11 +5,12 @@
 	"type": "module",
 	"types": "./src/index.ts",
 	"exports": {
-		".": "./src/index.ts"
+		".": "./src/index.ts",
+		"./tokens.css": "./src/tokens.css"
 	},
 	"scripts": {
 		"check": "tsc --noEmit",
-		"test": "vitest run --passWithNoTests"
+		"test": "vitest run"
 	},
 	"devDependencies": {
 		"typescript": "^5.9.0",

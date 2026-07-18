@@ -1,0 +1,125 @@
+/*
+ * Linuxhub design tokens — source of truth: .ai/design-system.md
+ * Any change here must update that doc in the same commit (and vice versa).
+ *
+ * Theming: the app sets data-theme="light|dark" on <html> (user override,
+ * persisted). The prefers-color-scheme block below is the no-JS/first-paint
+ * fallback and must stay in sync with the [data-theme="dark"] block.
+ */
+
+:root {
+	/* Color — light */
+	--color-bg: #fafafa;
+	--color-surface: #ffffff;
+	--color-surface-raised: #ffffff;
+	--color-border: #e4e7eb;
+	--color-text: #17191c;
+	--color-text-muted: #5c6470;
+	--color-accent: #1793d1;
+	--color-accent-hover: #0f7fb8;
+	--color-accent-contrast: #ffffff;
+	--color-accent-soft: #e8f4fb;
+	--color-success: #1a7f37;
+	--color-warning: #9a6700;
+	--color-danger: #cf222e;
+
+	/* Typography */
+	--font-sans: "Inter", "Noto Sans", system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.375rem;
+	--text-2xl: 1.75rem;
+	--text-3xl: 2.25rem;
+	--text-4xl: 3rem;
+	--leading-xs: 1.4;
+	--leading-sm: 1.5;
+	--leading-base: 1.6;
+	--leading-lg: 1.5;
+	--leading-xl: 1.4;
+	--leading-2xl: 1.3;
+	--leading-3xl: 1.2;
+	--leading-4xl: 1.1;
+
+	/* Spacing — 4px base grid */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
+	--space-8: 64px;
+
+	/* Radius */
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 16px;
+	--radius-full: 9999px;
+
+	/* Elevation */
+	--shadow-1: 0 1px 2px rgb(0 0 0 / 0.06);
+	--shadow-2: 0 4px 12px rgb(0 0 0 / 0.08);
+	--shadow-3: 0 12px 32px rgb(0 0 0 / 0.14);
+
+	/* Motion — durations pair with the reduced-motion helper in motion.ts */
+	--motion-fast: 120ms;
+	--motion-base: 200ms;
+	--motion-slow: 320ms;
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+
+	/* Layout */
+	--content-max-width: 1320px;
+	--focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+}
+
+/* Dark — keep in sync with the media-query fallback below */
+:root[data-theme="dark"] {
+	--color-bg: #101214;
+	--color-surface: #16191d;
+	--color-surface-raised: #1d2126;
+	--color-border: #2a2f36;
+	--color-text: #e8eaed;
+	--color-text-muted: #9aa3ad;
+	--color-accent: #31a8e0;
+	--color-accent-hover: #5cbce8;
+	--color-accent-contrast: #0b1014;
+	--color-accent-soft: #12303f;
+	--color-success: #3fb950;
+	--color-warning: #d29922;
+	--color-danger: #f85149;
+}
+
+/* No-JS / first-paint fallback: system dark unless the user chose light */
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--color-bg: #101214;
+		--color-surface: #16191d;
+		--color-surface-raised: #1d2126;
+		--color-border: #2a2f36;
+		--color-text: #e8eaed;
+		--color-text-muted: #9aa3ad;
+		--color-accent: #31a8e0;
+		--color-accent-hover: #5cbce8;
+		--color-accent-contrast: #0b1014;
+		--color-accent-soft: #12303f;
+		--color-success: #3fb950;
+		--color-warning: #d29922;
+		--color-danger: #f85149;
+	}
+}
+
+/* Global reduced-motion kill-switch (CSS side; JS side is motion.ts) */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
