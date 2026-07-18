@@ -1,28 +1,19 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+# Dependencies
+node_modules/
 
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+# Build outputs
+dist/
+.svelte-kit/
+.vercel/
+.wrangler/
+coverage/
 
-# Environment files
-/.env
+# Environment & secrets (never commit — see .ai/security.md)
+.env
+.env.*
+.dev.vars
 
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
-
-# TypeScript cache
+# Misc
+*.log
 *.tsbuildinfo
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.DS_Store

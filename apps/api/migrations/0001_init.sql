@@ -1,0 +1,4 @@
+-- 0001_init — intentionally empty placeholder (Phase 1 gate).
+-- The real schema (distros, releases, editions, artifacts, mirrors, taxonomy,
+-- rankings, content_index, …) lands in Phase 5 as sequential migrations
+-- following .ai/database.md.

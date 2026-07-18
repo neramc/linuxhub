@@ -11,8 +11,8 @@ Project Documentation → Repository Initialization → Design System → UI Des
 
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
-| **0 — Documentation** | Root `CLAUDE.md` + all `.ai/` docs (this set) | docs committed | ✅ **done** (this commit) — awaiting human review |
-| **1 — Repository Initialization** | Bun workspaces; `apps/web` (SvelteKit) + `apps/api` (Hono); `packages/shared\|ui\|i18n\|ingest`; Biome; base CI; Wrangler + Vercel config; empty D1 migration | hello-world builds & deploys on both targets | ⬜ not started |
+| **0 — Documentation** | Root `CLAUDE.md` + all `.ai/` docs (this set) | docs committed | ✅ done — reviewed & approved |
+| **1 — Repository Initialization** | Bun workspaces; `apps/web` (SvelteKit) + `apps/api` (Hono); `packages/shared\|ui\|i18n\|ingest`; Biome; base CI; Wrangler + Vercel config; empty D1 migration | hello-world builds & deploys on both targets | ✅ done — lint/typecheck/tests green; web builds via Vercel adapter, api bundles via `wrangler deploy --dry-run` with D1/KV bindings. Live deploys need owner accounts/secrets → wired up in Phase 7 |
 | **2 — Design System** | Finalize `design-system.md` + tokens in `packages/ui`; write all `prompts/stitch/*` briefs | briefs ready → **hand off to Stitch, STOP** | ⬜ not started |
 | **3 — UI Design (Stitch)** | **Human** runs Stitch → review → Figma export → approval. Claude Code waits. | design approved | ⬜ not started |
 | **4 — Frontend Implementation** | Build from approved design: layout, Explore, Distro page (MDX), download selector, i18n/RTL, rankings, search | quality gates pass | ⬜ not started |

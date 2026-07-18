@@ -1,0 +1,22 @@
+{
+	"name": "linuxhub",
+	"private": true,
+	"type": "module",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"lint": "biome check .",
+		"format": "biome check --write .",
+		"check": "bun run --filter '*' check",
+		"test": "bun run --filter '*' test",
+		"build": "bun run --filter '@linuxhub/web' build && bun run --filter '@linuxhub/api' build",
+		"dev:web": "bun run --filter '@linuxhub/web' dev",
+		"dev:api": "bun run --filter '@linuxhub/api' dev"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.0",
+		"typescript": "^5.9.0"
+	}
+}

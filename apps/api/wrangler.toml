@@ -1,0 +1,31 @@
+# linuxhub-api — Hono on Cloudflare Workers (see .ai/architecture.md)
+#
+# Placeholder D1/KV ids let local dev (`wrangler dev`) and dry-run builds work;
+# real ids are provisioned and substituted in Phase 7 (deployment).
+# Secrets (HCAPTCHA_SECRET, INTERNAL_API_TOKEN, RATE_SALT) are Wrangler
+# secrets — never in this file. Local dev secrets go in .dev.vars (gitignored).
+
+name = "linuxhub-api"
+main = "src/index.ts"
+compatibility_date = "2025-11-01"
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "linuxhub"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[[kv_namespaces]]
+binding = "KV_CACHE"
+id = "0000000000000000000000000000cace"
+
+[[kv_namespaces]]
+binding = "KV_RATE"
+id = "0000000000000000000000000000ea7e"
+
+[[kv_namespaces]]
+binding = "KV_GEO"
+id = "00000000000000000000000000000e60"

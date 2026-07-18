@@ -99,3 +99,13 @@ infrastructure.
 ranking heuristics; adopt D1 FTS5 when measurements show need (new ADR).
 **Consequences:** Simple, fast enough at our scale; fuzzy behavior handled by
 alias lists and normalization in the search service.
+
+## ADR-0011 — Internal packages ship TypeScript source (no build step)
+**Date:** 2026-07-18 · **Status:** accepted
+**Context:** `packages/shared|ui|i18n|ingest` are consumed only by the two
+apps; a compile step would add build orchestration for no runtime benefit.
+**Decision:** Internal packages expose `./src/index.ts` directly via
+`exports`/`types`. Vite (web) and Wrangler's esbuild (api) bundle TS sources;
+each package still typechecks itself (`tsc --noEmit`).
+**Consequences:** No dist/ artifacts or watch pipelines; if a package is ever
+published externally, add a build then (new ADR).
