@@ -10,7 +10,7 @@
 
 const ICONS = `
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-	<symbol id="i-logo" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2 2.5 19.5a1 1 0 0 0 .87 1.5h17.26a1 1 0 0 0 .87-1.5L12 2Zm0 5.2 5.9 10.8H6.1L12 7.2Z"/></symbol>
+	<symbol id="i-logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" style="fill:currentColor;stroke:none"/><path d="M20 21 L32 32 L20 43" style="stroke:#fff;fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round"/><path d="M35 43 H46" style="stroke:#fff;fill:none;stroke-width:6;stroke-linecap:round"/></symbol>
 	<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></symbol>
 	<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 	<symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>

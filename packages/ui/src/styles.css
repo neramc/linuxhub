@@ -723,8 +723,7 @@ button.row:hover {
 
 .wordmark .icon {
 	color: var(--color-accent);
-	fill: var(--color-accent);
-	stroke: none;
+	border-radius: 6px;
 }
 
 .app-header .search {
