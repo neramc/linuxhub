@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Compare — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.picker-bar {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-3);
+			margin-block: var(--space-5);
+		}
+
+		@media (min-width: 1024px) {
+			.picker-bar {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.picker-slot {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			min-block-size: 64px;
+			padding: var(--space-3) var(--space-4);
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-md);
+			background: var(--color-surface);
+		}
+
+		.picker-slot--empty {
+			border-style: dashed;
+			justify-content: center;
+			color: var(--color-text-muted);
+			background: none;
+			font: inherit;
+			font-size: var(--text-sm);
+			cursor: pointer;
+		}
+
+		.picker-slot--empty:hover {
+			border-color: var(--color-accent);
+			color: var(--color-accent);
+		}
+
+		.picker-slot .icon-btn {
+			margin-inline-start: auto;
+			inline-size: 32px;
+			block-size: 32px;
+		}
+
+		.diff-toggle {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			margin-block-end: var(--space-4);
+		}
+
+		.compare-foot {
+			display: grid;
+			grid-template-columns: 180px repeat(3, minmax(200px, 1fr));
+			gap: 0;
+			padding: var(--space-4);
+		}
+
+		.compare-foot > div {
+			padding-inline: var(--space-4);
+		}
+	</style>
+</head>
+<body data-page="compare">
+	<main id="main" class="container">
+		<header class="page-head">
+			<h1>Compare distributions</h1>
+			<p class="lede">Put 2–4 distros side by side. Differences are highlighted; identical rows fade back.</p>
+		</header>
+
+		<div class="picker-bar">
+			<div class="picker-slot">
+				<span class="logo-tile logo-tile--sm" style="--tile: #e95420">U</span>
+				<strong>Ubuntu</strong>
+				<button type="button" class="icon-btn" aria-label="Remove Ubuntu"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"/></svg></button>
+			</div>
+			<div class="picker-slot">
+				<span class="logo-tile logo-tile--sm" style="--tile: #51a2da">F</span>
+				<strong>Fedora</strong>
+				<button type="button" class="icon-btn" aria-label="Remove Fedora"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"/></svg></button>
+			</div>
+			<div class="picker-slot">
+				<span class="logo-tile logo-tile--sm" style="--tile: #1793d1">A</span>
+				<strong>Arch Linux</strong>
+				<button type="button" class="icon-btn" aria-label="Remove Arch Linux"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"/></svg></button>
+			</div>
+			<button type="button" class="picker-slot picker-slot--empty">+ Add a distro</button>
+		</div>
+
+		<div class="diff-toggle">
+			<span class="chip chip--active">Differences only</span>
+			<span class="muted" style="font-size: var(--text-xs);">4 identical rows hidden</span>
+		</div>
+
+		<div class="table-scroll">
+			<table class="spec-table">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Ubuntu</th>
+						<th scope="col">Fedora</th>
+						<th scope="col">Arch Linux</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Family</th>
+						<td class="cell--diff">Debian</td>
+						<td class="cell--diff">RPM</td>
+						<td class="cell--diff">Arch</td>
+					</tr>
+					<tr>
+						<th scope="row">Release model</th>
+						<td class="cell--diff">Fixed — LTS every 2 years</td>
+						<td class="cell--diff">Fixed — every 6 months</td>
+						<td class="cell--diff">Rolling</td>
+					</tr>
+					<tr>
+						<th scope="row">Latest version</th>
+						<td class="cell--diff">26.04 LTS · Apr 2026</td>
+						<td class="cell--diff">42 · Apr 2026</td>
+						<td class="cell--diff">rolling · daily</td>
+					</tr>
+					<tr>
+						<th scope="row">Default desktop</th>
+						<td class="cell--same">GNOME</td>
+						<td class="cell--same">GNOME</td>
+						<td class="cell--diff">none — you choose</td>
+					</tr>
+					<tr>
+						<th scope="row">Package manager</th>
+						<td class="cell--diff">apt + snap</td>
+						<td class="cell--diff">dnf + Flatpak</td>
+						<td class="cell--diff">pacman + AUR</td>
+					</tr>
+					<tr>
+						<th scope="row">Architectures</th>
+						<td class="cell--same">x86_64 · aarch64 · riscv64</td>
+						<td class="cell--same">x86_64 · aarch64</td>
+						<td class="cell--same">x86_64</td>
+					</tr>
+					<tr>
+						<th scope="row">Min. memory</th>
+						<td class="num cell--diff">4 GB</td>
+						<td class="num cell--diff">2 GB</td>
+						<td class="num cell--diff">512 MB</td>
+					</tr>
+					<tr>
+						<th scope="row">Popularity</th>
+						<td class="cell--same">#1 · 1.2M downloads</td>
+						<td class="cell--same">#2 · 842K downloads</td>
+						<td class="cell--same">#4 · 689K downloads</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="compare-foot">
+				<div></div>
+				<div><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></div>
+				<div><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></div>
+				<div><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></div>
+			</div>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 200px; border-radius: var(--radius-lg);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty — pick at least two</div>
+					<div class="spec-frame__body">
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+							<div class="state-block__title">Pick at least two distros</div>
+							<p>Popular pairings: Ubuntu vs Fedora · Arch vs Debian</p>
+							<button type="button" class="btn btn--secondary btn--sm">+ Add a distro</button>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error — one column failed</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Couldn't load Fedora</div>
+							<p>Other columns are unaffected.</p>
+							<button type="button" class="btn btn--secondary btn--sm">Retry column</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

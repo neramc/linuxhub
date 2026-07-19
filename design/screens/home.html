@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Home — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.hero-band {
+			background:
+				radial-gradient(
+					900px 340px at 50% -80px,
+					var(--color-accent-soft),
+					transparent 70%
+				);
+			padding-block: var(--space-8) var(--space-7);
+			text-align: center;
+		}
+
+		.hero-band h1 {
+			font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl));
+			font-weight: 700;
+			line-height: var(--leading-4xl);
+			letter-spacing: -0.02em;
+		}
+
+		.hero-band .sub {
+			margin-block-start: var(--space-3);
+			color: var(--color-text-muted);
+			font-size: var(--text-lg);
+		}
+
+		.hero-band .search {
+			max-inline-size: 560px;
+			margin-inline: auto;
+			margin-block-start: var(--space-6);
+		}
+
+		.hero-stats {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: var(--space-3);
+			margin-block-start: var(--space-5);
+		}
+
+		.card-row {
+			display: grid;
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(240px, 1fr);
+			gap: var(--space-4);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			padding-block-end: var(--space-2);
+		}
+
+		.card-row > * {
+			scroll-snap-align: start;
+		}
+
+		.category-tiles {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-4);
+		}
+
+		@media (min-width: 640px) {
+			.category-tiles {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.category-tiles {
+				grid-template-columns: repeat(6, 1fr);
+			}
+		}
+
+		.category-tile {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-2);
+			padding: var(--space-4);
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-md);
+			background: var(--color-surface);
+			color: inherit;
+			transition:
+				border-color var(--motion-fast) var(--ease-out),
+				box-shadow var(--motion-base) var(--ease-out);
+		}
+
+		.category-tile:hover {
+			text-decoration: none;
+			color: inherit;
+			border-color: var(--color-accent);
+			box-shadow: var(--shadow-1);
+		}
+
+		.category-tile .icon {
+			color: var(--color-accent);
+		}
+
+		.category-tile strong {
+			font-size: var(--text-sm);
+		}
+
+		.category-tile span {
+			font-size: var(--text-xs);
+			color: var(--color-text-muted);
+		}
+
+		.quiz-band {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: var(--space-5);
+			padding: var(--space-6);
+			border-radius: var(--radius-lg);
+			background: var(--color-accent-soft);
+			margin-block: var(--space-8);
+		}
+
+		.quiz-band h2 {
+			font-size: var(--text-xl);
+			font-weight: 600;
+		}
+
+		.quiz-band p {
+			color: var(--color-text-muted);
+			max-inline-size: 44ch;
+		}
+
+		.quiz-band__actions {
+			display: flex;
+			gap: var(--space-3);
+			margin-inline-start: auto;
+			flex-wrap: wrap;
+		}
+
+		.release-row {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			padding: var(--space-3) var(--space-4);
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-md);
+			background: var(--color-surface);
+			font-size: var(--text-sm);
+		}
+
+		.release-row time {
+			margin-inline-start: auto;
+			color: var(--color-text-muted);
+			font-size: var(--text-xs);
+			font-variant-numeric: tabular-nums;
+		}
+	</style>
+</head>
+<body data-page="home">
+	<div class="hero-band">
+		<div class="container">
+			<h1>Every Linux, one place.</h1>
+			<p class="sub">Browse 300+ distributions, compare releases, and download from the mirror nearest you.</p>
+			<div class="search">
+				<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+				<input class="search__input" type="search" placeholder="Search distros — try “arch” or “beginner friendly”" aria-label="Search distros" />
+				<span class="kbd search__kbd">⌘K</span>
+			</div>
+			<div class="hero-stats">
+				<span class="chip">312 distributions</span>
+				<span class="chip">4.8M downloads served</span>
+				<span class="chip">56 languages</span>
+			</div>
+		</div>
+	</div>
+
+	<main id="main" class="container">
+		<div class="section-title"><h2>Trending this week</h2><a href="./rankings.html">See all →</a></div>
+		<div class="card-row">
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #5277c3">N</span>
+					<div><div class="distro-card__name">NixOS</div><div class="distro-card__family">Independent</div></div>
+				</div>
+				<div class="distro-card__foot"><span class="trend trend--up">▲ 3</span><span>287K downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #51a2da">F</span>
+					<div><div class="distro-card__name">Fedora</div><div class="distro-card__family">RPM family</div></div>
+				</div>
+				<div class="distro-card__foot"><span class="trend trend--up">▲ 1</span><span>842K downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #7f3fbf">E</span>
+					<div><div class="distro-card__name">EndeavourOS</div><div class="distro-card__family">Arch family</div></div>
+				</div>
+				<div class="distro-card__foot"><span class="trend trend--up">▲ 5</span><span>176K downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #e95420">U</span>
+					<div><div class="distro-card__name">Ubuntu</div><div class="distro-card__family">Debian family</div></div>
+				</div>
+				<div class="distro-card__foot"><span class="trend trend--flat">—</span><span>1.2M downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #35bf5c">Mj</span>
+					<div><div class="distro-card__name">Manjaro</div><div class="distro-card__family">Arch family</div></div>
+				</div>
+				<div class="distro-card__foot"><span class="trend trend--down">▼ 2</span><span>398K downloads</span></div>
+			</a>
+		</div>
+
+		<div class="section-title"><h2>Recently released</h2><a href="./explore.html">See all →</a></div>
+		<div style="display: grid; gap: var(--space-2);">
+			<div class="release-row">
+				<span class="logo-tile logo-tile--sm" style="--tile: #51a2da">F</span>
+				<strong>Fedora 42</strong><span class="badge">stable</span>
+				<time datetime="2026-04-22">Apr 22</time>
+			</div>
+			<div class="release-row">
+				<span class="logo-tile logo-tile--sm" style="--tile: #e95420">U</span>
+				<strong>Ubuntu 26.04 LTS</strong><span class="badge">LTS</span>
+				<time datetime="2026-04-23">Apr 23</time>
+			</div>
+			<div class="release-row">
+				<span class="logo-tile logo-tile--sm" style="--tile: #5277c3">N</span>
+				<strong>NixOS 26.05</strong><span class="badge">stable</span>
+				<time datetime="2026-05-31">May 31</time>
+			</div>
+		</div>
+
+		<div class="section-title"><h2>Browse by category</h2><a href="./explore.html">All categories →</a></div>
+		<div class="category-tiles">
+			<a class="category-tile" href="./category-tag.html">
+				<svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>
+				<strong>Desktop</strong><span>128 distros</span>
+			</a>
+			<a class="category-tile" href="./category-tag.html">
+				<svg class="icon" aria-hidden="true"><use href="#i-server"/></svg>
+				<strong>Server</strong><span>64 distros</span>
+			</a>
+			<a class="category-tile" href="./category-tag.html">
+				<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+				<strong>For beginners</strong><span>46 distros</span>
+			</a>
+			<a class="category-tile" href="./category-tag.html">
+				<svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg>
+				<strong>Lightweight</strong><span>37 distros</span>
+			</a>
+			<a class="category-tile" href="./category-tag.html">
+				<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+				<strong>Security</strong><span>18 distros</span>
+			</a>
+			<a class="category-tile" href="./category-tag.html">
+				<svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>
+				<strong>DIY / advanced</strong><span>23 distros</span>
+			</a>
+		</div>
+
+		<div class="quiz-band">
+			<div>
+				<h2>Not sure where to start?</h2>
+				<p>Answer seven quick questions and we'll match you with distros that fit how you actually work.</p>
+			</div>
+			<div class="quiz-band__actions">
+				<a class="btn btn--primary btn--lg" href="./quiz.html">Find my distro</a>
+				<a class="btn btn--ghost btn--lg" href="./explore.html">Just browse</a>
+			</div>
+		</div>
+
+		<div class="section-title"><h2>Hall of Fame</h2><a href="./hall-of-fame.html">Visit the hall →</a></div>
+		<div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+			<a class="distro-card" href="./hall-of-fame.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #4e4e4e">S</span>
+					<div><div class="distro-card__name">Slackware</div><div class="distro-card__family">1993 — the elder</div></div>
+				</div>
+				<p class="distro-card__summary">The oldest surviving distribution — the UNIX way, unchanged on principle.</p>
+			</a>
+			<a class="distro-card" href="./hall-of-fame.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #a81d33">D</span>
+					<div><div class="distro-card__name">Debian</div><div class="distro-card__family">1993 — the foundation</div></div>
+				</div>
+				<p class="distro-card__summary">The base of hundreds of derivatives and the social contract that shaped free software.</p>
+			</a>
+			<a class="distro-card" href="./hall-of-fame.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #cc0000">RH</span>
+					<div><div class="distro-card__name">Red Hat Linux</div><div class="distro-card__family">1995–2004 — the pioneer</div></div>
+				</div>
+				<p class="distro-card__summary">Proved Linux belonged in the enterprise; its lineage lives on in RHEL and Fedora.</p>
+			</a>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading — row skeletons</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 96px; border-radius: var(--radius-lg);"></div>
+						<div class="skeleton" style="block-size: 96px; border-radius: var(--radius-lg);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty row — hidden</div>
+					<div class="spec-frame__body">
+						<p class="muted" style="font-size: var(--text-sm);">A row with no data is removed entirely — never an empty rail. Hero + search always render.</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error — row failed</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Trending is unavailable</div>
+							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

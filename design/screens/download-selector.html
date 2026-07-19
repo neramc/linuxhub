@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Download selector — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.flow {
+			display: grid;
+			gap: var(--space-6);
+			padding-block: var(--space-6) var(--space-7);
+		}
+
+		.flow-frame {
+			display: grid;
+			gap: var(--space-3);
+		}
+
+		.flow-frame > h2 {
+			font-size: var(--text-sm);
+			font-weight: 600;
+			color: var(--color-text-muted);
+		}
+
+		.flow-frame .modal {
+			position: static;
+			max-block-size: none;
+		}
+
+		.result {
+			display: grid;
+			gap: var(--space-4);
+		}
+
+		.result__sponsor {
+			display: flex;
+			align-items: center;
+			gap: var(--space-2);
+			font-size: var(--text-sm);
+			color: var(--color-text-muted);
+		}
+
+		.result__alt {
+			display: flex;
+			gap: var(--space-3);
+			font-size: var(--text-sm);
+		}
+	</style>
+</head>
+<body data-page="explore">
+	<main id="main" class="container">
+		<header class="page-head">
+			<h1>Download selector — guided flow</h1>
+			<p class="lede">The five-step stepper inside a modal (desktop) / full-height sheet (mobile). Steps auto-advance on selection; single-option steps are skipped but shown as done. Frames below show the key steps and the resolved result.</p>
+		</header>
+
+		<div class="flow">
+			<!-- Step 1: version -->
+			<div class="flow-frame">
+				<h2>Step 1 · Version — latest stable preselected</h2>
+				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="t1">
+					<div class="modal__head">
+						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
+						<h2 class="modal__title" id="t1">Download Fedora</h2>
+						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+					</div>
+					<div class="stepper" aria-label="Progress: step 1 of 5">
+						<span class="step step--current"><span class="step__dot"></span>Version</span>
+						<span class="step"><span class="step__dot"></span>Edition</span>
+						<span class="step"><span class="step__dot"></span>Arch</span>
+						<span class="step"><span class="step__dot"></span>Format</span>
+						<span class="step"><span class="step__dot"></span>Mirror</span>
+					</div>
+					<div class="modal__body">
+						<div class="option-list" role="radiogroup" aria-label="Version">
+							<button type="button" class="option-card" role="radio" aria-checked="true">
+								<div>
+									<div class="option-card__label">Fedora 42</div>
+									<div class="option-card__meta">Released 2026-04-22 · supported until 2027-05</div>
+								</div>
+								<span class="option-card__end"><span class="badge">stable</span></span>
+							</button>
+							<button type="button" class="option-card" role="radio" aria-checked="false">
+								<div>
+									<div class="option-card__label">Fedora 41</div>
+									<div class="option-card__meta">Released 2025-10-29 · EOL 2026-11</div>
+								</div>
+								<span class="option-card__end"><span class="badge badge--neutral">previous</span></span>
+							</button>
+							<button type="button" class="option-card" role="radio" aria-checked="false">
+								<div>
+									<div class="option-card__label">Fedora 43 Beta</div>
+									<div class="option-card__meta">Pre-release — for testing only</div>
+								</div>
+								<span class="option-card__end"><span class="badge badge--warning">beta</span></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Step 3: architecture -->
+			<div class="flow-frame">
+				<h2>Step 3 · Architecture — compact pills, incompatible options disabled with a tooltip</h2>
+				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="t3">
+					<div class="modal__head">
+						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
+						<h2 class="modal__title" id="t3">Download Fedora</h2>
+						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+					</div>
+					<div class="stepper" aria-label="Progress: step 3 of 5">
+						<span class="step step--done"><span class="step__dot"></span>42</span>
+						<span class="step step--done"><span class="step__dot"></span>Workstation</span>
+						<span class="step step--current"><span class="step__dot"></span>Arch</span>
+						<span class="step"><span class="step__dot"></span>Format</span>
+						<span class="step"><span class="step__dot"></span>Mirror</span>
+					</div>
+					<div class="modal__body" style="display: grid; gap: var(--space-4);">
+						<div class="pill-group" role="radiogroup" aria-label="Architecture">
+							<button type="button" class="pill" role="radio" aria-checked="true">x86_64</button>
+							<button type="button" class="pill" role="radio" aria-checked="false">aarch64</button>
+							<button type="button" class="pill" role="radio" aria-checked="false" disabled title="Not available for Workstation 42">ppc64le</button>
+						</div>
+						<p class="muted" style="font-size: var(--text-xs);">Most PCs and laptops are x86_64. Apple-silicon and Raspberry Pi machines are aarch64.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Step 5: mirror -->
+			<div class="flow-frame">
+				<h2>Step 5 · Mirror — nearest first, auto default, health dots</h2>
+				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="t5">
+					<div class="modal__head">
+						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
+						<h2 class="modal__title" id="t5">Download Fedora</h2>
+						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+					</div>
+					<div class="stepper" aria-label="Progress: step 5 of 5">
+						<span class="step step--done"><span class="step__dot"></span>42</span>
+						<span class="step step--done"><span class="step__dot"></span>Workstation</span>
+						<span class="step step--done"><span class="step__dot"></span>x86_64</span>
+						<span class="step step--done"><span class="step__dot"></span>.iso</span>
+						<span class="step step--current"><span class="step__dot"></span>Mirror</span>
+					</div>
+					<div class="modal__body">
+						<div class="option-list" role="radiogroup" aria-label="Mirror">
+							<button type="button" class="option-card mirror-row" role="radio" aria-checked="true">
+								<span class="health-dot" aria-hidden="true"></span>
+								<div>
+									<div class="option-card__label">Auto — nearest mirror</div>
+									<div class="option-card__meta">Chosen by your region · currently KAIST, Korea</div>
+								</div>
+								<span class="option-card__end"><span class="badge">recommended</span></span>
+							</button>
+							<button type="button" class="option-card mirror-row" role="radio" aria-checked="false">
+								<span class="health-dot" aria-hidden="true"></span>
+								<span class="flag">KR</span>
+								<div>
+									<div class="option-card__label">KAIST Mirror</div>
+									<div class="option-card__meta">Sponsored by KAIST · https</div>
+								</div>
+							</button>
+							<button type="button" class="option-card mirror-row" role="radio" aria-checked="false">
+								<span class="health-dot" aria-hidden="true"></span>
+								<span class="flag">JP</span>
+								<div>
+									<div class="option-card__label">JAIST Mirror</div>
+									<div class="option-card__meta">Sponsored by JAIST · https</div>
+								</div>
+							</button>
+							<button type="button" class="option-card mirror-row" role="radio" aria-checked="false">
+								<span class="health-dot health-dot--down" aria-hidden="true"></span>
+								<span class="flag">DE</span>
+								<div>
+									<div class="option-card__label">RWTH Aachen</div>
+									<div class="option-card__meta">Reported unhealthy 2 h ago</div>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result -->
+			<div class="flow-frame">
+				<h2>Result — resolved download with checksum &amp; verify instructions</h2>
+				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="tr">
+					<div class="modal__head">
+						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
+						<h2 class="modal__title" id="tr">Fedora 42 · Workstation · x86_64</h2>
+						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+					</div>
+					<div class="modal__body result">
+						<button type="button" class="btn btn--primary btn--lg btn--block">
+							<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+							Download .iso · 2.1 GB
+						</button>
+						<div class="result__sponsor">
+							<span class="health-dot" aria-hidden="true"></span>
+							<span class="flag">KR</span> KAIST Mirror — sponsored by KAIST
+						</div>
+						<div class="checksum">
+							<div class="checksum__row">
+								<strong style="font-size: var(--text-sm);">SHA-256</strong>
+								<button type="button" class="btn btn--ghost btn--sm" style="margin-inline-start: auto;">
+									<svg class="icon icon--sm" aria-hidden="true"><use href="#i-copy"/></svg>
+									Copy
+								</button>
+							</div>
+							<code class="checksum__hash">a1b6f4de8c2e4b0f6c9d3a5e7f8091b2c3d4e5f60718293a4b5c6d7e8f901a2b</code>
+							<details style="font-size: var(--text-sm);">
+								<summary style="cursor: pointer; color: var(--color-accent);">How to verify</summary>
+								<pre style="margin-block-start: var(--space-2);"><code>$ sha256sum Fedora-Workstation-42.iso</code></pre>
+							</details>
+						</div>
+						<div class="result__alt">
+							<a href="#">.torrent</a>
+							<a href="#">Magnet link</a>
+							<a href="#">GPG signature</a>
+						</div>
+						<p class="muted" style="font-size: var(--text-xs);">Your selection is remembered for next time.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading — options</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 56px; border-radius: var(--radius-md);"></div>
+						<div class="skeleton" style="block-size: 56px; border-radius: var(--radius-md);"></div>
+						<div class="skeleton" style="block-size: 56px; border-radius: var(--radius-md);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Resolving — button busy</div>
+					<div class="spec-frame__body">
+						<button type="button" class="btn btn--primary btn--block" aria-busy="true">Resolving…</button>
+						<p class="muted" style="font-size: var(--text-xs);">Width stays fixed; label swaps to “Resolving…”.</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error — resolve failed</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Couldn't resolve this download</div>
+							<p>The mirror may be busy.</p>
+							<div style="display: flex; gap: var(--space-2);">
+								<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+								<button type="button" class="btn btn--ghost btn--sm">Try another mirror</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

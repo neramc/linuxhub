@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Mobile nav — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.phones {
+			display: grid;
+			gap: var(--space-6);
+			padding-block: var(--space-6) var(--space-7);
+			justify-content: center;
+		}
+
+		@media (min-width: 1024px) {
+			.phones {
+				grid-template-columns: repeat(3, 320px);
+			}
+		}
+
+		.phone {
+			inline-size: 320px;
+			block-size: 620px;
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-lg);
+			background: var(--color-bg);
+			overflow: hidden;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			box-shadow: var(--shadow-1);
+		}
+
+		.phone__label {
+			text-align: center;
+			font-size: var(--text-xs);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--color-text-muted);
+			margin-block-end: var(--space-3);
+		}
+
+		.phone .drawer,
+		.phone .sheet {
+			position: absolute;
+			transform: none;
+		}
+
+		.phone .drawer {
+			inline-size: 85%;
+		}
+
+		.phone .drawer-scrim {
+			position: absolute;
+			opacity: 1;
+			pointer-events: none;
+		}
+
+		.phone-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-block-size: 56px;
+			padding-inline: var(--space-2);
+			background: var(--color-surface);
+			border-block-end: 1px solid var(--color-border);
+		}
+
+		.overlay-search {
+			display: flex;
+			flex-direction: column;
+			block-size: 100%;
+			background: var(--color-surface);
+		}
+
+		.overlay-search__bar {
+			display: flex;
+			align-items: center;
+			gap: var(--space-2);
+			padding: var(--space-3);
+			border-block-end: 1px solid var(--color-border);
+		}
+
+		.recent {
+			padding: var(--space-4);
+			display: grid;
+			gap: var(--space-2);
+		}
+
+		.recent h3 {
+			font-size: var(--text-xs);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			color: var(--color-text-muted);
+		}
+	</style>
+</head>
+<body data-page="explore">
+	<main id="main" class="container">
+		<header class="page-head">
+			<h1>Mobile navigation</h1>
+			<p class="lede">Three frames at 320px: the drawer, the shared bottom-sheet pattern (used by filters and the download selector), and the full-screen search overlay. The drawer is also live — resize the window under 640px and tap the hamburger. RTL flips the drawer edge (review toggle, bottom corner).</p>
+		</header>
+
+		<div class="phones">
+			<div>
+				<p class="phone__label">Drawer open</p>
+				<div class="phone">
+					<div class="phone-header">
+						<button type="button" class="icon-btn" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+						<span class="wordmark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg>Linuxhub</span>
+						<button type="button" class="icon-btn" aria-label="Search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></button>
+					</div>
+					<div class="drawer-scrim"></div>
+					<nav class="drawer" aria-label="Menu demo">
+						<div class="drawer__head">
+							<span class="wordmark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg>Linuxhub</span>
+							<button type="button" class="icon-btn" aria-label="Close menu"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+						</div>
+						<div class="drawer__nav">
+							<a href="#" aria-current="page">Explore</a>
+							<a href="#">Rankings</a>
+							<a href="#">Hall of Fame</a>
+							<a href="#">Compare</a>
+							<a href="#">Quiz</a>
+							<a href="#">About</a>
+							<hr class="drawer__divider" />
+							<button type="button" class="drawer__utility"><span>Theme</span><svg class="icon icon--sm" aria-hidden="true"><use href="#i-sun"/></svg></button>
+							<button type="button" class="drawer__utility"><span>Language · 한국어</span><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+						</div>
+						<div class="drawer__foot"><span>RSS</span><span>GitHub</span></div>
+					</nav>
+				</div>
+			</div>
+
+			<div>
+				<p class="phone__label">Bottom sheet — filters</p>
+				<div class="phone">
+					<div class="phone-header">
+						<button type="button" class="icon-btn" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+						<span class="wordmark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg>Linuxhub</span>
+						<button type="button" class="icon-btn" aria-label="Search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></button>
+					</div>
+					<div class="drawer-scrim"></div>
+					<div class="sheet" style="block-size: 78%;">
+						<div class="sheet__handle" aria-hidden="true"></div>
+						<div class="sheet__body">
+							<div class="filter-rail">
+								<div class="filter-group">
+									<button type="button" class="filter-group__head" aria-expanded="true">Category
+										<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+									</button>
+									<div class="filter-group__body">
+										<label class="filter-option"><input type="checkbox" checked /> For beginners <span class="count">46</span></label>
+										<label class="filter-option"><input type="checkbox" /> Desktop <span class="count">128</span></label>
+										<label class="filter-option"><input type="checkbox" /> Server <span class="count">64</span></label>
+									</div>
+								</div>
+								<div class="filter-group">
+									<button type="button" class="filter-group__head" aria-expanded="true">Family
+										<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+									</button>
+									<div class="filter-group__body">
+										<label class="filter-option"><input type="checkbox" /> Debian <span class="count">92</span></label>
+										<label class="filter-option"><input type="checkbox" /> Arch <span class="count">31</span></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="sheet__foot">
+							<button type="button" class="btn btn--primary btn--block">Show 41 results</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<p class="phone__label">Search overlay</p>
+				<div class="phone">
+					<div class="overlay-search">
+						<div class="overlay-search__bar">
+							<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+							<input class="input" type="search" placeholder="Search distros…" aria-label="Search distros" style="border: 0; min-block-size: 40px; background: none;" />
+							<button type="button" class="btn btn--ghost btn--sm">Cancel</button>
+						</div>
+						<div class="recent">
+							<h3>Recent searches</h3>
+							<span class="chip">fedora</span>
+							<span class="chip">arch</span>
+							<span class="chip">beginner friendly</span>
+							<h3 style="margin-block-start: var(--space-4);">Try</h3>
+							<span class="chip">rolling release</span>
+							<span class="chip">raspberry pi</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — notes</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Gestures</div>
+					<div class="spec-frame__body">
+						<p class="muted" style="font-size: var(--text-sm);">Sheet dismisses by handle-drag or scrim tap, with a soft spring settle — always with a visible Cancel equivalent. Reduced motion: fade only.</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Focus</div>
+					<div class="spec-frame__body">
+						<p class="muted" style="font-size: var(--text-sm);">Drawer and sheets trap focus; Esc/back closes; focus returns to the opener. Hamburger carries aria-expanded.</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">RTL</div>
+					<div class="spec-frame__body">
+						<p class="muted" style="font-size: var(--text-sm);">The drawer enters from the end edge in RTL automatically (logical positioning) — verify with the review toggle.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

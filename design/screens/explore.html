@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Explore — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.explore-layout {
+			display: grid;
+			gap: var(--space-6);
+			align-items: start;
+			padding-block-end: var(--space-7);
+		}
+
+		@media (min-width: 1024px) {
+			.explore-layout {
+				grid-template-columns: 260px 1fr;
+			}
+		}
+
+		.mobile-filter-btn {
+			display: inline-flex;
+		}
+
+		@media (min-width: 1024px) {
+			.mobile-filter-btn,
+			.explore-chips-note {
+				display: none;
+			}
+
+			.filter-rail-wrap {
+				position: sticky;
+				inset-block-start: calc(64px + var(--space-5));
+			}
+		}
+
+		@media (max-width: 1023px) {
+			.filter-rail-wrap {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body data-page="explore">
+	<main id="main" class="container">
+		<header class="page-head">
+			<h1>Explore distributions</h1>
+			<p class="lede">Browse every catalogued Linux distribution — filter by family, desktop, architecture, and more.</p>
+		</header>
+
+		<div class="explore-layout">
+			<div class="filter-rail-wrap">
+				<div class="filter-rail" aria-label="Filters">
+					<div class="filter-group">
+						<button type="button" class="filter-group__head" data-collapse aria-expanded="true">
+							Category
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+						</button>
+						<div class="filter-group__body">
+							<label class="filter-option"><input type="checkbox" checked /> For beginners <span class="count">46</span></label>
+							<label class="filter-option"><input type="checkbox" /> Desktop <span class="count">128</span></label>
+							<label class="filter-option"><input type="checkbox" /> Server <span class="count">64</span></label>
+							<label class="filter-option"><input type="checkbox" /> Security &amp; privacy <span class="count">18</span></label>
+							<label class="filter-option"><input type="checkbox" /> Lightweight <span class="count">37</span></label>
+						</div>
+					</div>
+					<div class="filter-group">
+						<button type="button" class="filter-group__head" data-collapse aria-expanded="true">
+							Family
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+						</button>
+						<div class="filter-group__body">
+							<label class="filter-option"><input type="checkbox" /> Debian <span class="count">92</span></label>
+							<label class="filter-option"><input type="checkbox" /> Arch <span class="count">31</span></label>
+							<label class="filter-option"><input type="checkbox" /> RPM / Fedora <span class="count">27</span></label>
+							<label class="filter-option"><input type="checkbox" /> SUSE <span class="count">8</span></label>
+							<label class="filter-option"><input type="checkbox" /> Independent <span class="count">54</span></label>
+						</div>
+					</div>
+					<div class="filter-group">
+						<button type="button" class="filter-group__head" data-collapse aria-expanded="true">
+							Desktop environment
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+						</button>
+						<div class="filter-group__body">
+							<label class="filter-option"><input type="checkbox" /> GNOME <span class="count">88</span></label>
+							<label class="filter-option"><input type="checkbox" /> KDE Plasma <span class="count">74</span></label>
+							<label class="filter-option"><input type="checkbox" /> Xfce <span class="count">69</span></label>
+							<label class="filter-option"><input type="checkbox" /> Cinnamon <span class="count">21</span></label>
+						</div>
+					</div>
+					<div class="filter-group">
+						<button type="button" class="filter-group__head" data-collapse aria-expanded="false">
+							Architecture
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+						</button>
+						<div class="filter-group__body">
+							<label class="filter-option"><input type="checkbox" /> x86_64 <span class="count">231</span></label>
+							<label class="filter-option"><input type="checkbox" /> aarch64 <span class="count">104</span></label>
+							<label class="filter-option"><input type="checkbox" /> riscv64 <span class="count">19</span></label>
+						</div>
+					</div>
+					<div class="filter-group">
+						<button type="button" class="filter-group__head" data-collapse aria-expanded="false">
+							Status
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+						</button>
+						<div class="filter-group__body">
+							<label class="filter-option"><input type="checkbox" checked /> Active <span class="count">217</span></label>
+							<label class="filter-option"><input type="checkbox" /> Discontinued <span class="count">95</span></label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<section aria-label="Results">
+				<div class="list-toolbar">
+					<span class="list-toolbar__count"><strong>46</strong> distros</span>
+					<button type="button" class="btn btn--secondary btn--sm mobile-filter-btn">
+						<svg class="icon icon--sm" aria-hidden="true"><use href="#i-filter"/></svg>
+						Filters <span class="badge">1</span>
+					</button>
+					<span class="chip chip--active">For beginners
+						<button type="button" class="chip__remove" aria-label="Remove filter: for beginners">
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"/></svg>
+						</button>
+					</span>
+					<label class="list-toolbar__sort">Sort
+						<select class="select" aria-label="Sort results">
+							<option>Popularity</option>
+							<option>Name</option>
+							<option>Latest release</option>
+							<option>Newest</option>
+						</select>
+					</label>
+				</div>
+
+				<div class="card-grid">
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #e95420">U</span>
+							<div>
+								<div class="distro-card__name">Ubuntu</div>
+								<div class="distro-card__family">Debian family</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">The most widely used desktop Linux — predictable LTS releases and a huge software ecosystem.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>1.2M downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #51a2da">F</span>
+							<div>
+								<div class="distro-card__name">Fedora</div>
+								<div class="distro-card__family">RPM family</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">A polished, fast-moving distribution that ships the newest stable GNOME and kernel first.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">RPM</span><span>842K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #69b53f">M</span>
+							<div>
+								<div class="distro-card__name">Linux Mint</div>
+								<div class="distro-card__family">Debian family · Ubuntu-based</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">A gentle landing for Windows switchers — the Cinnamon desktop keeps everything familiar.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>731K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #1793d1">A</span>
+							<div>
+								<div class="distro-card__name">Arch Linux</div>
+								<div class="distro-card__family">Arch family</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">A rolling release you assemble yourself — total control, the AUR, and the famous wiki.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Arch</span><span>689K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #a81d33">D</span>
+							<div>
+								<div class="distro-card__name">Debian</div>
+								<div class="distro-card__family">Debian family · root</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">The universal operating system — legendary stability that much of the Linux world builds on.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>577K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #73ba25">oS</span>
+							<div>
+								<div class="distro-card__name">openSUSE</div>
+								<div class="distro-card__family">SUSE family</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">Leap for stability or Tumbleweed for rolling — with YaST and openQA-tested updates.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">SUSE</span><span>412K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #35bf5c">Mj</span>
+							<div>
+								<div class="distro-card__name">Manjaro</div>
+								<div class="distro-card__family">Arch family</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">Arch's power with training wheels — curated updates and easy hardware detection.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Arch</span><span>398K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #48b9c7">P!</span>
+							<div>
+								<div class="distro-card__name">Pop!_OS</div>
+								<div class="distro-card__family">Debian family · Ubuntu-based</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">System76's developer-focused desktop with tiling windows and first-class GPU support.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>355K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #5277c3">N</span>
+							<div>
+								<div class="distro-card__name">NixOS</div>
+								<div class="distro-card__family">Independent</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">Declarative, reproducible system configuration — describe your OS in one file and roll back anytime.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Independent</span><span>287K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #15a6f0">Z</span>
+							<div>
+								<div class="distro-card__name">Zorin OS</div>
+								<div class="distro-card__family">Debian family · Ubuntu-based</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">A Windows-and-macOS-familiar desktop designed to make switching effortless.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>244K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #64baff">e</span>
+							<div>
+								<div class="distro-card__name">elementary OS</div>
+								<div class="distro-card__family">Debian family · Ubuntu-based</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">A thoughtful, design-first desktop with its own Pantheon environment and app store.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>201K downloads</span></div>
+					</a>
+					<a class="distro-card" href="./distro-detail.html">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #7f3fbf">E</span>
+							<div>
+								<div class="distro-card__name">EndeavourOS</div>
+								<div class="distro-card__family">Arch family</div>
+							</div>
+						</div>
+						<p class="distro-card__summary">Arch made approachable — a friendly installer and community, terminal-centric spirit intact.</p>
+						<div class="distro-card__foot"><span class="badge badge--neutral">Arch</span><span>176K downloads</span></div>
+					</a>
+				</div>
+
+				<nav class="pagination" aria-label="Pagination">
+					<button type="button" class="page-btn" aria-label="Previous page">
+						<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-start"/></svg>
+					</button>
+					<button type="button" class="page-btn" aria-current="page">1</button>
+					<button type="button" class="page-btn">2</button>
+					<button type="button" class="page-btn">3</button>
+					<span class="page-btn" aria-hidden="true">…</span>
+					<button type="button" class="page-btn">14</button>
+					<button type="button" class="page-btn" aria-label="Next page">
+						<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-end"/></svg>
+					</button>
+				</nav>
+			</section>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading — skeleton grid</div>
+					<div class="spec-frame__body">
+						<div class="skeleton-card">
+							<div style="display: flex; gap: var(--space-3); align-items: center;">
+								<div class="skeleton" style="inline-size: 48px; block-size: 48px; border-radius: var(--radius-md);"></div>
+								<div style="display: grid; gap: var(--space-2); flex: 1;">
+									<div class="skeleton" style="block-size: 14px; inline-size: 60%;"></div>
+									<div class="skeleton" style="block-size: 10px; inline-size: 40%;"></div>
+								</div>
+							</div>
+							<div class="skeleton" style="block-size: 10px;"></div>
+							<div class="skeleton" style="block-size: 10px; inline-size: 80%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty — no matches</div>
+					<div class="spec-frame__body">
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>
+							<div class="state-block__title">No distros match these filters</div>
+							<p>Try removing a filter, or browse the whole catalog.</p>
+							<button type="button" class="btn btn--secondary btn--sm">Clear all filters</button>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error — list failed</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Couldn't load the catalog</div>
+							<p>Something went wrong on our side. The filters still work.</p>
+							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

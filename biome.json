@@ -29,6 +29,18 @@
 	},
 	"overrides": [
 		{
+			"includes": ["design/**"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"useValidAnchor": "off",
+						"useSemanticElements": "off",
+						"useAriaPropsSupportedByRole": "off"
+					}
+				}
+			}
+		},
+		{
 			"includes": ["packages/ui/src/tokens.css"],
 			"linter": {
 				"rules": {

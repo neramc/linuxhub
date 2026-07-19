@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Category page — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.taxo-band {
+			background: var(--color-accent-soft);
+			border-radius: var(--radius-lg);
+			padding: var(--space-6);
+			margin-block-start: var(--space-6);
+			display: flex;
+			align-items: flex-start;
+			gap: var(--space-4);
+			flex-wrap: wrap;
+		}
+
+		.taxo-band .icon {
+			inline-size: 28px;
+			block-size: 28px;
+			color: var(--color-accent);
+			margin-block-start: var(--space-1);
+		}
+
+		.taxo-band h1 {
+			font-size: var(--text-2xl);
+			font-weight: 600;
+			letter-spacing: -0.01em;
+		}
+
+		.taxo-band p {
+			margin-block-start: var(--space-2);
+			color: var(--color-text-muted);
+			max-inline-size: 60ch;
+		}
+
+		.sibling-rail {
+			display: flex;
+			gap: var(--space-2);
+			overflow-x: auto;
+			padding-block: var(--space-5);
+			scroll-snap-type: x proximity;
+		}
+
+		.sibling-rail > * {
+			scroll-snap-align: start;
+			flex: none;
+		}
+
+		.tag-variant {
+			margin-block-start: var(--space-7);
+			padding-block-start: var(--space-6);
+			border-block-start: 1px dashed var(--color-border);
+		}
+	</style>
+</head>
+<body data-page="explore">
+	<main id="main" class="container">
+		<div class="taxo-band">
+			<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+			<div>
+				<h1>For beginners</h1>
+				<p>Distributions that install easily, look familiar, and rarely ask you to open a terminal. Good first steps away from Windows or macOS.</p>
+			</div>
+			<span class="chip" style="margin-inline-start: auto;">46 distros</span>
+		</div>
+
+		<nav class="sibling-rail" aria-label="Other categories">
+			<a class="chip chip--active" href="#">For beginners</a>
+			<a class="chip" href="#">Desktop</a>
+			<a class="chip" href="#">Server</a>
+			<a class="chip" href="#">Lightweight</a>
+			<a class="chip" href="#">Security &amp; privacy</a>
+			<a class="chip" href="#">Gaming</a>
+			<a class="chip" href="#">DIY / advanced</a>
+			<a class="chip" href="#">Education</a>
+		</nav>
+
+		<div class="list-toolbar">
+			<span class="list-toolbar__count"><strong>46</strong> distros</span>
+			<a class="btn btn--ghost btn--sm" href="./explore.html">
+				Refine in Explore
+				<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-end"/></svg>
+			</a>
+			<label class="list-toolbar__sort">Sort
+				<select class="select" aria-label="Sort results">
+					<option>Popularity</option>
+					<option>Name</option>
+					<option>Latest release</option>
+				</select>
+			</label>
+		</div>
+
+		<div class="card-grid">
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #69b53f">M</span>
+					<div><div class="distro-card__name">Linux Mint</div><div class="distro-card__family">Debian family · Ubuntu-based</div></div>
+				</div>
+				<p class="distro-card__summary">A gentle landing for Windows switchers — the Cinnamon desktop keeps everything familiar.</p>
+				<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>731K downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #15a6f0">Z</span>
+					<div><div class="distro-card__name">Zorin OS</div><div class="distro-card__family">Debian family · Ubuntu-based</div></div>
+				</div>
+				<p class="distro-card__summary">A Windows-and-macOS-familiar desktop designed to make switching effortless.</p>
+				<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>244K downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #e95420">U</span>
+					<div><div class="distro-card__name">Ubuntu</div><div class="distro-card__family">Debian family</div></div>
+				</div>
+				<p class="distro-card__summary">The most widely used desktop Linux — predictable LTS releases and a huge ecosystem.</p>
+				<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>1.2M downloads</span></div>
+			</a>
+			<a class="distro-card" href="./distro-detail.html">
+				<div class="distro-card__head">
+					<span class="logo-tile" style="--tile: #64baff">e</span>
+					<div><div class="distro-card__name">elementary OS</div><div class="distro-card__family">Debian family · Ubuntu-based</div></div>
+				</div>
+				<p class="distro-card__summary">A thoughtful, design-first desktop with its own Pantheon environment and app store.</p>
+				<div class="distro-card__foot"><span class="badge badge--neutral">Debian</span><span>201K downloads</span></div>
+			</a>
+		</div>
+
+		<nav class="pagination" aria-label="Pagination">
+			<button type="button" class="page-btn" aria-current="page">1</button>
+			<button type="button" class="page-btn">2</button>
+			<button type="button" class="page-btn" aria-label="Next page">
+				<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-end"/></svg>
+			</button>
+		</nav>
+
+		<div class="tag-variant">
+			<h2 style="font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); margin-block-end: var(--space-4);">Variant — tag header (plainer, no tint)</h2>
+			<div class="page-head" style="padding-block: 0 var(--space-4);">
+				<h1><span class="muted">#</span>rolling-release</h1>
+				<p class="lede">Distributions that update continuously instead of shipping numbered versions.</p>
+				<span class="chip" style="margin-block-start: var(--space-3);">31 distros</span>
+			</div>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 140px; border-radius: var(--radius-lg);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty — bare tag</div>
+					<div class="spec-frame__body">
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>
+							<div class="state-block__title">Nothing tagged yet</div>
+							<p>No distros carry this tag so far.</p>
+							<a class="btn btn--secondary btn--sm" href="./explore.html">Browse Explore</a>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Couldn't load this category</div>
+							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

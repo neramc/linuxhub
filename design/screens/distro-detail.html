@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Distro detail — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.hero {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: var(--space-5);
+			padding-block: var(--space-6);
+		}
+
+		.hero__id {
+			display: grid;
+			gap: var(--space-2);
+			min-inline-size: 0;
+		}
+
+		.hero__name-row {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: var(--space-3);
+		}
+
+		.hero h1 {
+			font-size: var(--text-3xl);
+			font-weight: 700;
+			line-height: var(--leading-3xl);
+			letter-spacing: -0.02em;
+		}
+
+		.hero__summary {
+			color: var(--color-text-muted);
+			max-inline-size: 52ch;
+		}
+
+		.hero__actions {
+			display: flex;
+			gap: var(--space-2);
+			margin-inline-start: auto;
+			flex-wrap: wrap;
+		}
+
+		.detail-layout {
+			display: grid;
+			gap: var(--space-6);
+			align-items: start;
+			padding-block-end: var(--space-7);
+		}
+
+		@media (min-width: 1024px) {
+			.detail-layout {
+				grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+			}
+
+			.download-panel {
+				position: sticky;
+				inset-block-start: calc(64px + var(--space-5));
+			}
+
+			.hero__actions {
+				margin-inline-start: auto;
+			}
+		}
+
+		.download-panel {
+			display: grid;
+			gap: var(--space-4);
+			padding: var(--space-5);
+		}
+
+		.download-panel__version {
+			display: flex;
+			align-items: baseline;
+			gap: var(--space-2);
+		}
+
+		.download-panel__version strong {
+			font-size: var(--text-xl);
+			font-weight: 600;
+		}
+
+		.panel-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: var(--space-3);
+			font-size: var(--text-sm);
+			color: var(--color-text-muted);
+		}
+
+		.rank-line {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+		}
+	</style>
+</head>
+<body data-page="explore">
+	<main id="main" class="container">
+		<header class="hero">
+			<span class="logo-tile logo-tile--lg" style="--tile: #51a2da">F</span>
+			<div class="hero__id">
+				<div class="hero__name-row">
+					<h1>Fedora</h1>
+					<span class="badge badge--neutral">RPM family</span>
+					<span class="badge badge--success">Active</span>
+					<span class="badge badge--warning" title="This page is not yet translated to your language">English fallback</span>
+				</div>
+				<p class="hero__summary">A polished, fast-moving distribution sponsored by Red Hat — the newest stable GNOME, kernel, and toolchains, four weeks after upstream.</p>
+			</div>
+			<div class="hero__actions">
+				<button type="button" class="btn btn--primary btn--lg" data-open-modal="#dl-modal">
+					<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+					Download
+				</button>
+				<a class="btn btn--secondary btn--lg" href="#">
+					Official site
+					<svg class="icon icon--sm" aria-hidden="true"><use href="#i-external"/></svg>
+				</a>
+			</div>
+		</header>
+
+		<div class="detail-layout">
+			<section aria-label="About Fedora">
+				<div class="tabs" role="tablist" aria-label="Documentation">
+					<button type="button" class="tab" role="tab" aria-selected="true" aria-controls="tab-description" id="t-desc">Description</button>
+					<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="tab-install" id="t-install">Install</button>
+					<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="tab-usage" id="t-usage">Usage</button>
+				</div>
+
+				<article class="prose tab-panel" id="tab-description" role="tabpanel" aria-labelledby="t-desc" style="padding-block-start: var(--space-5);">
+					<p>Fedora is where much of the Linux desktop's future ships first. Backed by Red Hat and built by a large community, it delivers a new release roughly every six months with the latest stable GNOME, kernel, and developer toolchains — while staying reliable enough for daily work.</p>
+					<h2>Who it's for</h2>
+					<p>Developers and enthusiasts who want current software without living on a rolling release. If you want this year's GNOME with sensible defaults and SELinux enabled out of the box, Fedora Workstation is the reference experience.</p>
+					<h2>Editions</h2>
+					<p>Workstation (GNOME) is the flagship. KDE Plasma, Xfce, and other desktops ship as official spins, Server and IoT target headless machines, and the Atomic desktops (Silverblue, Kinoite) offer image-based, rollback-friendly systems.</p>
+					<pre><code>$ sudo dnf upgrade --refresh</code><button type="button" class="btn btn--ghost btn--sm copy-btn"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button></pre>
+					<p class="sources">Written from the official Fedora documentation. Sources: docs.fedoraproject.org · fedoramagazine.org — last reviewed 2026-07-02.</p>
+				</article>
+				<article class="prose tab-panel" id="tab-install" role="tabpanel" aria-labelledby="t-install" hidden style="padding-block-start: var(--space-5);">
+					<p>Write the ISO to a USB stick with Fedora Media Writer, boot it, and follow the Anaconda installer.</p>
+				</article>
+				<article class="prose tab-panel" id="tab-usage" role="tabpanel" aria-labelledby="t-usage" hidden style="padding-block-start: var(--space-5);">
+					<p>Day-to-day package management uses <code>dnf</code>; GNOME Software covers Flatpaks.</p>
+				</article>
+
+				<div class="section-title"><h2>Screenshots</h2></div>
+				<div class="gallery">
+					<div class="shot" role="img" aria-label="Fedora Workstation desktop">GNOME desktop · 42</div>
+					<div class="shot" role="img" aria-label="GNOME activities overview">Activities overview</div>
+					<div class="shot" role="img" aria-label="GNOME Software">Software center</div>
+				</div>
+
+				<div class="section-title"><h2>System requirements</h2></div>
+				<div class="card" style="overflow: hidden;">
+					<table class="spec-table">
+						<thead>
+							<tr><th scope="col"></th><th scope="col">Minimum</th><th scope="col">Recommended</th></tr>
+						</thead>
+						<tbody>
+							<tr><th scope="row">Processor</th><td>2 GHz dual-core</td><td>Quad-core</td></tr>
+							<tr><th scope="row">Memory</th><td class="num">2 GB</td><td class="num">8 GB</td></tr>
+							<tr><th scope="row">Storage</th><td class="num">15 GB</td><td class="num">40 GB SSD</td></tr>
+							<tr><th scope="row">Firmware</th><td>UEFI or BIOS</td><td>UEFI + Secure Boot</td></tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="section-title"><h2>Related distros</h2><a href="./explore.html">See all →</a></div>
+				<div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+					<a class="distro-card" href="#">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #294172">C</span>
+							<div><div class="distro-card__name">CentOS Stream</div><div class="distro-card__family">RPM family</div></div>
+						</div>
+					</a>
+					<a class="distro-card" href="#">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #0b57a4">R</span>
+							<div><div class="distro-card__name">Rocky Linux</div><div class="distro-card__family">RPM family</div></div>
+						</div>
+					</a>
+					<a class="distro-card" href="#">
+						<div class="distro-card__head">
+							<span class="logo-tile" style="--tile: #73ba25">oS</span>
+							<div><div class="distro-card__name">openSUSE</div><div class="distro-card__family">SUSE family</div></div>
+						</div>
+					</a>
+				</div>
+			</section>
+
+			<aside class="download-panel card" aria-label="Download Fedora">
+				<div class="download-panel__version">
+					<strong>Fedora 42</strong>
+					<span class="badge">stable</span>
+					<span class="muted" style="font-size: var(--text-xs); margin-inline-start: auto;">2026-04-22</span>
+				</div>
+				<button type="button" class="btn btn--primary btn--block" data-open-modal="#dl-modal">
+					<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+					Download 42
+				</button>
+				<div class="panel-row rank-line">
+					<svg class="sparkline" viewBox="0 0 96 28" aria-hidden="true">
+						<polyline class="area" points="0,22 8,20 16,21 24,17 32,18 40,14 48,15 56,11 64,12 72,8 80,9 88,6 96,7 96,28 0,28" />
+						<polyline points="0,22 8,20 16,21 24,17 32,18 40,14 48,15 56,11 64,12 72,8 80,9 88,6 96,7" />
+					</svg>
+					<span>Rank <strong>#2</strong> this month</span>
+				</div>
+				<div class="panel-row"><span>Downloads tracked</span><strong style="color: var(--color-text);">842K</strong></div>
+				<hr class="drawer__divider" />
+				<h3 style="font-size: var(--text-sm); font-weight: 600;">Recent releases</h3>
+				<ol class="timeline">
+					<li><span class="timeline__version">42</span> <span class="badge">stable</span><div class="timeline__date">2026-04-22</div></li>
+					<li><span class="timeline__version">41</span> <span class="badge badge--neutral">EOL 2026-11</span><div class="timeline__date">2025-10-29</div></li>
+					<li><span class="timeline__version">40</span> <span class="badge badge--neutral">EOL</span><div class="timeline__date">2025-04-23</div></li>
+				</ol>
+				<div class="panel-row"><a href="#">Documentation ↗</a><a href="#">Community ↗</a></div>
+			</aside>
+		</div>
+
+		<!-- Download selector modal lives in its own comp: download-selector.html -->
+		<div class="modal-scrim" id="dl-modal">
+			<div class="modal" role="dialog" aria-modal="true" aria-labelledby="dl-title">
+				<div class="modal__head">
+					<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
+					<h2 class="modal__title" id="dl-title">Download Fedora</h2>
+					<button type="button" class="icon-btn" aria-label="Close" data-close-modal>
+						<svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+					</button>
+				</div>
+				<div class="modal__body">
+					<p class="muted" style="font-size: var(--text-sm);">Full selector flow → <a href="./download-selector.html">download-selector.html</a></p>
+				</div>
+			</div>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading — tabs &amp; panel</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 12px; inline-size: 70%;"></div>
+						<div class="skeleton" style="block-size: 12px;"></div>
+						<div class="skeleton" style="block-size: 12px; inline-size: 85%;"></div>
+						<div class="skeleton" style="block-size: 40px; border-radius: var(--radius-md); margin-block-start: var(--space-2);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty — doc not written</div>
+					<div class="spec-frame__body">
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>
+							<div class="state-block__title">Not written yet</div>
+							<p>This guide hasn't been authored. Read the official docs meanwhile.</p>
+							<button type="button" class="btn btn--secondary btn--sm">Official docs ↗</button>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error — section failed</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Couldn't load screenshots</div>
+							<p>The rest of the page is unaffected.</p>
+							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

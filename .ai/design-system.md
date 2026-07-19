@@ -1,8 +1,10 @@
 # Design System
 
-> **This is the document Google Stitch consumes.** Per-screen briefs in
-> `prompts/stitch/*.md` reference these tokens and components. Tokens are
-> implemented in `packages/ui` (Phase 2) and must match this doc exactly.
+> Per-screen design requirements live in `prompts/stitch/*.md`; the
+> **high-fidelity design comps** built from them live in `design/`
+> (ADR-0012 — Claude Code is the designer). Tokens are implemented in
+> `packages/ui` and must match this doc exactly; `design/shared/design.css`
+> consumes them directly.
 
 ## Design language
 

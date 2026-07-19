@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>About — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.about-layout {
+			display: grid;
+			gap: var(--space-7);
+			padding-block-end: var(--space-7);
+		}
+
+		@media (min-width: 1024px) {
+			.about-layout {
+				grid-template-columns: minmax(0, 1fr) 220px;
+			}
+		}
+
+		.toc {
+			display: none;
+		}
+
+		@media (min-width: 1024px) {
+			.toc {
+				display: block;
+				position: sticky;
+				inset-block-start: calc(64px + var(--space-6));
+				align-self: start;
+			}
+		}
+
+		.toc h2 {
+			font-size: var(--text-xs);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			color: var(--color-text-muted);
+			margin-block-end: var(--space-3);
+		}
+
+		.toc ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: var(--space-1);
+			border-inline-start: 1px solid var(--color-border);
+		}
+
+		.toc a {
+			display: block;
+			padding: var(--space-1) var(--space-3);
+			color: var(--color-text-muted);
+			font-size: var(--text-sm);
+			border-inline-start: 2px solid transparent;
+			margin-inline-start: -1px;
+		}
+
+		.toc a:hover {
+			color: var(--color-text);
+			text-decoration: none;
+		}
+
+		.toc a.is-active {
+			color: var(--color-accent);
+			border-inline-start-color: var(--color-accent);
+			font-weight: 500;
+		}
+
+		.about-prose section {
+			scroll-margin-block-start: 80px;
+		}
+
+		.about-prose section + section {
+			margin-block-start: var(--space-7);
+			padding-block-start: var(--space-6);
+			border-block-start: 1px solid var(--color-border);
+		}
+	</style>
+</head>
+<body data-page="about">
+	<main id="main" class="container">
+		<header class="page-head">
+			<h1>About Linuxhub</h1>
+		</header>
+
+		<div class="about-layout">
+			<div class="prose about-prose" style="max-inline-size: 68ch;">
+				<section id="what">
+					<h2>What is Linuxhub</h2>
+					<p>Linuxhub is a catalog of (almost) every Linux distribution — releases, editions, system requirements, and downloads from trusted mirrors, in one place and in your language.</p>
+					<p>We don't host ISO files. Every download resolves to an official mirror chosen for your region, with the checksum right next to the button.</p>
+					<div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-block: var(--space-4);">
+						<span class="chip">312 distributions</span>
+						<span class="chip">4.8M downloads served</span>
+						<span class="chip">56 languages</span>
+					</div>
+				</section>
+
+				<section id="rankings">
+					<h2>How rankings work</h2>
+					<p>Rankings come from our own signals only: page views, download clicks, and release recency. We deliberately don't scrape third-party popularity charts — the method is simple enough to explain in one sentence, and that's the point.</p>
+					<svg class="sparkline" viewBox="0 0 96 28" aria-hidden="true" style="inline-size: 200px; block-size: 56px;">
+						<polyline class="area" points="0,22 12,20 24,21 36,17 48,14 60,15 72,10 84,8 96,6 96,28 0,28" />
+						<polyline points="0,22 12,20 24,21 36,17 48,14 60,15 72,10 84,8 96,6" />
+					</svg>
+				</section>
+
+				<section id="data">
+					<h2>Where the data comes from</h2>
+					<p>Release and mirror data is fetched from each project's official sources — release APIs, announcement pages, and mirror manifests — on a regular schedule. Every ingested record keeps its source URL and fetch time.</p>
+					<ul>
+						<li>Official project APIs and release pages, always preferred</li>
+						<li>Mirror directories like Fedora MirrorManager and Arch mirror status</li>
+						<li>Wikidata for structured metadata, checked weekly</li>
+					</ul>
+				</section>
+
+				<section id="content">
+					<h2>Content &amp; trademarks</h2>
+					<p>Descriptions and guides are written in our own words after reading each project's official documentation, and every page cites its sources. Distro names and logos belong to their projects; logos are used per each project's brand guidelines, with attribution. Spot something wrong? <a href="./contribute.html">Report it</a>.</p>
+				</section>
+
+				<section id="crawler">
+					<h2>Crawler policy</h2>
+					<p>Our fetcher identifies itself as <code>linuxhub-ingest</code> with a link to this section, respects <code>robots.txt</code>, sends conditional requests, and never exceeds one request per second per host. If you run an official distro resource and want different limits, write to crawler@linuxhub.example.</p>
+				</section>
+
+				<section id="contact">
+					<h2>Contact &amp; contribute</h2>
+					<p>Linuxhub is built in the open.</p>
+					<div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+						<a class="btn btn--primary" href="./contribute.html">Contribute</a>
+						<a class="btn btn--secondary" href="#">GitHub ↗</a>
+					</div>
+				</section>
+			</div>
+
+			<nav class="toc" aria-label="On this page">
+				<h2>On this page</h2>
+				<ul>
+					<li><a class="is-active" href="#what">What is Linuxhub</a></li>
+					<li><a href="#rankings">How rankings work</a></li>
+					<li><a href="#data">Where the data comes from</a></li>
+					<li><a href="#content">Content &amp; trademarks</a></li>
+					<li><a href="#crawler">Crawler policy</a></li>
+					<li><a href="#contact">Contact &amp; contribute</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — notes</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Anchor target highlight</div>
+					<div class="spec-frame__body">
+						<p style="background: var(--color-accent-soft); border-radius: var(--radius-sm); padding: var(--space-2); font-size: var(--text-sm);">The jumped-to section tints accent-soft briefly, then fades (no motion under reduced-motion).</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Mobile ToC</div>
+					<div class="spec-frame__body">
+						<button type="button" class="btn btn--secondary btn--sm">
+							On this page
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+						</button>
+						<p class="muted" style="font-size: var(--text-xs);">The rail collapses into this dropdown below 1024px.</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Prose styles are canonical</div>
+					<div class="spec-frame__body">
+						<p class="muted" style="font-size: var(--text-sm);">The typography on this page (.prose) is the same system used for distro MDX content — designed once, reused.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

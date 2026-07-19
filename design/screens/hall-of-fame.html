@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Hall of Fame — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.hof-head {
+			text-align: center;
+			padding-block: var(--space-8) var(--space-6);
+			max-inline-size: 60ch;
+			margin-inline: auto;
+		}
+
+		.hof-head h1 {
+			font-size: var(--text-3xl);
+			font-weight: 700;
+			line-height: var(--leading-3xl);
+			letter-spacing: -0.02em;
+		}
+
+		.hof-head p {
+			margin-block-start: var(--space-4);
+			font-size: var(--text-lg);
+			color: var(--color-text-muted);
+		}
+
+		.decades {
+			display: flex;
+			justify-content: center;
+			gap: var(--space-6);
+			margin-block-end: var(--space-7);
+			color: var(--color-text-muted);
+			font-size: var(--text-xs);
+			font-variant-numeric: tabular-nums;
+			letter-spacing: 0.1em;
+		}
+
+		.hof-grid {
+			display: grid;
+			gap: var(--space-5);
+			padding-block-end: var(--space-7);
+		}
+
+		@media (min-width: 1024px) {
+			.hof-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		@media (min-width: 1440px) {
+			.hof-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.hof-card {
+			display: grid;
+			gap: var(--space-4);
+			padding: var(--space-6);
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-lg);
+			transition: border-color var(--motion-base) var(--ease-out);
+		}
+
+		.hof-card:hover {
+			border-color: color-mix(in srgb, var(--color-text-muted) 50%, var(--color-border));
+		}
+
+		.hof-card__head {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+		}
+
+		.hof-card__name {
+			font-size: var(--text-xl);
+			font-weight: 600;
+		}
+
+		.hof-card__era {
+			font-size: var(--text-sm);
+			color: var(--color-text-muted);
+			font-variant-numeric: tabular-nums;
+		}
+
+		.hof-card__why {
+			color: var(--color-text);
+			line-height: var(--leading-base);
+		}
+
+		.hof-card__cite {
+			font-size: var(--text-xs);
+			color: var(--color-text-muted);
+		}
+
+		.hof-card__inducted {
+			font-size: var(--text-xs);
+			color: var(--color-text-muted);
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+		}
+	</style>
+</head>
+<body data-page="hall-of-fame">
+	<main id="main" class="container">
+		<header class="hof-head">
+			<h1>Hall of Fame</h1>
+			<p>The distributions that shaped Linux itself. Curated editorially, with reasons and sources — not a popularity contest. For what's hot right now, see the <a href="./rankings.html">rankings</a>.</p>
+		</header>
+
+		<div class="decades" aria-hidden="true">
+			<span>1992</span><span>·</span><span>1998</span><span>·</span><span>2004</span><span>·</span><span>2010</span><span>·</span><span>2016</span>
+		</div>
+
+		<div class="hof-grid">
+			<article class="hof-card">
+				<div class="hof-card__head">
+					<span class="logo-tile" style="--tile: #4e4e4e; inline-size: 64px; block-size: 64px;">S</span>
+					<div>
+						<h2 class="hof-card__name">Slackware</h2>
+						<div class="hof-card__era">1993 — present</div>
+					</div>
+					<span class="hof-card__inducted" style="margin-inline-start: auto;">Inducted 2026</span>
+				</div>
+				<p class="hof-card__why">The oldest surviving distribution. Patrick Volkerding's insistence on simplicity and vanilla upstream software defined an entire philosophy of Linux — one still audible in every "keep it simple" argument today.</p>
+				<p class="hof-card__cite">Sources: slackware.com · LWN retrospective (2023)</p>
+			</article>
+
+			<article class="hof-card">
+				<div class="hof-card__head">
+					<span class="logo-tile" style="--tile: #a81d33; inline-size: 64px; block-size: 64px;">D</span>
+					<div>
+						<h2 class="hof-card__name">Debian</h2>
+						<div class="hof-card__era">1993 — present</div>
+					</div>
+					<span class="hof-card__inducted" style="margin-inline-start: auto;">Inducted 2026</span>
+				</div>
+				<p class="hof-card__why">The universal operating system and the root of the largest family tree in Linux. Its Social Contract and rigorous packaging culture became the moral and technical backbone for hundreds of derivatives, Ubuntu included.</p>
+				<p class="hof-card__cite">Sources: debian.org/social_contract · debian.org/history</p>
+			</article>
+
+			<article class="hof-card">
+				<div class="hof-card__head">
+					<span class="logo-tile" style="--tile: #cc0000; inline-size: 64px; block-size: 64px;">RH</span>
+					<div>
+						<h2 class="hof-card__name">Red Hat Linux</h2>
+						<div class="hof-card__era">1995 — 2004</div>
+					</div>
+					<span class="hof-card__inducted" style="margin-inline-start: auto;">Inducted 2026</span>
+				</div>
+				<p class="hof-card__why">Proved that free software could carry a business — and an enterprise. RPM, Anaconda, and the commercial support model it pioneered live on in RHEL, CentOS's successors, and Fedora.</p>
+				<p class="hof-card__cite">Sources: redhat.com/history · Wikipedia (Red Hat Linux)</p>
+				<span class="badge badge--danger" style="justify-self: start;">Discontinued</span>
+			</article>
+
+			<article class="hof-card">
+				<div class="hof-card__head">
+					<span class="logo-tile" style="--tile: #ffb400; inline-size: 64px; block-size: 64px;">Md</span>
+					<div>
+						<h2 class="hof-card__name">Mandrake Linux</h2>
+						<div class="hof-card__era">1998 — 2011</div>
+					</div>
+					<span class="hof-card__inducted" style="margin-inline-start: auto;">Inducted 2026</span>
+				</div>
+				<p class="hof-card__why">The first distribution that treated desktop usability as the product. Graphical installers, hardware detection, and friendly defaults that today feel obvious were Mandrake inventions first.</p>
+				<p class="hof-card__cite">Sources: Wikipedia (Mandriva) · archive.org press coverage</p>
+				<span class="badge badge--danger" style="justify-self: start;">Discontinued</span>
+			</article>
+
+			<article class="hof-card">
+				<div class="hof-card__head">
+					<span class="logo-tile" style="--tile: #54487a; inline-size: 64px; block-size: 64px;">G</span>
+					<div>
+						<h2 class="hof-card__name">Gentoo</h2>
+						<div class="hof-card__era">2002 — present</div>
+					</div>
+					<span class="hof-card__inducted" style="margin-inline-start: auto;">Inducted 2026</span>
+				</div>
+				<p class="hof-card__why">Source-based, endlessly configurable, and the training ground for a generation of kernel and toolchain developers. Portage made "compile everything, your way" a coherent system rather than a stunt.</p>
+				<p class="hof-card__cite">Sources: gentoo.org · Gentoo Wiki history</p>
+			</article>
+
+			<article class="hof-card">
+				<div class="hof-card__head">
+					<span class="logo-tile" style="--tile: #e95420; inline-size: 64px; block-size: 64px;">U</span>
+					<div>
+						<h2 class="hof-card__name">Ubuntu</h2>
+						<div class="hof-card__era">2004 — present</div>
+					</div>
+					<span class="hof-card__inducted" style="margin-inline-start: auto;">Inducted 2026</span>
+				</div>
+				<p class="hof-card__why">"Linux for human beings" — the release that took desktop Linux from hobbyists to the mainstream, shipped free CDs worldwide, and set the six-month cadence much of the ecosystem still keeps time by.</p>
+				<p class="hof-card__cite">Sources: ubuntu.com/about · Mark Shuttleworth announcement (2004)</p>
+			</article>
+		</div>
+
+		<div class="quiz-band" style="display: flex; align-items: center; gap: var(--space-5); padding: var(--space-6); border-radius: var(--radius-lg); background: var(--color-accent-soft); margin-block-end: var(--space-7); flex-wrap: wrap;">
+			<p style="color: var(--color-text);">Looking for what's popular <em>now</em>?</p>
+			<a class="btn btn--secondary" style="margin-inline-start: auto;" href="./rankings.html">See the rankings</a>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 180px; border-radius: var(--radius-lg);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty</div>
+					<div class="spec-frame__body">
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>
+							<div class="state-block__title">Curation in progress</div>
+							<p>Inductees are being written up with sources.</p>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Couldn't load the hall</div>
+							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

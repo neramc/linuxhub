@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Search — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.search-page {
+			max-inline-size: 800px;
+			margin-inline: auto;
+			padding-block-end: var(--space-7);
+		}
+
+		.result-row {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			padding: var(--space-4);
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-md);
+			background: var(--color-surface);
+			color: inherit;
+			transition:
+				border-color var(--motion-fast) var(--ease-out),
+				background-color var(--motion-fast) var(--ease-out);
+		}
+
+		.result-row:hover {
+			text-decoration: none;
+			color: inherit;
+			background: var(--color-accent-soft);
+			border-color: var(--color-accent);
+		}
+
+		.result-row__main {
+			display: grid;
+			gap: 2px;
+			min-inline-size: 0;
+		}
+
+		.result-row__name {
+			font-weight: 600;
+		}
+
+		.result-row__summary {
+			font-size: var(--text-sm);
+			color: var(--color-text-muted);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.result-row mark {
+			background: none;
+			color: inherit;
+			font-weight: 700;
+		}
+
+		.result-row__end {
+			margin-inline-start: auto;
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			font-size: var(--text-xs);
+			color: var(--color-text-muted);
+			font-variant-numeric: tabular-nums;
+			flex: none;
+		}
+
+		/* command palette spec */
+		.palette-stage {
+			position: relative;
+			min-block-size: 480px;
+			border-radius: var(--radius-lg);
+			background: color-mix(in srgb, var(--color-text) 40%, var(--color-bg));
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			padding-block-start: 8vh;
+		}
+
+		.palette {
+			inline-size: min(560px, calc(100% - var(--space-6)));
+			align-self: flex-start;
+			background: var(--color-surface-raised);
+			border-radius: var(--radius-lg);
+			box-shadow: var(--shadow-3);
+			overflow: hidden;
+		}
+
+		.palette__input {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			padding: var(--space-4) var(--space-5);
+			border-block-end: 1px solid var(--color-border);
+		}
+
+		.palette__input input {
+			flex: 1;
+			border: 0;
+			background: none;
+			color: var(--color-text);
+			font: inherit;
+			font-size: var(--text-lg);
+			outline: none;
+		}
+
+		.palette__list {
+			list-style: none;
+			margin: 0;
+			padding: var(--space-2);
+			display: grid;
+			gap: 2px;
+		}
+
+		.palette__item {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			padding: var(--space-2) var(--space-3);
+			border-radius: var(--radius-sm);
+			font-size: var(--text-sm);
+		}
+
+		.palette__item[aria-selected="true"] {
+			background: var(--color-accent-soft);
+		}
+
+		.palette__item .code {
+			margin-inline-start: auto;
+			color: var(--color-text-muted);
+			font-size: var(--text-xs);
+		}
+
+		.palette__foot {
+			display: flex;
+			gap: var(--space-4);
+			padding: var(--space-2) var(--space-4);
+			border-block-start: 1px solid var(--color-border);
+			font-size: var(--text-xs);
+			color: var(--color-text-muted);
+		}
+	</style>
+</head>
+<body data-page="explore">
+	<main id="main" class="container">
+		<div class="search-page">
+			<header class="page-head">
+				<h1><span class="muted">12 results for</span> “arch”</h1>
+			</header>
+
+			<div class="search" style="margin-block-end: var(--space-4);">
+				<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+				<input class="search__input" type="search" value="arch" aria-label="Search distros" />
+			</div>
+
+			<div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-block-end: var(--space-5);">
+				<span class="chip chip--active">All</span>
+				<span class="chip">Arch family</span>
+				<span class="chip">Desktop</span>
+				<span class="chip">Rolling</span>
+			</div>
+
+			<div style="display: grid; gap: var(--space-2);" aria-label="Search results">
+				<a class="result-row" href="./distro-detail.html">
+					<span class="logo-tile logo-tile--sm" style="--tile: #1793d1">A</span>
+					<div class="result-row__main">
+						<span class="result-row__name"><mark>Arch</mark> Linux</span>
+						<span class="result-row__summary">A rolling release you assemble yourself — total control, the AUR, and the famous wiki.</span>
+					</div>
+					<span class="result-row__end"><span class="badge badge--neutral">Arch</span>689K</span>
+				</a>
+				<a class="result-row" href="./distro-detail.html">
+					<span class="logo-tile logo-tile--sm" style="--tile: #7f3fbf">E</span>
+					<div class="result-row__main">
+						<span class="result-row__name">EndeavourOS</span>
+						<span class="result-row__summary"><mark>Arch</mark> made approachable — a friendly installer and community.</span>
+					</div>
+					<span class="result-row__end"><span class="badge badge--neutral">Arch</span>176K</span>
+				</a>
+				<a class="result-row" href="./distro-detail.html">
+					<span class="logo-tile logo-tile--sm" style="--tile: #35bf5c">Mj</span>
+					<div class="result-row__main">
+						<span class="result-row__name">Manjaro</span>
+						<span class="result-row__summary"><mark>Arch</mark>'s power with training wheels — curated updates and easy hardware detection.</span>
+					</div>
+					<span class="result-row__end"><span class="badge badge--neutral">Arch</span>398K</span>
+				</a>
+				<a class="result-row" href="./distro-detail.html">
+					<span class="logo-tile logo-tile--sm" style="--tile: #0088cc">Ac</span>
+					<div class="result-row__main">
+						<span class="result-row__name"><mark>Arch</mark>craft</span>
+						<span class="result-row__summary">A ricing-first <mark>Arch</mark> spin with polished window-manager setups out of the box.</span>
+					</div>
+					<span class="result-row__end"><span class="badge badge--neutral">Arch</span>41K</span>
+				</a>
+			</div>
+
+			<nav class="pagination" aria-label="Pagination">
+				<button type="button" class="page-btn" aria-current="page">1</button>
+				<button type="button" class="page-btn">2</button>
+			</nav>
+		</div>
+
+		<section aria-label="Command palette spec">
+			<div class="section-title"><h2>Command palette (⌘K)</h2></div>
+			<div class="palette-stage">
+				<div class="palette" role="dialog" aria-modal="true" aria-label="Search">
+					<div class="palette__input">
+						<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+						<input type="search" value="ubu" aria-label="Search" />
+						<span class="kbd">esc</span>
+					</div>
+					<div class="palette__list" role="listbox" aria-label="Results">
+						<div class="palette__item" role="option" tabindex="-1" aria-selected="true">
+							<span class="logo-tile logo-tile--xs" style="--tile: #e95420">U</span>
+							<span><strong>Ubu</strong>ntu</span>
+							<span class="code">Debian family</span>
+						</div>
+						<div class="palette__item" role="option" tabindex="-1" aria-selected="false">
+							<span class="logo-tile logo-tile--xs" style="--tile: #d6336c">K</span>
+							<span>K<strong>ubu</strong>ntu</span>
+							<span class="code">Ubuntu flavor</span>
+						</div>
+						<div class="palette__item" role="option" tabindex="-1" aria-selected="false">
+							<span class="logo-tile logo-tile--xs" style="--tile: #0079c1">X</span>
+							<span>X<strong>ubu</strong>ntu</span>
+							<span class="code">Ubuntu flavor</span>
+						</div>
+						<div class="palette__item" role="option" tabindex="-1" aria-selected="false">
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-search"/></svg>
+							<span>Search for “ubu” →</span>
+						</div>
+					</div>
+					<div class="palette__foot">
+						<span>↑↓ navigate</span><span>↵ open</span><span>esc close</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Loading</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 64px; border-radius: var(--radius-md);"></div>
+						<div class="skeleton" style="block-size: 64px; border-radius: var(--radius-md);"></div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Empty — no matches</div>
+					<div class="spec-frame__body">
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+							<div class="state-block__title">No matches for “xyz”</div>
+							<p>Check the spelling, browse Explore, or suggest this distro.</p>
+							<div style="display: flex; gap: var(--space-2);">
+								<a class="btn btn--secondary btn--sm" href="./explore.html">Explore</a>
+								<a class="btn btn--ghost btn--sm" href="./contribute.html">Suggest a distro</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Error</div>
+					<div class="spec-frame__body">
+						<div class="state-block state-block--error">
+							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+							<div class="state-block__title">Search is unavailable</div>
+							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

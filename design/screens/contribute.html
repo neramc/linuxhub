@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Contribute — Linuxhub design comp</title>
+	<link rel="stylesheet" href="../shared/design.css" />
+	<script src="../shared/mock.js" defer></script>
+	<style>
+		.contrib {
+			max-inline-size: 560px;
+			margin-inline: auto;
+			padding-block-end: var(--space-7);
+		}
+
+		.contrib-card {
+			display: grid;
+			gap: var(--space-5);
+			padding: var(--space-6);
+			margin-block-start: var(--space-5);
+		}
+
+		.captcha-slot {
+			display: grid;
+			gap: var(--space-2);
+			padding: var(--space-4);
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-md);
+			background: var(--color-bg);
+		}
+
+		.captcha-slot__box {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			min-block-size: 64px;
+			padding-inline: var(--space-4);
+			border: 1px dashed var(--color-border);
+			border-radius: var(--radius-sm);
+			color: var(--color-text-muted);
+			font-size: var(--text-sm);
+		}
+
+		.thanks {
+			text-align: center;
+			display: grid;
+			gap: var(--space-4);
+			justify-items: center;
+			padding: var(--space-7) var(--space-5);
+		}
+
+		.thanks .icon {
+			inline-size: 40px;
+			block-size: 40px;
+			color: var(--color-success);
+		}
+	</style>
+</head>
+<body data-page="contribute">
+	<main id="main" class="container">
+		<div class="contrib">
+			<header class="page-head">
+				<h1>Contribute</h1>
+				<p class="lede">Suggest a distro, report something broken, or send feedback. Contributions are anonymous, reviewed by maintainers, and protected by a quick captcha — no account needed.</p>
+			</header>
+
+			<div class="tabs" role="tablist" aria-label="Contribution type">
+				<button type="button" class="tab" role="tab" aria-selected="true" aria-controls="f-suggest" id="ft-suggest">Suggest a distro</button>
+				<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="f-report" id="ft-report">Report a problem</button>
+				<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="f-feedback" id="ft-feedback">Feedback</button>
+			</div>
+
+			<form class="card contrib-card tab-panel" id="f-suggest" role="tabpanel" aria-labelledby="ft-suggest">
+				<div class="field">
+					<label class="field__label" for="s-name">Distro name</label>
+					<input class="input" id="s-name" type="text" placeholder="e.g. Vanilla OS" />
+				</div>
+				<div class="field">
+					<label class="field__label" for="s-url">Homepage URL</label>
+					<input class="input" id="s-url" type="url" value="vanillaos" aria-invalid="true" aria-describedby="s-url-err" />
+					<p class="field__error" id="s-url-err">
+						<svg class="icon icon--sm" aria-hidden="true"><use href="#i-alert"/></svg>
+						Enter a full URL, like https://vanillaos.org
+					</p>
+				</div>
+				<div class="field">
+					<label class="field__label" for="s-why">Why does it belong here?</label>
+					<textarea class="textarea" id="s-why" aria-describedby="s-why-hint"></textarea>
+					<p class="field__hint" id="s-why-hint">A sentence or two is plenty. 0 / 500</p>
+				</div>
+				<div class="field">
+					<label class="field__label" for="s-mail">Email <span class="optional">(optional — only if you'd like a reply)</span></label>
+					<input class="input" id="s-mail" type="email" />
+				</div>
+				<div class="captcha-slot">
+					<span class="field__label">One quick check</span>
+					<div class="captcha-slot__box">
+						<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+						hCaptcha widget renders here — no account needed
+					</div>
+				</div>
+				<button class="btn btn--primary btn--lg btn--block" type="button">Send suggestion</button>
+			</form>
+
+			<form class="card contrib-card tab-panel" id="f-report" role="tabpanel" aria-labelledby="ft-report" hidden>
+				<div class="field">
+					<label class="field__label" for="r-kind">What's broken?</label>
+					<select class="select" id="r-kind">
+						<option>Mirror is down</option>
+						<option>Wrong download link</option>
+						<option>Checksum doesn't match</option>
+						<option>Outdated information</option>
+						<option>Something else</option>
+					</select>
+				</div>
+				<div class="field">
+					<label class="field__label" for="r-where">Which page or mirror?</label>
+					<input class="input" id="r-where" type="text" value="fedora — KAIST mirror" />
+					<p class="field__hint">Pre-filled when you arrive from a distro page.</p>
+				</div>
+				<div class="field">
+					<label class="field__label" for="r-detail">Details</label>
+					<textarea class="textarea" id="r-detail"></textarea>
+				</div>
+				<div class="captcha-slot">
+					<span class="field__label">One quick check</span>
+					<div class="captcha-slot__box">
+						<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+						hCaptcha widget renders here
+					</div>
+				</div>
+				<button class="btn btn--primary btn--lg btn--block" type="button">Send report</button>
+			</form>
+
+			<form class="card contrib-card tab-panel" id="f-feedback" role="tabpanel" aria-labelledby="ft-feedback" hidden>
+				<div class="field">
+					<label class="field__label" for="fb-topic">Topic</label>
+					<select class="select" id="fb-topic">
+						<option>General</option>
+						<option>Design</option>
+						<option>Translations</option>
+						<option>Data accuracy</option>
+					</select>
+				</div>
+				<div class="field">
+					<label class="field__label" for="fb-msg">Message</label>
+					<textarea class="textarea" id="fb-msg"></textarea>
+				</div>
+				<div class="captcha-slot">
+					<span class="field__label">One quick check</span>
+					<div class="captcha-slot__box">
+						<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+						hCaptcha widget renders here
+					</div>
+				</div>
+				<button class="btn btn--primary btn--lg btn--block" type="button">Send feedback</button>
+			</form>
+		</div>
+
+		<section class="spec-annex">
+			<h2>Design spec — states</h2>
+			<div class="spec-frames">
+				<div class="spec-frame">
+					<div class="spec-frame__label">Success — card swaps to thanks</div>
+					<div class="spec-frame__body">
+						<div class="thanks">
+							<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+							<div class="state-block__title">Thanks — we review every submission</div>
+							<div style="display: flex; gap: var(--space-2);">
+								<button type="button" class="btn btn--secondary btn--sm">Send another</button>
+								<a class="btn btn--ghost btn--sm" href="./explore.html">Back to Explore</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Rate limited (429)</div>
+					<div class="spec-frame__body">
+						<div class="alert alert--danger">
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-alert"/></svg>
+							Too many submissions — try again in a minute.
+						</div>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Captcha loading / failed</div>
+					<div class="spec-frame__body">
+						<div class="skeleton" style="block-size: 64px; border-radius: var(--radius-sm);"></div>
+						<div class="alert alert--danger">
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-alert"/></svg>
+							Captcha check failed — please try once more.
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
