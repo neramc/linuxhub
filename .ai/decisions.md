@@ -165,3 +165,23 @@ must pass an automated horizontal-overflow check at 320/375/768/1024/1440.
 **Consequences:** Component inventory gains VersionTable, BannerCarousel,
 CategoryTile; the five-step wizard is replaced by filters + version table
 (mirror choice folds into the expanded row).
+
+## ADR-0015 — Committed live-data snapshot via ingest CLI (pre-Phase 5)
+**Date:** 2026-07-19 · **Status:** accepted
+**Context:** The owner requires real distro data — releases, EOL dates, and
+mirror lists — on the detail pages now, but the Hono/D1 backend and its Cron
+ingestion only land in Phase 5. Fabricated release data is worse than none.
+**Decision:** Add `packages/ingest/src/live.ts`, a Bun CLI that fetches three
+verified public/official sources (endoflife.date API for release cycles and
+EOL; archlinux.org mirror-status JSON; mirrors.fedoraproject.org mirrorlist)
+and writes a committed snapshot `apps/web/src/lib/server/live-data.json`. The
+mock BFF derives version tables, mirror lists, and the home "recently
+updated" feed from it; the detail page surfaces `fetched_at` + sources as a
+provenance line. Rolling distros (arch, endeavouros, manjaro) get an explicit
+`rolling` channel row; distros without a usable API (zorin, elementary) fall
+back to curated SPECS. Distro logos are official SVGs from Wikimedia Commons
+with per-file license rows in `assets/distros/ATTRIBUTION.md`.
+**Consequences:** Builds and deploys stay network-free; data freshness equals
+snapshot recency until Phase 5 replaces the CLI with Workers Cron Triggers
+writing the same shapes into D1/KV. The CLI transport uses curl via
+`Bun.spawn` (environment proxy constraint); Workers code will use `fetch`.
