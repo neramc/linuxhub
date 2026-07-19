@@ -8,6 +8,7 @@ type Entry = {
 	familyLine: string;
 	color: string;
 	initials: string;
+	logo: string;
 	trend: number;
 	spark: string;
 };

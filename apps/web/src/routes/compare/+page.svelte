@@ -52,7 +52,7 @@ function add(slug: string) {
 	<div class="picker-bar">
 		{#each data.picked as distro (distro.slug)}
 			<div class="picker-slot">
-				<LogoTile color={distro.color} initials={distro.initials} size="sm" />
+				<LogoTile color={distro.color} initials={distro.initials} size="sm" src={distro.logo} />
 				<strong>{distro.name}</strong>
 				<button
 					type="button"

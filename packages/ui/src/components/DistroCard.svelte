@@ -7,17 +7,19 @@ let {
 	summary,
 	color,
 	initials,
+	logo,
 }: {
 	href: string;
 	name: string;
 	summary?: string;
 	color: string;
 	initials: string;
+	logo?: string;
 } = $props();
 </script>
 
 <a class="app-card" {href}>
-	<LogoTile {color} {initials} />
+	<LogoTile {color} {initials} src={logo} />
 	<span class="app-card__body">
 		<span class="app-card__name">{name}</span>
 		{#if summary}<span class="app-card__summary">{summary}</span>{/if}

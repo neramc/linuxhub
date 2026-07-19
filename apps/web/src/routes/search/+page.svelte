@@ -63,7 +63,7 @@ function highlight(text: string, q: string): Array<{ part: string; hit: boolean 
 			<div class="boxed" style="margin-block-end: var(--space-8);">
 				{#each data.results as distro (distro.slug)}
 					<a class="row" href={`/distro/${distro.slug}`}>
-						<LogoTile color={distro.color} initials={distro.initials} size="sm" />
+						<LogoTile color={distro.color} initials={distro.initials} size="sm" src={distro.logo} />
 						<span class="row__body">
 							<span class="row__title">
 								{#each highlight(distro.name, data.q) as seg, i (i)}{#if seg.hit}<strong>{seg.part}</strong>{:else}{seg.part}{/if}{/each}

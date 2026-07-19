@@ -25,6 +25,7 @@ export const GET: RequestHandler = () => {
 			familyLine: d.familyLine,
 			color: d.color,
 			initials: d.initials,
+			logo: d.logo,
 			trend: d.trend,
 			spark: spark(d.slug.length + i, d.trend),
 		}));

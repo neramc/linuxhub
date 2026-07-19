@@ -11,7 +11,7 @@ let stage: Stage = $state("intro");
 let step = $state(0);
 let scores: Record<string, number> = $state({});
 
-const total = data.quiz.length;
+const total = $derived(data.quiz.length);
 
 function answer(weights: Record<string, number>) {
 	for (const [slug, w] of Object.entries(weights)) {
@@ -118,7 +118,7 @@ const matches = $derived(
 			{#if top}
 				<div class="match-card" style={`background: color-mix(in srgb, ${top.color} 12%, var(--color-surface));`}>
 					<span class="badge">{m.quiz_top_match}</span>
-					<LogoTile color={top.color} initials={top.initials} size="lg" />
+					<LogoTile color={top.color} initials={top.initials} size="lg" src={top.logo} />
 					<h1 style="font-size: var(--text-2xl); font-weight: 700;">{top.name}</h1>
 					<p class="muted" style="max-inline-size: 44ch;">{top.summary}</p>
 					<div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
@@ -133,7 +133,7 @@ const matches = $derived(
 				<div class="boxed runner-ups">
 					{#each matches.slice(1) as runner (runner.slug)}
 						<a class="row" href={`/distro/${runner.slug}`}>
-							<LogoTile color={runner.color} initials={runner.initials} size="sm" />
+							<LogoTile color={runner.color} initials={runner.initials} size="sm" src={runner.logo} />
 							<span class="row__body">
 								<span class="row__title">{runner.name}</span>
 								<span class="row__subtitle">{runner.summary}</span>

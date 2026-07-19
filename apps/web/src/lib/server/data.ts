@@ -1,6 +1,37 @@
-// Mock catalog data serving the BFF until Phase 5 lands the Hono/D1 backend.
-// Shapes follow .ai/api.md; the BFF routes wrap these in the shared envelope,
-// so swapping to the real Worker later only changes the fetch target.
+// Catalog data serving the BFF until Phase 5 lands the Hono/D1 backend.
+// Release/EOL cycles and mirror lists come from the committed live snapshot
+// (live-data.json, produced by `bun packages/ingest/src/live.ts` from
+// official/public APIs — see .ai/data-sources.md); identity, taxonomy, and
+// editorial content remain curated here. Shapes follow .ai/api.md.
+
+import liveJson from "./live-data.json" with { type: "json" };
+
+// Shape of the committed snapshot (mirrors packages/ingest/src/live.ts types);
+// typed at the import boundary so optional fields stay optional.
+type LiveRelease = {
+	cycle: string;
+	latest?: string;
+	codename?: string;
+	releaseDate?: string;
+	eol?: string;
+	lts: boolean;
+	supported: boolean;
+};
+type LiveMirror = {
+	name: string;
+	url: string;
+	country?: string;
+	countryCode?: string;
+	note?: string;
+};
+type LiveSnapshot = {
+	fetched_at: string;
+	sources: string[];
+	releases: Record<string, LiveRelease[]>;
+	mirrors: Record<string, LiveMirror[]>;
+};
+
+const live: LiveSnapshot = liveJson;
 
 export type Distro = {
 	slug: string;
@@ -14,11 +45,14 @@ export type Distro = {
 	rank: number;
 	trend: number;
 	categories: string[];
+	/** Official logo path served from static/distros (see assets/distros/ATTRIBUTION.md). */
+	logo: string;
 };
 
 export const DISTROS: Distro[] = [
 	{
 		slug: "ubuntu",
+		logo: "/distros/ubuntu.svg",
 		name: "Ubuntu",
 		summary: "Predictable LTS releases and a huge software ecosystem",
 		family: "debian",
@@ -32,6 +66,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "fedora",
+		logo: "/distros/fedora.svg",
 		name: "Fedora",
 		summary: "The newest stable GNOME and kernel, twice a year",
 		family: "rpm",
@@ -45,6 +80,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "linux-mint",
+		logo: "/distros/linux-mint.svg",
 		name: "Linux Mint",
 		summary: "A gentle landing for Windows switchers",
 		family: "debian",
@@ -58,6 +94,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "arch",
+		logo: "/distros/arch.svg",
 		name: "Arch Linux",
 		summary: "A rolling release you assemble yourself",
 		family: "arch",
@@ -71,6 +108,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "debian",
+		logo: "/distros/debian.svg",
 		name: "Debian",
 		summary: "The universal operating system",
 		family: "debian",
@@ -84,6 +122,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "opensuse",
+		logo: "/distros/opensuse.svg",
 		name: "openSUSE",
 		summary: "Leap for stability, Tumbleweed for rolling",
 		family: "suse",
@@ -97,6 +136,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "manjaro",
+		logo: "/distros/manjaro.svg",
 		name: "Manjaro",
 		summary: "Arch's power with curated updates",
 		family: "arch",
@@ -110,6 +150,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "pop-os",
+		logo: "/distros/pop-os.svg",
 		name: "Pop!_OS",
 		summary: "Developer-focused desktop with tiling windows",
 		family: "debian",
@@ -123,6 +164,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "nixos",
+		logo: "/distros/nixos.svg",
 		name: "NixOS",
 		summary: "Declarative, reproducible system configuration with rollbacks",
 		family: "independent",
@@ -136,6 +178,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "zorin",
+		logo: "/distros/zorin.svg",
 		name: "Zorin OS",
 		summary: "A familiar desktop for Windows and macOS switchers",
 		family: "debian",
@@ -149,6 +192,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "elementary",
+		logo: "/distros/elementary.svg",
 		name: "elementary OS",
 		summary: "A thoughtful, design-first desktop",
 		family: "debian",
@@ -162,6 +206,7 @@ export const DISTROS: Distro[] = [
 	},
 	{
 		slug: "endeavouros",
+		logo: "/distros/endeavouros.svg",
 		name: "EndeavourOS",
 		summary: "Arch with a friendly installer and community",
 		family: "arch",
@@ -193,111 +238,246 @@ export const BANNERS = [
 	},
 ] as const;
 
-export const RECENT_RELEASES = [
-	{ slug: "nixos", title: "NixOS 26.05", subtitle: "Stable release", date: "May 31" },
-	{
-		slug: "ubuntu",
-		title: "Ubuntu 26.04 LTS",
-		subtitle: "Long-term support release",
-		date: "Apr 23",
-	},
-	{ slug: "fedora", title: "Fedora 42", subtitle: "Stable release", date: "Apr 22" },
-	{ slug: "opensuse", title: "openSUSE Leap 16.0", subtitle: "Stable release", date: "Apr 2" },
-] as const;
+export const RECENT_RELEASES = Object.entries(live.releases)
+	.map(([slug, cycles]) => {
+		const distro = DISTROS.find((d) => d.slug === slug);
+		const latest = cycles[0];
+		if (!distro || !latest?.releaseDate) return undefined;
+		return {
+			slug,
+			title: `${distro.name} ${latest.cycle}`,
+			subtitle: latest.lts ? "Long-term support release" : "Stable release",
+			date: latest.releaseDate,
+		};
+	})
+	.filter((r) => r !== undefined)
+	.sort((a, b) => b.date.localeCompare(a.date))
+	.slice(0, 5);
 
 export type Version = {
 	version: string;
-	channel: "release" | "beta" | "eol";
+	channel: "release" | "beta" | "eol" | "rolling";
 	line: string;
 	note: string;
 	date: string;
-	size: string;
-	downloads: string;
+	size?: string;
+	downloads?: string;
 };
 
-// Per-distro detail payloads. Only fedora carries full content in the mock;
-// other slugs fall back to a generated stub so every card links somewhere.
-export const FEDORA_DETAIL = {
-	summary: "Fast-moving, polished, sponsored by Red Hat",
-	badges: { family: "RPM family", active: true, translated: false },
-	meta: [
-		{ icon: "download", value: "842K", labelKey: "detail_downloads" },
-		{ icon: "calendar", value: "42", label: "Latest · Apr 2026" },
-		{ icon: "disk", value: "2.1 GB", label: "Workstation ISO" },
-		{ icon: "chart", value: "#2", labelKey: "detail_rank_month" },
-		{ icon: "cpu", value: "x86_64 +2", labelKey: "detail_architectures" },
+// ---------------------------------------------------------------------------
+// Per-distro detail (releases/mirrors from the live snapshot; identity,
+// editions, and descriptions curated — content pipeline lands with MDX).
+// ---------------------------------------------------------------------------
+
+export const HOMEPAGES: Record<string, string> = {
+	ubuntu: "https://ubuntu.com",
+	fedora: "https://fedoraproject.org",
+	"linux-mint": "https://linuxmint.com",
+	arch: "https://archlinux.org",
+	debian: "https://www.debian.org",
+	opensuse: "https://www.opensuse.org",
+	manjaro: "https://manjaro.org",
+	"pop-os": "https://system76.com/pop",
+	nixos: "https://nixos.org",
+	zorin: "https://zorin.com/os",
+	elementary: "https://elementary.io",
+	endeavouros: "https://endeavouros.com",
+};
+
+const EDITIONS: Record<string, string[]> = {
+	ubuntu: ["Desktop", "Server", "Kubuntu", "Xubuntu", "Ubuntu MATE"],
+	fedora: ["Workstation (GNOME)", "KDE Plasma spin", "Xfce spin", "Server", "Silverblue (Atomic)"],
+	"linux-mint": ["Cinnamon", "MATE", "Xfce"],
+	arch: ["ISO (netinstall)"],
+	debian: ["netinst", "DVD", "Live GNOME", "Live KDE", "Live Xfce"],
+	opensuse: ["Leap", "Tumbleweed", "MicroOS"],
+	manjaro: ["KDE Plasma", "GNOME", "Xfce"],
+	"pop-os": ["Intel/AMD", "NVIDIA"],
+	nixos: ["GNOME ISO", "KDE Plasma ISO", "Minimal ISO"],
+	zorin: ["Core", "Lite", "Pro"],
+	elementary: ["elementary OS"],
+	endeavouros: ["ISO (Calamares)"],
+};
+
+const DESCRIPTIONS: Record<string, string[]> = {
+	ubuntu: [
+		"Ubuntu is the most widely deployed desktop Linux, built on Debian with predictable releases: an LTS every two years with five years of updates, and interim releases in between.",
+		"Its size is the point — hardware vendors test against it, software ships .debs for it, and nearly every tutorial assumes it.",
 	],
-	description: [
+	fedora: [
 		"Fedora is where much of the Linux desktop's future ships first. Backed by Red Hat and built by a large community, it delivers a new release roughly every six months with the latest stable GNOME, kernel, and developer toolchains — while staying reliable enough for daily work.",
+		"Workstation is the flagship; spins cover KDE and Xfce, and the Atomic desktops offer image-based systems with rollbacks.",
 	],
-	editions: [
-		"Workstation (GNOME)",
-		"KDE Plasma spin",
-		"Xfce spin",
-		"Server",
-		"Silverblue (Atomic)",
+	"linux-mint": [
+		"Linux Mint takes Ubuntu's LTS base and wraps it in the Cinnamon desktop — a layout Windows users recognize immediately, with codecs and sensible defaults included.",
+		"Updates are conservative on purpose: Mint prioritizes not breaking your machine over shipping the newest bits.",
 	],
-	architectures: ["x86_64", "aarch64"],
-	formats: [".iso", ".iso.torrent", "Magnet link", "Checksum", "GPG signature"],
-	versions: [
+	arch: [
+		"Arch is a rolling-release distribution you assemble yourself: a minimal base, the pacman package manager, the AUR's enormous user repository, and the best documentation in Linux — the ArchWiki.",
+		"There is no installer holding your hand and no release schedule; your system is always current.",
+	],
+	debian: [
+		"Debian is the universal operating system — the volunteer-run project whose stable releases and packaging culture underpin hundreds of derivatives, Ubuntu included.",
+		"Stable trades novelty for rock-solid predictability, which is why it runs so much of the world's server fleet.",
+	],
+	opensuse: [
+		"openSUSE offers two tracks from one project: Leap, a stable release aligned with SUSE's enterprise base, and Tumbleweed, a rolling release that is openQA-tested before updates reach you.",
+		"YaST, its configuration center, remains the most complete admin tool shipped by any distribution.",
+	],
+	manjaro: [
+		"Manjaro delivers Arch's rolling model with training wheels: updates are held briefly for extra testing, hardware detection is automatic, and a graphical installer gets you running fast.",
+		"You keep pacman and the AUR without hand-building the system.",
+	],
+	"pop-os": [
+		"Pop!_OS is System76's developer-focused desktop built on Ubuntu, known for its tiling window management, first-class NVIDIA support, and its new Rust-based COSMIC desktop.",
+	],
+	nixos: [
+		"NixOS is built on the Nix package manager: your whole system is described in one declarative configuration, builds are reproducible, and every change can be rolled back from the boot menu.",
+	],
+	zorin: [
+		"Zorin OS is designed for people leaving Windows or macOS — layout switching makes the desktop feel familiar in one click, on an Ubuntu LTS base.",
+	],
+	elementary: [
+		"elementary OS pairs an Ubuntu base with Pantheon, a deliberate, design-first desktop with its own human interface guidelines and a curated app store.",
+	],
+	endeavouros: [
+		"EndeavourOS is Arch made approachable: a friendly Calamares installer and a famously welcoming community, with the system staying essentially vanilla Arch underneath.",
+	],
+};
+
+const ROLLING = new Set(["arch", "endeavouros", "manjaro"]);
+
+function buildVersions(slug: string, name: string): Version[] {
+	const cycles = live.releases[slug];
+	if (cycles && cycles.length > 0) {
+		return cycles.map((c) => ({
+			version: `${name} ${c.cycle}${c.codename ? ` “${c.codename}”` : ""}`,
+			channel: c.supported ? "release" : "eol",
+			line: c.latest ? `latest point release ${c.latest}` : "official release",
+			note: c.eol
+				? c.supported
+					? `supported until ${c.eol}`
+					: `end of life ${c.eol}`
+				: c.supported
+					? "actively supported"
+					: "end of life",
+			date: c.releaseDate ?? "",
+		}));
+	}
+	if (ROLLING.has(slug)) {
+		return [
+			{
+				version: `${name} (rolling)`,
+				channel: "rolling",
+				line: "continuously updated",
+				note: "install once, update forever",
+				date: live.fetched_at.slice(0, 10),
+			},
+		];
+	}
+	const spec = SPECS[slug];
+	return [
 		{
-			version: "Fedora 42",
+			version: `${name} ${spec?.latest ?? ""}`.trim(),
 			channel: "release",
-			line: "Workstation · x86_64 · .iso",
-			note: "supported until May 2027",
-			date: "2026-04-22",
-			size: "2.1 GB",
-			downloads: "412K",
+			line: spec?.releaseModel ?? "official release",
+			note: "see the official site for support dates",
+			date: "",
 		},
-		{
-			version: "Fedora 41",
-			channel: "release",
-			line: "Workstation · x86_64 · .iso",
-			note: "end of life Nov 2026",
-			date: "2025-10-29",
-			size: "2.0 GB",
-			downloads: "1.1M",
-		},
-		{
-			version: "Fedora 43 Beta",
-			channel: "beta",
-			line: "Workstation · x86_64 · .iso",
-			note: "pre-release — for testing only",
-			date: "2026-09-16",
-			size: "2.2 GB",
-			downloads: "18K",
-		},
-		{
-			version: "Fedora 40",
-			channel: "eol",
-			line: "Workstation · x86_64 · .iso",
-			note: "no security updates — not recommended",
-			date: "2025-04-23",
-			size: "2.0 GB",
-			downloads: "2.3M",
-		},
-	] satisfies Version[],
-	mirrors: [
+	];
+}
+
+type DetailMirror = {
+	flag: string | null;
+	name: string;
+	note: string;
+	healthy: boolean;
+	auto: boolean;
+};
+
+/** "US" → 🇺🇸 (regional indicator pair); null when no country is known. */
+function flagEmoji(countryCode: string | undefined): string | null {
+	if (countryCode?.length !== 2) return null;
+	return String.fromCodePoint(
+		...[...countryCode.toUpperCase()].map((ch) => 0x1f1a5 + ch.charCodeAt(0)),
+	);
+}
+
+function buildMirrors(slug: string): DetailMirror[] {
+	const auto: DetailMirror = {
+		flag: null,
+		name: "Automatic — nearest mirror",
+		note: "chosen by your region",
+		healthy: true,
+		auto: true,
+	};
+	const liveMirrors = live.mirrors[slug];
+	if (liveMirrors && liveMirrors.length > 0) {
+		return [
+			auto,
+			...liveMirrors.map((mirror) => ({
+				flag: flagEmoji(mirror.countryCode),
+				name: mirror.name,
+				note: mirror.note ?? mirror.url,
+				healthy: true,
+				auto: false,
+			})),
+		];
+	}
+	return [
+		auto,
 		{
 			flag: null,
-			name: "Automatic — nearest mirror",
-			note: "currently KAIST, Korea",
+			name: "Official download server",
+			note: HOMEPAGES[slug] ?? "official site",
 			healthy: true,
-			auto: true,
+			auto: false,
 		},
-		{ flag: "KR", name: "KAIST Mirror", note: "sponsored by KAIST", healthy: true, auto: false },
-		{ flag: "JP", name: "JAIST Mirror", note: "sponsored by JAIST", healthy: true, auto: false },
-		{ flag: "DE", name: "RWTH Aachen", note: "unhealthy · 2 h ago", healthy: false, auto: false },
-	],
-	sha256: "a1b6f4de8c2e4b0f6c9d3a5e7f8091b2c3d4e5f60718293a4b5c6d7e8f901a2b",
-	requirements: [
-		{ row: "Processor", min: "2 GHz dual-core", rec: "Quad-core" },
-		{ row: "Memory", min: "2 GB", rec: "8 GB" },
-		{ row: "Storage", min: "15 GB", rec: "40 GB SSD" },
-		{ row: "Firmware", min: "UEFI or BIOS", rec: "UEFI + Secure Boot" },
-	],
-	related: ["opensuse", "debian", "nixos"],
-};
+	];
+}
+
+const REQUIREMENTS = [
+	{ row: "Processor", min: "2 GHz dual-core", rec: "Quad-core" },
+	{ row: "Memory", min: "2 GB", rec: "8 GB" },
+	{ row: "Storage", min: "20 GB", rec: "40 GB SSD" },
+	{ row: "Firmware", min: "UEFI or BIOS", rec: "UEFI + Secure Boot" },
+];
+
+export function getDetailFor(distro: Distro) {
+	const versions = buildVersions(distro.slug, distro.name);
+	const latest = versions[0];
+	const spec = SPECS[distro.slug];
+	return {
+		summary: distro.summary,
+		homepage: HOMEPAGES[distro.slug] ?? "https://distrowatch.com",
+		badges: { family: distro.familyLine, active: true, translated: false },
+		meta: [
+			{ icon: "download", value: distro.downloads, labelKey: "detail_downloads" },
+			{
+				icon: "calendar",
+				value: ROLLING.has(distro.slug)
+					? "rolling"
+					: (versions[0]?.version.replace(`${distro.name} `, "").split(" ")[0] ?? "—"),
+				label: latest?.date ? `Latest · ${latest.date}` : "Latest",
+			},
+			{ icon: "chart", value: `#${distro.rank}`, labelKey: "detail_rank_month" },
+			{ icon: "monitor", value: spec?.desktop ?? "—", label: "Default desktop" },
+			{ icon: "cpu", value: "x86_64 +", labelKey: "detail_architectures" },
+		],
+		description: DESCRIPTIONS[distro.slug] ?? [distro.summary],
+		editions: EDITIONS[distro.slug] ?? ["Official ISO"],
+		architectures: ["x86_64", "aarch64"],
+		formats: [".iso", ".iso.torrent", "Checksum", "GPG signature"],
+		versions,
+		mirrors: buildMirrors(distro.slug),
+		requirements: REQUIREMENTS,
+		fetchedAt: live.fetched_at,
+		sources: live.sources,
+		related: [] as Distro[],
+	};
+}
+
+export type DetailPayload = ReturnType<typeof getDetailFor>;
 
 export function getDistro(slug: string) {
 	return DISTROS.find((d) => d.slug === slug);

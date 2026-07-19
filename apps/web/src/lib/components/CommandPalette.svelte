@@ -100,7 +100,7 @@ function onkeydown(e: KeyboardEvent) {
 						selected = i;
 					}}
 				>
-					<LogoTile color={distro.color} initials={distro.initials} size="xs" />
+					<LogoTile color={distro.color} initials={distro.initials} size="xs" src={distro.logo} />
 					<span>{distro.name}</span>
 					<span class="code">{distro.familyLine}</span>
 				</button>

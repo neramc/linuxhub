@@ -45,7 +45,7 @@ function slide(direction: number) {
 				{#each data.banners as banner (banner.slug)}
 					{#if banner.distro}
 						<a class="banner-tile" href={`/distro/${banner.slug}`} style={`--tile: ${banner.distro.color}`}>
-							<LogoTile color={banner.distro.color} initials={banner.distro.initials} size="lg" />
+							<LogoTile color={banner.distro.color} initials={banner.distro.initials} size="lg" src={banner.distro.logo} />
 							<span class="banner-tile__body">
 								<span class="banner-tile__kicker">{KICKERS[banner.kicker]}</span>
 								<span class="banner-tile__name">{banner.distro.name}</span>
@@ -88,6 +88,7 @@ function slide(direction: number) {
 				summary={distro.summary}
 				color={distro.color}
 				initials={distro.initials}
+				logo={distro.logo}
 			/>
 		{/each}
 	</div>
@@ -101,6 +102,7 @@ function slide(direction: number) {
 				summary={distro.summary}
 				color={distro.color}
 				initials={distro.initials}
+				logo={distro.logo}
 			/>
 		{/each}
 	</div>
@@ -110,7 +112,7 @@ function slide(direction: number) {
 		{#each data.recent as release (release.title)}
 			<a class="row" href={`/distro/${release.slug}`}>
 				{#if release.distro}
-					<LogoTile color={release.distro.color} initials={release.distro.initials} size="sm" />
+					<LogoTile color={release.distro.color} initials={release.distro.initials} size="sm" src={release.distro.logo} />
 				{/if}
 				<span class="row__body">
 					<span class="row__title">{release.title}</span>

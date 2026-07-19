@@ -10,19 +10,6 @@ let { data }: PageProps = $props();
 let tab: "description" | "install" | "usage" = $state("description");
 let openVersion: number | null = $state(0);
 let mirror = $state(0);
-let copied = $state(false);
-
-async function copyHash() {
-	try {
-		await navigator.clipboard.writeText(data.detail.sha256);
-		copied = true;
-		setTimeout(() => {
-			copied = false;
-		}, 2000);
-	} catch {
-		// clipboard unavailable — the hash stays selectable
-	}
-}
 </script>
 
 <svelte:head>
@@ -33,7 +20,7 @@ async function copyHash() {
 <div class="container">
 	<div class="detail">
 		<header class="detail-head">
-			<LogoTile color={data.distro.color} initials={data.distro.initials} size="lg" />
+			<LogoTile color={data.distro.color} initials={data.distro.initials} size="lg" src={data.distro.logo} />
 			<div class="detail-head__id">
 				<h1>{data.distro.name}</h1>
 				<p class="detail-head__summary">{data.detail.summary}</p>
@@ -48,7 +35,7 @@ async function copyHash() {
 					<Icon name="download" />
 					{m.detail_download}
 				</a>
-				<a class="btn btn--lg" href="/about">
+				<a class="btn btn--lg" href={data.detail.homepage} rel="external noreferrer">
 					{m.detail_official_site}
 					<Icon name="external" size="sm" />
 				</a>
@@ -154,6 +141,7 @@ async function copyHash() {
 							<span class="vrow__title"
 								>{version.version}
 								{#if version.channel === "release"}<span class="badge badge--success">release</span>{/if}
+								{#if version.channel === "rolling"}<span class="badge badge--success">rolling</span>{/if}
 								{#if version.channel === "beta"}<span class="badge badge--warning">beta</span>{/if}
 								{#if version.channel === "eol"}<span class="badge badge--neutral">end of life</span>{/if}
 								{#if i === 0}<span class="badge">{m.badge_latest}</span>{/if}
@@ -165,8 +153,8 @@ async function copyHash() {
 						</button>
 						<div class="vrow__stats">
 							<span>{version.date}</span>
-							<span>{version.size}</span>
-							<span>{version.downloads}</span>
+							{#if version.size}<span>{version.size}</span>{/if}
+							{#if version.downloads}<span>{version.downloads}</span>{/if}
 						</div>
 					</div>
 					{#if openVersion === i}
@@ -192,13 +180,18 @@ async function copyHash() {
 							{/each}
 							<div class="checksum" style="background: var(--color-bg);">
 								<div class="checksum__row">
-									<strong style="font-size: var(--text-sm);">SHA-256</strong>
-									<button type="button" class="btn btn--sm" style="margin-inline-start: auto;" onclick={copyHash}>
-										<Icon name={copied ? "check" : "copy"} size="sm" />
-										{m.dl_copy}
-									</button>
+									<Icon name="check" size="sm" />
+									<span class="muted" style="font-size: var(--text-sm);">{m.dl_verify_note}</span>
+									<a
+										class="btn btn--sm"
+										style="margin-inline-start: auto; flex-shrink: 0;"
+										href={data.detail.homepage}
+										rel="external noreferrer"
+									>
+										{m.dl_how_to_verify}
+										<Icon name="external" size="sm" />
+									</a>
 								</div>
-								<code class="checksum__hash">{data.detail.sha256}</code>
 							</div>
 						</div>
 					{/if}
@@ -206,6 +199,9 @@ async function copyHash() {
 			</div>
 			<p class="muted" style="font-size: var(--text-xs); margin-block-start: var(--space-3);">
 				{m.dl_selection_note}
+			</p>
+			<p class="muted" style="font-size: var(--text-xs); margin-block-start: var(--space-1);">
+				{m.detail_data_note} {data.detail.fetchedAt.slice(0, 10)}
 			</p>
 		</section>
 
@@ -228,11 +224,11 @@ async function copyHash() {
 		<section aria-label={m.detail_links}>
 			<div class="section-title" style="margin-block-start: 0;"><h2>{m.detail_links}</h2></div>
 			<div class="boxed">
-				<a class="row" href="/about">
+				<a class="row" href={data.detail.homepage} rel="external noreferrer">
 					<span class="row__body"><span class="row__title">{m.detail_official_site}</span></span>
 					<Icon name="external" size="sm" />
 				</a>
-				<a class="row" href="/about">
+				<a class="row" href={data.detail.homepage} rel="external noreferrer">
 					<span class="row__body"><span class="row__title">{m.detail_documentation}</span></span>
 					<Icon name="external" size="sm" />
 				</a>
@@ -257,6 +253,7 @@ async function copyHash() {
 							summary={rel.summary}
 							color={rel.color}
 							initials={rel.initials}
+							logo={rel.logo}
 						/>
 					{/each}
 				</div>

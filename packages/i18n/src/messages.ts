@@ -117,6 +117,9 @@ export const m = {
 	dl_download_version: "Download",
 	dl_selection_note:
 		"Clicking the round button downloads with the current filters and selected mirror; clicking the row shows mirrors and checksums.",
+	dl_verify_note:
+		"Verify your download with the checksums and GPG signatures published on the official site.",
+	detail_data_note: "Release and mirror data from official sources · snapshot",
 
 	rankings_title: "Rankings",
 	rankings_lede: "Popularity from our own signals — views, downloads, and release activity.",

@@ -58,7 +58,7 @@ const entries = $derived(
 				<li>
 					<a class="row" class:row--top={i < 3} href={`/distro/${entry.slug}`}>
 						<span class="rank-num">{i + 1}</span>
-						<LogoTile color={entry.color} initials={entry.initials} size="sm" />
+						<LogoTile color={entry.color} initials={entry.initials} size="sm" src={entry.logo} />
 						<span class="row__body">
 							<span class="row__title">{entry.name}</span>
 							<span class="row__subtitle">{entry.familyLine}</span>
@@ -78,7 +78,7 @@ const entries = $derived(
 		<div class="boxed" style="margin-block-end: var(--space-7);">
 			{#each data.movers as entry (entry.slug)}
 				<a class="row" href={`/distro/${entry.slug}`}>
-					<LogoTile color={entry.color} initials={entry.initials} size="sm" />
+					<LogoTile color={entry.color} initials={entry.initials} size="sm" src={entry.logo} />
 					<span class="row__body"><span class="row__title">{entry.name}</span></span>
 					<span class="row__end">
 						{#if entry.trend > 0}<span class="trend trend--up">▲{entry.trend}</span>

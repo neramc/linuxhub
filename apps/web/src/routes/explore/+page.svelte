@@ -75,6 +75,7 @@ const PILLS = [
 					summary={distro.summary}
 					color={distro.color}
 					initials={distro.initials}
+					logo={distro.logo}
 				/>
 			{/each}
 		</div>
