@@ -302,3 +302,335 @@ export const FEDORA_DETAIL = {
 export function getDistro(slug: string) {
 	return DISTROS.find((d) => d.slug === slug);
 }
+
+// Compare specs per distro (.ai/api.md #46) — mock until Phase 5.
+export const SPECS: Record<
+	string,
+	{ releaseModel: string; latest: string; desktop: string; pkg: string; minMem: string }
+> = {
+	ubuntu: {
+		releaseModel: "Fixed — LTS every 2 years",
+		latest: "26.04 LTS · Apr 2026",
+		desktop: "GNOME",
+		pkg: "apt + snap",
+		minMem: "4 GB",
+	},
+	fedora: {
+		releaseModel: "Fixed — every 6 months",
+		latest: "42 · Apr 2026",
+		desktop: "GNOME",
+		pkg: "dnf + Flatpak",
+		minMem: "2 GB",
+	},
+	"linux-mint": {
+		releaseModel: "Fixed — tracks Ubuntu LTS",
+		latest: "22.2 · Jan 2026",
+		desktop: "Cinnamon",
+		pkg: "apt + Flatpak",
+		minMem: "2 GB",
+	},
+	arch: {
+		releaseModel: "Rolling",
+		latest: "rolling · daily",
+		desktop: "none — you choose",
+		pkg: "pacman + AUR",
+		minMem: "512 MB",
+	},
+	debian: {
+		releaseModel: "Fixed — ~2 years",
+		latest: "13 · Aug 2025",
+		desktop: "GNOME",
+		pkg: "apt",
+		minMem: "1 GB",
+	},
+	opensuse: {
+		releaseModel: "Fixed (Leap) / Rolling (Tumbleweed)",
+		latest: "Leap 16.0 · Apr 2026",
+		desktop: "KDE Plasma",
+		pkg: "zypper + Flatpak",
+		minMem: "2 GB",
+	},
+	manjaro: {
+		releaseModel: "Rolling — curated",
+		latest: "rolling · batched",
+		desktop: "KDE Plasma",
+		pkg: "pacman + AUR",
+		minMem: "2 GB",
+	},
+	"pop-os": {
+		releaseModel: "Fixed — tracks Ubuntu",
+		latest: "24.04 · 2024",
+		desktop: "COSMIC",
+		pkg: "apt + Flatpak",
+		minMem: "4 GB",
+	},
+	nixos: {
+		releaseModel: "Fixed — every 6 months",
+		latest: "26.05 · May 2026",
+		desktop: "none — you choose",
+		pkg: "nix",
+		minMem: "2 GB",
+	},
+	zorin: {
+		releaseModel: "Fixed — tracks Ubuntu LTS",
+		latest: "18 · 2026",
+		desktop: "Zorin (GNOME)",
+		pkg: "apt + Flatpak",
+		minMem: "2 GB",
+	},
+	elementary: {
+		releaseModel: "Fixed — tracks Ubuntu LTS",
+		latest: "8 · 2025",
+		desktop: "Pantheon",
+		pkg: "apt + Flatpak",
+		minMem: "4 GB",
+	},
+	endeavouros: {
+		releaseModel: "Rolling",
+		latest: "rolling · daily",
+		desktop: "KDE Plasma (default)",
+		pkg: "pacman + AUR",
+		minMem: "2 GB",
+	},
+};
+
+// Hall of Fame — editorial content (.ai/api.md #35).
+export const HALL_OF_FAME = [
+	{
+		name: "Slackware",
+		color: "#4e4e4e",
+		initials: "S",
+		era: "1993 — present",
+		discontinued: false,
+		why: 'The oldest surviving distribution. Its insistence on simplicity and vanilla upstream software defined a whole philosophy of Linux — one still audible in every "keep it simple" argument today.',
+		sources: "slackware.com · LWN retrospective (2023)",
+	},
+	{
+		name: "Debian",
+		color: "#a81d33",
+		initials: "D",
+		era: "1993 — present",
+		discontinued: false,
+		why: "The universal operating system and the root of the largest family tree in Linux. Its Social Contract and packaging culture became the backbone for hundreds of derivatives, Ubuntu included.",
+		sources: "debian.org/social_contract · debian.org/history",
+	},
+	{
+		name: "Red Hat Linux",
+		color: "#cc0000",
+		initials: "RH",
+		era: "1995 — 2004",
+		discontinued: true,
+		why: "Proved that free software could carry an enterprise. RPM, Anaconda, and the support model it pioneered live on in RHEL, CentOS's successors, and Fedora.",
+		sources: "redhat.com/history · Wikipedia (Red Hat Linux)",
+	},
+	{
+		name: "Mandrake Linux",
+		color: "#c78a00",
+		initials: "Md",
+		era: "1998 — 2011",
+		discontinued: true,
+		why: "The first distribution that treated desktop usability as the product. Graphical installers and friendly defaults that feel obvious today were Mandrake inventions first.",
+		sources: "Wikipedia (Mandriva) · archive.org press coverage",
+	},
+	{
+		name: "Gentoo",
+		color: "#54487a",
+		initials: "G",
+		era: "2002 — present",
+		discontinued: false,
+		why: 'Source-based and endlessly configurable — the training ground for a generation of kernel and toolchain developers. Portage made "compile everything, your way" a coherent system.',
+		sources: "gentoo.org · Gentoo Wiki history",
+	},
+	{
+		name: "Ubuntu",
+		color: "#e95420",
+		initials: "U",
+		era: "2004 — present",
+		discontinued: false,
+		why: '"Linux for human beings" — the release that took desktop Linux mainstream, shipped free CDs worldwide, and set the six-month cadence much of the ecosystem still keeps time by.',
+		sources: "ubuntu.com/about · launch announcement (2004)",
+	},
+];
+
+// Distro-finder question set (.ai/api.md #49) — answers carry per-slug weights.
+export type QuizOption = { label: string; sub: string; icon: string; w: Record<string, number> };
+export type QuizQuestion = { q: string; options: QuizOption[] };
+
+export const QUIZ: QuizQuestion[] = [
+	{
+		q: "How do you feel about updates?",
+		options: [
+			{
+				label: "Set and forget",
+				sub: "Update twice a year, quietly",
+				icon: "check",
+				w: { ubuntu: 3, "linux-mint": 3, debian: 2, zorin: 2 },
+			},
+			{
+				label: "Fresh but stable",
+				sub: "New features soon after release",
+				icon: "calendar",
+				w: { fedora: 3, opensuse: 2, "pop-os": 1 },
+			},
+			{
+				label: "Always the latest",
+				sub: "Rolling updates, every day",
+				icon: "download",
+				w: { arch: 3, endeavouros: 2, manjaro: 2 },
+			},
+			{
+				label: "I'll manage it myself",
+				sub: "Full manual control",
+				icon: "sliders",
+				w: { arch: 2, nixos: 3, debian: 1 },
+			},
+		],
+	},
+	{
+		q: "Have you used Linux before?",
+		options: [
+			{
+				label: "Never",
+				sub: "First time",
+				icon: "help",
+				w: { "linux-mint": 3, zorin: 3, ubuntu: 2 },
+			},
+			{
+				label: "A little",
+				sub: "Tried a live USB or two",
+				icon: "check",
+				w: { ubuntu: 2, fedora: 2, "pop-os": 2 },
+			},
+			{
+				label: "Comfortable",
+				sub: "Daily driver material",
+				icon: "monitor",
+				w: { fedora: 2, opensuse: 2, debian: 2 },
+			},
+			{
+				label: "Terminal is home",
+				sub: "I read man pages for fun",
+				icon: "cpu",
+				w: { arch: 3, nixos: 3, endeavouros: 2 },
+			},
+		],
+	},
+	{
+		q: "What's the machine?",
+		options: [
+			{
+				label: "Modern laptop or desktop",
+				sub: "Bought in the last few years",
+				icon: "monitor",
+				w: { fedora: 2, ubuntu: 2, "pop-os": 2 },
+			},
+			{
+				label: "Older hardware",
+				sub: "Give it a second life",
+				icon: "cpu",
+				w: { "linux-mint": 2, debian: 2, arch: 1 },
+			},
+			{
+				label: "A server or homelab",
+				sub: "Headless, always on",
+				icon: "server",
+				w: { debian: 3, ubuntu: 2, opensuse: 2, nixos: 2 },
+			},
+			{
+				label: "Gaming rig",
+				sub: "GPU matters",
+				icon: "dice",
+				w: { "pop-os": 3, manjaro: 2, fedora: 1 },
+			},
+		],
+	},
+	{
+		q: "How should the desktop feel?",
+		options: [
+			{
+				label: "Like Windows",
+				sub: "Taskbar, start menu",
+				icon: "monitor",
+				w: { "linux-mint": 3, zorin: 3, manjaro: 1 },
+			},
+			{
+				label: "Like macOS",
+				sub: "Dock, clean lines",
+				icon: "monitor",
+				w: { elementary: 3, zorin: 2, "pop-os": 1 },
+			},
+			{
+				label: "Modern GNOME",
+				sub: "Gestures, activities",
+				icon: "monitor",
+				w: { fedora: 3, ubuntu: 2, debian: 1 },
+			},
+			{
+				label: "I'll build my own",
+				sub: "Window manager life",
+				icon: "sliders",
+				w: { arch: 3, nixos: 2, endeavouros: 2 },
+			},
+		],
+	},
+	{
+		q: "How much tinkering do you enjoy?",
+		options: [
+			{
+				label: "None — it should just work",
+				sub: "",
+				icon: "check",
+				w: { "linux-mint": 3, zorin: 2, ubuntu: 2, "pop-os": 2 },
+			},
+			{
+				label: "A weekend project is fun",
+				sub: "",
+				icon: "sliders",
+				w: { fedora: 2, opensuse: 2, manjaro: 2 },
+			},
+			{
+				label: "Tinkering is the point",
+				sub: "",
+				icon: "cpu",
+				w: { arch: 3, nixos: 3, endeavouros: 2 },
+			},
+		],
+	},
+	{
+		q: "How important is free (libre) software purity?",
+		options: [
+			{ label: "Very — as free as possible", sub: "", icon: "heart", w: { debian: 3, fedora: 2 } },
+			{
+				label: "Practical mix is fine",
+				sub: "Codecs and drivers included",
+				icon: "check",
+				w: { "linux-mint": 2, ubuntu: 2, manjaro: 2, "pop-os": 2 },
+			},
+			{ label: "Haven't thought about it", sub: "", icon: "help", w: { zorin: 1, ubuntu: 1 } },
+		],
+	},
+	{
+		q: "If something breaks, you…",
+		options: [
+			{
+				label: "Want it to never break",
+				sub: "Stability first",
+				icon: "check",
+				w: { debian: 3, "linux-mint": 2, ubuntu: 2 },
+			},
+			{
+				label: "Search forums and fix it",
+				sub: "",
+				icon: "search",
+				w: { fedora: 2, manjaro: 2, endeavouros: 2 },
+			},
+			{ label: "Read the wiki and enjoy it", sub: "", icon: "info", w: { arch: 3, nixos: 2 } },
+			{
+				label: "Roll back and move on",
+				sub: "Snapshots save lives",
+				icon: "chart",
+				w: { nixos: 3, opensuse: 2 },
+			},
+		],
+	},
+];

@@ -40,17 +40,30 @@ function current(href: string): "page" | undefined {
 			<Icon name="menu" />
 		</button>
 		<a class="wordmark" href="/"><Icon name="logo" /><span>{m.site_name}</span></a>
-		<div class="search">
+		<form action="/search" method="get" class="search">
 			<Icon name="search" size="sm" />
-			<input class="search__input" type="search" placeholder={m.nav_search_label} aria-label={m.nav_search_label} />
-		</div>
+			<input
+				class="search__input"
+				type="search"
+				name="q"
+				placeholder={m.nav_search_label}
+				aria-label={m.nav_search_label}
+			/>
+		</form>
 		<nav class="app-nav" aria-label="Primary">
 			{#each NAV as item (item.href)}
 				<a href={item.href} aria-current={current(item.href)}>{item.label}</a>
 			{/each}
 		</nav>
 		<div class="header-actions">
-			<button type="button" class="icon-btn search-mobile-btn" aria-label={m.nav_search_label}>
+			<button
+				type="button"
+				class="icon-btn search-mobile-btn"
+				aria-label={m.nav_search_label}
+				onclick={() => {
+					ui.paletteOpen = true;
+				}}
+			>
 				<Icon name="search" />
 			</button>
 			<div class="popover-anchor">

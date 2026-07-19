@@ -3,6 +3,7 @@ import IconDefs from "@linuxhub/ui/components/IconDefs.svelte";
 import AppDrawer from "$lib/components/AppDrawer.svelte";
 import AppFooter from "$lib/components/AppFooter.svelte";
 import AppHeader from "$lib/components/AppHeader.svelte";
+import CommandPalette from "$lib/components/CommandPalette.svelte";
 import "@linuxhub/ui/styles.css";
 
 let { children } = $props();
@@ -15,3 +16,4 @@ let { children } = $props();
 </main>
 <AppFooter />
 <AppDrawer />
+<CommandPalette />

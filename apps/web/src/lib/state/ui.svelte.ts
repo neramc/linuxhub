@@ -4,6 +4,7 @@
 export const ui = $state({
 	drawerOpen: false,
 	localeOpen: false,
+	paletteOpen: false,
 });
 
 export function toggleTheme() {

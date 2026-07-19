@@ -146,6 +146,96 @@ export const m = {
 	state_error_catalog: "Couldn't load the catalog",
 	stub_note:
 		"This screen is being implemented next — the approved design for it lives in design/screens/.",
+
+	search_results_for: "results for",
+	search_no_matches: "No matches",
+	search_try: "Check the spelling, or suggest this distro.",
+	search_suggest: "Suggest a distro",
+	palette_hint_nav: "↑↓ navigate",
+	palette_hint_open: "↵ open",
+	palette_hint_close: "esc close",
+
+	quiz_title: "Find your distro",
+	quiz_intro:
+		"Seven quick questions about how you work. We'll match you with three distributions that fit — no jargon until the results.",
+	quiz_time: "Takes under a minute.",
+	quiz_start: "Start",
+	quiz_browse: "Just browse",
+	quiz_back: "Back",
+	quiz_skip: "Skip this question",
+	quiz_top_match: "Your top match",
+	quiz_see: "See",
+	quiz_retake: "Retake",
+	quiz_compare_matches: "Compare these",
+	quiz_of: "of",
+
+	compare_title: "Compare",
+	compare_lede:
+		"Put 2–4 distributions side by side. Differences are tinted; identical rows fade back.",
+	compare_add: "+ Add a distro",
+	compare_remove: "Remove",
+	compare_diff_only: "Differences only",
+	compare_pick_two: "Pick at least two distros",
+	compare_pick_hint: "Try Ubuntu vs Fedora, or Arch vs Debian.",
+	compare_family: "Family",
+	compare_release_model: "Release model",
+	compare_latest: "Latest version",
+	compare_desktop: "Default desktop",
+	compare_pkg: "Package manager",
+	compare_memory: "Min. memory",
+	compare_popularity: "Popularity",
+
+	hof_title: "Hall of Fame",
+	hof_lede:
+		"The distributions that shaped Linux itself — curated with reasons and sources, not a popularity contest.",
+	hof_now: "For what's popular now, see the",
+	hof_discontinued: "Discontinued",
+	hof_sources: "Sources",
+
+	contribute_title: "Contribute",
+	contribute_lede:
+		"Suggest a distro, report something broken, or send feedback. Contributions are anonymous, reviewed by maintainers, and protected by a quick captcha — no account needed.",
+	contribute_suggest: "Suggest",
+	contribute_report: "Report",
+	contribute_feedback: "Feedback",
+	form_distro_name: "Distro name",
+	form_homepage: "Homepage URL",
+	form_why: "Why does it belong here?",
+	form_why_hint: "A sentence or two is plenty.",
+	form_email: "Email",
+	form_email_hint: "optional — only for replies",
+	form_whats_broken: "What's broken?",
+	form_which_page: "Which page or mirror?",
+	form_details: "Details",
+	form_topic: "Topic",
+	form_message: "Message",
+	form_captcha: "One quick check",
+	form_captcha_note: "hCaptcha verification arrives with the backend (Phase 5)",
+	form_send: "Send",
+	form_thanks: "Thanks — we review every submission",
+	form_again: "Send another",
+
+	about_title: "About Linuxhub",
+	about_what: "What is Linuxhub",
+	about_what_p1:
+		"Linuxhub is a catalog of (almost) every Linux distribution — releases, editions, system requirements, and downloads from trusted mirrors, in one place and in your language.",
+	about_what_p2:
+		"We don't host ISO files. Every download resolves to an official mirror chosen for your region, with the checksum right next to the button.",
+	about_rankings: "How rankings work",
+	about_rankings_p:
+		"Rankings come from our own signals only: page views, download clicks, and release recency. We deliberately don't scrape third-party popularity charts.",
+	about_data: "Where the data comes from",
+	about_data_p:
+		"Release and mirror data is fetched from each project's official sources — release APIs, announcement pages, and mirror manifests — on a regular schedule. Every ingested record keeps its source URL and fetch time.",
+	about_content: "Content & trademarks",
+	about_content_p:
+		"Descriptions and guides are written in our own words after reading each project's official documentation, and every page cites its sources. Distro names and logos belong to their projects.",
+	about_crawler: "Crawler policy",
+	about_crawler_p:
+		"Our fetcher identifies itself as linuxhub-ingest with a link to this section, respects robots.txt, sends conditional requests, and never exceeds one request per second per host.",
+	about_contact: "Contact & contribute",
+	about_contact_p: "Linuxhub is built in the open.",
+	about_on_this_page: "On this page",
 } as const;
 
 export type MessageKey = keyof typeof m;
