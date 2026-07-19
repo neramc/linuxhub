@@ -146,3 +146,22 @@ are rebuilt from scratch.
 where they conflict; briefs remain valid for structure/states/a11y.
 Rankings/download flows adopt the boxed-list pattern rather than
 Modrinth-style density.
+
+## ADR-0014 — Amendments: Modrinth-style downloads + colorful Flathub home
+**Date:** 2026-07-19 · **Status:** accepted
+**Context:** Owner review of the Flathub-clone comps: the download flow
+should feel like Modrinth's dense version list, and the home should be as
+colorful as Flathub's (gradient category tiles, saturated banners); mobile
+needed a pass with a no-breakage guarantee across device widths.
+**Decision:** Within the Flathub-clone system (ADR-0013): (a) the download
+surface becomes a **Modrinth-style version table** — filter dropdowns
+(edition/arch/format) above dense version rows with channel-colored badges
+(release=green, beta=orange), per-row round download buttons, and an
+expandable files/mirror area with checksum; (b) home gains a **banner
+carousel** with saturated brand-gradient tiles and a **gradient category
+tile grid** (each category its own hue pair, white text); (c) the header
+gets a mobile search button and compact <400px treatment, and every comp
+must pass an automated horizontal-overflow check at 320/375/768/1024/1440.
+**Consequences:** Component inventory gains VersionTable, BannerCarousel,
+CategoryTile; the five-step wizard is replaced by filters + version table
+(mirror choice folds into the expanded row).

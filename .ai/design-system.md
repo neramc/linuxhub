@@ -107,15 +107,18 @@ theme), `AppFooter` (flat, multi-column), `MobileNav` (drawer),
 `CommandPalette`, `LocaleSwitcher`, `ThemeToggle`.
 
 Browse: `DistroCard` (horizontal: logo 64 → name/summary), `CardGrid`,
-`BannerTile` (distro-of-the-day, brand-tinted flat banner), `CategoryPill`,
-`FilterList` (flat boxed groups) / `FilterSheet`, `SortSelect`,
-`SearchInput`, `Pagination`.
+`BannerCarousel` (saturated brand-gradient tiles + dots/arrows, ADR-0014),
+`CategoryTile` (gradient hue-pair tiles, white text, ADR-0014),
+`CategoryPill`, `FilterList` (flat boxed groups) / `FilterSheet`,
+`SortSelect`, `SearchInput`, `Pagination`.
 
 Detail: `DistroHeader` (icon + name + family / Download pill),
 `ScreenshotCarousel` (gray band), `MetaTileRow` (downloads · size ·
 version · license · arches), `ContentTabs`/prose, `BoxedList` + `Row`
-(releases, links, mirrors), `DownloadDialog` (5-step selector),
-`ChecksumRow`, `RelatedRow`, `RankSparkline`.
+(releases, links), `VersionTable` (Modrinth-style downloads, ADR-0014:
+edition/arch/format filter dropdowns → dense version rows with channel
+badges + round per-row download buttons → expandable mirror/checksum
+area), `ChecksumRow`, `RelatedRow`, `RankSparkline`.
 
 Rankings/discovery: `RankingBoxedList` (numbered rows, hairlines),
 `TrendMark`, `HallCard`, `CompareTable`, `QuizStepper`, `RandomButton`.

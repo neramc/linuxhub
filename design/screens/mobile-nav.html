@@ -16,12 +16,12 @@
 
 		@media (min-width: 1024px) {
 			.phones {
-				grid-template-columns: repeat(3, 320px);
+				grid-template-columns: repeat(3, minmax(0, 320px));
 			}
 		}
 
 		.phone {
-			inline-size: 320px;
+			inline-size: min(320px, 100%);
 			block-size: 620px;
 			border: 1px dashed var(--color-border);
 			border-radius: var(--radius-lg);

@@ -13,15 +13,28 @@
 
 		.picker-bar {
 			display: grid;
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: 1fr;
 			gap: var(--space-3);
 			margin-block: var(--space-4) var(--space-5);
+		}
+
+		@media (min-width: 480px) {
+			.picker-bar {
+				grid-template-columns: repeat(2, 1fr);
+			}
 		}
 
 		@media (min-width: 1024px) {
 			.picker-bar {
 				grid-template-columns: repeat(4, 1fr);
 			}
+		}
+
+		.picker-slot strong {
+			min-inline-size: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 
 		.picker-slot {
@@ -56,16 +69,6 @@
 			block-size: 32px;
 		}
 
-		.compare-foot {
-			display: grid;
-			grid-template-columns: 180px repeat(3, minmax(200px, 1fr));
-			padding: var(--space-4);
-			border-block-start: 1px solid var(--color-border);
-		}
-
-		.compare-foot > div {
-			padding-inline: var(--space-4);
-		}
 	</style>
 </head>
 <body data-page="compare">
@@ -153,13 +156,15 @@
 						<td class="cell--same">#4 · 689K downloads</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="row"></th>
+						<td><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></td>
+						<td><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></td>
+						<td><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></td>
+					</tr>
+				</tfoot>
 			</table>
-			<div class="compare-foot">
-				<div></div>
-				<div><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></div>
-				<div><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></div>
-				<div><button type="button" class="btn btn--primary btn--sm btn--block">Download</button></div>
-			</div>
 		</div>
 
 		<section class="spec-annex">

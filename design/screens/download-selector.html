@@ -3,245 +3,224 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Download selector — Linuxhub design comp</title>
+	<title>Downloads — Linuxhub design comp</title>
 	<link rel="stylesheet" href="../shared/design.css" />
 	<script src="../shared/mock.js" defer></script>
 	<style>
-		.flow {
-			display: grid;
-			gap: var(--space-6);
-			padding-block: var(--space-5) var(--space-7);
-		}
-
-		.flow-frame > h2 {
-			font-size: var(--text-sm);
-			font-weight: 600;
-			color: var(--color-text-muted);
-			margin-block-end: var(--space-3);
-		}
-
-		.flow-frame .modal {
-			position: static;
-			max-block-size: none;
+		.dl-page {
+			max-inline-size: 940px;
 			margin-inline: auto;
+			padding-block-end: var(--space-7);
 		}
 
-		.result {
-			display: grid;
-			gap: var(--space-4);
-		}
-
-		.result__mirror {
+		.dl-head {
 			display: flex;
 			align-items: center;
-			gap: var(--space-2);
-			font-size: var(--text-sm);
-			color: var(--color-text-muted);
+			gap: var(--space-3);
+			padding-block: var(--space-6) var(--space-4);
 		}
 
-		.result__alt {
-			display: flex;
-			gap: var(--space-4);
-			font-size: var(--text-sm);
+		.dl-head h1 {
+			font-size: var(--text-2xl);
+			font-weight: 700;
+			letter-spacing: -0.01em;
+		}
+
+		.checksum-inline {
+			margin-block-start: var(--space-1);
 		}
 	</style>
 </head>
 <body data-page="explore">
 	<main id="main" class="container">
-		<header class="page-head">
-			<h1>Download selector</h1>
-			<p class="lede">A five-step dialog: Version → Edition → Architecture → Format → Mirror. Selection auto-advances; single-option steps are skipped but shown as done. Desktop: centered dialog. Mobile: full-height sheet.</p>
-		</header>
+		<div class="dl-page">
+			<header class="dl-head">
+				<span class="logo-tile logo-tile--sm" style="--tile: #51a2da">F</span>
+				<div>
+					<h1>Fedora — Downloads</h1>
+					<p class="muted" style="font-size: var(--text-sm);">Modrinth-style version list (ADR-0014). Lives on the distro page's Downloads section; same layout inside the dialog on mobile.</p>
+				</div>
+			</header>
 
-		<div class="flow">
-			<div class="flow-frame">
-				<h2>Step 1 · Version — latest stable preselected</h2>
-				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="t1">
-					<div class="modal__head">
-						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
-						<h2 class="modal__title" id="t1">Download Fedora</h2>
-						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+			<div class="vfilters" aria-label="Download filters">
+				<select class="select" aria-label="Edition">
+					<option>Workstation (GNOME)</option>
+					<option>KDE Plasma spin</option>
+					<option>Xfce spin</option>
+					<option>Server</option>
+					<option>Silverblue (Atomic)</option>
+				</select>
+				<select class="select" aria-label="Architecture">
+					<option>x86_64</option>
+					<option>aarch64</option>
+				</select>
+				<select class="select" aria-label="File format">
+					<option>.iso</option>
+					<option>.iso.torrent</option>
+					<option>Magnet link</option>
+					<option>Checksum</option>
+					<option>GPG signature</option>
+				</select>
+				<button type="button" class="pill">
+					<svg class="icon icon--sm" aria-hidden="true"><use href="#i-close"/></svg>
+					Clear filters
+				</button>
+			</div>
+
+			<div class="boxed" aria-label="Versions">
+				<!-- Selected version, expanded -->
+				<div class="vrow vrow--open">
+					<button type="button" class="vrow__dl" aria-label="Download Fedora 42">
+						<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+					</button>
+					<div class="vrow__main">
+						<span class="vrow__title">Fedora 42
+							<span class="badge badge--success">release</span>
+							<span class="badge">latest</span>
+						</span>
+						<span class="vrow__meta">
+							<span>Workstation · x86_64 · .iso</span>
+							<span>supported until May 2027</span>
+						</span>
 					</div>
-					<div class="stepper" aria-label="Progress: step 1 of 5">
-						<span class="step step--current"><span class="step__dot"></span>Version</span>
-						<span class="step"><span class="step__dot"></span>Edition</span>
-						<span class="step"><span class="step__dot"></span>Arch</span>
-						<span class="step"><span class="step__dot"></span>Format</span>
-						<span class="step"><span class="step__dot"></span>Mirror</span>
+					<div class="vrow__stats">
+						<span>2026-04-22</span>
+						<span>2.1 GB</span>
+						<span>412K downloads</span>
 					</div>
-					<div class="modal__body">
-						<div class="boxed" role="radiogroup" aria-label="Version">
-							<button type="button" class="row" role="radio" aria-checked="true">
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="row__body">
-									<span class="row__title">Fedora 42</span>
-									<span class="row__subtitle">Released 2026-04-22 · supported until May 2027</span>
-								</span>
-								<span class="row__end"><span class="badge">stable</span></span>
-							</button>
-							<button type="button" class="row" role="radio" aria-checked="false">
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="row__body">
-									<span class="row__title">Fedora 41</span>
-									<span class="row__subtitle">Released 2025-10-29 · end of life Nov 2026</span>
-								</span>
-								<span class="row__end"><span class="badge badge--neutral">previous</span></span>
-							</button>
-							<button type="button" class="row" role="radio" aria-checked="false">
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="row__body">
-									<span class="row__title">Fedora 43 Beta</span>
-									<span class="row__subtitle">Pre-release — for testing only</span>
-								</span>
-								<span class="row__end"><span class="badge badge--warning">beta</span></span>
+				</div>
+				<div class="vfiles">
+					<span class="vfiles__title">Mirror — nearest first</span>
+					<button type="button" class="vfile" aria-pressed="true">
+						<span class="health-dot" aria-hidden="true"></span>
+						<strong>Automatic — nearest mirror</strong>
+						<span class="muted">currently KAIST, Korea</span>
+						<span class="size"><span class="badge">recommended</span></span>
+					</button>
+					<button type="button" class="vfile" aria-pressed="false">
+						<span class="health-dot" aria-hidden="true"></span>
+						<span class="mirror-flag">KR</span>
+						KAIST Mirror
+						<span class="muted">sponsored by KAIST</span>
+						<span class="size">https</span>
+					</button>
+					<button type="button" class="vfile" aria-pressed="false">
+						<span class="health-dot" aria-hidden="true"></span>
+						<span class="mirror-flag">JP</span>
+						JAIST Mirror
+						<span class="muted">sponsored by JAIST</span>
+						<span class="size">https</span>
+					</button>
+					<button type="button" class="vfile" disabled style="opacity: 0.5; cursor: not-allowed;">
+						<span class="health-dot health-dot--down" aria-hidden="true"></span>
+						<span class="mirror-flag">DE</span>
+						RWTH Aachen
+						<span class="muted">unhealthy · 2 h ago</span>
+					</button>
+					<div class="checksum checksum-inline" style="background: var(--color-bg);">
+						<div class="checksum__row">
+							<strong style="font-size: var(--text-sm);">SHA-256</strong>
+							<button type="button" class="btn btn--sm" style="margin-inline-start: auto;">
+								<svg class="icon icon--sm" aria-hidden="true"><use href="#i-copy"/></svg>
+								Copy
 							</button>
 						</div>
+						<code class="checksum__hash">a1b6f4de8c2e4b0f6c9d3a5e7f8091b2c3d4e5f60718293a4b5c6d7e8f901a2b</code>
+					</div>
+					<div style="display: flex; gap: var(--space-4); font-size: var(--text-sm);">
+						<a href="./about.html">.torrent</a>
+						<a href="./about.html">Magnet link</a>
+						<a href="./about.html">GPG signature</a>
+						<a href="./about.html">How to verify</a>
+					</div>
+				</div>
+
+				<div class="vrow">
+					<button type="button" class="vrow__dl" aria-label="Download Fedora 41">
+						<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+					</button>
+					<div class="vrow__main">
+						<span class="vrow__title">Fedora 41
+							<span class="badge badge--success">release</span>
+						</span>
+						<span class="vrow__meta">
+							<span>Workstation · x86_64 · .iso</span>
+							<span>end of life Nov 2026</span>
+						</span>
+					</div>
+					<div class="vrow__stats">
+						<span>2025-10-29</span>
+						<span>2.0 GB</span>
+						<span>1.1M downloads</span>
+					</div>
+				</div>
+
+				<div class="vrow">
+					<button type="button" class="vrow__dl" aria-label="Download Fedora 43 Beta" style="background: var(--color-warning);">
+						<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+					</button>
+					<div class="vrow__main">
+						<span class="vrow__title">Fedora 43 Beta
+							<span class="badge badge--warning">beta</span>
+						</span>
+						<span class="vrow__meta">
+							<span>Workstation · x86_64 · .iso</span>
+							<span>pre-release — for testing only</span>
+						</span>
+					</div>
+					<div class="vrow__stats">
+						<span>2026-09-16</span>
+						<span>2.2 GB</span>
+						<span>18K downloads</span>
+					</div>
+				</div>
+
+				<div class="vrow" style="opacity: 0.6;">
+					<button type="button" class="vrow__dl" aria-label="Download Fedora 40" style="background: var(--color-text-muted);">
+						<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+					</button>
+					<div class="vrow__main">
+						<span class="vrow__title">Fedora 40
+							<span class="badge badge--neutral">end of life</span>
+						</span>
+						<span class="vrow__meta">
+							<span>Workstation · x86_64 · .iso</span>
+							<span>no security updates — not recommended</span>
+						</span>
+					</div>
+					<div class="vrow__stats">
+						<span>2025-04-23</span>
+						<span>2.0 GB</span>
+						<span>2.3M downloads</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="flow-frame">
-				<h2>Step 3 · Architecture — unavailable options disabled</h2>
-				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="t3">
-					<div class="modal__head">
-						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
-						<h2 class="modal__title" id="t3">Download Fedora</h2>
-						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
-					</div>
-					<div class="stepper" aria-label="Progress: step 3 of 5">
-						<span class="step step--done"><span class="step__dot"></span>42</span>
-						<span class="step step--done"><span class="step__dot"></span>Workstation</span>
-						<span class="step step--current"><span class="step__dot"></span>Arch</span>
-						<span class="step"><span class="step__dot"></span>Format</span>
-						<span class="step"><span class="step__dot"></span>Mirror</span>
-					</div>
-					<div class="modal__body" style="display: grid; gap: var(--space-4);">
-						<div class="pill-row" role="radiogroup" aria-label="Architecture" style="overflow: visible;">
-							<button type="button" class="pill mono" role="radio" aria-checked="true">x86_64</button>
-							<button type="button" class="pill mono" role="radio" aria-checked="false">aarch64</button>
-							<button type="button" class="pill mono" role="radio" aria-checked="false" disabled title="Not available for Workstation 42">ppc64le</button>
-						</div>
-						<p class="muted" style="font-size: var(--text-sm);">Most PCs and laptops are x86_64. Apple-silicon and Raspberry Pi machines are aarch64.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="flow-frame">
-				<h2>Step 5 · Mirror — nearest first, auto default</h2>
-				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="t5">
-					<div class="modal__head">
-						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
-						<h2 class="modal__title" id="t5">Download Fedora</h2>
-						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
-					</div>
-					<div class="stepper" aria-label="Progress: step 5 of 5">
-						<span class="step step--done"><span class="step__dot"></span>42</span>
-						<span class="step step--done"><span class="step__dot"></span>Workstation</span>
-						<span class="step step--done"><span class="step__dot"></span>x86_64</span>
-						<span class="step step--done"><span class="step__dot"></span>.iso</span>
-						<span class="step step--current"><span class="step__dot"></span>Mirror</span>
-					</div>
-					<div class="modal__body">
-						<div class="boxed" role="radiogroup" aria-label="Mirror">
-							<button type="button" class="row" role="radio" aria-checked="true">
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="row__body">
-									<span class="row__title">Automatic — nearest mirror</span>
-									<span class="row__subtitle">Chosen by your region · currently KAIST, Korea</span>
-								</span>
-								<span class="row__end"><span class="badge">recommended</span></span>
-							</button>
-							<button type="button" class="row" role="radio" aria-checked="false">
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="mirror-flag">KR</span>
-								<span class="row__body">
-									<span class="row__title">KAIST Mirror</span>
-									<span class="row__subtitle">https · sponsored by KAIST</span>
-								</span>
-								<span class="row__end"><span class="health-dot" aria-hidden="true"></span></span>
-							</button>
-							<button type="button" class="row" role="radio" aria-checked="false">
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="mirror-flag">JP</span>
-								<span class="row__body">
-									<span class="row__title">JAIST Mirror</span>
-									<span class="row__subtitle">https · sponsored by JAIST</span>
-								</span>
-								<span class="row__end"><span class="health-dot" aria-hidden="true"></span></span>
-							</button>
-							<button type="button" class="row" role="radio" aria-checked="false" disabled>
-								<span class="radio-dot" aria-hidden="true"></span>
-								<span class="mirror-flag">DE</span>
-								<span class="row__body">
-									<span class="row__title">RWTH Aachen</span>
-									<span class="row__subtitle">Reported unhealthy 2 hours ago</span>
-								</span>
-								<span class="row__end"><span class="health-dot health-dot--down" aria-hidden="true"></span></span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="flow-frame">
-				<h2>Result — resolved download</h2>
-				<div class="modal" role="dialog" aria-modal="true" aria-labelledby="tr">
-					<div class="modal__head">
-						<span class="logo-tile logo-tile--xs" style="--tile: #51a2da">F</span>
-						<h2 class="modal__title" id="tr">Fedora 42 · Workstation · x86_64</h2>
-						<button type="button" class="icon-btn" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
-					</div>
-					<div class="modal__body result">
-						<button type="button" class="btn btn--primary btn--lg btn--block">
-							<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
-							Download · 2.1 GB
-						</button>
-						<div class="result__mirror">
-							<span class="health-dot" aria-hidden="true"></span>
-							<span class="mirror-flag">KR</span>
-							KAIST Mirror · sponsored by KAIST
-						</div>
-						<div class="checksum">
-							<div class="checksum__row">
-								<strong style="font-size: var(--text-sm);">SHA-256</strong>
-								<button type="button" class="btn btn--sm" style="margin-inline-start: auto; background: var(--color-bg);">
-									<svg class="icon icon--sm" aria-hidden="true"><use href="#i-copy"/></svg>
-									Copy
-								</button>
-							</div>
-							<code class="checksum__hash">a1b6f4de8c2e4b0f6c9d3a5e7f8091b2c3d4e5f60718293a4b5c6d7e8f901a2b</code>
-							<details style="font-size: var(--text-sm);">
-								<summary style="cursor: pointer; color: var(--color-link);">How to verify</summary>
-								<pre style="margin-block-start: var(--space-2); background: var(--color-bg); border-radius: var(--radius-sm); padding: var(--space-3); font-family: var(--font-mono); font-size: var(--text-sm); overflow-x: auto;"><code>$ sha256sum Fedora-Workstation-42.iso</code></pre>
-							</details>
-						</div>
-						<div class="result__alt">
-							<a href="./about.html">.torrent</a>
-							<a href="./about.html">Magnet link</a>
-							<a href="./about.html">GPG signature</a>
-						</div>
-						<p class="muted" style="font-size: var(--text-xs);">Your selection is remembered for next time.</p>
-					</div>
-				</div>
-			</div>
+			<p class="muted" style="font-size: var(--text-xs); margin-block-start: var(--space-3);">
+				Clicking the round button downloads with the current filters + selected mirror; clicking the row expands mirror/checksum details. The last selection is remembered.
+			</p>
 		</div>
 
 		<section class="spec-annex">
 			<h2>Design spec — states</h2>
 			<div class="spec-frames">
 				<div class="spec-frame">
-					<div class="spec-frame__label">Loading options</div>
+					<div class="spec-frame__label">Loading versions</div>
 					<div class="spec-frame__body">
-						<div class="skeleton" style="block-size: 52px; border-radius: var(--radius-sm);"></div>
-						<div class="skeleton" style="block-size: 52px; border-radius: var(--radius-sm);"></div>
-						<div class="skeleton" style="block-size: 52px; border-radius: var(--radius-sm);"></div>
+						<div class="skeleton" style="block-size: 64px; border-radius: var(--radius-sm);"></div>
+						<div class="skeleton" style="block-size: 64px; border-radius: var(--radius-sm);"></div>
+						<div class="skeleton" style="block-size: 64px; border-radius: var(--radius-sm);"></div>
 					</div>
 				</div>
 				<div class="spec-frame">
-					<div class="spec-frame__label">Resolving</div>
+					<div class="spec-frame__label">No match for filters</div>
 					<div class="spec-frame__body">
-						<button type="button" class="btn btn--primary btn--block" aria-busy="true">Resolving…</button>
-						<p class="muted" style="font-size: var(--text-xs);">Button width stays fixed; label swaps.</p>
+						<div class="state-block">
+							<svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>
+							<div class="state-block__title">No files for this combination</div>
+							<p>Silverblue isn't built for riscv64.</p>
+							<button type="button" class="btn btn--sm">Clear filters</button>
+						</div>
 					</div>
 				</div>
 				<div class="spec-frame">

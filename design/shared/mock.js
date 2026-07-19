@@ -90,6 +90,9 @@ function headerHtml(page) {
 			</div>
 			<nav class="app-nav" aria-label="Primary">${nav}</nav>
 			<div class="header-actions">
+				<button type="button" class="icon-btn search-mobile-btn" aria-label="Search">
+					${icon("i-search")}
+				</button>
 				<div class="popover-anchor">
 					<button type="button" class="icon-btn locale-btn" aria-haspopup="listbox" aria-expanded="false" data-toggle="#locale-popover">
 						${icon("i-globe", "icon icon--sm")}<span>EN</span>

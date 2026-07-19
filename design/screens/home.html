@@ -23,42 +23,78 @@
 <body data-page="home">
 	<main id="main" class="container">
 		<div class="home-top">
-			<a class="banner-tile" href="./distro-detail.html" style="--tile: #51a2da">
-				<span class="logo-tile logo-tile--lg" style="--tile: #51a2da">F</span>
-				<span class="banner-tile__body">
-					<span class="banner-tile__kicker">Distro of the day</span>
-					<span class="banner-tile__name">Fedora</span>
-					<span class="banner-tile__tagline">The newest stable GNOME, kernel, and toolchains — reliable enough for every day.</span>
-				</span>
-			</a>
+			<div class="banner-carousel">
+				<button type="button" class="banner-nav banner-nav--prev" aria-label="Previous banner">
+					<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-start"/></svg>
+				</button>
+				<div class="banner-track" aria-label="Featured distributions">
+					<a class="banner-tile" href="./distro-detail.html" style="--tile: #51a2da">
+						<span class="logo-tile logo-tile--lg" style="--tile: #51a2da">F</span>
+						<span class="banner-tile__body">
+							<span class="banner-tile__kicker">Distro of the day</span>
+							<span class="banner-tile__name">Fedora</span>
+							<span class="banner-tile__tagline">The newest stable GNOME, kernel, and toolchains — reliable enough for every day.</span>
+						</span>
+					</a>
+					<a class="banner-tile" href="./distro-detail.html" style="--tile: #69b53f">
+						<span class="logo-tile logo-tile--lg" style="--tile: #69b53f">M</span>
+						<span class="banner-tile__body">
+							<span class="banner-tile__kicker">Editor's pick</span>
+							<span class="banner-tile__name">Linux Mint</span>
+							<span class="banner-tile__tagline">The friendliest way off Windows — Cinnamon keeps everything where you expect it.</span>
+						</span>
+					</a>
+					<a class="banner-tile" href="./distro-detail.html" style="--tile: #5277c3">
+						<span class="logo-tile logo-tile--lg" style="--tile: #5277c3">N</span>
+						<span class="banner-tile__body">
+							<span class="banner-tile__kicker">Rising this month</span>
+							<span class="banner-tile__name">NixOS</span>
+							<span class="banner-tile__tagline">Describe your whole system in one file — and roll back when you change your mind.</span>
+						</span>
+					</a>
+				</div>
+				<button type="button" class="banner-nav banner-nav--next" aria-label="Next banner">
+					<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-end"/></svg>
+				</button>
+			</div>
+			<div class="carousel-dots" aria-hidden="true">
+				<span class="is-active"></span><span></span><span></span>
+			</div>
 		</div>
 
-		<nav class="pill-row" aria-label="Categories" style="margin-block-start: var(--space-5);">
-			<a class="pill" href="./category-tag.html">
-				<svg class="icon icon--sm" aria-hidden="true"><use href="#i-monitor"/></svg>
+		<nav class="cat-tiles" aria-label="Categories" style="margin-block-start: var(--space-5);">
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #62a0ea; --g2: #1a5fb4">
+				<svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>
 				Desktop
 			</a>
-			<a class="pill" href="./category-tag.html">
-				<svg class="icon icon--sm" aria-hidden="true"><use href="#i-server"/></svg>
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #c061cb; --g2: #613583">
+				<svg class="icon" aria-hidden="true"><use href="#i-server"/></svg>
 				Server
 			</a>
-			<a class="pill" href="./category-tag.html">
-				<svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>
-				For beginners
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #57e389; --g2: #1a7f4e">
+				<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+				Beginners
 			</a>
-			<a class="pill" href="./category-tag.html">
-				<svg class="icon icon--sm" aria-hidden="true"><use href="#i-cpu"/></svg>
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #ffa348; --g2: #c64600">
+				<svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg>
 				Lightweight
 			</a>
-			<a class="pill" href="./category-tag.html">
-				<svg class="icon icon--sm" aria-hidden="true"><use href="#i-alert"/></svg>
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #f66151; --g2: #a51d2d">
+				<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
 				Security
 			</a>
-			<a class="pill" href="./category-tag.html">
-				<svg class="icon icon--sm" aria-hidden="true"><use href="#i-sliders"/></svg>
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #5bc8af; --g2: #0e7f6b">
+				<svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg>
+				Gaming
+			</a>
+			<a class="cat-tile" href="./category-tag.html" style="--g1: #f8c445; --g2: #b08000">
+				<svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>
 				DIY
 			</a>
-			<a class="pill" href="./explore.html">All categories</a>
+			<a class="cat-tile" href="./explore.html" style="--g1: #9a9996; --g2: #5e5c64">
+				<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+				All categories
+			</a>
 		</nav>
 
 		<div class="section-title"><h2>Trending</h2><a href="./rankings.html">See more</a></div>
