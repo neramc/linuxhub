@@ -1,6 +1,8 @@
 // Locale registry — canonical table lives in .ai/i18n.md; this module is the
 // runtime source consumed by routing, the API, and (later) Paraglide setup.
 
+export { type MessageKey, m } from "./messages";
+
 export type Locale = {
 	/** Native label as shown in the language switcher. */
 	label: string;

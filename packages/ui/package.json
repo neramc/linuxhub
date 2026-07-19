@@ -6,7 +6,9 @@
 	"types": "./src/index.ts",
 	"exports": {
 		".": "./src/index.ts",
-		"./tokens.css": "./src/tokens.css"
+		"./tokens.css": "./src/tokens.css",
+		"./styles.css": "./src/styles.css",
+		"./components/*": "./src/components/*"
 	},
 	"scripts": {
 		"check": "tsc --noEmit",
@@ -14,6 +16,7 @@
 	},
 	"devDependencies": {
 		"typescript": "^5.9.0",
-		"vitest": "^3.2.0"
+		"vitest": "^3.2.0",
+		"svelte": "^5.30.0"
 	}
 }
