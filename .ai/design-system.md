@@ -1,165 +1,146 @@
-# Design System
+# Design System — Flathub Clone (ADR-0013)
 
 > Per-screen design requirements live in `prompts/stitch/*.md`; the
 > **high-fidelity design comps** built from them live in `design/`
 > (ADR-0012 — Claude Code is the designer). Tokens are implemented in
 > `packages/ui` and must match this doc exactly; `design/shared/design.css`
-> consumes them directly.
+> consumes them directly. Where a brief's Modrinth reference conflicts with
+> this doc, **this doc wins** (ADR-0013).
 
 ## Design language
 
-Modern, spacious, card-based. A deliberate blend:
+A faithful **Flathub / GNOME (libadwaita)** clone: calm, flat, content-first.
 
-- **Flathub** — calm restraint, generous whitespace, content-first hierarchy,
-  soft large-radius cards, quiet neutral surfaces that let app (here: distro)
-  branding provide the color.
-- **Modrinth** — playful micro-interactions, smooth route transitions,
-  confident green-leaning accent, dense-but-legible data rows for
-  versions/files, dark-mode-first comfort.
-
-Linuxhub sits between: Flathub's calm layout + Modrinth's liveliness and
-confident accent. Distro brand colors/logos supply vibrancy inside cards; the
-shell stays neutral.
+- **Flat surfaces.** Cards are slightly-tinted rounded rectangles on the page
+  background — **no borders, no shadows**. Hover darkens the surface tone.
+- **Pill buttons.** Fully rounded, flat fills. One blue primary per view.
+- **Horizontal cards.** Logo on the start side, name + one-line summary
+  after it — like Flathub app cards. Never vertical marketing cards.
+- **Boxed lists.** Grouped rows inside one rounded container with hairline
+  separators (libadwaita "boxed list") — used for rankings, releases,
+  links, options, settings-like content.
+- **Modest scale.** Headings are quiet; no display-size hero type, no
+  gradients, no stat chips, no decorative bands.
+- Distro brand color appears only in logo tiles and banner tints; the shell
+  stays neutral.
 
 ## Color tokens
 
-Neutral scale + one confident accent + semantic colors. All pairs must meet
-WCAG AA (4.5:1 body text, 3:1 large text/UI).
-
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--color-bg` | `#fafafa` | `#101214` | page background |
-| `--color-surface` | `#ffffff` | `#16191d` | cards, panels |
-| `--color-surface-raised` | `#ffffff` | `#1d2126` | modals, popovers, hover-lift |
-| `--color-border` | `#e4e7eb` | `#2a2f36` | hairlines, dividers |
-| `--color-text` | `#17191c` | `#e8eaed` | primary text |
-| `--color-text-muted` | `#5c6470` | `#9aa3ad` | secondary text |
-| `--color-accent` | `#1793d1` → hover `#0f7fb8` | `#31a8e0` → hover `#5cbce8` | links, primary buttons, focus |
-| `--color-accent-contrast` | `#ffffff` | `#0b1014` | text on accent |
-| `--color-success` | `#1a7f37` | `#3fb950` | verified checksum, active status |
-| `--color-warning` | `#9a6700` | `#d29922` | EOL-soon, untranslated badge |
-| `--color-danger` | `#cf222e` | `#f85149` | broken mirror, errors, discontinued |
-| `--color-accent-soft` | `#e8f4fb` | `#12303f` | tinted chips/backgrounds |
+| `--color-bg` | `#ffffff` | `#242424` | page background |
+| `--color-surface` | `#f4f4f4` | `#333333` | cards, boxed lists, inputs |
+| `--color-surface-hover` | `#ececec` | `#3d3d3d` | hovered card/row |
+| `--color-surface-raised` | `#ffffff` | `#383838` | dialogs, popovers |
+| `--color-border` | `#e8e8e8` | `#454545` | hairline separators only |
+| `--color-text` | `#1c1c1e` | `#ffffff` | primary text |
+| `--color-text-muted` | `#5e5e63` | `#b3b3b8` | secondary text |
+| `--color-accent` | `#3584e4` | `#3584e4` | primary buttons, selection |
+| `--color-accent-hover` | `#1c71d8` | `#4a90e8` | hovered primary |
+| `--color-accent-contrast` | `#ffffff` | `#ffffff` | text on accent |
+| `--color-link` | `#1c71d8` | `#78aeed` | inline links |
+| `--color-accent-soft` | `#e7f0fb` | `#2a3a4d` | selected row tint, focus wash |
+| `--color-success` | `#26a269` | `#2ec27e` | active status, verified |
+| `--color-warning` | `#c78a00` | `#e5a50a` | EOL-soon, untranslated |
+| `--color-danger` | `#c01c28` | `#f66151` | errors, discontinued |
 
-Accent is a Linux-blue family (distinct from Flathub's blue-gray and
-Modrinth's green). Stitch may fine-tune hues; the final values approved in
-Figma get written back here (same-change rule).
+GNOME palette values; all pairs meet WCAG AA (4.5:1 body, 3:1 UI).
 
 ## Typography
 
 | Token | Value |
 |---|---|
-| `--font-sans` | `"Inter", "Noto Sans", system-ui, sans-serif` (Noto fallbacks cover CJK/Arabic/Indic) |
-| `--font-mono` | `"JetBrains Mono", ui-monospace, monospace` (checksums, terminal snippets) |
+| `--font-sans` | `"Inter", "Noto Sans", system-ui, sans-serif` |
+| `--font-mono` | `"JetBrains Mono", ui-monospace, monospace` |
 | `--text-xs` | 0.75rem / lh 1.4 |
 | `--text-sm` | 0.875rem / lh 1.5 |
 | `--text-base` | 1rem / lh 1.6 |
 | `--text-lg` | 1.125rem / lh 1.5 |
-| `--text-xl` | 1.375rem / lh 1.4 |
-| `--text-2xl` | 1.75rem / lh 1.3 |
-| `--text-3xl` | 2.25rem / lh 1.2 |
-| `--text-4xl` | 3rem / lh 1.1 (hero only) |
+| `--text-xl` | 1.25rem / lh 1.4 |
+| `--text-2xl` | 1.5rem / lh 1.3 |
+| `--text-3xl` | 2rem / lh 1.2 |
+| `--text-4xl` | 2.5rem / lh 1.1 (banner tile only) |
 
-Weights: 400 body, 500 UI labels, 600 headings, 700 hero. Never justify text;
-RTL mirrors alignment automatically (logical properties only).
+Weights: 400 body, 500 UI labels, 600 headings, 700 card titles/banner.
+Left-aligned, never justified; logical properties only (RTL mirrors free).
 
 ## Spacing, radius, elevation
 
-4px base grid: `--space-1` 4px, `-2` 8px, `-3` 12px, `-4` 16px, `-5` 24px,
-`-6` 32px, `-7` 48px, `-8` 64px.
+4px grid: `--space-1..8` = 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64.
 
 | Radius | Value | Use |
 |---|---|---|
-| `--radius-sm` | 6px | chips, inputs |
-| `--radius-md` | 10px | buttons, small cards |
-| `--radius-lg` | 16px | distro cards, panels (Flathub-soft) |
-| `--radius-full` | 9999px | pills, avatars |
+| `--radius-sm` | 8px | inputs, small controls |
+| `--radius-md` | 12px | cards, boxed lists, dialogs |
+| `--radius-lg` | 18px | banner tiles, screenshot frames |
+| `--radius-full` | 9999px | ALL buttons and chips (pills) |
 
-Elevation (dark mode uses lighter surface + subtle border instead of heavy shadow):
+**Elevation: flat.** Cards/lists carry no shadow. Only overlays float:
+`--shadow-dialog: 0 4px 24px rgb(0 0 0 / 0.18)` (dialogs, popovers, sheets).
 
-| Token | Light |
-|---|---|
-| `--shadow-1` | `0 1px 2px rgb(0 0 0 / .06)` — resting card |
-| `--shadow-2` | `0 4px 12px rgb(0 0 0 / .08)` — hover lift |
-| `--shadow-3` | `0 12px 32px rgb(0 0 0 / .14)` — modal/popover |
+Content max width: `--content-max-width: 1176px`.
 
 ## Motion
 
-Blend Flathub's calm with Modrinth's liveliness. **Always honor
-`prefers-reduced-motion: reduce`** — disable all non-essential motion.
-
-| Token | Value | Use |
-|---|---|---|
-| `--motion-fast` | 120ms, ease-out | hover states, toggles |
-| `--motion-base` | 200ms, ease-out | card lift, dropdowns, tab switches |
-| `--motion-slow` | 320ms, cubic-bezier(.22,1,.36,1) | route transitions, modals |
-| `--motion-spring` | spring(1, 80, 12) equivalent | button press, favorite toggle |
-
-Patterns: subtle page/route cross-fade + 8px slide; card hover = translateY(-2px)
-+ `--shadow-2`; skeleton loaders (never spinners for content areas); staggered
-grid reveal (30ms/card, first 12 cards only); download-selector steps slide
-horizontally.
+Calm, functional. fast 120ms / base 200ms / slow 320ms, ease-out.
+Hover states are **background-tint changes only** — no lifts, no scale.
+Dialogs/sheets: fade + small rise. Carousel: slide. Skeletons shimmer.
+No staggered reveals. `prefers-reduced-motion` disables everything
+non-essential (global kill-switch in tokens.css + `motion.ts` helper).
 
 ## Breakpoints
 
-| Name | Min width | Grid |
-|---|---|---|
-| mobile | 0 | 1-col cards, bottom-sheet filters, hamburger nav |
-| tablet | 640px | 2-col cards, collapsible filter rail |
-| desktop | 1024px | 3-col cards + persistent filter rail |
-| wide | 1440px | 4-col cards, max content width 1320px centered |
+mobile 0+ (1-col, sheets) · tablet 640+ (2-col cards) · desktop 1024+
+(3-col cards, side filters) · wide 1440+ (content capped at 1176px).
 
 ## Iconography & imagery
 
-- Site icons: `icons/light.svg` / `icons/dark.svg` (theme-switched).
-- UI glyphs: single consistent SVG icon set, 1.5px stroke, 20/24px grid.
-- Distro logos: real official brand SVGs from `assets/distros/<slug>.svg`,
-  rendered on neutral surface, never recolored or distorted (see `.ai/data-sources.md`).
-- Screenshots: 16:10 cards, lazy-loaded, LQIP blur placeholder.
+- UI glyphs: single stroke set, 1.5px, 20/24px grid (sprite in comps).
+- Distro logos: official SVGs on flat surface, never recolored
+  (placeholder initial-tiles in comps per ADR-0012).
+- Screenshots 16:10, radius-lg, inside a flat surface band.
 
 ## Component inventory
 
-Shell: `AppHeader` (logo, nav, search trigger, language switcher, theme toggle),
-`AppFooter`, `MobileNav` (bottom sheet), `CommandPalette` (⌘K search),
-`LocaleSwitcher`, `ThemeToggle`.
+Shell: `AppHeader` (wordmark · wide center search · nav links · locale ·
+theme), `AppFooter` (flat, multi-column), `MobileNav` (drawer),
+`CommandPalette`, `LocaleSwitcher`, `ThemeToggle`.
 
-Browse: `DistroCard` (logo, name, summary, family badge, download count),
-`CardGrid` (responsive + stagger reveal), `FilterRail` / `FilterSheet`,
-`FacetChip`, `SortSelect`, `SearchInput` (+ autocomplete listbox), `Pagination`.
+Browse: `DistroCard` (horizontal: logo 64 → name/summary), `CardGrid`,
+`BannerTile` (distro-of-the-day, brand-tinted flat banner), `CategoryPill`,
+`FilterList` (flat boxed groups) / `FilterSheet`, `SortSelect`,
+`SearchInput`, `Pagination`.
 
-Distro detail: `DistroHero` (logo, name, family, badges, quick actions),
-`ContentTabs` (description/install/usage MDX), `DownloadPanel`,
-`DownloadSelector` (stepper: version → edition → arch → format → mirror),
-`ChecksumBlock` (mono, copy button), `ScreenshotGallery`, `RequirementsTable`,
-`RelatedDistros`, `RankSparkline`, `ReleaseTimeline`.
+Detail: `DistroHeader` (icon + name + family / Download pill),
+`ScreenshotCarousel` (gray band), `MetaTileRow` (downloads · size ·
+version · license · arches), `ContentTabs`/prose, `BoxedList` + `Row`
+(releases, links, mirrors), `DownloadDialog` (5-step selector),
+`ChecksumRow`, `RelatedRow`, `RankSparkline`.
 
-Rankings/discovery: `RankingList` (numbered rows, movement arrows),
-`TrendBadge`, `HallOfFameCard` (editorial, rationale), `CompareTable`,
-`QuizStepper`, `RandomButton`.
+Rankings/discovery: `RankingBoxedList` (numbered rows, hairlines),
+`TrendMark`, `HallCard`, `CompareTable`, `QuizStepper`, `RandomButton`.
 
-Feedback/system: `Badge`, `Button` (primary/secondary/ghost/danger), `Chip`,
-`Tabs`, `Modal`, `Tooltip`, `Toast`, `SkeletonCard`/`SkeletonRow`,
-`EmptyState`, `ErrorState`, `CaptchaGate` (hCaptcha wrapper), `CopyButton`.
+Feedback/system: `Badge`, `Button` (primary/flat/danger — all pills),
+`Chip`, `Tabs` (pill-style switcher), `Dialog`, `Tooltip`, `Toast`,
+`Skeleton*`, `EmptyState`, `ErrorState`, `CaptchaGate`, `CopyButton`.
 
-Every screen composes **only** these components; new components require an
-update to this inventory first (see `.ai/component-rules.md`).
+New components require updating this inventory first
+(`.ai/component-rules.md`).
 
-## States (every screen must design these)
+## States
 
-Loading (skeletons), empty (friendly EmptyState + suggested action), error
-(ErrorState + retry), offline-tolerant where cheap. Untranslated content shows
-a `warning` badge ("English fallback").
+Every screen designs loading (skeleton), empty, and error. Untranslated
+content shows the warning badge.
 
 ## Accessibility baseline
 
-Keyboard-complete, visible focus ring (2px accent, 2px offset), WCAG AA
-contrast, touch targets ≥44px, RTL-mirrored layouts (`ar`, `he`, `fa`, `ckb`),
-reduced-motion variant of every animation, axe-clean.
+Keyboard-complete; focus ring 2px accent + 2px offset; AA contrast;
+44px touch targets; RTL-mirrored (`ar`, `he`, `fa`, `ckb`);
+reduced-motion variants; axe-clean.
 
-## References for Stitch
+## Reference
 
-- Flathub: home page hierarchy, app grid, category rows, calm detail page.
-- Modrinth: version/file table density, download flow, hover feedback,
-  dark theme balance, badge language.
-- This doc + the per-screen brief in `prompts/stitch/` = complete input.
-  Stitch must not invent new tokens, components, APIs, or data.
+flathub.org is the single visual reference: home banner + category pills +
+section grids; app page (icon/title/install pill, carousel, metadata tiles,
+links list); flat GNOME dark theme. Match its calm — when in doubt, remove
+decoration.

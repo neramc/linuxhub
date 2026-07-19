@@ -127,3 +127,22 @@ requirements; `design/` holds the deliverable; distro logos appear as neutral
 placeholder tiles in comps (official SVGs only enter via
 `assets/distros` + ATTRIBUTION per `.ai/data-sources.md`); "never redesign an
 approved screen in code" now means: change the comp + get re-approval first.
+
+## ADR-0013 — Design language pivot: Flathub clone (drop the Modrinth blend)
+**Date:** 2026-07-19 · **Status:** accepted
+**Context:** The owner reviewed the first comp set (Flathub+Modrinth blend)
+and rejected it as feeling generic/AI-generated; the direction requested is
+a faithful **Flathub-style** look.
+**Decision:** The visual language becomes a Flathub/GNOME (libadwaita-like)
+clone: flat gray cards with no borders or shadows (hover = surface darken),
+horizontal app-style cards (logo left), pill-shaped flat buttons, GNOME blue
+accent `#3584e4`, boxed-list rows with hairline separators, modest type
+scale, narrower content width (1176px), calm motion (fades/tints only — no
+lifts, no gradients, no stat-chip/marketing bands). Light `#ffffff`/dark
+`#242424` libadwaita-style themes. `.ai/design-system.md` +
+`packages/ui/tokens.css` are rewritten to these values and `design/` comps
+are rebuilt from scratch.
+**Consequences:** Modrinth references in the per-screen briefs are void
+where they conflict; briefs remain valid for structure/states/a11y.
+Rankings/download flows adopt the boxed-list pattern rather than
+Modrinth-style density.

@@ -20,4 +20,4 @@ export const motionDurations = {
 /** Staggered grid reveal: 30ms per card, first 12 cards only. */
 export const gridStagger = { perCardMs: 30, maxCards: 12 } as const;
 
-export const contentMaxWidth = 1320;
+export const contentMaxWidth = 1176;

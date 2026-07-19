@@ -1,6 +1,7 @@
 /*
- * Linuxhub design tokens — source of truth: .ai/design-system.md
- * Any change here must update that doc in the same commit (and vice versa).
+ * Linuxhub design tokens — source of truth: .ai/design-system.md (ADR-0013)
+ * Flathub/GNOME (libadwaita-like) system: flat surfaces, pill buttons,
+ * GNOME blue accent. Any change here must update that doc in the same commit.
  *
  * Theming: the app sets data-theme="light|dark" on <html> (user override,
  * persisted). The prefers-color-scheme block below is the no-JS/first-paint
@@ -8,20 +9,22 @@
  */
 
 :root {
-	/* Color — light */
-	--color-bg: #fafafa;
-	--color-surface: #ffffff;
+	/* Color — light (GNOME palette) */
+	--color-bg: #ffffff;
+	--color-surface: #f4f4f4;
+	--color-surface-hover: #ececec;
 	--color-surface-raised: #ffffff;
-	--color-border: #e4e7eb;
-	--color-text: #17191c;
-	--color-text-muted: #5c6470;
-	--color-accent: #1793d1;
-	--color-accent-hover: #0f7fb8;
+	--color-border: #e8e8e8;
+	--color-text: #1c1c1e;
+	--color-text-muted: #5e5e63;
+	--color-accent: #3584e4;
+	--color-accent-hover: #1c71d8;
 	--color-accent-contrast: #ffffff;
-	--color-accent-soft: #e8f4fb;
-	--color-success: #1a7f37;
-	--color-warning: #9a6700;
-	--color-danger: #cf222e;
+	--color-link: #1c71d8;
+	--color-accent-soft: #e7f0fb;
+	--color-success: #26a269;
+	--color-warning: #c78a00;
+	--color-danger: #c01c28;
 
 	/* Typography */
 	--font-sans: "Inter", "Noto Sans", system-ui, sans-serif;
@@ -30,10 +33,10 @@
 	--text-sm: 0.875rem;
 	--text-base: 1rem;
 	--text-lg: 1.125rem;
-	--text-xl: 1.375rem;
-	--text-2xl: 1.75rem;
-	--text-3xl: 2.25rem;
-	--text-4xl: 3rem;
+	--text-xl: 1.25rem;
+	--text-2xl: 1.5rem;
+	--text-3xl: 2rem;
+	--text-4xl: 2.5rem;
 	--leading-xs: 1.4;
 	--leading-sm: 1.5;
 	--leading-base: 1.6;
@@ -53,18 +56,16 @@
 	--space-7: 48px;
 	--space-8: 64px;
 
-	/* Radius */
-	--radius-sm: 6px;
-	--radius-md: 10px;
-	--radius-lg: 16px;
+	/* Radius — pills for all buttons/chips */
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 18px;
 	--radius-full: 9999px;
 
-	/* Elevation */
-	--shadow-1: 0 1px 2px rgb(0 0 0 / 0.06);
-	--shadow-2: 0 4px 12px rgb(0 0 0 / 0.08);
-	--shadow-3: 0 12px 32px rgb(0 0 0 / 0.14);
+	/* Elevation — flat design: only overlays float */
+	--shadow-dialog: 0 4px 24px rgb(0 0 0 / 0.18);
 
-	/* Motion — durations pair with the reduced-motion helper in motion.ts */
+	/* Motion — calm, tint-based hovers only */
 	--motion-fast: 120ms;
 	--motion-base: 200ms;
 	--motion-slow: 320ms;
@@ -72,43 +73,47 @@
 	--ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
 
 	/* Layout */
-	--content-max-width: 1320px;
+	--content-max-width: 1176px;
 	--focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
 }
 
-/* Dark — keep in sync with the media-query fallback below */
+/* Dark — libadwaita-style; keep in sync with the media-query fallback below */
 :root[data-theme="dark"] {
-	--color-bg: #101214;
-	--color-surface: #16191d;
-	--color-surface-raised: #1d2126;
-	--color-border: #2a2f36;
-	--color-text: #e8eaed;
-	--color-text-muted: #9aa3ad;
-	--color-accent: #31a8e0;
-	--color-accent-hover: #5cbce8;
-	--color-accent-contrast: #0b1014;
-	--color-accent-soft: #12303f;
-	--color-success: #3fb950;
-	--color-warning: #d29922;
-	--color-danger: #f85149;
+	--color-bg: #242424;
+	--color-surface: #333333;
+	--color-surface-hover: #3d3d3d;
+	--color-surface-raised: #383838;
+	--color-border: #454545;
+	--color-text: #ffffff;
+	--color-text-muted: #b3b3b8;
+	--color-accent: #3584e4;
+	--color-accent-hover: #4a90e8;
+	--color-accent-contrast: #ffffff;
+	--color-link: #78aeed;
+	--color-accent-soft: #2a3a4d;
+	--color-success: #2ec27e;
+	--color-warning: #e5a50a;
+	--color-danger: #f66151;
 }
 
 /* No-JS / first-paint fallback: system dark unless the user chose light */
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) {
-		--color-bg: #101214;
-		--color-surface: #16191d;
-		--color-surface-raised: #1d2126;
-		--color-border: #2a2f36;
-		--color-text: #e8eaed;
-		--color-text-muted: #9aa3ad;
-		--color-accent: #31a8e0;
-		--color-accent-hover: #5cbce8;
-		--color-accent-contrast: #0b1014;
-		--color-accent-soft: #12303f;
-		--color-success: #3fb950;
-		--color-warning: #d29922;
-		--color-danger: #f85149;
+		--color-bg: #242424;
+		--color-surface: #333333;
+		--color-surface-hover: #3d3d3d;
+		--color-surface-raised: #383838;
+		--color-border: #454545;
+		--color-text: #ffffff;
+		--color-text-muted: #b3b3b8;
+		--color-accent: #3584e4;
+		--color-accent-hover: #4a90e8;
+		--color-accent-contrast: #ffffff;
+		--color-link: #78aeed;
+		--color-accent-soft: #2a3a4d;
+		--color-success: #2ec27e;
+		--color-warning: #e5a50a;
+		--color-danger: #f66151;
 	}
 }
 
