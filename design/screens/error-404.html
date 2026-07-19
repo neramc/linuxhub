@@ -14,7 +14,7 @@
 		}
 
 		.err {
-			max-inline-size: 480px;
+			max-inline-size: 440px;
 			margin-inline: auto;
 			text-align: center;
 			display: grid;
@@ -23,24 +23,18 @@
 			padding: var(--space-7) var(--space-4);
 		}
 
-		.err__mono {
-			font-family: var(--font-mono);
-			font-size: var(--text-xs);
-			color: var(--color-text-muted);
-		}
-
 		.err__code {
 			font-size: var(--text-4xl);
 			font-weight: 700;
 			line-height: 1;
-			color: color-mix(in srgb, var(--color-accent) 22%, var(--color-bg));
-			letter-spacing: -0.04em;
+			color: var(--color-text-muted);
+			opacity: 0.4;
 			user-select: none;
 		}
 
 		.err h1 {
 			font-size: var(--text-xl);
-			font-weight: 600;
+			font-weight: 700;
 		}
 
 		.err p {
@@ -49,7 +43,7 @@
 
 		.err .search {
 			inline-size: 100%;
-			max-inline-size: 360px;
+			max-inline-size: 340px;
 		}
 
 		.err__actions {
@@ -83,19 +77,18 @@
 		<div>
 			<p class="flow-label">Variant — 404 not found</p>
 			<div class="err">
-				<span class="err__mono">$ linuxhub: page not found</span>
 				<span class="err__code" aria-hidden="true">404</span>
-				<h1>This page drifted out of the repo.</h1>
-				<p>The distro may have been renamed, or the link is stale. Let's get you somewhere useful.</p>
+				<h1>Page not found</h1>
+				<p>The distro may have been renamed, or the link is stale.</p>
 				<div class="search">
 					<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
-					<input class="search__input" type="search" placeholder="Looking for a distro?" aria-label="Search distros" />
+					<input class="search__input" type="search" placeholder="Search distributions" aria-label="Search distributions" />
 				</div>
 				<div class="err__actions">
 					<a class="btn btn--primary" href="./home.html">Back to home</a>
-					<button type="button" class="btn btn--secondary">
+					<button type="button" class="btn">
 						<svg class="icon icon--sm" aria-hidden="true"><use href="#i-dice"/></svg>
-						Surprise me
+						Random distro
 					</button>
 				</div>
 			</div>
@@ -104,20 +97,19 @@
 		<div>
 			<p class="flow-label">Variant — 500 something broke</p>
 			<div class="err">
-				<span class="err__mono">$ linuxhub: unexpected error</span>
-				<span class="err__code" aria-hidden="true" style="color: color-mix(in srgb, var(--color-danger) 20%, var(--color-bg));">500</span>
-				<h1>Something broke on our side.</h1>
-				<p>It's logged and we'll look into it. Trying again usually works.</p>
+				<span class="err__code" aria-hidden="true">500</span>
+				<h1>Something went wrong</h1>
+				<p>It's logged on our side. Trying again usually works.</p>
 				<div class="err__reqid">
 					<span>request id: req_8f4a2c91</span>
-					<button type="button" class="btn btn--ghost btn--sm">
+					<button type="button" class="btn btn--sm">
 						<svg class="icon icon--sm" aria-hidden="true"><use href="#i-copy"/></svg>
 						Copy
 					</button>
 				</div>
 				<div class="err__actions">
 					<button type="button" class="btn btn--primary">Try again</button>
-					<a class="btn btn--secondary" href="./home.html">Back to home</a>
+					<a class="btn" href="./home.html">Back to home</a>
 				</div>
 			</div>
 		</div>
@@ -125,12 +117,6 @@
 		<section class="spec-annex">
 			<h2>Design spec — notes</h2>
 			<div class="spec-frames">
-				<div class="spec-frame">
-					<div class="spec-frame__label">Entry motion</div>
-					<div class="spec-frame__body">
-						<p class="muted" style="font-size: var(--text-sm);">Numerals settle with one slow fade+rise. The dice button has the springiest press in the product (tiny wiggle). Reduced motion: static, no wiggle.</p>
-					</div>
-				</div>
 				<div class="spec-frame">
 					<div class="spec-frame__label">Focus on arrival</div>
 					<div class="spec-frame__body">
@@ -141,6 +127,12 @@
 					<div class="spec-frame__label">500 independence</div>
 					<div class="spec-frame__body">
 						<p class="muted" style="font-size: var(--text-sm);">The 500 variant renders with zero data dependencies — it must work when everything else failed.</p>
+					</div>
+				</div>
+				<div class="spec-frame">
+					<div class="spec-frame__label">Motion</div>
+					<div class="spec-frame__body">
+						<p class="muted" style="font-size: var(--text-sm);">One quiet fade on entry. Nothing else.</p>
 					</div>
 				</div>
 			</div>

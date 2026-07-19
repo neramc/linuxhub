@@ -17,15 +17,22 @@
 			display: grid;
 			gap: var(--space-5);
 			padding: var(--space-6);
-			margin-block-start: var(--space-5);
+			background: var(--color-surface);
+			border-radius: var(--radius-md);
+			margin-block-start: var(--space-4);
+		}
+
+		.contrib-card .input,
+		.contrib-card .select,
+		.contrib-card .textarea {
+			background: var(--color-bg);
 		}
 
 		.captcha-slot {
 			display: grid;
 			gap: var(--space-2);
 			padding: var(--space-4);
-			border: 1px solid var(--color-border);
-			border-radius: var(--radius-md);
+			border-radius: var(--radius-sm);
 			background: var(--color-bg);
 		}
 
@@ -35,7 +42,7 @@
 			gap: var(--space-3);
 			min-block-size: 64px;
 			padding-inline: var(--space-4);
-			border: 1px dashed var(--color-border);
+			border: 2px dashed var(--color-border);
 			border-radius: var(--radius-sm);
 			color: var(--color-text-muted);
 			font-size: var(--text-sm);
@@ -46,7 +53,7 @@
 			display: grid;
 			gap: var(--space-4);
 			justify-items: center;
-			padding: var(--space-7) var(--space-5);
+			padding: var(--space-6) var(--space-4);
 		}
 
 		.thanks .icon {
@@ -64,13 +71,13 @@
 				<p class="lede">Suggest a distro, report something broken, or send feedback. Contributions are anonymous, reviewed by maintainers, and protected by a quick captcha — no account needed.</p>
 			</header>
 
-			<div class="tabs" role="tablist" aria-label="Contribution type">
-				<button type="button" class="tab" role="tab" aria-selected="true" aria-controls="f-suggest" id="ft-suggest">Suggest a distro</button>
-				<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="f-report" id="ft-report">Report a problem</button>
+			<div class="switcher" role="tablist" aria-label="Contribution type">
+				<button type="button" class="tab" role="tab" aria-selected="true" aria-controls="f-suggest" id="ft-suggest">Suggest</button>
+				<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="f-report" id="ft-report">Report</button>
 				<button type="button" class="tab" role="tab" aria-selected="false" aria-controls="f-feedback" id="ft-feedback">Feedback</button>
 			</div>
 
-			<form class="card contrib-card tab-panel" id="f-suggest" role="tabpanel" aria-labelledby="ft-suggest">
+			<form class="contrib-card tab-panel" id="f-suggest" role="tabpanel" aria-labelledby="ft-suggest">
 				<div class="field">
 					<label class="field__label" for="s-name">Distro name</label>
 					<input class="input" id="s-name" type="text" placeholder="e.g. Vanilla OS" />
@@ -89,7 +96,7 @@
 					<p class="field__hint" id="s-why-hint">A sentence or two is plenty. 0 / 500</p>
 				</div>
 				<div class="field">
-					<label class="field__label" for="s-mail">Email <span class="optional">(optional — only if you'd like a reply)</span></label>
+					<label class="field__label" for="s-mail">Email <span class="optional">(optional — only for replies)</span></label>
 					<input class="input" id="s-mail" type="email" />
 				</div>
 				<div class="captcha-slot">
@@ -99,10 +106,10 @@
 						hCaptcha widget renders here — no account needed
 					</div>
 				</div>
-				<button class="btn btn--primary btn--lg btn--block" type="button">Send suggestion</button>
+				<button type="button" class="btn btn--primary btn--lg btn--block">Send suggestion</button>
 			</form>
 
-			<form class="card contrib-card tab-panel" id="f-report" role="tabpanel" aria-labelledby="ft-report" hidden>
+			<form class="contrib-card tab-panel" id="f-report" role="tabpanel" aria-labelledby="ft-report" hidden>
 				<div class="field">
 					<label class="field__label" for="r-kind">What's broken?</label>
 					<select class="select" id="r-kind">
@@ -129,10 +136,10 @@
 						hCaptcha widget renders here
 					</div>
 				</div>
-				<button class="btn btn--primary btn--lg btn--block" type="button">Send report</button>
+				<button type="button" class="btn btn--primary btn--lg btn--block">Send report</button>
 			</form>
 
-			<form class="card contrib-card tab-panel" id="f-feedback" role="tabpanel" aria-labelledby="ft-feedback" hidden>
+			<form class="contrib-card tab-panel" id="f-feedback" role="tabpanel" aria-labelledby="ft-feedback" hidden>
 				<div class="field">
 					<label class="field__label" for="fb-topic">Topic</label>
 					<select class="select" id="fb-topic">
@@ -153,7 +160,7 @@
 						hCaptcha widget renders here
 					</div>
 				</div>
-				<button class="btn btn--primary btn--lg btn--block" type="button">Send feedback</button>
+				<button type="button" class="btn btn--primary btn--lg btn--block">Send feedback</button>
 			</form>
 		</div>
 
@@ -161,14 +168,14 @@
 			<h2>Design spec — states</h2>
 			<div class="spec-frames">
 				<div class="spec-frame">
-					<div class="spec-frame__label">Success — card swaps to thanks</div>
+					<div class="spec-frame__label">Success</div>
 					<div class="spec-frame__body">
 						<div class="thanks">
 							<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
 							<div class="state-block__title">Thanks — we review every submission</div>
 							<div style="display: flex; gap: var(--space-2);">
-								<button type="button" class="btn btn--secondary btn--sm">Send another</button>
-								<a class="btn btn--ghost btn--sm" href="./explore.html">Back to Explore</a>
+								<button type="button" class="btn btn--sm">Send another</button>
+								<a class="btn btn--sm" href="./explore.html">Back to Explore</a>
 							</div>
 						</div>
 					</div>

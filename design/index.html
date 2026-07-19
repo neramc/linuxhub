@@ -9,33 +9,30 @@
 	<style>
 		.index-grid {
 			display: grid;
-			gap: var(--space-4);
+			gap: var(--space-3);
 			grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-			padding-block: var(--space-5) var(--space-8);
+			padding-block: var(--space-4) var(--space-8);
 		}
 
 		.index-card {
 			display: grid;
-			gap: var(--space-2);
+			gap: var(--space-1);
 			padding: var(--space-5);
 			background: var(--color-surface);
-			border: 1px solid var(--color-border);
-			border-radius: var(--radius-lg);
+			border-radius: var(--radius-md);
 			color: inherit;
-			transition:
-				border-color var(--motion-fast) var(--ease-out),
-				box-shadow var(--motion-base) var(--ease-out);
+			transition: background-color var(--motion-fast) var(--ease-out);
 		}
 
 		.index-card:hover {
+			background: var(--color-surface-hover);
 			text-decoration: none;
 			color: inherit;
-			border-color: var(--color-accent);
-			box-shadow: var(--shadow-1);
 		}
 
 		.index-card strong {
 			font-size: var(--text-base);
+			font-weight: 700;
 		}
 
 		.index-card span {
@@ -48,23 +45,23 @@
 	<main id="main" class="container">
 		<header class="page-head">
 			<h1>Linuxhub design comps</h1>
-			<p class="lede">15 screens · light/dark · responsive · RTL. Toggle theme and direction with the floating buttons. Each screen ends with its loading/empty/error spec. See <code>design/README.md</code> for review notes.</p>
+			<p class="lede">Flathub-clone system (ADR-0013) · 15 screens · light/dark · responsive · RTL. Toggle theme and direction with the floating buttons. Each screen ends with its loading/empty/error spec. See <code>design/README.md</code>.</p>
 		</header>
 		<div class="index-grid">
-			<a class="index-card" href="./screens/home.html"><strong>Home / landing</strong><span>Hero search, trending, categories, quiz band</span></a>
-			<a class="index-card" href="./screens/explore.html"><strong>Explore</strong><span>Card grid + filter rail + facet chips</span></a>
-			<a class="index-card" href="./screens/distro-detail.html"><strong>Distro detail</strong><span>Hero, MDX tabs, download panel, requirements</span></a>
-			<a class="index-card" href="./screens/download-selector.html"><strong>Download selector</strong><span>5-step modal flow + resolved result</span></a>
-			<a class="index-card" href="./screens/rankings.html"><strong>Rankings</strong><span>Period tabs, ranked rows, sparklines, movers</span></a>
-			<a class="index-card" href="./screens/hall-of-fame.html"><strong>Hall of Fame</strong><span>Editorial plaques with citations</span></a>
-			<a class="index-card" href="./screens/category-tag.html"><strong>Category / tag</strong><span>Tinted taxonomy header + shared grid</span></a>
-			<a class="index-card" href="./screens/search-results.html"><strong>Search</strong><span>Results rows + ⌘K command palette</span></a>
-			<a class="index-card" href="./screens/compare.html"><strong>Compare</strong><span>Side-by-side specs with difference highlight</span></a>
-			<a class="index-card" href="./screens/quiz.html"><strong>Distro-finder quiz</strong><span>Intro → question → result flow</span></a>
-			<a class="index-card" href="./screens/contribute.html"><strong>Contribute</strong><span>Captcha-gated forms, canonical form styles</span></a>
-			<a class="index-card" href="./screens/about.html"><strong>About</strong><span>Prose system + sticky ToC</span></a>
-			<a class="index-card" href="./screens/error-404.html"><strong>404 / 500</strong><span>Dead ends that keep people in the product</span></a>
-			<a class="index-card" href="./screens/global-nav.html"><strong>Global nav</strong><span>Header states, language switcher, footer</span></a>
+			<a class="index-card" href="./screens/home.html"><strong>Home</strong><span>Banner tile, category pills, sections</span></a>
+			<a class="index-card" href="./screens/explore.html"><strong>Explore</strong><span>Card grid + filters + sort</span></a>
+			<a class="index-card" href="./screens/distro-detail.html"><strong>Distro detail</strong><span>App-page column: carousel, tiles, docs, releases</span></a>
+			<a class="index-card" href="./screens/download-selector.html"><strong>Download selector</strong><span>5-step dialog flow + result</span></a>
+			<a class="index-card" href="./screens/rankings.html"><strong>Rankings</strong><span>Boxed list, period switcher, movers</span></a>
+			<a class="index-card" href="./screens/hall-of-fame.html"><strong>Hall of Fame</strong><span>Curated cards with citations</span></a>
+			<a class="index-card" href="./screens/category-tag.html"><strong>Category / tag</strong><span>Taxonomy header + shared grid</span></a>
+			<a class="index-card" href="./screens/search-results.html"><strong>Search</strong><span>Result rows + ⌘K palette</span></a>
+			<a class="index-card" href="./screens/compare.html"><strong>Compare</strong><span>Side-by-side with difference tint</span></a>
+			<a class="index-card" href="./screens/quiz.html"><strong>Distro finder</strong><span>Intro → question → result flow</span></a>
+			<a class="index-card" href="./screens/contribute.html"><strong>Contribute</strong><span>Captcha-gated forms</span></a>
+			<a class="index-card" href="./screens/about.html"><strong>About</strong><span>Prose system + ToC</span></a>
+			<a class="index-card" href="./screens/error-404.html"><strong>404 / 500</strong><span>Quiet dead ends</span></a>
+			<a class="index-card" href="./screens/global-nav.html"><strong>Global nav</strong><span>Header states, language switcher</span></a>
 			<a class="index-card" href="./screens/mobile-nav.html"><strong>Mobile nav</strong><span>Drawer, bottom sheet, search overlay</span></a>
 		</div>
 	</main>

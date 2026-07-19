@@ -3,14 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Distro-finder quiz — Linuxhub design comp</title>
+	<title>Distro finder — Linuxhub design comp</title>
 	<link rel="stylesheet" href="../shared/design.css" />
 	<script src="../shared/mock.js" defer></script>
 	<style>
 		.flow {
 			display: grid;
 			gap: var(--space-6);
-			padding-block: var(--space-6) var(--space-7);
+			padding-block: var(--space-5) var(--space-7);
 		}
 
 		.flow-frame > h2 {
@@ -26,6 +26,8 @@
 			display: grid;
 			gap: var(--space-5);
 			padding: var(--space-6);
+			background: var(--color-surface);
+			border-radius: var(--radius-md);
 		}
 
 		.quiz-card--intro {
@@ -36,7 +38,6 @@
 		.quiz-card--intro h1 {
 			font-size: var(--text-2xl);
 			font-weight: 700;
-			letter-spacing: -0.01em;
 		}
 
 		.quiz-head {
@@ -55,127 +56,141 @@
 
 		.quiz-question {
 			font-size: var(--text-xl);
-			font-weight: 600;
+			font-weight: 700;
 			line-height: var(--leading-xl);
-			max-inline-size: 30ch;
+		}
+
+		.quiz-card .boxed {
+			background: var(--color-bg);
+		}
+
+		.quiz-card .row[aria-checked="true"] {
+			background: var(--color-accent-soft);
+		}
+
+		.match-card {
+			max-inline-size: 560px;
+			margin-inline: auto;
+			display: grid;
+			gap: var(--space-4);
+			justify-items: center;
+			text-align: center;
+			padding: var(--space-7) var(--space-6);
+			border-radius: var(--radius-lg);
+			background: color-mix(in srgb, #51a2da 12%, var(--color-surface));
 		}
 
 		.runner-ups {
-			display: grid;
-			gap: var(--space-4);
-			max-inline-size: 720px;
+			max-inline-size: 560px;
 			margin-inline: auto;
-		}
-
-		@media (min-width: 640px) {
-			.runner-ups {
-				grid-template-columns: repeat(2, 1fr);
-			}
+			inline-size: 100%;
 		}
 	</style>
 </head>
 <body data-page="quiz">
 	<main id="main" class="container">
 		<header class="page-head" style="text-align: center;">
-			<h1>Distro-finder quiz — flow frames</h1>
+			<h1>Distro finder — flow frames</h1>
 		</header>
 
 		<div class="flow">
 			<div class="flow-frame">
 				<h2>Intro</h2>
-				<div class="card quiz-card quiz-card--intro">
-					<h1>Find your Linux</h1>
-					<p class="muted">Seven quick questions about how you work — we'll match you with three distros that fit. No jargon until the results.</p>
+				<div class="quiz-card quiz-card--intro">
+					<h1>Find your distro</h1>
+					<p class="muted">Seven quick questions about how you work. We'll match you with three distributions that fit — no jargon until the results.</p>
 					<p class="muted" style="font-size: var(--text-sm);">Takes under a minute.</p>
 					<div style="display: flex; gap: var(--space-3); justify-content: center;">
 						<button type="button" class="btn btn--primary btn--lg">Start</button>
-						<a class="btn btn--ghost btn--lg" href="./explore.html">Skip to Explore</a>
+						<a class="btn btn--lg" href="./explore.html">Just browse</a>
 					</div>
 				</div>
 			</div>
 
 			<div class="flow-frame">
 				<h2>Question 3 of 7 — single select, auto-advances</h2>
-				<div class="card quiz-card">
+				<div class="quiz-card">
 					<div class="quiz-head">
 						<div class="quiz-head__meta">
-							<button type="button" class="btn btn--ghost btn--sm">
+							<button type="button" class="btn btn--sm" style="background: var(--color-bg);">
 								<svg class="icon icon--sm icon--flip" aria-hidden="true"><use href="#i-arrow-start"/></svg>
 								Back
 							</button>
 							<span>3 / 7</span>
 						</div>
-						<div class="quiz-progress" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="7" aria-label="Question 3 of 7">
+						<div class="quiz-progress" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="7" aria-label="Question 3 of 7" style="background: var(--color-bg);">
 							<div class="quiz-progress__bar" style="inline-size: 43%;"></div>
 						</div>
 						<h1 class="quiz-question">How do you feel about updates?</h1>
 					</div>
-					<div class="quiz-options" role="radiogroup" aria-label="How do you feel about updates?">
-						<button type="button" class="quiz-option" role="radio" aria-checked="false">
-							<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
-							<div>
-								<div class="quiz-option__label">Set and forget</div>
-								<div class="quiz-option__example">Update twice a year, quietly</div>
-							</div>
+					<div class="boxed" role="radiogroup" aria-label="How do you feel about updates?">
+						<button type="button" class="row" role="radio" aria-checked="false">
+							<span class="radio-dot" aria-hidden="true"></span>
+							<span class="row__body">
+								<span class="row__title">Set and forget</span>
+								<span class="row__subtitle">Update twice a year, quietly</span>
+							</span>
 						</button>
-						<button type="button" class="quiz-option" role="radio" aria-checked="true">
-							<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
-							<div>
-								<div class="quiz-option__label">Fresh but stable</div>
-								<div class="quiz-option__example">New features soon after release</div>
-							</div>
+						<button type="button" class="row" role="radio" aria-checked="true">
+							<span class="radio-dot" aria-hidden="true"></span>
+							<span class="row__body">
+								<span class="row__title">Fresh but stable</span>
+								<span class="row__subtitle">New features soon after release</span>
+							</span>
 						</button>
-						<button type="button" class="quiz-option" role="radio" aria-checked="false">
-							<svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg>
-							<div>
-								<div class="quiz-option__label">Always the latest</div>
-								<div class="quiz-option__example">Rolling updates, every day</div>
-							</div>
+						<button type="button" class="row" role="radio" aria-checked="false">
+							<span class="radio-dot" aria-hidden="true"></span>
+							<span class="row__body">
+								<span class="row__title">Always the latest</span>
+								<span class="row__subtitle">Rolling updates, every day</span>
+							</span>
 						</button>
-						<button type="button" class="quiz-option" role="radio" aria-checked="false">
-							<svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>
-							<div>
-								<div class="quiz-option__label">I'll manage it myself</div>
-								<div class="quiz-option__example">Full manual control</div>
-							</div>
+						<button type="button" class="row" role="radio" aria-checked="false">
+							<span class="radio-dot" aria-hidden="true"></span>
+							<span class="row__body">
+								<span class="row__title">I'll manage it myself</span>
+								<span class="row__subtitle">Full manual control</span>
+							</span>
 						</button>
 					</div>
-					<button type="button" class="btn btn--ghost btn--sm" style="justify-self: center;">Skip this question</button>
+					<button type="button" class="btn btn--sm" style="justify-self: center; background: var(--color-bg);">Skip this question</button>
 				</div>
 			</div>
 
 			<div class="flow-frame">
 				<h2>Result — top match + runner-ups</h2>
-				<div style="display: grid; gap: var(--space-5);">
-					<div class="match-card" style="max-inline-size: 560px; margin-inline: auto; inline-size: 100%;">
+				<div style="display: grid; gap: var(--space-4);">
+					<div class="match-card">
 						<span class="badge">Your top match</span>
 						<span class="logo-tile logo-tile--lg" style="--tile: #51a2da">F</span>
 						<h1 style="font-size: var(--text-2xl); font-weight: 700;">Fedora</h1>
 						<p class="muted" style="max-inline-size: 44ch;">You wanted current software without daily churn, a polished GNOME desktop, and sensible security defaults — Fedora ships exactly that, twice a year.</p>
 						<div style="display: flex; gap: var(--space-3);">
 							<a class="btn btn--primary btn--lg" href="./distro-detail.html">See Fedora</a>
-							<button type="button" class="btn btn--secondary btn--lg" data-open-modal="#x">Download</button>
+							<a class="btn btn--lg" href="./download-selector.html" style="background: var(--color-bg);">Download</a>
 						</div>
 					</div>
-					<div class="runner-ups">
-						<a class="distro-card" href="./distro-detail.html">
-							<div class="distro-card__head">
-								<span class="logo-tile" style="--tile: #e95420">U</span>
-								<div><div class="distro-card__name">Ubuntu</div><div class="distro-card__family">Runner-up</div></div>
-							</div>
-							<p class="distro-card__summary">If you'd rather update every two years — the LTS route with the biggest community.</p>
+					<div class="boxed runner-ups">
+						<a class="row" href="./distro-detail.html">
+							<span class="logo-tile logo-tile--sm" style="--tile: #e95420">U</span>
+							<span class="row__body">
+								<span class="row__title">Ubuntu</span>
+								<span class="row__subtitle">If you'd rather update every two years — LTS with the biggest community</span>
+							</span>
+							<svg class="icon icon--sm chevron icon--flip" aria-hidden="true"><use href="#i-chevron-end"/></svg>
 						</a>
-						<a class="distro-card" href="./distro-detail.html">
-							<div class="distro-card__head">
-								<span class="logo-tile" style="--tile: #73ba25">oS</span>
-								<div><div class="distro-card__name">openSUSE Tumbleweed</div><div class="distro-card__family">Runner-up</div></div>
-							</div>
-							<p class="distro-card__summary">If “always the latest” wins out — rolling, but tested by openQA before it reaches you.</p>
+						<a class="row" href="./distro-detail.html">
+							<span class="logo-tile logo-tile--sm" style="--tile: #73ba25">oS</span>
+							<span class="row__body">
+								<span class="row__title">openSUSE Tumbleweed</span>
+								<span class="row__subtitle">If “always the latest” wins — rolling, but tested before it reaches you</span>
+							</span>
+							<svg class="icon icon--sm chevron icon--flip" aria-hidden="true"><use href="#i-chevron-end"/></svg>
 						</a>
 					</div>
-					<div style="display: flex; gap: var(--space-4); justify-content: center;">
-						<button type="button" class="btn btn--ghost btn--sm">Retake</button>
-						<a class="btn btn--ghost btn--sm" href="./compare.html">Compare these three →</a>
+					<div style="display: flex; gap: var(--space-3); justify-content: center;">
+						<button type="button" class="btn btn--sm">Retake</button>
+						<a class="btn btn--sm" href="./compare.html">Compare these three</a>
 					</div>
 				</div>
 			</div>
@@ -190,7 +205,6 @@
 						<div class="state-block">
 							<div class="skeleton" style="inline-size: 96px; block-size: 96px; border-radius: var(--radius-lg);"></div>
 							<div class="state-block__title">Matching…</div>
-							<p>Static variant of the logo-shuffle moment (max ~1s).</p>
 						</div>
 					</div>
 				</div>
@@ -200,19 +214,19 @@
 						<div class="state-block">
 							<svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
 							<div class="state-block__title">No single stand-out</div>
-							<p>Your answers fit many distros — Explore with these filters instead.</p>
-							<a class="btn btn--secondary btn--sm" href="./explore.html">Open Explore</a>
+							<p>Your answers fit many distros — browse with these filters instead.</p>
+							<a class="btn btn--sm" href="./explore.html">Open Explore</a>
 						</div>
 					</div>
 				</div>
 				<div class="spec-frame">
-					<div class="spec-frame__label">Error — submit failed</div>
+					<div class="spec-frame__label">Submit failed</div>
 					<div class="spec-frame__body">
 						<div class="state-block state-block--error">
 							<svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
 							<div class="state-block__title">Couldn't compute your match</div>
 							<p>Your answers are kept.</p>
-							<button type="button" class="btn btn--secondary btn--sm">Retry</button>
+							<button type="button" class="btn btn--sm">Retry</button>
 						</div>
 					</div>
 				</div>

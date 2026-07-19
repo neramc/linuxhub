@@ -1,8 +1,9 @@
 /*
- * Linuxhub design comps — shared chrome + review controls (ADR-0012).
- * Injects the AppHeader / AppFooter / MobileNav into every comp page so the
- * shell is defined once, and wires the review-only interactions (theme, RTL,
- * tabs, modal, drawer, popover). Not production code.
+ * Linuxhub design comps — shared chrome + review controls (ADR-0012/0013).
+ * Flathub-style shell: wordmark · wide search entry · nav links · locale ·
+ * theme, plus the dark footer. Injected into every comp page; wires the
+ * review-only interactions (theme, RTL, tabs, dialog, drawer, popover).
+ * Not production code.
  */
 
 /* ------------------------------------------------------------------ icons */
@@ -18,6 +19,7 @@ const ICONS = `
 	<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></symbol>
 	<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></symbol>
 	<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+	<symbol id="i-chevron-end" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
 	<symbol id="i-arrow-end" viewBox="0 0 24 24"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></symbol>
 	<symbol id="i-arrow-start" viewBox="0 0 24 24"><path d="M20 12H4m0 0 6-6m-6 6 6 6"/></symbol>
 	<symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol>
@@ -28,7 +30,7 @@ const ICONS = `
 	<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 10v4m0 3v.5"/></symbol>
 	<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8v.5"/></symbol>
 	<symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><path d="M4 13V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6Z"/></symbol>
-	<symbol id="i-rtl" viewBox="0 0 24 24"><path d="M8 5h8M8 9h8M8 13h5"/><path d="m6 17-3 3 3 3" transform="translate(0 -3)"/><path d="M3 20h18"/></symbol>
+	<symbol id="i-rtl" viewBox="0 0 24 24"><path d="M8 5h8M8 9h8M8 13h5"/><path d="M3 20h18"/></symbol>
 	<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/></symbol>
 	<symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9 21h6m-3-4v4"/></symbol>
 	<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.5M7 16.5h.5"/></symbol>
@@ -41,7 +43,6 @@ const NAV_ITEMS = [
 	["explore", "Explore"],
 	["rankings", "Rankings"],
 	["hall-of-fame", "Hall of Fame"],
-	["compare", "Compare"],
 	["quiz", "Quiz"],
 ];
 
@@ -67,13 +68,13 @@ function icon(name, cls = "icon") {
 function headerHtml(page) {
 	const nav = NAV_ITEMS.map(
 		([id, label]) =>
-			`<a href="./${id === "explore" ? "explore" : id}.html"${page === id ? ' aria-current="page"' : ""}>${label}</a>`,
+			`<a href="./${id}.html"${page === id ? ' aria-current="page"' : ""}>${label}</a>`,
 	).join("");
 	const locales = LOCALES.map(
 		([label, code]) =>
 			`<button type="button" class="locale-option" role="option" aria-selected="${code === "en"}" dir="auto">
 				${icon("i-check", "icon icon--sm")}<span>${label}</span><span class="code">${code}</span>
-			</button></button>`,
+			</button>`,
 	).join("");
 	return `
 	<a class="visually-hidden" href="#main">Skip to content</a>
@@ -83,11 +84,11 @@ function headerHtml(page) {
 				${icon("i-menu")}
 			</button>
 			<a class="wordmark" href="./home.html">${icon("i-logo")}<span>Linuxhub</span></a>
+			<div class="search">
+				${icon("i-search", "icon icon--sm")}
+				<input class="search__input" type="search" placeholder="Search distributions" aria-label="Search distributions" />
+			</div>
 			<nav class="app-nav" aria-label="Primary">${nav}</nav>
-			<div class="app-header__spacer"></div>
-			<button class="header-search" type="button">
-				${icon("i-search", "icon icon--sm")}<span>Search distros…</span><span class="kbd">⌘K</span>
-			</button>
 			<div class="header-actions">
 				<div class="popover-anchor">
 					<button type="button" class="icon-btn locale-btn" aria-haspopup="listbox" aria-expanded="false" data-toggle="#locale-popover">
@@ -95,10 +96,10 @@ function headerHtml(page) {
 					</button>
 					<div class="locale-popover" id="locale-popover">
 						<div class="locale-popover__search">
-							<input class="input" type="search" placeholder="Find a language…" aria-label="Find a language" />
+							<input class="input" type="search" placeholder="Find a language" aria-label="Find a language" />
 						</div>
 						<div class="locale-popover__list" role="listbox" aria-label="Language">${locales}</div>
-						<div class="locale-popover__foot">Missing your language? <a href="#">Help translate ↗</a></div>
+						<div class="locale-popover__foot">Missing your language? <a href="#top">Help translate</a></div>
 					</div>
 				</div>
 				<button type="button" class="icon-btn" aria-label="Switch theme" data-theme-toggle>${icon("i-sun")}</button>
@@ -113,8 +114,8 @@ function footerHtml() {
 		<div class="container app-footer__inner">
 			<div>
 				<a class="wordmark" href="./home.html">${icon("i-logo")}<span>Linuxhub</span></a>
-				<p style="margin-block-start: var(--space-3); max-inline-size: 30ch;">
-					Every Linux distribution, one catalog — releases, editions, and trusted mirrors.
+				<p style="margin-block-start: var(--space-3); max-inline-size: 32ch;">
+					A catalog of Linux distributions with downloads from official mirrors.
 				</p>
 			</div>
 			<div class="footer-cols">
@@ -123,27 +124,31 @@ function footerHtml() {
 					<li><a href="./rankings.html">Rankings</a></li>
 					<li><a href="./hall-of-fame.html">Hall of Fame</a></li>
 					<li><a href="./compare.html">Compare</a></li>
+					<li><a href="./quiz.html">Distro finder</a></li>
 				</ul></div>
 				<div><h3>Project</h3><ul>
 					<li><a href="./about.html">About</a></li>
 					<li><a href="./contribute.html">Contribute</a></li>
 					<li><a href="./about.html">Crawler policy</a></li>
+					<li><a href="./about.html">Data sources</a></li>
 				</ul></div>
 				<div><h3>Feeds</h3><ul>
-					<li><a href="#">Releases RSS</a></li>
-					<li><a href="#">Releases Atom</a></li>
-					<li><a href="#">Badges</a></li>
+					<li><a href="./home.html">Releases RSS</a></li>
+					<li><a href="./home.html">Releases Atom</a></li>
+					<li><a href="./home.html">Badges</a></li>
 				</ul></div>
-			</div>
-			<div>
-				<p>Release data comes from each project's official sources and is refreshed continuously.</p>
 			</div>
 		</div>
 	</footer>`;
 }
 
 function drawerHtml(page) {
-	const nav = [...NAV_ITEMS, ["about", "About"], ["contribute", "Contribute"]]
+	const nav = [
+		...NAV_ITEMS,
+		["compare", "Compare"],
+		["about", "About"],
+		["contribute", "Contribute"],
+	]
 		.map(
 			([id, label]) =>
 				`<a href="./${id}.html"${page === id ? ' aria-current="page"' : ""}>${label}</a>`,

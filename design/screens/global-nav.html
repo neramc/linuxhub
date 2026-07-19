@@ -10,7 +10,7 @@
 		.nav-spec {
 			display: grid;
 			gap: var(--space-6);
-			padding-block: var(--space-6) var(--space-7);
+			padding-block: var(--space-5) var(--space-7);
 		}
 
 		.nav-spec h2 {
@@ -21,13 +21,11 @@
 		}
 
 		.demo-box {
-			border: 1px solid var(--color-border);
-			border-radius: var(--radius-lg);
+			border: 1px dashed var(--color-border);
+			border-radius: var(--radius-md);
 			overflow: hidden;
-			background: var(--color-bg);
 		}
 
-		/* static popover demo (no absolute positioning) */
 		.demo-popover {
 			position: static;
 			display: flex;
@@ -37,7 +35,7 @@
 
 		.state-row {
 			display: flex;
-			gap: var(--space-5);
+			gap: var(--space-4);
 			flex-wrap: wrap;
 			align-items: center;
 			padding: var(--space-5);
@@ -50,7 +48,6 @@
 		.focus-demo {
 			outline: 2px solid var(--color-accent);
 			outline-offset: 2px;
-			border-radius: var(--radius-sm);
 		}
 	</style>
 </head>
@@ -58,7 +55,7 @@
 	<main id="main" class="container">
 		<header class="page-head">
 			<h1>Global navigation</h1>
-			<p class="lede">The live AppHeader is at the top of every comp page (sticky, hairline border) and the AppFooter at the bottom — this page specifies its states. Use the floating review buttons (bottom corner) to check dark theme and RTL mirroring of the real header.</p>
+			<p class="lede">The live header (wordmark · search entry · nav · locale · theme) is at the top of every comp page; the dark footer at the bottom. This page specifies the states. Use the floating review buttons to check dark theme and RTL.</p>
 		</header>
 
 		<div class="nav-spec">
@@ -66,11 +63,11 @@
 				<h2>Nav link states — resting · hover · active page · keyboard focus</h2>
 				<div class="demo-box">
 					<div class="state-row">
-						<nav class="app-nav" aria-label="Demo states">
-							<a href="#">Resting</a>
-							<a href="#" style="color: var(--color-text);">Hover</a>
-							<a href="#" aria-current="page">Active page</a>
-							<a href="#" class="focus-demo">Focused</a>
+						<nav class="app-nav" aria-label="Demo states" style="margin: 0;">
+							<a href="#top">Resting</a>
+							<a href="#top" style="color: var(--color-text); background: var(--color-surface);">Hover</a>
+							<a href="#top" aria-current="page">Active page</a>
+							<a href="#top" class="focus-demo">Focused</a>
 						</nav>
 					</div>
 				</div>
@@ -82,7 +79,7 @@
 					<div class="locale-popover is-open demo-popover">
 						<div style="display: flex; flex-direction: column; inline-size: 100%;">
 							<div class="locale-popover__search">
-								<input class="input" type="search" placeholder="Find a language…" aria-label="Find a language" />
+								<input class="input" type="search" placeholder="Find a language" aria-label="Find a language" />
 							</div>
 							<div class="locale-popover__list" role="listbox" aria-label="Language">
 								<button type="button" class="locale-option" role="option" aria-selected="false">
@@ -106,7 +103,7 @@
 									<span dir="rtl">עברית</span><span class="code">he</span>
 								</button>
 							</div>
-							<div class="locale-popover__foot">Missing your language? <a href="#">Help translate ↗</a></div>
+							<div class="locale-popover__foot">Missing your language? <a href="#top">Help translate</a></div>
 						</div>
 					</div>
 				</div>
@@ -116,12 +113,13 @@
 				<h2>Header behavior notes</h2>
 				<div class="demo-box" style="padding: var(--space-5);">
 					<ul class="prose" style="margin: 0; padding-inline-start: var(--space-5); font-size: var(--text-sm); color: var(--color-text-muted);">
-						<li>Sticky at 64px; on Home it starts transparent over the hero and gains surface + border after ~64px of scroll.</li>
-						<li>Search trigger opens the CommandPalette (see search comp); at tablet width it collapses to an icon button.</li>
-						<li>At &lt;1024px the primary nav collapses into the hamburger drawer (see mobile-nav comp).</li>
-						<li>Theme toggle cross-morphs sun/moon (200ms); the page theme cross-fades (320ms). Reduced motion: instant swap.</li>
+						<li>Sticky at 64px on the page background with a hairline bottom border.</li>
+						<li>The search entry is a real input (min 240px, max 400px); typing opens the suggestion list; ⌘K focuses it. Below 640px it collapses into the search icon in the compact header.</li>
+						<li>Below 1024px the nav collapses into the hamburger drawer (see mobile-nav comp).</li>
+						<li>Theme toggle swaps sun/moon (200ms); the page cross-fades (320ms). Reduced motion: instant.</li>
 						<li>Skip-link appears on first Tab, before the wordmark.</li>
-						<li>RTL: the whole header mirrors — verify with the review toggle; chevrons and arrows flip via the icon--flip class.</li>
+						<li>RTL mirrors the whole header; chevrons/arrows flip via icon--flip.</li>
+						<li>The footer stays dark in both themes (Flathub trait).</li>
 					</ul>
 				</div>
 			</section>

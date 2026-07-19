@@ -1,8 +1,13 @@
-# design/ — High-fidelity design comps (ADR-0012)
+# design/ — High-fidelity design comps (ADR-0012 · ADR-0013)
 
 The **design source of truth** for Linuxhub, replacing the Stitch/Figma stage.
 Built strictly from `packages/ui` design tokens (`design.css` imports
 `tokens.css` directly) against the per-screen briefs in `prompts/stitch/`.
+
+**Visual language: Flathub clone** (ADR-0013) — flat gray cards without
+borders or shadows, horizontal app cards, pill buttons, GNOME blue
+`#3584e4`, boxed-list rows, dark footer in both themes, calm motion.
+Where a brief's Modrinth reference conflicts, the Flathub language wins.
 
 ## How to review
 

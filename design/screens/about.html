@@ -47,27 +47,26 @@
 			padding: 0;
 			display: grid;
 			gap: var(--space-1);
-			border-inline-start: 1px solid var(--color-border);
 		}
 
 		.toc a {
 			display: block;
 			padding: var(--space-1) var(--space-3);
+			border-radius: var(--radius-full);
 			color: var(--color-text-muted);
 			font-size: var(--text-sm);
-			border-inline-start: 2px solid transparent;
-			margin-inline-start: -1px;
 		}
 
 		.toc a:hover {
 			color: var(--color-text);
+			background: var(--color-surface);
 			text-decoration: none;
 		}
 
 		.toc a.is-active {
-			color: var(--color-accent);
-			border-inline-start-color: var(--color-accent);
-			font-weight: 500;
+			color: var(--color-text);
+			background: var(--color-surface);
+			font-weight: 600;
 		}
 
 		.about-prose section {
@@ -76,8 +75,6 @@
 
 		.about-prose section + section {
 			margin-block-start: var(--space-7);
-			padding-block-start: var(--space-6);
-			border-block-start: 1px solid var(--color-border);
 		}
 	</style>
 </head>
@@ -93,20 +90,11 @@
 					<h2>What is Linuxhub</h2>
 					<p>Linuxhub is a catalog of (almost) every Linux distribution — releases, editions, system requirements, and downloads from trusted mirrors, in one place and in your language.</p>
 					<p>We don't host ISO files. Every download resolves to an official mirror chosen for your region, with the checksum right next to the button.</p>
-					<div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-block: var(--space-4);">
-						<span class="chip">312 distributions</span>
-						<span class="chip">4.8M downloads served</span>
-						<span class="chip">56 languages</span>
-					</div>
 				</section>
 
 				<section id="rankings">
 					<h2>How rankings work</h2>
 					<p>Rankings come from our own signals only: page views, download clicks, and release recency. We deliberately don't scrape third-party popularity charts — the method is simple enough to explain in one sentence, and that's the point.</p>
-					<svg class="sparkline" viewBox="0 0 96 28" aria-hidden="true" style="inline-size: 200px; block-size: 56px;">
-						<polyline class="area" points="0,22 12,20 24,21 36,17 48,14 60,15 72,10 84,8 96,6 96,28 0,28" />
-						<polyline points="0,22 12,20 24,21 36,17 48,14 60,15 72,10 84,8 96,6" />
-					</svg>
 				</section>
 
 				<section id="data">
@@ -134,7 +122,9 @@
 					<p>Linuxhub is built in the open.</p>
 					<div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
 						<a class="btn btn--primary" href="./contribute.html">Contribute</a>
-						<a class="btn btn--secondary" href="#">GitHub ↗</a>
+						<a class="btn" href="./about.html">GitHub
+							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-external"/></svg>
+						</a>
 					</div>
 				</section>
 			</div>
@@ -156,25 +146,25 @@
 			<h2>Design spec — notes</h2>
 			<div class="spec-frames">
 				<div class="spec-frame">
-					<div class="spec-frame__label">Anchor target highlight</div>
+					<div class="spec-frame__label">Anchor highlight</div>
 					<div class="spec-frame__body">
-						<p style="background: var(--color-accent-soft); border-radius: var(--radius-sm); padding: var(--space-2); font-size: var(--text-sm);">The jumped-to section tints accent-soft briefly, then fades (no motion under reduced-motion).</p>
+						<p style="background: var(--color-accent-soft); border-radius: var(--radius-sm); padding: var(--space-2); font-size: var(--text-sm);">The jumped-to section tints briefly, then fades. No motion under reduced-motion.</p>
 					</div>
 				</div>
 				<div class="spec-frame">
 					<div class="spec-frame__label">Mobile ToC</div>
 					<div class="spec-frame__body">
-						<button type="button" class="btn btn--secondary btn--sm">
+						<button type="button" class="btn btn--sm">
 							On this page
 							<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
 						</button>
-						<p class="muted" style="font-size: var(--text-xs);">The rail collapses into this dropdown below 1024px.</p>
+						<p class="muted" style="font-size: var(--text-xs);">The rail collapses into this menu below 1024px.</p>
 					</div>
 				</div>
 				<div class="spec-frame">
-					<div class="spec-frame__label">Prose styles are canonical</div>
+					<div class="spec-frame__label">Prose is canonical</div>
 					<div class="spec-frame__body">
-						<p class="muted" style="font-size: var(--text-sm);">The typography on this page (.prose) is the same system used for distro MDX content — designed once, reused.</p>
+						<p class="muted" style="font-size: var(--text-sm);">This page's typography (.prose) is the same system used for distro content — designed once, reused.</p>
 					</div>
 				</div>
 			</div>

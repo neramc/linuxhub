@@ -10,7 +10,7 @@
 		.phones {
 			display: grid;
 			gap: var(--space-6);
-			padding-block: var(--space-6) var(--space-7);
+			padding-block: var(--space-5) var(--space-7);
 			justify-content: center;
 		}
 
@@ -23,14 +23,13 @@
 		.phone {
 			inline-size: 320px;
 			block-size: 620px;
-			border: 1px solid var(--color-border);
+			border: 1px dashed var(--color-border);
 			border-radius: var(--radius-lg);
 			background: var(--color-bg);
 			overflow: hidden;
 			position: relative;
 			display: flex;
 			flex-direction: column;
-			box-shadow: var(--shadow-1);
 		}
 
 		.phone__label {
@@ -47,6 +46,7 @@
 		.phone .sheet {
 			position: absolute;
 			transform: none;
+			box-shadow: none;
 		}
 
 		.phone .drawer {
@@ -65,7 +65,6 @@
 			justify-content: space-between;
 			min-block-size: 56px;
 			padding-inline: var(--space-2);
-			background: var(--color-surface);
 			border-block-end: 1px solid var(--color-border);
 		}
 
@@ -73,7 +72,7 @@
 			display: flex;
 			flex-direction: column;
 			block-size: 100%;
-			background: var(--color-surface);
+			background: var(--color-bg);
 		}
 
 		.overlay-search__bar {
@@ -88,6 +87,7 @@
 			padding: var(--space-4);
 			display: grid;
 			gap: var(--space-2);
+			justify-items: start;
 		}
 
 		.recent h3 {
@@ -103,7 +103,7 @@
 	<main id="main" class="container">
 		<header class="page-head">
 			<h1>Mobile navigation</h1>
-			<p class="lede">Three frames at 320px: the drawer, the shared bottom-sheet pattern (used by filters and the download selector), and the full-screen search overlay. The drawer is also live — resize the window under 640px and tap the hamburger. RTL flips the drawer edge (review toggle, bottom corner).</p>
+			<p class="lede">Three frames at 320px: the drawer, the shared bottom-sheet pattern (filters + download selector reuse it), and the full-screen search overlay. The drawer is also live — resize under 640px and tap the hamburger. RTL flips the drawer edge.</p>
 		</header>
 
 		<div class="phones">
@@ -122,12 +122,12 @@
 							<button type="button" class="icon-btn" aria-label="Close menu"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
 						</div>
 						<div class="drawer__nav">
-							<a href="#" aria-current="page">Explore</a>
-							<a href="#">Rankings</a>
-							<a href="#">Hall of Fame</a>
-							<a href="#">Compare</a>
-							<a href="#">Quiz</a>
-							<a href="#">About</a>
+							<a href="#top" aria-current="page">Explore</a>
+							<a href="#top">Rankings</a>
+							<a href="#top">Hall of Fame</a>
+							<a href="#top">Quiz</a>
+							<a href="#top">Compare</a>
+							<a href="#top">About</a>
 							<hr class="drawer__divider" />
 							<button type="button" class="drawer__utility"><span>Theme</span><svg class="icon icon--sm" aria-hidden="true"><use href="#i-sun"/></svg></button>
 							<button type="button" class="drawer__utility"><span>Language · 한국어</span><svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
@@ -149,24 +149,20 @@
 					<div class="sheet" style="block-size: 78%;">
 						<div class="sheet__handle" aria-hidden="true"></div>
 						<div class="sheet__body">
-							<div class="filter-rail">
-								<div class="filter-group">
-									<button type="button" class="filter-group__head" aria-expanded="true">Category
-										<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
-									</button>
-									<div class="filter-group__body">
-										<label class="filter-option"><input type="checkbox" checked /> For beginners <span class="count">46</span></label>
-										<label class="filter-option"><input type="checkbox" /> Desktop <span class="count">128</span></label>
-										<label class="filter-option"><input type="checkbox" /> Server <span class="count">64</span></label>
+							<div class="filter-col">
+								<div>
+									<h2 class="filter-group__title">Family</h2>
+									<div class="boxed">
+										<label class="filter-option"><input type="checkbox" checked /> Debian <span class="count">92</span></label>
+										<label class="filter-option"><input type="checkbox" /> Arch <span class="count">31</span></label>
+										<label class="filter-option"><input type="checkbox" /> RPM / Fedora <span class="count">27</span></label>
 									</div>
 								</div>
-								<div class="filter-group">
-									<button type="button" class="filter-group__head" aria-expanded="true">Family
-										<svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron-down"/></svg>
-									</button>
-									<div class="filter-group__body">
-										<label class="filter-option"><input type="checkbox" /> Debian <span class="count">92</span></label>
-										<label class="filter-option"><input type="checkbox" /> Arch <span class="count">31</span></label>
+								<div>
+									<h2 class="filter-group__title">Desktop</h2>
+									<div class="boxed">
+										<label class="filter-option"><input type="checkbox" /> GNOME <span class="count">88</span></label>
+										<label class="filter-option"><input type="checkbox" /> KDE Plasma <span class="count">74</span></label>
 									</div>
 								</div>
 							</div>
@@ -184,17 +180,17 @@
 					<div class="overlay-search">
 						<div class="overlay-search__bar">
 							<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
-							<input class="input" type="search" placeholder="Search distros…" aria-label="Search distros" style="border: 0; min-block-size: 40px; background: none;" />
-							<button type="button" class="btn btn--ghost btn--sm">Cancel</button>
+							<input class="input" type="search" placeholder="Search distributions" aria-label="Search distributions" style="min-block-size: 40px;" />
+							<button type="button" class="btn btn--sm">Cancel</button>
 						</div>
 						<div class="recent">
-							<h3>Recent searches</h3>
-							<span class="chip">fedora</span>
-							<span class="chip">arch</span>
-							<span class="chip">beginner friendly</span>
+							<h3>Recent</h3>
+							<button type="button" class="pill">fedora</button>
+							<button type="button" class="pill">arch</button>
+							<button type="button" class="pill">beginner friendly</button>
 							<h3 style="margin-block-start: var(--space-4);">Try</h3>
-							<span class="chip">rolling release</span>
-							<span class="chip">raspberry pi</span>
+							<button type="button" class="pill">rolling release</button>
+							<button type="button" class="pill">raspberry pi</button>
 						</div>
 					</div>
 				</div>
@@ -207,7 +203,7 @@
 				<div class="spec-frame">
 					<div class="spec-frame__label">Gestures</div>
 					<div class="spec-frame__body">
-						<p class="muted" style="font-size: var(--text-sm);">Sheet dismisses by handle-drag or scrim tap, with a soft spring settle — always with a visible Cancel equivalent. Reduced motion: fade only.</p>
+						<p class="muted" style="font-size: var(--text-sm);">Sheet dismisses by handle-drag or scrim tap — always with a visible Cancel equivalent. Reduced motion: fade only.</p>
 					</div>
 				</div>
 				<div class="spec-frame">
