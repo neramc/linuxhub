@@ -35,6 +35,13 @@ const ICONS = `
 	<symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9 21h6m-3-4v4"/></symbol>
 	<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.5M7 16.5h.5"/></symbol>
 	<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M5 4v7m0 4v5m7-16v3m0 4v9m7-16v11m0 4v1"/><circle cx="5" cy="13" r="2"/><circle cx="12" cy="9" r="2"/><circle cx="19" cy="17" r="2"/></symbol>
+	<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></symbol>
+	<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4"/><path d="M4 20h16"/><path d="m7 14 4-4 3 3 5-6"/></symbol>
+	<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5a3 3 0 0 0 3 5M16 5h3a3 3 0 0 1-3 5"/><path d="M12 13v4m-4 3h8m-4-3v3"/></symbol>
+	<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7m0 3v.5"/></symbol>
+	<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9-9a4.8 4.8 0 0 1 9-2.4A4.8 4.8 0 0 1 21 11c-2 4.5-9 9-9 9Z"/></symbol>
+	<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M8 4v4m8-4v4"/></symbol>
+	<symbol id="i-disk" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></symbol>
 </svg>`;
 
 /* ------------------------------------------------------------------ chrome */
@@ -146,6 +153,15 @@ function footerHtml() {
 }
 
 function drawerHtml(page) {
+	const DRAWER_ICONS = {
+		explore: "i-compass",
+		rankings: "i-chart",
+		"hall-of-fame": "i-trophy",
+		quiz: "i-help",
+		compare: "i-sliders",
+		about: "i-info",
+		contribute: "i-heart",
+	};
 	const nav = [
 		...NAV_ITEMS,
 		["compare", "Compare"],
@@ -154,7 +170,7 @@ function drawerHtml(page) {
 	]
 		.map(
 			([id, label]) =>
-				`<a href="./${id}.html"${page === id ? ' aria-current="page"' : ""}>${label}</a>`,
+				`<a href="./${id}.html"${page === id ? ' aria-current="page"' : ""}>${icon(DRAWER_ICONS[id], "icon icon--sm")}${label}</a>`,
 		)
 		.join("");
 	return `
