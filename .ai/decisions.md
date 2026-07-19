@@ -109,3 +109,21 @@ apps; a compile step would add build orchestration for no runtime benefit.
 each package still typechecks itself (`tsc --noEmit`).
 **Consequences:** No dist/ artifacts or watch pipelines; if a package is ever
 published externally, add a build then (new ADR).
+
+## ADR-0012 — Claude Code assumes the designer role; HTML design comps replace Stitch/Figma
+**Date:** 2026-07-19 · **Status:** accepted
+**Context:** The master brief assigned UI design to Google Stitch (human-run,
+Figma export). The project owner has explicitly asked Claude Code to produce
+the designs itself instead, based on the existing briefs.
+**Decision:** Claude Code takes over the designer role. The design source of
+truth becomes **high-fidelity HTML/CSS comps in `design/`**, built strictly
+from `packages/ui` tokens and the `prompts/stitch/*` briefs (which remain the
+design requirements). Responsive behavior, light/dark themes, and RTL are
+demonstrated live in the comps rather than as separate static frames. The
+approval gate is unchanged: the human reviews the comps and marks the design
+approved before Phase 4 implementation begins.
+**Consequences:** `prompts/stitch/` briefs stay as the per-screen design
+requirements; `design/` holds the deliverable; distro logos appear as neutral
+placeholder tiles in comps (official SVGs only enter via
+`assets/distros` + ATTRIBUTION per `.ai/data-sources.md`); "never redesign an
+approved screen in code" now means: change the comp + get re-approval first.

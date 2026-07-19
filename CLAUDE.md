@@ -14,15 +14,16 @@ responsive, ~57 locales, no user accounts in v1. See `.ai/project.md`.
 
 ## Roles
 
-- **Google Stitch** is the *designer*: layout, responsive behavior, component
-  layout, design system visuals, interaction/motion design. Exports to Figma.
-  Stitch **never** defines architecture, business logic, APIs, or database
-  structures.
-- **Claude Code** is the *implementation environment*: reads the project docs,
-  follows the architecture, builds frontend + backend, writes tests, refactors,
-  and keeps documentation synchronized. Claude Code **never** invents
-  architecture ad hoc, ignores project rules, duplicates components, or changes
-  approved UI without routing the change back through Stitch first.
+- **Claude Code** is both the *designer* and the *implementation environment*
+  (designer role assumed from Google Stitch per **ADR-0012**): it produces
+  high-fidelity HTML/CSS design comps in `design/` from the briefs in
+  `prompts/stitch/`, and after human approval implements frontend + backend,
+  writes tests, refactors, and keeps documentation synchronized. Claude Code
+  **never** invents architecture ad hoc, ignores project rules, duplicates
+  components, or changes an approved screen without updating the comp and
+  getting re-approval first.
+- **The human** reviews and approves designs at the Phase 3 gate and remains
+  the decision authority for scope and process changes.
 
 ## Golden rules (non-negotiable)
 
@@ -99,19 +100,19 @@ Workers runtime (workerd)**, not Bun; the frontend runs on Vercel's runtime.
 Write backend code against Workers APIs (Web `fetch`, D1/KV bindings). Use Bun
 only for local dev/build/test.
 
-## Design workflow with Google Stitch
+## Design workflow (ADR-0012)
 
 ```
-Design Documentation → Google Stitch → Design Review → Figma Export
-→ Approved Design → Implementation
+Design Documentation (briefs) → HTML/CSS Design Comps in design/
+→ Human Design Review → Approved Design → Implementation
 ```
 
-- Before Stitch: finish `.ai/design-system.md` and write per-screen briefs in
-  `prompts/stitch/<screen>.md` (Phase 2). Then **STOP and hand off** — the
-  human runs Stitch, reviews, exports to Figma, and marks the design approved.
-- Implement the frontend only from the **approved** design. If something can't
-  be built as designed, note it, propose a change, and route it back through
-  Stitch. **Never silently redesign in code.**
+- `prompts/stitch/*.md` briefs are the per-screen design requirements;
+  `design/` holds the comps built strictly from `packages/ui` tokens.
+- The human reviews the comps (both themes, breakpoints, RTL, states) and
+  marks the design **approved**. Only then does Phase 4 implement it.
+- If something can't be built as designed, update the comp, get re-approval,
+  then implement. **Never silently redesign in code.**
 
 ## Guardrails — never do these
 
