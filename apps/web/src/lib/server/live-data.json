@@ -1,0 +1,452 @@
+{
+	"fetched_at": "2026-07-19T23:21:09.391Z",
+	"sources": [
+		"https://endoflife.date/api (release cycles, dates, EOL)",
+		"https://archlinux.org/mirrors/status/json/ (official Arch mirror health)",
+		"https://mirrors.fedoraproject.org/mirrorlist (official Fedora mirrors)"
+	],
+	"releases": {
+		"ubuntu": [
+			{
+				"cycle": "26.04",
+				"latest": "26.04",
+				"codename": "Resolute Raccoon",
+				"releaseDate": "2026-04-23",
+				"eol": "2031-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "25.10",
+				"latest": "25.10",
+				"codename": "Questing Quokka",
+				"releaseDate": "2025-10-09",
+				"eol": "2026-07-01",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "25.04",
+				"latest": "25.04",
+				"codename": "Plucky Puffin",
+				"releaseDate": "2025-04-17",
+				"eol": "2026-01-17",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "24.10",
+				"latest": "24.10",
+				"codename": "Oracular Oriole",
+				"releaseDate": "2024-10-10",
+				"eol": "2025-07-10",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "24.04",
+				"latest": "24.04.4",
+				"codename": "Noble Numbat",
+				"releaseDate": "2024-04-25",
+				"eol": "2029-05-31",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "23.10",
+				"latest": "23.10",
+				"codename": "Mantic Minotaur",
+				"releaseDate": "2023-10-12",
+				"eol": "2024-07-12",
+				"lts": false,
+				"supported": false
+			}
+		],
+		"fedora": [
+			{
+				"cycle": "44",
+				"latest": "44",
+				"releaseDate": "2026-04-28",
+				"eol": "2027-06-02",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "43",
+				"latest": "43",
+				"releaseDate": "2025-10-28",
+				"eol": "2026-12-09",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "42",
+				"latest": "42",
+				"codename": "Adams",
+				"releaseDate": "2025-04-15",
+				"eol": "2026-05-27",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "41",
+				"latest": "41",
+				"releaseDate": "2024-10-29",
+				"eol": "2025-12-15",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "40",
+				"latest": "40",
+				"releaseDate": "2024-04-23",
+				"eol": "2025-05-13",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "39",
+				"latest": "39",
+				"releaseDate": "2023-11-07",
+				"eol": "2024-11-26",
+				"lts": false,
+				"supported": false
+			}
+		],
+		"debian": [
+			{
+				"cycle": "13",
+				"latest": "13.6",
+				"codename": "Trixie",
+				"releaseDate": "2025-08-09",
+				"eol": "2028-08-09",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "12",
+				"latest": "12.15",
+				"codename": "Bookworm",
+				"releaseDate": "2023-06-10",
+				"eol": "2026-07-11",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "11",
+				"latest": "11.11",
+				"codename": "Bullseye",
+				"releaseDate": "2021-08-14",
+				"eol": "2024-08-14",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "10",
+				"latest": "10.13",
+				"codename": "Buster",
+				"releaseDate": "2019-07-06",
+				"eol": "2022-09-10",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "9",
+				"latest": "9.13",
+				"codename": "Stretch",
+				"releaseDate": "2017-06-17",
+				"eol": "2020-07-18",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "8",
+				"latest": "8.11",
+				"codename": "Jessie",
+				"releaseDate": "2015-04-25",
+				"eol": "2018-06-17",
+				"lts": false,
+				"supported": false
+			}
+		],
+		"linux-mint": [
+			{
+				"cycle": "22.3",
+				"codename": "Zena",
+				"releaseDate": "2026-01-11",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "lmde7",
+				"codename": "Gigi",
+				"releaseDate": "2025-10-14",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "22.2",
+				"codename": "Zara",
+				"releaseDate": "2025-09-04",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "22.1",
+				"codename": "Xia",
+				"releaseDate": "2025-01-16",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "22",
+				"codename": "Wilma",
+				"releaseDate": "2024-07-25",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "21.3",
+				"codename": "Virginia",
+				"releaseDate": "2024-01-12",
+				"eol": "2027-04-30",
+				"lts": true,
+				"supported": true
+			}
+		],
+		"opensuse": [
+			{
+				"cycle": "16.0",
+				"releaseDate": "2025-10-01",
+				"eol": "2027-10-31",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "15.6",
+				"releaseDate": "2024-06-12",
+				"eol": "2026-04-30",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "15.5",
+				"releaseDate": "2023-06-07",
+				"eol": "2024-12-31",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "15.4",
+				"releaseDate": "2022-06-09",
+				"eol": "2023-12-07",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "15.3",
+				"releaseDate": "2021-06-02",
+				"eol": "2022-12-31",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "15.2",
+				"releaseDate": "2020-07-02",
+				"eol": "2022-01-04",
+				"lts": false,
+				"supported": false
+			}
+		],
+		"nixos": [
+			{
+				"cycle": "26.05",
+				"codename": "Yarara",
+				"releaseDate": "2026-05-30",
+				"eol": "2026-12-31",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "25.11",
+				"codename": "Xantusia",
+				"releaseDate": "2025-11-30",
+				"eol": "2026-06-30",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "25.05",
+				"codename": "Warbler",
+				"releaseDate": "2025-05-23",
+				"eol": "2025-12-31",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "24.11",
+				"codename": "Vicuña",
+				"releaseDate": "2024-11-30",
+				"eol": "2025-06-30",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "24.05",
+				"codename": "Uakari",
+				"releaseDate": "2024-05-31",
+				"eol": "2024-12-31",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "23.11",
+				"codename": "Tapir",
+				"releaseDate": "2023-11-29",
+				"eol": "2024-06-30",
+				"lts": false,
+				"supported": false
+			}
+		],
+		"pop-os": [
+			{
+				"cycle": "24.04",
+				"releaseDate": "2025-12-11",
+				"eol": "2029-05-31",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "22.04",
+				"releaseDate": "2022-04-25",
+				"eol": "2027-04-25",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "21.10",
+				"releaseDate": "2021-12-14",
+				"eol": "2022-07-24",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "21.04",
+				"releaseDate": "2021-06-29",
+				"eol": "2022-03-13",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "20.10",
+				"releaseDate": "2020-10-23",
+				"eol": "2021-09-28",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "20.04",
+				"releaseDate": "2020-04-30",
+				"eol": "2025-04-30",
+				"lts": true,
+				"supported": false
+			}
+		]
+	},
+	"mirrors": {
+		"arch": [
+			{
+				"name": "mirror.osbeck.com",
+				"url": "https://mirror.osbeck.com/archlinux/",
+				"country": "Sweden",
+				"countryCode": "SE",
+				"note": "score 0.1 · https"
+			},
+			{
+				"name": "frankfurt.mirror.pkgbuild.com",
+				"url": "https://frankfurt.mirror.pkgbuild.com/",
+				"country": "Germany",
+				"countryCode": "DE",
+				"note": "score 0.1 · https"
+			},
+			{
+				"name": "mirror.moson.org",
+				"url": "https://mirror.moson.org/arch/",
+				"country": "Germany",
+				"countryCode": "DE",
+				"note": "score 0.1 · https"
+			},
+			{
+				"name": "london.mirror.pkgbuild.com",
+				"url": "https://london.mirror.pkgbuild.com/",
+				"country": "United Kingdom",
+				"countryCode": "GB",
+				"note": "score 0.1 · https"
+			},
+			{
+				"name": "berlin.mirror.pkgbuild.com",
+				"url": "https://berlin.mirror.pkgbuild.com/",
+				"country": "Germany",
+				"countryCode": "DE",
+				"note": "score 0.1 · https"
+			},
+			{
+				"name": "mirror.trap.moe",
+				"url": "https://mirror.trap.moe/archlinux/",
+				"country": "France",
+				"countryCode": "FR",
+				"note": "score 0.2 · https"
+			},
+			{
+				"name": "de.arch.niranjan.co",
+				"url": "https://de.arch.niranjan.co/",
+				"country": "Germany",
+				"countryCode": "DE",
+				"note": "score 0.2 · https"
+			},
+			{
+				"name": "al.arch.niranjan.co",
+				"url": "https://al.arch.niranjan.co/",
+				"country": "Albania",
+				"countryCode": "AL",
+				"note": "score 0.2 · https"
+			}
+		],
+		"fedora": [
+			{
+				"name": "mirror.math.princeton.edu",
+				"url": "http://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "d2lzkl7pfhq30w.cloudfront.net",
+				"url": "https://d2lzkl7pfhq30w.cloudfront.net/pub/archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "pubmirror1.math.uh.edu",
+				"url": "http://pubmirror1.math.uh.edu/fedora-buffet/archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "dl.fedoraproject.org",
+				"url": "https://dl.fedoraproject.org/pub/archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "ftp-stud.hs-esslingen.de",
+				"url": "https://ftp-stud.hs-esslingen.de/pub/Mirrors/archive.fedoraproject.org/fedora/linux/releases/42/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "fedora-archive.ip-connect.info",
+				"url": "https://fedora-archive.ip-connect.info/fedora/linux/releases/42/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			}
+		]
+	}
+}
