@@ -13,6 +13,10 @@ coverage/
 .env.*
 .dev.vars
 
+# Playwright
+test-results/
+playwright-report/
+
 # Misc
 *.log
 *.tsbuildinfo

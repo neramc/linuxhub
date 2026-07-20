@@ -37,6 +37,8 @@ A faithful **Flathub / GNOME (libadwaita)** clone: calm, flat, content-first.
 | `--color-text-muted` | `#5e5e63` | `#b3b3b8` | secondary text |
 | `--color-accent` | `#3584e4` | `#3584e4` | primary buttons, selection |
 | `--color-accent-hover` | `#1c71d8` | `#4a90e8` | hovered primary |
+| `--color-accent-strong` | `#1a5fb4` | `#1a5fb4` | text-bearing accent surfaces (primary buttons, active pills) — WCAG AA vs white (6.3:1), a11y correction 2026-07-20 |
+| `--color-accent-strong-hover` | `#1c71d8` | `#1c71d8` | hovered strong accent (4.8:1) |
 | `--color-accent-contrast` | `#ffffff` | `#ffffff` | text on accent |
 | `--color-link` | `#1c71d8` | `#78aeed` | inline links |
 | `--color-accent-soft` | `#e7f0fb` | `#2a3a4d` | selected row tint, focus wash |

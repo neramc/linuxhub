@@ -145,7 +145,6 @@ const sourceLinks = $derived.by(() => {
 					<div
 						class="vrow"
 						class:vrow--open={openVersion === i}
-						style={version.channel === "eol" ? "opacity: 0.6;" : ""}
 					>
 						<button
 							type="button"

@@ -8,6 +8,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test:e2e": "playwright test",
 		"test": "vitest run --passWithNoTests"
 	},
 	"dependencies": {
@@ -16,6 +17,8 @@
 		"@linuxhub/ui": "workspace:*"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.12.1",
+		"@playwright/test": "^1.61.1",
 		"@sveltejs/adapter-vercel": "^5.10.0",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
