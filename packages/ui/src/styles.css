@@ -2148,3 +2148,18 @@ button.row:hover {
 body.bare .mock-toolbar {
 	display: none;
 }
+
+/* -------------------------------------------------------- view transitions */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: var(--motion-base);
+	animation-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.01ms;
+	}
+}

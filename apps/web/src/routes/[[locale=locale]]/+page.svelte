@@ -3,6 +3,7 @@ import { localizeHref, m } from "@linuxhub/i18n";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
+import { prefersReducedMotion } from "@linuxhub/ui/motion";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
@@ -26,7 +27,10 @@ const CATEGORIES = [
 let track: HTMLElement | undefined = $state();
 
 function slide(direction: number) {
-	track?.scrollBy({ left: direction * track.clientWidth, behavior: "smooth" });
+	track?.scrollBy({
+		left: direction * track.clientWidth,
+		behavior: prefersReducedMotion() ? "auto" : "smooth",
+	});
 }
 </script>
 
