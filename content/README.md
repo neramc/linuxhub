@@ -11,4 +11,5 @@ content/distros/<slug>/<locale>/
 
 Authoring rules, frontmatter schema, and the review checklist are in
 `.ai/content.md` (binding: paraphrase from official docs, cite sources, never
-copy verbatim). First content lands in Phase 5+ alongside distro onboarding.
+copy verbatim). English docs for the initial 12 distros are authored; other
+locales follow the progressive strategy in `.ai/i18n.md`.

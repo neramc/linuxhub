@@ -265,8 +265,8 @@ export type Version = {
 };
 
 // ---------------------------------------------------------------------------
-// Per-distro detail (releases/mirrors from the live snapshot; identity,
-// editions, and descriptions curated — content pipeline lands with MDX).
+// Per-distro detail (releases/mirrors from the live snapshot; identity and
+// editions curated here; prose docs live in content/distros/ as mdsvex).
 // ---------------------------------------------------------------------------
 
 export const HOMEPAGES: Record<string, string> = {
@@ -297,52 +297,6 @@ const EDITIONS: Record<string, string[]> = {
 	zorin: ["Core", "Lite", "Pro"],
 	elementary: ["elementary OS"],
 	endeavouros: ["ISO (Calamares)"],
-};
-
-const DESCRIPTIONS: Record<string, string[]> = {
-	ubuntu: [
-		"Ubuntu is the most widely deployed desktop Linux, built on Debian with predictable releases: an LTS every two years with five years of updates, and interim releases in between.",
-		"Its size is the point — hardware vendors test against it, software ships .debs for it, and nearly every tutorial assumes it.",
-	],
-	fedora: [
-		"Fedora is where much of the Linux desktop's future ships first. Backed by Red Hat and built by a large community, it delivers a new release roughly every six months with the latest stable GNOME, kernel, and developer toolchains — while staying reliable enough for daily work.",
-		"Workstation is the flagship; spins cover KDE and Xfce, and the Atomic desktops offer image-based systems with rollbacks.",
-	],
-	"linux-mint": [
-		"Linux Mint takes Ubuntu's LTS base and wraps it in the Cinnamon desktop — a layout Windows users recognize immediately, with codecs and sensible defaults included.",
-		"Updates are conservative on purpose: Mint prioritizes not breaking your machine over shipping the newest bits.",
-	],
-	arch: [
-		"Arch is a rolling-release distribution you assemble yourself: a minimal base, the pacman package manager, the AUR's enormous user repository, and the best documentation in Linux — the ArchWiki.",
-		"There is no installer holding your hand and no release schedule; your system is always current.",
-	],
-	debian: [
-		"Debian is the universal operating system — the volunteer-run project whose stable releases and packaging culture underpin hundreds of derivatives, Ubuntu included.",
-		"Stable trades novelty for rock-solid predictability, which is why it runs so much of the world's server fleet.",
-	],
-	opensuse: [
-		"openSUSE offers two tracks from one project: Leap, a stable release aligned with SUSE's enterprise base, and Tumbleweed, a rolling release that is openQA-tested before updates reach you.",
-		"YaST, its configuration center, remains the most complete admin tool shipped by any distribution.",
-	],
-	manjaro: [
-		"Manjaro delivers Arch's rolling model with training wheels: updates are held briefly for extra testing, hardware detection is automatic, and a graphical installer gets you running fast.",
-		"You keep pacman and the AUR without hand-building the system.",
-	],
-	"pop-os": [
-		"Pop!_OS is System76's developer-focused desktop built on Ubuntu, known for its tiling window management, first-class NVIDIA support, and its new Rust-based COSMIC desktop.",
-	],
-	nixos: [
-		"NixOS is built on the Nix package manager: your whole system is described in one declarative configuration, builds are reproducible, and every change can be rolled back from the boot menu.",
-	],
-	zorin: [
-		"Zorin OS is designed for people leaving Windows or macOS — layout switching makes the desktop feel familiar in one click, on an Ubuntu LTS base.",
-	],
-	elementary: [
-		"elementary OS pairs an Ubuntu base with Pantheon, a deliberate, design-first desktop with its own human interface guidelines and a curated app store.",
-	],
-	endeavouros: [
-		"EndeavourOS is Arch made approachable: a friendly Calamares installer and a famously welcoming community, with the system staying essentially vanilla Arch underneath.",
-	],
 };
 
 const ROLLING = new Set(["arch", "endeavouros", "manjaro"]);
@@ -450,7 +404,7 @@ export function getDetailFor(distro: Distro) {
 	return {
 		summary: distro.summary,
 		homepage: HOMEPAGES[distro.slug] ?? "https://distrowatch.com",
-		badges: { family: distro.familyLine, active: true, translated: false },
+		badges: { family: distro.familyLine, active: true, translated: true },
 		meta: [
 			{ icon: "download", value: distro.downloads, labelKey: "detail_downloads" },
 			{
@@ -464,7 +418,6 @@ export function getDetailFor(distro: Distro) {
 			{ icon: "monitor", value: spec?.desktop ?? "—", label: "Default desktop" },
 			{ icon: "cpu", value: "x86_64 +", labelKey: "detail_architectures" },
 		],
-		description: DESCRIPTIONS[distro.slug] ?? [distro.summary],
 		editions: EDITIONS[distro.slug] ?? ["Official ISO"],
 		architectures: ["x86_64", "aarch64"],
 		formats: [".iso", ".iso.torrent", "Checksum", "GPG signature"],

@@ -10,6 +10,23 @@ let { data }: PageProps = $props();
 let tab: "description" | "install" | "usage" = $state("description");
 let openVersion: number | null = $state(0);
 let mirror = $state(0);
+
+const activeDoc = $derived(data.content[tab]);
+const docsUrl = $derived(
+	data.content.description?.meta.official_links?.docs ?? data.detail.homepage,
+);
+// One link per hostname keeps the sources line readable.
+const sourceLinks = $derived.by(() => {
+	const seen = new Set<string>();
+	const links: { host: string; url: string }[] = [];
+	for (const url of activeDoc?.meta.sources ?? []) {
+		const host = new URL(url).hostname;
+		if (seen.has(host)) continue;
+		seen.add(host);
+		links.push({ host, url });
+	}
+	return links;
+});
 </script>
 
 <svelte:head>
@@ -77,12 +94,23 @@ let mirror = $state(0);
 				</button>
 			</div>
 			<article class="prose" style="padding-block-start: var(--space-4); max-inline-size: none;">
-				{#if tab === "description"}
-					{#each data.detail.description as paragraph (paragraph)}
-						<p>{paragraph}</p>
-					{/each}
-				{:else if tab === "install"}
-					<p class="muted">{m.state_loading}…</p>
+				{#if activeDoc}
+					{@const Doc = activeDoc.component}
+					{#if !activeDoc.translated}
+						<p><span class="badge badge--warning">{m.badge_english_fallback}</span></p>
+					{/if}
+					<Doc />
+					{#if sourceLinks.length > 0}
+						<footer class="sources">
+							{m.detail_sources}
+							{#each sourceLinks as source, i (source.url)}
+								{i > 0 ? " · " : " "}<a href={source.url} rel="external noreferrer">{source.host}</a>
+							{/each}
+							{#if activeDoc.meta.last_reviewed}
+								· {m.detail_last_reviewed} {activeDoc.meta.last_reviewed}
+							{/if}
+						</footer>
+					{/if}
 				{:else}
 					<p class="muted">{m.state_loading}…</p>
 				{/if}
@@ -228,7 +256,7 @@ let mirror = $state(0);
 					<span class="row__body"><span class="row__title">{m.detail_official_site}</span></span>
 					<Icon name="external" size="sm" />
 				</a>
-				<a class="row" href={data.detail.homepage} rel="external noreferrer">
+				<a class="row" href={docsUrl} rel="external noreferrer">
 					<span class="row__body"><span class="row__title">{m.detail_documentation}</span></span>
 					<Icon name="external" size="sm" />
 				</a>

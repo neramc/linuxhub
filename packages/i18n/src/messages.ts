@@ -120,6 +120,8 @@ export const m = {
 	dl_verify_note:
 		"Verify your download with the checksums and GPG signatures published on the official site.",
 	detail_data_note: "Release and mirror data from official sources · snapshot",
+	detail_sources: "Written from official sources:",
+	detail_last_reviewed: "last reviewed",
 
 	rankings_title: "Rankings",
 	rankings_lede: "Popularity from our own signals — views, downloads, and release activity.",
