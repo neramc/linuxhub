@@ -1,12 +1,8 @@
-// UI message catalog — English (base locale).
-//
-// Interim shape for Phase 4 milestone 1: pages must reference message keys
-// (never hardcode strings in markup). The Paraglide (inlang) wiring that
-// compiles per-locale catalogs replaces this module's plumbing in the i18n
-// milestone (.ai/frontend-rules.md, .ai/i18n.md) — keys are kept
-// Paraglide-compatible so the swap is mechanical.
+// UI message catalog — English (base locale, the complete reference).
+// Translations live in messages.<locale>.ts with the same keys; resolution
+// and fallback happen in runtime.ts (see ADR-0016).
 
-export const m = {
+export const en = {
 	site_name: "Linuxhub",
 	site_tagline: "A catalog of Linux distributions with downloads from official mirrors.",
 	skip_to_content: "Skip to content",
@@ -243,4 +239,4 @@ export const m = {
 	about_on_this_page: "On this page",
 } as const;
 
-export type MessageKey = keyof typeof m;
+export type MessageKey = keyof typeof en;

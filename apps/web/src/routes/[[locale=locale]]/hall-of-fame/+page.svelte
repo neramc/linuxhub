@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
 import type { PageProps } from "./$types";
 
@@ -14,7 +14,7 @@ let { data }: PageProps = $props();
 	<div class="hof">
 		<header class="page-head">
 			<h1>{m.hof_title}</h1>
-			<p class="lede">{m.hof_lede} {m.hof_now} <a href="/rankings">{m.nav_rankings}</a>.</p>
+			<p class="lede">{m.hof_lede} {m.hof_now} <a href={localizeHref("/rankings")}>{m.nav_rankings}</a>.</p>
 		</header>
 
 		<div class="hof-grid">

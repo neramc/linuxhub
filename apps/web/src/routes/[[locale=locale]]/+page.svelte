@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
@@ -44,7 +44,7 @@ function slide(direction: number) {
 			<div class="banner-track" bind:this={track} aria-label={m.home_distro_of_day}>
 				{#each data.banners as banner (banner.slug)}
 					{#if banner.distro}
-						<a class="banner-tile" href={`/distro/${banner.slug}`} style={`--tile: ${banner.distro.color}`}>
+						<a class="banner-tile" href={localizeHref(`/distro/${banner.slug}`)} style={`--tile: ${banner.distro.color}`}>
 							<LogoTile color={banner.distro.color} initials={banner.distro.initials} size="lg" src={banner.distro.logo} />
 							<span class="banner-tile__body">
 								<span class="banner-tile__kicker">{KICKERS[banner.kicker]}</span>
@@ -68,22 +68,22 @@ function slide(direction: number) {
 
 	<nav class="cat-tiles" aria-label={m.home_categories} style="margin-block-start: var(--space-5);">
 		{#each CATEGORIES as cat (cat.slug)}
-			<a class="cat-tile" href={`/explore?category=${cat.slug}`} style={`--g1: ${cat.g1}; --g2: ${cat.g2}`}>
+			<a class="cat-tile" href={localizeHref(`/explore?category=${cat.slug}`)} style={`--g1: ${cat.g1}; --g2: ${cat.g2}`}>
 				<Icon name={cat.icon} />
 				{cat.label}
 			</a>
 		{/each}
-		<a class="cat-tile" href="/explore" style="--g1: #9a9996; --g2: #5e5c64">
+		<a class="cat-tile" href={localizeHref("/explore")} style="--g1: #9a9996; --g2: #5e5c64">
 			<Icon name="search" />
 			{m.home_all_categories}
 		</a>
 	</nav>
 
-	<div class="section-title"><h2>{m.home_trending}</h2><a href="/rankings">{m.home_see_more}</a></div>
+	<div class="section-title"><h2>{m.home_trending}</h2><a href={localizeHref("/rankings")}>{m.home_see_more}</a></div>
 	<div class="card-grid">
 		{#each data.trending as distro (distro.slug)}
 			<DistroCard
-				href={`/distro/${distro.slug}`}
+				href={localizeHref(`/distro/${distro.slug}`)}
 				name={distro.name}
 				summary={distro.summary}
 				color={distro.color}
@@ -93,11 +93,11 @@ function slide(direction: number) {
 		{/each}
 	</div>
 
-	<div class="section-title"><h2>{m.home_popular}</h2><a href="/rankings">{m.home_see_more}</a></div>
+	<div class="section-title"><h2>{m.home_popular}</h2><a href={localizeHref("/rankings")}>{m.home_see_more}</a></div>
 	<div class="card-grid">
 		{#each data.popular as distro (distro.slug)}
 			<DistroCard
-				href={`/distro/${distro.slug}`}
+				href={localizeHref(`/distro/${distro.slug}`)}
 				name={distro.name}
 				summary={distro.summary}
 				color={distro.color}
@@ -107,10 +107,10 @@ function slide(direction: number) {
 		{/each}
 	</div>
 
-	<div class="section-title"><h2>{m.home_recently_updated}</h2><a href="/explore">{m.home_see_more}</a></div>
+	<div class="section-title"><h2>{m.home_recently_updated}</h2><a href={localizeHref("/explore")}>{m.home_see_more}</a></div>
 	<div class="boxed">
 		{#each data.recent as release (release.title)}
-			<a class="row" href={`/distro/${release.slug}`}>
+			<a class="row" href={localizeHref(`/distro/${release.slug}`)}>
 				{#if release.distro}
 					<LogoTile color={release.distro.color} initials={release.distro.initials} size="sm" src={release.distro.logo} />
 				{/if}
@@ -125,7 +125,7 @@ function slide(direction: number) {
 
 	<div class="section-title"><h2>{m.home_not_sure}</h2></div>
 	<div class="boxed" style="margin-block-end: var(--space-7);">
-		<a class="row" href="/quiz">
+		<a class="row" href={localizeHref("/quiz")}>
 			<Icon name="help" size="sm" />
 			<span class="row__body">
 				<span class="row__title">{m.home_finder_title}</span>
@@ -133,7 +133,7 @@ function slide(direction: number) {
 			</span>
 			<Icon name="chevron-end" size="sm" flip />
 		</a>
-		<a class="row" href="/compare">
+		<a class="row" href={localizeHref("/compare")}>
 			<Icon name="sliders" size="sm" />
 			<span class="row__body">
 				<span class="row__title">{m.home_compare_title}</span>

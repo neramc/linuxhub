@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import { page } from "$app/state";
 import { toggleTheme, ui } from "$lib/state/ui.svelte";
@@ -36,7 +36,7 @@ function onkeydown(e: KeyboardEvent) {
 ></div>
 <nav class="drawer" class:drawer--open={ui.drawerOpen} aria-label={m.nav_menu} inert={!ui.drawerOpen}>
 	<div class="drawer__head">
-		<a class="wordmark" href="/"><Icon name="logo" /><span>{m.site_name}</span></a>
+		<a class="wordmark" href={localizeHref("/")}><Icon name="logo" /><span>{m.site_name}</span></a>
 		<button type="button" class="icon-btn" aria-label={m.nav_close_menu} onclick={close}>
 			<Icon name="close" />
 		</button>

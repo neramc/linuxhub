@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import { page } from "$app/state";
 
@@ -23,11 +23,11 @@ const notFound = $derived(page.status === 404);
 		{/if}
 		<div class="err__actions">
 			{#if notFound}
-				<a class="btn btn--primary" href="/">{m.error_back_home}</a>
-				<a class="btn" href="/distro/fedora"><Icon name="dice" size="sm" />{m.error_random}</a>
+				<a class="btn btn--primary" href={localizeHref("/")}>{m.error_back_home}</a>
+				<a class="btn" href={localizeHref("/distro/fedora")}><Icon name="dice" size="sm" />{m.error_random}</a>
 			{:else}
 				<button type="button" class="btn btn--primary" onclick={() => location.reload()}>{m.error_try_again}</button>
-				<a class="btn" href="/">{m.error_back_home}</a>
+				<a class="btn" href={localizeHref("/")}>{m.error_back_home}</a>
 			{/if}
 		</div>
 	</div>

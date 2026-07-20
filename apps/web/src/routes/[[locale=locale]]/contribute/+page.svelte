@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 
 type Tab = "suggest" | "report" | "feedback";
@@ -46,7 +46,7 @@ function submit(e: SubmitEvent) {
 					>
 						{m.form_again}
 					</button>
-					<a class="btn btn--sm" style="background: var(--color-bg);" href="/explore">{m.nav_explore}</a>
+					<a class="btn btn--sm" style="background: var(--color-bg);" href={localizeHref("/explore")}>{m.nav_explore}</a>
 				</div>
 			</div>
 		{:else}

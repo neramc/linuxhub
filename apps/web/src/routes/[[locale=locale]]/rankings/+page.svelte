@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
 import type { PageProps } from "./$types";
 
@@ -32,7 +32,7 @@ const entries = $derived(
 	<div class="rank-page">
 		<header class="page-head">
 			<h1>{m.rankings_title}</h1>
-			<p class="lede">{m.rankings_lede} <a href="/about#rankings">{m.rankings_how}</a></p>
+			<p class="lede">{m.rankings_lede} <a href={localizeHref("/about#rankings")}>{m.rankings_how}</a></p>
 		</header>
 
 		<div class="rank-controls">
@@ -56,7 +56,7 @@ const entries = $derived(
 		<ol class="boxed" style="list-style: none; margin: 0; padding: 0;">
 			{#each entries as entry, i (entry.slug)}
 				<li>
-					<a class="row" class:row--top={i < 3} href={`/distro/${entry.slug}`}>
+					<a class="row" class:row--top={i < 3} href={localizeHref(`/distro/${entry.slug}`)}>
 						<span class="rank-num">{i + 1}</span>
 						<LogoTile color={entry.color} initials={entry.initials} size="sm" src={entry.logo} />
 						<span class="row__body">
@@ -74,10 +74,10 @@ const entries = $derived(
 			{/each}
 		</ol>
 
-		<div class="section-title"><h2>{m.rankings_movers}</h2><a href="/hall-of-fame">{m.nav_hall_of_fame}</a></div>
+		<div class="section-title"><h2>{m.rankings_movers}</h2><a href={localizeHref("/hall-of-fame")}>{m.nav_hall_of_fame}</a></div>
 		<div class="boxed" style="margin-block-end: var(--space-7);">
 			{#each data.movers as entry (entry.slug)}
-				<a class="row" href={`/distro/${entry.slug}`}>
+				<a class="row" href={localizeHref(`/distro/${entry.slug}`)}>
 					<LogoTile color={entry.color} initials={entry.initials} size="sm" src={entry.logo} />
 					<span class="row__body"><span class="row__title">{entry.name}</span></span>
 					<span class="row__end">

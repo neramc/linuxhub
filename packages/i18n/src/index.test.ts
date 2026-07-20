@@ -32,3 +32,42 @@ describe("locale registry", () => {
 		expect(fallbackChain("en")).toEqual(["en"]);
 	});
 });
+
+describe("message runtime", async () => {
+	const { getLocale, localizeHref, m, setLocale, splitLocale } = await import("./runtime");
+	const { detectLocale, localeFromAcceptLanguage } = await import("./geo");
+
+	it("resolves messages in the active locale with English fallback", () => {
+		setLocale("ko");
+		expect(getLocale()).toBe("ko");
+		expect(m.nav_explore).toBe("탐색");
+		setLocale("de"); // no catalog yet → falls back to en
+		expect(m.nav_explore).toBe("Explore");
+		setLocale("en");
+		expect(m.nav_explore).toBe("Explore");
+	});
+
+	it("localizes hrefs (en unprefixed)", () => {
+		setLocale("en");
+		expect(localizeHref("/explore")).toBe("/explore");
+		setLocale("ko");
+		expect(localizeHref("/explore")).toBe("/ko/explore");
+		expect(localizeHref("/")).toBe("/ko");
+		setLocale("en");
+	});
+
+	it("splits locale prefixes from pathnames", () => {
+		expect(splitLocale("/ko/distro/fedora", isLocale)).toEqual(["ko", "/distro/fedora"]);
+		expect(splitLocale("/explore", isLocale)).toEqual(["en", "/explore"]);
+		expect(splitLocale("/ko", isLocale)).toEqual(["ko", "/"]);
+	});
+
+	it("detects locale from country then accept-language", () => {
+		expect(detectLocale("KR", null)).toBe("ko");
+		expect(detectLocale(null, "ko-KR,ko;q=0.9,en;q=0.5")).toBe("ko");
+		expect(detectLocale(null, "pt-BR,pt;q=0.9")).toBe("pt-BR");
+		expect(localeFromAcceptLanguage("fr-CA,fr;q=0.8")).toBe("fr");
+		expect(detectLocale(null, null)).toBe("en");
+		expect(detectLocale("XX", "zz")).toBe("en");
+	});
+});

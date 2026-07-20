@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
 import type { PageProps } from "./$types";
@@ -65,7 +65,7 @@ const matches = $derived(
 				>
 					{m.quiz_start}
 				</button>
-				<a class="btn btn--lg" href="/explore">{m.quiz_browse}</a>
+				<a class="btn btn--lg" href={localizeHref("/explore")}>{m.quiz_browse}</a>
 			</div>
 		</div>
 	{:else if stage === "questions"}
@@ -122,8 +122,8 @@ const matches = $derived(
 					<h1 style="font-size: var(--text-2xl); font-weight: 700;">{top.name}</h1>
 					<p class="muted" style="max-inline-size: 44ch;">{top.summary}</p>
 					<div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
-						<a class="btn btn--primary btn--lg" href={`/distro/${top.slug}`}>{m.quiz_see} {top.name}</a>
-						<a class="btn btn--lg" href={`/distro/${top.slug}#downloads`} style="background: var(--color-bg);">
+						<a class="btn btn--primary btn--lg" href={localizeHref(`/distro/${top.slug}`)}>{m.quiz_see} {top.name}</a>
+						<a class="btn btn--lg" href={localizeHref(`/distro/${top.slug}#downloads`)} style="background: var(--color-bg);">
 							{m.detail_download}
 						</a>
 					</div>
@@ -132,7 +132,7 @@ const matches = $derived(
 			{#if matches.length > 1}
 				<div class="boxed runner-ups">
 					{#each matches.slice(1) as runner (runner.slug)}
-						<a class="row" href={`/distro/${runner.slug}`}>
+						<a class="row" href={localizeHref(`/distro/${runner.slug}`)}>
 							<LogoTile color={runner.color} initials={runner.initials} size="sm" src={runner.logo} />
 							<span class="row__body">
 								<span class="row__title">{runner.name}</span>
@@ -145,7 +145,7 @@ const matches = $derived(
 			{/if}
 			<div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
 				<button type="button" class="btn btn--sm" onclick={restart}>{m.quiz_retake}</button>
-				<a class="btn btn--sm" href={`/compare?slugs=${matches.map((d) => d.slug).join(",")}`}>
+				<a class="btn btn--sm" href={localizeHref(`/compare?slugs=${matches.map((d) => d.slug).join(",")}`)}>
 					{m.quiz_compare_matches}
 				</a>
 			</div>

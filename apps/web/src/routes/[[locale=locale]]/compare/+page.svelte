@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
 import { goto } from "$app/navigation";
@@ -27,7 +27,7 @@ function isDiff(row: (typeof ROWS)[number]): boolean {
 }
 
 function setSlugs(slugs: string[]) {
-	void goto(`/compare?slugs=${slugs.join(",")}`, { noScroll: true });
+	void goto(localizeHref(`/compare?slugs=${slugs.join(",")}`), { noScroll: true });
 }
 
 function remove(slug: string) {
@@ -137,7 +137,7 @@ function add(slug: string) {
 						<th scope="row"></th>
 						{#each data.picked as distro (distro.slug)}
 							<td>
-								<a class="btn btn--primary btn--sm btn--block" href={`/distro/${distro.slug}#downloads`}>
+								<a class="btn btn--primary btn--sm btn--block" href={localizeHref(`/distro/${distro.slug}#downloads`)}>
 									{m.detail_download}
 								</a>
 							</td>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import type { ApiSuccess } from "@linuxhub/shared";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
@@ -41,10 +41,10 @@ function pick(index: number) {
 	const distro = results[index];
 	if (distro) {
 		close();
-		void goto(`/distro/${distro.slug}`);
+		void goto(localizeHref(`/distro/${distro.slug}`));
 	} else if (query.trim()) {
 		close();
-		void goto(`/search?q=${encodeURIComponent(query.trim())}`);
+		void goto(localizeHref(`/search?q=${encodeURIComponent(query.trim())}`));
 	}
 }
 

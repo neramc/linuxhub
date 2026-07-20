@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import type { PageProps } from "./$types";
 
@@ -61,7 +61,7 @@ const PILLS = [
 	{#if data.distros.length === 0}
 		<div class="state-block">
 			<div class="state-block__title">{m.state_empty_catalog}</div>
-			<a class="btn btn--sm" href="/explore">{m.dl_clear_filters}</a>
+			<a class="btn btn--sm" href={localizeHref("/explore")}>{m.dl_clear_filters}</a>
 		</div>
 	{:else}
 		<div
@@ -70,7 +70,7 @@ const PILLS = [
 		>
 			{#each data.distros as distro (distro.slug)}
 				<DistroCard
-					href={`/distro/${distro.slug}`}
+					href={localizeHref(`/distro/${distro.slug}`)}
 					name={distro.name}
 					summary={distro.summary}
 					color={distro.color}

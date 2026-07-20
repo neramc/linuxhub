@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 
 const SECTIONS = [
@@ -48,7 +48,7 @@ const SECTIONS = [
 				<h2>{m.about_contact}</h2>
 				<p>{m.about_contact_p}</p>
 				<div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
-					<a class="btn btn--primary" href="/contribute">{m.nav_contribute}</a>
+					<a class="btn btn--primary" href={localizeHref("/contribute")}>{m.nav_contribute}</a>
 					<a class="btn" href="https://github.com/neramc/linuxhub">
 						GitHub
 						<Icon name="external" size="sm" />

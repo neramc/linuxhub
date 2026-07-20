@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { localizeHref, m } from "@linuxhub/i18n";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
@@ -44,7 +44,9 @@ const sourceLinks = $derived.by(() => {
 				<div class="detail-head__badges">
 					<span class="badge badge--neutral">{data.detail.badges.family}</span>
 					{#if data.detail.badges.active}<span class="badge badge--success">{m.badge_active}</span>{/if}
-					{#if !data.detail.badges.translated}<span class="badge badge--warning">{m.badge_english_fallback}</span>{/if}
+					{#if data.content.description && !data.content.description.translated}<span
+							class="badge badge--warning">{m.badge_english_fallback}</span
+						>{/if}
 				</div>
 			</div>
 			<div class="detail-head__actions">
@@ -260,7 +262,7 @@ const sourceLinks = $derived.by(() => {
 					<span class="row__body"><span class="row__title">{m.detail_documentation}</span></span>
 					<Icon name="external" size="sm" />
 				</a>
-				<a class="row" href="/contribute">
+				<a class="row" href={localizeHref("/contribute")}>
 					<span class="row__body"><span class="row__title">{m.detail_report_page}</span></span>
 					<Icon name="chevron-end" size="sm" flip />
 				</a>
@@ -271,12 +273,12 @@ const sourceLinks = $derived.by(() => {
 			<section aria-label={m.detail_similar}>
 				<div class="section-title" style="margin-block-start: 0;">
 					<h2>{m.detail_similar}</h2>
-					<a href="/explore">{m.home_see_more}</a>
+					<a href={localizeHref("/explore")}>{m.home_see_more}</a>
 				</div>
 				<div class="card-grid">
 					{#each data.detail.related as rel (rel.slug)}
 						<DistroCard
-							href={`/distro/${rel.slug}`}
+							href={localizeHref(`/distro/${rel.slug}`)}
 							name={rel.name}
 							summary={rel.summary}
 							color={rel.color}

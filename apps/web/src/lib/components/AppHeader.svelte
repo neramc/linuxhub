@@ -1,5 +1,5 @@
 <script lang="ts">
-import { m } from "@linuxhub/i18n";
+import { isLocale, LOCALES, localizeHref, m, splitLocale } from "@linuxhub/i18n";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import { page } from "$app/state";
 import { toggleTheme, ui } from "$lib/state/ui.svelte";
@@ -11,17 +11,29 @@ const NAV = [
 	{ href: "/quiz", label: m.nav_quiz },
 ];
 
-const LOCALES = [
-	["English", "en"],
-	["한국어", "ko"],
-	["日本語", "ja"],
-	["Deutsch", "de"],
-	["español", "es"],
-	["العربية", "ar"],
-];
+const activeLocale = $derived((page.data.locale as string | undefined) ?? "en");
+
+let localeQuery = $state("");
+const filteredLocales = $derived(
+	LOCALES.filter((l) =>
+		`${l.label} ${l.code}`.toLowerCase().includes(localeQuery.trim().toLowerCase()),
+	),
+);
+
+/** Same page in another locale (en stays unprefixed). */
+function switchHref(code: string): string {
+	const [, path] = splitLocale(page.url.pathname, isLocale);
+	const localized = code === "en" ? path : `/${code}${path === "/" ? "" : path}`;
+	return localized + page.url.search;
+}
+
+function rememberLocale(code: string) {
+	document.cookie = `lh-locale=${code}; path=/; max-age=31536000; samesite=lax`;
+	ui.localeOpen = false;
+}
 
 function current(href: string): "page" | undefined {
-	return page.url.pathname.startsWith(href) ? "page" : undefined;
+	return page.url.pathname.includes(href) ? "page" : undefined;
 }
 </script>
 
@@ -39,8 +51,8 @@ function current(href: string): "page" | undefined {
 		>
 			<Icon name="menu" />
 		</button>
-		<a class="wordmark" href="/"><Icon name="logo" /><span>{m.site_name}</span></a>
-		<form action="/search" method="get" class="search">
+		<a class="wordmark" href={localizeHref("/")}><Icon name="logo" /><span>{m.site_name}</span></a>
+		<form action={localizeHref("/search")} method="get" class="search">
 			<Icon name="search" size="sm" />
 			<input
 				class="search__input"
@@ -76,17 +88,31 @@ function current(href: string): "page" | undefined {
 						ui.localeOpen = !ui.localeOpen;
 					}}
 				>
-					<Icon name="globe" size="sm" /><span>EN</span>
+					<Icon name="globe" size="sm" /><span>{activeLocale.toUpperCase()}</span>
 				</button>
 				<div class="locale-popover" class:is-open={ui.localeOpen}>
 					<div class="locale-popover__search">
-						<input class="input" type="search" placeholder={m.nav_language} aria-label={m.nav_language} />
+						<input
+							class="input"
+							type="search"
+							placeholder={m.nav_language}
+							aria-label={m.nav_language}
+							bind:value={localeQuery}
+						/>
 					</div>
 					<div class="locale-popover__list" role="listbox" aria-label={m.nav_language}>
-						{#each LOCALES as [label, code] (code)}
-							<button type="button" class="locale-option" role="option" aria-selected={code === "en"} dir="auto">
-								<Icon name="check" size="sm" /><span>{label}</span><span class="code">{code}</span>
-							</button>
+						{#each filteredLocales as locale (locale.code)}
+							<a
+								class="locale-option"
+								role="option"
+								aria-selected={locale.code === activeLocale}
+								dir="auto"
+								href={switchHref(locale.code)}
+								data-sveltekit-reload
+								onclick={() => rememberLocale(locale.code)}
+							>
+								<Icon name="check" size="sm" /><span>{locale.label}</span><span class="code">{locale.code}</span>
+							</a>
 						{/each}
 					</div>
 				</div>

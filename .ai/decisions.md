@@ -185,3 +185,27 @@ with per-file license rows in `assets/distros/ATTRIBUTION.md`.
 snapshot recency until Phase 5 replaces the CLI with Workers Cron Triggers
 writing the same shapes into D1/KV. The CLI transport uses curl via
 `Bun.spawn` (environment proxy constraint); Workers code will use `fetch`.
+
+## ADR-0016 — Hand-rolled Paraglide-compatible i18n runtime + locale routing
+**Date:** 2026-07-20 · **Status:** accepted
+**Context:** `.ai/i18n.md` specifies Paraglide (inlang) with locale-prefixed
+routes, geo/cookie redirect, and RTL. The full inlang toolchain (project
+file, compiler, vite plugin) is heavyweight to introduce mid-milestone, and
+call sites already use property-style `m.key` from `packages/i18n`.
+**Decision:** Implement the specified behavior with a small runtime in
+`packages/i18n` instead of the inlang compiler, keeping the catalog keys
+Paraglide-shaped: per-locale catalogs (`en` complete, `ko` authored; others
+fall back), a Proxy-based `m` resolving through the registry's fallback
+chain, `localizeHref`/`splitLocale` helpers, and a country→locale geo table.
+Routing per spec: routes live under `[[locale=locale]]` with a param
+matcher; `hooks.server.ts` does the one-time geo/cookie redirect
+(`x-vercel-ip-country`, Accept-Language tiebreaker, `lh-locale` cookie),
+canonicalizes `/en/*` → `/*`, sets `<html lang dir>` via placeholder
+transform, and binds the per-request locale in AsyncLocalStorage so
+concurrent SSR renders can't leak locales. Locale switching is a full
+navigation (`data-sveltekit-reload`), so a document has exactly one locale.
+**Consequences:** Call sites keep `m.key` property access (frontend-rules'
+`m.key()` function style arrives only if the inlang compiler is adopted
+later — the swap stays mechanical). New locale = one `messages.<code>.ts`
+file. Content docs remain progressively translated per `.ai/i18n.md`; the
+detail page derives its English-fallback badge from the loaded doc.
