@@ -5,6 +5,12 @@ the internal Hono Worker (`apps/api`, prefix `/v1`, internal-token-gated).
 All schemas are Zod definitions in `packages/shared` — this doc and those
 schemas must stay synchronized.
 
+> ⚠️ **This is the target API.** The shipped Phase 4 frontend consumes
+> different shapes (pre-formatted numbers, composed English strings,
+> presentation baked into payloads). `.ai/frontend-contract.md` documents the
+> gap field by field and lists the open questions to settle before moving any
+> endpoint. Read it before implementing from this catalog.
+
 ## Conventions
 
 ### Envelope

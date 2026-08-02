@@ -90,7 +90,7 @@ src/routes/
 
 - Dark/light via `data-theme` on `<html>`, defaulting to
   `prefers-color-scheme`, user override persisted.
-- All motion uses tokens from `packages/ui/tokens`; every animation goes
+- All motion uses tokens from `packages/ui/src/tokens.css`; every animation goes
   through the shared `motion` helper which no-ops under
   `prefers-reduced-motion: reduce`.
 - View transitions for route changes where supported; graceful fallback.

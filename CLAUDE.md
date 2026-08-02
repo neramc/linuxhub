@@ -69,7 +69,8 @@ Current phase status is tracked in `.ai/roadmap.md`.
 | `.ai/component-rules.md` | Naming, composition, reuse, a11y baseline |
 | `.ai/frontend-rules.md` | SvelteKit routing, BFF conventions, state, i18n usage |
 | `.ai/backend-rules.md` | Hono structure, validation, errors, caching, rate limits, cron |
-| `.ai/api.md` | Full endpoint catalog (50+), schemas, pagination, error envelope |
+| `.ai/api.md` | Target endpoint catalog (61), schemas, pagination, error envelope |
+| **`.ai/frontend-contract.md`** | **What the shipped frontend actually consumes** — read before writing any endpoint; where it diverges from `api.md` |
 | `.ai/database.md` | D1 schema, migrations plan, KV keyspace + TTLs |
 | `.ai/security.md` | hCaptcha, headers/CSP, rate limits, secrets, crawler ethics |
 | `.ai/i18n.md` | Locale registry, routing, RTL, geo detection, fallbacks |

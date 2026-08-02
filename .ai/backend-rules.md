@@ -29,6 +29,82 @@ packages/ingest/       # fetchers + normalizers (imported by cron/)
 Routes stay thin: validate → call service → wrap in envelope. SQL lives only
 in `db/` modules. Shared types/schemas come from `packages/shared`.
 
+## Worked example — one endpoint, all four layers
+
+Build the first endpoint exactly like this, then copy the shape for the rest.
+Sixty-one endpoints written to one pattern review far faster than sixty-one
+variations. Helpers referenced here already exist in `packages/shared`:
+`ok`, `err`, `ERROR_STATUS`, `paginationSchema`, `PAGINATION`.
+
+**1. Schema — `packages/shared`** (imported by the Worker *and* the BFF, so
+one definition constrains both sides):
+
+```ts
+export const distroListQuery = paginationSchema.extend({
+  category: z.string().min(1).optional(),
+  sort: z.enum(["popularity", "name", "latest_release", "newest"]).default("popularity"),
+});
+export type DistroListQuery = z.infer<typeof distroListQuery>;
+```
+
+**2. Query module — `src/db/distros.ts`** (all SQL lives here; parameters are
+always bound, never interpolated):
+
+```ts
+export async function listDistros(db: D1Database, q: DistroListQuery) {
+  const offset = (q.page - 1) * q.limit;
+  const stmt = db
+    .prepare(`SELECT d.slug, d.name, d.summary, d.family, d.homepage, d.status
+              FROM distros d
+              WHERE d.status = 'active'
+              ORDER BY d.name
+              LIMIT ?1 OFFSET ?2`)
+    .bind(q.limit, offset);
+  const { results } = await stmt.all<DistroRow>();
+  return results;
+}
+```
+
+**3. Service — `src/services/distros.ts`** (business logic + caching; routes
+never call `db/` directly, so the cache is impossible to bypass):
+
+```ts
+export function listDistrosCached(env: Env, q: DistroListQuery) {
+  return cached(env.KV_CACHE, `cache:distros:${gen}:${hashQuery(q)}`, 300, () =>
+    listDistros(env.DB, q),
+  );
+}
+```
+
+**4. Route — `src/routes/distros.ts`** (validate → service → envelope; three
+lines of logic, no SQL, no business rules):
+
+```ts
+distros.get("/", async (c) => {
+  const parsed = distroListQuery.safeParse(c.req.query());
+  if (!parsed.success) {
+    return c.json(err("VALIDATION_ERROR", "invalid query", parsed.error.issues),
+                  ERROR_STATUS.VALIDATION_ERROR);
+  }
+  const rows = await listDistrosCached(c.env, parsed.data);
+  return c.json(ok(rows, { page: parsed.data.page, limit: parsed.data.limit, total: rows.length }));
+});
+```
+
+**5. Tests** — the three cases every endpoint owes (see Testing below): happy
+path, validation failure, `NOT_FOUND`.
+
+Things this example pins down, which are easy to get wrong once and then
+repeat sixty times:
+
+- `safeParse` + `VALIDATION_ERROR`, never a thrown Zod error reaching the client.
+- `ERROR_STATUS[code]` for the HTTP status — never a hand-written number.
+- `meta` on every list response, using the shared pagination defaults.
+- Bound parameters (`?1`, `?2`) — string interpolation into SQL is a review
+  blocker.
+- `total` here is a placeholder: a real `COUNT(*)` (or a cached count) is
+  needed before pagination is honest. Decide it at the first list endpoint.
+
 ## Validation
 
 - **Zod on every input**: params, query, body — schemas imported from

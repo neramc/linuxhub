@@ -27,7 +27,7 @@
    change), then implement it in `packages/ui`.
 3. Never fork a component to tweak styling — add a variant or token.
 4. Styling comes only from design tokens (CSS custom properties from
-   `packages/ui/tokens`). No hardcoded colors, sizes, shadows, or durations.
+   `packages/ui/src/tokens.css`). No hardcoded colors, sizes, shadows, or durations.
 5. Use Svelte 5 runes (`$props()`, `$state`, `$derived`) and snippets for
    slot-like composition. No legacy `export let` / `$:` in new code.
 6. Components are presentation-only: data comes in via props; they never fetch.

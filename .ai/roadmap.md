@@ -41,8 +41,10 @@ Project Documentation → Repository Initialization → Design System → UI Des
 
 ### Phase 5 breakdown (ordered; one commit each)
 
-Specs: `.ai/api.md` (67 endpoints) · `.ai/database.md` (schema + KV keyspace) ·
-`.ai/backend-rules.md` (structure, validation, errors, caching, limits, cron).
+Specs: `.ai/api.md` (61 endpoints, the *target*) · `.ai/database.md` (schema +
+KV keyspace) · `.ai/backend-rules.md` (structure, validation, errors, caching,
+limits, cron) · **`.ai/frontend-contract.md`** (what the shipped frontend
+actually consumes, and the five open questions to settle first).
 
 | # | Task | Done when |
 |---|---|---|

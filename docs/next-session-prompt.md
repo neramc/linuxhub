@@ -19,9 +19,11 @@ Read first, in this order:
                            commands, container quirks
   2. .ai/roadmap.md      — Phase 5 breakdown, tasks 5.1–5.7 with done-when
                            criteria
-  3. .ai/api.md, .ai/database.md, .ai/backend-rules.md — the specs you build
-                           against
-  4. .ai/data-sources.md — "Replacing the placeholder data" + the verified
+  3. .ai/frontend-contract.md — what the shipped frontend actually
+                           consumes; read before writing any endpoint
+  4. .ai/api.md, .ai/database.md, .ai/backend-rules.md — the specs you
+                           build against
+  5. .ai/data-sources.md — "Replacing the placeholder data" + the verified
                            announcement-feed registry
 
 Goal for this session: work tasks 5.1 → 5.3 (D1 schema → Cron ingestion on
@@ -51,6 +53,10 @@ Binding constraints — these are project rules, not preferences:
   CSS properties only, so RTL keeps mirroring.
 - Keep the BFF response envelope { ok, data, meta } unchanged so the frontend
   does not move while the backend lands under it.
+- .ai/api.md is the TARGET API; .ai/frontend-contract.md is what the shipped
+  frontend consumes today. They differ. Reconcile them into Zod schemas in
+  packages/shared BEFORE moving endpoints, and answer the five open questions
+  at the end of that file with an ADR rather than deciding them silently.
 - One completed task = one commit, Conventional Commits, referencing the doc
   it satisfies. Never merge unrelated changes into one commit.
 

@@ -84,6 +84,12 @@ cd apps/web && bun run test:e2e      # 17 tests incl. the axe WCAG 2 AA gate
 Gate status at handoff: check/lint/test/build green in all 6 packages,
 17/17 e2e green, no horizontal overflow across 12 routes × 5 widths.
 
+Docs carry no automated gate, so when you change one, check that the paths it
+names still exist — `.ai/` docs referencing moved files is the most common
+form of documentation rot here. (ADR entries in `.ai/decisions.md` are
+historical records: never rewrite them, even when a path they mention has
+since moved.)
+
 ## Environment notes (remote container)
 
 These cost real time to rediscover.
@@ -122,9 +128,19 @@ Guardrails that must survive any feature work:
 ## Phase 5 — where to start
 
 Goal: replace the mock BFF with the real Hono/D1 backend. `.ai/api.md`
-(67 endpoints), `.ai/database.md` (schema + KV keyspace), and
+(61 endpoints — the *target*), `.ai/database.md` (schema + KV keyspace), and
 `.ai/backend-rules.md` (structure, validation, errors, caching, rate limits,
-cron) are the specs. Suggested order, each step its own commit:
+cron) are the specs.
+
+**Read `.ai/frontend-contract.md` first.** The shipped frontend consumes
+shapes that differ from `.ai/api.md` — pre-formatted numbers, composed
+English strings, presentation baked into payloads. That file maps every
+current response field to its D1 source, lists the recurring problems to fix
+rather than port, gives a safe endpoint-by-endpoint sequence for 5.4, and
+ends with five architecture questions to answer with an ADR instead of
+deciding silently.
+
+Suggested order, each step its own commit:
 
 1. **Schema** — replace the empty `migrations/0001_init.sql` with the real
    tables from `.ai/database.md`; apply locally with
