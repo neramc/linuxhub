@@ -52,10 +52,13 @@ Specs: `.ai/api.md` (67 endpoints) · `.ai/database.md` (schema + KV keyspace) �
 | 5.4 | **BFF proxies the Worker** — `apps/web/src/routes/api/v1/*` stops reading `data.ts` | frontend unchanged; caching TTLs per `.ai/frontend-rules.md`; e2e still green |
 | 5.5 | **Write endpoints** — suggest/report/feedback behind hCaptcha + KV rate limits | contribute forms submit for real; limits covered by tests |
 | 5.6 | **Download resolution** — edition/arch/format + region → real mirror URL + checksum | the download button delivers a file from an official mirror |
+| 5.7 | **Retire `data.ts`** — every placeholder symbol replaced by an API/feed/Wikidata source per `.ai/data-sources.md`; editorial content moved to content/ or D1 | nothing imports `data.ts` and the file is deleted; every factual field carries `source_url` + `fetched_at` |
 
-Editorial content still living in `apps/web/src/lib/server/data.ts` (compare
-specs, quiz, Hall of Fame, banners) needs a home before that file can go —
-decide between D1 rows and MDX at 5.3.
+**Sourcing rule for 5.7 (binding):** facts come from official APIs, RSS/Atom
+feeds, or Wikidata — never hand-typed; popularity comes from our own counters
+— never from third-party charts; editorial content stays authored but carries
+resolvable citations. The per-symbol plan and 12 verified announcement feeds
+are in `.ai/data-sources.md`.
 
 Then iterate: Documentation → Design → Implementation → Testing → Review →
 Documentation Update.

@@ -1,8 +1,29 @@
 // Catalog data serving the BFF until Phase 5 lands the Hono/D1 backend.
 // Release/EOL cycles and mirror lists come from the committed live snapshot
 // (live-data.json, produced by `bun packages/ingest/src/live.ts` from
-// official/public APIs — see .ai/data-sources.md); identity, taxonomy, and
-// editorial content remain curated here. Shapes follow .ai/api.md.
+// official/public APIs — see .ai/data-sources.md). Shapes follow .ai/api.md.
+//
+// ─────────────────────────────────────────────────────────────────────────
+// THIS FILE IS A WORK LIST, NOT A DATA STORE. Do not add facts to it.
+//
+// Everything below that is not derived from live-data.json was invented
+// during the frontend build-out. Phase 5 replaces each symbol with data
+// fetched from an official API, feed, or structured source, stored with its
+// source_url + fetched_at. The per-symbol plan — which source replaces which
+// field — is in .ai/data-sources.md ("Replacing the placeholder data").
+//
+// Three rules from that doc, repeated here because they are easy to get
+// wrong while working in this file:
+//
+//   1. Facts (versions, editions, desktops, package managers, requirements)
+//      come from APIs/feeds/Wikidata. Never hand-maintained.
+//   2. Popularity (downloads, rank, trend) comes from OUR OWN signals only —
+//      view/download counters in KV aggregated into D1. Scraping DistroWatch
+//      or any third-party popularity chart is forbidden.
+//   3. Editorial content (QUIZ, HALL_OF_FAME, banner copy) stays authored,
+//      but moves out of this file — to content/ or D1 — with resolvable
+//      source URLs, so this file can be deleted.
+// ─────────────────────────────────────────────────────────────────────────
 
 import liveJson from "./live-data.json" with { type: "json" };
 

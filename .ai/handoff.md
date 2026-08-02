@@ -6,6 +6,9 @@
 > *intent* and this file wins on *current state*.
 >
 > Last updated: 2026-07-20, end of Phase 4.
+>
+> A ready-to-paste continuation prompt for the next session lives in
+> `docs/next-session-prompt.md`.
 
 ## Where the project stands
 
@@ -44,10 +47,14 @@ deliberately a placeholder.
   RTL are wired end to end.
 
 **Placeholder — do not treat as truth**
-- `downloads`, `rank`, `trend` in `DISTROS`, and everything in `SPECS`,
-  `BANNERS`, `QUIZ`, `HALL_OF_FAME` (`apps/web/src/lib/server/data.ts`) are
-  curated/invented editorial values. Rankings must come from our own signals
-  once the backend exists (`.ai/data-sources.md`).
+- **`apps/web/src/lib/server/data.ts` is a work list, not a data store.**
+  `downloads`, `rank`, `trend`, `SPECS`, `EDITIONS`, `REQUIREMENTS`,
+  `BANNERS`, `QUIZ`, `HALL_OF_FAME` were invented during the build-out.
+  Phase 5 replaces every factual field with data fetched from an official
+  API, RSS/Atom feed, or Wikidata — stored with `source_url` + `fetched_at`.
+  The per-symbol plan and the 12 verified announcement feeds are in
+  `.ai/data-sources.md` → "Replacing the placeholder data". Do not add new
+  facts to that file; wire a source instead.
 - Screenshots are grey frames. There is no screenshot pipeline yet.
 - Download buttons do not resolve to a file. The version table and mirror
   picker are UI only.
@@ -135,6 +142,12 @@ cron) are the specs. Suggested order, each step its own commit:
    limits, then wire the contribute forms.
 6. **Download resolution** — the piece with real user value: resolve
    edition/arch/format + region to an actual mirror URL, with checksums.
+7. **Retire `data.ts`** — replace each remaining placeholder symbol with its
+   real source per `.ai/data-sources.md`: specs and taxonomy from Wikidata,
+   editions from the official release APIs, requirements from official install
+   docs, release links from the announcement feeds, popularity from our own
+   counters. Editorial content (quiz, Hall of Fame) moves to content/ or D1.
+   The file is deleted when nothing imports it.
 
 Keep the BFF envelope `{ ok, data, meta }` unchanged throughout so the
 frontend does not move while the backend lands under it.
