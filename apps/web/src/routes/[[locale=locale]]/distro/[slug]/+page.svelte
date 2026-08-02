@@ -207,7 +207,7 @@ const sourceLinks = $derived.by(() => {
 									{#if mirrorRow.auto}<span class="size"><span class="badge">{m.dl_recommended}</span></span>{/if}
 								</button>
 							{/each}
-							<div class="checksum" style="background: var(--color-bg);">
+							<div class="checksum">
 								<div class="checksum__row">
 									<Icon name="check" size="sm" />
 									<span class="muted" style="font-size: var(--text-sm);">{m.dl_verify_note}</span>

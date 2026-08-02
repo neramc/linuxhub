@@ -73,7 +73,7 @@ const matches = $derived(
 		<div class="quiz-card">
 			<div class="quiz-head">
 				<div class="quiz-head__meta">
-					<button type="button" class="btn btn--sm" style="background: var(--color-bg);" onclick={back}>
+					<button type="button" class="btn btn--sm" onclick={back}>
 						<Icon name="arrow-start" size="sm" flip />
 						{m.quiz_back}
 					</button>
@@ -85,13 +85,12 @@ const matches = $derived(
 					aria-valuenow={step + 1}
 					aria-valuemin={0}
 					aria-valuemax={total}
-					style="background: var(--color-bg);"
 				>
 					<div class="quiz-progress__bar" style={`inline-size: ${Math.round(((step + 1) / total) * 100)}%;`}></div>
 				</div>
 				<h1 class="quiz-question">{question.q}</h1>
 			</div>
-			<div class="boxed" style="background: var(--color-bg);">
+			<div class="boxed" style="background: var(--color-well);">
 				{#each question.options as option (option.label)}
 					<button type="button" class="row" onclick={() => answer(option.w)}>
 						<Icon name={option.icon} />
@@ -106,7 +105,7 @@ const matches = $derived(
 			<button
 				type="button"
 				class="btn btn--sm"
-				style="justify-self: center; background: var(--color-bg);"
+				style="justify-self: center;"
 				onclick={next}
 			>
 				{m.quiz_skip}
@@ -123,7 +122,7 @@ const matches = $derived(
 					<p class="muted" style="max-inline-size: 44ch;">{top.summary}</p>
 					<div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
 						<a class="btn btn--primary btn--lg" href={localizeHref(`/distro/${top.slug}`)}>{m.quiz_see} {top.name}</a>
-						<a class="btn btn--lg" href={localizeHref(`/distro/${top.slug}#downloads`)} style="background: var(--color-bg);">
+						<a class="btn btn--lg" href={localizeHref(`/distro/${top.slug}#downloads`)}>
 							{m.detail_download}
 						</a>
 					</div>
@@ -161,6 +160,8 @@ const matches = $derived(
 		gap: var(--space-5);
 		padding: var(--space-6);
 		background: var(--color-surface);
+		border: 1px solid var(--color-stroke);
+		box-shadow: var(--shadow-card);
 		border-radius: var(--radius-md);
 	}
 

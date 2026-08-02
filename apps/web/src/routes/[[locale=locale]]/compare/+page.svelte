@@ -177,6 +177,8 @@ function add(slug: string) {
 		padding: var(--space-3) var(--space-4);
 		border-radius: var(--radius-md);
 		background: var(--color-surface);
+		border: 1px solid var(--color-stroke);
+		box-shadow: var(--shadow-card);
 	}
 
 	.picker-slot strong {
@@ -194,7 +196,8 @@ function add(slug: string) {
 
 	.picker-slot--empty {
 		background: none;
-		border: 2px dashed var(--color-border);
+		box-shadow: none;
+		border: 2px dashed var(--color-stroke-strong);
 		justify-content: center;
 	}
 

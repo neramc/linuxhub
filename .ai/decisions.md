@@ -209,3 +209,33 @@ navigation (`data-sveltekit-reload`), so a document has exactly one locale.
 later — the swap stays mechanical). New locale = one `messages.<code>.ts`
 file. Content docs remain progressively translated per `.ai/i18n.md`; the
 detail page derives its English-fallback badge from the loaded doc.
+
+## ADR-0017 — Flathub × WinUI 3 (Fluent) visual system
+**Date:** 2026-07-20 · **Status:** accepted
+**Context:** Owner review of the implemented Phase 4 UI: the flat
+libadwaita-style surfaces from ADR-0013 read as dated. The request was to
+redesign toward "Flathub + WinUI 3" and apply it to every component.
+**Decision:** Keep Flathub's information architecture wholesale (horizontal
+app cards, boxed lists, banner carousel, colored category tiles, 1176px
+column, calm content-first tone) and replace the *material* with WinUI 3
+(Fluent): a Mica page base with a fixed accent wash, lighter card fills that
+read by elevation rather than tint, 1px control strokes with a darker bottom
+lip, layered shadows (control/card/flyout/dialog), acrylic header and
+flyouts, 6px controls / 8px cards / 12px dialogs with pills kept only for
+badges and chips, the Fluent type ramp on Segoe UI Variable (Inter
+fallback) with SemiBold carrying all emphasis, Fluent motion (150/250/350ms
+on a strong decelerate) with press-shrink instead of lift, the Fluent focus
+visual (high-contrast ring, drawn inside clipping containers), and the
+NavigationView selection bar. The accent inverts per theme exactly as WinUI
+does: a deep blue fill with white text in light, a light blue fill with
+near-black text in dark, resolved through `--color-accent-fill` /
+`--color-on-accent` so components never branch on theme.
+**Consequences:** ADR-0013's "flat surfaces, no borders, no shadows, pill
+buttons" clauses are superseded; its Flathub structure clauses stand.
+ADR-0014's Modrinth download table and colorful home survive, restyled as
+Fluent surfaces. `--color-surface` inverts meaning (now lighter than the
+page), so nested fills moved to `--color-well` and reveal fills to
+`--color-subtle-*`. Tokens renamed: `--color-accent-contrast` →
+`--color-on-accent`, `--color-accent-strong*` → `--color-accent-fill*`.
+Verified: axe WCAG 2 AA clean on the five gate pages, 17/17 e2e green, and
+no horizontal overflow across 12 routes × 5 widths including RTL.

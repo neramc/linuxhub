@@ -1,70 +1,117 @@
-# Design System — Flathub Clone (ADR-0013)
+# Design System — Flathub × WinUI 3 (ADR-0017)
 
 > Per-screen design requirements live in `prompts/stitch/*.md`; the
 > **high-fidelity design comps** built from them live in `design/`
 > (ADR-0012 — Claude Code is the designer). Tokens are implemented in
 > `packages/ui` and must match this doc exactly; `design/shared/design.css`
 > consumes them directly. Where a brief's Modrinth reference conflicts with
-> this doc, **this doc wins** (ADR-0013).
+> this doc, **this doc wins** (ADR-0013 → superseded in look by ADR-0017,
+> which keeps Flathub's structure and replaces its flat surfaces with
+> Fluent materials).
 
 ## Design language
 
-A faithful **Flathub / GNOME (libadwaita)** clone: calm, flat, content-first.
+**Flathub's information architecture rendered in WinUI 3 (Fluent) materials.**
+What Flathub gives us stays: horizontal app cards, boxed lists, the banner
+carousel, colored category tiles, a 1176px content column, calm and
+content-first. What Fluent gives us is the *material*:
 
-- **Flat surfaces.** Cards are slightly-tinted rounded rectangles on the page
-  background — **no borders, no shadows**. Hover darkens the surface tone.
-- **Pill buttons.** Fully rounded, flat fills. One blue primary per view.
-- **Horizontal cards.** Logo on the start side, name + one-line summary
-  after it — like Flathub app cards. Never vertical marketing cards.
-- **Boxed lists.** Grouped rows inside one rounded container with hairline
-  separators (libadwaita "boxed list") — used for rankings, releases,
-  links, options, settings-like content.
-- **Modest scale.** Headings are quiet; no display-size hero type, no
-  gradients, no stat chips, no decorative bands.
-- Distro brand color appears only in logo tiles and banner tints; the shell
-  stays neutral.
+- **Layered surfaces.** The page is a Mica base (`--color-bg`, a soft grey
+  carrying a fixed accent wash); content sits on **lighter** card fills
+  (`--color-surface`). Cards read by elevation, not by tinting — this is the
+  inverse of the old flat scheme and the single biggest visual change.
+- **Control strokes.** Every card, control, and field carries a 1px
+  translucent stroke whose **bottom edge is darker** (`--color-stroke-lip`),
+  the subtle lip that makes WinUI controls feel physical.
+- **Real elevation.** Soft, layered shadows: `--shadow-card` at rest,
+  `--shadow-card-hover` on hover, `--shadow-flyout` for popovers,
+  `--shadow-dialog` for modals.
+- **Acrylic chrome.** The sticky header and flyouts blur what scrolls under
+  them (`backdrop-filter`), with a solid `@supports` fallback.
+- **Rounded rectangles, not pills.** Buttons/inputs are 6px, cards 8px,
+  dialogs 12px. Pills survive only where they carry meaning: badges, status
+  dots, filter chips.
+- **Fluent accent behaviour.** Light theme fills accent surfaces with a deep
+  blue and white text; **dark theme inverts it** — a light blue fill with
+  near-black text, exactly as WinUI does. `--color-accent-fill` /
+  `--color-on-accent` resolve per theme, so components never branch.
+- **Fluent selection.** The active nav item carries a short accent bar
+  (NavigationView); the mobile drawer uses the vertical variant.
+- **Press, don't lift.** Controls dim and shrink ~3% on `:active`
+  (motion-preference gated); they never bounce.
+- Distro brand color still appears only in logo tiles and banner tints.
 
 ## Color tokens
 
+Layer model — each row sits visually *above* the one before it.
+
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--color-bg` | `#ffffff` | `#242424` | page background |
-| `--color-surface` | `#f4f4f4` | `#333333` | cards, boxed lists, inputs |
-| `--color-surface-hover` | `#ececec` | `#3d3d3d` | hovered card/row |
-| `--color-surface-raised` | `#ffffff` | `#383838` | dialogs, popovers |
-| `--color-border` | `#e8e8e8` | `#454545` | hairline separators only |
-| `--color-text` | `#1c1c1e` | `#ffffff` | primary text |
-| `--color-text-muted` | `#5e5e63` | `#b3b3b8` | secondary text |
-| `--color-accent` | `#3584e4` | `#3584e4` | primary buttons, selection |
-| `--color-accent-hover` | `#1c71d8` | `#4a90e8` | hovered primary |
-| `--color-accent-strong` | `#1a5fb4` | `#1a5fb4` | text-bearing accent surfaces (primary buttons, active pills) — WCAG AA vs white (6.3:1), a11y correction 2026-07-20 |
-| `--color-accent-strong-hover` | `#1c71d8` | `#1c71d8` | hovered strong accent (4.8:1) |
-| `--color-accent-contrast` | `#ffffff` | `#ffffff` | text on accent |
-| `--color-link` | `#1c71d8` | `#78aeed` | inline links |
-| `--color-accent-soft` | `#e7f0fb` | `#2a3a4d` | selected row tint, focus wash |
-| `--color-success` | `#26a269` | `#2ec27e` | active status, verified |
-| `--color-warning` | `#c78a00` | `#e5a50a` | EOL-soon, untranslated |
-| `--color-danger` | `#c01c28` | `#f66151` | errors, discontinued |
+| `--color-bg` | `#f3f3f3` | `#202020` | Mica page base (under everything) |
+| `--color-well` | `#eeeeee` | `#272727` | nested well *inside* a card |
+| `--color-surface` | `#ffffff` | `#2b2b2b` | card / boxed-list fill |
+| `--color-surface-hover` | `#fafafa` | `#323232` | hovered card |
+| `--color-surface-raised` | `#ffffff` | `#2d2d2d` | flyouts, dialogs, drawer |
+| `--color-control` | `#fdfdfd` | `#333333` | buttons, inputs, pills |
+| `--color-control-hover` / `-active` | `#f6f6f6` / `#f0f0f0` | `#3a3a3a` / `#2f2f2f` | control states |
+| `--color-subtle-hover` / `-active` | `rgb(0 0 0 /.04)` / `.07` | `rgb(255 255 255 /.06)` / `.04` | reveal fills on any layer |
+| `--color-stroke` | `rgb(0 0 0 /.06)` | `rgb(255 255 255 /.08)` | control/card hairline |
+| `--color-stroke-lip` | `rgb(0 0 0 /.13)` | `rgb(255 255 255 /.06)` | darker bottom edge |
+| `--color-stroke-strong` | `rgb(0 0 0 /.16)` | `rgb(255 255 255 /.16)` | field underline, hovered card |
+| `--color-border` | `rgb(0 0 0 /.08)` | `rgb(255 255 255 /.09)` | separators inside a card |
+| `--color-text` | `#1a1a1a` | `#ffffff` | primary text |
+| `--color-text-muted` | `#5c5c5c` | `#c7c7c7` | secondary text |
+| `--color-text-subtle` | `#6e6e6e` | `#a4a4a4` | tertiary/caption |
 
-GNOME palette values; all pairs meet WCAG AA (4.5:1 body, 3:1 UI).
+**Accent ramp** (GNOME blue in Fluent's light3→dark3 structure):
+`--color-accent-light3` `#c3dbf7` · `-light2` `#99c1f1` · `-light1` `#62a0ea` ·
+`--color-accent` `#3584e4` · `-dark1` `#1c71d8` · `-dark2` `#1a5fb4` ·
+`-dark3` `#15487f`.
+
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `--color-accent-fill` | `#1a5fb4` (dark2) | `#62a0ea` (light1) | text-bearing accent surfaces |
+| `--color-accent-fill-hover` | `#1c71d8` | `#99c1f1` | hovered accent |
+| `--color-accent-fill-active` | `#15487f` | `#3584e4` | pressed accent |
+| `--color-on-accent` | `#ffffff` | `#06182b` | text on accent (theme-inverted) |
+| `--color-accent-soft` | `#e8f1fc` | `#1c3348` | selected row tint |
+| `--color-accent-text` | `#1a5fb4` | `#99c1f1` | accent text on soft tint |
+| `--color-link` | `#1a5fb4` | `#99c1f1` | inline links |
+| `--color-success` / `-text` | `#26a269` / `#156b41` | `#2ec27e` / `#78e9a8` | active, verified |
+| `--color-warning` / `-text` | `#c78a00` / `#7a5200` | `#e5a50a` / `#f9c440` | EOL-soon, untranslated |
+| `--color-danger` / `-text` | `#c01c28` / `#8f1521` | `#f66151` / `#ff9186` | errors, discontinued |
+
+The `-text` variants are the AA-safe colors for text *on* the matching 15%
+tint. Every pair is axe-verified at WCAG 2 AA on the five gate pages.
+
+**Materials:** `--mica-tint` (accent at 7%/12%, fixed radial wash behind the
+page), `--acrylic-fill` and `--acrylic-flyout` (72%/82% layer opacity) with
+`--acrylic-blur: blur(30px) saturate(140%)`, `--scrim` for dialog smoke.
 
 ## Typography
 
-| Token | Value |
-|---|---|
-| `--font-sans` | `"Inter", "Noto Sans", system-ui, sans-serif` |
-| `--font-mono` | `"JetBrains Mono", ui-monospace, monospace` |
-| `--text-xs` | 0.75rem / lh 1.4 |
-| `--text-sm` | 0.875rem / lh 1.5 |
-| `--text-base` | 1rem / lh 1.6 |
-| `--text-lg` | 1.125rem / lh 1.5 |
-| `--text-xl` | 1.25rem / lh 1.4 |
-| `--text-2xl` | 1.5rem / lh 1.3 |
-| `--text-3xl` | 2rem / lh 1.2 |
-| `--text-4xl` | 2.5rem / lh 1.1 (banner tile only) |
+Fluent's ramp, with 16px kept as the prose body size for web readability.
+`Segoe UI Variable` renders natively on Windows; Inter carries everywhere
+else. Headings use the Display optical face.
 
-Weights: 400 body, 500 UI labels, 600 headings, 700 card titles/banner.
-Left-aligned, never justified; logical properties only (RTL mirrors free).
+| Token | Value | Fluent role |
+|---|---|---|
+| `--font-sans` | `"Segoe UI Variable Text", "Segoe UI", Inter, "Noto Sans", system-ui` | body/UI |
+| `--font-display` | `"Segoe UI Variable Display", "Segoe UI", Inter, …` | h1–h3 |
+| `--font-mono` | `"Cascadia Code", "JetBrains Mono", ui-monospace` | code, checksums |
+| `--text-xs` | 12px / lh 1.34 | caption |
+| `--text-sm` | 14px / lh 1.43 | body, control labels |
+| `--text-base` | 16px / lh 1.6 | prose body |
+| `--text-lg` | 18px / lh 1.5 | body large |
+| `--text-xl` | 20px / lh 1.4 | subtitle |
+| `--text-2xl` | 28px / lh 1.29 | title |
+| `--text-3xl` | 40px / lh 1.2 | title large (page h1) |
+| `--text-4xl` | 52px / lh 1.08 | display (banner only) |
+
+`--weight-strong: 600` (Fluent SemiBold) carries **all** emphasis — headings,
+card titles, button labels. 700 is not used. Large text takes
+`--tracking-tight: -0.015em`. Left-aligned, never justified; logical
+properties only (RTL mirrors free).
 
 ## Spacing, radius, elevation
 
@@ -72,23 +119,37 @@ Left-aligned, never justified; logical properties only (RTL mirrors free).
 
 | Radius | Value | Use |
 |---|---|---|
-| `--radius-sm` | 8px | inputs, small controls |
-| `--radius-md` | 12px | cards, boxed lists, dialogs |
-| `--radius-lg` | 18px | banner tiles, screenshot frames |
-| `--radius-full` | 9999px | ALL buttons and chips (pills) |
+| `--radius-xs` | 4px | segmented tabs, small chips |
+| `--radius-sm` | 6px | buttons, inputs, icon buttons, nav items |
+| `--radius-md` | 8px | cards, boxed lists, tiles |
+| `--radius-lg` | 12px | dialogs, banner tiles, sheets |
+| `--radius-xl` | 16px | large logo tiles, hero frames |
+| `--radius-full` | 9999px | badges, status dots, filter chips, avatars |
 
-**Elevation: flat.** Cards/lists carry no shadow. Only overlays float:
-`--shadow-dialog: 0 4px 24px rgb(0 0 0 / 0.18)` (dialogs, popovers, sheets).
+| Elevation | Value (light) | Use |
+|---|---|---|
+| `--shadow-control` | `0 1px 1px rgb(0 0 0 /.04)` | buttons, pills, fields |
+| `--shadow-card` | `0 1px 2px /.05, 0 2px 4px /.03` | cards, boxed lists, tiles |
+| `--shadow-card-hover` | `0 2px 4px /.06, 0 6px 14px /.07` | hovered card |
+| `--shadow-flyout` | `0 8px 16px rgb(0 0 0 /.14)` | popovers, banner arrows |
+| `--shadow-dialog` | `0 32px 64px /.19, 0 2px 21px /.14` | dialogs, drawer, sheet |
 
+Dark theme uses the same structure at higher opacity (.14–.37).
 Content max width: `--content-max-width: 1176px`.
 
 ## Motion
 
-Calm, functional. fast 120ms / base 200ms / slow 320ms, ease-out.
-Hover states are **background-tint changes only** — no lifts, no scale.
-Dialogs/sheets: fade + small rise. Carousel: slide. Skeletons shimmer.
-No staggered reveals. `prefers-reduced-motion` disables everything
-non-essential (global kill-switch in tokens.css + `motion.ts` helper).
+Fluent timings: fast 150ms (fades) / base 250ms (point-to-point) / slow
+350ms (sheets, drawer). `--ease-out: cubic-bezier(0, 0, 0, 1)` is Fluent's
+strong decelerate and is the default; `--ease-standard` for reversible
+moves, `--ease-emphasized` for entrances.
+
+Hover = fill + stroke + elevation change. Press = dim **and** a ~3% shrink
+(`scale(0.97)` controls, `0.995` cards), gated behind
+`prefers-reduced-motion: no-preference`. Route changes cross-fade via View
+Transitions. No staggered reveals, no bounce. `prefers-reduced-motion`
+disables everything non-essential (global kill-switch in tokens.css +
+`motion.ts` helper).
 
 ## Breakpoints
 
@@ -139,13 +200,21 @@ content shows the warning badge.
 
 ## Accessibility baseline
 
-Keyboard-complete; focus ring 2px accent + 2px offset; AA contrast;
+Keyboard-complete; **Fluent focus visual** — a 2px `--focus-outer` ring
+(near-black on light, white on dark) at 2px offset, drawn *inside* clipping
+containers (`.boxed`, `.vfiles`, flyouts) so it is never cut off; text
+fields additionally show the accent underline. AA contrast;
 44px touch targets; RTL-mirrored (`ar`, `he`, `fa`, `ckb`);
 reduced-motion variants; axe-clean.
 
 ## Reference
 
-flathub.org is the single visual reference: home banner + category pills +
-section grids; app page (icon/title/install pill, carousel, metadata tiles,
-links list); flat GNOME dark theme. Match its calm — when in doubt, remove
-decoration.
+Two references, one system. **flathub.org** sets the structure: home banner +
+category tiles + section grids; app page (icon/title/install button,
+carousel, metadata tiles, links list). **WinUI 3 / Fluent 2** sets the
+material: layered Mica/card/flyout surfaces, control strokes with a bottom
+lip, soft elevation, acrylic chrome, the Segoe UI Variable ramp, the accent
+that inverts between themes, and the selection indicator bar.
+
+When the two disagree, structure follows Flathub and surface follows Fluent.
+When in doubt, remove decoration — Fluent's depth is subtle by design.

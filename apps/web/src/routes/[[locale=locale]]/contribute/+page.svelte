@@ -39,14 +39,13 @@ function submit(e: SubmitEvent) {
 					<button
 						type="button"
 						class="btn btn--sm"
-						style="background: var(--color-bg);"
 						onclick={() => {
 							sent = false;
 						}}
 					>
 						{m.form_again}
 					</button>
-					<a class="btn btn--sm" style="background: var(--color-bg);" href={localizeHref("/explore")}>{m.nav_explore}</a>
+					<a class="btn btn--sm" href={localizeHref("/explore")}>{m.nav_explore}</a>
 				</div>
 			</div>
 		{:else}
@@ -147,6 +146,8 @@ function submit(e: SubmitEvent) {
 		gap: var(--space-5);
 		padding: var(--space-6);
 		background: var(--color-surface);
+		border: 1px solid var(--color-stroke);
+		box-shadow: var(--shadow-card);
 		border-radius: var(--radius-md);
 		margin-block-start: var(--space-4);
 	}
@@ -154,15 +155,16 @@ function submit(e: SubmitEvent) {
 	.contrib-card :global(.input),
 	.contrib-card :global(.select),
 	.contrib-card :global(.textarea) {
-		background: var(--color-bg);
+		background: var(--color-control);
 	}
 
 	.captcha-slot {
 		display: grid;
 		gap: var(--space-2);
 		padding: var(--space-4);
+		border: 1px solid var(--color-stroke);
 		border-radius: var(--radius-sm);
-		background: var(--color-bg);
+		background: var(--color-well);
 	}
 
 	.captcha-slot__box {

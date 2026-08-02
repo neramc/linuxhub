@@ -133,7 +133,7 @@ const SECTIONS = [
 
 	.toc a:hover {
 		color: var(--color-text);
-		background: var(--color-surface);
+		background: var(--color-subtle-hover);
 		text-decoration: none;
 	}
 </style>

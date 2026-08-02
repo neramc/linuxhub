@@ -12,9 +12,9 @@ export type Breakpoint = keyof typeof breakpoints;
 
 /** Milliseconds — pair with motionDuration() so reduced-motion zeroes them. */
 export const motionDurations = {
-	fast: 120,
-	base: 200,
-	slow: 320,
+	fast: 150,
+	base: 250,
+	slow: 350,
 } as const;
 
 /** Staggered grid reveal: 30ms per card, first 12 cards only. */
