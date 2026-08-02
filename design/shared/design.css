@@ -35,8 +35,14 @@ body::before {
 	inset: 0;
 	z-index: -1;
 	pointer-events: none;
-	background:
-		radial-gradient(125% 70% at 50% 0%, var(--mica-tint), transparent 72%), var(--color-bg);
+	background-color: var(--color-bg);
+	background-image:
+		var(--mica-noise), radial-gradient(125% 70% at 50% 0%, var(--mica-tint), transparent 72%),
+		radial-gradient(90% 60% at 85% 100%, var(--mica-tint-2), transparent 70%);
+	background-size:
+		160px 160px,
+		cover,
+		cover;
 }
 
 h1,
@@ -806,14 +812,6 @@ button.row:active {
 	border-block-end: 1px solid var(--color-stroke);
 }
 
-/* Acrylic: the chrome samples and blurs whatever scrolls beneath it */
-@supports (backdrop-filter: blur(1px)) {
-	.app-header {
-		background: var(--acrylic-fill);
-		backdrop-filter: var(--acrylic-blur);
-	}
-}
-
 .app-header__inner {
 	display: flex;
 	align-items: center;
@@ -975,13 +973,6 @@ button.row:active {
 	border-radius: var(--radius-md);
 	box-shadow: var(--shadow-flyout);
 	overflow: hidden;
-}
-
-@supports (backdrop-filter: blur(1px)) {
-	.locale-popover {
-		background: var(--acrylic-flyout);
-		backdrop-filter: var(--acrylic-blur);
-	}
 }
 
 .locale-popover.is-open {
@@ -2399,4 +2390,63 @@ body.bare .mock-toolbar {
 		inset 0 1px 0 0 rgb(255 255 255 / 0.22),
 		var(--shadow-card-hover);
 	text-decoration: none;
+}
+
+/* ------------------------------------------------------------- acrylic */
+/* Fluent acrylic = tint + blur + saturation + grain, layered over whatever
+   is behind the surface. Every overlay chrome in the app uses it; the tint
+   opacities stay high enough that text keeps AA contrast over any backdrop.
+   Without backdrop-filter support each surface falls back to its solid fill
+   (declared on the rule itself), so nothing depends on this block. */
+
+@supports (backdrop-filter: blur(1px)) {
+	/* In-app acrylic — chrome that sits over scrolling content */
+	.app-header {
+		background-color: var(--acrylic-fill);
+		background-image: var(--acrylic-noise);
+		backdrop-filter: var(--acrylic-blur);
+	}
+
+	/* Flyouts and panes — acrylic over the page, on top of their own shadow */
+	/* Flyouts and panes: thick enough that content behind reads as colour and
+	   shape, never as competing text */
+	.locale-popover,
+	.drawer,
+	.sheet {
+		background-color: var(--acrylic-pane);
+		background-image: var(--acrylic-noise);
+		backdrop-filter: var(--acrylic-blur);
+	}
+
+	/* Dialogs sit over the smoke layer, so they take the thicker recipe */
+	.modal {
+		background-color: var(--acrylic-thick);
+		background-image: var(--acrylic-noise);
+		backdrop-filter: var(--acrylic-blur);
+	}
+
+	/* Small floating controls get the thin recipe — less blur, less cost */
+	.banner-nav,
+	.mock-toolbar {
+		background-color: var(--acrylic-flyout);
+		background-image: var(--acrylic-noise);
+		backdrop-filter: var(--acrylic-blur-thin);
+	}
+
+	/* The scrim itself blurs the page behind a dialog (Fluent Smoke) */
+	.modal-scrim.is-open {
+		backdrop-filter: blur(2px);
+	}
+}
+
+/* The grain must not tile visibly over large flat areas */
+.app-header,
+.locale-popover,
+.drawer,
+.sheet,
+.modal,
+.banner-nav,
+.toast {
+	background-repeat: repeat;
+	background-size: 160px 160px;
 }

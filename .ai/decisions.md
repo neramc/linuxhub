@@ -239,3 +239,25 @@ page), so nested fills moved to `--color-well` and reveal fills to
 `--color-on-accent`, `--color-accent-strong*` → `--color-accent-fill*`.
 Verified: axe WCAG 2 AA clean on the five gate pages, 17/17 e2e green, and
 no horizontal overflow across 12 routes × 5 widths including RTL.
+
+## ADR-0018 — Acrylic material system (amends ADR-0017)
+**Date:** 2026-07-20 · **Status:** accepted
+**Context:** ADR-0017 introduced acrylic but only on the header and the
+locale flyout, and without grain — so it read as a plain blur rather than
+Fluent's acrylic. Owner asked for more of the acrylic feel.
+**Decision:** Make acrylic a first-class material with all four Fluent
+ingredients — tint, blur **and saturation boost** (40px/180%), an inline-SVG
+`feTurbulence` **grain**, and the smoke scrim (now blurred) behind dialogs —
+and apply it to every surface that overlays content: header, locale flyout,
+mobile drawer, bottom sheet, dialogs (command palette included), and the
+banner arrows. Tint opacity is tiered by how much text a surface owns
+(header 70% → flyouts/panes 85% → dialogs 90%), the rule being that content
+behind acrylic must read as colour and shape, never as competing text. The
+Mica base gains a second radial wash and its own lighter grain
+(`--mica-noise`). The toast is excluded: its inverted fill needs full
+opacity.
+**Consequences:** All acrylic lives in a single `@supports (backdrop-filter)`
+block; unsupported browsers keep the solid fills declared on each rule, so
+the effect is purely additive. Grain is an inline data URI, so it adds no
+request and works offline. Verified: axe WCAG 2 AA clean, 17/17 e2e green,
+no overflow across 12 routes × 5 widths.

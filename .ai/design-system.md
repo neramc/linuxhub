@@ -84,9 +84,38 @@ Layer model — each row sits visually *above* the one before it.
 The `-text` variants are the AA-safe colors for text *on* the matching 15%
 tint. Every pair is axe-verified at WCAG 2 AA on the five gate pages.
 
-**Materials:** `--mica-tint` (accent at 7%/12%, fixed radial wash behind the
-page), `--acrylic-fill` and `--acrylic-flyout` (72%/82% layer opacity) with
-`--acrylic-blur: blur(30px) saturate(140%)`, `--scrim` for dialog smoke.
+### Materials
+
+**Mica** — the page base. A fixed layer (`body::before`) combining
+`--color-bg` with two radial washes (`--mica-tint` 8%/14%,
+`--mica-tint-2` 5%/7%) and a light grain (`--mica-noise`). It never scrolls,
+so the page reads as a material rather than a flat grey.
+
+**Acrylic** — every chrome surface that sits *over* content. Four
+ingredients, and the grain is the one most web imitations skip:
+
+| Ingredient | Token | Value |
+|---|---|---|
+| tint | `--acrylic-fill` / `-flyout` / `-pane` / `-thick` | see below |
+| blur + saturation | `--acrylic-blur` / `--acrylic-blur-thin` | `blur(40px) saturate(180%)` / `blur(20px) saturate(150%)` |
+| grain | `--acrylic-noise` | inline SVG `feTurbulence`, offline-safe |
+| smoke | `--scrim` | `rgb(0 0 0 /.35)` + `blur(2px)` behind dialogs |
+
+Tint opacity scales with how much text the surface owns — the more it has to
+stay readable, the thicker it sits:
+
+| Surface | Token | Light | Dark |
+|---|---|---|---|
+| header (signature, little text) | `--acrylic-fill` | 70% | 68% |
+| small floating controls | `--acrylic-flyout` | 76% | 74% |
+| flyouts, drawer, sheet | `--acrylic-pane` | 85% | 84% |
+| dialogs (over smoke) | `--acrylic-thick` | 90% | 88% |
+
+Content behind an acrylic surface must read as **colour and shape, never as
+competing text**. Every acrylic rule lives in one `@supports
+(backdrop-filter: …)` block; without support each surface keeps the solid
+fill declared on its own rule, so nothing depends on the effect. The toast
+is deliberately excluded — its inverted fill needs full opacity.
 
 ## Typography
 
