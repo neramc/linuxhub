@@ -2268,35 +2268,6 @@ button.row:active {
 	flex: none;
 }
 
-/* Review-only controls — not part of the product design. */
-
-.mock-toolbar {
-	position: fixed;
-	inset-block-end: var(--space-4);
-	inset-inline-end: var(--space-4);
-	z-index: 90;
-	display: flex;
-	gap: var(--space-1);
-	padding: var(--space-1);
-	border-radius: var(--radius-full);
-	background: var(--color-surface-raised);
-	box-shadow: var(--shadow-dialog);
-	opacity: 0.85;
-}
-
-.mock-toolbar:hover {
-	opacity: 1;
-}
-
-.mock-toolbar .icon-btn {
-	inline-size: 36px;
-	block-size: 36px;
-}
-
-body.bare .mock-toolbar {
-	display: none;
-}
-
 /* -------------------------------------------------------- view transitions */
 
 ::view-transition-old(root),
@@ -2391,8 +2362,7 @@ body.bare .mock-toolbar {
 	}
 
 	/* Small floating controls get the thin recipe — less blur, less cost */
-	.banner-nav,
-	.mock-toolbar {
+	.banner-nav {
 		background-color: var(--acrylic-flyout);
 		background-image: var(--acrylic-noise);
 		backdrop-filter: var(--acrylic-blur-thin);

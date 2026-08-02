@@ -1,5 +1,9 @@
 # Roadmap & Phase Status
 
+> **Starting a new session?** Read `.ai/handoff.md` first — it carries the
+> current state, what is real versus placeholder, the commands that work, and
+> the environment notes. This file carries the plan.
+
 ## Stage gates (binding — see CLAUDE.md)
 
 ```
@@ -11,14 +15,47 @@ Project Documentation → Repository Initialization → Design System → UI Des
 
 | Phase | Scope | Gate | Status |
 |---|---|---|---|
-| **0 — Documentation** | Root `CLAUDE.md` + all `.ai/` docs (this set) | docs committed | ✅ done — reviewed & approved |
-| **1 — Repository Initialization** | Bun workspaces; `apps/web` (SvelteKit) + `apps/api` (Hono); `packages/shared\|ui\|i18n\|ingest`; Biome; base CI; Wrangler + Vercel config; empty D1 migration | hello-world builds & deploys on both targets | ✅ done — lint/typecheck/tests green; web builds via Vercel adapter, api bundles via `wrangler deploy --dry-run` with D1/KV bindings. Live deploys need owner accounts/secrets → wired up in Phase 7 |
-| **2 — Design System** | Finalize `design-system.md` + tokens in `packages/ui`; write all `prompts/stitch/*` briefs | briefs ready → **hand off to Stitch, STOP** | ✅ done — tokens in `packages/ui` (tokens.css/ts + motion helper), `_foundation.md` + 15 screen briefs in `prompts/stitch/` |
-| **3 — UI Design** | Claude Code produces HTML/CSS comps in `design/` from the briefs (ADR-0012); human reviews → approval | design approved | ✅ **approved 2026-07-19** (flathub-clone + ADR-0014 amendments + icon addendum) |
-| **4 — Frontend Implementation** | Build from approved design: layout, Explore, Distro page (MDX), download selector, i18n/RTL, rankings, search | quality gates pass | 🔶 in progress — **milestones 1–3 done**: all 15 screens implemented (shell, Home, Explore, Distro detail + Modrinth downloads, Rankings, Search + ⌘K palette, Quiz with scoring, Compare with diff/URL state, Hall of Fame, Contribute forms, About, 404/500); **real data wired (ADR-0015)** — official logos on every surface (assets/distros + ATTRIBUTION.md), new Linuxhub brand mark (icons/ + favicon), live release/EOL cycles + Arch/Fedora mirror lists from the committed snapshot (`packages/ingest/src/live.ts` → `live-data.json`) with a provenance line on the detail page. **milestone 4 done**: mdsvex content pipeline — `content/distros/<slug>/en/{description,install,usage}.md` authored for all 12 distros per `.ai/content.md` (paraphrased, sources cited, frontmatter-validated shape) and rendered in the detail tabs with per-doc source citations and English-fallback badge. **milestone 5 done**: i18n runtime + locale routing (ADR-0016) — `[[locale=locale]]` routes with matcher, geo/cookie one-time redirect, `/en` canonicalization, `<html lang dir>` transform, AsyncLocalStorage per-request locale, full Korean UI catalog, functional 56-locale switcher, RTL verified in `ar`. **milestone 6 done**: motion pass — View Transitions cross-fade on route changes via the shared motion helper (no-op under reduced motion), `::view-transition` durations from motion tokens, carousel scroll honors reduced motion. **milestone 7 done**: Playwright e2e (browse→detail→downloads/mirrors, search, quiz, compare, locale routing/RTL) + axe WCAG 2 A/AA gate on 5 key pages — 17/17 green. Contrast corrections shipped as tokens (`--color-accent-strong`, `--color-*-text`) in ui + comps, logged in design-system.md for design re-approval. **milestone 8 done**: visual system rebuilt as Flathub × WinUI 3 (ADR-0017) — layered Mica/card/flyout surfaces, control strokes, elevation, acrylic chrome, Fluent type ramp + motion + focus visual, theme-inverting accent, and a full acrylic material system across every overlay surface (ADR-0018); applied to every component in `packages/ui`, the `design/` comps, and all page-scoped styles. **Phase 4 complete** (Lighthouse budget measured in Phase 6) |
-| **5 — Backend Implementation** | D1/KV, ingestion (Cron), 50+ endpoints, hCaptcha, rate limits, caching, feeds | quality gates pass | ⬜ not started |
-| **6 — Testing** | Unit + e2e + a11y + i18n + perf per Definition of Done | all green | ⬜ not started |
-| **7 — Deployment** | Web → Vercel, API → Workers; secrets; smoke tests; monitoring; runbook in `docs/` | live + runbook committed | ⬜ not started |
+| **0 — Documentation** | Root `CLAUDE.md` + all `.ai/` docs | docs committed | ✅ done |
+| **1 — Repository Initialization** | Bun workspaces; `apps/web` + `apps/api`; `packages/shared\|ui\|i18n\|ingest`; Biome; CI; Wrangler + Vercel config | hello-world builds on both targets | ✅ done — live deploys need owner accounts (Phase 7) |
+| **2 — Design System** | Tokens in `packages/ui`; 15 screen briefs in `prompts/stitch/` | briefs ready | ✅ done |
+| **3 — UI Design** | HTML/CSS comps in `design/` (ADR-0012) | owner approval | ✅ **approved 2026-07-20** — Flathub × WinUI 3 (ADR-0017 + acrylic ADR-0018). **Design is frozen; see `.ai/handoff.md` before restyling anything** |
+| **4 — Frontend Implementation** | All screens from the approved design, real data, content, i18n/RTL, motion, tests | quality gates pass | ✅ **complete** — 8 milestones, detail below |
+| **5 — Backend Implementation** | D1/KV, Cron ingestion, endpoint surface, hCaptcha, rate limits, caching, feeds | quality gates pass | ⬜ **next** — breakdown below |
+| **6 — Testing** | Coverage, Lighthouse budget, i18n + a11y sweep per Definition of Done | all green | ⬜ not started |
+| **7 — Deployment** | Web → Vercel, API → Workers; secrets; smoke tests; runbook in `docs/` | live + runbook committed | ⬜ blocked on owner accounts |
+
+### Phase 4 milestones (all done)
+
+1. Shell + all 15 screens on a mock BFF.
+2. Screens wired to the BFF envelope with URL-as-state browsing.
+3. Real data (ADR-0015) — official logos, brand mark, live release/EOL cycles
+   and Arch/Fedora mirrors from the committed snapshot, provenance surfaced.
+4. mdsvex content pipeline — 36 authored distro docs with cited sources.
+5. i18n runtime + locale routing (ADR-0016) — geo redirect, `/en`
+   canonicalization, full Korean catalog, RTL verified in `ar`.
+6. Motion pass — View Transitions, reduced-motion honored throughout.
+7. Playwright e2e + axe WCAG 2 AA gate (17 tests) and the contrast
+   corrections it surfaced.
+8. Visual system rebuilt as Flathub × WinUI 3 (ADR-0017/0018) across
+   `packages/ui`, the `design/` comps, and every page-scoped style.
+
+### Phase 5 breakdown (ordered; one commit each)
+
+Specs: `.ai/api.md` (67 endpoints) · `.ai/database.md` (schema + KV keyspace) ·
+`.ai/backend-rules.md` (structure, validation, errors, caching, limits, cron).
+
+| # | Task | Done when |
+|---|---|---|
+| 5.1 | **D1 schema** — replace the empty `0001_init.sql` with the real tables | `wrangler d1 migrations apply linuxhub --local` succeeds; schema matches `.ai/database.md` |
+| 5.2 | **Cron ingestion on the Worker** — port `packages/ingest/src/live.ts` to a Cron Trigger writing D1/KV with native `fetch` | a scheduled run populates releases + mirrors with `source_url` + `fetched_at` |
+| 5.3 | **Read endpoints** — distros list/detail, releases, rankings, search | shared Zod schemas validate; standard envelope; unit tests per endpoint |
+| 5.4 | **BFF proxies the Worker** — `apps/web/src/routes/api/v1/*` stops reading `data.ts` | frontend unchanged; caching TTLs per `.ai/frontend-rules.md`; e2e still green |
+| 5.5 | **Write endpoints** — suggest/report/feedback behind hCaptcha + KV rate limits | contribute forms submit for real; limits covered by tests |
+| 5.6 | **Download resolution** — edition/arch/format + region → real mirror URL + checksum | the download button delivers a file from an official mirror |
+
+Editorial content still living in `apps/web/src/lib/server/data.ts` (compare
+specs, quiz, Hall of Fame, banners) needs a home before that file can go —
+decide between D1 rows and MDX at 5.3.
 
 Then iterate: Documentation → Design → Implementation → Testing → Review →
 Documentation Update.

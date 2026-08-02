@@ -29,3 +29,28 @@ jobs:
 
       - name: Build (web + api dry-run)
         run: bun run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # The e2e suite runs against the production build, and the axe job is
+      # part of the accessibility gate in .ai/roadmap.md — both must block.
+      - name: Build web
+        run: bun run --filter '@linuxhub/web' build
+
+      - name: Install Playwright Chromium
+        working-directory: apps/web
+        run: bunx playwright install --with-deps chromium
+
+      - name: E2E + accessibility (Playwright + axe)
+        working-directory: apps/web
+        run: bun run test:e2e

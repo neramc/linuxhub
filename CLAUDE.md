@@ -62,6 +62,7 @@ Current phase status is tracked in `.ai/roadmap.md`.
 
 | Doc | Contents |
 |---|---|
+| **`.ai/handoff.md`** | **Read first in a new session** — current state, real vs placeholder, working commands, environment notes, Phase 5 entry point |
 | `.ai/project.md` | Vision, users, scope, non-goals, glossary |
 | `.ai/architecture.md` | System diagram, runtime boundaries, caching, data flow |
 | `.ai/design-system.md` | Tokens, component inventory, references — **Stitch consumes this** |
@@ -114,6 +115,11 @@ Design Documentation (briefs) → HTML/CSS Design Comps in design/
 - If something can't be built as designed, update the comp, get re-approval,
   then implement. **Never silently redesign in code.**
 
+**Design status: frozen.** The owner approved Flathub × WinUI 3 on 2026-07-20
+(ADR-0017 + ADR-0018). Feature work must not restyle approved screens; a
+genuinely new visual pattern goes inventory → comp → approval → code, in that
+order.
+
 ## Guardrails — never do these
 
 - Never copy official distro documentation verbatim. Paraphrase, keep it
@@ -137,6 +143,22 @@ feat(db): add d1 schema and migrations for distros and releases
 feat(api): add distro list, detail, and download-resolve endpoints
 feat(web): implement explore grid from approved design
 test(api): cover download resolution and rate limiting
+```
+
+## Quality gates (run before every commit)
+
+```bash
+bun run check     # types across all packages
+bun run lint      # Biome (bun run format autofixes)
+bun run test      # vitest
+bun run build     # web + api dry-run
+```
+
+UI changes additionally need the e2e + accessibility gate, which runs against
+a production build and is **not** part of `bun run test`:
+
+```bash
+bun run --filter '@linuxhub/web' build && cd apps/web && bun run test:e2e
 ```
 
 ## Definition of Done (per stage)
