@@ -237,6 +237,14 @@ export const en = {
 	about_contact: "Contact & contribute",
 	about_contact_p: "Linuxhub is built in the open.",
 	about_on_this_page: "On this page",
+
+	// Release channel labels. These replace the pre-composed English the API
+	// used to send as `subtitle` — see ADR-0020.
+	release_stable: "Stable release",
+	release_lts: "Long-term support release",
+	release_beta: "Pre-release",
+	release_rolling: "Rolling release",
+	release_eol: "End of life",
 } as const;
 
 export type MessageKey = keyof typeof en;
