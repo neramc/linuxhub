@@ -12,6 +12,10 @@ coverage/
 .env
 .env.*
 .dev.vars
+# …but the templates carry no values and must be committed. Without these
+# negations `.env.*` silently swallows `.env.example`.
+!.env.example
+!.dev.vars.example
 
 # Playwright
 test-results/
