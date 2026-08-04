@@ -1,5 +1,6 @@
 <script lang="ts">
 import { localizeHref, m } from "@linuxhub/i18n";
+import { brandColor, initials } from "@linuxhub/ui";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
@@ -91,8 +92,8 @@ function slide(direction: number) {
 				href={localizeHref(`/distro/${distro.slug}`)}
 				name={distro.name}
 				summary={distro.summary}
-				color={distro.color}
-				initials={distro.initials}
+				color={brandColor(distro.slug)}
+				initials={initials(distro.name)}
 				logo={distro.logo}
 			/>
 		{/each}
@@ -105,8 +106,8 @@ function slide(direction: number) {
 				href={localizeHref(`/distro/${distro.slug}`)}
 				name={distro.name}
 				summary={distro.summary}
-				color={distro.color}
-				initials={distro.initials}
+				color={brandColor(distro.slug)}
+				initials={initials(distro.name)}
 				logo={distro.logo}
 			/>
 		{/each}

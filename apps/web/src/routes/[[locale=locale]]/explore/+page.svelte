@@ -1,5 +1,6 @@
 <script lang="ts">
 import { localizeHref, m } from "@linuxhub/i18n";
+import { brandColor, initials } from "@linuxhub/ui";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import type { PageProps } from "./$types";
 
@@ -73,8 +74,8 @@ const PILLS = [
 					href={localizeHref(`/distro/${distro.slug}`)}
 					name={distro.name}
 					summary={distro.summary}
-					color={distro.color}
-					initials={distro.initials}
+					color={brandColor(distro.slug)}
+					initials={initials(distro.name)}
 					logo={distro.logo}
 				/>
 			{/each}
