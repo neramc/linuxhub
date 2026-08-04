@@ -261,3 +261,41 @@ block; unsupported browsers keep the solid fills declared on each rule, so
 the effect is purely additive. Grain is an inline data URI, so it adds no
 request and works offline. Verified: axe WCAG 2 AA clean, 17/17 e2e green,
 no overflow across 12 routes × 5 widths.
+
+## ADR-0019 — D1 schema: per-value provenance, LTS as a flag, per-distro mirrors
+**Date:** 2026-08-04 · **Status:** accepted
+**Context:** Phase 5.1 turned the schema sketch in `.ai/database.md` into real
+migrations. Writing it out surfaced four places where the sketch could not
+hold the data the verified sources actually return, or could not enforce a
+rule the project treats as binding.
+**Decision:**
+1. **Per-value provenance.** `distros`, `releases`, `artifacts` and `mirrors`
+   each carry `source_url` + `fetched_at`. `ingest_log` records a *run* and so
+   can never answer "where did this row come from"; the sourcing rule in
+   `.ai/data-sources.md` is about values, so the columns belong on the values.
+2. **`lts` is a flag, not a channel; `eol` is derived, not stored.**
+   `channel ∈ stable|beta|rolling` plus `lts INTEGER`. endoflife.date reports
+   LTS as a boolean per cycle — a cycle is stable *and* long-term-supported —
+   so the documented four-value enum would have destroyed information. `eol` is
+   computed from `eol_at < today` at read time, so no row goes quietly stale as
+   dates pass. This answers open question 3 in `.ai/frontend-contract.md`; the
+   frontend's `release|beta|eol|rolling` values are display states derived from
+   `channel` + `lts` + `eol_at`, not storage.
+3. **Mirrors belong to a distro.** `mirrors.distro_id` added and
+   `UNIQUE(base_url)` relaxed to `UNIQUE(distro_id, base_url)`. Arch's mirror
+   network is not Fedora's, one host can mirror several distros, and a mirror
+   is known long before any artifact is known to sit on it — the
+   `artifact_mirrors` join alone left ingested mirror lists with nowhere to go.
+4. **`CHECK` constraints on every closed enum**, and `distros.family` defaults
+   to `''` because lineage comes from Wikidata and an empty value is honest
+   where a hand-typed one would violate the sourcing rule.
+Also: `download_events.mirror_id` is `NOT NULL DEFAULT 0` rather than a
+nullable FK, because SQLite treats each `NULL` as distinct in a `UNIQUE`
+constraint and the daily counter flush would insert duplicates instead of
+accumulating.
+**Consequences:** `.ai/database.md` is updated to match in the same commit and
+remains the authority. Reads must derive `eol` rather than filter on it, and
+`releases.lts` is a separate predicate from `channel`. Migrations `0001_init` …
+`0005_indexes` create 15 tables and 9 indexes; verified with
+`wrangler d1 migrations apply linuxhub --local`, including a rejected write
+proving the `CHECK` constraints bite.
