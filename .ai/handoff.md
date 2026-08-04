@@ -79,7 +79,7 @@ each of these is the one the project forbids:
 | Table / field | Why it is empty | Filled by |
 |---|---|---|
 | `rankings`, `download_events`, `downloads`, `rank`, `trend` | popularity comes from **our own signals only**; there are no signals until the site counts download clicks. Third-party charts are a forbidden source | 5.6 |
-| `distros.family`, `based_on`, taxonomy | lineage comes from Wikidata; hand-typing it violates the sourcing rule | its own commit, before 5.4 needs the family facet |
+| `distros.family`, `based_on`, taxonomy | lineage comes from Wikidata, and **every QID-lookup API is robots-disallowed** — needs 9 QIDs looked up by a human first. `.ai/data-sources.md` § "Wikidata lineage — blocked". **Does not block 5.4:** there is no family facet in the UI | after the QIDs land |
 | `releases` for arch/manjaro/endeavouros | rolling: no version cycles exist to fetch. Their ISO-snapshot endpoints are identified but unverified | when that source is verified |
 | `releases` for zorin/elementary | fixed-cadence but no machine-readable source found — registry kind `unsourced` | when a source is found |
 | `editions`, `artifacts` | need per-distro release APIs | 5.6/5.7 |
