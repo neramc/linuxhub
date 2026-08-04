@@ -1,17 +1,22 @@
-import { ok } from "@linuxhub/shared";
 import { Hono } from "hono";
 import { runScheduled } from "./cron";
 import type { Env } from "./env";
+import { type App, onError, onNotFound, withInternalAuth, withLogging } from "./middleware";
+import { distros } from "./routes/distros";
+import { health } from "./routes/health";
 
 export type { Env };
 
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono<App>();
 
-// Liveness — the only route without internal-token auth (.ai/backend-rules.md).
-// D1/KV probes are added in Phase 5 alongside the real route surface.
-app.get("/v1/health", (c) =>
-	c.json(ok({ service: "linuxhub-api", status: "up", version: "0.1.0" })),
-);
+app.onError(onError);
+app.notFound(onNotFound);
+
+app.use("*", withLogging);
+app.use("*", withInternalAuth);
+
+app.route("/v1", health);
+app.route("/v1", distros);
 
 export default {
 	fetch: app.fetch,

@@ -299,3 +299,54 @@ remains the authority. Reads must derive `eol` rather than filter on it, and
 `0005_indexes` create 15 tables and 9 indexes; verified with
 `wrangler d1 migrations apply linuxhub --local`, including a rejected write
 proving the `CHECK` constraints bite.
+
+## ADR-0020 — The API returns facts; presentation is derived client-side
+**Date:** 2026-08-04 · **Status:** accepted (owner approved)
+**Context:** The Phase 4 frontend was built against `data.ts`, which returned
+`downloads: "1.2M"`, `familyLine: "Debian family · Ubuntu-based"`,
+`title: "Fedora 44"`, a pre-rendered `spark` polyline, `flag` emoji, `color`
+and `initials`. `.ai/frontend-contract.md` recorded three recurring problems
+in that shape — pre-composed English, pre-formatted numbers, and presentation
+baked into payloads — and asked where `color`, `initials` and `spark` should
+live before any endpoint moved.
+**Decision:** The API returns facts and nothing else.
+- `downloads` is a number; the page formats it with `Intl.NumberFormat`, which
+  is the only way it can be locale-correct across ~57 locales.
+- No composed English anywhere. `familyLine`, release `line`/`note`,
+  `RecentRelease.title`/`subtitle` and the `meta[]` tile labels are built by
+  the page through `@linuxhub/i18n`. The API returns `family`, `based_on`,
+  `version`, `channel`, `lts`, `released_at`, `eol_at`.
+- `initials` derives from `name`; brand `color` is a slug-keyed lookup in
+  `packages/ui`, cited against `assets/distros/ATTRIBUTION.md`. Neither becomes
+  a D1 column: they are presentation with no upstream source, and a hand-seeded
+  column would sit badly against the no-hand-typed-values rule.
+- `spark` ships as a series (`GET /v1/distros/:slug/rank-history` →
+  `{ snapshot_at, rank, score }[]`), drawn by the client. `flag` derives from
+  the mirror's country code.
+**Consequences:** Answers questions 1 and 2 in `.ai/frontend-contract.md`
+(question 3 is ADR-0019's). Task 5.4 must move the formatting and composition
+into the pages as each endpoint is repointed — that work is the reason the
+sequence there is one endpoint at a time. Endpoint tests assert the *absence*
+of `familyLine`, `color`, `initials`, `title` and `subtitle`, so a regression
+into presentation-in-payload fails a named test.
+
+## ADR-0021 — Worker tests run against a real D1 via Miniflare
+**Date:** 2026-08-04 · **Status:** accepted
+**Context:** `.ai/backend-rules.md` called for a "Miniflare/workers-pool
+environment" without choosing one. Task 5.3 needed a database for endpoint
+tests, and 5.1 had just added CHECK constraints and upsert conflict targets
+that only a real SQLite engine enforces.
+**Decision:** `apps/api/test/harness.ts` starts Miniflare with an in-memory D1
+and the three KV namespaces, applies the files in `migrations/` verbatim, and
+hands the bindings to `app.request(path, init, env)`. Miniflare is used
+directly rather than `@cloudflare/vitest-pool-workers`: it needs no new
+top-level dependency (it already ships with Wrangler), leaves the existing
+Vitest setup unchanged, and lets a test drive both a cron pass and an HTTP
+request against the same database. Ingestion tests stub the HTTP transport —
+a test suite has no business calling an upstream — but never the database.
+**Consequences:** Every test also exercises the schema, which is how the
+`ON CONFLICT` parse failure in the rankings snapshot and the retry bug in the
+ingest HTTP client were both caught before they shipped. Tests run ~1s slower
+per suite because workerd starts per context; that is worth it. If Miniflare
+ever misbehaves under Bun, the fallback is a `node:sqlite`-backed D1 shim,
+which would have to be documented as no longer exercising the real engine.

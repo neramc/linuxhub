@@ -1,5 +1,3 @@
-import { z } from "zod";
-
 // ---------------------------------------------------------------------------
 // API envelope — canonical shape defined in .ai/api.md
 // ---------------------------------------------------------------------------
@@ -63,16 +61,9 @@ export const ERROR_STATUS: Record<ApiErrorCode, number> = {
 	INTERNAL: 500,
 };
 
-// ---------------------------------------------------------------------------
-// Pagination — defaults defined in .ai/api.md
-// ---------------------------------------------------------------------------
-
-export const PAGINATION = { defaultLimit: 24, maxLimit: 100 } as const;
-
-export const paginationSchema = z.object({
-	page: z.coerce.number().int().min(1).default(1),
-	limit: z.coerce.number().int().min(1).max(PAGINATION.maxLimit).default(PAGINATION.defaultLimit),
-});
+// Pagination lives in ./schemas alongside the query schemas that extend it,
+// and is re-exported below — importing it back from here would make this
+// module and ./schemas circular.
 
 // ---------------------------------------------------------------------------
 // Rate limits (per IP) — defined in .ai/security.md; changes update both
@@ -84,3 +75,10 @@ export const RATE_LIMITS = {
 	downloadsTrack: { perMinute: 30 },
 	searchSuggest: { perMinute: 60 },
 } as const;
+
+// ---------------------------------------------------------------------------
+// API schemas — entity shapes and query validation shared by the Worker and
+// the BFF (.ai/frontend-contract.md, ADR-0020)
+// ---------------------------------------------------------------------------
+
+export * from "./schemas";

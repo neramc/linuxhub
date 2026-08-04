@@ -11,6 +11,23 @@ schemas must stay synchronized.
 > gap field by field and lists the open questions to settle before moving any
 > endpoint. Read it before implementing from this catalog.
 
+## Implemented so far (task 5.3)
+
+Nine endpoints are live on the Worker: **#1, #2, #3, #12, #22, #32 (+#34
+folded in), #35, #37, #41**. They return facts only — no composed English, no
+pre-formatted numbers, no presentation (ADR-0020). The BFF still serves the
+Phase 4 shapes from `data.ts`; task 5.4 moves it over, endpoint by endpoint.
+
+Two conventions were settled while building them:
+
+- **`meta.total` is a real `COUNT(*)`**, issued alongside the page query in one
+  `db.batch()`. The worked example below flagged this as undecided; a total
+  that is really the page length makes pagination lie.
+- **A bad internal token answers `404`, not `403`.** The error taxonomy has no
+  auth code, and an internal surface should not confirm it exists to a caller
+  that cannot already reach it. The Worker logs the real reason, so a
+  misconfigured token stays diagnosable.
+
 ## Conventions
 
 ### Envelope
@@ -169,11 +186,15 @@ are allowed in place. `?locale=` selects content language where relevant
 ## Key schemas (canonical shapes — Zod in `packages/shared`)
 
 ```ts
-Distro        { slug, name, summary, family, homepage, status: 'active'|'discontinued',
-                logo: string, categories: string[], tags: string[], desktops: string[],
-                latest_release?: ReleaseSummary, downloads: number, rank?: number }
-Release       { version, channel: 'stable'|'lts'|'beta'|'rolling',
-                released_at, eol_at?, notes_url? }
+Distro        { slug, name, summary, family, based_on, homepage,
+                status: 'active'|'discontinued', logo: string,
+                categories: string[], tags: string[], desktops: string[],
+                latest_release: Release | null, downloads: number,
+                rank: number | null, trend: number | null }
+Release       { version, channel: 'stable'|'beta'|'rolling', lts: boolean,
+                codename, latest_point, released_at, eol_at,
+                eol: boolean,        // derived from eol_at < today, never stored
+                notes_url, source_url, fetched_at }
 Edition       { id, name, desktop?: string, kind: 'desktop'|'server'|'minimal'|'other' }
 Artifact      { id, edition_id, arch: 'x86_64'|'aarch64'|'riscv64'|string,
                 format: 'iso'|'torrent'|'magnet'|'checksum'|'signature',
@@ -182,7 +203,11 @@ Mirror        { id, country, region, base_url, protocol: 'https'|'http'|'ftp'|'r
                 sponsor?, healthy: boolean }
 DownloadResolution { url, size, sha256?, sig_url?, mirror: Mirror, instructions: string }
 RankingEntry  { rank, slug, name, score, delta }
+RankHistoryPoint { snapshot_at, rank, score }   // a series; the client draws it
 ```
+
+Canonical Zod definitions live in `packages/shared/src/schemas.ts`, imported by
+the Worker and the BFF so the two cannot disagree.
 
 Adding/changing an endpoint = update this doc + `packages/shared` schemas +
 both route layers in the **same commit**.
