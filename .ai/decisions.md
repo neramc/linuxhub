@@ -350,3 +350,47 @@ ingest HTTP client were both caught before they shipped. Tests run ~1s slower
 per suite because workerd starts per context; that is worth it. If Miniflare
 ever misbehaves under Bun, the fallback is a `node:sqlite`-backed D1 shim,
 which would have to be documented as no longer exercising the real engine.
+
+## ADR-0022 — Keep the hand-rolled i18n runtime for v1; do not adopt the inlang compiler
+**Date:** 2026-08-04 · **Status:** accepted (owner delegated the choice)
+**Context:** ADR-0016 shipped a small Paraglide-shaped runtime instead of the
+inlang toolchain, and left "adopt the real compiler" open as a dependency the
+owner should agree to. `.ai/handoff.md` has carried it as an open question ever
+since. At deployment time it had to be answered.
+
+Measured before deciding, rather than argued from preference:
+
+| | Today |
+|---|---|
+| Authored catalogs | **2** (`en`, `ko`) of 59 registry locales |
+| Catalog payload | ~19 KB total, both statically imported |
+| `m.<key>` call sites | **266** across **15** files |
+
+**Decision:** Keep the hand-rolled runtime through v1.
+
+Adopting the compiler now means converting two TS catalogs to inlang's message
+format, adding a project file and a Vite plugin, and rewriting 266 call sites
+from `m.key` to `m.key()` across every screen — then re-running the full e2e and
+axe gate — immediately before the first deploy. The payoff at two catalogs and
+19 KB is indistinguishable from zero. That is risk without benefit, and the
+timing is the worst part of it.
+
+**Revisit when a number says to**, not on a date. Two triggers:
+1. **authored catalogs reach ~5**, or
+2. the message payload becomes a measurable share of the JS bundle in the
+   Phase 6 Lighthouse budget.
+
+**Consequences:** Call sites keep property access (`m.key`); ADR-0016's note
+that the swap stays mechanical still holds, and 266 sites is the size of it.
+
+The honest limitation this leaves in place: `CATALOGS` in
+`packages/i18n/src/runtime.ts` statically imports every authored catalog, so
+each one ships to every visitor regardless of their locale. At 59 authored
+locales that would be roughly 560 KB of messages sent to everybody — a real
+defect, and the *first* thing to fix when the trigger fires. Note that fixing it
+does not require the compiler: a dynamic per-locale import solves the same
+problem while keeping this runtime. Weigh both options at that point instead of
+assuming the compiler is the answer.
+
+`.ai/i18n.md` is updated in this commit to describe what is actually built —
+it had been describing Paraglide as the stack since Phase 0.

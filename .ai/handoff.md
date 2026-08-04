@@ -27,7 +27,7 @@ closed" below before touching any styling.
 | 4 Frontend | ✅ all 15 screens, live data, MDX content, i18n + RTL, motion, e2e + axe |
 | **5 Backend** | 🟡 **5.1–5.3 done** (schema, cron ingestion, read endpoints). **5.4 is next** — point the BFF at the Worker |
 | 6 Testing | ⬜ Lighthouse budget + coverage still to measure |
-| 7 Deployment | ⬜ blocked on owner accounts (below) |
+| 7 Deployment | 🟡 config + runbook ready (`docs/deployment.md`); the account steps are the owner's |
 
 ## What is real and what is not
 
@@ -48,7 +48,6 @@ deliberately a placeholder.
   mdsvex and rendered in the detail tabs.
 - **Korean UI** — a complete `ko` catalog; locale routing, geo redirect, and
   RTL are wired end to end.
-
 - **The Worker's D1** — 15 tables, populated by cron from the same three
   verified sources. A local run holds 12 distros, 36 content docs, 42 releases
   and 16 mirrors, every ingested row carrying `source_url` + `fetched_at`.
@@ -243,6 +242,11 @@ frontend does not move while the backend lands under it.
 
 ## Needs the owner, not an agent
 
+**The procedure for all of this is `docs/deployment.md`** — resources, secrets,
+remote migrations, cron seeding, Vercel, rollback. Env templates are committed
+at `apps/api/.dev.vars.example` and `apps/web/.env.example`.
+
+
 - **Cloudflare account** — D1 database + 3 KV namespaces provisioned, real ids
   substituted into `apps/api/wrangler.toml`; secrets (`HCAPTCHA_SECRET`,
   `INTERNAL_API_TOKEN`, `RATE_SALT`) set via `wrangler secret put`. Until then
@@ -251,12 +255,17 @@ frontend does not move while the backend lands under it.
   ever fired there. First deploy needs
   `wrangler d1 migrations apply linuxhub --remote`, then one manual run of each
   schedule to populate it.
-- **`SITE_ORIGIN`** as a Worker var once the domain exists. It is the contact
-  URL in the ingest User-Agent, which the crawler policy requires; it currently
-  falls back to the GitHub repo URL.
+- ~~`SITE_ORIGIN`~~ — **set to `https://linuxhub.kro.kr`.** It lives in exactly
+  two places, both commented to point at each other: `[vars]` in
+  `apps/api/wrangler.toml` (what production uses) and `DEFAULT_SITE_ORIGIN` in
+  `packages/ingest/src/index.ts` (the build-time fallback). Changing domains =
+  edit both, then redeploy. `docs/deployment.md` §7.
 - **Vercel project** — linked for the SvelteKit app, with
   `INTERNAL_API_TOKEN` matching the Worker.
-- **hCaptcha** site + secret keys.
-- A decision on the **Paraglide/inlang compiler**: ADR-0016 ships a
-  hand-rolled, Paraglide-shaped runtime. Adopting the real compiler is a
-  mechanical swap, but it is a dependency the owner should agree to.
+- **hCaptcha** site + secret keys — the *secret* half is a Wrangler secret, the
+  *site* half is a Vercel `PUBLIC_` var. Neither is read until task 5.5.
+- ~~A decision on the Paraglide/inlang compiler~~ — **settled 2026-08-04
+  (ADR-0022): keep the hand-rolled runtime through v1.** Revisit when authored
+  catalogs reach ~5 or the message payload shows up in the Phase 6 Lighthouse
+  budget. The first thing to fix then is the static `CATALOGS` map, which is
+  not necessarily the compiler.
