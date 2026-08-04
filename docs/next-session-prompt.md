@@ -12,33 +12,31 @@ where work actually stopped.
 
 ```text
 Linuxhub, Phase 5 (Backend Implementation). Continue from where the last
-session stopped — tasks 5.1–5.3 are done and pushed. The Worker now has the
-real D1 schema, cron ingestion writing real data, and nine read endpoints.
-The BFF still reads data.ts; nothing has been repointed yet.
+session stopped. 5.1-5.3 are done and four of the five movable BFF routes now
+proxy the Worker (health, releases/recent, search, distros).
 
 Read first, in this order:
-  1. .ai/handoff.md      — current state, what is real, what is EMPTY ON
-                           PURPOSE (read that table before "fixing" a blank
-                           field), working commands, container traps
-  2. .ai/roadmap.md      — Phase 5 breakdown with done-when criteria
-  3. .ai/frontend-contract.md — what the shipped frontend actually consumes,
-                           the safe 5.4 sequence, and which of its open
-                           questions are now settled
-  4. .ai/api.md, .ai/database.md, .ai/backend-rules.md — the specs you
-                           build against
-  5. .ai/decisions.md ADR-0019/0020/0021 — the decisions 5.1–5.3 locked in
+  1. .ai/handoff.md      - current state, "Which BFF routes have moved", what
+                           is EMPTY ON PURPOSE (read that table before
+                           "fixing" a blank field), commands, container traps
+  2. .ai/roadmap.md      - Phase 5 breakdown with done-when criteria
+  3. .ai/frontend-contract.md - what the frontend consumes and which of its
+                           open questions are settled
+  4. .ai/api.md, .ai/database.md, .ai/backend-rules.md - the specs
+  5. .ai/decisions.md ADR-0019..0022 - the decisions already locked in
 
-Goal for this session: task 5.4 — point the BFF at the Worker. This swaps the
-data source under ~15 screens, so move ONE endpoint at a time in the order in
-.ai/frontend-contract.md (health → releases/recent → search → distros →
-distros/:slug) and run the e2e suite after each. Do NOT repoint rankings,
-hall-of-fame or quiz: they read tables that are legitimately empty, and moving
-them would replace working editorial screens with blank ones.
+Goal for this session: pick up the highest-value unblocked work. In order of
+value:
 
-Expect to move presentation back into the pages as you go. The Worker returns
-facts only (ADR-0020), so each page now owes: Intl.NumberFormat for downloads,
-@linuxhub/i18n for every composed label the API used to send pre-built,
-initials derived from name, and a brand-colour lookup in packages/ui.
+  a) 5.6 download resolution - the piece with real user value, and it also
+     unblocks the two things blocking everything else: artifacts/editions
+     (which block distros/:slug) and download counters (which block rankings).
+  b) 5.5 write endpoints behind hCaptcha + KV rate limits.
+  c) 5.7 retiring data.ts, once (a) has filled in what the detail page needs.
+
+Do NOT move the BFF's distros/:slug, rankings, hall-of-fame or quiz routes
+yet. Each reads a table that is legitimately empty, and moving one replaces a
+working screen with a blank one. .ai/handoff.md says which and why.
 
 Binding constraints — these are project rules, not preferences:
 
@@ -97,8 +95,8 @@ placeholder ids and production D1 is empty. Build and test against
 `wrangler dev --local`; leave anything needing real credentials for Phase 7 and
 list it explicitly in your report.
 
-Start by reading the docs above, then give me a short plan for 5.4 before you
-write code.
+Start by reading the docs above, then give me a short plan before you write
+code.
 ```
 
 ---

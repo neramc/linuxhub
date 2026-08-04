@@ -25,7 +25,7 @@ closed" below before touching any styling.
 | 2 Design system | ✅ tokens + `design/` comps |
 | 3 UI design | ✅ approved, then rebuilt as Flathub × WinUI 3 (ADR-0017/0018) |
 | 4 Frontend | ✅ all 15 screens, live data, MDX content, i18n + RTL, motion, e2e + axe |
-| **5 Backend** | 🟡 **5.1–5.3 done** (schema, cron ingestion, read endpoints). **5.4 is next** — point the BFF at the Worker |
+| **5 Backend** | 🟡 **5.1–5.3 done**, **5.4 four-fifths done** — `health`, `releases/recent`, `search`, `distros` now proxy the Worker; `distros/:slug` blocked (below) |
 | 6 Testing | ⬜ Lighthouse budget + coverage still to measure |
 | 7 Deployment | 🟡 config + runbook ready (`docs/deployment.md`); the account steps are the owner's |
 
@@ -85,9 +85,23 @@ each of these is the one the project forbids:
 | `editions`, `artifacts` | need per-distro release APIs | 5.6/5.7 |
 | `hall_of_fame` | blocked on frontend-contract question 4 (editorial in D1 or `content/`?) | 5.7 |
 
-Consequence for 5.4: **do not repoint the BFF's `rankings`, `hall-of-fame` or
-`quiz` routes.** They would replace working editorial screens with blank ones.
-`health`, `releases/recent`, `search`, `distros` and `distros/:slug` are ready.
+### Which BFF routes have moved
+
+| Route | Source | Why |
+|---|---|---|
+| `health` | ✅ Worker | also reports the Worker's db/kv probes and a `mode` field |
+| `releases/recent` | ✅ Worker | facts; the page composes the label and formats the date |
+| `search` | ✅ Worker | LIKE over name/summary/aliases in SQL |
+| `distros` | ✅ Worker | `?sort=trending` maps to the default — there is no trend yet |
+| `distros/:slug` | ⛔ `data.ts` | **the one blocker left in 5.4.** The detail page renders editions, architectures, formats and requirements; D1 has 0 editions, 0 artifacts and no requirements table at all. Moving it blanks four sections. Needs 5.6/5.7 |
+| `rankings`, `hall-of-fame`, `quiz` | ⛔ `data.ts` | empty tables / editorial home unsettled — same class of reason |
+
+**The dual mode is deliberate and temporary.** With `LINUXHUB_API_URL` unset
+every route falls back to the committed snapshot, which is what makes a deploy
+with empty env vars work. `GET /api/v1/health` reports which mode is live, and
+the mode is logged once per cold start. `apps/web/src/lib/server/adapt.ts`
+lifts the snapshot to the shared shape so no page can tell the branches apart;
+it dies with `data.ts` in 5.7.
 
 ## Commands that work
 
@@ -112,6 +126,19 @@ curl 'localhost:8787/__scheduled?cron=0+4+*+*+1'       # weekly rankings snapsho
 curl localhost:8787/v1/health
 bunx wrangler d1 execute linuxhub --local --command "SELECT COUNT(*) FROM releases"
 ```
+
+Run the BFF against a real Worker — the only way to exercise the proxy branch,
+since e2e covers the snapshot one:
+
+```bash
+cd apps/api && bunx wrangler dev --port 8787 --local &
+bun run --filter '@linuxhub/web' build
+cd apps/web && LINUXHUB_API_URL=http://127.0.0.1:8787 bunx vite preview --port 4173
+curl -sS --noproxy '*' localhost:4173/api/v1/health   # expect mode: "worker"
+```
+
+Mind the working directory — `vite preview` started from `apps/api` silently
+serves nothing and every route 404s.
 
 Regenerate the two committed data artifacts when their inputs change:
 
