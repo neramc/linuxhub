@@ -8,25 +8,44 @@
 
 | Source | What we take | Access | robots/ToS status *(verify)* | Cadence |
 |---|---|---|---|---|
-| **endoflife.date API** (`/api/<product>.json`) | release cycles, release dates, EOL dates, LTS flags | public JSON API, explicitly for programmatic use | **verified 2026-07-19** — public API, MIT-licensed site, no auth | 6 h *(currently: snapshot CLI)* |
+| **endoflife.date API** (`/api/<product>.json`) | release cycles, release dates, EOL dates, LTS flags | public JSON API, explicitly for programmatic use | **verified 2026-07-19** — public API, MIT-licensed site, no auth | 6 h — **Worker cron** |
 | Official distro release pages / JSON endpoints (per distro) | versions, dates, artifacts, checksums | official API/page | per-distro row below | 6 h |
 | Repology API | cross-distro version tracking | public API | pending verification | daily |
 | GitHub Releases API | releases for GitHub-hosted distros | official API (token, rate-limited) | pending verification | 6 h |
 | GitLab Releases API | releases for GitLab-hosted distros | official API | pending verification | 6 h |
-| **Fedora MirrorManager** (`mirrors.fedoraproject.org/mirrorlist`) | Fedora mirror list | official API | **verified 2026-07-19** — official mirror-list endpoint | daily *(currently: snapshot CLI)* |
+| **Fedora MirrorManager** (`mirrors.fedoraproject.org/mirrorlist`) | Fedora mirror list | official API | **verified 2026-07-19** — official mirror-list endpoint | daily — **Worker cron** |
 | openSUSE download redirector (mirrorbrain) | openSUSE mirrors/artifacts | official endpoint | pending verification | daily |
 | Ubuntu/Debian cdimage + mirror lists | ISO paths, mirror lists | official pages/manifests | pending verification | daily |
-| **Arch mirror status** (`archlinux.org/mirrors/status/json/`) | Arch mirrors + health scores | official JSON | **verified 2026-07-19** — official status JSON endpoint | daily *(currently: snapshot CLI)* |
+| **Arch mirror status** (`archlinux.org/mirrors/status/json/`) | Arch mirrors + health scores | official JSON | **verified 2026-07-19** — official status JSON endpoint | daily — **Worker cron** |
+| Arch release snapshots (`archlinux.org/releng/releases/json/`) | monthly ISO releases + checksums, for the rolling distros | official JSON | **not yet verified** — identified as the source for rolling release rows | 6 h (when adopted) |
 | Wikidata / Wikipedia | structured metadata (founding year, family, defunct status) | official API (CC BY-SA / CC0 as applicable) | pending verification | weekly |
 | Wikimedia Commons | distro logo SVGs (license-permitting) | official API (`Special:FilePath`) | **in use** — per-file license rows in `assets/distros/ATTRIBUTION.md` | on demand |
 
-### Active snapshot pipeline (pre-Phase 5, ADR-0015)
+### Ingestion pipeline
 
-`bun packages/ingest/src/live.ts` fetches the three **verified** sources above
-and writes `apps/web/src/lib/server/live-data.json` (committed), which the BFF
-serves. Every snapshot records `fetched_at` + source list, and the distro
-detail page surfaces them. Phase 5 replaces the CLI with Workers Cron Triggers
-writing to D1/KV — same sources, same shapes.
+Two callers, one set of fetchers. `packages/ingest/src/sources/*` holds the
+normalizers; only the transport differs, so a fix to how a payload is read
+lands in both places at once.
+
+| Caller | Transport | Writes | Purpose |
+|---|---|---|---|
+| **Worker cron** (`apps/api/src/cron`) | native `fetch`, KV-backed conditional requests | D1 + KV | production ingestion (task 5.2) |
+| `bun packages/ingest/src/live.ts` | curl (this container's proxy breaks Bun's fetch) | `apps/web/src/lib/server/live-data.json`, committed | the Phase 4 BFF snapshot; an offline fallback and a way to eyeball a source |
+
+Cron schedules are declared in `apps/api/wrangler.toml` and dispatched by cron
+expression in `src/cron/index.ts`. Every pass is idempotent (upserts on natural
+keys) and isolates per-source failures, so one source being down never costs
+another its refresh. Each source writes an `ingest_log` row per run, and every
+ingested row carries its own `source_url` + `fetched_at` (ADR-0019).
+
+**Which distro identity comes from where.** `distros` rows are seeded from
+`packages/ingest/src/content-index.json`, generated from the authored MDX
+frontmatter by `bun packages/ingest/src/content-index.ts`. Name, summary and
+homepage are therefore the values a human reviewed and cited in `sources`, with
+a `last_reviewed` date — nothing about a distro is asserted without a
+resolvable citation. `packages/ingest/src/registry.ts` holds only *pointers*
+(which upstream serves which distro), never facts. Regenerate the index in the
+same commit as any frontmatter change.
 
 **Ranking signals:** our own only (page views, download clicks tracked via
 `downloads/track`, release recency). Any external ranking source is
@@ -41,15 +60,15 @@ Added as each distro is onboarded (Phase 5+), one row per distro:
 | ubuntu | endoflife.date `ubuntu` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | LTS flags from API |
 | fedora | endoflife.date `fedora` | mirrors.fedoraproject.org | verified | Commons — see ATTRIBUTION.md | |
 | linux-mint | endoflife.date `linuxmint` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| arch | rolling (no cycles) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling row |
+| arch | rolling (no cycles) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling; no release rows until the releng endpoint is verified |
 | debian | endoflife.date `debian` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | opensuse | endoflife.date `opensuse` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| manjaro | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling row |
+| manjaro | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling; registry kind `rolling` |
 | pop-os | endoflife.date `pop-os` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | nixos | endoflife.date `nixos` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| zorin | curated (no API found) | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | SPECS fallback |
-| elementary | curated (no API found) | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | SPECS fallback |
-| endeavouros | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling row |
+| zorin | none found | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | registry kind `unsourced` — fixed-cadence but no machine-readable source, so no release rows |
+| elementary | none found | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | registry kind `unsourced` — fixed-cadence but no machine-readable source, so no release rows |
+| endeavouros | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling; registry kind `rolling` |
 
 ## Replacing the placeholder data in `data.ts` (binding, Phase 5)
 

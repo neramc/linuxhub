@@ -12,6 +12,15 @@ compatibility_date = "2025-11-01"
 [observability]
 enabled = true
 
+# Ingestion schedules (.ai/backend-rules.md § "Ingestion", cadence table in
+# .ai/data-sources.md). Dispatched by cron expression in src/cron/index.ts.
+[triggers]
+crons = [
+  "0 */6 * * *",  # release + artifact refresh (endoflife.date)
+  "0 3 * * *",    # mirror lists + health
+  "0 4 * * 1",    # weekly rankings snapshot from our own download counters
+]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "linuxhub"

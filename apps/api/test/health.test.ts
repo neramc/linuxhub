@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import app from "../src/index";
+import { app } from "../src/index";
 
 describe("GET /v1/health", () => {
 	it("returns the ok envelope without auth", async () => {

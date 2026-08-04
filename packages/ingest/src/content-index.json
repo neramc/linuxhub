@@ -1,0 +1,411 @@
+{
+	"generated_at": "2026-08-04T03:40:04.220Z",
+	"distros": [
+		{
+			"slug": "arch",
+			"name": "Arch Linux",
+			"summary": "A rolling release you assemble yourself",
+			"homepage": "https://archlinux.org",
+			"logo_path": "/distros/arch.svg",
+			"source_url": "https://wiki.archlinux.org/title/Arch_Linux",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://wiki.archlinux.org/title/Arch_Linux",
+						"https://wiki.archlinux.org/title/Frequently_asked_questions"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": [
+						"https://wiki.archlinux.org/title/Installation_guide",
+						"https://wiki.archlinux.org/title/Archinstall"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://wiki.archlinux.org/title/Pacman",
+						"https://wiki.archlinux.org/title/Arch_User_Repository"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "debian",
+			"name": "Debian",
+			"summary": "The universal operating system",
+			"homepage": "https://www.debian.org",
+			"logo_path": "/distros/debian.svg",
+			"source_url": "https://www.debian.org/intro/about",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": ["https://www.debian.org/intro/about", "https://www.debian.org/releases/"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": [
+						"https://www.debian.org/releases/stable/installmanual",
+						"https://www.debian.org/CD/verify"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://www.debian.org/doc/manuals/debian-reference/",
+						"https://backports.debian.org"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "elementary",
+			"name": "elementary OS",
+			"summary": "A thoughtful, design-first desktop",
+			"homepage": "https://elementary.io",
+			"logo_path": "/distros/elementary.svg",
+			"source_url": "https://elementary.io",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": ["https://elementary.io", "https://docs.elementary.io"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": ["https://elementary.io/docs/installation"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": ["https://docs.elementary.io"],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "endeavouros",
+			"name": "EndeavourOS",
+			"summary": "Arch with a friendly installer and community",
+			"homepage": "https://endeavouros.com",
+			"logo_path": "/distros/endeavouros.svg",
+			"source_url": "https://endeavouros.com/about-us/",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": ["https://endeavouros.com/about-us/", "https://discovery.endeavouros.com"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": ["https://discovery.endeavouros.com/category/installation/"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://discovery.endeavouros.com",
+						"https://wiki.archlinux.org/title/Pacman"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "fedora",
+			"name": "Fedora",
+			"summary": "The newest stable GNOME and kernel, twice a year",
+			"homepage": "https://fedoraproject.org",
+			"logo_path": "/distros/fedora.svg",
+			"source_url": "https://docs.fedoraproject.org/en-US/project/",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://docs.fedoraproject.org/en-US/project/",
+						"https://fedoraproject.org/workstation/"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": [
+						"https://docs.fedoraproject.org/en-US/fedora/latest/getting-started/",
+						"https://docs.fedoraproject.org/en-US/fedora/latest/preparing-boot-media/"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://docs.fedoraproject.org/en-US/quick-docs/dnf/",
+						"https://docs.fedoraproject.org/en-US/quick-docs/upgrading-fedora-offline/"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "linux-mint",
+			"name": "Linux Mint",
+			"summary": "A gentle landing for Windows switchers",
+			"homepage": "https://linuxmint.com",
+			"logo_path": "/distros/linux-mint.svg",
+			"source_url": "https://linuxmint.com/about.php",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://linuxmint.com/about.php",
+						"https://linuxmint-user-guide.readthedocs.io/en/latest/"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": ["https://linuxmint-installation-guide.readthedocs.io/en/latest/"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://linuxmint-user-guide.readthedocs.io/en/latest/",
+						"https://forums.linuxmint.com"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "manjaro",
+			"name": "Manjaro",
+			"summary": "Arch's power with curated updates",
+			"homepage": "https://manjaro.org",
+			"logo_path": "/distros/manjaro.svg",
+			"source_url": "https://manjaro.org/features/",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://manjaro.org/features/",
+						"https://wiki.manjaro.org/index.php/About_Manjaro"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": ["https://wiki.manjaro.org/index.php/Installation_Guides"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://wiki.manjaro.org/index.php/Pamac",
+						"https://wiki.manjaro.org/index.php/Manjaro_Kernels"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "nixos",
+			"name": "NixOS",
+			"summary": "Declarative, reproducible system configuration with rollbacks",
+			"homepage": "https://nixos.org",
+			"logo_path": "/distros/nixos.svg",
+			"source_url": "https://nixos.org/explore/",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://nixos.org/explore/",
+						"https://nixos.org/manual/nixos/stable/#preface"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": ["https://nixos.org/manual/nixos/stable/#sec-installation"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://nixos.org/manual/nixos/stable/#sec-package-management",
+						"https://search.nixos.org"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "opensuse",
+			"name": "openSUSE",
+			"summary": "Leap for stability, Tumbleweed for rolling",
+			"homepage": "https://www.opensuse.org",
+			"logo_path": "/distros/opensuse.svg",
+			"source_url": "https://www.opensuse.org/#about",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://www.opensuse.org/#about",
+						"https://get.opensuse.org/leap/",
+						"https://get.opensuse.org/tumbleweed/"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": [
+						"https://doc.opensuse.org/documentation/leap/startup/html/book-startup/",
+						"https://en.opensuse.org/SDB:Download_help"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-sw-cl.html",
+						"https://en.opensuse.org/Portal:Snapper"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "pop-os",
+			"name": "Pop!_OS",
+			"summary": "Developer-focused desktop with tiling windows",
+			"homepage": "https://system76.com/pop",
+			"logo_path": "/distros/pop-os.svg",
+			"source_url": "https://system76.com/pop/",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": [
+						"https://system76.com/pop/",
+						"https://support.system76.com/articles/pop-basics/"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": [
+						"https://support.system76.com/articles/install-pop/",
+						"https://support.system76.com/articles/live-disk/"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://support.system76.com/articles/pop-keyboard-shortcuts/",
+						"https://support.system76.com/articles/upgrade-pop/"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "ubuntu",
+			"name": "Ubuntu",
+			"summary": "Predictable LTS releases and a huge software ecosystem",
+			"homepage": "https://ubuntu.com",
+			"logo_path": "/distros/ubuntu.svg",
+			"source_url": "https://ubuntu.com/about",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": ["https://ubuntu.com/about", "https://ubuntu.com/about/release-cycle"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": [
+						"https://ubuntu.com/tutorials/install-ubuntu-desktop",
+						"https://ubuntu.com/tutorials/try-ubuntu-before-you-install"
+					],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": [
+						"https://ubuntu.com/server/docs/package-management",
+						"https://snapcraft.io/docs"
+					],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		},
+		{
+			"slug": "zorin",
+			"name": "Zorin OS",
+			"summary": "A familiar desktop for Windows and macOS switchers",
+			"homepage": "https://zorin.com/os",
+			"logo_path": "/distros/zorin.svg",
+			"source_url": "https://zorin.com/os/",
+			"docs": [
+				{
+					"doc": "description",
+					"locale": "en",
+					"source_urls": ["https://zorin.com/os/", "https://help.zorin.com"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "install",
+					"locale": "en",
+					"source_urls": ["https://help.zorin.com/docs/getting-started/install-zorin-os/"],
+					"reviewed_at": "2026-07-19"
+				},
+				{
+					"doc": "usage",
+					"locale": "en",
+					"source_urls": ["https://help.zorin.com"],
+					"reviewed_at": "2026-07-19"
+				}
+			]
+		}
+	]
+}

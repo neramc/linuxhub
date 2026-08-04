@@ -1,13 +1,9 @@
 import { ok } from "@linuxhub/shared";
 import { Hono } from "hono";
+import { runScheduled } from "./cron";
+import type { Env } from "./env";
 
-export type Env = {
-	DB: D1Database;
-	KV_CACHE: KVNamespace;
-	KV_RATE: KVNamespace;
-	KV_GEO: KVNamespace;
-	// Wrangler secrets (set in Phase 7): HCAPTCHA_SECRET, INTERNAL_API_TOKEN, RATE_SALT
-};
+export type { Env };
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -17,4 +13,18 @@ app.get("/v1/health", (c) =>
 	c.json(ok({ service: "linuxhub-api", status: "up", version: "0.1.0" })),
 );
 
-export default app;
+export default {
+	fetch: app.fetch,
+	// Cron Triggers (.ai/backend-rules.md § "Ingestion"). waitUntil keeps the
+	// invocation alive for the whole pass; a schedule that throws is logged by
+	// the runtime and retried on its next tick.
+	scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
+		ctx.waitUntil(
+			runScheduled(controller.cron, env, new Date(controller.scheduledTime)).then((summary) => {
+				console.log(JSON.stringify({ ts: new Date().toISOString(), level: "info", ...summary }));
+			}),
+		);
+	},
+} satisfies ExportedHandler<Env>;
+
+export { app };

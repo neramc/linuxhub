@@ -1,5 +1,5 @@
 {
-	"fetched_at": "2026-07-19T23:21:09.391Z",
+	"fetched_at": "2026-08-04T03:40:33.337Z",
 	"sources": [
 		"https://endoflife.date/api (release cycles, dates, EOL)",
 		"https://archlinux.org/mirrors/status/json/ (official Arch mirror health)",
@@ -113,6 +113,55 @@
 				"supported": false
 			}
 		],
+		"linux-mint": [
+			{
+				"cycle": "22.3",
+				"codename": "Zena",
+				"releaseDate": "2026-01-11",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "lmde7",
+				"codename": "Gigi",
+				"releaseDate": "2025-10-14",
+				"lts": false,
+				"supported": true
+			},
+			{
+				"cycle": "22.2",
+				"codename": "Zara",
+				"releaseDate": "2025-09-04",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "22.1",
+				"codename": "Xia",
+				"releaseDate": "2025-01-16",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "22",
+				"codename": "Wilma",
+				"releaseDate": "2024-07-25",
+				"eol": "2029-04-30",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "21.3",
+				"codename": "Virginia",
+				"releaseDate": "2024-01-12",
+				"eol": "2027-04-30",
+				"lts": true,
+				"supported": true
+			}
+		],
 		"debian": [
 			{
 				"cycle": "13",
@@ -169,55 +218,6 @@
 				"supported": false
 			}
 		],
-		"linux-mint": [
-			{
-				"cycle": "22.3",
-				"codename": "Zena",
-				"releaseDate": "2026-01-11",
-				"eol": "2029-04-30",
-				"lts": true,
-				"supported": true
-			},
-			{
-				"cycle": "lmde7",
-				"codename": "Gigi",
-				"releaseDate": "2025-10-14",
-				"lts": false,
-				"supported": true
-			},
-			{
-				"cycle": "22.2",
-				"codename": "Zara",
-				"releaseDate": "2025-09-04",
-				"eol": "2029-04-30",
-				"lts": true,
-				"supported": true
-			},
-			{
-				"cycle": "22.1",
-				"codename": "Xia",
-				"releaseDate": "2025-01-16",
-				"eol": "2029-04-30",
-				"lts": true,
-				"supported": true
-			},
-			{
-				"cycle": "22",
-				"codename": "Wilma",
-				"releaseDate": "2024-07-25",
-				"eol": "2029-04-30",
-				"lts": true,
-				"supported": true
-			},
-			{
-				"cycle": "21.3",
-				"codename": "Virginia",
-				"releaseDate": "2024-01-12",
-				"eol": "2027-04-30",
-				"lts": true,
-				"supported": true
-			}
-		],
 		"opensuse": [
 			{
 				"cycle": "16.0",
@@ -259,6 +259,50 @@
 				"releaseDate": "2020-07-02",
 				"eol": "2022-01-04",
 				"lts": false,
+				"supported": false
+			}
+		],
+		"pop-os": [
+			{
+				"cycle": "24.04",
+				"releaseDate": "2025-12-11",
+				"eol": "2029-05-31",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "22.04",
+				"releaseDate": "2022-04-25",
+				"eol": "2027-04-25",
+				"lts": true,
+				"supported": true
+			},
+			{
+				"cycle": "21.10",
+				"releaseDate": "2021-12-14",
+				"eol": "2022-07-24",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "21.04",
+				"releaseDate": "2021-06-29",
+				"eol": "2022-03-13",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "20.10",
+				"releaseDate": "2020-10-23",
+				"eol": "2021-09-28",
+				"lts": false,
+				"supported": false
+			},
+			{
+				"cycle": "20.04",
+				"releaseDate": "2020-04-30",
+				"eol": "2025-04-30",
+				"lts": true,
 				"supported": false
 			}
 		],
@@ -311,50 +355,6 @@
 				"lts": false,
 				"supported": false
 			}
-		],
-		"pop-os": [
-			{
-				"cycle": "24.04",
-				"releaseDate": "2025-12-11",
-				"eol": "2029-05-31",
-				"lts": true,
-				"supported": true
-			},
-			{
-				"cycle": "22.04",
-				"releaseDate": "2022-04-25",
-				"eol": "2027-04-25",
-				"lts": true,
-				"supported": true
-			},
-			{
-				"cycle": "21.10",
-				"releaseDate": "2021-12-14",
-				"eol": "2022-07-24",
-				"lts": false,
-				"supported": false
-			},
-			{
-				"cycle": "21.04",
-				"releaseDate": "2021-06-29",
-				"eol": "2022-03-13",
-				"lts": false,
-				"supported": false
-			},
-			{
-				"cycle": "20.10",
-				"releaseDate": "2020-10-23",
-				"eol": "2021-09-28",
-				"lts": false,
-				"supported": false
-			},
-			{
-				"cycle": "20.04",
-				"releaseDate": "2020-04-30",
-				"eol": "2025-04-30",
-				"lts": true,
-				"supported": false
-			}
 		]
 	},
 	"mirrors": {
@@ -374,8 +374,8 @@
 				"note": "score 0.1 · https"
 			},
 			{
-				"name": "mirror.moson.org",
-				"url": "https://mirror.moson.org/arch/",
+				"name": "berlin.mirror.pkgbuild.com",
+				"url": "https://berlin.mirror.pkgbuild.com/",
 				"country": "Germany",
 				"countryCode": "DE",
 				"note": "score 0.1 · https"
@@ -385,27 +385,6 @@
 				"url": "https://london.mirror.pkgbuild.com/",
 				"country": "United Kingdom",
 				"countryCode": "GB",
-				"note": "score 0.1 · https"
-			},
-			{
-				"name": "berlin.mirror.pkgbuild.com",
-				"url": "https://berlin.mirror.pkgbuild.com/",
-				"country": "Germany",
-				"countryCode": "DE",
-				"note": "score 0.1 · https"
-			},
-			{
-				"name": "mirror.trap.moe",
-				"url": "https://mirror.trap.moe/archlinux/",
-				"country": "France",
-				"countryCode": "FR",
-				"note": "score 0.2 · https"
-			},
-			{
-				"name": "de.arch.niranjan.co",
-				"url": "https://de.arch.niranjan.co/",
-				"country": "Germany",
-				"countryCode": "DE",
 				"note": "score 0.2 · https"
 			},
 			{
@@ -414,37 +393,68 @@
 				"country": "Albania",
 				"countryCode": "AL",
 				"note": "score 0.2 · https"
+			},
+			{
+				"name": "umea.mirror.pkgbuild.com",
+				"url": "https://umea.mirror.pkgbuild.com/",
+				"country": "Sweden",
+				"countryCode": "SE",
+				"note": "score 0.2 · https"
+			},
+			{
+				"name": "ams.nl.mirrors.bjg.at",
+				"url": "https://ams.nl.mirrors.bjg.at/arch/",
+				"country": "Netherlands",
+				"countryCode": "NL",
+				"note": "score 0.2 · https"
+			},
+			{
+				"name": "uk.arch.niranjan.co",
+				"url": "https://uk.arch.niranjan.co/",
+				"country": "United Kingdom",
+				"countryCode": "GB",
+				"note": "score 0.2 · https"
 			}
 		],
 		"fedora": [
 			{
-				"name": "mirror.math.princeton.edu",
-				"url": "http://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"name": "mirror.fcix.net",
+				"url": "http://mirror.fcix.net/fedora/linux/releases/44/Everything/x86_64/os/",
 				"note": "via mirrors.fedoraproject.org"
 			},
 			{
-				"name": "d2lzkl7pfhq30w.cloudfront.net",
-				"url": "https://d2lzkl7pfhq30w.cloudfront.net/pub/archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"name": "nnenix.mm.fcix.net",
+				"url": "https://nnenix.mm.fcix.net/fedora/linux/releases/44/Everything/x86_64/os/",
 				"note": "via mirrors.fedoraproject.org"
 			},
 			{
-				"name": "pubmirror1.math.uh.edu",
-				"url": "http://pubmirror1.math.uh.edu/fedora-buffet/archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"name": "ohioix.mm.fcix.net",
+				"url": "https://ohioix.mm.fcix.net/fedora/linux/releases/44/Everything/x86_64/os/",
 				"note": "via mirrors.fedoraproject.org"
 			},
 			{
-				"name": "dl.fedoraproject.org",
-				"url": "https://dl.fedoraproject.org/pub/archive/fedora/linux/releases/42/Everything/x86_64/os/",
+				"name": "mirror.web-ster.com",
+				"url": "http://mirror.web-ster.com/fedora/releases/44/Everything/x86_64/os/",
 				"note": "via mirrors.fedoraproject.org"
 			},
 			{
-				"name": "ftp-stud.hs-esslingen.de",
-				"url": "https://ftp-stud.hs-esslingen.de/pub/Mirrors/archive.fedoraproject.org/fedora/linux/releases/42/Everything/x86_64/os/",
+				"name": "nocix.mm.fcix.net",
+				"url": "https://nocix.mm.fcix.net/fedora/linux/releases/44/Everything/x86_64/os/",
 				"note": "via mirrors.fedoraproject.org"
 			},
 			{
-				"name": "fedora-archive.ip-connect.info",
-				"url": "https://fedora-archive.ip-connect.info/fedora/linux/releases/42/Everything/x86_64/os/",
+				"name": "mirrors.rc.rit.edu",
+				"url": "http://mirrors.rc.rit.edu/fedora/fedora/linux/releases/44/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "mirror.cs.princeton.edu",
+				"url": "http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/44/Everything/x86_64/os/",
+				"note": "via mirrors.fedoraproject.org"
+			},
+			{
+				"name": "gigsouth.mm.fcix.net",
+				"url": "https://gigsouth.mm.fcix.net/fedora/linux/releases/44/Everything/x86_64/os/",
 				"note": "via mirrors.fedoraproject.org"
 			}
 		]
