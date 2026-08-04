@@ -1,7 +1,9 @@
 <!doctype html>
-<!-- biome-ignore lint/a11y/useValidLang: %lh.lang% is a SvelteKit placeholder,
-     substituted with the resolved locale in hooks.server.ts before the document
-     ever reaches a browser. -->
+<!-- biome-ignore lint/a11y/useValidLang: the lang and dir values below are
+     placeholders, substituted with the resolved locale by transformPageChunk in
+     hooks.server.ts before the document ever reaches a browser. Do not write
+     either placeholder token literally in this file — the substitution is a
+     single-occurrence String.replace, so an earlier mention consumes it. -->
 <html lang="%lh.lang%" dir="%lh.dir%" data-theme="light">
 	<head>
 		<meta charset="utf-8" />
