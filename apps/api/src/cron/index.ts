@@ -8,6 +8,7 @@
 //   2. Ingestion is idempotent. Every write is an upsert on a natural key, so
 //      re-running a schedule is free and a retry is never destructive.
 
+import { DEFAULT_SITE_ORIGIN } from "@linuxhub/ingest";
 import type { ContentIndex } from "@linuxhub/ingest/content";
 import contentIndex from "@linuxhub/ingest/content-index.json" with { type: "json" };
 import { createFetchClient, type HttpClient } from "@linuxhub/ingest/http";
@@ -24,8 +25,6 @@ import type { Env } from "../env";
 export const CRON_RELEASES = "0 */6 * * *";
 export const CRON_MIRRORS = "0 3 * * *";
 export const CRON_RANKINGS = "0 4 * * 1";
-
-const DEFAULT_SITE_ORIGIN = "https://github.com/neramc/linuxhub";
 
 export type IngestSummary = {
 	schedule: string;

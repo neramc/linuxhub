@@ -12,6 +12,17 @@ compatibility_date = "2025-11-01"
 [observability]
 enabled = true
 
+# Public site origin. This is the authoritative value in production — it becomes
+# the contact URL in the ingest User-Agent that .ai/security.md requires, so it
+# must resolve. Changing domains means editing this line AND the build-time
+# fallback `DEFAULT_SITE_ORIGIN` in packages/ingest/src/index.ts; both are
+# listed in docs/deployment.md.
+#
+# Not a secret — vars are plaintext in the deployed Worker. Secrets go through
+# `wrangler secret put`, never here.
+[vars]
+SITE_ORIGIN = "https://linuxhub.kro.kr"
+
 # Ingestion schedules (.ai/backend-rules.md § "Ingestion", cadence table in
 # .ai/data-sources.md). Dispatched by cron expression in src/cron/index.ts.
 [triggers]

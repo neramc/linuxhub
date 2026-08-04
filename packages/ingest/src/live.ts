@@ -12,20 +12,21 @@
 // payload is read lands in both places at once — only the transport differs.
 
 import { createFetchClient, type HttpClient } from "./http";
+import { DEFAULT_SITE_ORIGIN, ingestUserAgent } from "./index";
 import { DISTRO_SOURCES } from "./registry";
 import { fetchArchMirrors } from "./sources/arch-mirrors";
 import { fetchReleaseCycles } from "./sources/endoflife";
 import { fetchFedoraMirrors } from "./sources/fedora-mirrors";
 import type { LiveMirror, LiveRelease } from "./types";
 
-const SITE = "https://github.com/neramc/linuxhub";
 const OUT = new URL("../../../apps/web/src/lib/server/live-data.json", import.meta.url).pathname;
 
 // This container's HTTPS proxy breaks Bun's fetch but not curl, so the CLI
 // swaps in a curl transport. On Workers the native fetch client is used
-// instead — see .ai/handoff.md § "Environment notes".
+// instead — see .ai/handoff.md § "Environment notes". Both send the identical
+// User-Agent, so a source operator sees one crawler, not two.
 function curlClient(): HttpClient {
-	const ua = `linuxhub-ingest (+${SITE}/about#crawler)`;
+	const ua = ingestUserAgent(DEFAULT_SITE_ORIGIN);
 	async function getText(url: string): Promise<string> {
 		const proc = Bun.spawn(["curl", "-sSL", "--max-time", "30", "-H", `User-Agent: ${ua}`, url]);
 		const [text, code] = await Promise.all([new Response(proc.stdout).text(), proc.exited]);
@@ -36,7 +37,7 @@ function curlClient(): HttpClient {
 }
 
 const http = process.env.LINUXHUB_INGEST_FETCH
-	? createFetchClient({ siteOrigin: SITE })
+	? createFetchClient({ siteOrigin: DEFAULT_SITE_ORIGIN })
 	: curlClient();
 
 const releases: Record<string, LiveRelease[]> = {};
