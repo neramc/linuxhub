@@ -17,7 +17,10 @@
 | openSUSE download redirector (mirrorbrain) | openSUSE mirrors/artifacts | official endpoint | pending verification | daily |
 | Ubuntu/Debian cdimage + mirror lists | ISO paths, mirror lists | official pages/manifests | pending verification | daily |
 | **Arch mirror status** (`archlinux.org/mirrors/status/json/`) | Arch mirrors + health scores | official JSON | **verified 2026-07-19** — official status JSON endpoint | daily — **Worker cron** |
-| Arch release snapshots (`archlinux.org/releng/releases/json/`) | monthly ISO releases + checksums, for the rolling distros | official JSON | **not yet verified** — identified as the source for rolling release rows | 6 h (when adopted) |
+| **Arch release snapshots** (`archlinux.org/releng/releases/json/`) | monthly ISO snapshots: version, date, sha256, iso path, torrent, magnet, PGP fingerprint | official JSON | **verified 2026-08-05** — 200, no `robots.txt` rule covers the path | 6 h — **Worker cron** |
+| **Fedora releases index** (`fedoraproject.org/releases.json`) | the full artifact matrix: variant, arch, absolute link, sha256, **size** | official JSON | **verified 2026-08-05** — 200, no `robots.txt` rule covers the path | 6 h — **Worker cron** |
+| Ubuntu checksums (`releases.ubuntu.com/<version>/SHA256SUMS`) | sha256 per ISO; edition and arch are encoded in the filename | official plain text | **verified 2026-08-05 — allowed**, not yet wired. No file sizes, so each needs a separate HEAD | 6 h (when adopted) |
+| Debian checksums (`cdimage.debian.org/debian-cd/current/<arch>/iso-cd/SHA256SUMS`) | sha256 per ISO; edition and arch encoded in the filename | official plain text | **verified 2026-08-05 — allowed**, not yet wired. Same no-size caveat as Ubuntu | daily (when adopted) |
 | **Wikidata entity data** (`www.wikidata.org/wiki/Special:EntityData/<QID>.json`) | lineage (P144 *based on*), inception (P571), type (P31/P279) | official entity endpoint, CC0 | **verified 2026-08-04 — ALLOWED.** `robots.txt` disallows `/wiki/Special:` but carves this back out with `Allow: /wiki/Special:EntityData/*.`, which matches only the format-suffixed form. The extensionless `/wiki/Special:EntityData/Q381` stays disallowed | weekly (not yet wired — see below) |
 | ~~Wikidata SPARQL~~ (`query.wikidata.org/sparql`) | — | — | **verified 2026-08-04 — DISALLOWED.** `query.wikidata.org/robots.txt` is four lines: `Disallow: /sparql`. **Not used**, per the binding rule that a source whose terms forbid our use is not used | — |
 | ~~Wikidata / Wikipedia search APIs~~ (`/w/api.php`, `en.wikipedia.org/api/rest_v1/`) | — | — | **verified 2026-08-04 — DISALLOWED** by `Disallow: /w/` and `Disallow: /api/` respectively. **Not used** | — |
@@ -60,9 +63,9 @@ Added as each distro is onboarded (Phase 5+), one row per distro:
 | Distro (slug) | Release source | Mirror source | robots/ToS | Logo source + license | Notes |
 |---|---|---|---|---|---|
 | ubuntu | endoflife.date `ubuntu` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | LTS flags from API |
-| fedora | endoflife.date `fedora` | mirrors.fedoraproject.org | verified | Commons — see ATTRIBUTION.md | |
+| fedora | endoflife.date `fedora` + **fedoraproject.org/releases.json** for artifacts | mirrors.fedoraproject.org | verified | Commons — see ATTRIBUTION.md | releases.json carries variant, arch, sha256 and size |
 | linux-mint | endoflife.date `linuxmint` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| arch | rolling (no cycles) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling; no release rows until the releng endpoint is verified |
+| arch | **archlinux.org releng snapshots** (verified 2026-08-05) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling; monthly ISO snapshots carry sha256, torrent and magnet |
 | debian | endoflife.date `debian` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | opensuse | endoflife.date `opensuse` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | manjaro | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling; registry kind `rolling` |
