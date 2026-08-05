@@ -225,3 +225,84 @@ export const slugParam = z.object({
 export function isEol(eolAt: string | null, today = new Date().toISOString().slice(0, 10)) {
 	return eolAt !== null && eolAt < today;
 }
+
+// ---------------------------------------------------------------------------
+// Downloads (.ai/api.md #14, #15, #21)
+// ---------------------------------------------------------------------------
+
+export const artifactFormat = z.enum(["iso", "torrent", "magnet", "checksum", "signature"]);
+export type ArtifactFormat = z.infer<typeof artifactFormat>;
+
+/** One selectable edition and what it is available as. */
+export const downloadEditionSchema = z.object({
+	name: z.string(),
+	desktop: z.string().nullable(),
+	kind: z.enum(["desktop", "server", "minimal", "other"]),
+	archs: z.array(z.string()),
+	formats: z.array(artifactFormat),
+});
+
+/** The selector's whole decision tree in one response, so walking it never
+ *  needs another round trip (.ai/api.md #14). */
+export const downloadOptionsSchema = z.object({
+	slug: z.string(),
+	versions: z.array(
+		z.object({
+			version: z.string(),
+			channel: releaseChannel,
+			lts: z.boolean(),
+			released_at: z.string().nullable(),
+			editions: z.array(downloadEditionSchema),
+		}),
+	),
+	mirrors: z.array(
+		z.object({
+			id: z.number(),
+			name: z.string(),
+			country: z.string(),
+			base_url: z.string(),
+		}),
+	),
+});
+export type DownloadOptions = z.infer<typeof downloadOptionsSchema>;
+
+export const resolveRequest = z.object({
+	slug: z.string().min(1),
+	version: z.string().min(1),
+	edition: z.string().min(1),
+	arch: z.string().min(1),
+	format: artifactFormat.default("iso"),
+	/** Omit to let the server pick — see `mirror_choice` on the response. */
+	mirror_id: z.coerce.number().int().positive().optional(),
+	/** ISO 3166-1 alpha-2, used to prefer a nearby mirror when none is named. */
+	country: z.string().length(2).optional(),
+});
+export type ResolveRequest = z.infer<typeof resolveRequest>;
+
+/**
+ * What a resolved download is.
+ *
+ * No `instructions` string, despite `.ai/api.md` listing one: that would be
+ * composed English, which ADR-0020 keeps out of payloads. The page has the
+ * checksum and the algorithm, and composes the verify instructions through
+ * @linuxhub/i18n.
+ */
+export const downloadResolutionSchema = z.object({
+	url: z.string(),
+	artifact_id: z.number(),
+	size: z.number().nullable(),
+	sha256: z.string().nullable(),
+	sig_url: z.string().nullable(),
+	mirror: z
+		.object({ id: z.number(), name: z.string(), country: z.string(), base_url: z.string() })
+		.nullable(),
+	/** How the mirror was arrived at, so the UI can say "nearest" honestly. */
+	mirror_choice: z.enum(["requested", "country", "fallback", "origin"]),
+});
+export type DownloadResolution = z.infer<typeof downloadResolutionSchema>;
+
+export const trackRequest = z.object({
+	artifact_id: z.coerce.number().int().positive(),
+	mirror_id: z.coerce.number().int().positive().optional(),
+});
+export type TrackRequest = z.infer<typeof trackRequest>;

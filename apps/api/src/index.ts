@@ -3,6 +3,7 @@ import { runScheduled } from "./cron";
 import type { Env } from "./env";
 import { type App, onError, onNotFound, withInternalAuth, withLogging } from "./middleware";
 import { distros } from "./routes/distros";
+import { downloads } from "./routes/downloads";
 import { health } from "./routes/health";
 
 export type { Env };
@@ -17,6 +18,7 @@ app.use("*", withInternalAuth);
 
 app.route("/v1", health);
 app.route("/v1", distros);
+app.route("/v1", downloads);
 
 export default {
 	fetch: app.fetch,

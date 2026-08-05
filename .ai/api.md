@@ -11,10 +11,10 @@ schemas must stay synchronized.
 > gap field by field and lists the open questions to settle before moving any
 > endpoint. Read it before implementing from this catalog.
 
-## Implemented so far (task 5.3)
+## Implemented so far (tasks 5.3, 5.6)
 
-Nine endpoints are live on the Worker: **#1, #2, #3, #12, #22, #32 (+#34
-folded in), #35, #37, #41**. They return facts only — no composed English, no
+Twelve endpoints are live on the Worker: **#1, #2, #3, #12, #14, #15, #21,
+#22, #32 (+#34 folded in), #35, #37, #41**. They return facts only — no composed English, no
 pre-formatted numbers, no presentation (ADR-0020). The BFF still serves the
 Phase 4 shapes from `data.ts`; task 5.4 moves it over, endpoint by endpoint.
 
@@ -23,6 +23,12 @@ Two conventions were settled while building them:
 - **`meta.total` is a real `COUNT(*)`**, issued alongside the page query in one
   `db.batch()`. The worked example below flagged this as undecided; a total
   that is really the page length makes pagination lie.
+- **`POST /downloads/resolve` returns no `instructions` string**, despite the
+  catalog below listing one. That would be composed English in a payload, which
+  ADR-0020 keeps out; the page has the checksum and composes the verify steps
+  through `@linuxhub/i18n`. The response adds `mirror_choice`
+  (`requested|country|fallback|origin`) so the UI can say how the mirror was
+  picked instead of implying it measured something.
 - **A bad internal token answers `404`, not `403`.** The error taxonomy has no
   auth code, and an internal surface should not confirm it exists to a caller
   that cannot already reach it. The Worker logs the real reason, so a
