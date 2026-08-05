@@ -62,7 +62,7 @@ fastest way to reach us.
 | Content | mdsvex, authored per distro per locale |
 | Tooling | TypeScript strict, Biome, Vitest, Playwright + axe |
 
-## Quick start
+## Quick start 
 
 ```bash
 bun install
