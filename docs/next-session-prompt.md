@@ -12,8 +12,10 @@ where work actually stopped.
 
 ```text
 Linuxhub, Phase 5 (Backend Implementation). Continue from where the last
-session stopped. 5.1-5.3 are done and four of the five movable BFF routes now
-proxy the Worker (health, releases/recent, search, distros).
+session stopped. 5.1-5.3 are done, four of the five movable BFF routes proxy
+the Worker (health, releases/recent, search, distros), and 5.6 download
+resolution is done END TO END for arch and fedora — the download button
+delivers a real file with its checksum, and clicks are counted.
 
 Read first, in this order:
   1. .ai/handoff.md      - current state, "Which BFF routes have moved", what
@@ -23,20 +25,32 @@ Read first, in this order:
   3. .ai/frontend-contract.md - what the frontend consumes and which of its
                            open questions are settled
   4. .ai/api.md, .ai/database.md, .ai/backend-rules.md - the specs
-  5. .ai/decisions.md ADR-0019..0022 - the decisions already locked in
+  5. .ai/decisions.md ADR-0019..0025 - the decisions already locked in.
+                           ADR-0024 in particular: a mirror row is only a
+                           download base if its SOURCE says so
 
 Goal for this session: pick up the highest-value unblocked work. In order of
 value:
 
-  a) 5.6 download resolution - the piece with real user value, and it also
-     unblocks the two things blocking everything else: artifacts/editions
-     (which block distros/:slug) and download counters (which block rankings).
+  a) Artifact sources for the other TEN distros. 5.6 built the whole
+     machinery and proved it on arch + fedora; every other distro still shows
+     the placeholder download section because no artifact source is
+     registered for it. Ubuntu and Debian SHA256SUMS are already verified in
+     .ai/data-sources.md and not yet wired (they publish no sizes, so each ISO
+     needs its own HEAD). This is what unblocks distros/:slug.
   b) 5.5 write endpoints behind hCaptcha + KV rate limits.
-  c) 5.7 retiring data.ts, once (a) has filled in what the detail page needs.
+  c) 5.7 retiring data.ts. Note `requirements` still has NO table and NO
+     source — the detail page renders a hardcoded four-row list.
+
+  When you add an artifact source, verify a resolved URL by FETCHING it. A
+  Fedora mirror-base bug survived unit tests, live ingestion and a
+  code review, and died the moment a resolved URL was actually requested.
 
 Do NOT move the BFF's distros/:slug, rankings, hall-of-fame or quiz routes
 yet. Each reads a table that is legitimately empty, and moving one replaces a
-working screen with a blank one. .ai/handoff.md says which and why.
+working screen with a blank one. .ai/handoff.md says which and why. rankings
+is no longer blocked on plumbing — the counter path is live — it is blocked on
+real traffic, which no fetch can supply.
 
 Binding constraints — these are project rules, not preferences:
 

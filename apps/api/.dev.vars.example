@@ -32,8 +32,11 @@ INTERNAL_API_TOKEN=
 # never stored (.ai/security.md § "Rate limiting"). Any long random string.
 # Generate one with:  openssl rand -hex 32
 #
-# Not read yet — rate limiting arrives with the write endpoints in task 5.5.
-# Set it now anyway: changing it later resets every live rate-limit window.
+# In use since task 5.6: the download endpoints are rate-limited per IP. When
+# it is unset, limiting is SKIPPED rather than run against a constant fallback
+# salt, which would make the stored hashes reversible — so a deployed Worker
+# without it has unlimited download endpoints.
+# Changing it later resets every live rate-limit window.
 # ---------------------------------------------------------------------------
 RATE_SALT=
 

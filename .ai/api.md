@@ -16,7 +16,11 @@ schemas must stay synchronized.
 Twelve endpoints are live on the Worker: **#1, #2, #3, #12, #14, #15, #21,
 #22, #32 (+#34 folded in), #35, #37, #41**. They return facts only — no composed English, no
 pre-formatted numbers, no presentation (ADR-0020). The BFF still serves the
-Phase 4 shapes from `data.ts`; task 5.4 moves it over, endpoint by endpoint.
+Phase 4 shapes from `data.ts` for most routes; task 5.4 moves it over, endpoint
+by endpoint. **#14, #15 and #21 are proxied end to end** — those three have no
+snapshot to fall back to, because `data.ts` never carried an artifact path, a
+size or a checksum. With no Worker configured, #14 answers an empty matrix and
+the page keeps its placeholder section.
 
 Two conventions were settled while building them:
 

@@ -5,7 +5,7 @@
 > of work starts. When it disagrees with a phase doc, the phase doc wins on
 > *intent* and this file wins on *current state*.
 >
-> Last updated: 2026-08-04, after Phase 5 tasks 5.1–5.3.
+> Last updated: 2026-08-05, after Phase 5 tasks 5.1–5.4 and 5.6.
 >
 > A ready-to-paste continuation prompt for the next session lives in
 > `docs/next-session-prompt.md`.
@@ -13,10 +13,12 @@
 ## Where the project stands
 
 Phases 0–4 are complete. Phase 5 is **in progress**: the schema, cron
-ingestion and read endpoints are done and the Worker serves real data, but the
-BFF has not been repointed at it yet — that is task 5.4, and it is the change
-that can break every screen at once. **The design is frozen** — see "Design is
-closed" below before touching any styling.
+ingestion and read endpoints are done, four of five movable BFF routes proxy
+the Worker, and **downloads now resolve to a real mirror URL with its
+checksum** (5.6) — for the two distros that have a verified artifact source.
+What is left is 5.5 (writes behind hCaptcha), the rest of the artifact sources,
+and 5.7 (deleting `data.ts`). **The design is frozen** — see "Design is closed"
+below before touching any styling.
 
 | Phase | State |
 |---|---|
@@ -25,7 +27,7 @@ closed" below before touching any styling.
 | 2 Design system | ✅ tokens + `design/` comps |
 | 3 UI design | ✅ approved, then rebuilt as Flathub × WinUI 3 (ADR-0017/0018) |
 | 4 Frontend | ✅ all 15 screens, live data, MDX content, i18n + RTL, motion, e2e + axe |
-| **5 Backend** | 🟡 **5.1–5.3 done**, **5.4 four-fifths done** — `health`, `releases/recent`, `search`, `distros` now proxy the Worker; `distros/:slug` blocked (below) |
+| **5 Backend** | 🟡 **5.1–5.3 done**, **5.4 four-fifths done**, **5.6 done for arch + fedora** — the download button delivers a real file; `distros/:slug` still blocked (below) |
 | 6 Testing | ⬜ Lighthouse budget + coverage still to measure |
 | 7 Deployment | 🟡 config + runbook ready (`docs/deployment.md`); the account steps are the owner's |
 
@@ -51,9 +53,14 @@ deliberately a placeholder.
 - **The Worker's D1** — 15 tables, populated by cron from the same three
   verified sources. A local run holds 12 distros, 36 content docs, 42 releases
   and 16 mirrors, every ingested row carrying `source_url` + `fetched_at`.
-- **Nine read endpoints** on the Worker (#1, #2, #3, #12, #22, #32/#34, #35,
-  #37, #41), returning facts only — numbers not formatted strings, no composed
-  English, no presentation (ADR-0020).
+- **Twelve endpoints** on the Worker (#1, #2, #3, #12, #14, #15, #21, #22,
+  #32/#34, #35, #37, #41), returning facts only — numbers not formatted
+  strings, no composed English, no presentation (ADR-0020).
+- **Downloads for arch and fedora.** 39 editions, 93 artifacts and their
+  mirror links are ingested from the Arch release-snapshot JSON and the Fedora
+  releases index; `POST /downloads/resolve` returns a URL that was fetched and
+  answered 200 (Fedora 43 Workstation x86_64 → 2,742,190,080 bytes through the
+  redirector; Arch 2026.08.01 → 1,597,014,016 from a Swedish mirror).
 
 **Placeholder — do not treat as truth**
 - **`apps/web/src/lib/server/data.ts` is a work list, not a data store.**
@@ -64,8 +71,10 @@ deliberately a placeholder.
   `.ai/data-sources.md` → "Replacing the placeholder data". Do not add new
   facts to that file; wire a source instead.
 - Screenshots are grey frames. There is no screenshot pipeline yet.
-- Download buttons do not resolve to a file. The version table and mirror
-  picker are UI only.
+- Download buttons resolve for **arch and fedora only**. The other ten
+  distros still render the placeholder version table and mirror picker from
+  `data.ts`, because no artifact source is registered for them yet. The page
+  chooses per distro: a non-empty option matrix gets the real selector.
 - The contribute forms complete locally; there is no hCaptcha and no POST
   endpoint yet.
 - The D1/KV ids in `wrangler.toml` are still zeros — everything above was
@@ -78,11 +87,12 @@ each of these is the one the project forbids:
 
 | Table / field | Why it is empty | Filled by |
 |---|---|---|
-| `rankings`, `download_events`, `downloads`, `rank`, `trend` | popularity comes from **our own signals only**; there are no signals until the site counts download clicks. Third-party charts are a forbidden source | 5.6 |
+| `rankings`, `download_events`, `downloads`, `rank`, `trend` | popularity comes from **our own signals only**. The counting path now exists end to end — `POST /downloads/track` writes a KV counter and the daily cron banks it into `download_events` — so these fill with **traffic**, not with a fetch. Third-party charts remain a forbidden source | real visitors |
 | `distros.family`, `based_on`, taxonomy | lineage comes from Wikidata, and **every QID-lookup API is robots-disallowed** — needs 9 QIDs looked up by a human first. `.ai/data-sources.md` § "Wikidata lineage — blocked". **Does not block 5.4:** there is no family facet in the UI | after the QIDs land |
 | `releases` for arch/manjaro/endeavouros | rolling: no version cycles exist to fetch. Their ISO-snapshot endpoints are identified but unverified | when that source is verified |
 | `releases` for zorin/elementary | fixed-cadence but no machine-readable source found — registry kind `unsourced` | when a source is found |
-| `editions`, `artifacts` | need per-distro release APIs | 5.6/5.7 |
+| `editions`, `artifacts` for the other 10 distros | arch and fedora are ingested; the rest need a verified per-distro artifact source. Ubuntu and Debian `SHA256SUMS` are verified and registered but **not wired** (they publish no file sizes, so each ISO needs its own HEAD) | 5.7 |
+| `requirements` | there is no requirements table and no source for one; the detail page renders a hardcoded four-row list from `data.ts` | 5.7 |
 | `hall_of_fame` | blocked on frontend-contract question 4 (editorial in D1 or `content/`?) | 5.7 |
 
 ### Which BFF routes have moved
@@ -93,7 +103,9 @@ each of these is the one the project forbids:
 | `releases/recent` | ✅ Worker | facts; the page composes the label and formats the date |
 | `search` | ✅ Worker | LIKE over name/summary/aliases in SQL |
 | `distros` | ✅ Worker | `?sort=trending` maps to the default — there is no trend yet |
-| `distros/:slug` | ⛔ `data.ts` | **the one blocker left in 5.4.** The detail page renders editions, architectures, formats and requirements; D1 has 0 editions, 0 artifacts and no requirements table at all. Moving it blanks four sections. Needs 5.6/5.7 |
+| `distros/:slug/download-options` (#14) | ✅ Worker | no snapshot exists to fall back to — `data.ts` never held an artifact path. Unconfigured Worker ⇒ empty matrix ⇒ the page keeps its placeholder section |
+| `downloads/resolve` (#15), `downloads/track` (#21) | ✅ Worker | geo from the edge header, never from the body; the user's address forwarded as `X-Client-IP` so the Worker limits the visitor and not the BFF |
+| `distros/:slug` | ⛔ `data.ts` | **the one blocker left in 5.4**, now smaller: editions/architectures/formats exist for arch + fedora, but `requirements` still has no table and no source, and 10 distros have no artifacts. Moving it today blanks sections for most of the catalog. Needs 5.7 |
 | `rankings`, `hall-of-fame`, `quiz` | ⛔ `data.ts` | empty tables / editorial home unsettled — same class of reason |
 
 **The dual mode is deliberate and temporary.** With `LINUXHUB_API_URL` unset
@@ -241,7 +253,7 @@ copy `routes/distros.ts` rather than inventing a second shape.
    verified sources, with per-row provenance and an `ingest_log` audit trail.
 3. ✅ **Read endpoints** — nine of them, facts only (ADR-0020), tested against
    a real Miniflare D1 (ADR-0021).
-4. ⬜ **Point the BFF at the Worker** — `apps/web/src/routes/api/v1/*` still
+4. 🟡 **Point the BFF at the Worker** — `apps/web/src/routes/api/v1/*` still
    reads `data.ts`; switch each to proxy the Worker with the caching TTLs in
    `.ai/frontend-rules.md`. **This is the risky one** — it swaps the data
    source under ~15 screens. Move one endpoint at a time in the order in
@@ -253,9 +265,14 @@ copy `routes/distros.ts` rather than inventing a second shape.
    Delete `data.ts` only when nothing imports it (the compare/quiz/hall-of-fame
    editorial content needs a home first).
 5. **Write endpoints** — suggest/report/feedback behind hCaptcha + KV rate
-   limits, then wire the contribute forms.
-6. **Download resolution** — the piece with real user value: resolve
-   edition/arch/format + region to an actual mirror URL, with checksums.
+   limits, then wire the contribute forms. **Not started.**
+6. ✅ **Download resolution** — endpoints #14/#15/#21 on the Worker and through
+   the BFF, the approved selector built in full, clicks counted in KV and
+   banked into `download_events` by the daily cron. **Done for arch and
+   fedora**; the other ten distros need an artifact source each before their
+   selector can light up, which is 5.7 work. Two rules learned here and worth
+   not relearning: a mirror row is only a download base if its source says so
+   (ADR-0024), and a resolved URL is not verified until it has been fetched.
 7. **Retire `data.ts`** — replace each remaining placeholder symbol with its
    real source per `.ai/data-sources.md`: specs and taxonomy from Wikidata,
    editions from the official release APIs, requirements from official install
