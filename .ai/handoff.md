@@ -107,12 +107,18 @@ it dies with `data.ts` in 5.7.
 
 ```bash
 bun install                 # workspaces: apps/* + packages/*
+bun run check:boundaries    # workerd + dependency-direction rules (ADR-0023)
 bun run check               # tsc + svelte-check across all 6 packages
 bun run lint                # Biome (bun run format to autofix)
 bun run test                # vitest, all packages
-bun run build               # web (Vercel) + api (wrangler dry-run)
+bun run build               # every workspace with a build script, in parallel
 bun run dev:web             # SvelteKit dev server
 ```
+
+Repo conventions — the dependency catalog, the shared tsconfig base, the
+enforced boundaries, and how to add a workspace — are in `docs/monorepo.md`
+(ADR-0023). Shared dependency versions live in the **catalog** in the root
+`package.json`, not in each workspace.
 
 Backend-specific, all from `apps/api` and all local — no Cloudflare account
 needed:

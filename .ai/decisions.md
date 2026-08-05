@@ -394,3 +394,50 @@ assuming the compiler is the answer.
 
 `.ai/i18n.md` is updated in this commit to describe what is actually built —
 it had been describing Paraglide as the stack since Phase 0.
+
+## ADR-0023 — Monorepo conventions: catalog, shared tsconfig, enforced boundaries; no task runner yet
+**Date:** 2026-08-05 · **Status:** accepted
+**Context:** ADR-0001 chose Bun workspaces and left "optional turbo/bunfig task
+orchestration added later if needed" open. With deployment imminent the repo
+needed the conventions a multi-package repo actually depends on, and the
+question of a task runner had to be answered rather than left hanging.
+
+Two failures had already been paid for, and both were structural rather than
+bad luck:
+- Biome was declared `^2.3.0` while `biome.json` pinned the 2.5.4 schema, and
+  CI asked for `bun-version: latest`. A fresh install moved the toolchain
+  without a commit and broke lint on files nobody had touched.
+- `.ai/architecture.md` declares the workerd runtime boundary binding, but
+  nothing enforced it. `packages/ingest` is imported by the Worker and its CLI
+  half uses `Bun.file` and `node:fs`; only the import graph kept them apart,
+  and a single wrong import would have failed at deploy rather than at review.
+
+**Decision:**
+1. **A Bun workspace catalog** holds every version used in more than one place
+   (`typescript`, `vitest`, `svelte`). Workspaces say `catalog:`; drift between
+   packages becomes unrepresentable rather than merely discouraged.
+2. **The toolchain is pinned**: `packageManager` + `engines` at the root, Biome
+   at an exact version matching its own schema, and CI reads the Bun version
+   from `packageManager` instead of tracking latest.
+3. **`tsconfig.base.json`** holds the compiler options five workspaces
+   duplicated. `apps/web` is exempt and stays on SvelteKit's generated config,
+   which owns `paths` and `rootDirs`.
+4. **`scripts/check-boundaries.ts` enforces the two boundaries** and runs first
+   in CI: no Node builtin or Bun global in `apps/api/src`, and no `packages/*`
+   importing an app. It scans import specifiers by regex — exact enough for a
+   question that is only about what a module imports, and dependency-free.
+
+**No task runner (turbo/nx) yet**, deliberately. Its three benefits do not
+apply here: `bun run --filter` already parallelises; there is no build graph to
+order, because `packages/*` are consumed as TypeScript source with no build
+step; and remote caching would save perhaps a minute on a CI run that is
+already short. Adopting one would add a dependency, a config, and a rewrite of
+every script for that minute. **Revisit when a build step appears in any
+`packages/*`, or when CI wall time passes ~10 minutes** — the first is the real
+trigger, since that is when ordering stops being free.
+
+**Consequences:** Bumping a shared dependency is a one-line edit to the root
+catalog. Dependabot is *not* enabled: it does not understand Bun catalogs and
+would either miss those versions or rewrite them wrongly, so catalog bumps stay
+manual until that support exists. Adding a workspace now means extending the
+base tsconfig and, if it is an app, teaching `check-boundaries.ts` about it.
