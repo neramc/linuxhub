@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"docs": [
+		"Shared TypeScript settings for every workspace (.ai/architecture.md).",
+		"",
+		"Packages extend this and declare only what actually differs: their own",
+		"`types` (Workers vs. Bun), any extra `lib`, and `include`. Keeping the",
+		"common set here means a compiler-option change is one edit rather than",
+		"six, and no workspace can quietly drift to weaker settings.",
+		"",
+		"apps/web deliberately does NOT extend this: it extends the config",
+		"SvelteKit generates into .svelte-kit/, which owns paths and rootDirs.",
+		"Changing that file's compilerOptions is how you break `$lib` imports."
+	],
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"lib": ["ES2022"],
+		"strict": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}
