@@ -14,12 +14,23 @@ import contentIndex from "@linuxhub/ingest/content-index.json" with { type: "jso
 import { createFetchClient, type HttpClient } from "@linuxhub/ingest/http";
 import { DISTRO_SOURCES, mirrorSourcesFor } from "@linuxhub/ingest/registry";
 import { fetchArchMirrors } from "@linuxhub/ingest/sources/arch-mirrors";
+import { ARCH_RELEASES_SOURCE, fetchArchReleases } from "@linuxhub/ingest/sources/arch-releases";
 import { ENDOFLIFE_SOURCE, fetchReleaseCycles } from "@linuxhub/ingest/sources/endoflife";
+import {
+	FEDORA_ARTIFACTS_SOURCE,
+	FEDORA_REDIRECTOR,
+	fetchFedoraArtifacts,
+} from "@linuxhub/ingest/sources/fedora-artifacts";
 import { fetchFedoraMirrors } from "@linuxhub/ingest/sources/fedora-mirrors";
+import {
+	ensureMirrorStatement,
+	linkArtifactsToMirrorsStatement,
+	upsertCatalog,
+} from "../db/artifacts";
 import { syncCatalog } from "../db/distros";
 import { type IngestLogRow, logIngest } from "../db/ingest-log";
 import { replaceMirrors } from "../db/mirrors";
-import { newestVersion, upsertReleases } from "../db/releases";
+import { listVersions, newestVersion, upsertReleases } from "../db/releases";
 import type { Env } from "../env";
 
 export const CRON_RELEASES = "0 */6 * * *";
@@ -102,9 +113,135 @@ export async function ingestReleases(
 		}
 	}
 
+	// Artifacts come after the release rows they hang off: every edition and
+	// artifact insert resolves its parent by subselect, so a release that is not
+	// there yet silently produces nothing.
+	const artifacts = await ingestArtifacts(env, now, http);
+	ok += artifacts.ok;
+	failed += artifacts.failed;
+	written += artifacts.written;
+	logs.push(...artifacts.logs);
+
 	await logIngest(env.DB, logs);
 	return { schedule: CRON_RELEASES, sources: ok + failed, ok, failed, written };
 }
+
+/**
+ * ISO paths, checksums and sizes — what the download flow actually needs.
+ *
+ * Kept as its own function rather than folded into the loop above because the
+ * two sources are shaped differently: Arch publishes releases *and* their
+ * artifacts together (its snapshots are the versions), while Fedora publishes
+ * artifacts for releases another source already told us about.
+ */
+async function ingestArtifacts(
+	env: Env,
+	now: Date,
+	http: HttpClient,
+): Promise<{ ok: number; failed: number; written: number; logs: IngestLogRow[] }> {
+	const logs: IngestLogRow[] = [];
+	let ok = 0;
+	let failed = 0;
+	let written = 0;
+
+	// Arch: the snapshots are both the releases and the artifacts.
+	try {
+		const result = await fetchArchReleases(http, now);
+		const releases = await upsertReleases(
+			env.DB,
+			"arch",
+			result.data.releases,
+			result.sourceUrl,
+			result.fetchedAt,
+			"rolling",
+		);
+		const catalog = await upsertCatalog(
+			env.DB,
+			"arch",
+			result.data,
+			result.sourceUrl,
+			result.fetchedAt,
+		);
+		await env.DB.batch([linkArtifactsToMirrorsStatement(env.DB, "arch")]);
+		written += releases.written + catalog.written;
+		if (catalog.written > 0) await bumpGeneration(env, "arch");
+		ok++;
+		logs.push({
+			source: `${ARCH_RELEASES_SOURCE}:arch`,
+			url: result.sourceUrl,
+			fetchedAt: result.fetchedAt,
+			status: "ok",
+			changed: releases.written + catalog.written,
+		});
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: `${ARCH_RELEASES_SOURCE}:arch`,
+			url: "archlinux.org/releng/releases/json/",
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
+	}
+
+	// Fedora: bounded to versions we already have release rows for, because the
+	// index reaches further back than endoflife.date reports.
+	try {
+		const versions = await listVersions(env.DB, "fedora");
+		if (versions.length === 0) {
+			logs.push({
+				source: `${FEDORA_ARTIFACTS_SOURCE}:fedora`,
+				url: FEDORA_ARTIFACTS_URL_FOR_LOG,
+				fetchedAt: now.toISOString(),
+				status: "skipped",
+				detail: "no fedora releases ingested yet",
+			});
+		} else {
+			const result = await fetchFedoraArtifacts(http, versions, now);
+			await env.DB.batch([
+				ensureMirrorStatement(
+					env.DB,
+					"fedora",
+					FEDORA_REDIRECTOR,
+					"download.fedoraproject.org",
+					result.sourceUrl,
+					result.fetchedAt,
+				),
+			]);
+			const catalog = await upsertCatalog(
+				env.DB,
+				"fedora",
+				result.data,
+				result.sourceUrl,
+				result.fetchedAt,
+			);
+			await env.DB.batch([linkArtifactsToMirrorsStatement(env.DB, "fedora")]);
+			written += catalog.written;
+			if (catalog.written > 0) await bumpGeneration(env, "fedora");
+			ok++;
+			logs.push({
+				source: `${FEDORA_ARTIFACTS_SOURCE}:fedora`,
+				url: result.sourceUrl,
+				fetchedAt: result.fetchedAt,
+				status: "ok",
+				changed: catalog.written,
+			});
+		}
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: `${FEDORA_ARTIFACTS_SOURCE}:fedora`,
+			url: FEDORA_ARTIFACTS_URL_FOR_LOG,
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
+	}
+
+	return { ok, failed, written, logs };
+}
+
+const FEDORA_ARTIFACTS_URL_FOR_LOG = "fedoraproject.org/releases.json";
 
 export async function ingestMirrors(
 	env: Env,

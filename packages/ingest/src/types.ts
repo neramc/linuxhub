@@ -30,3 +30,34 @@ export type Fetched<T> = {
 	fetchedAt: string;
 	data: T;
 };
+
+/** An installable variant of a release — Fedora's "Workstation", Arch's "ISO". */
+export type LiveEdition = {
+	name: string;
+	/** Desktop environment slug, set only when the source actually names one. */
+	desktop?: string;
+	kind: "desktop" | "server" | "minimal" | "other";
+};
+
+/** A downloadable file. `path` is mirror-relative where the artifact is
+ *  mirrored, and an absolute URL or URI where the source publishes one that no
+ *  mirror serves (a torrent page, a magnet link). */
+export type LiveArtifact = {
+	/** Release version this belongs to, matching `releases.version`. */
+	version: string;
+	/** Edition name this belongs to, matching `editions.name`. */
+	edition: string;
+	arch: string;
+	format: "iso" | "torrent" | "magnet" | "checksum" | "signature";
+	path: string;
+	size?: number;
+	sha256?: string;
+};
+
+/** What an artifact fetcher yields: the releases it found, the editions of
+ *  each, and the files under them. */
+export type LiveCatalog = {
+	releases: LiveRelease[];
+	editions: Array<LiveEdition & { version: string }>;
+	artifacts: LiveArtifact[];
+};
