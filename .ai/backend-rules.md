@@ -174,12 +174,16 @@ against `HCAPTCHA_SECRET` **before** any processing. Failure →
 - Schedules (start point; tune per source in `.ai/data-sources.md`):
   - hourly — release checks for rolling/high-frequency sources
   - every 6h — standard release + artifact refresh
-  - daily — mirror lists, metadata, logo/license audit
+  - daily — mirror lists, metadata, logo/license audit, **and the KV → D1
+    download-counter flush** (`dlcount:*` → `download_events`), which must run
+    before the 48 h KV TTL or the day's clicks are gone
   - weekly — rankings snapshot to `rankings` table
 - Every fetch: robots-aware, descriptive UA + contact URL, timeout + retry
   with backoff, result logged with `source_url` + `fetched_at`.
 - Ingestion is idempotent (upserts keyed on natural keys); partial failure of
-  one source never blocks others.
+  one source never blocks others. The counter flush is idempotent the same
+  way: it accumulates (`count = count + excluded.count`) and deletes each key
+  it banked, so a second run in the same day cannot double-count.
 
 ## Logging
 

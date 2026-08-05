@@ -153,3 +153,58 @@ export async function trackDownload(
 	// 48h, so the daily flush has a full day of slack before a bucket expires.
 	await kv.put(key, String(current + 1), { expirationTtl: 48 * 60 * 60 });
 }
+
+/**
+ * Moves yesterday's and today's KV click counters into `download_events`.
+ *
+ * KV is the write path because it is cheap on a hot page; D1 is where the
+ * counts have to end up, because KV entries expire and rankings need history.
+ * The flush is additive (`count = count + excluded.count`) and deletes each key
+ * it banks, so running it twice in a day cannot double-count.
+ */
+export async function flushDownloadCounters(
+	kv: KVNamespace,
+	db: D1Database,
+): Promise<{ flushed: number }> {
+	let cursor: string | undefined;
+	let flushed = 0;
+
+	do {
+		const page = await kv.list({ prefix: "dlcount:", cursor, limit: 1000 });
+		cursor = page.list_complete ? undefined : page.cursor;
+
+		const statements: D1PreparedStatement[] = [];
+		const keys: string[] = [];
+
+		for (const entry of page.keys) {
+			const [, artifactId, mirrorId, day] = entry.name.split(":");
+			const count = Number.parseInt((await kv.get(entry.name)) ?? "0", 10);
+			if (!artifactId || !day || count <= 0) continue;
+
+			statements.push(
+				db
+					.prepare(
+						`INSERT INTO download_events (artifact_id, mirror_id, day, count)
+						 SELECT ?1, ?2, ?3, ?4
+						  WHERE EXISTS (SELECT 1 FROM artifacts WHERE id = ?1)
+						 ON CONFLICT(artifact_id, mirror_id, day)
+						 DO UPDATE SET count = count + excluded.count`,
+					)
+					.bind(Number(artifactId), Number(mirrorId ?? 0), day, count),
+			);
+			keys.push(entry.name);
+		}
+
+		if (statements.length > 0) {
+			await db.batch(statements);
+			// Deleted only after the write landed: a crash between the two costs a
+			// re-flush of counts already banked, which the additive upsert would
+			// double. Losing the delete is the safer half of that trade — the keys
+			// expire on their own within 48h.
+			await Promise.all(keys.map((k) => kv.delete(k)));
+			flushed += statements.length;
+		}
+	} while (cursor);
+
+	return { flushed };
+}

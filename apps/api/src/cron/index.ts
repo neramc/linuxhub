@@ -28,6 +28,7 @@ import {
 	upsertCatalog,
 } from "../db/artifacts";
 import { syncCatalog } from "../db/distros";
+import { flushDownloadCounters } from "../db/downloads";
 import { type IngestLogRow, logIngest } from "../db/ingest-log";
 import { replaceMirrors } from "../db/mirrors";
 import { listVersions, newestVersion, upsertReleases } from "../db/releases";
@@ -330,6 +331,32 @@ export async function ingestMirrors(
 				detail: String(error),
 			});
 		}
+	}
+
+	// Bank the day's download clicks. KV is the write path because it is cheap
+	// on a hot page, but KV entries expire and rankings need history, so they
+	// have to land in D1 before they do (.ai/database.md § "KV keyspaces").
+	try {
+		const flushed = await flushDownloadCounters(env.KV_RATE, env.DB);
+		written += flushed.flushed;
+		ok++;
+		logs.push({
+			source: "downloads:flush",
+			url: "internal:kv",
+			fetchedAt: now.toISOString(),
+			status: "ok",
+			changed: flushed.flushed,
+			detail: flushed.flushed === 0 ? "no clicks to bank" : undefined,
+		});
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: "downloads:flush",
+			url: "internal:kv",
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
 	}
 
 	await logIngest(env.DB, logs);
