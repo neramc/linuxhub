@@ -102,8 +102,9 @@ repeat sixty times:
 - `meta` on every list response, using the shared pagination defaults.
 - Bound parameters (`?1`, `?2`) — string interpolation into SQL is a review
   blocker.
-- `total` here is a placeholder: a real `COUNT(*)` (or a cached count) is
-  needed before pagination is honest. Decide it at the first list endpoint.
+- `total` in the sketch above is a placeholder. **Settled in 5.3: it is a real
+  `COUNT(*)`,** issued alongside the page query in a single `db.batch()`, so
+  pagination does not lie about how much there is.
 
 ## Validation
 
@@ -122,14 +123,29 @@ Single envelope (canonical definition in `.ai/api.md`):
 
 - Typed error codes: `VALIDATION_ERROR`, `NOT_FOUND`, `RATE_LIMITED`,
   `CAPTCHA_FAILED`, `UPSTREAM_ERROR`, `INTERNAL`.
-- Central error middleware converts thrown `ApiError`s; unknown errors →
-  `INTERNAL` + logged with `request_id`; stack traces never leak.
+- Thrown `ApiError`s become the envelope; unknown errors → `INTERNAL` + logged
+  with `request_id`; stack traces never leak.
+- **Register the converter with `app.onError`, not as try/catch middleware.**
+  Hono's composer hands a thrown error straight to the error handler, so
+  middleware wrapping `next()` never sees it and the client gets Hono's default
+  plain-text 500. `app.notFound` gets the same treatment, so unmatched routes
+  answer in the envelope too and the BFF has exactly one shape to parse.
 
 ## Auth (internal)
 
 The Worker only accepts requests carrying `X-Internal-Token` matching
 `INTERNAL_API_TOKEN` (BFF-to-Worker), except `/v1/health`. There is no public
-user auth in v1.
+user auth in v1. Comparison is constant-time.
+
+A bad or missing token answers **404**, not 403: the error taxonomy has no auth
+code, and an internal surface should not confirm it exists to a caller that
+cannot already reach it. The Worker logs the real reason (`internal token
+missing` / `mismatch`), so a misconfiguration is diagnosable from logs rather
+than looking like a missing distro.
+
+With no token configured — local dev and tests, where `wrangler.toml` holds
+placeholder ids and no secrets exist — the check is skipped. It cannot be
+skipped in production, because Phase 7 provisions the secret.
 
 ## Caching
 
@@ -172,7 +188,13 @@ Cron logs add `{ source, fetched, changed }`. No PII, no raw IPs, no secrets.
 
 ## Testing
 
-Vitest for services, resolvers, validators, rate-limit logic (Miniflare/
-workers-pool environment). Every endpoint has at least: happy path, validation
-failure, and NOT_FOUND coverage. Download resolution and rate limiting get
-dedicated suites (quality gate).
+Vitest against a **real D1 and real KV**, created by Miniflare in
+`apps/api/test/harness.ts` (ADR-0021). The harness applies the files in
+`migrations/` verbatim, so every test also exercises the schema — CHECK
+constraints, UNIQUE keys and upsert conflict targets bite there exactly as they
+will in production, which a hand-written stub would silently accept.
+
+Every endpoint has at least: happy path, validation failure, and NOT_FOUND
+coverage. Ingestion tests stub the HTTP transport (a test suite has no business
+calling an upstream) but keep the database real. Download resolution and rate
+limiting get dedicated suites (quality gate).

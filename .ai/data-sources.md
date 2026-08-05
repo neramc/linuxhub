@@ -8,25 +8,46 @@
 
 | Source | What we take | Access | robots/ToS status *(verify)* | Cadence |
 |---|---|---|---|---|
-| **endoflife.date API** (`/api/<product>.json`) | release cycles, release dates, EOL dates, LTS flags | public JSON API, explicitly for programmatic use | **verified 2026-07-19** — public API, MIT-licensed site, no auth | 6 h *(currently: snapshot CLI)* |
+| **endoflife.date API** (`/api/<product>.json`) | release cycles, release dates, EOL dates, LTS flags | public JSON API, explicitly for programmatic use | **verified 2026-07-19** — public API, MIT-licensed site, no auth | 6 h — **Worker cron** |
 | Official distro release pages / JSON endpoints (per distro) | versions, dates, artifacts, checksums | official API/page | per-distro row below | 6 h |
 | Repology API | cross-distro version tracking | public API | pending verification | daily |
 | GitHub Releases API | releases for GitHub-hosted distros | official API (token, rate-limited) | pending verification | 6 h |
 | GitLab Releases API | releases for GitLab-hosted distros | official API | pending verification | 6 h |
-| **Fedora MirrorManager** (`mirrors.fedoraproject.org/mirrorlist`) | Fedora mirror list | official API | **verified 2026-07-19** — official mirror-list endpoint | daily *(currently: snapshot CLI)* |
+| **Fedora MirrorManager** (`mirrors.fedoraproject.org/mirrorlist`) | Fedora mirror list | official API | **verified 2026-07-19** — official mirror-list endpoint | daily — **Worker cron** |
 | openSUSE download redirector (mirrorbrain) | openSUSE mirrors/artifacts | official endpoint | pending verification | daily |
 | Ubuntu/Debian cdimage + mirror lists | ISO paths, mirror lists | official pages/manifests | pending verification | daily |
-| **Arch mirror status** (`archlinux.org/mirrors/status/json/`) | Arch mirrors + health scores | official JSON | **verified 2026-07-19** — official status JSON endpoint | daily *(currently: snapshot CLI)* |
-| Wikidata / Wikipedia | structured metadata (founding year, family, defunct status) | official API (CC BY-SA / CC0 as applicable) | pending verification | weekly |
+| **Arch mirror status** (`archlinux.org/mirrors/status/json/`) | Arch mirrors + health scores | official JSON | **verified 2026-07-19** — official status JSON endpoint | daily — **Worker cron** |
+| Arch release snapshots (`archlinux.org/releng/releases/json/`) | monthly ISO releases + checksums, for the rolling distros | official JSON | **not yet verified** — identified as the source for rolling release rows | 6 h (when adopted) |
+| **Wikidata entity data** (`www.wikidata.org/wiki/Special:EntityData/<QID>.json`) | lineage (P144 *based on*), inception (P571), type (P31/P279) | official entity endpoint, CC0 | **verified 2026-08-04 — ALLOWED.** `robots.txt` disallows `/wiki/Special:` but carves this back out with `Allow: /wiki/Special:EntityData/*.`, which matches only the format-suffixed form. The extensionless `/wiki/Special:EntityData/Q381` stays disallowed | weekly (not yet wired — see below) |
+| ~~Wikidata SPARQL~~ (`query.wikidata.org/sparql`) | — | — | **verified 2026-08-04 — DISALLOWED.** `query.wikidata.org/robots.txt` is four lines: `Disallow: /sparql`. **Not used**, per the binding rule that a source whose terms forbid our use is not used | — |
+| ~~Wikidata / Wikipedia search APIs~~ (`/w/api.php`, `en.wikipedia.org/api/rest_v1/`) | — | — | **verified 2026-08-04 — DISALLOWED** by `Disallow: /w/` and `Disallow: /api/` respectively. **Not used** | — |
 | Wikimedia Commons | distro logo SVGs (license-permitting) | official API (`Special:FilePath`) | **in use** — per-file license rows in `assets/distros/ATTRIBUTION.md` | on demand |
 
-### Active snapshot pipeline (pre-Phase 5, ADR-0015)
+### Ingestion pipeline
 
-`bun packages/ingest/src/live.ts` fetches the three **verified** sources above
-and writes `apps/web/src/lib/server/live-data.json` (committed), which the BFF
-serves. Every snapshot records `fetched_at` + source list, and the distro
-detail page surfaces them. Phase 5 replaces the CLI with Workers Cron Triggers
-writing to D1/KV — same sources, same shapes.
+Two callers, one set of fetchers. `packages/ingest/src/sources/*` holds the
+normalizers; only the transport differs, so a fix to how a payload is read
+lands in both places at once.
+
+| Caller | Transport | Writes | Purpose |
+|---|---|---|---|
+| **Worker cron** (`apps/api/src/cron`) | native `fetch`, KV-backed conditional requests | D1 + KV | production ingestion (task 5.2) |
+| `bun packages/ingest/src/live.ts` | curl (this container's proxy breaks Bun's fetch) | `apps/web/src/lib/server/live-data.json`, committed | the Phase 4 BFF snapshot; an offline fallback and a way to eyeball a source |
+
+Cron schedules are declared in `apps/api/wrangler.toml` and dispatched by cron
+expression in `src/cron/index.ts`. Every pass is idempotent (upserts on natural
+keys) and isolates per-source failures, so one source being down never costs
+another its refresh. Each source writes an `ingest_log` row per run, and every
+ingested row carries its own `source_url` + `fetched_at` (ADR-0019).
+
+**Which distro identity comes from where.** `distros` rows are seeded from
+`packages/ingest/src/content-index.json`, generated from the authored MDX
+frontmatter by `bun packages/ingest/src/content-index.ts`. Name, summary and
+homepage are therefore the values a human reviewed and cited in `sources`, with
+a `last_reviewed` date — nothing about a distro is asserted without a
+resolvable citation. `packages/ingest/src/registry.ts` holds only *pointers*
+(which upstream serves which distro), never facts. Regenerate the index in the
+same commit as any frontmatter change.
 
 **Ranking signals:** our own only (page views, download clicks tracked via
 `downloads/track`, release recency). Any external ranking source is
@@ -41,15 +62,15 @@ Added as each distro is onboarded (Phase 5+), one row per distro:
 | ubuntu | endoflife.date `ubuntu` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | LTS flags from API |
 | fedora | endoflife.date `fedora` | mirrors.fedoraproject.org | verified | Commons — see ATTRIBUTION.md | |
 | linux-mint | endoflife.date `linuxmint` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| arch | rolling (no cycles) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling row |
+| arch | rolling (no cycles) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling; no release rows until the releng endpoint is verified |
 | debian | endoflife.date `debian` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | opensuse | endoflife.date `opensuse` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| manjaro | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling row |
+| manjaro | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling; registry kind `rolling` |
 | pop-os | endoflife.date `pop-os` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | nixos | endoflife.date `nixos` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
-| zorin | curated (no API found) | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | SPECS fallback |
-| elementary | curated (no API found) | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | SPECS fallback |
-| endeavouros | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling row |
+| zorin | none found | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | registry kind `unsourced` — fixed-cadence but no machine-readable source, so no release rows |
+| elementary | none found | — (Phase 5) | n/a | Commons — see ATTRIBUTION.md | registry kind `unsourced` — fixed-cadence but no machine-readable source, so no release rows |
+| endeavouros | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling; registry kind `rolling` |
 
 ## Replacing the placeholder data in `data.ts` (binding, Phase 5)
 
@@ -71,9 +92,9 @@ Per-symbol plan:
 | Symbol in `data.ts` | Field(s) | Replace with |
 |---|---|---|
 | `DISTROS` | `downloads`, `rank`, `trend` | our own telemetry → `rankings` table (`.ai/database.md`) |
-| `DISTROS` | `family`, `familyLine`, `categories` | Wikidata (`P31`/`P279` lineage) cross-checked against official docs; taxonomy tables in D1 |
+| `DISTROS` | `based_on`, `family`, `familyLine` | Wikidata **entity data** (P144 *based on*) — blocked on QIDs, see below. `categories` stay editorial in the taxonomy tables |
 | `SPECS` | `latest`, `releaseModel` | endoflife.date — **already ingested**, just derive it instead of hand-typing |
-| `SPECS` | `desktop`, `pkg`, `minMem` | Wikidata SPARQL (`query.wikidata.org/sparql`, CC0) + official docs where Wikidata is thin |
+| `SPECS` | `desktop`, `pkg`, `minMem` | Wikidata entity data where the claims exist, official docs otherwise. **Not SPARQL** — that endpoint is robots-disallowed |
 | `EDITIONS` | all | official release APIs — Bodhi (Fedora), Launchpad (Ubuntu series), cdimage/mirror manifests (Debian), per-distro download endpoints |
 | `REQUIREMENTS` | all | official install docs per distro, paraphrased and cited (currently one shared table for every distro — that is wrong and visible to users) |
 | `RECENT_RELEASES` | all | already live from endoflife.date; **join the announcement feeds below** so each entry links to the real release note |
@@ -83,6 +104,54 @@ Per-symbol plan:
 
 `data.ts` is deleted once every symbol above has a home. Until then it is the
 list of work remaining, not a data store to extend.
+
+## Wikidata lineage — blocked, and precisely on what
+
+Investigated 2026-08-04 while attempting task 5.3b. Recording it here so nobody
+spends the same hour twice.
+
+**Every programmatic way to look up a QID is robots-disallowed** — SPARQL
+(`/sparql`), the Wikidata action API (`/w/`), and Wikipedia's REST API
+(`/api/`). The one permitted endpoint,
+`Special:EntityData/<QID>.json`, requires the QID as input. So the lookup step
+cannot be automated inside our own crawler policy; only the fetch step can.
+
+The data itself is good once you have the QID — verified against the live
+endpoint:
+
+```
+Q381      Ubuntu  → P144 (based on) = Q7715973,  P571 (inception) = 2004-10-20
+Q7715973  Debian  → P144            = Q3251801
+Q48267    Fedora Linux → P144       = Q220182
+```
+
+**What is needed to unblock it: nine QIDs, looked up by a human in a browser**
+(wikidata.org, search the distro, copy the Q-number) and pasted into
+`packages/ingest/src/registry.ts` as pointers. That is legitimate — a QID is an
+identifier, the same class of value as the endoflife.date product slug already
+in that file, not a fact we are asserting.
+
+Confirmed so far: `ubuntu` **Q381**, `debian` **Q7715973**, `fedora` **Q48267**.
+Still needed: `arch`, `linux-mint`, `opensuse`, `manjaro`, `pop-os`, `nixos`,
+`zorin`, `elementary`, `endeavouros`.
+
+Do not guess them. Nine of twelve guessed QIDs resolved to entirely unrelated
+entities — a bridge in Paris, an Indian political party, a Swedish baptismal
+font — and each would have silently written wrong lineage into the catalog. Any
+QID added here must be verified by fetching it and checking the label matches.
+
+**This does not block task 5.4.** The shipped Explore page filters by
+`category` only; there is no family facet. `family`/`based_on` feed the
+`familyLine` display string in the command palette, the rankings rows and the
+compare table — which degrade to the family being unknown, not to a broken page.
+
+One design question to settle when it is unblocked: `family` today uses a
+*packaging* vocabulary (`debian|rpm|arch|suse|independent`) that was invented
+during the frontend build-out. P144 gives a *derivation* chain instead, whose
+root would make Fedora's family `fedora` rather than `rpm`. Deriving family
+from the sourced chain is honest but loses the RPM grouping; keeping the
+packaging vocabulary needs its own sourced signal or an explicitly editorial,
+cited taxonomy. Decide it with an ADR, not in code.
 
 ## Announcement feeds (RSS/Atom)
 

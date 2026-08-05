@@ -1,7 +1,9 @@
 <script lang="ts">
 import { localizeHref, m } from "@linuxhub/i18n";
+import { brandColor, initials } from "@linuxhub/ui";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
+import { formatDownloads } from "$lib/format";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
@@ -63,7 +65,7 @@ function highlight(text: string, q: string): Array<{ part: string; hit: boolean 
 			<div class="boxed" style="margin-block-end: var(--space-8);">
 				{#each data.results as distro (distro.slug)}
 					<a class="row" href={localizeHref(`/distro/${distro.slug}`)}>
-						<LogoTile color={distro.color} initials={distro.initials} size="sm" src={distro.logo} />
+						<LogoTile color={brandColor(distro.slug)} initials={initials(distro.name)} size="sm" src={distro.logo} />
 						<span class="row__body">
 							<span class="row__title">
 								{#each highlight(distro.name, data.q) as seg, i (i)}{#if seg.hit}<strong>{seg.part}</strong>{:else}{seg.part}{/if}{/each}
@@ -72,7 +74,12 @@ function highlight(text: string, q: string): Array<{ part: string; hit: boolean 
 								{#each highlight(distro.summary, data.q) as seg, i (i)}{#if seg.hit}<strong>{seg.part}</strong>{:else}{seg.part}{/if}{/each}
 							</span>
 						</span>
-						<span class="row__end">{distro.downloads}</span>
+						<!-- A zero here means "we have not counted yet", not "nobody
+						     downloaded it" — download signals start with 5.6. Rendering
+						     "0" would state something we do not know. -->
+						{#if distro.downloads > 0}
+							<span class="row__end">{formatDownloads(distro.downloads)}</span>
+						{/if}
 					</a>
 				{/each}
 			</div>

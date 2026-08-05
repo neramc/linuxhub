@@ -20,7 +20,7 @@ Project Documentation → Repository Initialization → Design System → UI Des
 | **2 — Design System** | Tokens in `packages/ui`; 15 screen briefs in `prompts/stitch/` | briefs ready | ✅ done |
 | **3 — UI Design** | HTML/CSS comps in `design/` (ADR-0012) | owner approval | ✅ **approved 2026-07-20** — Flathub × WinUI 3 (ADR-0017 + acrylic ADR-0018). **Design is frozen; see `.ai/handoff.md` before restyling anything** |
 | **4 — Frontend Implementation** | All screens from the approved design, real data, content, i18n/RTL, motion, tests | quality gates pass | ✅ **complete** — 8 milestones, detail below |
-| **5 — Backend Implementation** | D1/KV, Cron ingestion, endpoint surface, hCaptcha, rate limits, caching, feeds | quality gates pass | ⬜ **next** — breakdown below |
+| **5 — Backend Implementation** | D1/KV, Cron ingestion, endpoint surface, hCaptcha, rate limits, caching, feeds | quality gates pass | 🟡 **in progress — 5.1–5.3 done, 5.4 next** |
 | **6 — Testing** | Coverage, Lighthouse budget, i18n + a11y sweep per Definition of Done | all green | ⬜ not started |
 | **7 — Deployment** | Web → Vercel, API → Workers; secrets; smoke tests; runbook in `docs/` | live + runbook committed | ⬜ blocked on owner accounts |
 
@@ -48,10 +48,11 @@ actually consumes, and the five open questions to settle first).
 
 | # | Task | Done when |
 |---|---|---|
-| 5.1 | **D1 schema** — replace the empty `0001_init.sql` with the real tables | `wrangler d1 migrations apply linuxhub --local` succeeds; schema matches `.ai/database.md` |
-| 5.2 | **Cron ingestion on the Worker** — port `packages/ingest/src/live.ts` to a Cron Trigger writing D1/KV with native `fetch` | a scheduled run populates releases + mirrors with `source_url` + `fetched_at` |
-| 5.3 | **Read endpoints** — distros list/detail, releases, rankings, search | shared Zod schemas validate; standard envelope; unit tests per endpoint |
-| 5.4 | **BFF proxies the Worker** — `apps/web/src/routes/api/v1/*` stops reading `data.ts` | frontend unchanged; caching TTLs per `.ai/frontend-rules.md`; e2e still green |
+| 5.1 | ✅ **D1 schema** — replace the empty `0001_init.sql` with the real tables | done — 15 tables, 9 indexes, applied with `wrangler d1 migrations apply linuxhub --local`; deviations in ADR-0019 |
+| 5.2 | ✅ **Cron ingestion on the Worker** — port `packages/ingest/src/live.ts` to a Cron Trigger writing D1/KV with native `fetch` | done — a local scheduled run populates 42 releases + 16 mirrors, every row with `source_url` + `fetched_at`; a second pass changes no counts |
+| 5.3 | ✅ **Read endpoints** — distros list/detail, releases, rankings, search | done — 9 endpoints, shared Zod schemas, standard envelope, 44 tests against a real D1 (ADR-0020, ADR-0021) |
+| 5.4 | 🟡 **BFF proxies the Worker** — 4 of 5 movable routes done | `health`, `releases/recent`, `search`, `distros` proxy the Worker with the TTLs in `.ai/frontend-rules.md`, verified on both branches. **`distros/:slug` is the one left and is blocked**: the detail page renders editions, architectures, formats and requirements, and D1 has 0 editions, 0 artifacts and no requirements table — moving it would blank four sections. Unblocks with 5.6/5.7. `rankings`/`hall-of-fame`/`quiz` stay on `data.ts` for the same class of reason |
+| 5.3b | **Wikidata lineage** — fill `distros.family`/`based_on` + taxonomy | ⛔ **blocked on 9 human-supplied QIDs.** Every lookup API (SPARQL, `/w/api.php`, Wikipedia REST) is robots-disallowed; only `Special:EntityData/<QID>.json` is permitted and it needs the QID as input. Verified 2026-08-04 — see `.ai/data-sources.md`. **Not a 5.4 prerequisite**: the UI has no family facet |
 | 5.5 | **Write endpoints** — suggest/report/feedback behind hCaptcha + KV rate limits | contribute forms submit for real; limits covered by tests |
 | 5.6 | **Download resolution** — edition/arch/format + region → real mirror URL + checksum | the download button delivers a file from an official mirror |
 | 5.7 | **Retire `data.ts`** — every placeholder symbol replaced by an API/feed/Wikidata source per `.ai/data-sources.md`; editorial content moved to content/ or D1 | nothing imports `data.ts` and the file is deleted; every factual field carries `source_url` + `fetched_at` |

@@ -236,4 +236,10 @@ export const ko: Partial<Record<MessageKey, string>> = {
 	about_contact: "연락 & 기여",
 	about_contact_p: "Linuxhub는 오픈소스로 만들어집니다.",
 	about_on_this_page: "이 페이지에서",
+
+	release_stable: "정식 릴리스",
+	release_lts: "장기 지원(LTS) 릴리스",
+	release_beta: "사전 릴리스",
+	release_rolling: "롤링 릴리스",
+	release_eol: "지원 종료",
 };

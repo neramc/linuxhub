@@ -12,24 +12,31 @@ where work actually stopped.
 
 ```text
 Linuxhub, Phase 5 (Backend Implementation). Continue from where the last
-session stopped — Phase 4 is complete and pushed to main.
+session stopped. 5.1-5.3 are done and four of the five movable BFF routes now
+proxy the Worker (health, releases/recent, search, distros).
 
 Read first, in this order:
-  1. .ai/handoff.md      — current state, real vs placeholder, working
-                           commands, container quirks
-  2. .ai/roadmap.md      — Phase 5 breakdown, tasks 5.1–5.7 with done-when
-                           criteria
-  3. .ai/frontend-contract.md — what the shipped frontend actually
-                           consumes; read before writing any endpoint
-  4. .ai/api.md, .ai/database.md, .ai/backend-rules.md — the specs you
-                           build against
-  5. .ai/data-sources.md — "Replacing the placeholder data" + the verified
-                           announcement-feed registry
+  1. .ai/handoff.md      - current state, "Which BFF routes have moved", what
+                           is EMPTY ON PURPOSE (read that table before
+                           "fixing" a blank field), commands, container traps
+  2. .ai/roadmap.md      - Phase 5 breakdown with done-when criteria
+  3. .ai/frontend-contract.md - what the frontend consumes and which of its
+                           open questions are settled
+  4. .ai/api.md, .ai/database.md, .ai/backend-rules.md - the specs
+  5. .ai/decisions.md ADR-0019..0022 - the decisions already locked in
 
-Goal for this session: work tasks 5.1 → 5.3 (D1 schema → Cron ingestion on
-the Worker → read endpoints). Stop after 5.3 and report; do not start 5.4
-(pointing the BFF at the Worker) without checking in first, because that is
-the change that can break the whole frontend at once.
+Goal for this session: pick up the highest-value unblocked work. In order of
+value:
+
+  a) 5.6 download resolution - the piece with real user value, and it also
+     unblocks the two things blocking everything else: artifacts/editions
+     (which block distros/:slug) and download counters (which block rankings).
+  b) 5.5 write endpoints behind hCaptcha + KV rate limits.
+  c) 5.7 retiring data.ts, once (a) has filled in what the detail page needs.
+
+Do NOT move the BFF's distros/:slug, rankings, hall-of-fame or quiz routes
+yet. Each reads a table that is legitimately empty, and moving one replaces a
+working screen with a blank one. .ai/handoff.md says which and why.
 
 Binding constraints — these are project rules, not preferences:
 
@@ -53,10 +60,10 @@ Binding constraints — these are project rules, not preferences:
   CSS properties only, so RTL keeps mirroring.
 - Keep the BFF response envelope { ok, data, meta } unchanged so the frontend
   does not move while the backend lands under it.
-- .ai/api.md is the TARGET API; .ai/frontend-contract.md is what the shipped
-  frontend consumes today. They differ. Reconcile them into Zod schemas in
-  packages/shared BEFORE moving endpoints, and answer the five open questions
-  at the end of that file with an ADR rather than deciding them silently.
+- The reconciled Zod schemas already exist in packages/shared/src/schemas.ts
+  and constrain both sides — import them rather than redeclaring shapes.
+  Question 4 in .ai/frontend-contract.md (where the editorial sets live) is
+  still open; answer it with an ADR rather than deciding it silently.
 - One completed task = one commit, Conventional Commits, referencing the doc
   it satisfies. Never merge unrelated changes into one commit.
 
@@ -73,17 +80,23 @@ Environment notes that will otherwise cost you time:
 - Dependencies and SvelteKit types are installed automatically by
   .claude/hooks/session-start.sh.
 - Bun's fetch fails through this container's HTTPS proxy — the ingest CLI
-  shells out to curl for that reason. On Workers, use native fetch.
+  shells out to curl for that reason. workerd's fetch DOES work here, so the
+  Worker cron can be run against live sources locally.
 - Free a port with `fuser -k <port>/tcp`; never `pkill -f` a pattern that
   matches your own shell.
+- apps/web/src/app.html: never write the lang/dir placeholder tokens literally
+  anywhere in that file. hooks.server.ts substitutes them with a
+  single-occurrence String.replace, so an earlier mention — even in a comment —
+  eats the substitution. `bun run test` does not catch it; the e2e axe gate does.
+- Biome resolves to 2.5.4. If lint fails on files you did not touch, that is why.
 
 Cloudflare/Vercel/hCaptcha accounts are NOT provisioned — wrangler.toml holds
-placeholder ids. Build and test against `wrangler dev --local` and D1 local
-migrations; leave anything needing real credentials for Phase 7 and list it
-explicitly in your report.
+placeholder ids and production D1 is empty. Build and test against
+`wrangler dev --local`; leave anything needing real credentials for Phase 7 and
+list it explicitly in your report.
 
-Start by reading the docs above, then give me a short plan for 5.1–5.3
-before you write code.
+Start by reading the docs above, then give me a short plan before you write
+code.
 ```
 
 ---
@@ -91,6 +104,18 @@ before you write code.
 ## Variants
 
 Swap the goal paragraph when the session's focus differs.
+
+**Wikidata lineage (task 5.3b — unblocks the family facet before 5.4):**
+
+```text
+Goal for this session: fill distros.family / based_on and the taxonomy tables
+from Wikidata, which 5.2 deliberately left empty rather than hand-typing. Add
+the verified registry row for query.wikidata.org/sparql (CC0) to
+.ai/data-sources.md BEFORE writing the fetcher, then add it as a weekly cron
+source alongside the existing three, following the shape in
+packages/ingest/src/sources/. Slug-to-QID mapping belongs in registry.ts as a
+pointer, not a fact. Every row it writes carries source_url + fetched_at.
+```
 
 **Data sourcing only (task 5.7 pulled forward, no backend prerequisites):**
 

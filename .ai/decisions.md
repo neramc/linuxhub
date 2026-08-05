@@ -261,3 +261,183 @@ block; unsupported browsers keep the solid fills declared on each rule, so
 the effect is purely additive. Grain is an inline data URI, so it adds no
 request and works offline. Verified: axe WCAG 2 AA clean, 17/17 e2e green,
 no overflow across 12 routes × 5 widths.
+
+## ADR-0019 — D1 schema: per-value provenance, LTS as a flag, per-distro mirrors
+**Date:** 2026-08-04 · **Status:** accepted
+**Context:** Phase 5.1 turned the schema sketch in `.ai/database.md` into real
+migrations. Writing it out surfaced four places where the sketch could not
+hold the data the verified sources actually return, or could not enforce a
+rule the project treats as binding.
+**Decision:**
+1. **Per-value provenance.** `distros`, `releases`, `artifacts` and `mirrors`
+   each carry `source_url` + `fetched_at`. `ingest_log` records a *run* and so
+   can never answer "where did this row come from"; the sourcing rule in
+   `.ai/data-sources.md` is about values, so the columns belong on the values.
+2. **`lts` is a flag, not a channel; `eol` is derived, not stored.**
+   `channel ∈ stable|beta|rolling` plus `lts INTEGER`. endoflife.date reports
+   LTS as a boolean per cycle — a cycle is stable *and* long-term-supported —
+   so the documented four-value enum would have destroyed information. `eol` is
+   computed from `eol_at < today` at read time, so no row goes quietly stale as
+   dates pass. This answers open question 3 in `.ai/frontend-contract.md`; the
+   frontend's `release|beta|eol|rolling` values are display states derived from
+   `channel` + `lts` + `eol_at`, not storage.
+3. **Mirrors belong to a distro.** `mirrors.distro_id` added and
+   `UNIQUE(base_url)` relaxed to `UNIQUE(distro_id, base_url)`. Arch's mirror
+   network is not Fedora's, one host can mirror several distros, and a mirror
+   is known long before any artifact is known to sit on it — the
+   `artifact_mirrors` join alone left ingested mirror lists with nowhere to go.
+4. **`CHECK` constraints on every closed enum**, and `distros.family` defaults
+   to `''` because lineage comes from Wikidata and an empty value is honest
+   where a hand-typed one would violate the sourcing rule.
+Also: `download_events.mirror_id` is `NOT NULL DEFAULT 0` rather than a
+nullable FK, because SQLite treats each `NULL` as distinct in a `UNIQUE`
+constraint and the daily counter flush would insert duplicates instead of
+accumulating.
+**Consequences:** `.ai/database.md` is updated to match in the same commit and
+remains the authority. Reads must derive `eol` rather than filter on it, and
+`releases.lts` is a separate predicate from `channel`. Migrations `0001_init` …
+`0005_indexes` create 15 tables and 9 indexes; verified with
+`wrangler d1 migrations apply linuxhub --local`, including a rejected write
+proving the `CHECK` constraints bite.
+
+## ADR-0020 — The API returns facts; presentation is derived client-side
+**Date:** 2026-08-04 · **Status:** accepted (owner approved)
+**Context:** The Phase 4 frontend was built against `data.ts`, which returned
+`downloads: "1.2M"`, `familyLine: "Debian family · Ubuntu-based"`,
+`title: "Fedora 44"`, a pre-rendered `spark` polyline, `flag` emoji, `color`
+and `initials`. `.ai/frontend-contract.md` recorded three recurring problems
+in that shape — pre-composed English, pre-formatted numbers, and presentation
+baked into payloads — and asked where `color`, `initials` and `spark` should
+live before any endpoint moved.
+**Decision:** The API returns facts and nothing else.
+- `downloads` is a number; the page formats it with `Intl.NumberFormat`, which
+  is the only way it can be locale-correct across ~57 locales.
+- No composed English anywhere. `familyLine`, release `line`/`note`,
+  `RecentRelease.title`/`subtitle` and the `meta[]` tile labels are built by
+  the page through `@linuxhub/i18n`. The API returns `family`, `based_on`,
+  `version`, `channel`, `lts`, `released_at`, `eol_at`.
+- `initials` derives from `name`; brand `color` is a slug-keyed lookup in
+  `packages/ui`, cited against `assets/distros/ATTRIBUTION.md`. Neither becomes
+  a D1 column: they are presentation with no upstream source, and a hand-seeded
+  column would sit badly against the no-hand-typed-values rule.
+- `spark` ships as a series (`GET /v1/distros/:slug/rank-history` →
+  `{ snapshot_at, rank, score }[]`), drawn by the client. `flag` derives from
+  the mirror's country code.
+**Consequences:** Answers questions 1 and 2 in `.ai/frontend-contract.md`
+(question 3 is ADR-0019's). Task 5.4 must move the formatting and composition
+into the pages as each endpoint is repointed — that work is the reason the
+sequence there is one endpoint at a time. Endpoint tests assert the *absence*
+of `familyLine`, `color`, `initials`, `title` and `subtitle`, so a regression
+into presentation-in-payload fails a named test.
+
+## ADR-0021 — Worker tests run against a real D1 via Miniflare
+**Date:** 2026-08-04 · **Status:** accepted
+**Context:** `.ai/backend-rules.md` called for a "Miniflare/workers-pool
+environment" without choosing one. Task 5.3 needed a database for endpoint
+tests, and 5.1 had just added CHECK constraints and upsert conflict targets
+that only a real SQLite engine enforces.
+**Decision:** `apps/api/test/harness.ts` starts Miniflare with an in-memory D1
+and the three KV namespaces, applies the files in `migrations/` verbatim, and
+hands the bindings to `app.request(path, init, env)`. Miniflare is used
+directly rather than `@cloudflare/vitest-pool-workers`: it needs no new
+top-level dependency (it already ships with Wrangler), leaves the existing
+Vitest setup unchanged, and lets a test drive both a cron pass and an HTTP
+request against the same database. Ingestion tests stub the HTTP transport —
+a test suite has no business calling an upstream — but never the database.
+**Consequences:** Every test also exercises the schema, which is how the
+`ON CONFLICT` parse failure in the rankings snapshot and the retry bug in the
+ingest HTTP client were both caught before they shipped. Tests run ~1s slower
+per suite because workerd starts per context; that is worth it. If Miniflare
+ever misbehaves under Bun, the fallback is a `node:sqlite`-backed D1 shim,
+which would have to be documented as no longer exercising the real engine.
+
+## ADR-0022 — Keep the hand-rolled i18n runtime for v1; do not adopt the inlang compiler
+**Date:** 2026-08-04 · **Status:** accepted (owner delegated the choice)
+**Context:** ADR-0016 shipped a small Paraglide-shaped runtime instead of the
+inlang toolchain, and left "adopt the real compiler" open as a dependency the
+owner should agree to. `.ai/handoff.md` has carried it as an open question ever
+since. At deployment time it had to be answered.
+
+Measured before deciding, rather than argued from preference:
+
+| | Today |
+|---|---|
+| Authored catalogs | **2** (`en`, `ko`) of 59 registry locales |
+| Catalog payload | ~19 KB total, both statically imported |
+| `m.<key>` call sites | **266** across **15** files |
+
+**Decision:** Keep the hand-rolled runtime through v1.
+
+Adopting the compiler now means converting two TS catalogs to inlang's message
+format, adding a project file and a Vite plugin, and rewriting 266 call sites
+from `m.key` to `m.key()` across every screen — then re-running the full e2e and
+axe gate — immediately before the first deploy. The payoff at two catalogs and
+19 KB is indistinguishable from zero. That is risk without benefit, and the
+timing is the worst part of it.
+
+**Revisit when a number says to**, not on a date. Two triggers:
+1. **authored catalogs reach ~5**, or
+2. the message payload becomes a measurable share of the JS bundle in the
+   Phase 6 Lighthouse budget.
+
+**Consequences:** Call sites keep property access (`m.key`); ADR-0016's note
+that the swap stays mechanical still holds, and 266 sites is the size of it.
+
+The honest limitation this leaves in place: `CATALOGS` in
+`packages/i18n/src/runtime.ts` statically imports every authored catalog, so
+each one ships to every visitor regardless of their locale. At 59 authored
+locales that would be roughly 560 KB of messages sent to everybody — a real
+defect, and the *first* thing to fix when the trigger fires. Note that fixing it
+does not require the compiler: a dynamic per-locale import solves the same
+problem while keeping this runtime. Weigh both options at that point instead of
+assuming the compiler is the answer.
+
+`.ai/i18n.md` is updated in this commit to describe what is actually built —
+it had been describing Paraglide as the stack since Phase 0.
+
+## ADR-0023 — Monorepo conventions: catalog, shared tsconfig, enforced boundaries; no task runner yet
+**Date:** 2026-08-05 · **Status:** accepted
+**Context:** ADR-0001 chose Bun workspaces and left "optional turbo/bunfig task
+orchestration added later if needed" open. With deployment imminent the repo
+needed the conventions a multi-package repo actually depends on, and the
+question of a task runner had to be answered rather than left hanging.
+
+Two failures had already been paid for, and both were structural rather than
+bad luck:
+- Biome was declared `^2.3.0` while `biome.json` pinned the 2.5.4 schema, and
+  CI asked for `bun-version: latest`. A fresh install moved the toolchain
+  without a commit and broke lint on files nobody had touched.
+- `.ai/architecture.md` declares the workerd runtime boundary binding, but
+  nothing enforced it. `packages/ingest` is imported by the Worker and its CLI
+  half uses `Bun.file` and `node:fs`; only the import graph kept them apart,
+  and a single wrong import would have failed at deploy rather than at review.
+
+**Decision:**
+1. **A Bun workspace catalog** holds every version used in more than one place
+   (`typescript`, `vitest`, `svelte`). Workspaces say `catalog:`; drift between
+   packages becomes unrepresentable rather than merely discouraged.
+2. **The toolchain is pinned**: `packageManager` + `engines` at the root, Biome
+   at an exact version matching its own schema, and CI reads the Bun version
+   from `packageManager` instead of tracking latest.
+3. **`tsconfig.base.json`** holds the compiler options five workspaces
+   duplicated. `apps/web` is exempt and stays on SvelteKit's generated config,
+   which owns `paths` and `rootDirs`.
+4. **`scripts/check-boundaries.ts` enforces the two boundaries** and runs first
+   in CI: no Node builtin or Bun global in `apps/api/src`, and no `packages/*`
+   importing an app. It scans import specifiers by regex — exact enough for a
+   question that is only about what a module imports, and dependency-free.
+
+**No task runner (turbo/nx) yet**, deliberately. Its three benefits do not
+apply here: `bun run --filter` already parallelises; there is no build graph to
+order, because `packages/*` are consumed as TypeScript source with no build
+step; and remote caching would save perhaps a minute on a CI run that is
+already short. Adopting one would add a dependency, a config, and a rewrite of
+every script for that minute. **Revisit when a build step appears in any
+`packages/*`, or when CI wall time passes ~10 minutes** — the first is the real
+trigger, since that is when ordering stops being free.
+
+**Consequences:** Bumping a shared dependency is a one-line edit to the root
+catalog. Dependabot is *not* enabled: it does not understand Bun catalogs and
+would either miss those versions or rewrite them wrongly, so catalog bumps stay
+manual until that support exists. Adding a workspace now means extending the
+base tsconfig and, if it is an app, teaching `check-boundaries.ts` about it.

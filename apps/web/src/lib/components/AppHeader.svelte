@@ -28,6 +28,7 @@ function switchHref(code: string): string {
 }
 
 function rememberLocale(code: string) {
+	// biome-ignore lint/suspicious/noDocumentCookie: the suggested Cookie Store API is unavailable in Safari; the locale cookie must work in every browser we route locales for (.ai/i18n.md).
 	document.cookie = `lh-locale=${code}; path=/; max-age=31536000; samesite=lax`;
 	ui.localeOpen = false;
 }

@@ -1,10 +1,10 @@
 <script lang="ts">
 import { localizeHref, m } from "@linuxhub/i18n";
-import type { ApiSuccess } from "@linuxhub/shared";
+import type { ApiSuccess, Distro } from "@linuxhub/shared";
+import { brandColor, initials } from "@linuxhub/ui";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
 import { goto } from "$app/navigation";
-import type { Distro } from "$lib/server/data";
 import { ui } from "$lib/state/ui.svelte";
 
 let query = $state("");
@@ -100,9 +100,9 @@ function onkeydown(e: KeyboardEvent) {
 						selected = i;
 					}}
 				>
-					<LogoTile color={distro.color} initials={distro.initials} size="xs" src={distro.logo} />
+					<LogoTile color={brandColor(distro.slug)} initials={initials(distro.name)} size="xs" src={distro.logo} />
 					<span>{distro.name}</span>
-					<span class="code">{distro.familyLine}</span>
+					<span class="code">{distro.summary}</span>
 				</button>
 			{/each}
 			{#if query.trim()}

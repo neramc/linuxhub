@@ -160,11 +160,15 @@ move rather than porting them:
 
 ## Suggested sequence for 5.4 (avoids the big-bang break)
 
-1. Write the reconciled Zod schemas in `packages/shared` first — both sides
-   then fail loudly at the type level instead of silently at runtime.
+1. ✅ Done in 5.3 — the reconciled Zod schemas are in
+   `packages/shared/src/schemas.ts`, imported by both sides, so a shape drift
+   fails at the type level instead of silently at runtime.
 2. Move **one** endpoint at a time, cheapest first:
-   `health` → `hall-of-fame` → `releases/recent` → `search` → `distros` →
-   `rankings` → `distros/:slug`.
+   `health` → `releases/recent` → `search` → `distros` → `distros/:slug`.
+   **Stop there.** `rankings`, `hall-of-fame` and `quiz` are not ready: the
+   first two read tables that are legitimately empty (no download signals until
+   5.6; question 4 above unsettled), and `quiz` has no endpoint at all. Moving
+   them would replace working editorial screens with blank ones.
 3. After each move run the e2e suite — it covers every screen that consumes
    these routes, so a broken shape fails a named test rather than silently
    rendering an empty page.
@@ -173,19 +177,26 @@ move rather than porting them:
    them endpoints (#46 for compare, a banners source for home) before
    deleting the file.
 
-## Open questions the next session must answer (not silently decide)
+## Open questions — three answered, one still open
 
-Per golden rule 3, these are architecture, so decide them explicitly and
-append an ADR to `.ai/decisions.md` — do not settle them implicitly in code:
+Per golden rule 3 these are architecture, so each is settled with an ADR
+rather than implicitly in code.
 
-1. Where do `color` and `initials` live — D1 columns, frontend lookup, or
-   derived?
-2. Is `spark` server-rendered as a points string, or does the client draw
-   from a series?
-3. Does `versions[].channel` keep the frontend's four values, or adopt the
-   schema's `stable|lts|beta|rolling` with `eol` derived?
-4. Do the editorial sets (`QUIZ`, `HALL_OF_FAME`, banner copy, category
-   assignment) live in D1 or in `content/` as MDX?
+1. ✅ **`color` and `initials` — frontend, not the API** (ADR-0020, owner
+   approved 2026-08-04). `initials` derives from `name`; brand `color` becomes
+   a slug-keyed lookup in `packages/ui`, cited against
+   `assets/distros/ATTRIBUTION.md`. No D1 column.
+2. ✅ **`spark` — the client draws it** (ADR-0020). `GET /v1/distros/:slug/
+   rank-history` returns a `{ snapshot_at, rank, score }` series; the API never
+   ships a rendered points string.
+3. ✅ **`channel` — `stable|beta|rolling` plus an `lts` flag, `eol` derived**
+   (ADR-0019). The frontend's `release|beta|eol|rolling` are display states the
+   page computes, not storage.
+4. ⬜ **Still open:** do the editorial sets (`QUIZ`, `HALL_OF_FAME`, banner
+   copy, category assignment) live in D1 or in `content/` as MDX? Nothing in
+   5.1–5.3 depends on it; settle it in 5.7. `hall_of_fame` exists as a table
+   and `GET /v1/hall-of-fame` reads it, but it stays empty until this is
+   decided — **so 5.4 must not repoint the BFF's hall-of-fame route yet.**
 
 **Already settled — do not reopen:** the BFF **always** proxies the Worker and
 never touches D1/KV directly (`.ai/architecture.md` §"Layers and

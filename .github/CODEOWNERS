@@ -1,0 +1,36 @@
+# Code owners.
+#
+# GitHub requests a review from the owner of every path a pull request touches.
+# The point here is not gatekeeping — it is a single maintainer repo — but that
+# the paths below are the ones where a change has consequences beyond the diff,
+# so a review request on them is a useful signal rather than noise.
+
+*                       @neramc
+
+# Project memory. `.ai/` outranks docs/, prompts/ and the code itself in the
+# SSOT order declared in CLAUDE.md, so a change here silently redefines what
+# every future session believes about the project.
+/.ai/                   @neramc
+/CLAUDE.md              @neramc
+
+# Append-only by rule. An edit to an existing ADR is a rewrite of history and
+# should never appear in a diff; a new one at the end should.
+/.ai/decisions.md       @neramc
+
+# The design is frozen (ADR-0017/0018, owner-approved). Restyling an approved
+# screen requires a new comp and re-approval before any code moves.
+/design/                @neramc
+/packages/ui/src/tokens.css   @neramc
+/packages/ui/src/styles.css   @neramc
+
+# Anything that changes what we fetch, how often, or from where. The crawler
+# policy in .ai/security.md is binding and a source must be verified before its
+# fetcher exists.
+/.ai/data-sources.md    @neramc
+/packages/ingest/       @neramc
+
+# Deployment surface: schema migrations are forward-only, secrets and bindings
+# live here, and CI is what stops the rest from shipping broken.
+/apps/api/migrations/   @neramc
+/apps/api/wrangler.toml @neramc
+/.github/               @neramc

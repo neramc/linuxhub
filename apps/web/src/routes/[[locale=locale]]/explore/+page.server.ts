@@ -1,5 +1,4 @@
-import type { ApiSuccess } from "@linuxhub/shared";
-import type { Distro } from "$lib/server/data";
+import type { ApiSuccess, Distro } from "@linuxhub/shared";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ fetch, url }) => {

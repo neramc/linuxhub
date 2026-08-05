@@ -1,9 +1,11 @@
 <script lang="ts">
 import { localizeHref, m } from "@linuxhub/i18n";
+import { brandColor, initials } from "@linuxhub/ui";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
 import { prefersReducedMotion } from "@linuxhub/ui/motion";
+import { formatDate, releaseChannelLabel, releaseTitle } from "$lib/format";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
@@ -90,8 +92,8 @@ function slide(direction: number) {
 				href={localizeHref(`/distro/${distro.slug}`)}
 				name={distro.name}
 				summary={distro.summary}
-				color={distro.color}
-				initials={distro.initials}
+				color={brandColor(distro.slug)}
+				initials={initials(distro.name)}
 				logo={distro.logo}
 			/>
 		{/each}
@@ -104,8 +106,8 @@ function slide(direction: number) {
 				href={localizeHref(`/distro/${distro.slug}`)}
 				name={distro.name}
 				summary={distro.summary}
-				color={distro.color}
-				initials={distro.initials}
+				color={brandColor(distro.slug)}
+				initials={initials(distro.name)}
 				logo={distro.logo}
 			/>
 		{/each}
@@ -113,16 +115,16 @@ function slide(direction: number) {
 
 	<div class="section-title"><h2>{m.home_recently_updated}</h2><a href={localizeHref("/explore")}>{m.home_see_more}</a></div>
 	<div class="boxed">
-		{#each data.recent as release (release.title)}
+		{#each data.recent as release (`${release.slug}-${release.version}`)}
 			<a class="row" href={localizeHref(`/distro/${release.slug}`)}>
 				{#if release.distro}
 					<LogoTile color={release.distro.color} initials={release.distro.initials} size="sm" src={release.distro.logo} />
 				{/if}
 				<span class="row__body">
-					<span class="row__title">{release.title}</span>
-					<span class="row__subtitle">{release.subtitle}</span>
+					<span class="row__title">{releaseTitle(release.name, release.version)}</span>
+					<span class="row__subtitle">{releaseChannelLabel(release)}</span>
 				</span>
-				<span class="row__end">{release.date}</span>
+				<span class="row__end">{formatDate(release.released_at)}</span>
 			</a>
 		{/each}
 	</div>

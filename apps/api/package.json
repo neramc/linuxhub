@@ -10,13 +10,15 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
+		"@linuxhub/ingest": "workspace:*",
 		"@linuxhub/shared": "workspace:*",
 		"hono": "^4.9.0"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20250620.0",
-		"typescript": "^5.9.0",
-		"vitest": "^3.2.0",
+		"miniflare": "^4.20260730.0",
+		"typescript": "catalog:",
+		"vitest": "catalog:",
 		"wrangler": "^4.30.0"
 	}
 }
