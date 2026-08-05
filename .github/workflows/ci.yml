@@ -13,7 +13,10 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          # Read from the root package.json "packageManager" field rather than
+          # tracking latest — a toolchain that moves without a commit is how
+          # Biome 2.5 silently started failing lint on untouched files.
+          bun-version-file: package.json
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -37,7 +40,10 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          # Read from the root package.json "packageManager" field rather than
+          # tracking latest — a toolchain that moves without a commit is how
+          # Biome 2.5 silently started failing lint on untouched files.
+          bun-version-file: package.json
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
