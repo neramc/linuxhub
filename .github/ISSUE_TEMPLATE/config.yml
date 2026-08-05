@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/neramc/linuxhub/security/advisories/new
+    about: Please report privately here rather than in a public issue. Scope and expectations are in SECURITY.md.
+  - name: How this project works
+    url: https://github.com/neramc/linuxhub/blob/main/CONTRIBUTING.md
+    about: Setup, the checks a change has to pass, and the rules that will get one rejected.
