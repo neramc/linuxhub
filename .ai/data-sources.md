@@ -13,7 +13,8 @@
 | Repology API | cross-distro version tracking | public API | pending verification | daily |
 | GitHub Releases API | releases for GitHub-hosted distros | official API (token, rate-limited) | pending verification | 6 h |
 | GitLab Releases API | releases for GitLab-hosted distros | official API | pending verification | 6 h |
-| **Fedora MirrorManager** (`mirrors.fedoraproject.org/mirrorlist`) | Fedora mirror list | official API | **verified 2026-07-19** — official mirror-list endpoint | daily — **Worker cron** |
+| **Fedora MirrorManager** (`mirrors.fedoraproject.org/mirrorlist`) | Fedora mirror list | official API | **verified 2026-07-19** — official mirror-list endpoint. ⚠️ Returns **per-repo directories** (`…/releases/44/Everything/x86_64/os/`), not mirror roots: these rows are stored with `serves_artifacts = 0` and are never a download base (ADR-0024) | daily — **Worker cron** |
+| **Fedora download redirector** (`download.fedoraproject.org`) | the base Fedora artifact paths are relative to; 302s to a nearby mirror | official redirector | **verified 2026-08-05** — a `HEAD` of a resolved ISO path follows to a mirror and answers 200 with the published size | stored by the artifacts cron |
 | openSUSE download redirector (mirrorbrain) | openSUSE mirrors/artifacts | official endpoint | pending verification | daily |
 | Ubuntu/Debian cdimage + mirror lists | ISO paths, mirror lists | official pages/manifests | pending verification | daily |
 | **Arch mirror status** (`archlinux.org/mirrors/status/json/`) | Arch mirrors + health scores | official JSON | **verified 2026-07-19** — official status JSON endpoint | daily — **Worker cron** |

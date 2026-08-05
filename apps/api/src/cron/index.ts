@@ -12,7 +12,11 @@ import { DEFAULT_SITE_ORIGIN } from "@linuxhub/ingest";
 import type { ContentIndex } from "@linuxhub/ingest/content";
 import contentIndex from "@linuxhub/ingest/content-index.json" with { type: "json" };
 import { createFetchClient, type HttpClient } from "@linuxhub/ingest/http";
-import { DISTRO_SOURCES, mirrorSourcesFor } from "@linuxhub/ingest/registry";
+import {
+	DISTRO_SOURCES,
+	MIRROR_SERVES_ARTIFACTS,
+	mirrorSourcesFor,
+} from "@linuxhub/ingest/registry";
 import { fetchArchMirrors } from "@linuxhub/ingest/sources/arch-mirrors";
 import { ARCH_RELEASES_SOURCE, fetchArchReleases } from "@linuxhub/ingest/sources/arch-releases";
 import { ENDOFLIFE_SOURCE, fetchReleaseCycles } from "@linuxhub/ingest/sources/endoflife";
@@ -25,6 +29,7 @@ import { fetchFedoraMirrors } from "@linuxhub/ingest/sources/fedora-mirrors";
 import {
 	ensureMirrorStatement,
 	linkArtifactsToMirrorsStatement,
+	pruneArtifactMirrorsStatement,
 	upsertCatalog,
 } from "../db/artifacts";
 import { syncCatalog } from "../db/distros";
@@ -163,7 +168,10 @@ async function ingestArtifacts(
 			result.sourceUrl,
 			result.fetchedAt,
 		);
-		await env.DB.batch([linkArtifactsToMirrorsStatement(env.DB, "arch")]);
+		await env.DB.batch([
+			pruneArtifactMirrorsStatement(env.DB, "arch"),
+			linkArtifactsToMirrorsStatement(env.DB, "arch"),
+		]);
 		written += releases.written + catalog.written;
 		if (catalog.written > 0) await bumpGeneration(env, "arch");
 		ok++;
@@ -216,7 +224,10 @@ async function ingestArtifacts(
 				result.sourceUrl,
 				result.fetchedAt,
 			);
-			await env.DB.batch([linkArtifactsToMirrorsStatement(env.DB, "fedora")]);
+			await env.DB.batch([
+				pruneArtifactMirrorsStatement(env.DB, "fedora"),
+				linkArtifactsToMirrorsStatement(env.DB, "fedora"),
+			]);
 			written += catalog.written;
 			if (catalog.written > 0) await bumpGeneration(env, "fedora");
 			ok++;
@@ -265,6 +276,7 @@ export async function ingestMirrors(
 				result.data,
 				result.sourceUrl,
 				result.fetchedAt,
+				MIRROR_SERVES_ARTIFACTS.arch,
 			);
 			written += stored.written;
 			if (stored.written > 0 || stored.retired > 0) await bumpGeneration(env, row.slug);
@@ -310,6 +322,7 @@ export async function ingestMirrors(
 				result.data,
 				result.sourceUrl,
 				result.fetchedAt,
+				MIRROR_SERVES_ARTIFACTS.fedora,
 			);
 			written += stored.written;
 			if (stored.written > 0 || stored.retired > 0) await bumpGeneration(env, row.slug);

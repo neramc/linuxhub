@@ -441,3 +441,56 @@ catalog. Dependabot is *not* enabled: it does not understand Bun catalogs and
 would either miss those versions or rewrite them wrongly, so catalog bumps stay
 manual until that support exists. Adding a workspace now means extending the
 base tsconfig and, if it is an app, teaching `check-boundaries.ts` about it.
+
+---
+
+## ADR-0024 — A mirror row is not automatically a download base
+
+*Date: 2026-08-05 · Status: accepted · Supersedes nothing; corrects ADR-0019's
+`mirrors` model*
+
+**Context.** Task 5.6 joins `mirrors.base_url` with `artifacts.path` to build a
+download URL. That works only if `base_url` is a root the path extends, and the
+code assumed every mirror row was one. It is not:
+
+| Source | What `base_url` is | Extends `artifacts.path`? |
+|---|---|---|
+| `archlinux.org/mirrors/status/json/` | a mirror root, `https://host/archlinux/` | yes — `iso/2026.08.01/…iso` |
+| `mirrors.fedoraproject.org/mirrorlist` | a **repo directory**, `https://host/fedora/linux/releases/44/Everything/x86_64/os/` | no |
+| `download.fedoraproject.org` (redirector) | the base Fedora paths are written against | yes — `pub/fedora/linux/releases/…` |
+
+Joining a Fedora artifact onto a mirrorlist entry produced a URL that answered
+**404**, which is how this was found: the resolved URL was fetched rather than
+merely inspected.
+
+A second defect had the same root. `replaceMirrors` retired every mirror of the
+distro absent from the list it had just fetched — including the redirector,
+which a different cron writes. The two crons took turns marking each other's
+rows unhealthy.
+
+**Decision.**
+
+1. `mirrors.serves_artifacts` (migration 0006, default `0`) records whether a
+   row's `base_url` is a base our artifact paths extend. It is set from the
+   source, not guessed: `MIRROR_SERVES_ARTIFACTS` in
+   `packages/ingest/src/registry.ts` is the one place that knows.
+2. Only `serves_artifacts = 1` rows are linked in `artifact_mirrors`, and only
+   those are offered in the picker — choosing a mirror must never be a way to
+   get a URL that 404s.
+3. `pruneArtifactMirrorsStatement` drops links to a mirror that stops being a
+   base, because the link step only ever inserts.
+4. Retirement in `replaceMirrors` is scoped to `source_url`: a source may only
+   retire rows it wrote.
+
+**Rejected: deriving a root from a repo URL** by stripping the repo suffix.
+Mirrors disagree on their prefix (`/fedora/linux/`, `/pub/fedora/linux/`,
+`/linux/`), so it would be a guess that fails silently for some hosts — the
+exact failure mode this ADR exists to remove. A per-mirror root is a fact we
+can fetch later, from a source that publishes it.
+
+**Consequences.** Fedora's picker currently offers one base, the official
+redirector, which is also what Fedora's own download page uses; the eleven
+mirrorlist hosts stay in `mirrors` as cited facts about who mirrors Fedora, and
+become usable the day a source gives us their roots. Any new mirror source must
+declare which kind it is; the default of `0` means forgetting is inert rather
+than wrong.

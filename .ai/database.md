@@ -96,6 +96,10 @@ CREATE TABLE mirrors (
                 CHECK (protocol IN ('https','http','ftp','rsync')),
   sponsor       TEXT,
   healthy       INTEGER NOT NULL DEFAULT 1 CHECK (healthy IN (0,1)),
+  -- Is base_url a root that `artifacts.path` extends? Not every mirror row is:
+  -- see the note below. Defaults to 0, so a mirror is not an artifact base
+  -- until a source says it is (migration 0006).
+  serves_artifacts INTEGER NOT NULL DEFAULT 0 CHECK (serves_artifacts IN (0,1)),
   last_checked  TEXT,
   source_url    TEXT,
   fetched_at    TEXT,
@@ -189,6 +193,21 @@ CREATE TABLE ingest_log (
 SQLite treats every `NULL` as distinct in a `UNIQUE` constraint, so a nullable
 column would let the daily counter flush insert duplicate rows instead of
 accumulating into one.
+
+`mirrors.serves_artifacts` exists because "a mirror of this distro" and "a base
+URL our artifact paths are relative to" are two different facts, and treating
+them as one produced download URLs that 404. Arch's mirror status JSON
+publishes mirror **roots** (`https://host/archlinux/`), which a path like
+`iso/2026.08.01/…iso` extends. Fedora's MirrorManager publishes per-repo
+**directories** (`https://host/fedora/linux/releases/44/Everything/x86_64/os/`),
+which nothing extends — Fedora artifact paths are relative to the redirector,
+`https://download.fedoraproject.org/`, which is stored as a mirror row of its
+own. Only rows with `serves_artifacts = 1` are joined to artifacts or offered
+in the picker (ADR-0024).
+
+Retiring a mirror is likewise scoped to `source_url`: a distro can have mirrors
+from more than one source, and "absent from the mirrorlist" says nothing about
+a row the mirrorlist never wrote.
 
 ### Indexes (0005)
 

@@ -121,12 +121,14 @@ export async function chooseMirror(
 	return { mirror, choice: "fallback" };
 }
 
+/** The mirrors a visitor may pick from — only those a download can actually
+ *  come from, so choosing one is never a way to get a URL that 404s. */
 export async function listDownloadMirrors(db: D1Database, slug: string): Promise<MirrorChoice[]> {
 	const { results } = await db
 		.prepare(
 			`SELECT m.id, m.name, m.country, m.base_url
 			   FROM mirrors m JOIN distros d ON d.id = m.distro_id
-			  WHERE d.slug = ?1 AND m.healthy = 1
+			  WHERE d.slug = ?1 AND m.healthy = 1 AND m.serves_artifacts = 1
 			  ORDER BY m.country, m.name`,
 		)
 		.bind(slug)

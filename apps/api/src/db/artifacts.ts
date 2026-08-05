@@ -71,7 +71,8 @@ export function upsertArtifactStatement(
 }
 
 /** Ensures a mirror row exists for an origin the artifact index points at —
- *  Fedora's redirector is a mirror in every sense that matters here. */
+ *  Fedora's redirector is a mirror in every sense that matters here, and it is
+ *  the base its artifact paths are relative to, so it serves artifacts. */
 export function ensureMirrorStatement(
 	db: D1Database,
 	slug: string,
@@ -83,19 +84,26 @@ export function ensureMirrorStatement(
 	return db
 		.prepare(
 			`INSERT INTO mirrors
-			   (distro_id, name, country, region, base_url, protocol, healthy, last_checked, source_url, fetched_at)
-			 VALUES ((SELECT id FROM distros WHERE slug = ?1), ?2, '', '', ?3, 'https', 1, ?4, ?5, ?4)
+			   (distro_id, name, country, region, base_url, protocol, healthy,
+			    last_checked, source_url, fetched_at, serves_artifacts)
+			 VALUES ((SELECT id FROM distros WHERE slug = ?1), ?2, '', '', ?3, 'https', 1, ?4, ?5, ?4, 1)
 			 ON CONFLICT(distro_id, base_url) DO UPDATE SET
-			   healthy      = 1,
-			   last_checked = excluded.last_checked,
-			   fetched_at   = excluded.fetched_at`,
+			   healthy          = 1,
+			   last_checked     = excluded.last_checked,
+			   fetched_at       = excluded.fetched_at,
+			   serves_artifacts = 1`,
 		)
 		.bind(slug, name, baseUrl, fetchedAt, sourceUrl);
 }
 
 /**
  * Links every mirror-relative artifact of a distro to every healthy mirror of
- * that distro.
+ * that distro **whose base URL its path is relative to**.
+ *
+ * `serves_artifacts` is what makes that last clause true. A mirror row can be a
+ * perfectly real mirror of the distro and still be the wrong base: Fedora's
+ * MirrorManager publishes per-repo directories, and joining an artifact path
+ * onto one produces a 404 (migration 0006).
  *
  * Absolute references are skipped deliberately: a magnet URI is not served by
  * a mirror, and pretending otherwise would put a row in `artifact_mirrors`
@@ -114,10 +122,26 @@ export function linkArtifactsToMirrorsStatement(db: D1Database, slug: string): D
 			   JOIN releases r ON r.id = e.release_id
 			   JOIN distros  d ON d.id = r.distro_id
 			   JOIN mirrors  m ON m.distro_id = d.id AND m.healthy = 1
+			                  AND m.serves_artifacts = 1
 			  WHERE d.slug = ?1
 			    AND a.path NOT LIKE 'http%'
 			    AND a.path NOT LIKE 'magnet:%'
 			 ON CONFLICT(artifact_id, mirror_id) DO UPDATE SET available = 1`,
+		)
+		.bind(slug);
+}
+
+/** Drops links to mirrors that are no longer an artifact base. The link step
+ *  only ever inserts, so without this a mirror reclassified by a later ingest
+ *  would keep serving resolutions from a base that does not work. */
+export function pruneArtifactMirrorsStatement(db: D1Database, slug: string): D1PreparedStatement {
+	return db
+		.prepare(
+			`DELETE FROM artifact_mirrors
+			  WHERE mirror_id IN (
+			        SELECT m.id FROM mirrors m
+			          JOIN distros d ON d.id = m.distro_id
+			         WHERE d.slug = ?1 AND m.serves_artifacts = 0)`,
 		)
 		.bind(slug);
 }

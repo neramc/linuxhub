@@ -25,6 +25,21 @@ export type ReleaseSource =
 
 export type MirrorSource = "arch" | "fedora";
 
+/**
+ * Whether a mirror source publishes base URLs our artifact paths are relative
+ * to.
+ *
+ * Arch's status JSON lists mirror roots (`https://host/archlinux/`), which
+ * `iso/2026.08.01/…iso` extends. Fedora's MirrorManager lists per-repo
+ * directories (`…/releases/44/Everything/x86_64/os/`) — a real fact about who
+ * mirrors Fedora, but not a base any artifact path extends. Fedora artifacts
+ * are relative to the redirector instead, which is registered separately.
+ */
+export const MIRROR_SERVES_ARTIFACTS: Record<MirrorSource, boolean> = {
+	arch: true,
+	fedora: false,
+};
+
 export type DistroSourceRow = {
 	slug: string;
 	release: ReleaseSource;

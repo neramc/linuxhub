@@ -133,7 +133,7 @@ Per-field mapping for the Worker:
 | `versions[]` | `releases` | `channel` values differ: frontend `release\|beta\|eol\|rolling` vs. schema `stable\|lts\|beta\|rolling`. **Reconcile** — `eol` is derived from `eol_at < today`, and `lts` is a flag, not a channel |
 | `versions[].line`, `.note` | composed English strings | same i18n bug as `RecentRelease` |
 | `versions[].size`, `.downloads` | `artifacts.size`, counters | optional today, always absent |
-| `mirrors[]` | `mirrors` + `artifact_mirrors` | `flag` is an emoji built from `country`; `auto` marks the synthetic "nearest" row |
+| `mirrors[]` | `mirrors` + `artifact_mirrors` | `flag` is an emoji built from `country`; `auto` marks the synthetic "let the server choose" row. Only mirrors with `serves_artifacts = 1` are offered — see ADR-0024 |
 | `requirements` | ⚠️ **one shared table for every distro** — factually wrong and user-visible | per-distro, from official install docs |
 | `fetchedAt`, `sources` | `ingest_log` | keep — the provenance line is a product feature |
 | `related` | joined in the BFF today (same family, then rank) | #8 |

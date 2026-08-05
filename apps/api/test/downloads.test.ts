@@ -63,18 +63,26 @@ describe("download endpoints", () => {
 		await upsertCatalog(ctx.env.DB, "fedora", CATALOG, "https://src.test", "2026-08-05");
 		await ctx.env.DB.batch([
 			ctx.env.DB.prepare(
-				`INSERT INTO mirrors (distro_id, name, country, base_url, healthy)
-				 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'se.test', 'SE', 'https://se.test/', 1)`,
+				`INSERT INTO mirrors (distro_id, name, country, base_url, healthy, serves_artifacts)
+				 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'se.test', 'SE', 'https://se.test/', 1, 1)`,
 			),
 			ctx.env.DB.prepare(
-				`INSERT INTO mirrors (distro_id, name, country, base_url, healthy)
-				 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'de.test', 'DE', 'https://de.test/', 1)`,
+				`INSERT INTO mirrors (distro_id, name, country, base_url, healthy, serves_artifacts)
+				 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'de.test', 'DE', 'https://de.test/', 1, 1)`,
+			),
+			// Listed for Fedora but not a base our paths extend: it must never
+			// appear in the picker, because picking it would 404.
+			ctx.env.DB.prepare(
+				`INSERT INTO mirrors (distro_id, name, country, base_url, healthy, serves_artifacts)
+				 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'repo.test', 'JP',
+				         'https://repo.test/fedora/linux/releases/44/Everything/x86_64/os/', 1, 0)`,
 			),
 		]);
 		await ctx.env.DB.batch([
 			ctx.env.DB.prepare(
 				`INSERT INTO artifact_mirrors (artifact_id, mirror_id, available)
-				 SELECT a.id, m.id, 1 FROM artifacts a, mirrors m WHERE a.path NOT LIKE 'magnet:%'`,
+				 SELECT a.id, m.id, 1 FROM artifacts a, mirrors m
+				  WHERE a.path NOT LIKE 'magnet:%' AND m.serves_artifacts = 1`,
 			),
 		]);
 	});
@@ -100,6 +108,8 @@ describe("download endpoints", () => {
 			expect(kde?.desktop).toBe("kde");
 			expect(kde?.formats.sort()).toEqual(["iso", "magnet"]);
 
+			// repo.test is a healthy Fedora mirror and is deliberately absent: the
+			// picker only offers mirrors a download can actually come from.
 			expect(body.data.mirrors.map((m) => m.country).sort()).toEqual(["DE", "SE"]);
 		});
 

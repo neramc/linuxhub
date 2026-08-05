@@ -5,7 +5,12 @@
 
 import type { LiveCatalog } from "@linuxhub/ingest/types";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { isAbsoluteRef, linkArtifactsToMirrorsStatement, upsertCatalog } from "../src/db/artifacts";
+import {
+	isAbsoluteRef,
+	linkArtifactsToMirrorsStatement,
+	pruneArtifactMirrorsStatement,
+	upsertCatalog,
+} from "../src/db/artifacts";
 import { upsertReleases } from "../src/db/releases";
 import { createTestContext, type TestContext } from "./harness";
 
@@ -133,12 +138,19 @@ describe("artifact ingestion", () => {
 			);
 			await ctx.env.DB.batch([
 				ctx.env.DB.prepare(
-					`INSERT INTO mirrors (distro_id, name, base_url, healthy)
-					 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'a.test', 'https://a.test/', 1)`,
+					`INSERT INTO mirrors (distro_id, name, base_url, healthy, serves_artifacts)
+					 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'a.test', 'https://a.test/', 1, 1)`,
 				),
 				ctx.env.DB.prepare(
-					`INSERT INTO mirrors (distro_id, name, base_url, healthy)
-					 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'down.test', 'https://down.test/', 0)`,
+					`INSERT INTO mirrors (distro_id, name, base_url, healthy, serves_artifacts)
+					 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'down.test', 'https://down.test/', 0, 1)`,
+				),
+				// A real mirror of the distro whose base_url is a repo directory,
+				// not a root our paths extend — Fedora's MirrorManager list.
+				ctx.env.DB.prepare(
+					`INSERT INTO mirrors (distro_id, name, base_url, healthy, serves_artifacts)
+					 VALUES ((SELECT id FROM distros WHERE slug='fedora'), 'repo.test',
+					         'https://repo.test/fedora/linux/releases/44/Everything/x86_64/os/', 1, 0)`,
 				),
 			]);
 		});
@@ -153,9 +165,37 @@ describe("artifact ingestion", () => {
 				  ORDER BY a.path`,
 			).all<{ name: string; path: string }>();
 
-			// Two ISOs against the one healthy mirror. The unhealthy one is excluded.
+			// Two ISOs against the one healthy artifact base. The unhealthy mirror
+			// and the repo-directory mirror are both excluded.
 			expect(results.map((r) => r.path)).toEqual(["pub/fedora/44/kde.iso", "pub/fedora/44/ws.iso"]);
 			expect(new Set(results.map((r) => r.name))).toEqual(new Set(["a.test"]));
+		});
+
+		it("never links a mirror whose base_url is not a base for our paths", async () => {
+			// Joining `pub/fedora/44/ws.iso` onto a repo directory produces a URL
+			// that answers 404, which is how this was found.
+			await ctx.env.DB.batch([linkArtifactsToMirrorsStatement(ctx.env.DB, "fedora")]);
+
+			const linked = await ctx.env.DB.prepare(
+				`SELECT COUNT(*) AS n FROM artifact_mirrors am
+				   JOIN mirrors m ON m.id = am.mirror_id
+				  WHERE m.name = 'repo.test'`,
+			).first<{ n: number }>();
+			expect(linked?.n).toBe(0);
+		});
+
+		it("drops links to a mirror that stops being an artifact base", async () => {
+			await ctx.env.DB.batch([linkArtifactsToMirrorsStatement(ctx.env.DB, "fedora")]);
+			await ctx.env.DB.prepare(
+				"UPDATE mirrors SET serves_artifacts = 0 WHERE name = 'a.test'",
+			).run();
+
+			await ctx.env.DB.batch([pruneArtifactMirrorsStatement(ctx.env.DB, "fedora")]);
+
+			const n = await ctx.env.DB.prepare("SELECT COUNT(*) AS n FROM artifact_mirrors").first<{
+				n: number;
+			}>();
+			expect(n?.n).toBe(0);
 		});
 
 		it("never links a magnet — no mirror serves one", async () => {
