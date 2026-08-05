@@ -29,7 +29,7 @@ test("detail shows live versions, mirrors, and MDX tabs", async ({ page }) => {
 	await expect(firstRow.locator(".badge", { hasText: "latest" }).first()).toBeVisible();
 
 	// first row is expanded by default → mirror list with the automatic row
-	await expect(page.getByText("Automatic — nearest mirror")).toBeVisible();
+	await expect(page.getByText("Automatic — chosen for your region")).toBeVisible();
 	// live Fedora mirrors come from mirrors.fedoraproject.org
 	await expect(page.getByText("via mirrors.fedoraproject.org").first()).toBeVisible();
 

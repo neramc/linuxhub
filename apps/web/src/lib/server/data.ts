@@ -381,7 +381,7 @@ function flagEmoji(countryCode: string | undefined): string | null {
 function buildMirrors(slug: string): DetailMirror[] {
 	const auto: DetailMirror = {
 		flag: null,
-		name: "Automatic — nearest mirror",
+		name: "Automatic — chosen for your region",
 		note: "chosen by your region",
 		healthy: true,
 		auto: true,

@@ -494,3 +494,31 @@ mirrorlist hosts stay in `mirrors` as cited facts about who mirrors Fedora, and
 become usable the day a source gives us their roots. Any new mirror source must
 declare which kind it is; the default of `0` means forgetting is inert rather
 than wrong.
+---
+
+## ADR-0025 — The UI does not claim a "nearest" mirror
+
+*Date: 2026-08-05 · Status: accepted · Amends the approved comp
+`design/screens/download-selector.html` (copy only)*
+
+**Context.** The approved comp labels the mirror list "Mirror — nearest first"
+and the default row "Automatic — nearest mirror". The resolver does not measure
+distance and has no latency data. It picks in this order: the mirror the caller
+named, then one whose country matches the request's edge geo, then any healthy
+one — and it returns `mirror_choice` saying which of the three happened.
+
+"Nearest" is therefore a measurement claim that nothing behind it makes. That
+is the same class of defect as a hand-typed fact, and the binding sourcing rule
+does not stop at payloads.
+
+**Decision.** Correct the copy, in the comp and in code together: the heading
+becomes "Mirrors", the default row "Automatic — chosen for your region". No
+layout, component, token, or state changes — this ADR moves words, not pixels,
+so it is a correction inside the frozen design rather than a redesign. The
+owner is asked to confirm at the next review; nothing is blocked on that.
+
+**Consequences.** `dl_mirror_nearest` is renamed `dl_mirrors` in
+`packages/i18n`. The snapshot in `apps/web/src/lib/server/data.ts` carries the
+same corrected string until it is deleted in 5.7. Endpoint #17
+(`GET /mirrors/nearest`) keeps its name in `.ai/api.md` but, when it is built,
+must rank by a published fact rather than an implied measurement.

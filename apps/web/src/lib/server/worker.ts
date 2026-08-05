@@ -61,6 +61,20 @@ export class WorkerError extends Error {
 	}
 }
 
+export type WorkerCall = {
+	/** JSON body; its presence makes the call a POST. */
+	body?: unknown;
+	/**
+	 * The end user's address, for the Worker's per-IP rate limits.
+	 *
+	 * Without it every request looks like it came from the BFF, and the Worker
+	 * would throttle the entire site as one client. It is passed as a separate
+	 * argument rather than as a caller-supplied header so a route cannot forget
+	 * that this is the user's address and not ours.
+	 */
+	clientAddress?: string | null;
+};
+
 /**
  * Calls the Worker and returns its envelope untouched.
  *
@@ -71,13 +85,21 @@ export class WorkerError extends Error {
 export async function callWorker<T>(
 	path: string,
 	fetchImpl: typeof fetch = fetch,
+	call: WorkerCall = {},
 ): Promise<ApiResponse<T>> {
 	const base = apiUrl();
 	if (!base) throw new WorkerError(503, "LINUXHUB_API_URL is not configured");
 
 	const token = apiToken();
+	const headers: Record<string, string> = {};
+	if (token) headers["X-Internal-Token"] = token;
+	if (call.clientAddress) headers["X-Client-IP"] = call.clientAddress;
+	if (call.body !== undefined) headers["Content-Type"] = "application/json";
+
 	const response = await fetchImpl(`${base}${path}`, {
-		headers: token ? { "X-Internal-Token": token } : {},
+		method: call.body === undefined ? "GET" : "POST",
+		headers,
+		body: call.body === undefined ? undefined : JSON.stringify(call.body),
 	});
 
 	// A non-JSON body means something in front of the Worker answered — a proxy
@@ -88,6 +110,21 @@ export async function callWorker<T>(
 		return JSON.parse(body) as ApiResponse<T>;
 	} catch {
 		throw new WorkerError(502, `Worker returned non-JSON (${response.status})`);
+	}
+}
+
+/**
+ * The caller's address, or `null` when the platform cannot supply one.
+ *
+ * SvelteKit's `getClientAddress()` throws when the adapter has no way to know
+ * it. That must never fail a download: without an address the Worker puts the
+ * request in a shared rate-limit bucket, which is the safe direction to fail.
+ */
+export function clientAddressOf(getClientAddress: () => string): string | null {
+	try {
+		return getClientAddress();
+	} catch {
+		return null;
 	}
 }
 

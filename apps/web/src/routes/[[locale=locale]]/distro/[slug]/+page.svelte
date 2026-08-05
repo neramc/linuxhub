@@ -3,6 +3,7 @@ import { localizeHref, m } from "@linuxhub/i18n";
 import DistroCard from "@linuxhub/ui/components/DistroCard.svelte";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
+import DownloadSelector from "$lib/components/DownloadSelector.svelte";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
@@ -122,6 +123,13 @@ const sourceLinks = $derived.by(() => {
 		<section id="downloads" aria-label={m.dl_title}>
 			<div class="section-title" style="margin-block-start: 0;"><h2>{m.dl_title}</h2></div>
 
+			{#if data.downloads.versions.length > 0}
+				<!-- Keyed on the slug so navigating between distros rebuilds the
+				     selector instead of carrying the previous one's selection. -->
+				{#key data.distro.slug}
+					<DownloadSelector slug={data.distro.slug} options={data.downloads} />
+				{/key}
+			{:else}
 			<div class="vfilters" aria-label={m.explore_filters}>
 				<select class="select" aria-label={m.dl_edition}>
 					{#each data.detail.editions as edition (edition)}
@@ -188,7 +196,7 @@ const sourceLinks = $derived.by(() => {
 					</div>
 					{#if openVersion === i}
 						<div class="vfiles">
-							<span class="vfiles__title">{m.dl_mirror_nearest}</span>
+							<span class="vfiles__title">{m.dl_mirrors}</span>
 							{#each data.detail.mirrors as mirrorRow, j (mirrorRow.name)}
 								<button
 									type="button"
@@ -226,6 +234,7 @@ const sourceLinks = $derived.by(() => {
 					{/if}
 				{/each}
 			</div>
+			{/if}
 			<p class="muted" style="font-size: var(--text-xs); margin-block-start: var(--space-3);">
 				{m.dl_selection_note}
 			</p>
