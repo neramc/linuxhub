@@ -21,6 +21,7 @@
 		"lint": "biome check .",
 		"format": "biome check --write .",
 		"check": "bun run --filter '*' check",
+		"check:boundaries": "bun scripts/check-boundaries.ts",
 		"test": "bun run --filter '*' test",
 		"build": "bun run --filter '*' build",
 		"dev:web": "bun run --filter '@linuxhub/web' dev",
