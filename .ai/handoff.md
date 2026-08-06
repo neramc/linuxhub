@@ -5,7 +5,8 @@
 > of work starts. When it disagrees with a phase doc, the phase doc wins on
 > *intent* and this file wins on *current state*.
 >
-> Last updated: 2026-08-05, after Phase 5 tasks 5.1–5.4 and 5.6.
+> Last updated: 2026-08-06, after Phase 5 tasks 5.1–5.4 and 5.6, and the
+> deployment-readiness pass.
 >
 > A ready-to-paste continuation prompt for the next session lives in
 > `docs/next-session-prompt.md`.
@@ -29,7 +30,7 @@ below before touching any styling.
 | 4 Frontend | ✅ all 15 screens, live data, MDX content, i18n + RTL, motion, e2e + axe |
 | **5 Backend** | 🟡 **5.1–5.3 done**, **5.4 four-fifths done**, **5.6 done for arch + fedora** — the download button delivers a real file; `distros/:slug` still blocked (below) |
 | 6 Testing | ⬜ Lighthouse budget + coverage still to measure |
-| 7 Deployment | 🟡 config + runbook ready (`docs/deployment.md`); the account steps are the owner's |
+| 7 Deployment | 🟡 **the repo is deploy-ready**: security headers, robots/sitemap/feeds, a build that fails loudly on a misconfigured Vercel root, and a deploy guard against placeholder binding ids. Only the account steps are left, and they are the owner's |
 
 ## What is real and what is not
 
@@ -42,6 +43,12 @@ deliberately a placeholder.
   (`apps/web/src/lib/server/live-data.json`, regenerate with
   `bun packages/ingest/src/live.ts`). Sources registered in
   `.ai/data-sources.md`; provenance is surfaced on the distro page.
+- **The public surface** — `robots.txt`, `sitemap.xml` (both translated
+  locales × every distro, hreflang alternates), and the RSS + Atom release
+  feeds the footer links. Security headers on both apps: CSP from
+  `svelte.config.js`, the rest from `hooks.server.ts` and — for static assets,
+  which never reach the hook — `apps/web/vercel.json`. Asserted by
+  `e2e/security.spec.ts` and `e2e/public-surface.spec.ts`.
 - **Distro logos** — 12 official SVGs from Wikimedia Commons in
   `assets/distros/` + `apps/web/static/distros/`, licensed and attributed in
   `assets/distros/ATTRIBUTION.md`.
@@ -78,7 +85,9 @@ deliberately a placeholder.
 - The contribute forms complete locally; there is no hCaptcha and no POST
   endpoint yet.
 - The D1/KV ids in `wrangler.toml` are still zeros — everything above was
-  built and verified against `--local`.
+  built and verified against `--local`. `bun run --filter '@linuxhub/api'
+  deploy` refuses to ship while they are, so this cannot reach production by
+  accident.
 
 **Empty on purpose — not a gap to fill by hand**
 
@@ -305,13 +314,23 @@ at `apps/api/.dev.vars.example` and `apps/web/.env.example`.
   ever fired there. First deploy needs
   `wrangler d1 migrations apply linuxhub --remote`, then one manual run of each
   schedule to populate it.
+- **Two things to check after the first deploy**, because both fail quietly:
+  `GET /api/v1/health` must report `"mode":"worker"` (`"snapshot"` means the
+  Vercel env vars are unset and the site is serving committed data), and a
+  `POST /api/v1/downloads/resolve` URL must answer **200 when fetched** — a
+  wrong mirror base produces a plausible-looking URL that 404s (ADR-0024).
 - ~~`SITE_ORIGIN`~~ — **set to `https://linuxhub.kro.kr`.** It lives in exactly
   two places, both commented to point at each other: `[vars]` in
   `apps/api/wrangler.toml` (what production uses) and `DEFAULT_SITE_ORIGIN` in
   `packages/ingest/src/index.ts` (the build-time fallback). Changing domains =
   edit both, then redeploy. `docs/deployment.md` §7.
-- **Vercel project** — linked for the SvelteKit app, with
-  `INTERNAL_API_TOKEN` matching the Worker.
+- **Vercel project** — linked for the SvelteKit app, Root Directory
+  `apps/web`, with `LINUXHUB_API_URL` and a matching `INTERNAL_API_TOKEN`.
+  **The build needs the whole repo**, not just `apps/web`: `packages/*` are
+  consumed as TypeScript source and `content/distros/` is globbed from the
+  root. A missing `content/` would otherwise build cleanly and serve empty
+  distro pages, so the build fails on it instead — look for
+  `distro content: 36 docs across 12 distros` in the build log.
 - **hCaptcha** site + secret keys — the *secret* half is a Wrangler secret, the
   *site* half is a Vercel `PUBLIC_` var. Neither is read until task 5.5.
 - ~~A decision on the Paraglide/inlang compiler~~ — **settled 2026-08-04

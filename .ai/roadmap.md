@@ -22,7 +22,7 @@ Project Documentation → Repository Initialization → Design System → UI Des
 | **4 — Frontend Implementation** | All screens from the approved design, real data, content, i18n/RTL, motion, tests | quality gates pass | ✅ **complete** — 8 milestones, detail below |
 | **5 — Backend Implementation** | D1/KV, Cron ingestion, endpoint surface, hCaptcha, rate limits, caching, feeds | quality gates pass | 🟡 **in progress — 5.1–5.3 done, 5.4 next** |
 | **6 — Testing** | Coverage, Lighthouse budget, i18n + a11y sweep per Definition of Done | all green | ⬜ not started |
-| **7 — Deployment** | Web → Vercel, API → Workers; secrets; smoke tests; runbook in `docs/` | live + runbook committed | ⬜ blocked on owner accounts |
+| **7 — Deployment** | Web → Vercel, API → Workers; secrets; smoke tests; runbook in `docs/` | live + runbook committed | 🟡 **repo side done** — security headers, robots/sitemap/feeds, a build that fails loudly when the Vercel root excludes `content/`, and a deploy guard against placeholder binding ids. Blocked only on owner accounts |
 
 ### Phase 4 milestones (all done)
 

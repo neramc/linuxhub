@@ -38,7 +38,11 @@ value:
      registered for it. Ubuntu and Debian SHA256SUMS are already verified in
      .ai/data-sources.md and not yet wired (they publish no sizes, so each ISO
      needs its own HEAD). This is what unblocks distros/:slug.
-  b) 5.5 write endpoints behind hCaptcha + KV rate limits.
+  b) 5.5 write endpoints behind hCaptcha + KV rate limits. Note the CSP in
+     svelte.config.js currently sets frame-src 'none' and lists no third-party
+     origins; hCaptcha's script and frame hosts are added there when the forms
+     land, and .ai/security.md records that they are deliberately absent until
+     then.
   c) 5.7 retiring data.ts. Note `requirements` still has NO table and NO
      source — the detail page renders a hardcoded four-row list.
 
