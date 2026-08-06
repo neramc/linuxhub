@@ -84,6 +84,19 @@ workspace declares only its differences — its `types`, any extra `lib`, its
 `.svelte-kit/tsconfig.json` instead. That file owns `paths` and `rootDirs`;
 overriding it is how `$lib` imports break.
 
+## The web build reaches outside its own directory
+
+`apps/web` reads two things from the repository root: `packages/*`, consumed as
+TypeScript source, and `content/distros/`, picked up by an `import.meta.glob`
+that climbs five levels. Any deployment that gives the build only `apps/web`
+is broken — and only half of it is broken *loudly*: a missing package fails
+import resolution, while a glob matching nothing is not an error at all.
+
+The Vite plugin `linuxhub:require-distro-content` closes that half. It counts
+the authored docs at `buildStart` and fails the build with a message naming the
+cause, so the failure can never be a site that builds cleanly and serves empty
+distro pages. `docs/deployment.md` § 6 covers what this means on Vercel.
+
 ## Scripts
 
 Every command runs from the repository root.

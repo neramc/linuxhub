@@ -4,13 +4,16 @@ How to get Linuxhub live: the Hono Worker on Cloudflare, the SvelteKit app on
 Vercel. Everything here needs account access, which is why it is a runbook for
 a human rather than something an agent can do.
 
-> **Where the project actually is.** Phase 5 tasks 5.1–5.3 are done: the Worker
-> has the real schema, cron ingestion and nine read endpoints. **The BFF still
-> serves `apps/web/src/lib/server/data.ts` and does not call the Worker yet** —
-> that is task 5.4. So deploying today gives you a working frontend on its
-> existing data plus a Worker quietly filling production D1 on schedule. That
-> is a useful thing to deploy early: the ingestion history starts accumulating
-> now instead of on the day 5.4 lands.
+> **Where the project actually is.** Phase 5 tasks 5.1–5.4 and 5.6 are done.
+> The Worker has the schema, cron ingestion and twelve endpoints; the BFF
+> proxies it for `health`, `releases/recent`, `search`, `distros` and all three
+> download endpoints. `distros/:slug`, `rankings`, `hall-of-fame` and `quiz`
+> still read the committed snapshot in `apps/web/src/lib/server/data.ts` — see
+> `.ai/handoff.md` § "Which BFF routes have moved" for why each one.
+>
+> **Set `LINUXHUB_API_URL` and `INTERNAL_API_TOKEN` in Vercel (§6).** Without
+> them the deploy silently serves the snapshot for everything and the download
+> buttons resolve nothing. `GET /api/v1/health` reports which mode is live.
 
 Verify commands are marked ✅. Run them; do not assume.
 
@@ -103,7 +106,7 @@ cd apps/api
 bunx wrangler d1 migrations apply linuxhub --remote
 ```
 
-✅ Expect five migrations applied, then:
+✅ Expect six migrations applied, then:
 
 ```bash
 bunx wrangler d1 execute linuxhub --remote \
@@ -162,39 +165,80 @@ bunx wrangler d1 execute linuxhub --remote \
   --command "SELECT COUNT(*) n, MIN(fetched_at) FROM releases"
 ```
 
-Expect roughly 12 distros, 36 content docs, ~42 releases and ~16 mirrors.
-Ingestion is idempotent, so re-running is safe.
+Expect roughly 12 distros, 36 content docs, ~42 releases, ~17 mirrors, and —
+for arch and fedora, the two distros with a verified artifact source — ~39
+editions and ~93 artifacts. Ingestion is idempotent, so re-running is safe.
 
-The weekly rankings cron (`0 4 * * 1`) will correctly write nothing: rankings
-come from our own download counters, which do not exist until task 5.6. See
-`.ai/handoff.md` § "Empty on purpose".
+✅ The check that matters most, because it is the one that fails in a way
+nothing else notices — resolve a download and **fetch what comes back**:
+
+```bash
+curl -s -X POST https://<your-app>/api/v1/downloads/resolve \
+  -H 'Content-Type: application/json' \
+  -d '{"slug":"arch","version":"<a version from the page>","edition":"ISO","arch":"x86_64","format":"iso"}'
+# then HEAD the "url" it returns — it must answer 200, not 404
+```
+
+A mirror whose `base_url` is not a base for our artifact paths produces a URL
+that looks perfectly reasonable and 404s (ADR-0024).
+
+The weekly rankings cron (`0 4 * * 1`) will correctly write nothing until the
+site has traffic: rankings come from our own download counters, and those fill
+from real visitors. See `.ai/handoff.md` § "Empty on purpose".
 
 ## 6. Vercel — the web app
 
-Link the repo as a Vercel project. It is a Bun workspace, so:
+Link the repo as a Vercel project.
 
 | Setting | Value |
 |---|---|
 | Root Directory | `apps/web` |
-| Framework Preset | SvelteKit |
-| Install Command | `bun install` (run from the repo root) |
+| Framework Preset | SvelteKit — pinned in `apps/web/vercel.json`, no need to set it |
+| Install Command | pinned in `apps/web/vercel.json` (`cd ../.. && bun install --frozen-lockfile`) |
 | Build Command | project default (`vite build`, via `@sveltejs/adapter-vercel`) |
+
+> ⚠️ **The build needs the whole repository, not just `apps/web`.** Vercel
+> documents Root Directory as making files outside it inaccessible, and this
+> app reads two things from the repo root: `packages/*`, which are consumed as
+> TypeScript source, and `content/distros/`, which `src/lib/content/index.ts`
+> picks up with an `import.meta.glob` reaching five levels up.
+>
+> Vercel's monorepo detection normally uploads the whole workspace, which is
+> why the pinned install command starts with `cd ../..` — if the root is
+> missing, install fails immediately instead of half-working.
+>
+> A missing `packages/*` fails the build loudly on its own. A missing
+> `content/` would **not**: a glob matching nothing is not an error, and the
+> deploy would succeed with every distro page showing three empty tabs. The
+> Vite plugin `linuxhub:require-distro-content` fails the build instead, and
+> prints `distro content: 36 docs across 12 distros` when it is happy. If you
+> see that line, the root is reachable.
 
 Environment variables — the three in `apps/web/.env.example`:
 
-| Name | Value | Exposed to the browser? |
-|---|---|---|
-| `LINUXHUB_API_URL` | the workers.dev URL from §5, no trailing slash | no |
-| `INTERNAL_API_TOKEN` | **exactly** the value from §3 | no |
-| `PUBLIC_HCAPTCHA_SITEKEY` | the hCaptcha *site* key | yes — that is what `PUBLIC_` means |
+| Name | Value | Read by the code? | Exposed to the browser? |
+|---|---|---|---|
+| `LINUXHUB_API_URL` | the workers.dev URL from §5, no trailing slash | **yes** — unset means snapshot mode | no |
+| `INTERNAL_API_TOKEN` | **exactly** the value from §3 | **yes** — a mismatch makes the Worker answer 404 to everything | no |
+| `PUBLIC_HCAPTCHA_SITEKEY` | the hCaptcha *site* key | not yet — task 5.5 | yes — that is what `PUBLIC_` means |
 
-None of them is read by the code yet (see the note at the top of this file), so
-a first deploy succeeds with them empty. Setting them now means the deploy that
-lands 5.4 needs no dashboard visit.
+✅ Load the site, switch the language, open a distro page, and check the build
+log for the `distro content:` line. Then:
 
-✅ Load the site, switch the language, open a distro page. If the deployment
-serves an unstyled page or the wrong `lang`, that is a build problem, not a
-data one.
+```bash
+curl -s https://<your-app>/api/v1/health | grep -o '"mode":"[a-z]*"'
+#   "worker"   → the env vars are set and the BFF is proxying
+#   "snapshot" → LINUXHUB_API_URL is unset; the site works but serves committed data
+```
+
+✅ And the public files, which are easy to forget and obvious once wrong:
+
+```bash
+curl -s https://<your-app>/robots.txt
+curl -s -o /dev/null -w '%{http_code}\n' https://<your-app>/sitemap.xml
+curl -s -o /dev/null -w '%{http_code}\n' https://<your-app>/api/v1/feeds/releases.rss
+curl -sI https://<your-app>/ | grep -i content-security-policy
+```
 
 ## 7. Changing the domain later
 
