@@ -9,16 +9,10 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script>
-			// Theme before first paint: stored choice wins, then system.
-			try {
-				let theme = localStorage.getItem("lh-theme");
-				if (!theme) {
-					theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-				}
-				document.documentElement.dataset.theme = theme;
-			} catch {}
-		</script>
+		<!-- Theme before first paint. External, not inline: CSP is on and
+		     SvelteKit nonces only its own scripts, so an inline one here is
+		     blocked. Render-blocking on purpose — see static/theme.js. -->
+		<script src="%sveltekit.assets%/theme.js"></script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

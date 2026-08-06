@@ -40,3 +40,25 @@ describe("GET /v1/health", () => {
 		expect(res.status).toBe(404);
 	});
 });
+
+describe("security headers", () => {
+	it("locks down the internal surface — nothing here should ever render", async () => {
+		const ctx = await createTestContext();
+		const res = await app.request("/v1/health", {}, ctx.env);
+
+		expect(res.headers.get("Content-Security-Policy")).toContain("default-src 'none'");
+		expect(res.headers.get("X-Content-Type-Options")).toBe("nosniff");
+		expect(res.headers.get("X-Frame-Options")).toBe("DENY");
+		expect(res.headers.get("Referrer-Policy")).toBe("no-referrer");
+		await ctx.dispose();
+	});
+
+	it("sets them on an error response too", async () => {
+		const ctx = await createTestContext();
+		const res = await app.request("/v1/nope", {}, ctx.env);
+
+		expect(res.status).toBe(404);
+		expect(res.headers.get("X-Content-Type-Options")).toBe("nosniff");
+		await ctx.dispose();
+	});
+});

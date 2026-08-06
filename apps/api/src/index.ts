@@ -1,7 +1,14 @@
 import { Hono } from "hono";
 import { runScheduled } from "./cron";
 import type { Env } from "./env";
-import { type App, onError, onNotFound, withInternalAuth, withLogging } from "./middleware";
+import {
+	type App,
+	onError,
+	onNotFound,
+	withInternalAuth,
+	withLogging,
+	withSecurityHeaders,
+} from "./middleware";
 import { distros } from "./routes/distros";
 import { downloads } from "./routes/downloads";
 import { health } from "./routes/health";
@@ -14,6 +21,7 @@ app.onError(onError);
 app.notFound(onNotFound);
 
 app.use("*", withLogging);
+app.use("*", withSecurityHeaders);
 app.use("*", withInternalAuth);
 
 app.route("/v1", health);

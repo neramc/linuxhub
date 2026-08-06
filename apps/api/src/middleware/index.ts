@@ -27,6 +27,31 @@ export const withLogging: MiddlewareHandler<App> = async (c, next) => {
 };
 
 /**
+ * Response headers for the internal surface (.ai/security.md § "Headers",
+ * which specifies them for *both* apps).
+ *
+ * This one only ever returns JSON to the BFF, so the policy is the strictest
+ * one there is: `default-src 'none'` says nothing on this origin may load
+ * anything, which is exactly right for a surface no browser should be
+ * rendering. If a response from here is ever being displayed, something has
+ * gone wrong, and this makes that failure inert rather than exploitable.
+ */
+const SECURITY_HEADERS: Record<string, string> = {
+	"Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
+	"Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+	"Referrer-Policy": "no-referrer",
+	"X-Content-Type-Options": "nosniff",
+	"X-Frame-Options": "DENY",
+};
+
+export const withSecurityHeaders: MiddlewareHandler<App> = async (c, next) => {
+	await next();
+	for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+		c.header(name, value);
+	}
+};
+
+/**
  * Converts thrown `ApiError`s to the envelope; anything else becomes an opaque
  * INTERNAL, logged with its request_id. Stack traces never leak.
  *

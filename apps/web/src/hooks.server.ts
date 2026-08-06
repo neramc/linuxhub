@@ -10,7 +10,31 @@ bindLocaleSource(() => localeStore.getStore());
 const LOCALE_COOKIE = "lh-locale";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
-export const handle: Handle = ({ event, resolve }) => {
+/**
+ * Response headers from `.ai/security.md` § "Headers".
+ *
+ * Content-Security-Policy is deliberately **not** here — it lives in
+ * `svelte.config.js`, because only SvelteKit knows the hashes and nonces of
+ * the scripts it injects. Setting it in both places would mean the stricter of
+ * two policies wins silently, which is a debugging trap.
+ *
+ * Applied in the hook rather than in `vercel.json` so they are identical in
+ * dev, in `vite preview`, and in production — a header that only exists in
+ * production is a header nobody tests.
+ */
+const SECURITY_HEADERS: Record<string, string> = {
+	// Two years, with subdomains, preload-eligible. Browsers ignore this over
+	// plain http, so it is safe to send unconditionally in dev.
+	"Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+	"Referrer-Policy": "strict-origin-when-cross-origin",
+	"X-Content-Type-Options": "nosniff",
+	// Redundant with CSP frame-ancestors for modern browsers, and the only
+	// protection in the ones that predate it.
+	"X-Frame-Options": "DENY",
+	"Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+};
+
+export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname, search } = event.url;
 	const segment = pathname.split("/")[1] ?? "";
 
@@ -47,10 +71,15 @@ export const handle: Handle = ({ event, resolve }) => {
 
 	event.locals.locale = locale;
 
-	return localeStore.run(locale, () =>
+	const response = await localeStore.run(locale, () =>
 		resolve(event, {
 			transformPageChunk: ({ html }) =>
 				html.replace("%lh.lang%", locale).replace("%lh.dir%", localeDir(locale)),
 		}),
 	);
+
+	for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+		response.headers.set(name, value);
+	}
+	return response;
 };

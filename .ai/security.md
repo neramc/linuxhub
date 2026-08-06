@@ -28,14 +28,55 @@ Over limit → `429` + `Retry-After`. Limits are constants in
 
 ## Headers (both apps)
 
-- `Content-Security-Policy`: `default-src 'self'`; `img-src 'self' data:`;
-  `script-src 'self'` + SvelteKit's required hashes + hCaptcha script host
-  (contribute pages only); `frame-src` hCaptcha only; `connect-src 'self'`.
-  No other third-party origins. No inline scripts beyond what SvelteKit needs.
+**Implemented.** Asserted by `apps/web/e2e/security.spec.ts` and
+`apps/api/test/health.test.ts` — a wrong header is invisible on the page, so it
+has to be a test rather than a convention.
+
+### Web (`apps/web`)
+
+`Content-Security-Policy` is declared in **`svelte.config.js`** under
+`kit.csp`, not hand-written: only SvelteKit knows the hashes and the nonce of
+the scripts it injects. Everything else is set in `hooks.server.ts`, so the
+headers are identical in dev, in `vite preview` and in production.
+
+| Directive | Value | Note |
+|---|---|---|
+| `default-src` | `'self'` | |
+| `script-src` | `'self'` + SvelteKit's nonce | |
+| `style-src` | `'self' 'unsafe-inline'` | the approved comps use inline `style="…"` attributes throughout; see below |
+| `img-src` | `'self' data:` | |
+| `font-src`, `connect-src` | `'self'` | `connect-src` is what keeps the BFF the browser's only correspondent |
+| `frame-src` | `'none'` | hCaptcha's hosts are added here when the write endpoints land in 5.5, and not before |
+| `object-src`, `frame-ancestors` | `'none'` | |
+| `base-uri`, `form-action` | `'self'` | |
+
+`'unsafe-inline'` on **`style-src` only** is a deliberate, bounded exception.
+A style attribute cannot execute, every value in one comes from our own markup
+rather than from user input, and removing it means editing every approved
+screen — a design change, not a security fix. It is **never** acceptable on
+`script-src`.
+
+Plus, from `hooks.server.ts`:
+
 - `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
 - `Referrer-Policy: strict-origin-when-cross-origin`
 - `X-Content-Type-Options: nosniff`
-- `Permissions-Policy`: camera/mic/geolocation disabled.
+- `X-Frame-Options: DENY` — redundant with `frame-ancestors` in modern
+  browsers, and the only protection in the ones that predate it
+- `Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()`
+
+The pre-paint theme script lives in **`static/theme.js`**, not inline in
+`app.html`. SvelteKit nonces only the scripts it injects itself, so an inline
+one is blocked and dark-mode visitors get a flash of light before hydration.
+`script-src 'self'` covers the external file.
+
+### Worker (`apps/api`)
+
+`withSecurityHeaders` sets `default-src 'none'; frame-ancestors 'none'`,
+`nosniff`, `DENY`, `no-referrer` and HSTS on every response including errors.
+The Worker returns JSON to the BFF and nothing else; if one of its responses is
+ever being rendered by a browser, something has gone wrong, and the strictest
+possible policy makes that failure inert.
 
 ## Secrets
 
