@@ -50,6 +50,20 @@ const ARCH_MIRRORS = {
 	],
 };
 
+const ARCH_RELEASES = {
+	releases: [
+		{
+			version: "2026.08.01",
+			release_date: "2026-08-01",
+			available: true,
+			sha256_sum: "b1ee7",
+			iso_url: "/iso/2026.08.01/archlinux-2026.08.01-x86_64.iso",
+			torrent_url: null,
+			magnet_uri: null,
+		},
+	],
+};
+
 const FEDORA_MIRRORLIST = "# repo = fedora-44\nhttps://mirror.example.fr/fedora/\n";
 
 /** Serves fixtures by URL; any URL not listed throws, which is how the "one
@@ -245,6 +259,44 @@ describe("ingestion", () => {
 			{ name: "mirror.example.de", healthy: 0 },
 			{ name: "mirror.example.se", healthy: 1 },
 		]);
+	});
+
+	it("links artifacts to mirrors that arrived after them, so seeding order cannot matter", async () => {
+		// The artifact pass runs before any Arch mirror exists on a fresh
+		// database — that is the real first-deploy sequence. If only the artifact
+		// pass linked, every Arch download would answer "mirror for artifact not
+		// found" until it happened to run again, up to six hours later.
+		await ingestReleases(
+			ctx.env,
+			new Date("2026-08-04T00:00:00Z"),
+			stubHttp({ "releng/releases": ARCH_RELEASES }),
+		);
+
+		const before = await ctx.env.DB.prepare(
+			`SELECT COUNT(*) AS n FROM artifact_mirrors am
+			   JOIN artifacts a ON a.id = am.artifact_id
+			   JOIN editions e ON e.id = a.edition_id
+			   JOIN releases r ON r.id = e.release_id
+			   JOIN distros  d ON d.id = r.distro_id
+			  WHERE d.slug = 'arch'`,
+		).first<{ n: number }>();
+		expect(before?.n).toBe(0);
+
+		await ingestMirrors(
+			ctx.env,
+			new Date("2026-08-04T01:00:00Z"),
+			stubHttp({ "mirrors/status": ARCH_MIRRORS }),
+		);
+
+		const after = await ctx.env.DB.prepare(
+			`SELECT COUNT(*) AS n FROM artifact_mirrors am
+			   JOIN artifacts a ON a.id = am.artifact_id
+			   JOIN editions e ON e.id = a.edition_id
+			   JOIN releases r ON r.id = e.release_id
+			   JOIN distros  d ON d.id = r.distro_id
+			  WHERE d.slug = 'arch'`,
+		).first<{ n: number }>();
+		expect(after?.n).toBeGreaterThan(0);
 	});
 
 	it("snapshots no rankings while there are no download signals of our own", async () => {

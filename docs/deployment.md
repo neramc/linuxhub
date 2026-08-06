@@ -158,10 +158,20 @@ running the Worker locally *against the production bindings*:
 ```bash
 cd apps/api
 bunx wrangler dev --remote --test-scheduled
-# then, in another terminal:
-curl 'http://localhost:8787/__scheduled?cron=0+*/6+*+*+*'   # releases + catalog
-curl 'http://localhost:8787/__scheduled?cron=0+3+*+*+*'     # mirrors
+# then, in another terminal — in this order, and waiting for each to finish:
+curl 'http://localhost:8787/__scheduled?cron=0+*/6+*+*+*'   # releases + artifacts
+curl 'http://localhost:8787/__scheduled?cron=0+3+*+*+*'     # mirrors + links
 ```
+
+> `__scheduled` returns `Ran scheduled event` **immediately** — the pass runs in
+> the background via `waitUntil`. Give each a minute and watch the
+> `wrangler dev` log before starting the next; firing both at once interleaves
+> them and makes the result depend on timing.
+
+Run releases first: the Fedora mirrorlist is per-repo, so the mirrors pass has
+to know the newest Fedora release before it can ask for one. It logs
+`skipped — no release ingested yet` otherwise, which is harmless but wastes the
+run.
 
 ✅ Confirm rows landed, with provenance:
 

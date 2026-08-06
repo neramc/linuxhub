@@ -278,6 +278,18 @@ export async function ingestMirrors(
 				result.fetchedAt,
 				MIRROR_SERVES_ARTIFACTS.arch,
 			);
+			// Re-link, because the mirror set just changed. Without this the
+			// links are only rebuilt by the 6-hourly artifact pass, which makes
+			// the two schedules order-dependent: on a fresh database the artifact
+			// pass runs before any Arch mirror exists, so every Arch download
+			// resolves to "mirror for artifact not found" until the artifact pass
+			// happens to run again. Linking here makes the order irrelevant and
+			// makes a newly added mirror usable within a day rather than six
+			// hours.
+			await env.DB.batch([
+				pruneArtifactMirrorsStatement(env.DB, row.slug),
+				linkArtifactsToMirrorsStatement(env.DB, row.slug),
+			]);
 			written += stored.written;
 			if (stored.written > 0 || stored.retired > 0) await bumpGeneration(env, row.slug);
 			ok++;
@@ -324,6 +336,10 @@ export async function ingestMirrors(
 				result.fetchedAt,
 				MIRROR_SERVES_ARTIFACTS.fedora,
 			);
+			await env.DB.batch([
+				pruneArtifactMirrorsStatement(env.DB, row.slug),
+				linkArtifactsToMirrorsStatement(env.DB, row.slug),
+			]);
 			written += stored.written;
 			if (stored.written > 0 || stored.retired > 0) await bumpGeneration(env, row.slug);
 			ok++;
