@@ -118,9 +118,14 @@ Look for 15 tables (plus D1's own bookkeeping tables).
 ## 5. Deploy the Worker
 
 ```bash
-cd apps/api
-bunx wrangler deploy
+bun run --filter '@linuxhub/api' deploy
 ```
+
+That is `wrangler deploy` behind `scripts/check-deploy-config.ts`, which
+refuses when `wrangler.toml` still holds the placeholder ids from §2. They are
+valid TOML, so a plain `wrangler deploy` uploads a Worker whose D1 and KV
+bindings point at nothing — a failure that shows up only as 500s in
+production, one request at a time.
 
 This uploads the code **and registers the three cron triggers** declared in
 `wrangler.toml`. Note the `https://linuxhub-api.<subdomain>.workers.dev` URL it
