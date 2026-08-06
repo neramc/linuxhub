@@ -185,11 +185,11 @@ are allowed in place. `?locale=` selects content language where relevant
 
 | # | Endpoint | Notes |
 |---|---|---|
-| 55 | `GET /api/v1/feeds/releases.rss` | recent releases, RSS 2.0 |
-| 56 | `GET /api/v1/feeds/releases.atom` | recent releases, Atom |
+| 55 | ✅ `GET /api/v1/feeds/releases.rss` | recent releases, RSS 2.0. Served by the BFF from the same rows as `releases/recent`, so a feed cannot disagree with the page |
+| 56 | ✅ `GET /api/v1/feeds/releases.atom` | recent releases, Atom |
 | 57 | `GET /api/v1/badges/:slug` | shields-style SVG badge (latest version) |
 | 58 | `GET /api/v1/opensearch.xml` | OpenSearch description |
-| 59 | `GET /sitemap.xml` | served by web app directly |
+| 59 | ✅ `GET /sitemap.xml` | served by the web app directly, alongside `GET /robots.txt`. Only locales with a message catalog are listed: a locale with none renders English behind a translated URL, and telling a crawler otherwise is the same class of claim as a hand-typed fact |
 | 60 | `GET /api/v1/distros/:slug/badges/downloads` | SVG badge (download count) |
 | 61 | `GET /api/v1/stats/languages` | content translation coverage per locale |
 

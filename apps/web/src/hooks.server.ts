@@ -34,6 +34,20 @@ const SECURITY_HEADERS: Record<string, string> = {
 	"Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
 };
 
+/**
+ * Paths that must never be geo-redirected into a locale prefix.
+ *
+ * `/robots.txt` and `/sitemap.xml` have exactly one canonical URL each, at the
+ * root, by specification — a crawler arriving from a Korean IP must not be
+ * bounced to `/ko/robots.txt`, which does not exist. The BFF is here for the
+ * same reason: it serves JSON, and a locale prefix would only break the fetch.
+ */
+const UNLOCALIZED = new Set(["/robots.txt", "/sitemap.xml"]);
+
+function isUnlocalized(pathname: string): boolean {
+	return pathname.startsWith("/api/") || UNLOCALIZED.has(pathname);
+}
+
 export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname, search } = event.url;
 	const segment = pathname.split("/")[1] ?? "";
@@ -45,7 +59,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			redirect(308, pathname.slice(BASE_LOCALE.length + 1) + search || "/");
 		}
 		locale = segment;
-	} else if (!pathname.startsWith("/api/")) {
+	} else if (!isUnlocalized(pathname)) {
 		// No prefix → geo/cookie detection, redirect once (.ai/i18n.md).
 		const cookie = event.cookies.get(LOCALE_COOKIE);
 		const preferred =
