@@ -14,16 +14,25 @@ export type BffHealth = Health & {
 	mode: "worker" | "snapshot";
 	worker: Health | null;
 	/**
-	 * Did a **token-gated** call succeed?
+	 * Did a **token-gated** call get past the token check?
 	 *
-	 * `/v1/health` is deliberately exempt from the Worker's internal-token
-	 * check, so it answers 200 even when the token is wrong — which made this
-	 * endpoint report a perfectly healthy backend while every catalog request
-	 * 404'd and the site rendered empty. That is the single most likely first
-	 * deploy failure, and it was the one thing the health check could not see.
+	 * `/v1/health` is deliberately exempt from that check, so it answers 200
+	 * even when the token is wrong — which made this endpoint report a
+	 * perfectly healthy backend while every catalog request 404'd and the site
+	 * rendered empty.
+	 *
+	 * `false` means **refused**, and only that: a bad token is the Worker's
+	 * one reason to answer `NOT_FOUND` on a list route (`.ai/api.md`). A call
+	 * that got in and then failed leaves this `true` and names the failure in
+	 * `catalog_error` — reporting that as "unauthorized" sent one debugging
+	 * session after the token when the real fault was a dead D1 binding.
 	 * `null` in snapshot mode, where there is no token to be wrong.
 	 */
 	authorized: boolean | null;
+	/** The error code the gated call answered with, or `null` if it succeeded.
+	 *  `INTERNAL` here with `db:false` above means the D1 binding, not the
+	 *  token. */
+	catalog_error: string | null;
 	/**
 	 * How many distros the catalog actually holds. Separates "the Worker is
 	 * fine but nobody has run the ingestion crons yet" from "the Worker is
@@ -42,6 +51,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
 		mode: workerMode(),
 		worker: null,
 		authorized: null,
+		catalog_error: null,
 		distros: null,
 	};
 
@@ -67,11 +77,20 @@ export const GET: RequestHandler = async ({ fetch }) => {
 	// real total comes back in `meta`.
 	try {
 		const catalog = await callWorker<Distro[]>("/v1/distros?limit=1", fetch);
-		body.authorized = catalog.ok;
-		if (catalog.ok) body.distros = catalog.meta?.total ?? catalog.data.length;
-		else body.status = "degraded";
+		if (catalog.ok) {
+			body.authorized = true;
+			body.distros = catalog.meta?.total ?? catalog.data.length;
+		} else {
+			// NOT_FOUND on a list route is the Worker's answer to a bad token.
+			// Anything else got past the token and failed behind it.
+			body.authorized = catalog.error.code !== "NOT_FOUND";
+			body.catalog_error = catalog.error.code;
+			body.status = "degraded";
+		}
 	} catch {
-		body.authorized = false;
+		// The call never completed, so whether the token would have been
+		// accepted is unknown — saying `false` would be a guess.
+		body.catalog_error = "UNREACHABLE";
 		body.status = "degraded";
 	}
 

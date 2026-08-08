@@ -259,7 +259,10 @@ from the page** — every section renders empty in all of them:
 | Field | Meaning |
 |---|---|
 | `"mode":"snapshot"` | `LINUXHUB_API_URL` is unset. The site works, but serves committed data |
+| `"db":false` | **The D1 binding is dead.** The probe is `SELECT 1`, so this is the binding itself, not missing tables: `database_id` in `wrangler.toml` is wrong, or the Worker was deployed before it was filled in. Redeploy after fixing § 2 |
+| `"kv":false` | Same, for one of the three KV ids |
 | `"authorized":false` | **`INTERNAL_API_TOKEN` does not match the Worker's.** `/v1/health` is exempt from that check, so the `worker` block can read perfectly healthy while every catalog request 404s. This is the only field that catches it |
+| `"catalog_error":"INTERNAL"` | The token got through and something behind it failed — check `db` above before suspecting the token |
 | `"distros":0` | Authorized and healthy, but the ingestion crons have not run — go back to § 5 "Seeding the data without waiting for a schedule" |
 | `"distros":12` + `"status":"up"` | Working |
 

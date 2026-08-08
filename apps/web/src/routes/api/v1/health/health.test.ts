@@ -62,7 +62,27 @@ describe("GET /api/v1/health", () => {
 
 		expect(body.worker?.status).toBe("up");
 		expect(body.authorized).toBe(false);
+		expect(body.catalog_error).toBe("NOT_FOUND");
 		expect(body.status).toBe("degraded");
+	});
+
+	it("does not blame the token for a failure behind it", async () => {
+		// A dead D1 binding makes the gated call answer INTERNAL. It got past
+		// the token; calling that "unauthorized" sent a real debugging session
+		// after the wrong thing.
+		const body = await health(
+			stubFetch({
+				"/v1/health": {
+					ok: true,
+					data: { ...WORKER_UP.data, status: "degraded", db: false },
+				},
+				"/v1/distros": { ok: false, error: { code: "INTERNAL", message: "internal error" } },
+			}),
+		);
+
+		expect(body.db).toBe(false);
+		expect(body.authorized).toBe(true);
+		expect(body.catalog_error).toBe("INTERNAL");
 	});
 
 	it("separates an unseeded catalog from an unauthorized one", async () => {
@@ -96,6 +116,8 @@ describe("GET /api/v1/health", () => {
 
 		const body = await health(unreachable);
 		expect(body.status).toBe("degraded");
-		expect(body.authorized).toBe(false);
+		// Unknown, not refused — the call never reached the token check.
+		expect(body.authorized).toBeNull();
+		expect(body.catalog_error).toBe("UNREACHABLE");
 	});
 });
