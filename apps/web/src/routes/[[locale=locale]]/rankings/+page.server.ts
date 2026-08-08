@@ -1,4 +1,4 @@
-import type { ApiSuccess } from "@linuxhub/shared";
+import { unwrap } from "$lib/server/api";
 import type { PageServerLoad } from "./$types";
 
 type Entry = {
@@ -15,6 +15,9 @@ type Entry = {
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const res = await fetch("/api/v1/rankings");
-	const body = (await res.json()) as ApiSuccess<{ entries: Entry[]; movers: Entry[] }>;
-	return body.data;
+	return unwrap<{ entries: Entry[]; movers: Entry[] }>(
+		res,
+		{ entries: [], movers: [] },
+		"rankings",
+	);
 };

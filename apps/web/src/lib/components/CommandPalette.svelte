@@ -1,6 +1,6 @@
 <script lang="ts">
 import { localizeHref, m } from "@linuxhub/i18n";
-import type { ApiSuccess, Distro } from "@linuxhub/shared";
+import type { ApiResponse, Distro } from "@linuxhub/shared";
 import { brandColor, initials } from "@linuxhub/ui";
 import Icon from "@linuxhub/ui/components/Icon.svelte";
 import LogoTile from "@linuxhub/ui/components/LogoTile.svelte";
@@ -21,7 +21,10 @@ const results = $derived(
 async function ensureData() {
 	if (all.length > 0) return;
 	const res = await fetch("/api/v1/distros");
-	all = ((await res.json()) as ApiSuccess<Distro[]>).data;
+	const body = (await res.json()) as ApiResponse<Distro[]>;
+	// An error envelope has no `data`; assigning it would make every later
+	// `all.filter` throw inside the palette rather than simply finding nothing.
+	all = body.ok ? body.data : [];
 }
 
 $effect(() => {

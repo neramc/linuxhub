@@ -1,4 +1,5 @@
-import type { ApiSuccess, Distro } from "@linuxhub/shared";
+import type { Distro } from "@linuxhub/shared";
+import { unwrapList } from "$lib/server/api";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ fetch, url }) => {
@@ -7,6 +8,6 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 	const query = new URLSearchParams({ sort });
 	if (category) query.set("category", category);
 	const res = await fetch(`/api/v1/distros?${query}`);
-	const body = (await res.json()) as ApiSuccess<Distro[]>;
-	return { distros: body.data, total: body.meta?.total ?? body.data.length, category, sort };
+	const { items, total } = await unwrapList<Distro>(res, "explore:distros");
+	return { distros: items, total, category, sort };
 };
