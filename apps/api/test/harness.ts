@@ -8,10 +8,14 @@
 // that D1 rejects.
 
 import { readdir, readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import { Miniflare } from "miniflare";
 import type { Env } from "../src/env";
 
-const MIGRATIONS = new URL("../migrations/", import.meta.url).pathname;
+// `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
+// `/C:/Users/...`, whose leading slash makes it an invalid path — every
+// script here failed with ENOENT on a Windows checkout.
+const MIGRATIONS = fileURLToPath(new URL("../migrations/", import.meta.url));
 
 /** Splits a migration file into statements. Line comments are stripped first so
  *  a `;` inside one can never split a statement in the wrong place. */

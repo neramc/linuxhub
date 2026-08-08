@@ -1,10 +1,14 @@
 /// <reference types="vitest/config" />
 import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig, type Plugin } from "vite";
 
-const CONTENT_DIR = new URL("../../content/distros/", import.meta.url).pathname;
+// `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
+// `/C:/Users/...`, whose leading slash makes it an invalid path — every
+// script here failed with ENOENT on a Windows checkout.
+const CONTENT_DIR = fileURLToPath(new URL("../../content/distros/", import.meta.url));
 
 /**
  * Fails the build when the authored distro content is not reachable.

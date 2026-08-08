@@ -29,6 +29,13 @@ bunx wrangler login          # opens a browser; authorizes the Cloudflare accoun
 Wrangler is a workspace dependency — `bunx wrangler` inside `apps/api` uses the
 pinned version rather than whatever is global.
 
+> **Windows.** Every command here runs in `cmd.exe` and PowerShell as written.
+> Commands elsewhere in the repo use `bun run --filter '@linuxhub/…' <script>`,
+> which **fails in `cmd.exe`**: single quotes are not quote characters there, so
+> the filter arrives with the quotes attached and bun answers `error: No
+> packages matched the filter`. Use double quotes, or `cd` into the workspace
+> and run the script directly, as this runbook does throughout.
+
 ---
 
 ## 1. Cloudflare — create the resources
@@ -61,7 +68,8 @@ Leave `[vars] SITE_ORIGIN` alone unless the domain changes — see §7.
 ✅ Check the config resolves before going further:
 
 ```bash
-bun run --filter '@linuxhub/api' build     # wrangler deploy --dry-run
+cd apps/api
+bun run build          # wrangler deploy --dry-run
 ```
 
 It prints the binding table. All four bindings should show your real ids.
@@ -118,7 +126,8 @@ Look for 15 tables (plus D1's own bookkeeping tables).
 ## 5. Deploy the Worker
 
 ```bash
-bun run --filter '@linuxhub/api' deploy
+cd apps/api
+bun run deploy
 ```
 
 That is `wrangler deploy` behind `scripts/check-deploy-config.ts`, which

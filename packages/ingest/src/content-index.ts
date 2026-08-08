@@ -14,11 +14,15 @@
 // resolvable citation and a `last_reviewed` date.
 
 import { readdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import type { ContentDistroRow, ContentDoc, ContentDocRow, ContentIndex } from "./content";
 
-const CONTENT_DIR = new URL("../../../content/distros", import.meta.url).pathname;
-const OUT = new URL("./content-index.json", import.meta.url).pathname;
+// `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
+// `/C:/Users/...`, whose leading slash makes it an invalid path — every
+// script here failed with ENOENT on a Windows checkout.
+const CONTENT_DIR = fileURLToPath(new URL("../../../content/distros", import.meta.url));
+const OUT = fileURLToPath(new URL("./content-index.json", import.meta.url));
 
 export type ContentFrontmatter = {
 	title: string;

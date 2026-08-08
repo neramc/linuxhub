@@ -23,8 +23,12 @@
 // try to judge how an import is used.
 
 import { readdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
+// `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
+// `/C:/Users/...`, whose leading slash makes it an invalid path — every
+// script here failed with ENOENT on a Windows checkout.
+const ROOT = fileURLToPath(new URL("..", import.meta.url)).replace(/[/\\]$/, "");
 
 type Violation = { file: string; line: number; rule: string; detail: string };
 

@@ -10,8 +10,12 @@
 // apps/api/package.json) and refuses when it finds one.
 
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
-const CONFIG = new URL("../apps/api/wrangler.toml", import.meta.url).pathname;
+// `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
+// `/C:/Users/...`, whose leading slash makes it an invalid path — every
+// script here failed with ENOENT on a Windows checkout.
+const CONFIG = fileURLToPath(new URL("../apps/api/wrangler.toml", import.meta.url));
 
 /**
  * A placeholder is an id with a long run of zeros.

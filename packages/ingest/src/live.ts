@@ -11,6 +11,7 @@
 // normalizers are shared with the Worker (src/sources/*), so a fix to how a
 // payload is read lands in both places at once — only the transport differs.
 
+import { fileURLToPath } from "node:url";
 import { createFetchClient, type HttpClient } from "./http";
 import { DEFAULT_SITE_ORIGIN, ingestUserAgent } from "./index";
 import { DISTRO_SOURCES } from "./registry";
@@ -19,7 +20,12 @@ import { fetchReleaseCycles } from "./sources/endoflife";
 import { fetchFedoraMirrors } from "./sources/fedora-mirrors";
 import type { LiveMirror, LiveRelease } from "./types";
 
-const OUT = new URL("../../../apps/web/src/lib/server/live-data.json", import.meta.url).pathname;
+// `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
+// `/C:/Users/...`, whose leading slash makes it an invalid path — every
+// script here failed with ENOENT on a Windows checkout.
+const OUT = fileURLToPath(
+	new URL("../../../apps/web/src/lib/server/live-data.json", import.meta.url),
+);
 
 // This container's HTTPS proxy breaks Bun's fetch but not curl, so the CLI
 // swaps in a curl transport. On Workers the native fetch client is used
