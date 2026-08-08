@@ -151,7 +151,7 @@ are allowed in place. `?locale=` selects content language where relevant
 | 38 | `GET /api/v1/stats/overview` | totals: distros, releases, mirrors, downloads tracked |
 | 39 | `GET /api/v1/stats/distro/:slug` | per-distro downloads/views series |
 | 40 | `GET /api/v1/stats/downloads` | aggregate download counts by period |
-| 41 | `GET /api/v1/health` | liveness: `{ok, db, kv, version}` (no auth) |
+| 41 | ✅ `GET /api/v1/health` | liveness: `{ok, db, kv, version}` (no auth). The **BFF's** copy adds `mode`, `authorized` and `distros`: the Worker exempts `/v1/health` from the internal-token check, so an unauthorized deploy answers 200 here while every other route 404s — `authorized` is the only field that catches it |
 | 42 | `GET /api/v1/meta` | API build/version, docs link |
 
 ### i18n

@@ -250,10 +250,18 @@ Environment variables — the three in `apps/web/.env.example`:
 log for the `distro content:` line. Then:
 
 ```bash
-curl -s https://<your-app>/api/v1/health | grep -o '"mode":"[a-z]*"'
-#   "worker"   → the env vars are set and the BFF is proxying
-#   "snapshot" → LINUXHUB_API_URL is unset; the site works but serves committed data
+curl -s https://<your-app>/api/v1/health
 ```
+
+Four fields, read in this order. They separate failures that look **identical
+from the page** — every section renders empty in all of them:
+
+| Field | Meaning |
+|---|---|
+| `"mode":"snapshot"` | `LINUXHUB_API_URL` is unset. The site works, but serves committed data |
+| `"authorized":false` | **`INTERNAL_API_TOKEN` does not match the Worker's.** `/v1/health` is exempt from that check, so the `worker` block can read perfectly healthy while every catalog request 404s. This is the only field that catches it |
+| `"distros":0` | Authorized and healthy, but the ingestion crons have not run — go back to § 5 "Seeding the data without waiting for a schedule" |
+| `"distros":12` + `"status":"up"` | Working |
 
 ✅ And the public files, which are easy to forget and obvious once wrong:
 
