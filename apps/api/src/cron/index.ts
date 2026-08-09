@@ -32,6 +32,11 @@ import {
 } from "@linuxhub/ingest/sources/fedora-artifacts";
 import { fetchFedoraMirrors } from "@linuxhub/ingest/sources/fedora-mirrors";
 import {
+	fetchPopOsArtifacts,
+	POP_OS_ARTIFACTS_SOURCE,
+	POP_OS_BASE,
+} from "@linuxhub/ingest/sources/pop-os-artifacts";
+import {
 	fetchUbuntuArtifacts,
 	UBUNTU_ARTIFACTS_SOURCE,
 	UBUNTU_BASE,
@@ -360,6 +365,63 @@ async function ingestArtifacts(
 		logs.push({
 			source: `${DEBIAN_ARTIFACTS_SOURCE}:debian`,
 			url: DEBIAN_BASE,
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
+	}
+
+	// Pop!_OS: one API call per version and channel, and it hands back the url,
+	// the size and the checksum together — no filename parsing, no HEAD.
+	try {
+		const versions = await listVersions(env.DB, "pop-os");
+		if (versions.length === 0) {
+			logs.push({
+				source: `${POP_OS_ARTIFACTS_SOURCE}:pop-os`,
+				url: POP_OS_BASE,
+				fetchedAt: now.toISOString(),
+				status: "skipped",
+				detail: "no pop-os releases ingested yet",
+			});
+		} else {
+			const result = await fetchPopOsArtifacts(http, versions, now);
+			await env.DB.batch([
+				ensureMirrorStatement(
+					env.DB,
+					"pop-os",
+					POP_OS_BASE,
+					"iso.pop-os.org",
+					result.sourceUrl,
+					result.fetchedAt,
+				),
+			]);
+			const catalog = await upsertCatalog(
+				env.DB,
+				"pop-os",
+				result.data,
+				result.sourceUrl,
+				result.fetchedAt,
+			);
+			await env.DB.batch([
+				pruneArtifactMirrorsStatement(env.DB, "pop-os"),
+				linkArtifactsToMirrorsStatement(env.DB, "pop-os"),
+			]);
+			written += catalog.written;
+			if (catalog.written > 0) await bumpGeneration(env, "pop-os");
+			ok++;
+			logs.push({
+				source: `${POP_OS_ARTIFACTS_SOURCE}:pop-os`,
+				url: result.sourceUrl,
+				fetchedAt: result.fetchedAt,
+				status: "ok",
+				changed: catalog.written,
+			});
+		}
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: `${POP_OS_ARTIFACTS_SOURCE}:pop-os`,
+			url: POP_OS_BASE,
 			fetchedAt: now.toISOString(),
 			status: "error",
 			detail: String(error),

@@ -50,6 +50,16 @@ const ARCH_MIRRORS = {
 	],
 };
 
+const POP_CYCLES = [{ cycle: "24.04", releaseDate: "2026-04-25", lts: true, latest: "24.04" }];
+const POP_BUILD = {
+	version: "24.04",
+	url: "https://iso.pop-os.org/24.04/amd64/intel/20/pop-os_24.04_amd64_intel_20.iso",
+	size: 2955067392,
+	sha_sum: `${"f".repeat(64)}`,
+	channel: "intel",
+	build: "20",
+};
+
 const DEBIAN_CYCLES = [{ cycle: "13", releaseDate: "2026-08-09", lts: true, latest: "13.6" }];
 
 const DEBIAN_SUMS = `${"d".repeat(64)}  debian-13.6.0-amd64-netinst.iso
@@ -382,6 +392,39 @@ describe("ingestion", () => {
 		// point release against this checksum. And robots.txt forbids the HEAD
 		// that would give us a size.
 		expect(results.every((r) => !r.path.includes("current"))).toBe(true);
+	});
+
+	it("takes pop-os url, size and checksum straight from the build API", async () => {
+		await ingestReleases(
+			ctx.env,
+			new Date("2026-08-09T00:00:00Z"),
+			stubHttp({
+				"endoflife.date/api/pop-os": POP_CYCLES,
+				"api.pop-os.org/builds/24.04/intel": POP_BUILD,
+			}),
+		);
+
+		const row = await ctx.env.DB.prepare(
+			`SELECT e.name AS edition, a.path, a.size, a.sha256 FROM artifacts a
+			   JOIN editions e ON e.id = a.edition_id
+			   JOIN releases r ON r.id = e.release_id
+			   JOIN distros  d ON d.id = r.distro_id
+			  WHERE d.slug = 'pop-os'`,
+		).first<{ edition: string; path: string; size: number; sha256: string }>();
+
+		expect(row).toEqual({
+			edition: "Desktop (Intel/AMD graphics)",
+			// Stored relative to iso.pop-os.org, so mirror linking applies.
+			path: "24.04/amd64/intel/20/pop-os_24.04_amd64_intel_20.iso",
+			size: 2955067392,
+			sha256: "f".repeat(64),
+		});
+
+		// The nvidia channel had no stub and must not have failed the pass.
+		const log = await ctx.env.DB.prepare(
+			"SELECT status FROM ingest_log WHERE source LIKE 'api.pop-os.org%'",
+		).first<{ status: string }>();
+		expect(log?.status).toBe("ok");
 	});
 
 	it("snapshots no rankings while there are no download signals of our own", async () => {
