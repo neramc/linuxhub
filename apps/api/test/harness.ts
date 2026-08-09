@@ -15,7 +15,11 @@ import type { Env } from "../src/env";
 // `fileURLToPath`, not `.pathname`: on Windows a file URL's pathname is
 // `/C:/Users/...`, whose leading slash makes it an invalid path — every
 // script here failed with ENOENT on a Windows checkout.
-const MIGRATIONS = fileURLToPath(new URL("../migrations/", import.meta.url));
+// `.href`, not the URL object: `fileURLToPath` is typed against Node's URL,
+// while `new URL` here resolves to the Workers one that @cloudflare/workers-types
+// declares. Structurally identical, nominally different — passing the string
+// sidesteps a mismatch that is purely about which declaration won.
+const MIGRATIONS = fileURLToPath(new URL("../migrations/", import.meta.url).href);
 
 /** Splits a migration file into statements. Line comments are stripped first so
  *  a `;` inside one can never split a statement in the wrong place. */

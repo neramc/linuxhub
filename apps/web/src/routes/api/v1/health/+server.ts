@@ -48,6 +48,8 @@ export const GET: RequestHandler = async ({ fetch }) => {
 		version: "0.1.0",
 		db: false,
 		kv: false,
+		db_error: null,
+		kv_error: null,
 		mode: workerMode(),
 		worker: null,
 		authorized: null,
@@ -63,6 +65,8 @@ export const GET: RequestHandler = async ({ fetch }) => {
 			body.worker = upstream.data;
 			body.db = upstream.data.db;
 			body.kv = upstream.data.kv;
+			body.db_error = upstream.data.db_error;
+			body.kv_error = upstream.data.kv_error;
 			// The BFF is only as healthy as the backend it proxies.
 			body.status = upstream.data.status;
 		} else {

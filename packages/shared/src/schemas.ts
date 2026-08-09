@@ -168,6 +168,11 @@ export const healthSchema = z.object({
 	version: z.string(),
 	db: z.boolean(),
 	kv: z.boolean(),
+	/** Why a probe failed, when one did — `null` while it is up. A binding
+	 *  pointed at the wrong id is the most common deploy fault there is, and
+	 *  `db: false` alone leaves you guessing which of several causes it was. */
+	db_error: z.string().nullable().default(null),
+	kv_error: z.string().nullable().default(null),
 });
 export type Health = z.infer<typeof healthSchema>;
 
