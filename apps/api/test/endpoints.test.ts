@@ -42,6 +42,9 @@ const stubHttp: HttpClient = {
 		if (key === undefined) throw new Error(`no stub for ${url}`);
 		return CYCLES[key] as T;
 	},
+	async head() {
+		return null;
+	},
 };
 
 async function get<T>(ctx: TestContext, path: string): Promise<{ status: number; body: T }> {

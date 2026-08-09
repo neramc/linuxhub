@@ -14,6 +14,15 @@ import { ingestUserAgent } from "./index";
 export type HttpClient = {
 	getText(url: string): Promise<string>;
 	getJson<T>(url: string): Promise<T>;
+	/**
+	 * Content-Length of a resource, without downloading it.
+	 *
+	 * Some sources publish a checksum list and no sizes — Ubuntu's and Debian's
+	 * `SHA256SUMS` are both like that — and a size is worth one cheap request
+	 * against a file we are about to link people to. `null` when the upstream
+	 * does not report one; never an estimate.
+	 */
+	head(url: string): Promise<number | null>;
 };
 
 /** Only what this client actually calls. Narrower than `typeof fetch`, whose
@@ -152,11 +161,33 @@ export function createFetchClient(options: FetchClientOptions): HttpClient {
 		});
 	}
 
+	/** Deliberately outside the retry/conditional machinery of `request`: a HEAD
+	 *  carries no body to cache, and a size we fail to learn costs a display
+	 *  detail rather than a row. Still paced like every other request. */
+	async function head(url: string): Promise<number | null> {
+		const host = new URL(url).host;
+		return paced(host, async () => {
+			try {
+				const response = await doFetch(url, {
+					method: "HEAD",
+					headers: { "User-Agent": ua, Accept: "*/*" },
+					signal: AbortSignal.timeout(timeoutMs),
+				});
+				if (!response.ok) return null;
+				const length = Number(response.headers.get("content-length"));
+				return Number.isFinite(length) && length > 0 ? length : null;
+			} catch {
+				return null;
+			}
+		});
+	}
+
 	return {
 		getText: request,
 		async getJson<T>(url: string): Promise<T> {
 			return JSON.parse(await request(url)) as T;
 		},
+		head,
 	};
 }
 

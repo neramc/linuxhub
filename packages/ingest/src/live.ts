@@ -39,7 +39,20 @@ function curlClient(): HttpClient {
 		if (code !== 0 || text.length === 0) throw new Error(`curl exit ${code} for ${url}`);
 		return text;
 	}
-	return { getText, getJson: async <T>(url: string) => JSON.parse(await getText(url)) as T };
+	/** `-I` for headers only; a size we cannot read stays absent. */
+	async function head(url: string): Promise<number | null> {
+		const proc = Bun.spawn(["curl", "-sSIL", "--max-time", "60", "-H", `User-Agent: ${ua}`, url]);
+		const [text, code] = await Promise.all([new Response(proc.stdout).text(), proc.exited]);
+		if (code !== 0) return null;
+		const match = [...text.matchAll(/^content-length:\s*(\d+)/gim)].pop();
+		return match?.[1] ? Number(match[1]) : null;
+	}
+
+	return {
+		getText,
+		getJson: async <T>(url: string) => JSON.parse(await getText(url)) as T,
+		head,
+	};
 }
 
 const http = process.env.LINUXHUB_INGEST_FETCH

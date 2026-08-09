@@ -50,6 +50,10 @@ const ARCH_MIRRORS = {
 	],
 };
 
+const UBUNTU_SUMS = `${"a".repeat(64)} *ubuntu-26.04-desktop-amd64.iso
+${"b".repeat(64)} *ubuntu-26.04-live-server-amd64.iso
+${"c".repeat(64)} *ubuntu-26.04-wsl-amd64.wsl`;
+
 const ARCH_RELEASES = {
 	releases: [
 		{
@@ -80,6 +84,11 @@ function stubHttp(routes: Record<string, unknown>): HttpClient {
 		},
 		async getJson<T>(url: string) {
 			return (await body(url)) as T;
+		},
+		// Sources that publish no size ask for one with a HEAD; the stub has
+		// none to give, which is the same as an upstream that omits it.
+		async head() {
+			return null;
 		},
 	};
 }
@@ -297,6 +306,41 @@ describe("ingestion", () => {
 			  WHERE d.slug = 'arch'`,
 		).first<{ n: number }>();
 		expect(after?.n).toBeGreaterThan(0);
+	});
+
+	it("ingests ubuntu ISOs from the checksum file, skipping what is not one", async () => {
+		await ingestReleases(
+			ctx.env,
+			new Date("2026-08-09T00:00:00Z"),
+			// Only 26.04's checksum file is served: Ubuntu removes a version's
+			// directory at EOL, so a 404 for an older one is the normal case.
+			stubHttp({
+				"endoflife.date/api/ubuntu": UBUNTU_CYCLES,
+				"releases.ubuntu.com/26.04": UBUNTU_SUMS,
+			}),
+		);
+
+		const { results } = await ctx.env.DB.prepare(
+			`SELECT e.name AS edition, a.arch, a.path FROM artifacts a
+			   JOIN editions e ON e.id = a.edition_id
+			   JOIN releases r ON r.id = e.release_id
+			   JOIN distros  d ON d.id = r.distro_id
+			  WHERE d.slug = 'ubuntu' ORDER BY e.name`,
+		).all<{ edition: string; arch: string; path: string }>();
+
+		// The .wsl image is not an ISO and must not become an artifact.
+		expect(results).toEqual([
+			{ edition: "Desktop", arch: "x86_64", path: "26.04/ubuntu-26.04-desktop-amd64.iso" },
+			{ edition: "Server", arch: "x86_64", path: "26.04/ubuntu-26.04-live-server-amd64.iso" },
+		]);
+
+		// releases.ubuntu.com is a real download base, so it is linkable.
+		const linked = await ctx.env.DB.prepare(
+			`SELECT COUNT(*) AS n FROM artifact_mirrors am
+			   JOIN mirrors m ON m.id = am.mirror_id
+			  WHERE m.name = 'releases.ubuntu.com'`,
+		).first<{ n: number }>();
+		expect(linked?.n).toBe(2);
 	});
 
 	it("snapshots no rankings while there are no download signals of our own", async () => {

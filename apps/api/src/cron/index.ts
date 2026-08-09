@@ -27,6 +27,11 @@ import {
 } from "@linuxhub/ingest/sources/fedora-artifacts";
 import { fetchFedoraMirrors } from "@linuxhub/ingest/sources/fedora-mirrors";
 import {
+	fetchUbuntuArtifacts,
+	UBUNTU_ARTIFACTS_SOURCE,
+	UBUNTU_BASE,
+} from "@linuxhub/ingest/sources/ubuntu-artifacts";
+import {
 	ensureMirrorStatement,
 	linkArtifactsToMirrorsStatement,
 	pruneArtifactMirrorsStatement,
@@ -244,6 +249,64 @@ async function ingestArtifacts(
 		logs.push({
 			source: `${FEDORA_ARTIFACTS_SOURCE}:fedora`,
 			url: FEDORA_ARTIFACTS_URL_FOR_LOG,
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
+	}
+
+	// Ubuntu: same shape as Fedora — bounded to the versions we hold release
+	// rows for, because releases.ubuntu.com keeps directories we have no
+	// release for and drops ones we do at EOL.
+	try {
+		const versions = await listVersions(env.DB, "ubuntu");
+		if (versions.length === 0) {
+			logs.push({
+				source: `${UBUNTU_ARTIFACTS_SOURCE}:ubuntu`,
+				url: UBUNTU_BASE,
+				fetchedAt: now.toISOString(),
+				status: "skipped",
+				detail: "no ubuntu releases ingested yet",
+			});
+		} else {
+			const result = await fetchUbuntuArtifacts(http, versions, now);
+			await env.DB.batch([
+				ensureMirrorStatement(
+					env.DB,
+					"ubuntu",
+					UBUNTU_BASE,
+					"releases.ubuntu.com",
+					result.sourceUrl,
+					result.fetchedAt,
+				),
+			]);
+			const catalog = await upsertCatalog(
+				env.DB,
+				"ubuntu",
+				result.data,
+				result.sourceUrl,
+				result.fetchedAt,
+			);
+			await env.DB.batch([
+				pruneArtifactMirrorsStatement(env.DB, "ubuntu"),
+				linkArtifactsToMirrorsStatement(env.DB, "ubuntu"),
+			]);
+			written += catalog.written;
+			if (catalog.written > 0) await bumpGeneration(env, "ubuntu");
+			ok++;
+			logs.push({
+				source: `${UBUNTU_ARTIFACTS_SOURCE}:ubuntu`,
+				url: result.sourceUrl,
+				fetchedAt: result.fetchedAt,
+				status: "ok",
+				changed: catalog.written,
+			});
+		}
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: `${UBUNTU_ARTIFACTS_SOURCE}:ubuntu`,
+			url: UBUNTU_BASE,
 			fetchedAt: now.toISOString(),
 			status: "error",
 			detail: String(error),
