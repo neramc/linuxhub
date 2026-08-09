@@ -6,8 +6,15 @@
 // upload a Worker whose bindings point at nothing — and the failure only shows
 // up as 500s in production, one request at a time.
 //
+// It also checks the **binding names**, which is the other half of the same
+// trap. `wrangler d1 create <name>` prints a ready-to-paste block whose
+// `binding` is the database name, not ours — pasting it whole renames `DB` to
+// something else, `env.DB` becomes undefined, and every query dies with
+// "Cannot read properties of undefined (reading 'prepare')" while the deploy
+// itself succeeds. That happened on the first real deploy of this project.
+//
 // This runs before `wrangler deploy` (see the `deploy` script in
-// apps/api/package.json) and refuses when it finds one.
+// apps/api/package.json) and refuses when it finds either fault.
 
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -16,6 +23,7 @@ import { fileURLToPath } from "node:url";
 // `/C:/Users/...`, whose leading slash makes it an invalid path — every
 // script here failed with ENOENT on a Windows checkout.
 const CONFIG = fileURLToPath(new URL("../apps/api/wrangler.toml", import.meta.url));
+const ENV_TYPE = fileURLToPath(new URL("../apps/api/src/env.ts", import.meta.url));
 
 /**
  * A placeholder is an id with a long run of zeros.
@@ -26,7 +34,7 @@ const CONFIG = fileURLToPath(new URL("../apps/api/wrangler.toml", import.meta.ur
  * of twelve zeros is a 1-in-2^48 event; the zeroed UUID's longest run is
  * exactly twelve.
  */
-function isPlaceholder(id: string): boolean {
+export function isPlaceholder(id: string): boolean {
 	return /0{12,}/.test(id);
 }
 
@@ -43,20 +51,65 @@ function bindings(toml: string): Binding[] {
 	return found;
 }
 
-const toml = readFileSync(CONFIG, "utf8");
-const placeholders = bindings(toml).filter((b) => isPlaceholder(b.id));
-
-if (placeholders.length > 0) {
-	console.error("Refusing to deploy: apps/api/wrangler.toml still has placeholder binding ids.\n");
-	for (const { line, key, id } of placeholders) {
-		console.error(`  wrangler.toml:${line}  ${key} = "${id}"`);
+/**
+ * The binding names the Worker actually reads, taken from `Env` rather than
+ * listed here — a hardcoded copy is one that drifts the first time a binding
+ * is added.
+ */
+export function requiredBindings(envSource: string): string[] {
+	const names: string[] = [];
+	for (const line of envSource.split("\n")) {
+		const match = line.match(/^\s*(\w+):\s*(D1Database|KVNamespace);/);
+		if (match?.[1]) names.push(match[1]);
 	}
-	console.error(
-		"\nThese are valid TOML, so wrangler would deploy a Worker whose D1 and KV\n" +
-			"bindings point at nothing — visible only as 500s in production.\n" +
-			"Create the resources and paste the real ids: docs/deployment.md §§ 1–2.",
-	);
-	process.exit(1);
+	return names;
 }
 
-console.log("deploy config ok — no placeholder binding ids");
+/** Every `binding = "…"` the config declares. */
+export function declaredBindings(toml: string): string[] {
+	return [...toml.matchAll(/^\s*binding\s*=\s*"([^"]*)"/gm)].map((m) => m[1] as string);
+}
+
+/** The check itself. Guarded below so importing this module for its helpers
+ *  does not read files or exit the process. */
+function main(): void {
+	const toml = readFileSync(CONFIG, "utf8");
+	const problems: string[] = [];
+
+	const placeholders = bindings(toml).filter((b) => isPlaceholder(b.id));
+	if (placeholders.length > 0) {
+		problems.push(
+			"Placeholder binding ids are still in place:\n" +
+				placeholders
+					.map(({ line, key, id }) => `    wrangler.toml:${line}  ${key} = "${id}"`)
+					.join("\n") +
+				"\n  These are valid TOML, so wrangler would deploy a Worker whose D1 and KV\n" +
+				"  bindings point at nothing — visible only as 500s in production.\n" +
+				"  Create the resources and paste the real ids: docs/deployment.md §§ 1-2.",
+		);
+	}
+
+	const declared = declaredBindings(toml);
+	const required = requiredBindings(readFileSync(ENV_TYPE, "utf8"));
+	const missing = required.filter((name) => !declared.includes(name));
+	if (missing.length > 0) {
+		problems.push(
+			`Bindings the Worker reads are not declared: ${missing.join(", ")}\n` +
+				`  wrangler.toml declares: ${declared.join(", ") || "(none)"}\n` +
+				"  `env.<NAME>` is undefined at runtime, so every use dies with\n" +
+				'  "Cannot read properties of undefined" while the deploy still succeeds.\n' +
+				'  Note `wrangler d1 create` suggests `binding = "<database name>"` —\n' +
+				"  keep our names (src/env.ts) and replace only the id.",
+		);
+	}
+
+	if (problems.length > 0) {
+		console.error("Refusing to deploy — apps/api/wrangler.toml:\n");
+		for (const problem of problems) console.error(`  ${problem}\n`);
+		process.exit(1);
+	}
+
+	console.log(`deploy config ok — ids look real, bindings present: ${required.join(", ")}`);
+}
+
+if (import.meta.main) main();

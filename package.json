@@ -41,13 +41,14 @@
 		"format": "biome check --write .",
 		"check": "bun run --filter '*' check",
 		"check:boundaries": "bun scripts/check-boundaries.ts",
-		"test": "bun run --filter '*' test",
+		"test": "bun run --filter '*' test && vitest run --config vitest.scripts.config.ts",
 		"build": "bun run --filter '*' build",
 		"dev:web": "bun run --filter '@linuxhub/web' dev",
 		"dev:api": "bun run --filter '@linuxhub/api' dev"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.4",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"vitest": "catalog:"
 	}
 }

@@ -56,6 +56,22 @@ bunx wrangler kv namespace create KV_GEO
 `apps/api/wrangler.toml` ships with zeroed placeholders so local dev and
 dry-run builds work without an account. Replace them:
 
+> ⚠️ **Replace the ids and nothing else.** `wrangler d1 create linuxhub` prints
+> a ready-to-paste block whose `binding` is the *database name*:
+>
+> ```toml
+> [[d1_databases]]
+> binding = "linuxhub"        # ← NOT ours. The Worker reads env.DB
+> database_name = "linuxhub"
+> database_id = "…"
+> ```
+>
+> Paste that block whole and `env.DB` becomes undefined. The deploy **still
+> succeeds**, and every query dies with `Cannot read properties of undefined
+> (reading 'prepare')` — which is what happened on this project's first real
+> deploy. The binding names are fixed by `apps/api/src/env.ts`; `bun run deploy`
+> now refuses when one is missing.
+
 | Placeholder in `wrangler.toml` | Replace with |
 |---|---|
 | `database_id = "00000000-0000-0000-0000-000000000000"` | the uuid from `d1 create` |
