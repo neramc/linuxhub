@@ -100,7 +100,7 @@ each of these is the one the project forbids:
 | `distros.family`, `based_on`, taxonomy | lineage comes from Wikidata, and **every QID-lookup API is robots-disallowed** — needs 9 QIDs looked up by a human first. `.ai/data-sources.md` § "Wikidata lineage — blocked". **Does not block 5.4:** there is no family facet in the UI | after the QIDs land |
 | `releases` for arch/manjaro/endeavouros | rolling: no version cycles exist to fetch. Their ISO-snapshot endpoints are identified but unverified | when that source is verified |
 | `releases` for zorin/elementary | fixed-cadence but no machine-readable source found — registry kind `unsourced` | when a source is found |
-| `editions`, `artifacts` for the other 7 distros | arch, fedora, **ubuntu**, **debian** and **pop-os** are ingested; the rest need a verified per-distro artifact source. Debian carries no artifact `size` on purpose — its robots.txt forbids requesting the ISOs | 5.7 |
+| `editions`, `artifacts` for the other 6 distros | arch, fedora, **ubuntu**, **debian**, **pop-os** and **linux-mint** are ingested; the rest need a verified per-distro artifact source. Debian carries no artifact `size` on purpose — its robots.txt forbids requesting the ISOs | 5.7 |
 | `requirements` | there is no requirements table and no source for one; the detail page renders a hardcoded four-row list from `data.ts` | 5.7 |
 | `hall_of_fame` | blocked on frontend-contract question 4 (editorial in D1 or `content/`?) | 5.7 |
 

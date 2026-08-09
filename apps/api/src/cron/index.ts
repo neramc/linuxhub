@@ -32,6 +32,11 @@ import {
 } from "@linuxhub/ingest/sources/fedora-artifacts";
 import { fetchFedoraMirrors } from "@linuxhub/ingest/sources/fedora-mirrors";
 import {
+	fetchMintArtifacts,
+	MINT_ARTIFACTS_SOURCE,
+	MINT_BASE,
+} from "@linuxhub/ingest/sources/mint-artifacts";
+import {
 	fetchPopOsArtifacts,
 	POP_OS_ARTIFACTS_SOURCE,
 	POP_OS_BASE,
@@ -422,6 +427,63 @@ async function ingestArtifacts(
 		logs.push({
 			source: `${POP_OS_ARTIFACTS_SOURCE}:pop-os`,
 			url: POP_OS_BASE,
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
+	}
+
+	// Linux Mint: checksum file per version, sizes by HEAD. This is the one
+	// source whose editions really are desktop environments.
+	try {
+		const versions = await listVersions(env.DB, "linux-mint");
+		if (versions.length === 0) {
+			logs.push({
+				source: `${MINT_ARTIFACTS_SOURCE}:linux-mint`,
+				url: MINT_BASE,
+				fetchedAt: now.toISOString(),
+				status: "skipped",
+				detail: "no linux-mint releases ingested yet",
+			});
+		} else {
+			const result = await fetchMintArtifacts(http, versions, now);
+			await env.DB.batch([
+				ensureMirrorStatement(
+					env.DB,
+					"linux-mint",
+					MINT_BASE,
+					"mirrors.edge.kernel.org",
+					result.sourceUrl,
+					result.fetchedAt,
+				),
+			]);
+			const catalog = await upsertCatalog(
+				env.DB,
+				"linux-mint",
+				result.data,
+				result.sourceUrl,
+				result.fetchedAt,
+			);
+			await env.DB.batch([
+				pruneArtifactMirrorsStatement(env.DB, "linux-mint"),
+				linkArtifactsToMirrorsStatement(env.DB, "linux-mint"),
+			]);
+			written += catalog.written;
+			if (catalog.written > 0) await bumpGeneration(env, "linux-mint");
+			ok++;
+			logs.push({
+				source: `${MINT_ARTIFACTS_SOURCE}:linux-mint`,
+				url: result.sourceUrl,
+				fetchedAt: result.fetchedAt,
+				status: "ok",
+				changed: catalog.written,
+			});
+		}
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: `${MINT_ARTIFACTS_SOURCE}:linux-mint`,
+			url: MINT_BASE,
 			fetchedAt: now.toISOString(),
 			status: "error",
 			detail: String(error),

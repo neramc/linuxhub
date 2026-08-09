@@ -50,6 +50,10 @@ const ARCH_MIRRORS = {
 	],
 };
 
+const MINT_CYCLES = [{ cycle: "22.2", releaseDate: "2026-01-20", lts: true, latest: "22.2" }];
+const MINT_SUMS = `${"1".repeat(64)} *linuxmint-22.2-cinnamon-64bit.iso
+${"2".repeat(64)} *linuxmint-22.2-xfce-64bit.iso`;
+
 const POP_CYCLES = [{ cycle: "24.04", releaseDate: "2026-04-25", lts: true, latest: "24.04" }];
 const POP_BUILD = {
 	version: "24.04",
@@ -425,6 +429,31 @@ describe("ingestion", () => {
 			"SELECT status FROM ingest_log WHERE source LIKE 'api.pop-os.org%'",
 		).first<{ status: string }>();
 		expect(log?.status).toBe("ok");
+	});
+
+	it("records mint's desktop environments, because its editions are ones", async () => {
+		await ingestReleases(
+			ctx.env,
+			new Date("2026-08-09T00:00:00Z"),
+			stubHttp({
+				"endoflife.date/api/linuxmint": MINT_CYCLES,
+				"linuxmint/stable/22.2": MINT_SUMS,
+			}),
+		);
+
+		const { results } = await ctx.env.DB.prepare(
+			`SELECT e.name, e.desktop FROM editions e
+			   JOIN releases r ON r.id = e.release_id
+			   JOIN distros  d ON d.id = r.distro_id
+			  WHERE d.slug = 'linux-mint' ORDER BY e.name`,
+		).all<{ name: string; desktop: string | null }>();
+
+		// Ubuntu's "Desktop" and Fedora's "Workstation" set no desktop, because
+		// their names identify no environment. Mint's do.
+		expect(results).toEqual([
+			{ name: "Cinnamon", desktop: "cinnamon" },
+			{ name: "Xfce", desktop: "xfce" },
+		]);
 	});
 
 	it("snapshots no rankings while there are no download signals of our own", async () => {
