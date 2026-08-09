@@ -21,7 +21,7 @@
 | **Arch release snapshots** (`archlinux.org/releng/releases/json/`) | monthly ISO snapshots: version, date, sha256, iso path, torrent, magnet, PGP fingerprint | official JSON | **verified 2026-08-05** — 200, no `robots.txt` rule covers the path | 6 h — **Worker cron** |
 | **Fedora releases index** (`fedoraproject.org/releases.json`) | the full artifact matrix: variant, arch, absolute link, sha256, **size** | official JSON | **verified 2026-08-05** — 200, no `robots.txt` rule covers the path | 6 h — **Worker cron** |
 | **Ubuntu checksums** (`releases.ubuntu.com/<version>/SHA256SUMS`) | sha256 per ISO; edition, arch and point release are encoded in the filename | official plain text | **verified 2026-08-05 — allowed** (`robots.txt` disallows only `.pool`). **Wired 2026-08-09.** Publishes no sizes, so each ISO costs one paced HEAD. `releases.ubuntu.com` is itself the download base (`serves_artifacts = 1`) | 6 h — **Worker cron** |
-| Debian checksums (`cdimage.debian.org/debian-cd/current/<arch>/iso-cd/SHA256SUMS`) | sha256 per ISO; edition and arch encoded in the filename | official plain text | **verified 2026-08-05 — allowed**, not yet wired. Same no-size caveat as Ubuntu | daily (when adopted) |
+| **Debian checksums** (`cdimage.debian.org/debian-cd/<point>/<arch>/iso-cd/SHA256SUMS`) | sha256 per ISO; flavour, arch and point release encoded in the filename | official plain text | **verified 2026-08-09 — checksums allowed, ISOs NOT.** See the note below: `Disallow: /*.iso$` applies to us, so sizes stay `null` — we must not HEAD them. Our UA is `linuxhub-ingest/…`, which does not match the AI-crawler group that gets `Disallow: /` | 6 h — **Worker cron** |
 | **Wikidata entity data** (`www.wikidata.org/wiki/Special:EntityData/<QID>.json`) | lineage (P144 *based on*), inception (P571), type (P31/P279) | official entity endpoint, CC0 | **verified 2026-08-04 — ALLOWED.** `robots.txt` disallows `/wiki/Special:` but carves this back out with `Allow: /wiki/Special:EntityData/*.`, which matches only the format-suffixed form. The extensionless `/wiki/Special:EntityData/Q381` stays disallowed | weekly (not yet wired — see below) |
 | ~~Wikidata SPARQL~~ (`query.wikidata.org/sparql`) | — | — | **verified 2026-08-04 — DISALLOWED.** `query.wikidata.org/robots.txt` is four lines: `Disallow: /sparql`. **Not used**, per the binding rule that a source whose terms forbid our use is not used | — |
 | ~~Wikidata / Wikipedia search APIs~~ (`/w/api.php`, `en.wikipedia.org/api/rest_v1/`) | — | — | **verified 2026-08-04 — DISALLOWED** by `Disallow: /w/` and `Disallow: /api/` respectively. **Not used** | — |
@@ -53,6 +53,19 @@ resolvable citation. `packages/ingest/src/registry.ts` holds only *pointers*
 (which upstream serves which distro), never facts. Regenerate the index in the
 same commit as any frontmatter change.
 
+**Debian's robots.txt forbids fetching the ISOs themselves.** Under
+`User-agent: *` it carries `Disallow: /*.iso$`, alongside a long
+`User-agent: ClaudeBot`/`GPTBot`/… group that gets a blanket `Disallow: /`.
+Our crawler identifies as `linuxhub-ingest/<version> (+<site>/about#crawler)`
+and matches neither of those names, so the `*` rules are the ones that bind us
+— and they permit `SHA256SUMS` while forbidding the `.iso` files.
+
+The consequence is concrete: **Debian artifacts carry no `size`**, because
+learning one would mean a `HEAD` against a path we are told not to request.
+Linking a human to that ISO is not crawling it, so the download itself is
+unaffected. Ubuntu's robots.txt has no such rule, which is why Ubuntu artifacts
+do have sizes.
+
 **Ranking signals:** our own only (page views, download clicks tracked via
 `downloads/track`, release recency). Any external ranking source is
 supplementary, used only if its terms allow, and must be added here first.
@@ -67,7 +80,7 @@ Added as each distro is onboarded (Phase 5+), one row per distro:
 | fedora | endoflife.date `fedora` + **fedoraproject.org/releases.json** for artifacts | mirrors.fedoraproject.org | verified | Commons — see ATTRIBUTION.md | releases.json carries variant, arch, sha256 and size |
 | linux-mint | endoflife.date `linuxmint` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | arch | **archlinux.org releng snapshots** (verified 2026-08-05) | archlinux.org mirror status | verified | Commons — see ATTRIBUTION.md | rolling; monthly ISO snapshots carry sha256, torrent and magnet |
-| debian | endoflife.date `debian` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
+| debian | endoflife.date `debian` + **cdimage.debian.org `current/<arch>/iso-cd/SHA256SUMS`** for artifacts | cdimage.debian.org is itself the download base | verified — **ISOs are robots-disallowed**, so artifacts carry no size | Commons — see ATTRIBUTION.md | current stable only (cdimage archives older point releases); paths stored against the point-release directory, never the moving `current` symlink |
 | opensuse | endoflife.date `opensuse` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |
 | manjaro | rolling (no cycles) | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | rolling; registry kind `rolling` |
 | pop-os | endoflife.date `pop-os` | — (Phase 5) | verified | Commons — see ATTRIBUTION.md | |

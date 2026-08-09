@@ -50,6 +50,11 @@ const ARCH_MIRRORS = {
 	],
 };
 
+const DEBIAN_CYCLES = [{ cycle: "13", releaseDate: "2026-08-09", lts: true, latest: "13.6" }];
+
+const DEBIAN_SUMS = `${"d".repeat(64)}  debian-13.6.0-amd64-netinst.iso
+${"e".repeat(64)}  debian-edu-13.6.0-amd64-netinst.iso`;
+
 const UBUNTU_SUMS = `${"a".repeat(64)} *ubuntu-26.04-desktop-amd64.iso
 ${"b".repeat(64)} *ubuntu-26.04-live-server-amd64.iso
 ${"c".repeat(64)} *ubuntu-26.04-wsl-amd64.wsl`;
@@ -341,6 +346,42 @@ describe("ingestion", () => {
 			  WHERE m.name = 'releases.ubuntu.com'`,
 		).first<{ n: number }>();
 		expect(linked?.n).toBe(2);
+	});
+
+	it("stores debian paths against the point release, and no size", async () => {
+		await ingestReleases(
+			ctx.env,
+			new Date("2026-08-09T00:00:00Z"),
+			stubHttp({
+				"endoflife.date/api/debian": DEBIAN_CYCLES,
+				"cdimage.debian.org/debian-cd/current/amd64": DEBIAN_SUMS,
+			}),
+		);
+
+		const { results } = await ctx.env.DB.prepare(
+			`SELECT e.name AS edition, a.path, a.size FROM artifacts a
+			   JOIN editions e ON e.id = a.edition_id
+			   JOIN releases r ON r.id = e.release_id
+			   JOIN distros  d ON d.id = r.distro_id
+			  WHERE d.slug = 'debian' ORDER BY e.name`,
+		).all<{ edition: string; path: string; size: number | null }>();
+
+		expect(results).toEqual([
+			{
+				edition: "Edu netinst",
+				path: "13.6.0/amd64/iso-cd/debian-edu-13.6.0-amd64-netinst.iso",
+				size: null,
+			},
+			{
+				edition: "Netinst",
+				path: "13.6.0/amd64/iso-cd/debian-13.6.0-amd64-netinst.iso",
+				size: null,
+			},
+		]);
+		// `current` is a moving symlink; a path under it would serve a later
+		// point release against this checksum. And robots.txt forbids the HEAD
+		// that would give us a size.
+		expect(results.every((r) => !r.path.includes("current"))).toBe(true);
 	});
 
 	it("snapshots no rankings while there are no download signals of our own", async () => {

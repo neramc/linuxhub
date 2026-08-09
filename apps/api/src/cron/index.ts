@@ -19,6 +19,11 @@ import {
 } from "@linuxhub/ingest/registry";
 import { fetchArchMirrors } from "@linuxhub/ingest/sources/arch-mirrors";
 import { ARCH_RELEASES_SOURCE, fetchArchReleases } from "@linuxhub/ingest/sources/arch-releases";
+import {
+	DEBIAN_ARTIFACTS_SOURCE,
+	DEBIAN_BASE,
+	fetchDebianArtifacts,
+} from "@linuxhub/ingest/sources/debian-artifacts";
 import { ENDOFLIFE_SOURCE, fetchReleaseCycles } from "@linuxhub/ingest/sources/endoflife";
 import {
 	FEDORA_ARTIFACTS_SOURCE,
@@ -307,6 +312,54 @@ async function ingestArtifacts(
 		logs.push({
 			source: `${UBUNTU_ARTIFACTS_SOURCE}:ubuntu`,
 			url: UBUNTU_BASE,
+			fetchedAt: now.toISOString(),
+			status: "error",
+			detail: String(error),
+		});
+	}
+
+	// Debian: unlike Ubuntu and Fedora this needs no version list — cdimage
+	// keeps one live tree under `current`, and the point release comes back in
+	// the filenames. Sizes stay absent by policy, not by omission: Debian's
+	// robots.txt forbids requesting the ISOs (.ai/data-sources.md).
+	try {
+		const result = await fetchDebianArtifacts(http, undefined, now);
+		await env.DB.batch([
+			ensureMirrorStatement(
+				env.DB,
+				"debian",
+				DEBIAN_BASE,
+				"cdimage.debian.org",
+				result.sourceUrl,
+				result.fetchedAt,
+			),
+		]);
+		const catalog = await upsertCatalog(
+			env.DB,
+			"debian",
+			result.data,
+			result.sourceUrl,
+			result.fetchedAt,
+		);
+		await env.DB.batch([
+			pruneArtifactMirrorsStatement(env.DB, "debian"),
+			linkArtifactsToMirrorsStatement(env.DB, "debian"),
+		]);
+		written += catalog.written;
+		if (catalog.written > 0) await bumpGeneration(env, "debian");
+		ok++;
+		logs.push({
+			source: `${DEBIAN_ARTIFACTS_SOURCE}:debian`,
+			url: result.sourceUrl,
+			fetchedAt: result.fetchedAt,
+			status: "ok",
+			changed: catalog.written,
+		});
+	} catch (error) {
+		failed++;
+		logs.push({
+			source: `${DEBIAN_ARTIFACTS_SOURCE}:debian`,
+			url: DEBIAN_BASE,
 			fetchedAt: now.toISOString(),
 			status: "error",
 			detail: String(error),
