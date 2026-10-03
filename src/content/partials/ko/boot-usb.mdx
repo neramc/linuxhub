@@ -1,0 +1,41 @@
+{/*
+  공용 단계: USB로 부팅하기. 사용법: <BootUsb secureBoot="yes|partial|no" />
+*/}
+import Callout from "~/components/adw/Callout.astro";
+import Kbd from "~/components/adw/Kbd.astro";
+
+USB를 꽂은 채로 PC를 다시 켜고, **부팅 메뉴**에서 USB를 고릅니다. 부팅 메뉴를 여는 키는 제조사마다 다릅니다. 전원을 켜자마자 여러 번 눌러 주세요.
+
+| 제조사 | 부팅 메뉴 키 | 펌웨어(UEFI) 설정 키 |
+|---|---|---|
+| Dell | <Kbd>F12</Kbd> | <Kbd>F2</Kbd> |
+| HP | <Kbd>F9</Kbd> (또는 <Kbd>Esc</Kbd> 뒤 <Kbd>F9</Kbd>) | <Kbd>F10</Kbd> |
+| Lenovo | <Kbd>F12</Kbd> (일부 모델은 Novo 버튼) | <Kbd>F1</Kbd> / <Kbd>F2</Kbd> |
+| ASUS | <Kbd>F8</Kbd> (노트북은 <Kbd>Esc</Kbd>) | <Kbd>F2</Kbd> / <Kbd>Del</Kbd> |
+| Acer | <Kbd>F12</Kbd> | <Kbd>F2</Kbd> |
+| MSI | <Kbd>F11</Kbd> | <Kbd>Del</Kbd> |
+| Gigabyte | <Kbd>F12</Kbd> | <Kbd>Del</Kbd> |
+| ASRock | <Kbd>F11</Kbd> | <Kbd>F2</Kbd> / <Kbd>Del</Kbd> |
+| Samsung | <Kbd>F10</Kbd> / <Kbd>Esc</Kbd> | <Kbd>F2</Kbd> |
+| LG | <Kbd>F10</Kbd> | <Kbd>F2</Kbd> |
+| Intel Mac | 전원을 켜고 <Kbd>Option ⌥</Kbd>을 누르고 있기 | — |
+
+키가 맞지 않으면 Windows에서 들어갈 수도 있습니다. **설정 → 시스템 → 복구 → 고급 시작 옵션의 [지금 다시 시작] → 장치 사용**에서 USB를 고르세요.
+
+부팅 메뉴에 같은 USB가 두 번 보이면 이름에 **UEFI**가 붙은 항목을 고르세요.
+
+{props.secureBoot === "no" ? (
+  <Callout type="warning" title="Secure Boot를 꺼야 합니다">
+    이 배포판의 설치 이미지는 Secure Boot가 켜진 상태로는 부팅되지 않습니다. 펌웨어(UEFI) 설정의 **Security** 또는 **Boot** 메뉴에서 **Secure Boot**를 **Disabled**로 바꾼 뒤 저장하고 다시 시작하세요.
+  </Callout>
+) : props.secureBoot === "partial" ? (
+  <Callout type="note" title="Secure Boot">
+    이 배포판은 Secure Boot를 조건부로 지원합니다. USB가 부팅되지 않으면 펌웨어 설정에서 Secure Boot를 잠시 끄거나, 아래 설치 단계의 안내(키 등록 등)를 따르세요.
+  </Callout>
+) : (
+  <Callout type="tip" title="Secure Boot">
+    이 배포판은 Secure Boot를 켠 상태로 부팅됩니다. 따로 끌 필요가 없습니다.
+  </Callout>
+)}
+
+부팅이 되면 대부분의 배포판은 먼저 **라이브 환경**을 띄웁니다. 아무것도 설치하지 않은 상태로 Wi-Fi, 소리, 화면 밝기 같은 하드웨어가 잘 동작하는지 미리 확인해 보세요.

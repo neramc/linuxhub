@@ -1,0 +1,15 @@
+{/*
+  Shared step: prepare a Windows PC for dual boot. Usage: <DualBoot />
+*/}
+import Callout from "~/components/adw/Callout.astro";
+
+To install Linux alongside Windows instead of replacing it, prepare Windows first:
+
+1. **Back up important files.** Resizing partitions rarely fails, but it can.
+2. **Find your BitLocker recovery key.** With device encryption on, Windows may ask for it after the boot order changes. Look it up on your [Microsoft account’s recovery key page](https://account.microsoft.com/devices/recoverykey) or suspend BitLocker for the install.
+3. **Turn off Fast Startup.** Control Panel → Power Options → Choose what the power buttons do → uncheck **Turn on fast startup**. Otherwise Windows doesn’t fully close its partition, which can cause problems.
+4. **Free up space for Linux.** Right-click the Start button, open **Disk Management**, right-click drive C:, and choose **Shrink Volume**. Leave at least 30 GB unallocated, 60 GB or more if you can.
+
+<Callout type="note">
+  The installer uses this unallocated space when you choose an option such as **Install alongside Windows** or **Use free space**.
+</Callout>

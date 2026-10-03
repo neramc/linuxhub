@@ -1,0 +1,53 @@
+{/*
+  공용 단계: 내려받은 이미지 검증. 사용법:
+  import Verify from "~/content/partials/ko/verify.mdx";
+  <Verify slug="fedora" />
+*/}
+import Callout from "~/components/adw/Callout.astro";
+import Checksum from "~/components/mdx/Checksum.astro";
+import IsoName from "~/components/mdx/IsoName.astro";
+import Tab from "~/components/mdx/Tab.astro";
+import Tabs from "~/components/mdx/Tabs.astro";
+import VerifyCommand from "~/components/mdx/VerifyCommand.astro";
+
+내려받은 파일이 손상되지 않았고 공식 서버의 파일과 똑같은지 체크섬으로 확인합니다. 아래 명령은 이 사이트에서 기본으로 제공하는 이미지(<IsoName slug={props.slug} />) 기준입니다. 다른 에디션을 받았다면 파일 이름만 바꾸세요.
+
+<Tabs>
+  <Tab label="Windows" open>
+    시작 메뉴에서 **PowerShell**을 열고, 파일을 내려받은 폴더(보통 `다운로드`)로 이동한 뒤 실행합니다.
+
+    ```powershell
+    cd $HOME\Downloads
+    ```
+
+    <VerifyCommand slug={props.slug} os="windows" />
+  </Tab>
+  <Tab label="macOS">
+    **터미널**을 열고 내려받은 폴더로 이동한 뒤 실행합니다.
+
+    ```bash
+    cd ~/Downloads
+    ```
+
+    <VerifyCommand slug={props.slug} os="macos" />
+  </Tab>
+  <Tab label="Linux">
+    터미널에서 실행합니다.
+
+    ```bash
+    cd ~/Downloads
+    ```
+
+    <VerifyCommand slug={props.slug} os="linux" />
+  </Tab>
+</Tabs>
+
+출력된 값이 공식 체크섬과 정확히 같아야 합니다(대소문자는 상관없습니다).
+
+<Checksum slug={props.slug} />
+
+<Callout type="warning" title="값이 다르면">
+  파일이 덜 받아졌거나 손상된 것입니다. 파일을 지우고 다시 내려받으세요. 다시 받아도 값이 다르면 그 파일은 사용하지 마세요.
+</Callout>
+
+체크섬은 파일이 온전한지 확인해 줍니다. 파일이 정말 그 프로젝트가 만든 것인지까지 확인하려면, 공식 문서의 안내에 따라 **GPG 서명**도 검증하세요. 다운로드 화면의 “서명” 링크에서 서명 파일을 받을 수 있습니다.

@@ -1,0 +1,53 @@
+{/*
+  Shared step: verify the downloaded image. Usage:
+  import Verify from "~/content/partials/en/verify.mdx";
+  <Verify slug="fedora" />
+*/}
+import Callout from "~/components/adw/Callout.astro";
+import Checksum from "~/components/mdx/Checksum.astro";
+import IsoName from "~/components/mdx/IsoName.astro";
+import Tab from "~/components/mdx/Tab.astro";
+import Tabs from "~/components/mdx/Tabs.astro";
+import VerifyCommand from "~/components/mdx/VerifyCommand.astro";
+
+Use the checksum to confirm the file arrived intact and matches the one on the official server. The commands below use the default image offered on this site (<IsoName slug={props.slug} />); if you picked another edition, just change the file name.
+
+<Tabs>
+  <Tab label="Windows" open>
+    Open **PowerShell** from the Start menu, go to the folder you downloaded to (usually `Downloads`), and run:
+
+    ```powershell
+    cd $HOME\Downloads
+    ```
+
+    <VerifyCommand slug={props.slug} os="windows" />
+  </Tab>
+  <Tab label="macOS">
+    Open **Terminal**, go to your downloads folder, and run:
+
+    ```bash
+    cd ~/Downloads
+    ```
+
+    <VerifyCommand slug={props.slug} os="macos" />
+  </Tab>
+  <Tab label="Linux">
+    In a terminal, run:
+
+    ```bash
+    cd ~/Downloads
+    ```
+
+    <VerifyCommand slug={props.slug} os="linux" />
+  </Tab>
+</Tabs>
+
+The value printed must match the official checksum exactly (letter case doesn’t matter):
+
+<Checksum slug={props.slug} />
+
+<Callout type="warning" title="If the values differ">
+  The download is incomplete or corrupted. Delete the file and download it again. If it still doesn’t match, don’t use that file.
+</Callout>
+
+A checksum proves the file is intact. To also prove it was really published by the project, verify the **GPG signature** as described in the official documentation; the “Signature” link in the download panel gives you the signature file.
