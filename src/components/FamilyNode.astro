@@ -1,0 +1,32 @@
+---
+import { type Locale, localizePath } from "~/i18n";
+/** One node of the family tree, rendering its descendants recursively. */
+import type { Distro } from "~/lib/catalog";
+import DistroLogo from "./DistroLogo.astro";
+
+interface Props {
+  distro: Distro;
+  childrenOf: Map<string, Distro[]>;
+  locale: Locale;
+}
+
+const { distro, childrenOf, locale } = Astro.props;
+const kids = childrenOf.get(distro.id) ?? [];
+---
+
+<li>
+  <a class="node" href={localizePath(`/distros/${distro.id}/`, locale)}>
+    <DistroLogo file={distro.data.logo.file} name={distro.data.name} size={28} />
+    <span class="node-name">{distro.data.name}</span>
+    <span class="node-year caption dim-label">{distro.data.origin.firstRelease.slice(0, 4)}</span>
+  </a>
+  {
+    kids.length > 0 && (
+      <ul role="list">
+        {kids.map((k) => (
+          <Astro.self distro={k} childrenOf={childrenOf} locale={locale} />
+        ))}
+      </ul>
+    )
+  }
+</li>

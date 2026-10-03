@@ -13,8 +13,8 @@ import DistroLogo from "./DistroLogo.astro";
 interface Props {
   distro: CollectionEntry<"distros">;
   locale: Locale;
-  eager?: boolean;
-  headingLevel?: 2 | 3;
+  eager?: boolean | undefined;
+  headingLevel?: 2 | 3 | undefined;
 }
 
 const { distro, locale, eager = false, headingLevel = 3 } = Astro.props;
@@ -35,7 +35,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
 </Card>
 
 <style>
-  :global(.distro-card) {
+  :global(.adw-card.distro-card) {
     display: flex;
     align-items: flex-start;
     gap: var(--space-3);

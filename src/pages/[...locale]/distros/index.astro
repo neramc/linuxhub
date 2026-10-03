@@ -1,0 +1,205 @@
+---
+import Button from "~/components/adw/Button.astro";
+import Icon from "~/components/adw/Icon.astro";
+/**
+ * Catalog: every distro as a Flathub-style card. All cards are in the HTML
+ * (works without JS); src/scripts/catalog-filter.ts filters/sorts them in
+ * place and mirrors the state in the URL (?use=&family=&desktop=&model=&level=&sort=&q=).
+ */
+import StatusPage from "~/components/adw/StatusPage.astro";
+import DistroCard from "~/components/DistroCard.astro";
+import { localePaths, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { featuredRelease, getDistros, getReleases } from "~/lib/catalog";
+import { DESKTOPS, DIFFICULTIES, FAMILIES, RELEASE_MODELS, USE_CASES } from "~/lib/taxonomy";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const distros = await getDistros();
+const updated = new Map(
+  await Promise.all(
+    distros.map(
+      async (d) => [d.id, featuredRelease(await getReleases(d.id))?.releaseDate ?? ""] as const,
+    ),
+  ),
+);
+const usedDesktops = [...new Set(distros.flatMap((d) => d.data.desktops))].filter(
+  (k) => k !== "none",
+);
+const usedFamilies = [...new Set(distros.map((d) => d.data.family))];
+const filters = [
+  {
+    name: "use",
+    label: t("catalog.use"),
+    options: Object.keys(USE_CASES).map((k) => [k, USE_CASES[k as keyof typeof USE_CASES][locale]]),
+  },
+  {
+    name: "family",
+    label: t("catalog.family"),
+    options: Object.keys(FAMILIES)
+      .filter((k) => usedFamilies.includes(k as never))
+      .map((k) => [k, FAMILIES[k as keyof typeof FAMILIES][locale]]),
+  },
+  {
+    name: "desktop",
+    label: t("catalog.desktop"),
+    options: Object.keys(DESKTOPS)
+      .filter((k) => usedDesktops.includes(k as never))
+      .map((k) => [k, DESKTOPS[k as keyof typeof DESKTOPS][locale]]),
+  },
+  {
+    name: "model",
+    label: t("catalog.model"),
+    options: Object.keys(RELEASE_MODELS).map((k) => [
+      k,
+      RELEASE_MODELS[k as keyof typeof RELEASE_MODELS][locale],
+    ]),
+  },
+  {
+    name: "level",
+    label: t("catalog.level"),
+    options: Object.keys(DIFFICULTIES).map((k) => [
+      k,
+      DIFFICULTIES[k as keyof typeof DIFFICULTIES][locale],
+    ]),
+  },
+] as const;
+---
+
+<Base locale={locale} title={t("catalog.title")} description={t("catalog.lead", { count: distros.length })}>
+  <div class="container page">
+    <header class="page-header">
+      <h1>{t("catalog.title")}</h1>
+      <p class="dim-label">{t("catalog.lead", { count: distros.length })}</p>
+    </header>
+
+    <form class="filters" data-filters role="search" aria-label={t("catalog.filter")}>
+      <label class="search-field">
+        <Icon name="search" />
+        <input type="search" name="q" placeholder={t("catalog.search")} autocomplete="off" aria-label={t("catalog.search")} />
+      </label>
+      <div class="filter-row">
+        {
+          filters.map((f) => (
+            <label class="filter">
+              <span class="caption-heading dim-label">{f.label}</span>
+              <select name={f.name} class="combo-select">
+                <option value="">{t("catalog.any")}</option>
+                {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
+              </select>
+            </label>
+          ))
+        }
+        <label class="filter">
+          <span class="caption-heading dim-label">{t("catalog.sort")}</span>
+          <select name="sort" class="combo-select">
+            <option value="">{t("catalog.sortRecommended")}</option>
+            <option value="name">{t("catalog.sortName")}</option>
+            <option value="updated">{t("catalog.sortUpdated")}</option>
+          </select>
+        </label>
+      </div>
+      <p class="caption dim-label" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
+    </form>
+
+    <ul class="grid" role="list" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
+      {
+        distros.map((d, i) => (
+          <li
+            data-distro
+            data-order={d.data.order}
+            data-name={d.data.name.toLowerCase()}
+            data-search={[d.data.name, d.id, ...d.data.aliases, d.data.tagline.ko, d.data.tagline.en].join(" ").toLowerCase()}
+            data-use={d.data.useCases.join(" ")}
+            data-family={d.data.family}
+            data-desktop={d.data.desktops.join(" ")}
+            data-model={d.data.releaseModel}
+            data-level={d.data.difficulty}
+            data-updated={updated.get(d.id)}
+          >
+            <DistroCard distro={d} locale={locale} eager={i < 6} headingLevel={2} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <div data-empty hidden>
+      <StatusPage icon="search" title={t("catalog.emptyTitle")} description={t("catalog.emptyLead")} level={2}>
+        <Button pill data-reset>{t("catalog.reset")}</Button>
+      </StatusPage>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import "~/scripts/catalog-filter";
+</script>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .page-header {
+    display: grid;
+    gap: 6px;
+  }
+
+  .filters {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .search-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-inline-size: 28rem;
+    min-block-size: 40px;
+    padding-inline: 12px;
+    border-radius: var(--radius-button);
+    background: var(--button-color);
+  }
+
+  .search-field:focus-within {
+    outline: 2px solid var(--focus-ring-color);
+  }
+
+  .search-field input {
+    flex: 1;
+    min-inline-size: 0;
+    border: 0;
+    background: transparent;
+    outline: none;
+    block-size: 40px;
+  }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .filter {
+    display: grid;
+    gap: 4px;
+  }
+
+  .filter .combo-select {
+    max-inline-size: none;
+    min-inline-size: 9rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  }
+
+  .grid > li[hidden] {
+    display: none;
+  }
+</style>

@@ -7,10 +7,10 @@ import Icon from "./Icon.astro";
 
 interface Props {
   title: string;
-  subtitle?: string;
-  icon?: string;
-  open?: boolean;
-  name?: string;
+  subtitle?: string | undefined;
+  icon?: string | undefined;
+  open?: boolean | undefined;
+  name?: string | undefined;
 }
 
 const { title, subtitle, icon, open = false, name } = Astro.props;
@@ -34,29 +34,3 @@ const { title, subtitle, icon, open = false, name } = Astro.props;
     </div>
   </details>
 </li>
-
-<style is:global>
-  .adw-expander-row > summary {
-    list-style: none;
-    cursor: pointer;
-  }
-
-  .adw-expander-row > summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .adw-expander-arrow {
-    opacity: var(--dim-opacity);
-    transition: transform var(--duration) var(--ease-out-quad);
-  }
-
-  .adw-expander-row[open] .adw-expander-arrow {
-    transform: rotate(180deg);
-  }
-
-  .adw-expander-content {
-    background-color: color-mix(in srgb, var(--card-shade-color) 50%, transparent);
-    border-block-start: 1px solid var(--card-shade-color);
-    padding: var(--space-2) 14px;
-  }
-</style>

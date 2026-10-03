@@ -1,0 +1,371 @@
+---
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import { defaultArtifact, featuredRelease, formatBytes, formatDate } from "~/lib/catalog";
+/**
+ * Guided download (version → edition → architecture → file type → mirror).
+ * The default choice is fully server-rendered, so the download button works
+ * without JS. src/scripts/download.ts enhances it: other versions are fetched
+ * on demand from /data/releases/<slug>.json and, for distros with an official
+ * mirror list, the nearest mirror is suggested from /api/geo.
+ */
+import type { Artifact, Release, ReleasesFile } from "~/lib/data-schemas";
+import { ARCHITECTURES, type DownloadStrategy } from "~/lib/taxonomy";
+import Button from "./adw/Button.astro";
+import Icon from "./adw/Icon.astro";
+
+interface Props {
+  slug: string;
+  name: string;
+  locale: Locale;
+  strategy: DownloadStrategy;
+  officialDownload: string;
+  releases: ReleasesFile | undefined;
+  hasMirrors: boolean;
+}
+
+const { slug, name, locale, strategy, officialDownload, releases, hasMirrors } = Astro.props;
+const t = useTranslations(locale);
+const release = featuredRelease(releases);
+const choice = defaultArtifact(release);
+const usable = strategy !== "official-page" && release && choice;
+const installHref = localizePath(`/distros/${slug}/install/`, locale);
+
+function versionLabel(r: Release): string {
+  const tags: string[] = [];
+  if (r === release) tags.push(t("download.latest"));
+  if (r.channel === "beta" || r.channel === "testing")
+    tags.push(t(`download.channel.${r.channel}`));
+  if (r.channel === "lts") tags.push(t("download.lts"));
+  const label = r.codename ? `${r.version} “${r.codename}”` : r.version;
+  return tags.length ? `${label} (${tags.join(", ")})` : label;
+}
+
+function checksumLabel(a: Artifact): string {
+  if (!a.checksum) return t("download.checksumOther");
+  if (a.checksum.type === "sha256") return t("download.checksum");
+  if (a.checksum.type === "md5") return t("download.checksumMd5");
+  return `${a.checksum.type.toUpperCase()} ${t("download.checksumOther")}`;
+}
+
+const arches = choice ? [...new Set(choice.edition.artifacts.map((a) => a.arch))] : [];
+const formats = choice
+  ? [
+      ...new Set(
+        choice.edition.artifacts
+          .filter((a) => a.arch === choice.artifact.arch)
+          .map((a) => a.format),
+      ),
+    ]
+  : [];
+const size = choice ? formatBytes(choice.artifact.size, locale) : null;
+const mirrorMode = strategy === "mirrors" && hasMirrors && Boolean(choice?.artifact.path);
+
+const labels = {
+  latest: t("download.latest"),
+  lts: t("download.lts"),
+  channel: {
+    stable: t("download.channel.stable"),
+    lts: t("download.channel.lts"),
+    rolling: t("download.channel.rolling"),
+    beta: t("download.channel.beta"),
+    testing: t("download.channel.testing"),
+  },
+  checksum: t("download.checksum"),
+  checksumMd5: t("download.checksumMd5"),
+  checksumOther: t("download.checksumOther"),
+  auto: t("download.auto"),
+  recommended: t("download.recommended"),
+  recommendedFor: t("download.recommendedFor", { place: "{place}" }),
+  locating: t("download.locating"),
+  distance: t("download.distance", { km: "{km}" }),
+  noFiles: t("download.noFiles"),
+  button: t("download.buttonShort"),
+};
+const arches_ = ARCHITECTURES as Record<string, { ko: string; en: string }>;
+const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k, v[locale]]));
+---
+
+<section class="download" id="download" aria-labelledby="download-title">
+  <h2 id="download-title">{t("download.title")}</h2>
+
+  {
+    usable ? (
+      <div
+        class="download-card"
+        data-wizard
+        data-slug={slug}
+        data-locale={locale}
+        data-strategy={strategy}
+        data-mirrors={mirrorMode ? `/data/mirrors/${slug}.json` : undefined}
+        data-releases-url={`/data/releases/${slug}.json`}
+        data-labels={JSON.stringify(labels)}
+        data-arches={JSON.stringify(archLabels)}
+        data-default={JSON.stringify({ version: release.version, edition: choice.edition.id, arch: choice.artifact.arch, format: choice.artifact.format })}
+      >
+        <ul class="adw-boxed-list download-options" role="list">
+          <li>
+            <label class="combo-row">
+              <span class="combo-title">{t("download.version")}</span>
+              <select name="version" class="combo-select">
+                {releases?.releases.map((r) => (
+                  <option value={r.version} selected={r === release}>
+                    {versionLabel(r)}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </li>
+          <li>
+            <label class="combo-row">
+              <span class="combo-title">{t("download.edition")}</span>
+              <select name="edition" class="combo-select">
+                {release.editions.map((e) => (
+                  <option value={e.id} selected={e === choice.edition}>
+                    {e.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </li>
+          <li>
+            <label class="combo-row">
+              <span class="combo-title">{t("download.arch")}</span>
+              <select name="arch" class="combo-select">
+                {arches.map((a) => (
+                  <option value={a} selected={a === choice.artifact.arch}>
+                    {archLabels[a]}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </li>
+          <li data-format-row hidden={formats.length < 2}>
+            <label class="combo-row">
+              <span class="combo-title">{t("download.format")}</span>
+              <select name="format" class="combo-select">
+                {formats.map((f) => (
+                  <option value={f} selected={f === choice.artifact.format}>
+                    .{f}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </li>
+          <li>
+            <div class="combo-row mirror-row">
+              <span class="combo-title">{t("download.mirror")}</span>
+              <span class="mirror-value">
+                <span class="mirror-label" data-mirror-label>
+                  {mirrorMode ? t("download.locating") : t("download.auto")}
+                </span>
+                {mirrorMode && (
+                  <select name="mirror" class="combo-select" aria-label={t("download.mirror")} hidden>
+                    <option value="">{t("download.auto")}</option>
+                  </select>
+                )}
+              </span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="download-action">
+          <a
+            class="adw-button suggested pill image-text-button download-button"
+            href={choice.artifact.url}
+            data-download
+            rel="noopener"
+          >
+            <Icon name="download" />
+            <span>
+              {t("download.buttonShort")}
+              <span class="download-size" data-size>
+                {size ? ` · ${size}` : ""}
+              </span>
+            </span>
+          </a>
+          <p class="download-file caption dim-label" data-file>
+            {choice.artifact.file}
+          </p>
+          {strategy === "sourceforge" && <p class="caption dim-label">{t("download.sourceforge")}</p>}
+          {strategy === "redirector" && <p class="caption dim-label">{t("download.autoHint")}</p>}
+        </div>
+
+        <div class="verify" data-verify hidden={!choice.artifact.checksum}>
+          <p class="verify-title heading" data-checksum-label>
+            {checksumLabel(choice.artifact)}
+          </p>
+          <div class="checksum-box">
+            <code class="checksum" data-checksum>
+              {choice.artifact.checksum?.value}
+            </code>
+            <Button
+              variant="flat"
+              icon="copy"
+              label={t("common.copy")}
+              data-copy={choice.artifact.checksum?.value}
+              data-copy-checksum
+            />
+          </div>
+          <p class="verify-links caption">
+            <a href={choice.artifact.checksum?.url ?? "#"} data-checksum-url hidden={!choice.artifact.checksum?.url} rel="noopener">
+              {t("download.checksumFile")}
+            </a>
+            <a href={choice.artifact.signatureUrl ?? "#"} data-signature-url hidden={!choice.artifact.signatureUrl} rel="noopener">
+              {t("download.signature")}
+            </a>
+            <a href={choice.artifact.torrentUrl ?? "#"} data-torrent-url hidden={!choice.artifact.torrentUrl} rel="noopener">
+              {t("download.torrent")}
+            </a>
+            <a href={`${installHref}#verify`}>{t("download.verifyLink")}</a>
+          </p>
+          <p class="caption dim-label">{t("download.verifyHint")}</p>
+        </div>
+
+        <noscript>
+          <p class="caption dim-label">{t("download.noscript")}</p>
+        </noscript>
+      </div>
+    ) : (
+      <div class="download-card official-only">
+        <p>{t("download.officialPageHint")}</p>
+        {release && (
+          <p class="caption dim-label">
+            {t("facts.latest")}: <strong>{release.version}</strong>
+            {release.releaseDate && ` · ${formatDate(release.releaseDate, locale)}`}
+          </p>
+        )}
+        <Button href={officialDownload} variant="suggested" pill iconEnd="external" external>
+          {t("download.officialPage")}
+        </Button>
+      </div>
+    )
+  }
+
+  <a class="next-step" href={`${installHref}#usb`}>
+    <Icon name="usb" size={20} />
+    <span>{t("download.nextStep")}</span>
+    <Icon name="go-next" />
+  </a>
+  <span class="visually-hidden">{name}</span>
+</section>
+
+<script>
+  import "~/scripts/download";
+</script>
+
+<style>
+  .download {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .download-card {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .official-only {
+    padding: var(--space-3);
+    border-radius: var(--radius-card);
+    background: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+    justify-items: start;
+  }
+
+  .combo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-block-size: 54px;
+    padding: 6px 8px 6px 14px;
+  }
+
+  .combo-title {
+    flex: none;
+  }
+
+  .mirror-value {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    min-inline-size: 0;
+    text-align: end;
+  }
+
+  .mirror-label {
+    font-size: 0.9375rem;
+    opacity: var(--dim-opacity);
+  }
+
+  .download-action {
+    display: grid;
+    justify-items: start;
+    gap: 6px;
+  }
+
+  .download-button {
+    min-block-size: 52px;
+    font-size: 1.0625rem;
+  }
+
+  .download-size {
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .download-file {
+    overflow-wrap: anywhere;
+    font-family: var(--font-mono);
+  }
+
+  .verify {
+    display: grid;
+    gap: 6px;
+  }
+
+  .checksum-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 6px 6px 6px 12px;
+    border-radius: var(--radius-button);
+    background: var(--button-color);
+  }
+
+  .checksum {
+    flex: 1;
+    min-inline-size: 0;
+    font-size: 0.8125rem;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .verify-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .next-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 12px 14px;
+    border-radius: var(--radius-card);
+    background: color-mix(in srgb, var(--accent-bg-color) 10%, var(--card-bg-color));
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .next-step:hover {
+    background: color-mix(in srgb, var(--accent-bg-color) 16%, var(--card-bg-color));
+    text-decoration: none;
+  }
+
+  .next-step span {
+    flex: 1;
+  }
+</style>

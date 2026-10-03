@@ -1,0 +1,117 @@
+---
+import Button from "~/components/adw/Button.astro";
+import Icon from "~/components/adw/Icon.astro";
+import { localePaths, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { GROUPS, getChapters, readingMinutes } from "~/lib/learn";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const chapters = await getChapters(locale);
+const first = chapters[0];
+---
+
+<Base locale={locale} title={t("learn.title")} description={t("learn.lead")}>
+  <div class="container page">
+    <header class="page-header">
+      <h1 class="title-display">{t("learn.title")}</h1>
+      <p class="lead dim-label">{t("learn.lead")}</p>
+      {first && <div><Button href={localizePath(`/learn/${first.slug}/`, locale)} variant="suggested" pill icon="contents">{t("learn.start")}</Button></div>}
+    </header>
+
+    {
+      GROUPS.map((group) => {
+        const items = chapters.filter((c) => c.data.group === group);
+        return items.length ? (
+          <section class="group" aria-labelledby={`group-${group}`}>
+            <h2 id={`group-${group}`}>{t(`learn.groups.${group}`)}</h2>
+            <ul class="chapters" role="list">
+              {items.map((c) => (
+                <li>
+                  <a class="chapter adw-card activatable" href={localizePath(`/learn/${c.slug}/`, locale)}>
+                    <span class="chapter-icon"><Icon name={c.data.icon} size={20} /></span>
+                    <span class="chapter-text">
+                      <span class="chapter-title">
+                        <span class="chapter-num numeric">{c.data.order}.</span> {c.data.navTitle}
+                      </span>
+                      <span class="chapter-desc">{c.data.description}</span>
+                      <span class="caption dim-label">{t("learn.readingTime", { minutes: readingMinutes(c.body, locale) })}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null;
+      })
+    }
+  </div>
+</Base>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-5) var(--space-6);
+  }
+
+  .page-header {
+    display: grid;
+    gap: var(--space-2);
+    max-inline-size: 48rem;
+  }
+
+  .lead {
+    font-size: 1.125rem;
+  }
+
+  .group {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .chapters {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  }
+
+  .chapter {
+    display: flex;
+    gap: var(--space-2);
+    block-size: 100%;
+    padding: var(--space-3);
+    color: inherit;
+  }
+
+  .chapter-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: 40px;
+    block-size: 40px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--accent-bg-color) 14%, transparent);
+    color: var(--accent-color);
+  }
+
+  .chapter-text {
+    display: grid;
+    gap: 4px;
+  }
+
+  .chapter-title {
+    font-weight: 700;
+    font-size: var(--text-title-4);
+  }
+
+  .chapter-num {
+    opacity: var(--dim-opacity);
+  }
+
+  .chapter-desc {
+    opacity: var(--dim-opacity);
+    font-size: 0.9375rem;
+  }
+</style>

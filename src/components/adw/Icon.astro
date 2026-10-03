@@ -14,10 +14,10 @@ export type IconName = string;
 
 interface Props {
   name: IconName;
-  size?: number;
+  size?: number | undefined;
   /** Accessible label; omit for decorative icons (the default). */
-  label?: string;
-  class?: string;
+  label?: string | undefined;
+  class?: string | undefined;
 }
 
 const { name, size = 16, label, class: className } = Astro.props;
@@ -35,11 +35,3 @@ const svg = raw.replace(/<svg\b/, `<svg ${attrs}`);
 ---
 
 <Fragment set:html={svg} />
-
-<style is:global>
-  .adw-icon {
-    flex: none;
-    display: inline-block;
-    vertical-align: middle;
-  }
-</style>

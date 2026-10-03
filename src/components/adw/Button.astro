@@ -10,17 +10,17 @@ import Icon from "./Icon.astro";
 type Variant = "default" | "suggested" | "destructive" | "flat" | "opaque";
 
 type Props = (HTMLAttributes<"button"> & HTMLAttributes<"a">) & {
-  variant?: Variant;
-  pill?: boolean;
-  circular?: boolean;
-  icon?: string;
+  variant?: Variant | undefined;
+  pill?: boolean | undefined;
+  circular?: boolean | undefined;
+  icon?: string | undefined;
   /** Icon after the label (e.g. external links). */
-  iconEnd?: string;
+  iconEnd?: string | undefined;
   /** For icon-only buttons: the accessible label (also the tooltip). */
-  label?: string;
-  href?: string;
-  external?: boolean;
-  type?: "button" | "submit" | "reset";
+  label?: string | undefined;
+  href?: string | undefined;
+  external?: boolean | undefined;
+  type?: "button" | "submit" | "reset" | undefined;
 };
 
 const {
@@ -65,133 +65,3 @@ const linkAttrs = href
   {hasText && <span class="adw-button-label"><slot /></span>}
   {iconEnd && <Icon name={iconEnd} />}
 </Tag>
-
-<style is:global>
-  .adw-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-block-size: 36px;
-    padding: 6px 12px;
-    border: 0;
-    border-radius: var(--radius-button);
-    background-color: var(--button-color);
-    color: inherit;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    line-height: 1.2;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
-    user-select: none;
-    transition:
-      background-color var(--duration) var(--ease-out-quad),
-      outline-color var(--duration) var(--ease-out-quad);
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .adw-button:hover {
-    background-color: var(--button-hover-color);
-    text-decoration: none;
-  }
-
-  .adw-button:active {
-    background-color: var(--button-active-color);
-  }
-
-  .adw-button:focus-visible {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: 1px;
-    border-radius: var(--radius-button);
-  }
-
-  .adw-button.text-button {
-    padding-inline: 17px;
-  }
-
-  .adw-button.image-button {
-    min-inline-size: 36px;
-    padding-inline: 10px;
-  }
-
-  .adw-button.image-text-button {
-    padding-inline: 14px;
-  }
-
-  .adw-button.flat {
-    background-color: transparent;
-  }
-
-  .adw-button.flat:hover {
-    background-color: var(--hover-color);
-  }
-
-  .adw-button.flat:active {
-    background-color: var(--active-color);
-  }
-
-  .adw-button.suggested,
-  .adw-button.destructive,
-  .adw-button.opaque {
-    background-image: none;
-  }
-
-  .adw-button.suggested {
-    background-color: var(--accent-bg-color);
-    color: var(--accent-fg-color);
-  }
-
-  .adw-button.destructive {
-    background-color: var(--destructive-bg-color);
-    color: var(--destructive-fg-color);
-  }
-
-  .adw-button.opaque {
-    background-color: color-mix(in srgb, var(--window-bg-color) 85%, var(--window-fg-color));
-    color: var(--window-fg-color);
-  }
-
-  .adw-button.suggested:hover,
-  .adw-button.destructive:hover,
-  .adw-button.opaque:hover {
-    background-image: linear-gradient(
-      color-mix(in srgb, currentColor 10%, transparent),
-      color-mix(in srgb, currentColor 10%, transparent)
-    );
-  }
-
-  .adw-button.suggested:active,
-  .adw-button.destructive:active,
-  .adw-button.opaque:active {
-    background-image: linear-gradient(rgb(0 0 6 / 20%), rgb(0 0 6 / 20%));
-  }
-
-  .adw-button.pill {
-    min-block-size: 44px;
-    padding: 10px 32px;
-    border-radius: var(--radius-pill);
-  }
-
-  .adw-button.pill.image-text-button {
-    padding-inline: 24px 28px;
-  }
-
-  .adw-button.circular {
-    border-radius: var(--radius-pill);
-    min-inline-size: 36px;
-    padding-inline: 0;
-  }
-
-  .adw-button[disabled],
-  .adw-button[aria-disabled="true"] {
-    opacity: var(--disabled-opacity);
-    pointer-events: none;
-  }
-
-  @media (prefers-contrast: more) {
-    .adw-button:not(.flat, .suggested, .destructive) {
-      box-shadow: inset 0 0 0 1px var(--border-color);
-    }
-  }
-</style>

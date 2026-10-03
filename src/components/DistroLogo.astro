@@ -9,10 +9,10 @@ import { logoUrl } from "~/lib/logos";
 interface Props {
   file: string;
   name: string;
-  size?: number;
-  eager?: boolean;
+  size?: number | undefined;
+  eager?: boolean | undefined;
   /** Decorative when the name is already next to it (default). */
-  decorative?: boolean;
+  decorative?: boolean | undefined;
 }
 
 const { file, name, size = 64, eager = false, decorative = true } = Astro.props;

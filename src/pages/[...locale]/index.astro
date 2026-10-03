@@ -1,15 +1,218 @@
 ---
-import { localePaths, useTranslations } from "~/i18n";
-// Temporary home until Phase 4 (docs/plan.md §10).
+import Button from "~/components/adw/Button.astro";
+import Icon from "~/components/adw/Icon.astro";
+import DistroCard from "~/components/DistroCard.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
+import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
+import { formatDate, getDistros, getHistory } from "~/lib/catalog";
+import { USE_CASES, type UseCase } from "~/lib/taxonomy";
+import { USE_ICONS } from "~/lib/use-icons";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const distros = await getDistros();
+const featured = distros.filter((d) => d.data.status === "active").slice(0, 6);
+const bySlug = new Map(distros.map((d) => [d.id, d]));
+const recent = getHistory()
+  .filter((h) => bySlug.has(h.slug))
+  .slice(0, 6);
+const uses: UseCase[] = [
+  "beginner",
+  "gaming",
+  "developer",
+  "server",
+  "lightweight",
+  "privacy",
+  "security",
+  "creative",
+];
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Linuxhub",
+    url: new URL(localizePath("/", locale), Astro.site).href,
+    inLanguage: locale,
+  },
+];
 ---
 
-<Base locale={locale}>
-  <section class="container">
-    <h1 class="title-display">{t("site.tagline")}</h1>
+<Base locale={locale} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1 class="title-display">{t("home.title")}</h1>
+      <p class="lead">{t("home.lead")}</p>
+      <div class="hero-actions">
+        <Button href={localizePath("/distros/", locale)} variant="suggested" pill icon="app-grid">{t("home.browse")}</Button>
+        <Button href={localizePath("/finder/", locale)} pill icon="star">{t("home.finder")}</Button>
+      </div>
+      <p class="caption dim-label">{t("home.stats", { count: distros.length })}</p>
+    </div>
   </section>
+
+  <div class="container sections">
+    <section aria-labelledby="featured-title" class="section">
+      <div class="section-header">
+        <div>
+          <h2 id="featured-title">{t("home.featured")}</h2>
+          <p class="dim-label">{t("home.featuredLead")}</p>
+        </div>
+        <Button href={localizePath("/distros/", locale)} variant="flat" iconEnd="go-next">{t("common.more")}</Button>
+      </div>
+      <ul class="grid" role="list">
+        {featured.map((d, i) => <li><DistroCard distro={d} locale={locale} eager={i < 3} /></li>)}
+      </ul>
+    </section>
+
+    <section aria-labelledby="uses-title" class="section">
+      <h2 id="uses-title">{t("home.byUse")}</h2>
+      <ul class="uses" role="list">
+        {
+          uses.map((u) => (
+            <li>
+              <a class="use-tile adw-card activatable" href={`${localizePath("/distros/", locale)}?use=${u}`}>
+                <span class="use-icon"><Icon name={USE_ICONS[u]} size={20} /></span>
+                <span class="heading">{USE_CASES[u][locale]}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    {
+      recent.length > 0 && (
+        <section aria-labelledby="recent-title" class="section">
+          <div class="section-header">
+            <div>
+              <h2 id="recent-title">{t("home.recent")}</h2>
+              <p class="dim-label">{t("home.recentLead")}</p>
+            </div>
+            <Button href={localizePath("/releases/", locale)} variant="flat" iconEnd="go-next">{t("home.allReleases")}</Button>
+          </div>
+          <ul class="adw-boxed-list" role="list">
+            {recent.map((h) => {
+              const d = bySlug.get(h.slug);
+              return d ? (
+                <li>
+                  <a class="adw-action-row activatable" href={localizePath(`/distros/${h.slug}/`, locale)}>
+                    <DistroLogo file={d.data.logo.file} name={d.data.name} size={36} />
+                    <span class="adw-row-text">
+                      <span class="adw-row-title">{d.data.name} {h.version}</span>
+                      <span class="adw-row-subtitle">{formatDate(h.date, locale)}</span>
+                    </span>
+                    <Icon name="go-next" class="adw-row-chevron" />
+                  </a>
+                </li>
+              ) : null;
+            })}
+          </ul>
+        </section>
+      )
+    }
+
+    <section aria-labelledby="learn-title" class="section learn-teaser adw-card padded">
+      <div>
+        <h2 id="learn-title">{t("home.newToLinux")}</h2>
+        <p class="dim-label">{t("home.newToLinuxLead")}</p>
+      </div>
+      <Button href={localizePath("/learn/", locale)} pill icon="contents">{t("home.openGuide")}</Button>
+    </section>
+  </div>
 </Base>
+
+<style>
+  .hero {
+    padding-block: clamp(36px, 7vw, 88px) clamp(28px, 5vw, 56px);
+    background:
+      radial-gradient(1200px 400px at 50% -120px, color-mix(in srgb, var(--accent-bg-color) 14%, transparent), transparent),
+      var(--window-bg-color);
+  }
+
+  .hero-inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  .lead {
+    max-inline-size: 40rem;
+    font-size: 1.125rem;
+    opacity: var(--dim-opacity);
+    text-wrap: balance;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-block: var(--space-2) var(--space-1);
+  }
+
+  .sections {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .section {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .section-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  }
+
+  .uses {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  }
+
+  .use-tile {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    color: inherit;
+  }
+
+  .use-icon {
+    display: grid;
+    place-items: center;
+    inline-size: 40px;
+    block-size: 40px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--accent-bg-color) 14%, transparent);
+    color: var(--accent-color);
+  }
+
+  .learn-teaser {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .learn-teaser > div {
+    display: grid;
+    gap: 6px;
+    max-inline-size: 40rem;
+  }
+</style>

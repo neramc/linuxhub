@@ -1,0 +1,61 @@
+---
+/** "On this page" navigation from MDX headings (h2/h3). */
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+  title: string;
+}
+
+const { headings, title } = Astro.props;
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  items.length > 0 && (
+    <nav class="toc" aria-label={title}>
+      <p class="caption-heading dim-label">{title}</p>
+      <ul role="list">
+        {items.map((h) => (
+          <li class:list={[`depth-${h.depth}`]}>
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<style>
+  .toc {
+    display: grid;
+    gap: 8px;
+    font-size: 0.9375rem;
+  }
+
+  .toc ul {
+    display: grid;
+    gap: 2px;
+    border-inline-start: 2px solid var(--border-color);
+  }
+
+  .toc a {
+    display: block;
+    padding: 4px 12px;
+    margin-inline-start: -2px;
+    border-inline-start: 2px solid transparent;
+    color: inherit;
+    opacity: var(--dim-opacity);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    opacity: 1;
+    border-inline-start-color: var(--accent-color);
+  }
+
+  .toc .depth-3 a {
+    padding-inline-start: 24px;
+    font-size: 0.875rem;
+  }
+</style>

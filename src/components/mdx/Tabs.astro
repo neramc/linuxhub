@@ -1,0 +1,16 @@
+---
+/**
+ * OS-specific instructions (Windows / macOS / Linux …) without JS: a group of
+ * collapsible <Tab label="…"> sections styled as Adwaita cards.
+ */
+---
+
+<div class="os-tabs"><slot /></div>
+
+<style>
+  .os-tabs {
+    display: grid;
+    gap: 6px;
+    margin-block: 1.2em;
+  }
+</style>

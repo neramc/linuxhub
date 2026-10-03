@@ -30,7 +30,7 @@ export default defineConfig({
   ],
   webServer: {
     // Serves the production build in dist/ (run `bun run build` first).
-    command: `bunx astro preview --port ${PORT} --ignore-lock`,
+    command: `bun scripts/serve.ts --port=${PORT}`,
     port: PORT,
     reuseExistingServer: !process.env.CI,
   },

@@ -1,0 +1,11 @@
+---
+/** The default image file name from the synced data: <IsoName slug="fedora" />. */
+import { lookup } from "./data";
+
+interface Props {
+  slug: string;
+}
+const { artifact } = await lookup(Astro.props.slug);
+---
+
+<code>{artifact?.file ?? "*.iso"}</code>

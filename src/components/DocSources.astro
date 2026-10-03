@@ -1,0 +1,49 @@
+---
+import { type Locale } from "~/i18n";
+/** Citation footer for a document: official sources + last reviewed date. */
+import { formatDate } from "~/lib/catalog";
+
+interface Props {
+  sources: string[];
+  lastReviewed: string;
+  locale: Locale;
+}
+
+const { sources, lastReviewed, locale } = Astro.props;
+const heading = locale === "ko" ? "참고한 공식 자료" : "Official sources";
+const reviewed =
+  locale === "ko"
+    ? `마지막 검토: ${formatDate(lastReviewed, locale)}`
+    : `Last reviewed ${formatDate(lastReviewed, locale)}`;
+const note =
+  locale === "ko"
+    ? "이 문서는 아래 공식 자료를 바탕으로 직접 정리한 것입니다. 최종 기준은 언제나 공식 문서입니다."
+    : "This page summarizes the official sources below in our own words. The official documentation always takes precedence.";
+---
+
+<aside class="doc-sources" data-pagefind-ignore>
+  <h2 class="caption-heading">{heading}</h2>
+  <p class="caption dim-label">{note}</p>
+  <ul>
+    {sources.map((url) => <li><a href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
+  </ul>
+  <p class="caption dim-label">{reviewed}</p>
+</aside>
+
+<style>
+  .doc-sources {
+    display: grid;
+    gap: 6px;
+    margin-block-start: var(--space-5);
+    padding: var(--space-3);
+    border-radius: var(--radius-card);
+    background: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+    font-size: 0.9375rem;
+  }
+
+  .doc-sources ul {
+    padding-inline-start: 1.2em;
+    overflow-wrap: anywhere;
+  }
+</style>

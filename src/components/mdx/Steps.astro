@@ -1,0 +1,41 @@
+---
+/** Numbered procedure: wrap an ordered list (1. … 2. …) to get Adwaita step badges. */
+---
+
+<div class="steps"><slot /></div>
+
+<style>
+  .steps :global(> ol) {
+    list-style: none;
+    padding-inline-start: 0;
+    counter-reset: step;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .steps :global(> ol > li) {
+    position: relative;
+    counter-increment: step;
+    padding-inline-start: 44px;
+  }
+
+  .steps :global(> ol > li)::before {
+    content: counter(step);
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    display: grid;
+    place-items: center;
+    inline-size: 30px;
+    block-size: 30px;
+    border-radius: 50%;
+    background: var(--accent-bg-color);
+    color: var(--accent-fg-color);
+    font-weight: 800;
+    font-size: 0.9375rem;
+  }
+
+  .steps :global(> ol > li + li) {
+    margin-block-start: 0;
+  }
+</style>

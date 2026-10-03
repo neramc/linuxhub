@@ -1,0 +1,35 @@
+---
+interface Props {
+  label: string;
+  open?: boolean;
+}
+const { label, open = false } = Astro.props;
+---
+
+<details class="os-tab" open={open}>
+  <summary>{label}</summary>
+  <div class="os-tab-body"><slot /></div>
+</details>
+
+<style>
+  .os-tab {
+    border-radius: var(--radius-card);
+    background: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+  }
+
+  .os-tab > summary {
+    cursor: pointer;
+    padding: 12px 16px;
+    font-weight: 700;
+    list-style-position: inside;
+  }
+
+  .os-tab-body {
+    padding: 0 16px 12px;
+  }
+
+  .os-tab-body > :global(* + *) {
+    margin-block-start: 0.8em;
+  }
+</style>

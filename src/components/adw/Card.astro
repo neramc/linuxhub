@@ -7,9 +7,9 @@
 import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"div"> & {
-  href?: string;
-  as?: "div" | "article" | "section" | "li";
-  padded?: boolean;
+  href?: string | undefined;
+  as?: "div" | "article" | "section" | "li" | undefined;
+  padded?: boolean | undefined;
 };
 
 const { href, as = "div", padded = true, class: className, ...rest } = Astro.props;
@@ -23,52 +23,3 @@ const Tag = href ? "a" : as;
 >
   <slot />
 </Tag>
-
-<style is:global>
-  .adw-card {
-    display: block;
-    background-color: var(--card-bg-color);
-    color: var(--card-fg-color);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    text-decoration: none;
-  }
-
-  .adw-card.padded {
-    padding: var(--space-3);
-  }
-
-  .adw-card.activatable {
-    transition: background-image var(--duration) var(--ease-out-quad);
-  }
-
-  .adw-card.activatable:hover {
-    background-image: linear-gradient(
-      color-mix(in srgb, currentColor 3%, transparent),
-      color-mix(in srgb, currentColor 3%, transparent)
-    );
-    text-decoration: none;
-  }
-
-  .adw-card.activatable:active {
-    background-image: linear-gradient(
-      color-mix(in srgb, currentColor 8%, transparent),
-      color-mix(in srgb, currentColor 8%, transparent)
-    );
-  }
-
-  .adw-card.activatable:focus-visible {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: -1px;
-    border-radius: var(--radius-card);
-  }
-
-  @media (prefers-contrast: more) {
-    .adw-card {
-      box-shadow:
-        0 0 0 1px var(--border-color),
-        0 1px 3px 1px rgb(0 0 6 / 7%),
-        0 2px 6px 2px rgb(0 0 6 / 3%);
-    }
-  }
-</style>

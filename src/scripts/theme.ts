@@ -34,3 +34,5 @@ for (const input of document.querySelectorAll<HTMLInputElement>('input[name="lh-
     if (input.checked) apply(input.value as Choice);
   });
 }
+
+export {};

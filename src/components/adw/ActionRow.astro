@@ -8,13 +8,13 @@ import Icon from "./Icon.astro";
 
 interface Props {
   title: string;
-  subtitle?: string;
-  icon?: string;
-  href?: string;
-  external?: boolean;
+  subtitle?: string | undefined;
+  icon?: string | undefined;
+  href?: string | undefined;
+  external?: boolean | undefined;
   /** Render the subtitle above the title, like AdwActionRow's `subtitle-lines` property style used for property rows. */
-  property?: boolean;
-  monospaceSubtitle?: boolean;
+  property?: boolean | undefined;
+  monospaceSubtitle?: boolean | undefined;
 }
 
 const {
@@ -53,91 +53,3 @@ const hasSubtitleSlot = Astro.slots.has("subtitle");
     </span>
   </Tag>
 </li>
-
-<style is:global>
-  .adw-action-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-block-size: 54px;
-    padding: 8px 14px;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .adw-action-row.activatable {
-    transition: background-color var(--duration) var(--ease-out-quad);
-  }
-
-  .adw-action-row.activatable:hover {
-    background-color: var(--view-hover-color);
-    text-decoration: none;
-  }
-
-  .adw-action-row.activatable:active {
-    background-color: var(--view-active-color);
-  }
-
-  .adw-action-row.activatable:focus-visible {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: -2px;
-    border-radius: 0;
-  }
-
-  .adw-boxed-list > li:first-child > .adw-action-row.activatable:focus-visible {
-    border-start-start-radius: var(--radius-card);
-    border-start-end-radius: var(--radius-card);
-  }
-
-  .adw-boxed-list > li:last-child > .adw-action-row.activatable:focus-visible {
-    border-end-start-radius: var(--radius-card);
-    border-end-end-radius: var(--radius-card);
-  }
-
-  .adw-row-text {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-inline-size: 0;
-    gap: 1px;
-  }
-
-  .adw-row-title {
-    overflow-wrap: anywhere;
-  }
-
-  .adw-row-subtitle {
-    font-size: var(--text-caption);
-    opacity: var(--dim-opacity);
-    overflow-wrap: anywhere;
-  }
-
-  .adw-row-subtitle.mono {
-    font-family: var(--font-mono);
-  }
-
-  /* Property rows: dim caption label above the value. */
-  .adw-action-row.property .adw-row-text {
-    flex-direction: column-reverse;
-  }
-
-  .adw-action-row.property .adw-row-title {
-    font-size: var(--text-body);
-  }
-
-  .adw-row-suffix {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    flex: none;
-  }
-
-  .adw-row-suffix:empty {
-    display: none;
-  }
-
-  .adw-row-chevron,
-  .adw-row-prefix {
-    opacity: var(--dim-opacity);
-  }
-</style>

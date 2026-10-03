@@ -1,0 +1,80 @@
+---
+import Button from "~/components/adw/Button.astro";
+import Icon from "~/components/adw/Icon.astro";
+import StatusPage from "~/components/adw/StatusPage.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
+import { localePaths, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { formatDate, getDistros, getHistory } from "~/lib/catalog";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const bySlug = new Map((await getDistros()).map((d) => [d.id, d]));
+const history = getHistory().filter((h) => bySlug.has(h.slug));
+const byMonth = new Map<string, typeof history>();
+for (const h of history) {
+  const key = h.date.slice(0, 7);
+  byMonth.set(key, [...(byMonth.get(key) ?? []), h]);
+}
+const monthLabel = (ym: string) =>
+  new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", timeZone: "UTC" }).format(
+    new Date(`${ym}-01T00:00:00Z`),
+  );
+---
+
+<Base locale={locale} title={t("releases.title")} description={t("releases.lead")}>
+  <div class="container page">
+    <header class="page-header">
+      <h1>{t("releases.title")}</h1>
+      <p class="dim-label">{t("releases.lead")}</p>
+      <div><Button href={localizePath("/rss.xml", locale)} icon="bookmark" pill>{t("releases.feed")}</Button></div>
+    </header>
+
+    {
+      history.length === 0 ? (
+        <StatusPage icon="update" title={t("releases.empty")} level={2} />
+      ) : (
+        [...byMonth].map(([month, items]) => (
+          <section class="month" aria-label={monthLabel(month)}>
+            <h2>{monthLabel(month)}</h2>
+            <ul class="adw-boxed-list" role="list">
+              {items.map((h) => {
+                const d = bySlug.get(h.slug);
+                return d ? (
+                  <li>
+                    <a class="adw-action-row activatable" href={localizePath(`/distros/${h.slug}/`, locale)}>
+                      <DistroLogo file={d.data.logo.file} name={d.data.name} size={36} />
+                      <span class="adw-row-text">
+                        <span class="adw-row-title">
+                          {d.data.name} {h.version}
+                        </span>
+                        <span class="adw-row-subtitle">{formatDate(h.date, locale)}</span>
+                      </span>
+                      <Icon name="go-next" class="adw-row-chevron" />
+                    </a>
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </section>
+        ))
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-4) var(--space-6);
+    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
+  }
+
+  .page-header,
+  .month {
+    display: grid;
+    gap: var(--space-2);
+  }
+</style>

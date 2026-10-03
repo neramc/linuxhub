@@ -1,0 +1,143 @@
+---
+/**
+ * Site search (Ctrl/⌘+K, "/" or the header search button): an Adwaita dialog
+ * over Pagefind's static index. Pagefind's JS (~30 KB) and the index chunks
+ * load only when the dialog first opens.
+ */
+import { type Locale, useTranslations } from "~/i18n";
+import Icon from "../adw/Icon.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const labels = {
+  noResults: t("search.noResults", { query: "{query}" }),
+  loading: t("search.loading"),
+  results: t("search.results", { count: "{count}" }),
+};
+---
+
+<dialog id="search-dialog" class="search-dialog" aria-label={t("search.open")} data-labels={JSON.stringify(labels)}>
+  <form method="dialog" class="search-head" role="search">
+    <label class="search-entry">
+      <Icon name="search" />
+      <input
+        type="search"
+        name="q"
+        placeholder={t("search.placeholder")}
+        autocomplete="off"
+        spellcheck="false"
+        aria-label={t("search.placeholder")}
+        aria-controls="search-results"
+        data-search-input
+      />
+    </label>
+    <button class="adw-button flat image-button" value="close" aria-label={t("search.close")} title={t("search.close")}>
+      <Icon name="close" />
+    </button>
+  </form>
+  <p class="search-status caption dim-label" data-search-status aria-live="polite">{t("search.hint")}</p>
+  <ul id="search-results" class="search-results" role="list" data-search-results></ul>
+</dialog>
+
+<script>
+  import "~/scripts/search";
+</script>
+
+<style>
+  .search-dialog {
+    inline-size: min(640px, calc(100vw - 24px));
+    max-block-size: min(70vh, 640px);
+    margin: 10vh auto auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-dialog);
+    background: var(--dialog-bg-color);
+    color: var(--dialog-fg-color);
+    box-shadow: var(--shadow-dialog);
+    overflow: hidden;
+  }
+
+  .search-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-dialog::backdrop {
+    background: rgb(0 0 6 / 30%);
+  }
+
+  .search-head {
+    display: flex;
+    gap: 6px;
+    padding: 10px;
+    border-block-end: 1px solid var(--border-color);
+  }
+
+  .search-entry {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-inline: 12px;
+    border-radius: var(--radius-button);
+    background: var(--button-color);
+  }
+
+  .search-entry:focus-within {
+    outline: 2px solid var(--focus-ring-color);
+  }
+
+  .search-entry input {
+    flex: 1;
+    min-inline-size: 0;
+    block-size: 40px;
+    border: 0;
+    background: transparent;
+    outline: none;
+    font-size: 1.0625rem;
+  }
+
+  .search-status {
+    padding: 10px 16px 0;
+  }
+
+  .search-results {
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    overflow-y: auto;
+  }
+
+  .search-results :global(a) {
+    display: grid;
+    gap: 2px;
+    padding: 10px 12px;
+    border-radius: var(--radius-menu);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .search-results :global(a:hover),
+  .search-results :global(a[aria-selected="true"]) {
+    background: var(--hover-color);
+  }
+
+  .search-results :global(.result-title) {
+    font-weight: 700;
+  }
+
+  .search-results :global(.result-excerpt) {
+    font-size: var(--text-caption);
+    opacity: var(--dim-opacity);
+  }
+
+  .search-results :global(mark) {
+    background: color-mix(in srgb, var(--accent-bg-color) 25%, transparent);
+    color: inherit;
+    border-radius: 3px;
+  }
+</style>

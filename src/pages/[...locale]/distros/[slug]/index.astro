@@ -1,0 +1,267 @@
+---
+import { render } from "astro:content";
+import Badge from "~/components/adw/Badge.astro";
+import Button from "~/components/adw/Button.astro";
+import Callout from "~/components/adw/Callout.astro";
+import Icon from "~/components/adw/Icon.astro";
+import DistroCard from "~/components/DistroCard.astro";
+import DistroFacts from "~/components/DistroFacts.astro";
+import DistroLinks from "~/components/DistroLinks.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
+import DownloadWizard from "~/components/DownloadWizard.astro";
+import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import {
+  featuredRelease,
+  getDistroDoc,
+  getDistros,
+  getMirrors,
+  getReleases,
+  getStatus,
+} from "~/lib/catalog";
+import { relatedDistros } from "~/lib/related";
+import { FAMILIES, RELEASE_MODELS, USE_CASES } from "~/lib/taxonomy";
+
+export async function getStaticPaths() {
+  const distros = await getDistros();
+  return LOCALES.flatMap((locale) =>
+    distros.map((distro) => ({
+      params: { locale: localeParam(locale), slug: distro.id },
+      props: { locale, slug: distro.id },
+    })),
+  );
+}
+
+const { locale, slug } = Astro.props as { locale: Locale; slug: string };
+const t = useTranslations(locale);
+const all = await getDistros();
+const distro = all.find((d) => d.id === slug);
+if (!distro) throw new Error(`unknown distro ${slug}`);
+const d = distro.data;
+const base = d.basedOn ? all.find((x) => x.id === d.basedOn) : undefined;
+const releases = await getReleases(slug);
+const release = featuredRelease(releases);
+const overview = await getDistroDoc(slug, locale, "overview");
+const Overview = overview ? (await render(overview)).Content : null;
+const related = relatedDistros(distro, all);
+const status = getStatus()[slug];
+const stale = Boolean(status?.releases?.failingSince);
+const installHref = localizePath(`/distros/${slug}/install/`, locale);
+const description = `${d.name}: ${d.tagline[locale]}`;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: d.name,
+    description: d.tagline[locale],
+    applicationCategory: "OperatingSystem",
+    operatingSystem: "Linux",
+    ...(release ? { softwareVersion: release.version } : {}),
+    url: d.links.home,
+    downloadUrl: d.links.download,
+    offers: { "@type": "Offer", price: 0, priceCurrency: "USD" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("nav.distros"),
+        item: new URL(localizePath("/distros/", locale), Astro.site).href,
+      },
+      { "@type": "ListItem", position: 2, name: d.name },
+    ],
+  },
+];
+---
+
+<Base locale={locale} title={d.name} description={description} jsonLd={jsonLd}>
+  <div class="container page" data-pagefind-body>
+    <p class="visually-hidden" aria-hidden="true" data-pagefind-weight="6">{[slug, ...d.aliases].join(" ")}</p>
+    <nav class="breadcrumb caption" aria-label="Breadcrumb" data-pagefind-ignore>
+      <a href={localizePath("/distros/", locale)}>{t("distro.breadcrumb")}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{d.name}</span>
+    </nav>
+
+    <header class="hero">
+      <DistroLogo file={d.logo.file} name={d.name} size={112} eager />
+      <div class="hero-text">
+        <h1>{d.name}</h1>
+        <p class="tagline">{d.tagline[locale]}</p>
+        <div class="badges">
+          <Badge href={`${localizePath("/distros/", locale)}?family=${d.family}`}>{FAMILIES[d.family][locale]}</Badge>
+          <Badge>{RELEASE_MODELS[d.releaseModel][locale]}</Badge>
+          {d.useCases.slice(0, 3).map((u) => <Badge href={`${localizePath("/distros/", locale)}?use=${u}`}>{USE_CASES[u][locale]}</Badge>)}
+          {release && <Badge tone="accent">{release.version}</Badge>}
+        </div>
+      </div>
+      <div class="hero-actions">
+        <Button href="#download" variant="suggested" pill icon="download">{t("distro.download")}</Button>
+        <Button href={installHref} pill icon="contents">{t("distro.installGuide")}</Button>
+        <Button href={d.links.home} variant="flat" iconEnd="external" external>{t("distro.officialSite")}</Button>
+      </div>
+    </header>
+
+    {stale && <Callout type="warning">{t("distro.dataStale")}</Callout>}
+
+    <div class="layout">
+      <div class="main">
+        <section class="overview" aria-labelledby="overview-title">
+          <h2 id="overview-title">{t("distro.overview")}</h2>
+          {Overview ? <div class="prose"><Overview /></div> : <p class="dim-label">{t("distro.noOverview")}</p>}
+        </section>
+
+        <div data-pagefind-ignore>
+        <DownloadWizard
+          slug={slug}
+          name={d.name}
+          locale={locale}
+          strategy={d.download.strategy}
+          officialDownload={d.links.download}
+          releases={releases}
+          hasMirrors={Boolean(getMirrors(slug))}
+        />
+        </div>
+
+        <a class="install-cta adw-card padded activatable" href={installHref}>
+          <span class="install-cta-text">
+            <span class="heading">{t("distro.installGuide")}</span>
+            <span class="dim-label">{t("distro.installCta")}</span>
+          </span>
+          <span class="adw-button suggested circular image-button" aria-hidden="true"><Icon name="go-next" /></span>
+        </a>
+      </div>
+
+      <aside class="side">
+        <DistroFacts distro={distro} base={base} releases={releases} locale={locale} />
+        <div data-pagefind-ignore><DistroLinks distro={distro} locale={locale} /></div>
+        <p class="caption dim-label">{t("distro.dataNote")}</p>
+      </aside>
+    </div>
+
+    <section class="related" aria-labelledby="related-title" data-pagefind-ignore>
+      <h2 id="related-title">{t("distro.related")}</h2>
+      <ul class="related-grid" role="list">
+        {related.map((r) => <li><DistroCard distro={r} locale={locale} /></li>)}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-3) var(--space-6);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 8px;
+    opacity: var(--dim-opacity);
+  }
+
+  .breadcrumb a {
+    color: inherit;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3) var(--space-4);
+    align-items: center;
+  }
+
+  .hero-text {
+    display: grid;
+    gap: 6px;
+    min-inline-size: 0;
+  }
+
+  .tagline {
+    font-size: 1.125rem;
+    opacity: var(--dim-opacity);
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-block-start: 4px;
+  }
+
+  .hero-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .layout {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .main,
+  .side {
+    display: grid;
+    gap: var(--space-5);
+    align-content: start;
+    min-inline-size: 0;
+  }
+
+  .overview {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .install-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: inherit;
+  }
+
+  .install-cta-text {
+    display: grid;
+    flex: 1;
+  }
+
+  .related {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .related-grid {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  }
+
+  @media (max-width: 599px) {
+    .hero {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr) 380px;
+    }
+
+    .hero {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .hero-actions {
+      grid-column: auto;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

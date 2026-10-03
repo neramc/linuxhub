@@ -1,0 +1,229 @@
+---
+/**
+ * Side-by-side comparison of up to three distros. Every cell is pre-rendered
+ * per locale into a compact JSON; the page shows a default trio without JS and
+ * src/scripts/compare.ts swaps columns from the selects / ?d=a,b,c.
+ */
+import { localePaths, localizePath, type MessageKey, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { featuredRelease, formatDate, getDistros, getReleases } from "~/lib/catalog";
+import { logoUrl } from "~/lib/logos";
+import {
+  ARCHITECTURES,
+  DESKTOPS,
+  DIFFICULTIES,
+  FAMILIES,
+  INSTALLERS,
+  RELEASE_MODELS,
+  SECURE_BOOT,
+  USE_CASES,
+} from "~/lib/taxonomy";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const distros = await getDistros();
+const byId = new Map(distros.map((d) => [d.id, d]));
+const regions = new Intl.DisplayNames([locale], { type: "region" });
+const ROWS = [
+  "latest",
+  "released",
+  "eol",
+  "family",
+  "model",
+  "desktop",
+  "desktops",
+  "packages",
+  "installer",
+  "arch",
+  "secureBoot",
+  "requirements",
+  "difficulty",
+  "uses",
+  "origin",
+] as const;
+
+const cells: Record<
+  string,
+  Record<(typeof ROWS)[number], string> & { name: string; logo: string; href: string }
+> = {};
+for (const d of distros) {
+  const x = d.data;
+  const release = featuredRelease(await getReleases(d.id));
+  const base = x.basedOn ? byId.get(x.basedOn)?.data.name : x.upstream;
+  cells[d.id] = {
+    name: x.name,
+    logo: logoUrl(x.logo.file),
+    href: localizePath(`/distros/${d.id}/`, locale),
+    latest: release ? release.version : "—",
+    released:
+      release?.channel === "rolling"
+        ? RELEASE_MODELS.rolling[locale]
+        : (formatDate(release?.releaseDate ?? null, locale) ?? "—"),
+    eol: formatDate(release?.eol ?? null, locale) ?? "—",
+    family: base ? `${FAMILIES[x.family][locale]} · ${base}` : FAMILIES[x.family][locale],
+    model: RELEASE_MODELS[x.releaseModel][locale],
+    desktop: DESKTOPS[x.desktops[0] ?? "none"][locale],
+    desktops: x.desktops.map((k) => DESKTOPS[k][locale]).join(", "),
+    packages: x.packageManagers.join(", "),
+    installer: INSTALLERS[x.installer][locale],
+    arch: x.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0]).join(", "),
+    secureBoot: SECURE_BOOT[x.secureBoot][locale],
+    requirements: t("facts.requirementsValue", {
+      ram: x.requirements.ramGB,
+      disk: x.requirements.diskGB,
+    }),
+    difficulty: DIFFICULTIES[x.difficulty][locale],
+    uses: x.useCases.map((u) => USE_CASES[u][locale]).join(", "),
+    origin: `${x.origin.country === "INT" ? "INT" : (regions.of(x.origin.country) ?? x.origin.country)} · ${x.origin.firstRelease.slice(0, 4)}`,
+  };
+}
+const preferred = ["ubuntu", "fedora", "linux-mint"].filter((id) => byId.has(id));
+const defaults = (preferred.length >= 2 ? preferred : distros.slice(0, 3).map((d) => d.id)).slice(
+  0,
+  3,
+);
+const rowLabel = (r: (typeof ROWS)[number]) => t(`compare.rows.${r}` as MessageKey);
+const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+
+<Base locale={locale} title={t("compare.title")} description={t("compare.lead")}>
+  <div class="container page">
+    <header class="page-header">
+      <h1>{t("compare.title")}</h1>
+      <p class="dim-label">{t("compare.lead")}</p>
+    </header>
+
+    <div class="pickers" data-compare>
+      {
+        [0, 1, 2].map((i) => (
+          <label class="picker">
+            <span class="caption-heading dim-label">{t("compare.pick", { n: i + 1 })}</span>
+            <select class="combo-select" name={`d${i}`} data-column={i}>
+              <option value="">{t("compare.none")}</option>
+              {sortedOptions.map((d) => (
+                <option value={d.id} selected={defaults[i] === d.id}>
+                  {d.data.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        ))
+      }
+    </div>
+
+    <div class="table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <td></td>
+            {
+              [0, 1, 2].map((i) => {
+                const c = defaults[i] ? cells[defaults[i] as string] : undefined;
+                return (
+                  <th scope="col" data-head={i}>
+                    {c && (
+                      <a href={c.href} class="head-link">
+                        <img src={c.logo} alt="" width="48" height="48" />
+                        <span>{c.name}</span>
+                      </a>
+                    )}
+                  </th>
+                );
+              })
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            ROWS.map((row) => (
+              <tr>
+                <th scope="row">{rowLabel(row)}</th>
+                {[0, 1, 2].map((i) => (
+                  <td data-cell={`${i}:${row}`}>{defaults[i] ? cells[defaults[i] as string]?.[row] : ""}</td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <script type="application/json" id="compare-data" set:html={JSON.stringify(cells).replace(/</g, "\\u003c")}></script>
+  </div>
+</Base>
+
+<script>
+  import "~/scripts/compare";
+</script>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .page-header {
+    display: grid;
+    gap: 6px;
+  }
+
+  .pickers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: var(--space-2);
+  }
+
+  .picker {
+    display: grid;
+    gap: 4px;
+  }
+
+  .picker .combo-select {
+    max-inline-size: none;
+    inline-size: 100%;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-card);
+    background: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+  }
+
+  .compare-table {
+    inline-size: 100%;
+    min-inline-size: 640px;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 12px 14px;
+    text-align: start;
+    vertical-align: top;
+    inline-size: 28%;
+  }
+
+  .compare-table tbody th {
+    inline-size: 16%;
+    font-weight: 700;
+    opacity: var(--dim-opacity);
+    font-size: var(--text-caption);
+  }
+
+  .compare-table tbody tr {
+    border-block-start: 1px solid var(--card-shade-color);
+  }
+
+  .head-link {
+    display: grid;
+    gap: 6px;
+    justify-items: start;
+    color: inherit;
+    font-size: var(--text-title-4);
+    font-weight: 800;
+    text-decoration: none;
+  }
+</style>

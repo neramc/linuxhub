@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "bun scripts/serve.ts --port=4321",
     "check": "astro check && tsc --noEmit -p tsconfig.scripts.json",
     "lint": "biome check .",
     "format": "biome check --write .",

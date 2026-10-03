@@ -1,0 +1,225 @@
+---
+/**
+ * Family tree (from each distro's `basedOn`) and a timeline of first releases.
+ * Plain nested lists — accessible, responsive, zero JS.
+ */
+import DistroLogo from "~/components/DistroLogo.astro";
+import FamilyNode from "~/components/FamilyNode.astro";
+import { localePaths, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { type Distro, getDistros } from "~/lib/catalog";
+import { FAMILIES, type Family } from "~/lib/taxonomy";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const distros = await getDistros();
+const ids = new Set(distros.map((d) => d.id));
+const byYear = (a: Distro, b: Distro) =>
+  a.data.origin.firstRelease.localeCompare(b.data.origin.firstRelease);
+
+const childrenOf = new Map<string, Distro[]>();
+for (const d of distros) {
+  if (d.data.basedOn && ids.has(d.data.basedOn)) {
+    childrenOf.set(d.data.basedOn, [...(childrenOf.get(d.data.basedOn) ?? []), d]);
+  }
+}
+for (const list of childrenOf.values()) list.sort(byYear);
+
+const roots = distros.filter((d) => !d.data.basedOn || !ids.has(d.data.basedOn)).sort(byYear);
+const familyOrder = Object.keys(FAMILIES) as Family[];
+const sections = familyOrder
+  .map((family) => ({ family, roots: roots.filter((r) => r.data.family === family) }))
+  .filter((s) => s.roots.length > 0);
+const countTree = (d: Distro): number =>
+  1 + (childrenOf.get(d.id) ?? []).reduce((n, k) => n + countTree(k), 0);
+
+const years = new Map<string, Distro[]>();
+for (const d of [...distros].sort(byYear)) {
+  const y = d.data.origin.firstRelease.slice(0, 4);
+  years.set(y, [...(years.get(y) ?? []), d]);
+}
+---
+
+<Base locale={locale} title={t("family.title")} description={t("family.lead")}>
+  <div class="container page">
+    <header class="page-header">
+      <h1>{t("family.title")}</h1>
+      <p class="dim-label">{t("family.lead")}</p>
+    </header>
+
+    <section aria-labelledby="tree-title" class="section">
+      <h2 id="tree-title">{t("family.tree")}</h2>
+      <div class="families">
+        {
+          sections.map((s) => (
+            <section class="family adw-card padded" aria-label={FAMILIES[s.family][locale]}>
+              <h3>{FAMILIES[s.family][locale]}</h3>
+              <p class="caption dim-label">
+                {t("family.roots", { count: s.roots.reduce((n, r) => n + countTree(r), 0) })}
+                {s.roots[0]?.data.upstream && !s.roots[0].data.basedOn ? ` · ${s.roots[0].data.upstream}` : ""}
+              </p>
+              <ul class="tree" role="list">
+                {s.roots.map((r) => (
+                  <FamilyNode distro={r} childrenOf={childrenOf} locale={locale} />
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="timeline-title" class="section">
+      <h2 id="timeline-title">{t("family.timeline")}</h2>
+      <p class="dim-label">{t("family.timelineLead")}</p>
+      <ol class="timeline" role="list">
+        {
+          [...years].map(([year, list]) => (
+            <li class="year">
+              <span class="year-label numeric">{year}</span>
+              <ul class="year-items" role="list">
+                {list.map((d) => (
+                  <li>
+                    <a class="chip" href={localizePath(`/distros/${d.id}/`, locale)}>
+                      <DistroLogo file={d.data.logo.file} name={d.data.name} size={22} />
+                      {d.data.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .page-header,
+  .section {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .families {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+    align-items: start;
+  }
+
+  .family {
+    display: grid;
+    gap: 6px;
+  }
+
+  .tree,
+  .tree :global(ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tree :global(ul) {
+    margin-inline-start: 14px;
+    padding-inline-start: 14px;
+    border-inline-start: 2px solid var(--border-color);
+  }
+
+  .tree :global(li) {
+    position: relative;
+  }
+
+  .tree :global(ul > li)::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -14px;
+    inset-block-start: 21px;
+    inline-size: 12px;
+    border-block-start: 2px solid var(--border-color);
+  }
+
+  .tree :global(.node) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    margin-block: 2px;
+    border-radius: var(--radius-button);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .tree :global(.node:hover) {
+    background: var(--hover-color);
+  }
+
+  .tree :global(.node-name) {
+    font-weight: 700;
+  }
+
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-inline-start: 2px solid var(--border-color);
+    margin-inline-start: 28px;
+  }
+
+  .year {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    padding: 0 0 var(--space-3) var(--space-3);
+  }
+
+  .year::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -7px;
+    inset-block-start: 6px;
+    inline-size: 12px;
+    block-size: 12px;
+    border-radius: 50%;
+    background: var(--accent-bg-color);
+  }
+
+  .year-label {
+    font-weight: 800;
+    font-size: var(--text-title-4);
+  }
+
+  .year-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px 4px 6px;
+    border-radius: var(--radius-pill);
+    background: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+    color: inherit;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+  }
+
+  .chip:hover {
+    background-image: linear-gradient(var(--hover-color), var(--hover-color));
+  }
+</style>

@@ -286,3 +286,37 @@
     inset-block-end: 24px;
   }
 }
+
+/* libadwaita dropdown (AdwComboRow / GtkDropDown look) on a native <select>. */
+.combo-select {
+  min-inline-size: 0;
+  max-inline-size: 65%;
+  min-block-size: 36px;
+  padding: 6px 32px 6px 12px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background-color: var(--button-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23888' d='M3.293 5.293a1 1 0 0 1 1.414 0L8 8.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-overflow: ellipsis;
+  appearance: none;
+  cursor: pointer;
+}
+
+.combo-select:hover {
+  background-color: var(--button-hover-color);
+}
+
+.combo-select:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 1px;
+}
+
+.combo-select option {
+  background: var(--popover-bg-color);
+  color: var(--popover-fg-color);
+}

@@ -1,0 +1,33 @@
+---
+/**
+ * Checksum verification command for the default image, per OS, filled from
+ * the synced data: <VerifyCommand slug="fedora" os="linux" />.
+ */
+import { lookup } from "./data";
+
+interface Props {
+  slug: string;
+  os: "linux" | "macos" | "windows";
+}
+
+const { slug, os } = Astro.props;
+const { artifact } = await lookup(slug);
+const file = artifact?.file ?? "image.iso";
+const algo = artifact?.checksum?.type ?? "sha256";
+const bits = algo === "sha512" ? "512" : algo === "sha1" ? "1" : "256";
+const cmd =
+  os === "windows"
+    ? algo === "md5"
+      ? `Get-FileHash .\\${file} -Algorithm MD5`
+      : `Get-FileHash .\\${file} -Algorithm SHA${bits}`
+    : os === "macos"
+      ? algo === "md5"
+        ? `md5 ${file}`
+        : `shasum -a ${bits} ${file}`
+      : algo === "md5"
+        ? `md5sum ${file}`
+        : `sha${bits}sum ${file}`;
+const lang = os === "windows" ? "powershell" : "bash";
+---
+
+<pre class={`language-${lang}`}><code class={`language-${lang}`}>{cmd}</code></pre>
