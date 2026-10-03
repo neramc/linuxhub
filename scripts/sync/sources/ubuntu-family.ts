@@ -226,3 +226,5 @@ export const ubuntuMate = ubuntuFamily({
   flavor: "ubuntu-mate",
   editions: desktopOnly("mate"),
 });
+
+export default [ubuntu, kubuntu, xubuntu, lubuntu, ubuntuMate];
