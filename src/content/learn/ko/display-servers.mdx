@@ -1,0 +1,188 @@
+---
+title: "디스플레이 서버: X11과 Wayland"
+description: 화면에 창을 그리고 입력을 전달하는 디스플레이 서버가 무엇인지, X11과 Wayland가 어떻게 다른지, XWayland·화면 공유·NVIDIA 같은 실제 문제와 지금 쓰는 세션을 확인하는 방법을 설명합니다.
+navTitle: X11과 Wayland
+order: 6
+group: distros
+icon: display
+related: [fedora, ubuntu, kubuntu, pop-os]
+sources:
+  - https://wayland.freedesktop.org/architecture.html
+  - https://wayland.freedesktop.org/faq.html
+  - https://wayland.freedesktop.org/docs/html/ch01.html
+  - https://www.x.org/wiki/
+  - https://wiki.archlinux.org/title/Wayland
+  - https://wiki.archlinux.org/title/Xorg
+  - https://wiki.archlinux.org/title/Security
+  - https://wiki.archlinux.org/title/NVIDIA
+  - https://wiki.archlinux.org/title/XDG_Desktop_Portal
+  - https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html
+  - https://pipewire.org/
+  - https://www.freedesktop.org/software/systemd/man/latest/pam_systemd.html
+  - https://www.freedesktop.org/software/systemd/man/latest/loginctl.html
+  - https://blogs.gnome.org/alatiera/2025/06/08/the-x11-session-removal/
+  - https://blogs.kde.org/2025/11/26/going-all-in-on-a-wayland-future/
+lastReviewed: 2026-10-03
+---
+
+앱이 창을 띄우고, 마우스와 키보드 입력이 올바른 창에 전달되고, 그 결과가 모니터에 나타나기까지는 중간에서 교통정리를 하는 프로그램이 필요합니다. 이것을 **디스플레이 서버(display server)** 라고 합니다. 리눅스에서는 오랫동안 **X11**이 이 역할을 했고, 지금은 대부분의 주요 데스크톱이 **Wayland**로 옮겨 왔습니다.
+
+평소에는 어느 쪽을 쓰는지 의식할 일이 거의 없지만, 화면 공유가 안 되거나 일부 앱이 흐릿하게 보이는 문제는 대개 이 차이에서 생깁니다. 이 장에서는 두 방식의 구조와 실제로 부딪히는 문제, 해결 방법을 정리합니다.
+
+## 디스플레이 서버가 하는 일
+
+디스플레이 서버는 크게 두 방향의 일을 합니다.
+
+- **입력 전달**: 커널이 받은 키보드·마우스·터치패드 입력을 보고, 지금 포인터 아래에 있거나 초점을 가진 창(앱)에 넘겨줍니다.
+- **화면 출력**: 각 앱이 그린 창의 내용을 모아 하나의 화면으로 합친 뒤, 커널의 **KMS(kernel mode setting)** 를 통해 모니터에 내보냅니다.
+
+여기서 나오는 용어를 정리하면 다음과 같습니다.
+
+| 용어 | 뜻 |
+|---|---|
+| 클라이언트(client) | 창을 띄우는 앱. 브라우저, 터미널, 게임 등 |
+| 창 관리자(window manager) | 창의 위치, 크기, 테두리, 겹침 순서를 정합니다 |
+| 컴포지터(compositor) | 여러 창의 내용을 합성해 최종 화면을 만듭니다. 그림자와 투명 효과도 여기서 처리합니다 |
+| 디스플레이 서버 | 클라이언트와 하드웨어 사이에서 입력과 출력을 중개합니다 |
+
+## X11: 오랫동안 쓰인 표준
+
+**X Window System**, 흔히 **X11** 또는 **X**라고 부르는 방식은 수십 년 동안 리눅스와 유닉스 그래픽 화면의 기반이었습니다. 리눅스에서 쓰는 구현은 X.Org 재단의 **X.Org Server(Xorg)** 입니다. X에서는 디스플레이 서버(X 서버), 창 관리자, 컴포지팅 관리자가 각각 따로 동작하는 프로그램이어서 원하는 창 관리자를 자유롭게 조합할 수 있습니다. 네트워크 너머의 앱 화면을 그대로 띄우는 **X11 포워딩**도 오래전부터 가능했습니다.
+
+하지만 시대가 바뀌면서 한계가 드러났습니다.
+
+- **복잡함**: 글꼴 그리기, 화면 설정, 메모리 관리 같은 기능이 점점 클라이언트 라이브러리와 커널로 옮겨 가면서, X 서버 안에는 거의 쓰이지 않는 기능이 많이 남았습니다.
+- **돌아가는 경로**: X에서 화면을 합성하려면 앱, X 서버, 컴포지터 사이를 여러 번 오가야 해서 불필요한 문맥 전환(context switch)이 생깁니다.
+- **보안**: X의 설계는 현대적인 보안 개념보다 앞서 만들어졌습니다. 같은 X 서버에 연결된 앱은 다른 앱의 키 입력이나 화면 내용을 엿볼 수 있습니다.
+
+X.Org 프로젝트는 지금도 보안 수정 등을 내놓고 있지만, X11R7.7 이후로는 전체 스택을 한꺼번에 릴리스하지 않고 필요한 모듈만 따로 내고 있습니다.
+
+## Wayland: 컴포지터가 곧 디스플레이 서버
+
+**Wayland**는 프로그램이 아니라 **컴포지터와 앱이 대화하는 방법을 정한 프로토콜(protocol)** 입니다. Wayland에서는 디스플레이 서버, 창 관리자, 컴포지터가 하나로 합쳐져서, 데스크톱마다 자기 컴포지터가 그 역할을 모두 맡습니다. GNOME의 Mutter, KDE Plasma의 KWin, Sway, Hyprland, COSMIC의 컴포지터가 모두 Wayland 컴포지터입니다. 그래서 Xorg처럼 따로 설치하는 "Wayland 서버"는 없습니다.
+
+앱은 자기 창을 직접 버퍼에 그린 뒤 어디가 바뀌었는지만 컴포지터에 알리고, 컴포지터가 이를 합쳐 커널로 바로 내보냅니다. 입력도 커널에서 컴포지터를 거쳐 곧장 해당 앱으로 갑니다.
+
+```text
+X11      입력:  커널 → X 서버 → 앱
+         출력:  앱 → X 서버 → 컴포지터 → X 서버 → 커널(KMS) → 모니터
+
+Wayland  입력:  커널 → 컴포지터 → 앱
+         출력:  앱 → 컴포지터 → 커널(KMS) → 모니터
+```
+
+| | X11 | Wayland |
+|---|---|---|
+| 구조 | X 서버, 창 관리자, 컴포지터가 따로 | 컴포지터 하나가 모두 담당 |
+| 앱 사이 격리 | 다른 앱의 입력과 화면을 볼 수 있음 | 앱은 자기 창만 다룹니다 |
+| 화면 캡처·공유 | 아무 앱이나 전체 화면을 읽을 수 있음 | 포털을 통해 사용자가 허락한 것만 |
+| 원격 접속 | X11 포워딩 내장 | 프로토콜 밖의 도구(RDP, VNC, waypipe) 사용 |
+| 전역 단축키·자동화 | 앱이 자유롭게 가로챔 | 컴포지터와 포털을 거쳐야 함 |
+| 기존 앱 호환 | 기본 | XWayland로 대부분 실행 |
+
+<Callout type="note" title="Wayland는 보안을 위해 일부러 막아 둔 것이 있습니다">
+  화면 녹화, 전역 단축키, 다른 창 조작 같은 기능이 Wayland에서 "안 된다"고 느껴진다면, 대부분 아무 앱이나 하지 못하도록 막아 둔 결과입니다. 이런 기능은 사용자의 허락을 받는 공식 경로(포털, 프로토콜 확장)를 통해 제공됩니다.
+</Callout>
+
+## XWayland로 X11 앱 실행하기
+
+아직 Wayland를 지원하지 않는 X11 앱도 Wayland 세션에서 그대로 실행됩니다. 컴포지터가 **XWayland**라는 X 서버를 필요할 때 띄워 주기 때문입니다. XWayland는 Wayland 컴포지터의 클라이언트로 동작하는 X 서버로, 대부분의 X11 앱이 X11 세션과 거의 같은 성능으로 동작합니다.
+
+다만 알아 둘 점이 있습니다.
+
+- XWayland는 X 서버이므로, XWayland로 실행되는 앱끼리는 Wayland의 격리 혜택을 받지 못합니다.
+- 완벽하게 호환되지는 않아서 일부 앱은 제대로 동작하지 않을 수 있습니다.
+- 화면 배율을 소수(예: 125%)로 쓰면 XWayland 앱이 흐릿하게 보일 수 있습니다.
+
+어떤 앱이 XWayland로 실행 중인지 확인하려면 `xlsclients -l`로 XWayland에 연결된 앱 목록을 보거나, `xeyes`를 띄운 뒤 마우스를 앱 창 위로 옮겨 봅니다. 눈동자가 따라 움직이면 그 창은 XWayland 앱입니다. KDE Plasma에서는 KWin 디버그 콘솔로도 볼 수 있습니다.
+
+GTK와 Qt 앱은 기본으로 Wayland를 쓰지만, 문제가 있을 때는 환경 변수로 XWayland를 강제할 수 있습니다. 반대로 오래된 Electron 앱은 실행 옵션으로 Wayland를 켤 수 있습니다(최근 Electron은 기본으로 Wayland를 씁니다).
+
+```bash
+GDK_BACKEND=x11 gnome-text-editor     # GTK 앱을 XWayland로 실행
+QT_QPA_PLATFORM=xcb kate              # Qt 앱을 XWayland로 실행
+code --ozone-platform=wayland         # Electron 앱(예: VS Code)에 Wayland 사용 지시
+```
+
+## 화면 공유와 녹화: PipeWire와 포털
+
+X11에서는 어떤 앱이든 전체 화면을 마음대로 읽을 수 있었습니다. Wayland에서는 앱이 다른 창을 볼 수 없기 때문에, 화면 공유와 녹화는 **XDG 데스크톱 포털(xdg-desktop-portal)** 이라는 공식 창구를 거칩니다.
+
+<Steps>
+
+1. 화상회의 앱이나 브라우저가 포털의 **ScreenCast** 기능에 화면 공유를 요청합니다.
+2. 데스크톱이 대화상자를 띄워 공유할 **모니터 전체**나 **특정 창**을 사용자가 고르게 합니다.
+3. 허락하면 선택한 화면이 **PipeWire** 스트림으로 앱에 전달됩니다. 다음부터 다시 고르지 않도록 선택을 기억하게 할 수도 있습니다.
+
+</Steps>
+
+PipeWire는 오디오와 비디오를 낮은 지연으로 처리하는 멀티미디어 서버로, 샌드박스 앱도 안전하게 화면과 소리를 다룰 수 있게 설계되었습니다. 포털은 원래 Flatpak 앱을 위해 만들었지만 지금은 일반 앱도 데스크톱과 상관없이 같은 방식으로 씁니다.
+
+포털은 실제 작업을 데스크톱별 **백엔드(backend)** 에 맡깁니다. GNOME은 `xdg-desktop-portal-gnome`, KDE Plasma는 `xdg-desktop-portal-kde`, Sway 같은 wlroots 기반 컴포지터는 `xdg-desktop-portal-wlr`, Hyprland는 `xdg-desktop-portal-hyprland`를 씁니다. 주요 데스크톱은 이미 설치되어 있지만, Sway나 Hyprland를 직접 구성했다면 맞는 백엔드를 설치해야 화면 공유가 됩니다.
+
+화면 공유 창이 검게 나오거나 아예 뜨지 않으면 PipeWire와 포털 서비스가 실행 중인지부터 확인합니다.
+
+```bash
+systemctl --user status pipewire xdg-desktop-portal
+```
+
+원격 접속도 같은 흐름입니다. GNOME과 KDE Plasma에는 자체 원격 데스크톱 기능(RDP, VNC)이 있고, wlroots 기반 컴포지터는 wayvnc를 씁니다. `ssh -X`로 하는 X11 포워딩은 XWayland를 통해 계속 쓸 수 있고, Wayland 앱은 `waypipe`로 비슷하게 원격 실행할 수 있습니다.
+
+## NVIDIA 그래픽 카드
+
+예전에는 NVIDIA 독점 드라이버와 Wayland의 궁합이 좋지 않았습니다. NVIDIA 드라이버가 다른 드라이버들과 다른 버퍼 방식(EGLStreams)만 지원했기 때문입니다. 이후 NVIDIA 드라이버가 다른 드라이버와 같은 **GBM** 방식을 지원하고, 깜빡임과 프레임 순서 문제를 해결하는 **명시적 동기화(explicit sync)** 가 드라이버와 컴포지터 양쪽에 들어오면서 상황이 크게 나아졌습니다. KDE도 제조사가 아직 지원하는 그래픽 카드라면 이제 Wayland에서 잘 동작한다고 밝히고 있습니다.
+
+NVIDIA 카드에서 Wayland를 쓸 때 확인할 것은 다음과 같습니다.
+
+- **드라이버를 최신으로 유지합니다.** 오래된 드라이버나 명시적 동기화를 지원하지 않는 컴포지터에서는 화면 깜빡임, 프레임 순서 뒤섞임 같은 문제가 생길 수 있습니다. 아주 오래된 드라이버는 XWayland 하드웨어 가속도 지원하지 않습니다.
+- **DRM 커널 모드 설정(KMS)이 켜져 있어야 합니다.** 많은 배포판의 최신 드라이버 패키지는 기본으로 켜 두지만, 직접 확인해 볼 수 있습니다. `Y`가 나오면 켜진 것입니다.
+
+```bash
+cat /sys/module/nvidia_drm/parameters/modeset
+```
+
+`N`이 나오면 커널 매개변수 `nvidia_drm.modeset=1`을 추가해야 합니다. 커널 매개변수를 넣는 방법은 부트로더마다 다르므로 [부팅 과정](../boot-process/)을 참고하세요. 드라이버 설치 자체는 [하드웨어와 드라이버](../hardware-drivers/)에서 다룹니다.
+
+<Callout type="tip" title="아주 오래된 NVIDIA 카드라면">
+  NVIDIA가 더 이상 지원하지 않는 오래된 카드에서는 독점 드라이버 대신 오픈소스 **Nouveau** 드라이버를 쓰는 편이 Wayland에서 더 편할 수 있습니다.
+</Callout>
+
+## 지금 어떤 세션인지 확인하기
+
+터미널을 열고 다음을 실행하면 바로 알 수 있습니다.
+
+```bash
+echo $XDG_SESSION_TYPE
+```
+
+`wayland`가 나오면 Wayland 세션, `x11`이면 X11 세션입니다. SSH로 접속했거나 그래픽 없는 콘솔에서는 `tty`가 나옵니다. `XDG_SESSION_TYPE`은 로그인 과정에서 세션 종류를 나타내도록 정해지는 환경 변수로, systemd의 로그인 관리자도 이 값을 씁니다.
+
+다른 방법으로도 확인할 수 있습니다.
+
+```bash
+loginctl show-session "$XDG_SESSION_ID" -p Type   # Type=wayland 또는 Type=x11
+echo $WAYLAND_DISPLAY                             # wayland-0 처럼 나오면 Wayland
+echo $XDG_CURRENT_DESKTOP                         # 지금 쓰는 데스크톱 이름
+```
+
+GNOME에서는 설정 앱의 **정보**(About) 화면에 있는 "창 시스템(Windowing System)" 항목으로도 확인할 수 있습니다. 배포판이 X11 세션도 제공한다면 로그인 화면에서 사용자를 고른 뒤 세션 메뉴(톱니바퀴 아이콘)에서 바꿀 수 있습니다.
+
+## Wayland에서 자주 겪는 문제
+
+| 증상 | 원인과 해결 |
+|---|---|
+| 화면 공유가 검게 나옴 | 포털 백엔드가 없거나 PipeWire가 꺼져 있습니다. 데스크톱에 맞는 `xdg-desktop-portal-*` 패키지를 설치합니다 |
+| 일부 앱만 흐릿함 | XWayland로 실행 중인 앱입니다. Wayland로 실행하는 옵션이 있는지 확인합니다(Electron은 `--ozone-platform=wayland`) |
+| 앱의 전역 단축키가 안 먹힘 | 앱이 키 입력을 몰래 가로챌 수 없기 때문입니다. 포털의 전역 단축키 기능이나 데스크톱 설정의 단축키를 씁니다 |
+| `xdotool` 같은 자동화 도구가 안 됨 | Wayland용 도구로 바꿉니다. 클립보드는 `wl-copy`/`wl-paste`, 입력 흉내는 `ydotool`, KDE에서는 `kdotool` |
+| 가상 머신·원격 데스크톱에서 단축키가 바깥에서 먹힘 | 컴포지터가 단축키를 먼저 받습니다. 앱이 단축키를 받아 가도록 허용하라는 요청이 오면 허용합니다 |
+
+<Callout type="warning" title="환경 변수는 최후의 수단으로">
+  인터넷에서 찾은 환경 변수를 `/etc/environment` 같은 전역 설정에 무작정 넣으면 다른 앱이나 다음 업데이트에서 문제를 일으킬 수 있습니다. 먼저 해당 앱 하나에만 적용해 보고, 효과가 있을 때만 그 앱의 실행 설정에 넣으세요.
+</Callout>
+
+## X11은 사라지나요?
+
+**X11 앱은 계속 동작하지만, X11 로그인 세션은 줄어들고 있습니다.** GNOME은 GNOME 49부터 X11 세션을 기본으로 끄고 이후 제거하기로 했고, KDE는 Plasma 6.8부터 Wayland 세션만 제공하기로 했습니다. 두 프로젝트 모두 X11 앱은 XWayland로 계속 지원합니다.
+
+그러니 새로 리눅스를 시작한다면 배포판의 기본값인 Wayland를 그대로 쓰면 됩니다. 특정 프로그램 때문에 X11 세션이 꼭 필요하다면 Xfce처럼 X11 세션을 계속 제공하는 데스크톱을 고르거나, 이전 버전의 데스크톱을 오래 지원하는 LTS 배포판을 쓰는 방법이 있습니다. 데스크톱 환경별 특징은 [데스크톱 환경](../desktop-environments/)에서 볼 수 있습니다.

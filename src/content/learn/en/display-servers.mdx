@@ -1,0 +1,188 @@
+---
+title: "Display servers: X11 and Wayland"
+description: What a display server does, how X11 and Wayland differ, how XWayland, screen sharing and NVIDIA graphics work in practice, and how to check which session you’re running.
+navTitle: X11 and Wayland
+order: 6
+group: distros
+icon: display
+related: [fedora, ubuntu, kubuntu, pop-os]
+sources:
+  - https://wayland.freedesktop.org/architecture.html
+  - https://wayland.freedesktop.org/faq.html
+  - https://wayland.freedesktop.org/docs/html/ch01.html
+  - https://www.x.org/wiki/
+  - https://wiki.archlinux.org/title/Wayland
+  - https://wiki.archlinux.org/title/Xorg
+  - https://wiki.archlinux.org/title/Security
+  - https://wiki.archlinux.org/title/NVIDIA
+  - https://wiki.archlinux.org/title/XDG_Desktop_Portal
+  - https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html
+  - https://pipewire.org/
+  - https://www.freedesktop.org/software/systemd/man/latest/pam_systemd.html
+  - https://www.freedesktop.org/software/systemd/man/latest/loginctl.html
+  - https://blogs.gnome.org/alatiera/2025/06/08/the-x11-session-removal/
+  - https://blogs.kde.org/2025/11/26/going-all-in-on-a-wayland-future/
+lastReviewed: 2026-10-03
+---
+
+For an app to open a window, for your keystrokes and clicks to reach the right window, and for the result to appear on your monitor, something has to direct the traffic in between. That something is the **display server**. For decades Linux used **X11** for this job; today most major desktops have moved to **Wayland**.
+
+Most of the time you won’t notice which one you’re on — but when screen sharing shows a black rectangle or one app looks blurry, the difference between them is usually why. This chapter explains how each works, the problems you’re likely to meet, and how to fix them.
+
+## What a display server does
+
+A display server works in two directions:
+
+- **Input**: it takes keyboard, mouse and touchpad events from the kernel and hands them to the window (app) under the pointer or in focus.
+- **Output**: it gathers what each app has drawn, combines everything into one picture, and sends it to the monitor through the kernel’s **KMS (kernel mode setting)**.
+
+A few terms come up again and again:
+
+| Term | Meaning |
+|---|---|
+| Client | An app that opens windows — a browser, a terminal, a game |
+| Window manager | Decides where windows go, their size, borders and stacking order |
+| Compositor | Combines the contents of all windows into the final image, including shadows and transparency |
+| Display server | Sits between clients and the hardware, routing input and output |
+
+## X11: the long-standing standard
+
+The **X Window System** — usually just **X11** or **X** — has been the foundation of graphical Unix and Linux desktops for decades. On Linux, the implementation is the X.Org Foundation’s **X.Org Server (Xorg)**. In X, the display server (the X server), the window manager and the compositing manager are separate programs, so you can combine them however you like. X has also long supported **X11 forwarding**, which shows a remote app’s windows on your local screen.
+
+Over time, its limits became clear:
+
+- **Complexity.** Font rendering, display configuration and memory management gradually moved into client libraries and the kernel, leaving the X server full of features hardly anyone uses.
+- **Detours.** Compositing under X means bouncing between the app, the X server and the compositor, with extra context switches along the way.
+- **Security.** X was designed before modern security practices. Any app connected to the X server can snoop on other apps’ keystrokes and screen contents.
+
+The X.Org project still publishes fixes, but since X11R7.7 it no longer releases the whole stack at once — individual modules are released as needed.
+
+## Wayland: the compositor is the display server
+
+**Wayland** isn’t a program but a **protocol** — a set of rules for how a compositor and its apps talk to each other. Under Wayland, the display server, window manager and compositor merge into one, and each desktop’s compositor does all three jobs: GNOME’s Mutter, KDE Plasma’s KWin, Sway, Hyprland and COSMIC’s compositor are all Wayland compositors. That’s why there’s no separate “Wayland server” to install the way there is with Xorg.
+
+Apps draw their windows into their own buffers and simply tell the compositor what changed; the compositor combines them and hands the result straight to the kernel. Input likewise goes from the kernel through the compositor directly to the right app.
+
+```text
+X11      input:   kernel → X server → app
+         output:  app → X server → compositor → X server → kernel (KMS) → monitor
+
+Wayland  input:   kernel → compositor → app
+         output:  app → compositor → kernel (KMS) → monitor
+```
+
+| | X11 | Wayland |
+|---|---|---|
+| Structure | Separate X server, window manager and compositor | One compositor does it all |
+| Isolation between apps | Apps can see each other’s input and windows | Each app only handles its own windows |
+| Screenshots and screen sharing | Any app can read the whole screen | Only what the user approves, via portals |
+| Remote access | X11 forwarding built in | Separate tools (RDP, VNC, waypipe) |
+| Global shortcuts and automation | Apps can grab input freely | Goes through the compositor and portals |
+| Legacy apps | Native | Most run through XWayland |
+
+<Callout type="note" title="Some Wayland “limitations” are deliberate">
+  If screen recording, global shortcuts or controlling other windows seem not to work on Wayland, that’s usually because arbitrary apps aren’t allowed to do them. These features are offered through official channels — portals and protocol extensions — that ask for your permission.
+</Callout>
+
+## Running X11 apps with XWayland
+
+X11 apps that don’t support Wayland yet still run in a Wayland session, because the compositor starts **XWayland** for them when needed. XWayland is an X server that runs as a client of the Wayland compositor, and most X11 apps perform about the same as they do in an X11 session.
+
+A few caveats:
+
+- XWayland is still an X server, so apps running through it don’t get Wayland’s isolation from each other.
+- Compatibility isn’t perfect, so a few apps may misbehave.
+- With fractional scaling (say, 125%), XWayland apps can look blurry.
+
+To see which apps are running through XWayland, list them with `xlsclients -l`, or run `xeyes` and move the pointer over a window: if the eyes follow it, that window belongs to an XWayland app. On KDE Plasma, the KWin debug console shows this too.
+
+GTK and Qt apps use Wayland by default, but if one misbehaves you can force it onto XWayland with an environment variable. Older Electron apps, on the other hand, can be switched to Wayland with a command-line flag (recent Electron versions use Wayland by default).
+
+```bash
+GDK_BACKEND=x11 gnome-text-editor     # run a GTK app through XWayland
+QT_QPA_PLATFORM=xcb kate              # run a Qt app through XWayland
+code --ozone-platform=wayland         # tell an Electron app (e.g. VS Code) to use Wayland
+```
+
+## Screen sharing and recording: PipeWire and portals
+
+On X11, any app could read the entire screen at will. On Wayland, apps can’t see other windows, so screen sharing and recording go through an official gateway: the **XDG desktop portal** (`xdg-desktop-portal`).
+
+<Steps>
+
+1. A video-call app or browser asks the portal’s **ScreenCast** interface to share the screen.
+2. Your desktop shows a dialog where you choose a **whole monitor** or a **single window**.
+3. Once you approve, the selection is delivered to the app as a **PipeWire** stream. You can also let the app remember your choice so you don’t have to pick again next time.
+
+</Steps>
+
+PipeWire is a low-latency multimedia server for audio and video, designed so that even sandboxed apps can handle screen and sound safely. Portals were originally built for Flatpak apps, but regular apps now use them too, the same way on every desktop.
+
+The portal hands the actual work to a desktop-specific **backend**: `xdg-desktop-portal-gnome` for GNOME, `xdg-desktop-portal-kde` for KDE Plasma, `xdg-desktop-portal-wlr` for wlroots-based compositors such as Sway, and `xdg-desktop-portal-hyprland` for Hyprland. The big desktops install theirs automatically, but if you assembled a Sway or Hyprland setup yourself, install the matching backend or screen sharing won’t work.
+
+If the shared screen is black or the picker never appears, first check that PipeWire and the portal service are running:
+
+```bash
+systemctl --user status pipewire xdg-desktop-portal
+```
+
+Remote access follows the same pattern. GNOME and KDE Plasma have their own remote desktop features (RDP, VNC), and wlroots-based compositors use wayvnc. X11 forwarding with `ssh -X` keeps working through XWayland, and `waypipe` does something similar for Wayland-native apps.
+
+## NVIDIA graphics
+
+NVIDIA’s proprietary driver and Wayland used to be a rough combination, because the driver only supported a different buffer mechanism (EGLStreams) from everyone else. Things improved a lot once the driver added support for the same **GBM** mechanism other drivers use, and once **explicit sync** — which fixes flickering and out-of-order frames — landed in both the driver and the compositors. KDE now says that cards still supported by NVIDIA work fine on Wayland.
+
+If you use Wayland on an NVIDIA card:
+
+- **Keep the driver up to date.** Older drivers, or compositors without explicit sync support, can cause flickering and frames displayed out of order. Very old drivers don’t even support hardware acceleration in XWayland.
+- **DRM kernel mode setting (KMS) must be enabled.** Many distros’ current driver packages turn it on by default, but you can check — `Y` means it’s on:
+
+```bash
+cat /sys/module/nvidia_drm/parameters/modeset
+```
+
+If it prints `N`, add the kernel parameter `nvidia_drm.modeset=1`. How to add kernel parameters depends on your boot loader; see [The boot process](../boot-process/). Installing the driver itself is covered in [Hardware and drivers](../hardware-drivers/).
+
+<Callout type="tip" title="Very old NVIDIA cards">
+  For older cards that NVIDIA no longer supports, the open-source **Nouveau** driver is often the easier path on Wayland than the proprietary one.
+</Callout>
+
+## Checking which session you’re running
+
+Open a terminal and run:
+
+```bash
+echo $XDG_SESSION_TYPE
+```
+
+`wayland` means a Wayland session and `x11` an X11 session. Over SSH or on a text console you’ll see `tty`. `XDG_SESSION_TYPE` is set during login to describe the kind of session, and systemd’s login manager uses it as well.
+
+A few other ways to check:
+
+```bash
+loginctl show-session "$XDG_SESSION_ID" -p Type   # Type=wayland or Type=x11
+echo $WAYLAND_DISPLAY                             # something like wayland-0 means Wayland
+echo $XDG_CURRENT_DESKTOP                         # the name of your current desktop
+```
+
+On GNOME, the **About** page in Settings also shows a “Windowing System” entry. If your distro still ships an X11 session, you can switch on the login screen: select your user, then pick a session from the gear menu.
+
+## Common Wayland problems
+
+| Symptom | Cause and fix |
+|---|---|
+| Screen sharing shows black | The portal backend is missing or PipeWire isn’t running. Install the `xdg-desktop-portal-*` package for your desktop |
+| Only certain apps look blurry | They’re running through XWayland. Check for an option to run them natively (for Electron, `--ozone-platform=wayland`) |
+| An app’s global hotkeys don’t work | Apps can’t secretly grab keystrokes. Use the portal’s global shortcuts feature or set the shortcut in your desktop settings |
+| Automation tools like `xdotool` fail | Switch to Wayland tools: `wl-copy`/`wl-paste` for the clipboard, `ydotool` for simulated input, `kdotool` on KDE |
+| Shortcuts in a VM or remote desktop act on the host | The compositor sees shortcuts first. When asked whether the app may capture shortcuts, allow it |
+
+<Callout type="warning" title="Treat environment variables as a last resort">
+  Pasting environment variables from the internet into global files like `/etc/environment` can break other apps or a future update. Try them on the one affected app first, and only make them permanent in that app’s launcher if they actually help.
+</Callout>
+
+## Is X11 going away?
+
+**X11 apps keep working, but X11 login sessions are disappearing.** GNOME disabled its X11 session by default starting with GNOME 49 and scheduled it for removal, and KDE decided that Plasma 6.8 onward will offer only a Wayland session. Both projects continue to support X11 apps through XWayland.
+
+So if you’re new to Linux, just use your distro’s default Wayland session. If a particular program truly needs an X11 session, choose a desktop that still offers one, such as Xfce, or use an LTS distro that keeps an older desktop release supported for years. See [Desktop environments](../desktop-environments/) for how the desktops compare.

@@ -1,0 +1,145 @@
+---
+title: What is Linux?
+description: The difference between a kernel and an operating system, how GNU and Linux fit together, what a distribution adds, where Linux runs, and the basics of free software and the GPL in plain words.
+navTitle: What is Linux?
+order: 1
+group: basics
+icon: computer
+related: [ubuntu, linux-mint, fedora, debian]
+sources:
+  - https://www.kernel.org/linux.html
+  - https://www.kernel.org/category/about.html
+  - https://docs.kernel.org/admin-guide/README.html
+  - https://docs.kernel.org/process/license-rules.html
+  - https://www.gnu.org/gnu/linux-and-gnu.html
+  - https://www.gnu.org/gnu/thegnuproject.html
+  - https://www.gnu.org/philosophy/free-sw.html
+  - https://www.gnu.org/licenses/gpl-faq.html
+  - https://opensource.org/osd
+  - https://opensource.org/history
+  - https://opensource.org/licenses
+  - https://source.android.com/docs/core/architecture/kernel
+  - https://www.top500.org/lists/top500/2026/06/
+  - https://www.yoctoproject.org/
+  - https://store.steampowered.com/steamos
+  - https://www.redhat.com/en/blog/25-things-you-should-know-about-red-hat-0
+lastReviewed: 2026-10-03
+---
+
+Linux is a family of operating systems, in the same sense that Windows and macOS are operating systems. Strictly speaking, though, "Linux" is the name of the **kernel**, the core program that talks to the hardware. The "Linux" you download and install is a **distribution**: that kernel bundled with thousands of other programs. This chapter starts with that distinction, then looks at where Linux runs and why anyone is allowed to use, change and share it for free.
+
+## A kernel is not a whole operating system
+
+The kernel is the heart of the system. It is the first thing loaded into memory when the computer starts, and it stays in charge until you shut down. Its main jobs:
+
+- **Sharing the CPU**: deciding which program runs when, so many programs appear to run at once (multitasking).
+- **Managing memory**: giving each program its own memory and stopping programs from trampling on each other (virtual memory).
+- **Driving hardware**: controlling disks, graphics cards, keyboards and network cards through drivers.
+- **Files and networking**: providing a way to store and read files and to send data across the internet.
+
+Programs never touch the hardware directly. They ask the kernel through a fixed set of entry points called **system calls**. But a kernel on its own can't draw a window or open a web page. A usable operating system needs several layers stacked on top:
+
+| Layer | What it does | Examples on a Linux system |
+|---|---|---|
+| Applications | The programs you actually use | Firefox, LibreOffice, games |
+| Desktop environment | Windows, menus, settings | GNOME, KDE Plasma, Xfce |
+| Graphics stack | Gets pixels onto the screen | Wayland, X11 |
+| System services | Booting, logging in, networking | systemd, NetworkManager |
+| Core tools and libraries | Shell, file commands, C library | Bash, GNU coreutils, glibc |
+| Kernel | Hardware and resource management | Linux |
+
+You can check which kernel and which distribution you are running from a terminal:
+
+```bash
+uname -r
+cat /etc/os-release
+```
+
+The first command prints the running kernel version; the second shows the distribution's name and release. If the terminal is new to you, [Terminal basics](../terminal-basics/) is a good place to start.
+
+kernel.org describes Linux as a Unix clone that Linus Torvalds wrote from scratch with help from developers around the internet, aiming for compatibility with Unix standards such as POSIX. So Linux contains no original Unix code, but it is built and behaves like Unix, which is why it's called a **Unix-like** operating system. The Unix story is told in [History of Linux](../history/).
+
+## GNU and Linux: the naming story
+
+In the early 1980s Richard Stallman started the **GNU Project** to build a complete Unix-compatible operating system that everyone would be free to use and modify. GNU stands for "GNU's Not Unix", a recursive acronym that contains itself. By around 1990, GNU had nearly everything an operating system needs (compilers, editors, a shell, a C library), but its own kernel, GNU Hurd, was running late.
+
+In 1991, Linus Torvalds released a Unix-compatible kernel of his own. It started out under a restrictive license, became free software in 1992, and from then on the GNU tools plus the Linux kernel made a complete operating system that was free from top to bottom.
+
+That is why the Free Software Foundation (FSF) asks people to call the combination **GNU/Linux**: a large share of the system is GNU software, and the GNU Project set out to build a whole operating system from the start. In everyday speech, most people just say "Linux". This guide does the same for readability, and says "the Linux kernel" when it means only the kernel.
+
+<Callout type="note" title="Same kernel, different operating system">
+
+Android is built on the Linux kernel too, but the way apps run on it, and most of the software above the kernel, look nothing like a desktop distribution. It's a good reminder that very different operating systems can share one kernel.
+
+</Callout>
+
+## What a distribution adds
+
+A kernel and the GNU tools still aren't something you can install and start using. A **distribution** picks thousands of programs, builds them to work together, adds an installer and an update mechanism, and ships the result as one product. Ubuntu, Fedora, Debian, Linux Mint and Arch Linux are all distributions.
+
+Each distribution makes its own choices about:
+
+- **Package management**: the tool that installs, updates and removes software, and the repositories it pulls from. Debian-based systems use `apt`, Fedora uses `dnf`, and Arch Linux uses `pacman`.
+- **Release model**: a **fixed release** that ships a major version on a schedule, or a **rolling release** that updates continuously.
+- **Default desktop environment**: what you see on first boot, and which apps come with it.
+- **Installer and defaults**: file system, security settings, how drivers are handled.
+- **Support and philosophy**: how many years of security updates you get, and whether proprietary drivers and codecs are included out of the box.
+
+Think of the kernel as an engine: many car makers can use the same engine and still build very different cars. To pick one, see [Distributions](../distributions/); for how software gets installed, [Package management](../package-management/); and for the look and feel, [Desktop environments](../desktop-environments/).
+
+## Where Linux runs
+
+The kernel was first written for 386 PCs. Today it runs on many processor architectures, including x86, ARM and PowerPC, in both 32-bit and 64-bit forms. That portability puts it almost everywhere:
+
+| Area | How Linux is used |
+|---|---|
+| Servers and cloud | A common operating system for web services, databases and cloud virtual machines, with distributions such as Red Hat Enterprise Linux, Ubuntu Server and Debian. |
+| Phones | Android's kernel is a long-term support (LTS) Linux kernel with Android-specific patches on top. |
+| Embedded and IoT | Routers, TVs, industrial equipment. Tools such as the Yocto Project build custom Linux systems tailored to a device. |
+| Supercomputers | The top systems on the TOP500 list of the world's fastest computers run Linux-based operating systems such as RHEL and HPE Cray OS. |
+| Desktops and handhelds | Everyday PCs and laptops, plus devices like Valve's Steam Deck, whose SteamOS is Linux-based. |
+
+Even if you have never installed Linux, there's a good chance you use it every day through your phone or the web services you rely on.
+
+## Free software and open source
+
+Linux didn't spread this far on technology alone; its **license** mattered just as much. The Linux kernel and the GNU programs are **free software**, where "free" refers to freedom, not price. The GNU Project defines free software as software that gives you four freedoms:
+
+| # | Freedom | In plain words |
+|---|---|---|
+| 0 | To run | Use the program however you like, for any purpose. |
+| 1 | To study and change | Look at how it works and modify it. This requires the source code. |
+| 2 | To share | Give copies to other people. |
+| 3 | To share your changes | Distribute your modified versions so everyone benefits. |
+
+Free software doesn't have to be free of charge. Selling copies is allowed, and companies such as Red Hat publish their software openly while selling support and maintenance as subscriptions.
+
+The term **open source** appeared in 1998, and the Open Source Initiative (OSI), founded that same year, maintains the ten-point Open Source Definition. In practice the two labels cover mostly the same software. The difference is emphasis: the free software movement stresses users' freedom as a matter of principle, while the open source camp highlights the practical benefits of shared code and collaboration. You will also see the umbrella term FOSS (Free and Open Source Software).
+
+## The GPL in plain words
+
+The Linux kernel is licensed under version 2 of the **GNU General Public License (GPL)**. The GPL is a **copyleft** license: it uses copyright law in reverse, to keep software free. The essentials:
+
+- **Anyone can use it, for anything.** Individuals, schools and companies alike.
+- **Private changes stay private.** If you modify GPL software and use it only yourself or inside your organization, you don't have to publish anything.
+- **If you distribute it, the source goes with it.** Whoever receives a copy, modified or not, must be able to get the source code under the same GPL terms.
+- **Freedom is passed on.** When you distribute a modified or combined version of a GPL program, the result must stay free software too.
+
+Not every license works this way. Among OSI-approved licenses there are **permissive** ones such as MIT, BSD and Apache 2.0, with far lighter conditions. Which license to use is the author's choice.
+
+The kernel's license comes with one important clarification, the Linux-syscall-note: a program that merely talks to the kernel through system calls is not pulled under the GPL. That's why proprietary software, from commercial games to business applications, can run on Linux without any licensing problem.
+
+<Callout type="note" title="This is not legal advice">
+
+The summary above is simplified on purpose. If you distribute software or build a business on it, read the license text and the GNU Project's [GPL FAQ](https://www.gnu.org/licenses/gpl-faq.html) yourself.
+
+</Callout>
+
+## Key takeaways
+
+- The **Linux kernel** is the core of the operating system: it manages hardware and resources.
+- A **distribution** combines the kernel with **GNU tools**, a desktop environment and apps; people usually call the whole thing "Linux".
+- Linux runs nearly everywhere: servers, phones, embedded devices, supercomputers and desktops.
+- Linux is **free software** that anyone may run, study, change and share, and the kernel is licensed under **GPL version 2**.
+
+Next, [History of Linux](../history/) follows the road from Unix to the Linux of today.

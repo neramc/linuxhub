@@ -1,0 +1,136 @@
+---
+title: 리눅스의 역사
+description: 1969년 유닉스에서 GNU 프로젝트, 1991년 리누스 토르발스의 발표, 초기 배포판과 데스크톱 환경, 기업과 Android의 시대를 거쳐 오늘에 이르는 리눅스의 발자취를 정리합니다.
+navTitle: 리눅스의 역사
+order: 2
+group: basics
+icon: recent
+related: [debian, slackware, fedora, ubuntu]
+sources:
+  - https://www.unix.org/unix_history.html
+  - https://www.unix.org/fun_facts.html
+  - https://www.kernel.org/category/about.html
+  - https://www.gnu.org/gnu/initial-announcement.html
+  - https://www.gnu.org/gnu/thegnuproject.html
+  - https://lwn.net/2001/0823/a/lt-announcement.php3
+  - https://training.linuxfoundation.org/announcements/happy-30th-linux/
+  - https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01
+  - https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12
+  - https://www.kernel.org/pub/linux/kernel/v1.0/
+  - https://www.kernel.org/pub/linux/kernel/v2.0/
+  - https://www.slackware.com/info/
+  - https://www.debian.org/doc/manuals/project-history/intro.en.html
+  - https://www.debian.org/doc/manuals/project-history/detailed.en.html
+  - https://www.redhat.com/en/blog/spooktacular-tale-red-hats-halloween-release
+  - https://www.redhat.com/en/blog/25-things-you-should-know-about-red-hat-0
+  - https://kde.org/announcements/announcement/
+  - https://www.gnome.org/about/
+  - https://opensource.org/history
+  - https://fedoramagazine.org/announcing-fedora-linux-39/
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2004-October/000003.html
+  - https://android-developers.googleblog.com/2008/09/announcing-android-10-sdk-release-1.html
+  - https://source.android.com/docs/core/architecture/kernel
+  - https://www.top500.org/lists/top500/2026/06/
+  - https://store.steampowered.com/news/app/1675180/view/3117055056380003048
+  - https://store.steampowered.com/steamos
+lastReviewed: 2026-10-03
+---
+
+리눅스는 어느 날 갑자기 나타난 운영체제가 아닙니다. 1960년대 말 벨 연구소에서 태어난 유닉스, 1980년대의 자유 소프트웨어 운동, 그리고 인터넷으로 연결된 개발자들의 협업이 차례로 쌓여 지금의 리눅스가 되었습니다. 이 장에서는 공식 기록으로 확인할 수 있는 날짜를 중심으로 그 흐름을 따라갑니다.
+
+## 한눈에 보는 연표
+
+| 연도 | 사건 |
+|---|---|
+| 1969 | 벨 연구소(Bell Labs)의 켄 톰프슨(Ken Thompson), 데니스 리치(Dennis Ritchie) 등이 유닉스(Unix) 개발을 시작 |
+| 1973 | 유닉스를 C 언어로 다시 작성 |
+| 1975 | 유닉스 6판(Sixth Edition)이 벨 연구소 밖으로 널리 퍼짐 |
+| 1983 | 9월 27일, 리처드 스톨먼(Richard Stallman)이 GNU 프로젝트를 발표 |
+| 1985 | 자유 소프트웨어 재단(FSF) 설립 |
+| 1988 | 유닉스 계열의 공통 표준인 POSIX.1 발표 |
+| 1991 | 8월 25일, 리누스 토르발스(Linus Torvalds)가 새 운영체제를 만들고 있다고 처음 알림 |
+| 1992 | 리눅스 0.12와 함께 GPL로 라이선스를 바꾸기로 하고 2월 1일부터 적용 |
+| 1993 | Red Hat 창업(3월 26일), Slackware 첫 베타(4월), Debian 설립(8월 16일) |
+| 1994 | 리눅스 1.0(3월), Red Hat Linux 첫 공개판(10월 31일) |
+| 1996 | 리눅스 2.0(6월), KDE 프로젝트 발표(10월 14일) |
+| 1997 | GNOME 프로젝트 시작 |
+| 1998 | "오픈 소스"라는 용어 등장, 오픈 소스 이니셔티브(OSI) 설립 |
+| 2002 | Red Hat Enterprise Linux 등장(처음 이름은 Red Hat Linux Advanced Server) |
+| 2003 | Fedora Core 1 출시(11월 6일) |
+| 2004 | Ubuntu 4.10 출시(10월 20일) |
+| 2008 | Android 1.0 SDK 발표와 함께 첫 Android 기기 T-Mobile G1 공개(9월 23일) |
+| 2022 | Valve의 휴대용 게임 PC Steam Deck 출시(2월) |
+
+## 유닉스: 모든 것의 출발점
+
+1969년 벨 연구소에서 켄 톰프슨과 데니스 리치 등은 연구소 한구석에서 잘 쓰이지 않던 PDP-7 컴퓨터로 새 운영체제를 만들기 시작했습니다. 이것이 유닉스입니다. 처음에는 PDP-7의 어셈블리어로 작성되었지만, 1973년 C 언어로 다시 쓰이면서 특정 기계에 묶이지 않고 다른 컴퓨터로 옮기기 쉬운 운영체제가 되었습니다. 운영체제를 고급 언어로 작성해 여러 기계에 옮겨 쓴다는 생각은 이후 운영체제의 역사를 바꿔 놓았습니다.
+
+1975년의 6판은 벨 연구소 밖으로 널리 퍼진 첫 버전이었고, 캘리포니아 대학교 버클리(UC Berkeley)의 BSD도 여기서 갈라져 나왔습니다. 버클리에서 내놓은 4.2BSD에는 지금 인터넷의 바탕인 TCP/IP가 들어갔습니다. 이후 여러 회사가 저마다 유닉스를 내놓으면서 서로 호환되지 않는 문제가 커졌고, 이를 정리하기 위해 1988년 **POSIX** 표준이 나왔습니다.
+
+리눅스는 유닉스의 코드를 물려받지 않았습니다. 하지만 유닉스의 설계를 따라 처음부터 새로 만들었고 POSIX 같은 표준을 따르는 것을 목표로 하기 때문에 **유닉스 계열(Unix-like)** 운영체제라고 부릅니다.
+
+## GNU 프로젝트: 자유로운 유닉스를 꿈꾸다
+
+1970년대 MIT 인공지능 연구소에는 프로그램과 소스 코드를 자유롭게 나누는 문화가 있었습니다. 그러나 1980년대 들어 소프트웨어가 비공개 상품이 되면서, 실행 파일 하나를 얻는 데에도 비밀 유지 계약에 서명해야 하는 일이 흔해졌습니다. 리처드 스톨먼은 이런 흐름에 맞서 1983년 9월 27일 **GNU 프로젝트**를 발표했습니다. 목표는 유닉스와 호환되면서 누구나 자유롭게 쓰고 나눌 수 있는 완전한 운영체제였습니다.
+
+- **1984년**: 스톨먼은 1월에 MIT를 그만두고 GNU 소프트웨어 개발에 뛰어들었습니다. MIT에 남아 있으면 학교가 결과물의 소유권을 주장할 수 있었기 때문입니다. 9월에는 GNU Emacs 편집기 작업을 시작했습니다.
+- **1985년**: 개발을 뒷받침할 비영리 단체인 **자유 소프트웨어 재단(FSF)**을 세웠습니다.
+- **카피레프트(copyleft)**: 소프트웨어가 계속 자유롭게 남도록 하는 장치를 고안하고, 이를 **GNU GPL** 라이선스로 구체화했습니다.
+- **핵심 부품**: FSF 사람들은 GNU C 라이브러리(glibc)와 셸 **Bash**처럼 지금도 대부분의 리눅스 시스템에 들어 있는 부품을 만들었습니다.
+
+1990년 무렵 GNU는 커널을 빼고 거의 완성된 상태였습니다. GNU의 커널인 **Hurd**는 Mach 마이크로커널 위에서 여러 서버 프로그램이 커널의 일을 나눠 맡는 설계였는데, 디버깅이 무척 어려워 완성이 계속 늦어졌습니다. 이 빈자리를 채운 것이 리눅스였습니다.
+
+## 1991년: "그냥 취미일 뿐"
+
+1991년 8월 25일, 헬싱키 대학교의 학생이던 리누스 토르발스는 유즈넷(Usenet) 뉴스그룹 comp.os.minix에 글을 하나 올렸습니다. 386·486 PC에서 돌아가는 무료 운영체제를 만들고 있는데, GNU처럼 크고 전문적인 것은 아닌 그저 취미라는 소개였습니다. 그는 이미 Bash와 GCC를 옮겨 돌려 보았다고 밝히며, 사람들이 어떤 기능을 원하는지 의견을 구했습니다.
+
+첫 공개 소스인 0.01 버전은 386 AT 컴퓨터의 하드디스크, 화면, 키보드, 직렬 포트 정도만 지원했고, 릴리스 노트에서 스스로 아직 성숙한 제품이 아니라고 밝힐 만큼 초기 단계였습니다. 처음에는 돈을 받고 배포하는 것을 금지하는 자체 라이선스를 썼습니다. 그러다 0.12 릴리스 노트에서 토르발스는 GNU의 카피레프트와 맞추겠다고 알렸고, 1992년 2월 1일부터 GPL이 적용되었습니다. 이로써 GNU 도구와 리눅스 커널을 합쳐 처음부터 끝까지 자유 소프트웨어로 된 운영체제를 꾸릴 수 있게 되었습니다.
+
+인터넷으로 연결된 세계 곳곳의 개발자들이 코드를 보태면서 개발 속도도 빨라졌습니다. 1994년 3월에 리눅스 1.0이, 1996년 6월에 리눅스 2.0이 나왔습니다.
+
+## 배포판의 탄생
+
+초기 리눅스를 쓰려면 커널과 GNU 도구를 직접 구해 플로피 디스크 이미지를 만들고, 파티션을 나누고, 프로그램을 하나씩 설치해야 했습니다. 이 수고를 덜어 주려고 커널과 프로그램을 미리 골라 묶은 **배포판**이 등장했습니다.
+
+- **Slackware**: 1993년 4월 첫 베타를 냈고, "가장 유닉스다운 리눅스 배포판"을 목표로 지금까지 이어지고 있습니다.
+- **Debian**: 1993년 8월 16일 이언 머독(Ian Murdock)이 세웠습니다. 리눅스와 GNU의 정신에 따라 공개적으로 만드는 배포판을 지향했고, 1995년 무렵에는 여러 개발자가 각자 패키지를 맡아 관리하고 `dpkg`로 설치하는 방식을 갖췄습니다. 이 공동체 모델과 패키지 관리 방식은 Ubuntu를 비롯한 수많은 배포판의 바탕이 되었습니다.
+- **Red Hat**: 1993년 3월 26일 창업했고, 1994년 10월 31일 유료 베타 성격의 첫 공개판(0.9)을 내놓았습니다. 핼러윈에 나와 "Halloween"이라는 별명이 붙었습니다.
+
+배포판들이 서로 어떻게 갈라져 나왔는지는 [배포판 가계도](../../family/)에서, 오늘날의 배포판 고르는 법은 [배포판](../distributions/) 장에서 볼 수 있습니다.
+
+## 데스크톱 환경의 등장
+
+1990년대 중반 유닉스와 리눅스의 그래픽 프로그램들은 저마다 다른 위젯 라이브러리로 만들어져, 메뉴와 버튼의 생김새와 동작이 프로그램마다 제각각이었습니다. 1996년 10월 14일 마티아스 에트리히(Matthias Ettrich)는 이 문제를 풀기 위해, 모든 프로그램이 같은 모양과 동작을 갖춘 통합 그래픽 환경을 만들자며 **KDE**(처음 이름은 Kool Desktop Environment) 프로젝트를 제안했습니다. KDE는 Troll Tech의 Qt 라이브러리를 바탕으로 삼았습니다.
+
+문제는 당시 Qt가 자유 소프트웨어가 아니었다는 점입니다. 그래서 1997년 미겔 데 이카사(Miguel de Icaza)와 페데리코 메나(Federico Mena)가 자유 소프트웨어만으로 데스크톱을 만들겠다며 **GNOME** 프로젝트를 시작했습니다. 1998년 11월 Qt 개발사가 라이선스를 바꾸겠다고 발표하면서 이 갈등은 차츰 풀렸고, 지금은 GNOME과 KDE Plasma 모두 자유 소프트웨어로 개발되는 대표적인 데스크톱 환경입니다.
+
+데스크톱 환경의 종류와 특징은 [데스크톱 환경](../desktop-environments/)에서, 화면을 그리는 바탕 기술은 [디스플레이 서버](../display-servers/)에서 이어집니다.
+
+## 오픈 소스와 기업의 시대
+
+1998년 넷스케이프(Netscape)가 웹 브라우저의 소스 코드를 공개하겠다고 발표한 직후, 2월 3일 열린 한 전략 회의에서 크리스틴 피터슨(Christine Peterson)이 **오픈 소스(open source)**라는 이름을 제안했습니다. 같은 달 말 에릭 레이먼드(Eric Raymond)와 브루스 페런스(Bruce Perens)가 **오픈 소스 이니셔티브(OSI)**를 세웠습니다.
+
+2000년대에 들어서면서 리눅스는 기업과 개인 사용자 모두에게 본격적으로 다가갔습니다.
+
+- **2002년**: Red Hat이 **Red Hat Enterprise Linux**(처음 이름은 Red Hat Linux Advanced Server)를 내놓았습니다. 소프트웨어는 공개하되 지원과 인증을 구독으로 판매하는 사업 모델의 선구자가 되었습니다.
+- **2003년 11월 6일**: Red Hat이 후원하는 커뮤니티 배포판 [Fedora](../../distros/fedora/)의 첫 버전 Fedora Core 1이 나왔습니다.
+- **2004년 10월 20일**: [Ubuntu](../../distros/ubuntu/)의 첫 버전 4.10이 나왔습니다. [Debian](../../distros/debian/)의 방대한 소프트웨어를 바탕으로 쉬운 설치, 6개월마다 새 버전, 버전마다 18개월 보안 지원을 내세웠습니다.
+
+## Android와 오늘의 리눅스
+
+2008년 9월 23일 Google은 Android 1.0 SDK를 발표했고, 같은 날 T-Mobile이 첫 Android 기기 **T-Mobile G1**을 공개했습니다. Android의 커널은 리눅스의 장기 지원(LTS) 커널에 Android 전용 패치를 더해 만듭니다. 앱이 돌아가는 방식은 데스크톱 배포판과 크게 다르지만, 그 바닥에서 하드웨어를 다루는 것은 리눅스 커널입니다. 이렇게 리눅스 커널은 스마트폰을 통해 수많은 사람의 주머니 속으로 들어갔습니다.
+
+오늘날 리눅스가 쓰이는 모습은 다음과 같습니다.
+
+- **슈퍼컴퓨터**: TOP500 순위의 최상위 시스템들은 RHEL, HPE Cray OS 같은 리눅스 기반 운영체제를 씁니다.
+- **서버와 클라우드**: 웹 서비스와 클라우드 인프라의 기본 운영체제로 널리 쓰입니다.
+- **게임**: 2022년 2월 Valve가 Arch Linux 기반의 SteamOS를 담은 Steam Deck을 내놓았습니다. Windows용 게임을 리눅스에서 돌리는 호환 계층 Proton 덕분에 Steam의 많은 게임을 리눅스에서 즐길 수 있습니다. 자세한 내용은 [게임](../gaming/) 장에서 다룹니다.
+- **데스크톱**: GNOME과 KDE Plasma 같은 현대적인 데스크톱 환경, Flatpak 같은 앱 배포 방식이 자리 잡으면서 일상용 운영체제로 쓰기도 한결 쉬워졌습니다.
+
+<Callout type="tip" title="역사를 직접 들여다보기">
+
+kernel.org에는 지금도 초기 리눅스의 소스 코드와 릴리스 노트가 남아 있습니다. [0.01 릴리스 노트](https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01)를 읽어 보면 리눅스가 얼마나 작은 프로젝트에서 시작했는지 실감할 수 있습니다.
+
+</Callout>
+
+"취미"로 시작한 커널은 수많은 개인과 기업이 함께 만드는 거대한 공동 작업이 되었습니다. 사람들이 왜 리눅스를 고르는지는 다음 장 [왜 리눅스인가](../why-linux/)에서 이어집니다.
