@@ -1,0 +1,109 @@
+{
+  "slug": "kubuntu",
+  "sources": [
+    "https://endoflife.date/ubuntu",
+    "https://cdimage.ubuntu.com/kubuntu/releases/"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "26.04.1",
+      "channel": "lts",
+      "codename": "Resolute Raccoon",
+      "releaseDate": "2026-04-23",
+      "eol": "2031-05-29",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kubuntu-26.04.1-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/kubuntu-26.04.1-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "831e4d4bb85098339ba43d3502cd6619b27e76daf37246a084cd68a6413090b8",
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/kubuntu-26.04.1-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "24.04.5",
+      "channel": "lts",
+      "codename": "Noble Numbat",
+      "releaseDate": "2024-04-25",
+      "eol": "2029-05-31",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kubuntu-24.04.5-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04.5-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "ae59e59c54337bcd8f8e60825b4a3f58797121ae0e89855524ffc92b8075c1d6",
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04.5-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "22.04.5",
+      "channel": "lts",
+      "codename": "Jammy Jellyfish",
+      "releaseDate": "2022-04-21",
+      "eol": "2027-06-01",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kubuntu-22.04.5-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/kubuntu-22.04.5-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a3e2c4b1bc190cebaa8083c0d23ea2555e223d86b885570474a423b6de818888",
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/kubuntu-22.04.5-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

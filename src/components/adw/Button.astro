@@ -1,0 +1,67 @@
+---
+/**
+ * libadwaita button (widgets/_buttons.scss): raised by default, plus
+ * `suggested`, `destructive`, `flat` and `opaque` variants, and `pill` /
+ * `circular` shapes. Renders <a> when `href` is set, otherwise <button>.
+ */
+import type { HTMLAttributes } from "astro/types";
+import Icon from "./Icon.astro";
+
+type Variant = "default" | "suggested" | "destructive" | "flat" | "opaque";
+
+type Props = (HTMLAttributes<"button"> & HTMLAttributes<"a">) & {
+  variant?: Variant | undefined;
+  pill?: boolean | undefined;
+  circular?: boolean | undefined;
+  icon?: string | undefined;
+  /** Icon after the label (e.g. external links). */
+  iconEnd?: string | undefined;
+  /** For icon-only buttons: the accessible label (also the tooltip). */
+  label?: string | undefined;
+  href?: string | undefined;
+  external?: boolean | undefined;
+  type?: "button" | "submit" | "reset" | undefined;
+};
+
+const {
+  variant = "default",
+  pill = false,
+  circular = false,
+  icon,
+  iconEnd,
+  label,
+  href,
+  external = false,
+  type = "button",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const hasText = Astro.slots.has("default");
+const classes = [
+  "adw-button",
+  variant !== "default" && variant,
+  pill && "pill",
+  circular && "circular",
+  icon && !hasText && "image-button",
+  hasText && !icon && !iconEnd && "text-button",
+  hasText && (icon || iconEnd) && "image-text-button",
+  className,
+].filter(Boolean);
+
+const Tag = href ? "a" : "button";
+const linkAttrs = href
+  ? { href, ...(external ? { rel: "noopener external", target: "_blank" } : {}) }
+  : { type };
+---
+
+<Tag
+  class:list={classes}
+  {...linkAttrs}
+  {...(label ? { "aria-label": label, title: label } : {})}
+  {...rest}
+>
+  {icon && <Icon name={icon} />}
+  {hasText && <span class="adw-button-label"><slot /></span>}
+  {iconEnd && <Icon name={iconEnd} />}
+</Tag>

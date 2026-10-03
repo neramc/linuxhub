@@ -1,0 +1,27 @@
+---
+/**
+ * Inline value from the synced release data, so docs never hand-type a
+ * version: <Latest slug="fedora" /> → "44"; field="releaseDate" | "eol" | "codename" | "name".
+ */
+import { formatDate } from "~/lib/catalog";
+import { lookup } from "./data";
+
+interface Props {
+  slug: string;
+  field?: "version" | "releaseDate" | "eol" | "codename" | "name";
+  locale?: "ko" | "en";
+}
+
+const { slug, field = "version", locale = "ko" } = Astro.props;
+const { distro, release } = await lookup(slug);
+const value =
+  field === "name"
+    ? distro.data.name
+    : field === "releaseDate" || field === "eol"
+      ? formatDate(release?.[field] ?? null, locale)
+      : field === "codename"
+        ? release?.codename
+        : release?.version;
+---
+
+<span class="data-value">{value ?? "—"}</span>

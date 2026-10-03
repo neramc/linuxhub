@@ -1,0 +1,134 @@
+---
+/**
+ * Root layout: document head (SEO, alternates, fonts, theme), the Adwaita
+ * header bar, page content, footer and the mobile bottom bar.
+ */
+import { Font } from "astro:assets";
+import "~/styles/tokens.css";
+import "~/styles/base.css";
+import "~/styles/adwaita.css";
+import BottomBar from "~/components/site/BottomBar.astro";
+import HeaderBar from "~/components/site/HeaderBar.astro";
+import SearchDialog from "~/components/site/SearchDialog.astro";
+import SiteFooter from "~/components/site/SiteFooter.astro";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_META,
+  LOCALES,
+  type Locale,
+  localizePath,
+  stripLocale,
+  useTranslations,
+} from "~/i18n";
+import { sha256Source } from "~/lib/csp";
+import { THEME_INIT } from "~/scripts/theme-init";
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  /** Absolute or root-relative OG image. */
+  image?: string;
+  noindex?: boolean;
+  /** JSON-LD objects to embed. */
+  jsonLd?: Record<string, unknown>[];
+  /** Load the monospace font (pages with code). */
+  mono?: boolean;
+}
+
+const {
+  locale,
+  title,
+  description,
+  image,
+  noindex = false,
+  jsonLd = [],
+  mono = false,
+} = Astro.props;
+const t = useTranslations(locale);
+const siteName = t("site.name");
+const fullTitle = title ? `${title} – ${siteName}` : `${siteName} – ${t("site.tagline")}`;
+const metaDescription = description ?? t("site.description");
+const basePath = stripLocale(Astro.url.pathname);
+const canonical = new URL(localizePath(basePath, locale), Astro.site);
+const ogImage = new URL(image ?? "/og/default.png", Astro.site);
+// is:inline scripts are not hashed automatically; register this one explicitly.
+Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
+---
+
+<!doctype html>
+<html lang={LOCALE_META[locale].htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    {
+      LOCALES.map((l) => (
+        <link rel="alternate" hreflang={LOCALE_META[l].htmlLang} href={new URL(localizePath(basePath, l), Astro.site)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(localizePath(basePath, DEFAULT_LOCALE), Astro.site)} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={t("footer.rss")} href={localizePath("/rss.xml", locale)} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#2e2e32" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title ?? siteName} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={LOCALE_META[locale].ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <Font cssVariable="--font-adwaita-sans" preload={[{ style: "normal" }]} />
+    {mono && <Font cssVariable="--font-adwaita-mono" />}
+
+    <script is:inline set:html={THEME_INIT} />
+
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t("nav.skipToContent")}</a>
+    <HeaderBar locale={locale} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter locale={locale} />
+    <BottomBar locale={locale} />
+    <SearchDialog locale={locale} />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    inset-inline-start: var(--space-2);
+    inset-block-start: -100px;
+    z-index: 100;
+    padding: 8px 16px;
+    border-radius: var(--radius-button);
+    background: var(--accent-bg-color);
+    color: var(--accent-fg-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    inset-block-start: var(--space-1);
+  }
+
+  main {
+    flex: 1;
+    display: block;
+  }
+
+  main:focus {
+    outline: none;
+  }
+</style>

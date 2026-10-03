@@ -1,0 +1,36 @@
+---
+/**
+ * libadwaita AdwExpanderRow built on <details>/<summary> (no JS). Nested
+ * content appears in a darker inset area, as in libadwaita.
+ */
+import Icon from "./Icon.astro";
+
+interface Props {
+  title: string;
+  subtitle?: string | undefined;
+  icon?: string | undefined;
+  open?: boolean | undefined;
+  name?: string | undefined;
+}
+
+const { title, subtitle, icon, open = false, name } = Astro.props;
+---
+
+<li class="adw-row-item">
+  <details class="adw-expander-row" open={open} name={name}>
+    <summary class="adw-action-row activatable">
+      {icon && <Icon name={icon} class="adw-row-prefix" />}
+      <span class="adw-row-text">
+        <span class="adw-row-title">{title}</span>
+        {subtitle && <span class="adw-row-subtitle">{subtitle}</span>}
+      </span>
+      <span class="adw-row-suffix">
+        <slot name="suffix" />
+        <Icon name="pan-down" class="adw-expander-arrow" />
+      </span>
+    </summary>
+    <div class="adw-expander-content">
+      <slot />
+    </div>
+  </details>
+</li>

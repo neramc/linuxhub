@@ -1,27 +1,25 @@
-# Dependencies
+# build output
+dist/
+.vercel/
+.astro/
+
+# dependencies
 node_modules/
 
-# Build outputs
-dist/
-.svelte-kit/
-.vercel/
-.wrangler/
-coverage/
-
-# Environment & secrets (never commit — see .ai/security.md)
+# logs & env
+*.log
 .env
 .env.*
-.dev.vars
-# …but the templates carry no values and must be committed. Without these
-# negations `.env.*` silently swallows `.env.example`.
 !.env.example
-!.dev.vars.example
 
-# Playwright
+# test output
 test-results/
 playwright-report/
+coverage/
+.lighthouseci/
 
-# Misc
-*.log
-*.tsbuildinfo
+# sync http cache (ETag/Last-Modified), regenerated per run
+scripts/sync/.cache/
+
+# os
 .DS_Store

@@ -1,0 +1,53 @@
+name: Xubuntu
+order: 23
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: fixed
+desktops: [xfce]
+packageManagers: [apt, dpkg, snap]
+initSystem: systemd
+installer: ubuntu-desktop
+useCases: [desktop, lightweight, beginner]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2006-06-01
+requirements:
+  ramGB: 2
+  diskGB: 20
+  note:
+    ko: 권장 사양 기준입니다(1.5GHz 듀얼코어 이상). 최소 사양은 메모리 1GB, 디스크 8.6GB입니다.
+    en: Recommended specs (1.5 GHz dual-core or better). The minimum is 1 GB of RAM and 8.6 GB of disk.
+links:
+  home: https://xubuntu.org/
+  download: https://xubuntu.org/download/
+  docs: https://docs.xubuntu.org/
+  installGuide: https://docs.xubuntu.org/user/C/installation.html
+  forum: https://discourse.ubuntu.com/c/flavors/xubuntu/196
+  releaseNotes: https://xubuntu.org/releases/
+  source: https://github.com/Xubuntu
+tagline:
+  ko: 가볍고 안정적인 Xfce 데스크톱의 Ubuntu 공식 플레이버
+  en: The official Ubuntu flavor with the light, stable Xfce desktop
+aliases: [주분투, xubuntu linux]
+logo:
+  file: xubuntu.svg
+  source: https://raw.githubusercontent.com/Xubuntu/xubuntu-marketing/master/logo/icon.svg
+  license: Xubuntu is a trademark of Canonical Ltd.; official icon used unmodified to identify the project (no license stated in the source repository)
+  trademark: https://canonical.com/legal/intellectual-property-policy
+download:
+  strategy: mirrors
+sources:
+  - https://xubuntu.org/download/
+  - https://xubuntu.org/releases/
+  - https://xubuntu.org/release/6.06/
+  - https://xubuntu.org/releasedocs/26.04/release-notes/
+  - https://xubuntu.org/releasedocs/24.04/release-notes/
+  - https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-desktop-amd64.manifest
+  - https://raw.githubusercontent.com/Xubuntu/xubuntu-marketing/master/logo/README.md
+  - https://canonical.com/legal/trademarks
+lastReviewed: 2026-10-03

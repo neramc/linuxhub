@@ -1,0 +1,17 @@
+---
+/**
+ * Small pill label for facets (family, release model, desktop…). Neutral by
+ * default; `accent`/`success`/`warning`/`error` use libadwaita semantic colors.
+ * With `href` it becomes a link (e.g. to a filtered catalog).
+ */
+interface Props {
+  tone?: "neutral" | "accent" | "success" | "warning" | "error" | undefined;
+  href?: string | undefined;
+  class?: string | undefined;
+}
+
+const { tone = "neutral", href, class: className } = Astro.props;
+const Tag = href ? "a" : "span";
+---
+
+<Tag class:list={["adw-badge", tone, className]} {...(href ? { href } : {})}><slot /></Tag>

@@ -1,0 +1,86 @@
+---
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import BrandMark from "./BrandMark.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+const links = [
+  { href: localizePath("/distros/", locale), label: t("nav.distros") },
+  { href: localizePath("/learn/", locale), label: t("nav.learn") },
+  { href: localizePath("/finder/", locale), label: t("nav.finder") },
+  { href: localizePath("/compare/", locale), label: t("nav.compare") },
+  { href: localizePath("/family/", locale), label: t("nav.family") },
+  { href: localizePath("/releases/", locale), label: t("nav.releases") },
+  { href: localizePath("/about/", locale), label: t("footer.about") },
+  { href: localizePath("/rss.xml", locale), label: t("footer.rss") },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <BrandMark size={24} />
+      <span class="heading">{t("site.name")}</span>
+    </div>
+    <nav aria-label={t("footer.about")}>
+      <ul class="footer-links" role="list">
+        {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="footer-legal caption dim-label">
+      <p>{t("footer.data")}</p>
+      <p>{t("footer.trademarks")}</p>
+      <p>{t("footer.license")} © {year} Linuxhub</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-block-start: auto;
+    padding-block: var(--space-5) calc(var(--space-5) + 64px);
+    border-block-start: 1px solid var(--border-color);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .footer-links a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-legal {
+    display: grid;
+    gap: 2px;
+  }
+
+  @media (min-width: 900px) {
+    .site-footer {
+      padding-block-end: var(--space-5);
+    }
+  }
+</style>

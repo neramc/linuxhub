@@ -1,0 +1,322 @@
+/*
+ * Global base styles: reset, typography, links, focus ring, utilities.
+ * Component styles live next to their components (Astro scoped styles).
+ */
+
+@layer reset, base, utilities;
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    hanging-punctuation: first last;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  img,
+  video {
+    block-size: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+  }
+
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+@layer base {
+  html {
+    background: var(--window-bg-color);
+    color: var(--window-fg-color);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    line-height: 1.6;
+    font-feature-settings: "kern", "calt";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-padding-block-start: calc(var(--headerbar-height) + var(--space-2));
+  }
+
+  body {
+    min-block-size: 100dvh;
+    display: flex;
+    flex-direction: column;
+    word-break: keep-all; /* keep Korean words intact when wrapping */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.25;
+    text-wrap: balance;
+    color: inherit;
+  }
+
+  h1 {
+    font-size: var(--text-title-1);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+  }
+
+  h2 {
+    font-size: var(--text-title-2);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: var(--text-title-3);
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: var(--text-title-4);
+    font-weight: 700;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent-bg-color) 30%, transparent);
+  }
+
+  /* libadwaita focus ring: 2px, 50% accent, animated in. */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  hr {
+    border: 0;
+    border-block-start: 1px solid var(--border-color);
+  }
+
+  /* Native cross-document view transitions (no JS). */
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 160ms;
+    animation-timing-function: var(--ease-out-quad);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    @view-transition {
+      navigation: none;
+    }
+  }
+}
+
+@layer utilities {
+  .container {
+    inline-size: 100%;
+    max-inline-size: calc(var(--content-width) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .dim-label {
+    opacity: var(--dim-opacity);
+  }
+
+  .numeric {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .caption {
+    font-size: var(--text-caption);
+  }
+
+  .caption-heading {
+    font-size: var(--text-caption);
+    font-weight: 700;
+  }
+
+  .heading {
+    font-weight: 700;
+  }
+
+  .title-display {
+    font-size: var(--text-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .accent {
+    color: var(--accent-color);
+  }
+
+  .success {
+    color: var(--success-color);
+  }
+
+  .warning {
+    color: var(--warning-color);
+  }
+
+  .error {
+    color: var(--error-color);
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* libadwaita AdwToast (created by src/scripts/toast.ts) */
+.adw-toast {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: calc(80px + env(safe-area-inset-bottom));
+  z-index: 50;
+  inline-size: fit-content;
+  max-inline-size: calc(100vw - 32px);
+  margin-inline: auto;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--toast-bg-color);
+  color: var(--toast-fg-color);
+  box-shadow: var(--shadow-toast);
+  font-weight: 700;
+  opacity: 0;
+  translate: 0 8px;
+  pointer-events: none;
+  transition:
+    opacity var(--duration) var(--ease-out-quad),
+    translate var(--duration) var(--ease-out-quad);
+}
+
+.adw-toast[data-visible] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (min-width: 900px) {
+  .adw-toast {
+    inset-block-end: 24px;
+  }
+}
+
+/* libadwaita dropdown (AdwComboRow / GtkDropDown look) on a native <select>. */
+.combo-select {
+  min-inline-size: 0;
+  max-inline-size: 65%;
+  min-block-size: 36px;
+  padding: 6px 32px 6px 12px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background-color: var(--button-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23888' d='M3.293 5.293a1 1 0 0 1 1.414 0L8 8.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-overflow: ellipsis;
+  appearance: none;
+  cursor: pointer;
+}
+
+.combo-select:hover {
+  background-color: var(--button-hover-color);
+}
+
+.combo-select:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 1px;
+}
+
+.combo-select option {
+  background: var(--popover-bg-color);
+  color: var(--popover-fg-color);
+}

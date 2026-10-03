@@ -1,0 +1,40 @@
+---
+/**
+ * libadwaita `list.boxed-list` (widgets/_lists.scss): a card containing
+ * separated rows. Put ActionRow / ExpanderRow children inside. Optional
+ * heading + description render like an AdwPreferencesGroup.
+ */
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+  /** Heading level for the group title. */
+  level?: 2 | 3 | 4 | undefined;
+  class?: string | undefined;
+  id?: string | undefined;
+}
+
+const { title, description, level = 3, class: className, id } = Astro.props;
+const Heading = `h${level}` as "h2" | "h3" | "h4";
+const headingId = id ? `${id}-title` : undefined;
+---
+
+<section class:list={["adw-group", className]} id={id} aria-labelledby={title ? headingId : undefined}>
+  {
+    (title || Astro.slots.has("suffix")) && (
+      <div class="adw-group-header">
+        <div>
+          {title && (
+            <Heading class="adw-group-title" id={headingId}>
+              {title}
+            </Heading>
+          )}
+          {description && <p class="adw-group-description dim-label">{description}</p>}
+        </div>
+        <slot name="suffix" />
+      </div>
+    )
+  }
+  <ul class="adw-boxed-list" role="list">
+    <slot />
+  </ul>
+</section>

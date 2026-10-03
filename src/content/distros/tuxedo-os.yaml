@@ -1,0 +1,47 @@
+name: TUXEDO OS
+order: 37
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: semi-rolling
+desktops: [kde]
+packageManagers: [apt, dpkg, flatpak]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, beginner, gaming]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: DE
+  firstRelease: 2022-10-06
+requirements:
+  ramGB: 4
+  diskGB: 25
+  note:
+    ko: 공식 권장 사양이 없어 일반적인 기준으로 적었습니다.
+    en: TUXEDO publishes no official requirements; these are conservative general values.
+links:
+  home: https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo
+  download: https://os.tuxedocomputers.com/
+  docs: https://www.tuxedocomputers.com/en/First-Steps-with-TUXEDO-OS.tuxedo
+  installGuide: https://www.tuxedocomputers.com/en/Infos/Help-and-Support/Instructions/How-do-I-create-and-start-a-Live-Medium.tuxedo
+  source: https://gitlab.com/tuxedocomputers/development/tuxedo_os
+tagline:
+  ko: TUXEDO가 자사 노트북·PC에 맞춰 다듬은 KDE Plasma 배포판
+  en: A KDE Plasma distro from TUXEDO Computers, tuned for its own laptops and PCs
+aliases: [턱시도 OS, 턱시도, tuxedo]
+logo:
+  file: tuxedo-os.svg
+  source: https://os.tuxedocomputers.com/html/icon.svg
+  license: Trademark of TUXEDO Computers GmbH, used to identify the project
+download:
+  strategy: official-page
+sources:
+  - https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo
+  - https://os.tuxedocomputers.com/
+  - https://os.tuxedocomputers.com/TUXEDO-OS_current.manifest
+  - https://www.tuxedocomputers.com/en/Tailor-made-OS-for-your-TUXEDO-TUXEDO-OS-1-available-as-ISO.tuxedo
+  - https://www.tuxedocomputers.com/en/Infos/Help-Support/Frequently-asked-questions/What-is-the-differences-between-TUXEDO-OS-and-Ubuntu/Kubuntu-_1.tuxedo
+lastReviewed: 2026-10-03

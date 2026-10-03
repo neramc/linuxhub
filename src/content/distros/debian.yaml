@@ -1,0 +1,52 @@
+name: Debian
+order: 3
+family: debian
+basedOn: null
+status: active
+releaseModel: fixed
+desktops: [gnome, kde, xfce, cinnamon, mate, lxqt, lxde]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: debian-installer
+useCases: [server, desktop, developer]
+difficulty: intermediate
+architectures: [x86_64, aarch64, armhf, ppc64le, riscv64, s390x]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 1993
+requirements:
+  ramGB: 2
+  diskGB: 10
+  note:
+    ko: 데스크톱 설치 기준 권장 사양입니다(최소 1GB RAM, 1GHz 펜티엄 4급 이상).
+    en: Recommended for a desktop install (1 GB RAM minimum; Pentium 4 1 GHz class or better).
+links:
+  home: https://www.debian.org/
+  download: https://www.debian.org/distrib/
+  docs: https://www.debian.org/doc/
+  installGuide: https://www.debian.org/releases/stable/installmanual
+  forum: https://forums.debian.net/
+  releaseNotes: https://www.debian.org/releases/stable/releasenotes
+  source: https://salsa.debian.org/
+tagline:
+  ko: 수많은 배포판의 뿌리가 된, 자원봉사자들이 만드는 범용 운영체제
+  en: The volunteer-built universal operating system that many distros build on
+aliases: [데비안, debian gnu/linux]
+logo:
+  file: debian.svg
+  source: https://www.debian.org/logos/
+  license: LGPL-3.0+ / CC BY-SA 3.0 (Debian Open Use Logo); Debian trademark of SPI
+  trademark: https://www.debian.org/trademark
+download:
+  strategy: mirrors
+sources:
+  - https://www.debian.org/releases/stable/
+  - https://www.debian.org/releases/stable/amd64/ch03s04.en.html
+  - https://www.debian.org/CD/live/
+  - https://www.debian.org/doc/manuals/project-history/detailed.en.html
+  - https://www.debian.org/support
+  - https://www.debian.org/logos/
+  - https://wiki.debian.org/SecureBoot
+lastReviewed: 2026-10-03

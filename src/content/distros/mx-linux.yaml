@@ -1,0 +1,47 @@
+name: MX Linux
+order: 7
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [xfce, kde, fluxbox]
+packageManagers: [apt, dpkg, flatpak]
+initSystem: systemd / SysVinit
+installer: mx-installer
+useCases: [beginner, desktop, lightweight]
+difficulty: beginner
+architectures: [x86_64, aarch64]
+secureBoot: partial
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2014
+requirements:
+  ramGB: 2
+  diskGB: 35
+  note:
+    ko: 공식 매뉴얼의 권장 사양입니다(최소 1GB RAM, 20GB 디스크, 64비트 CPU).
+    en: Recommended by the official manual (minimum 1 GB RAM and 20 GB disk; 64-bit CPU).
+links:
+  home: https://mxlinux.org/
+  download: https://mxlinux.org/download-links/
+  docs: https://mxlinux.org/manuals/
+  forum: https://forum.mxlinux.org/
+  releaseNotes: https://mxlinux.org/blog/
+  source: https://github.com/MX-Linux
+tagline:
+  ko: Debian 안정판에 쓰기 쉬운 MX 도구를 더한 중간 무게 배포판
+  en: A mid-weight desktop on Debian stable, with MX's own easy system tools
+aliases: [엠엑스 리눅스, MX, mxlinux, mx-linux]
+logo:
+  file: mx-linux.svg
+  source: https://mxrepo.com/mx/repo/pool/main/m/mx-welcome-data/
+  license: LGPL-3.0+ (official mx-welcome-data package); MX Linux logo, used to identify the project
+download:
+  strategy: sourceforge
+sources:
+  - https://sourceforge.net/projects/mx-linux/files/Final/
+  - https://sourceforge.net/projects/mx-linux/files/Final/Xfce/
+  - https://mxrepo.com/mx/repo/pool/main/m/mx-docs/mx-docs-en_202609130mx25_all.deb
+  - https://mxrepo.com/mx/repo/pool/main/m/mx-welcome-data/
+lastReviewed: 2026-10-03

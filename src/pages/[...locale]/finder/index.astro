@@ -1,0 +1,250 @@
+---
+/**
+ * Distro finder quiz. Questions are plain HTML form controls; scoring runs in
+ * the browser (src/lib/finder.ts) over a compact JSON of catalog attributes.
+ */
+import Button from "~/components/adw/Button.astro";
+import { localePaths, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { getDistros } from "~/lib/catalog";
+import type { FinderDistro } from "~/lib/finder";
+import { logoUrl } from "~/lib/logos";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const distros = await getDistros();
+const data: (FinderDistro & { tagline: string; logo: string; href: string })[] = distros.map(
+  (d) => ({
+    id: d.id,
+    name: d.data.name,
+    order: d.data.order,
+    difficulty: d.data.difficulty,
+    useCases: d.data.useCases,
+    desktops: d.data.desktops,
+    releaseModel: d.data.releaseModel,
+    ramGB: d.data.requirements.ramGB,
+    immutable: d.data.immutable,
+    status: d.data.status,
+    tagline: d.data.tagline[locale],
+    logo: logoUrl(d.data.logo.file),
+    href: localizePath(`/distros/${d.id}/`, locale),
+  }),
+);
+const single = [
+  { name: "experience", options: ["new", "some", "expert"] },
+  { name: "hardware", options: ["modern", "average", "old"] },
+  { name: "look", options: ["windows", "macos", "gnome", "any"] },
+  { name: "updates", options: ["stable", "latest", "any"] },
+  { name: "privacy", options: ["yes", "no"] },
+] as const;
+const uses = [
+  "desktop",
+  "gaming",
+  "developer",
+  "creative",
+  "server",
+  "security",
+  "education",
+] as const;
+const reasons = {
+  experience: t("finder.reasons.experience"),
+  use: t("finder.reasons.use"),
+  hardware: t("finder.reasons.hardware"),
+  look: t("finder.reasons.look"),
+  updates: t("finder.reasons.updates"),
+  privacy: t("finder.reasons.privacy"),
+};
+---
+
+<Base locale={locale} title={t("finder.title")} description={t("finder.lead")}>
+  <div class="container page">
+    <header class="page-header">
+      <h1>{t("finder.title")}</h1>
+      <p class="dim-label">{t("finder.lead")}</p>
+    </header>
+
+    <form class="quiz" data-finder data-compare={localizePath("/compare/", locale)}>
+      <fieldset class="question adw-card padded">
+        <legend class="heading">1. {t("finder.q.experience")}</legend>
+        <div class="choices">
+          {single[0].options.map((o, i) => (
+            <label class="choice"><input type="radio" name="experience" value={o} checked={i === 0} /><span>{t(`finder.a.experience.${o}`)}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset class="question adw-card padded">
+        <legend class="heading">2. {t("finder.q.uses")}</legend>
+        <div class="choices">
+          {uses.map((u) => (
+            <label class="choice"><input type="checkbox" name="uses" value={u} checked={u === "desktop"} /><span>{t(`finder.uses.${u}`)}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      {
+        single.slice(1).map((q, qi) => (
+          <fieldset class="question adw-card padded">
+            <legend class="heading">{qi + 3}. {t(`finder.q.${q.name}`)}</legend>
+            <div class="choices">
+              {q.options.map((o, i) => (
+                <label class="choice">
+                  <input type="radio" name={q.name} value={o} checked={i === (q.name === "privacy" ? 1 : q.name === "hardware" ? 1 : 0)} />
+                  <span>{t(`finder.a.${q.name}.${o}` as never)}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ))
+      }
+
+      <div class="actions">
+        <Button type="submit" variant="suggested" pill icon="star">{t("finder.submit")}</Button>
+      </div>
+      <noscript><p class="dim-label">{t("finder.noscript")} <a href={localizePath("/distros/", locale)}>{t("nav.distros")}</a></p></noscript>
+    </form>
+
+    <section class="results" data-results hidden aria-live="polite" aria-labelledby="results-title">
+      <h2 id="results-title" tabindex="-1">{t("finder.results")}</h2>
+      <p class="dim-label">{t("finder.resultsLead")}</p>
+      <ol class="result-list" role="list" data-result-list></ol>
+      <div class="actions">
+        <Button href="#" pill icon="compare" data-compare-link>{t("finder.compare")}</Button>
+        <Button variant="flat" icon="refresh" data-restart>{t("finder.restart")}</Button>
+      </div>
+    </section>
+
+    <script type="application/json" id="finder-data" set:html={JSON.stringify({ distros: data, reasons }).replace(/</g, "\\u003c")}></script>
+  </div>
+</Base>
+
+<script>
+  import "~/scripts/finder";
+</script>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-4) var(--space-6);
+    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
+  }
+
+  .page-header {
+    display: grid;
+    gap: 6px;
+  }
+
+  .quiz {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .question {
+    border: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .question legend {
+    float: left;
+    inline-size: 100%;
+    margin-block-end: var(--space-2);
+  }
+
+  .choices {
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .choice {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .choice input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .choice span {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 40px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--button-color);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    transition: background-color var(--duration) var(--ease-out-quad);
+  }
+
+  .choice:hover span {
+    background: var(--button-hover-color);
+  }
+
+  .choice input:checked + span {
+    background: var(--accent-bg-color);
+    color: var(--accent-fg-color);
+  }
+
+  .choice input:focus-visible + span {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .results {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .result-list {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .result-list :global(a) {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    padding: var(--space-3);
+    color: inherit;
+  }
+
+  .result-list :global(img) {
+    flex: none;
+  }
+
+  .result-list :global(.result-rank) {
+    font-weight: 800;
+    color: var(--accent-color);
+  }
+
+  .result-list :global(.result-name) {
+    font-size: var(--text-title-3);
+    font-weight: 800;
+  }
+
+  .result-list :global(.result-reasons) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-block-start: 6px;
+  }
+</style>

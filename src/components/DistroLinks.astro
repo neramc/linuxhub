@@ -1,0 +1,34 @@
+---
+import { type Locale, useTranslations } from "~/i18n";
+import type { Distro } from "~/lib/catalog";
+import ActionRow from "./adw/ActionRow.astro";
+import BoxedList from "./adw/BoxedList.astro";
+
+interface Props {
+  distro: Distro;
+  locale: Locale;
+}
+
+const { distro, locale } = Astro.props;
+const t = useTranslations(locale);
+const l = distro.data.links;
+const rows = [
+  { key: "home", url: l.home, icon: "website" },
+  { key: "download", url: l.download, icon: "download" },
+  { key: "docs", url: l.docs, icon: "docs" },
+  { key: "installGuide", url: l.installGuide, icon: "contents" },
+  { key: "releaseNotes", url: l.releaseNotes, icon: "document" },
+  { key: "forum", url: l.forum, icon: "community" },
+  { key: "source", url: l.source, icon: "terminal" },
+] as const;
+---
+
+<BoxedList title={t("distro.links")} level={2}>
+  {
+    rows
+      .filter((r) => r.url)
+      .map((r) => (
+        <ActionRow title={t(`links.${r.key}`)} subtitle={new URL(r.url as string).hostname} icon={r.icon} href={r.url} external />
+      ))
+  }
+</BoxedList>

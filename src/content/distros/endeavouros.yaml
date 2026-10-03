@@ -1,0 +1,51 @@
+name: EndeavourOS
+order: 8
+family: arch
+basedOn: arch
+status: active
+releaseModel: rolling
+desktops: [kde, gnome, xfce, cinnamon, budgie, mate, i3, lxqt, lxde]
+packageManagers: [pacman, yay]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, developer, tinkerer]
+difficulty: intermediate
+architectures: [x86_64, aarch64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2019-07-15
+requirements:
+  ramGB: 4
+  diskGB: 15
+  note:
+    ko: 공식 홈페이지의 시스템 요구 사항입니다(64비트 듀얼코어 CPU).
+    en: System requirements from the official website (64-bit dual-core CPU).
+links:
+  home: https://endeavouros.com/
+  download: https://endeavouros.com/download/
+  docs: https://discovery.endeavouros.com/
+  installGuide: https://discovery.endeavouros.com/live-iso-tricks-tips/
+  forum: https://forum.endeavouros.com/
+  releaseNotes: https://endeavouros.com/news/
+  source: https://github.com/endeavouros-team
+tagline:
+  ko: Arch에 가깝게 유지하는 터미널 중심의 커뮤니티 배포판
+  en: A terminal-centric, community-driven distro that stays close to Arch
+aliases: [엔데버OS, 엔데버 OS, 엔데버, endeavour os, endeavour, eos]
+logo:
+  file: endeavouros.svg
+  source: https://endeavouros.com/favicon.svg
+  license: GPL-3.0 (endeavouros-team/Branding); EndeavourOS mark, used to identify the project
+download:
+  strategy: mirrors
+sources:
+  - https://endeavouros.com/
+  - https://endeavouros.com/download/
+  - https://endeavouros.com/about-us/
+  - https://endeavouros.com/media-images/
+  - https://endeavouros.com/endeavouros-arm/
+  - https://discovery.endeavouros.com/live-iso-tricks-tips/
+  - https://raw.githubusercontent.com/endeavouros-team/Branding/main/LICENSE
+lastReviewed: 2026-10-03

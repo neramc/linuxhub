@@ -1,0 +1,175 @@
+---
+import { render } from "astro:content";
+import Button from "~/components/adw/Button.astro";
+import StatusPage from "~/components/adw/StatusPage.astro";
+import ViewSwitcher from "~/components/adw/ViewSwitcher.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
+import DocSources from "~/components/DocSources.astro";
+import { mdxComponents } from "~/components/mdx";
+import Toc from "~/components/Toc.astro";
+import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { getDistroDoc, getDistros } from "~/lib/catalog";
+import { DIFFICULTIES, INSTALLERS, SECURE_BOOT } from "~/lib/taxonomy";
+import "~/styles/prose.css";
+
+export async function getStaticPaths() {
+  const distros = await getDistros();
+  return LOCALES.flatMap((locale) =>
+    distros.map((d) => ({
+      params: { locale: localeParam(locale), slug: d.id },
+      props: { locale, slug: d.id },
+    })),
+  );
+}
+
+const { locale, slug } = Astro.props as { locale: Locale; slug: string };
+const t = useTranslations(locale);
+const distro = (await getDistros()).find((d) => d.id === slug);
+if (!distro) throw new Error(`unknown distro ${slug}`);
+const d = distro.data;
+const doc = await getDistroDoc(slug, locale, "install");
+const rendered = doc ? await render(doc) : null;
+const distroHref = localizePath(`/distros/${slug}/`, locale);
+const title = t("install.title", { name: d.name });
+const jsonLd = doc
+  ? [
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        headline: title,
+        description: doc.data.description,
+        inLanguage: locale,
+        dateModified: doc.data.lastReviewed,
+        about: d.name,
+      },
+    ]
+  : [];
+---
+
+<Base locale={locale} title={title} description={doc?.data.description ?? t("install.description", { name: d.name })} mono jsonLd={jsonLd} image={`/og/${slug}.png`}>
+  <div class="container page" data-pagefind-body>
+    <nav class="breadcrumb caption" aria-label="Breadcrumb" data-pagefind-ignore>
+      <a href={localizePath("/distros/", locale)}>{t("distro.breadcrumb")}</a>
+      <span aria-hidden="true">/</span>
+      <a href={distroHref}>{d.name}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{t("distro.installGuide")}</span>
+    </nav>
+
+    <ViewSwitcher
+      data-pagefind-ignore
+      label={d.name}
+      items={[
+        { href: distroHref, label: t("distro.overview"), icon: "info" },
+        { href: localizePath(`/distros/${slug}/install/`, locale), label: t("distro.installGuide"), icon: "contents", current: true },
+      ]}
+    />
+
+    <header class="doc-header">
+      <DistroLogo file={d.logo.file} name={d.name} size={56} eager />
+      <div>
+        <h1>{title}</h1>
+        <p class="caption dim-label">
+          {t("install.meta", { installer: INSTALLERS[d.installer][locale], secureBoot: SECURE_BOOT[d.secureBoot][locale], difficulty: DIFFICULTIES[d.difficulty][locale] })}
+        </p>
+      </div>
+    </header>
+
+    <div class="actions" data-pagefind-ignore>
+      <Button href={`${distroHref}#download`} variant="suggested" pill icon="download">{t("install.downloadIso")}</Button>
+      {d.links.installGuide && <Button href={d.links.installGuide} pill iconEnd="external" external>{t("install.officialDocs")}</Button>}
+    </div>
+
+    {
+      rendered ? (
+        <div class="doc-layout">
+          <aside class="doc-toc" data-pagefind-ignore>
+            <Toc headings={rendered.headings} title={t("install.onThisPage")} />
+          </aside>
+          <article class="prose">
+            <rendered.Content components={mdxComponents} />
+            <DocSources sources={doc?.data.sources ?? []} lastReviewed={doc?.data.lastReviewed ?? ""} locale={locale} />
+          </article>
+        </div>
+      ) : (
+        <StatusPage icon="contents" title={t("install.comingSoonTitle")} description={t("install.comingSoonLead")} level={2}>
+          <Button href={d.links.installGuide ?? d.links.docs ?? d.links.home} variant="suggested" pill iconEnd="external" external>
+            {t("install.officialDocs")}
+          </Button>
+        </StatusPage>
+      )
+    }
+
+    <a class="back" href={distroHref} data-pagefind-ignore>← {t("install.backToDistro", { name: d.name })}</a>
+  </div>
+</Base>
+
+<script>
+  import "~/scripts/copy-code";
+</script>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-3) var(--space-6);
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    opacity: var(--dim-opacity);
+  }
+
+  .breadcrumb a {
+    color: inherit;
+  }
+
+  .doc-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .doc-header h1 {
+    font-size: var(--text-title-1);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .doc-layout {
+    display: grid;
+    gap: var(--space-4);
+    margin-block-start: var(--space-2);
+  }
+
+  .doc-toc {
+    display: none;
+  }
+
+  .back {
+    margin-block-start: var(--space-4);
+  }
+
+  @media (min-width: 1100px) {
+    .doc-layout {
+      grid-template-columns: minmax(0, 1fr) 240px;
+      align-items: start;
+    }
+
+    .doc-toc {
+      display: block;
+      order: 2;
+      position: sticky;
+      inset-block-start: calc(var(--headerbar-height) + var(--space-3));
+      max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-5));
+      overflow-y: auto;
+    }
+  }
+</style>

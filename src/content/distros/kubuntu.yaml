@@ -1,0 +1,51 @@
+name: Kubuntu
+order: 17
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: fixed
+desktops: [kde]
+packageManagers: [apt, dpkg, snap]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, beginner]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2005-04-08
+requirements:
+  ramGB: 4
+  diskGB: 25
+  note:
+    ko: 공식 권장 사양이 없어 일반적인 기준으로 적었습니다.
+    en: No official requirements are published, so these are general guidelines.
+links:
+  home: https://kubuntu.org/
+  download: https://kubuntu.org/download/
+  forum: https://discourse.ubuntu.com/c/flavors/kubuntu/187
+  releaseNotes: https://kubuntu.org/news/
+  source: https://github.com/kubuntu-team
+tagline:
+  ko: KDE Plasma 데스크톱을 쓰는 Ubuntu 공식 플레이버
+  en: The official Ubuntu flavor built around the KDE Plasma desktop
+aliases: [쿠분투, kubuntu linux]
+logo:
+  file: kubuntu.svg
+  source: https://raw.githubusercontent.com/kubuntu-team/kubuntu-branding/main/Assets/Logo/Square%20-%20Mono%20-%20Symbol.svg
+  license: CC0 1.0 (Kubuntu brand assets); Kubuntu is a trademark of Canonical Ltd.
+  trademark: https://canonical.com/legal/intellectual-property-policy
+download:
+  strategy: mirrors
+sources:
+  - https://kubuntu.org/about/
+  - https://kubuntu.org/download/
+  - https://kubuntu.org/alternative-downloads/
+  - https://kubuntu.org/news/kubuntu-26-04-release-notes/
+  - https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/kubuntu-26.04.1-desktop-amd64.manifest
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2005-April/000024.html
+  - https://raw.githubusercontent.com/kubuntu-team/kubuntu-branding/main/README.md
+  - https://canonical.com/legal/trademarks
+lastReviewed: 2026-10-03

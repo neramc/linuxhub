@@ -1,0 +1,529 @@
+/*
+ * libadwaita widget styles for the components in src/components/adw/.
+ * Global (not scoped) so markup can use the classes directly; imported once in Base.astro.
+ */
+
+/* ---- ActionRow.astro ---- */
+.adw-action-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: 54px;
+  padding: 8px 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.adw-action-row.activatable {
+  transition: background-color var(--duration) var(--ease-out-quad);
+}
+
+.adw-action-row.activatable:hover {
+  background-color: var(--view-hover-color);
+  text-decoration: none;
+}
+
+.adw-action-row.activatable:active {
+  background-color: var(--view-active-color);
+}
+
+.adw-action-row.activatable:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: -2px;
+  border-radius: 0;
+}
+
+.adw-boxed-list > li:first-child > .adw-action-row.activatable:focus-visible {
+  border-start-start-radius: var(--radius-card);
+  border-start-end-radius: var(--radius-card);
+}
+
+.adw-boxed-list > li:last-child > .adw-action-row.activatable:focus-visible {
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+}
+
+.adw-row-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-inline-size: 0;
+  gap: 1px;
+}
+
+.adw-row-title {
+  overflow-wrap: anywhere;
+}
+
+.adw-row-subtitle {
+  font-size: var(--text-caption);
+  opacity: var(--dim-opacity);
+  overflow-wrap: anywhere;
+}
+
+.adw-row-subtitle.mono {
+  font-family: var(--font-mono);
+}
+
+/* Property rows: dim caption label above the value. */
+.adw-action-row.property .adw-row-text {
+  flex-direction: column-reverse;
+}
+
+.adw-action-row.property .adw-row-title {
+  font-size: var(--text-body);
+}
+
+.adw-row-suffix {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: none;
+}
+
+.adw-row-suffix:empty {
+  display: none;
+}
+
+.adw-row-chevron,
+.adw-row-prefix {
+  opacity: var(--dim-opacity);
+}
+
+/* ---- Badge.astro ---- */
+.adw-badge {
+  --badge-color: currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-block-size: 24px;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background-color: color-mix(in srgb, var(--badge-color) 10%, transparent);
+  color: inherit;
+  font-size: var(--text-caption);
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.adw-badge:hover {
+  background-color: color-mix(in srgb, var(--badge-color) 16%, transparent);
+  text-decoration: none;
+}
+
+.adw-badge.accent {
+  --badge-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.adw-badge.success {
+  --badge-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.adw-badge.warning {
+  --badge-color: var(--warning-color);
+  color: var(--warning-color);
+}
+
+.adw-badge.error {
+  --badge-color: var(--error-color);
+  color: var(--error-color);
+}
+
+/* ---- Banner.astro ---- */
+.adw-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1) var(--space-2);
+  padding: 8px var(--gutter);
+  background-color: color-mix(in srgb, var(--accent-bg-color) 30%, transparent);
+  text-align: center;
+}
+
+.adw-banner-title {
+  font-weight: 700;
+}
+
+/* ---- BoxedList.astro ---- */
+.adw-group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.adw-group-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-inline: 2px;
+}
+
+.adw-group-title {
+  font-size: var(--text-body);
+  font-weight: 700;
+}
+
+.adw-group-description {
+  font-size: var(--text-caption);
+  margin-block-start: 2px;
+}
+
+.adw-boxed-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.adw-boxed-list > li + li {
+  border-block-start: 1px solid var(--card-shade-color);
+}
+
+/* ---- Button.astro ---- */
+.adw-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background-color: var(--button-color);
+  color: inherit;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--duration) var(--ease-out-quad),
+    outline-color var(--duration) var(--ease-out-quad);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.adw-button:hover {
+  background-color: var(--button-hover-color);
+  text-decoration: none;
+}
+
+.adw-button:active {
+  background-color: var(--button-active-color);
+}
+
+.adw-button:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 1px;
+  border-radius: var(--radius-button);
+}
+
+.adw-button.text-button {
+  padding-inline: 17px;
+}
+
+.adw-button.image-button {
+  min-inline-size: 36px;
+  padding-inline: 10px;
+}
+
+.adw-button.image-text-button {
+  padding-inline: 14px;
+}
+
+.adw-button.flat {
+  background-color: transparent;
+}
+
+.adw-button.flat:hover {
+  background-color: var(--hover-color);
+}
+
+.adw-button.flat:active {
+  background-color: var(--active-color);
+}
+
+.adw-button.suggested,
+.adw-button.destructive,
+.adw-button.opaque {
+  background-image: none;
+}
+
+.adw-button.suggested {
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+}
+
+.adw-button.destructive {
+  background-color: var(--destructive-bg-color);
+  color: var(--destructive-fg-color);
+}
+
+.adw-button.opaque {
+  background-color: color-mix(in srgb, var(--window-bg-color) 85%, var(--window-fg-color));
+  color: var(--window-fg-color);
+}
+
+.adw-button.suggested:hover,
+.adw-button.destructive:hover,
+.adw-button.opaque:hover {
+  background-image: linear-gradient(
+    color-mix(in srgb, currentColor 10%, transparent),
+    color-mix(in srgb, currentColor 10%, transparent)
+  );
+}
+
+.adw-button.suggested:active,
+.adw-button.destructive:active,
+.adw-button.opaque:active {
+  background-image: linear-gradient(rgb(0 0 6 / 20%), rgb(0 0 6 / 20%));
+}
+
+.adw-button.pill {
+  min-block-size: 44px;
+  padding: 10px 32px;
+  border-radius: var(--radius-pill);
+}
+
+.adw-button.pill.image-text-button {
+  padding-inline: 24px 28px;
+}
+
+.adw-button.circular {
+  border-radius: var(--radius-pill);
+  min-inline-size: 36px;
+  padding-inline: 0;
+}
+
+.adw-button[disabled],
+.adw-button[aria-disabled="true"] {
+  opacity: var(--disabled-opacity);
+  pointer-events: none;
+}
+
+@media (prefers-contrast: more) {
+  .adw-button:not(.flat, .suggested, .destructive) {
+    box-shadow: inset 0 0 0 1px var(--border-color);
+  }
+}
+
+/* ---- Callout.astro ---- */
+.adw-callout {
+  --callout-color: var(--accent-color);
+  --callout-bg: var(--accent-bg-color);
+  display: flex;
+  gap: var(--space-2);
+  margin-block: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-card);
+  background-color: color-mix(in srgb, var(--callout-bg) 12%, var(--view-bg-color));
+}
+
+.adw-callout.tip {
+  --callout-color: var(--success-color);
+  --callout-bg: var(--success-bg-color);
+}
+
+.adw-callout.warning {
+  --callout-color: var(--warning-color);
+  --callout-bg: var(--warning-bg-color);
+}
+
+.adw-callout.danger {
+  --callout-color: var(--destructive-color);
+  --callout-bg: var(--destructive-bg-color);
+}
+
+.adw-callout-icon {
+  color: var(--callout-color);
+  margin-block-start: 0.2em;
+}
+
+.adw-callout-body {
+  min-inline-size: 0;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.adw-callout-title {
+  font-weight: 700;
+  color: var(--callout-color);
+}
+
+/* ---- Card.astro ---- */
+.adw-card {
+  display: block;
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+}
+
+.adw-card.padded {
+  padding: var(--space-3);
+}
+
+.adw-card.activatable {
+  transition: background-image var(--duration) var(--ease-out-quad);
+}
+
+.adw-card.activatable:hover {
+  background-image: linear-gradient(
+    color-mix(in srgb, currentColor 3%, transparent),
+    color-mix(in srgb, currentColor 3%, transparent)
+  );
+  text-decoration: none;
+}
+
+.adw-card.activatable:active {
+  background-image: linear-gradient(
+    color-mix(in srgb, currentColor 8%, transparent),
+    color-mix(in srgb, currentColor 8%, transparent)
+  );
+}
+
+.adw-card.activatable:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: -1px;
+  border-radius: var(--radius-card);
+}
+
+@media (prefers-contrast: more) {
+  .adw-card {
+    box-shadow:
+      0 0 0 1px var(--border-color),
+      0 1px 3px 1px rgb(0 0 6 / 7%),
+      0 2px 6px 2px rgb(0 0 6 / 3%);
+  }
+}
+
+/* ---- ExpanderRow.astro ---- */
+.adw-expander-row > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.adw-expander-row > summary::-webkit-details-marker {
+  display: none;
+}
+
+.adw-expander-arrow {
+  opacity: var(--dim-opacity);
+  transition: transform var(--duration) var(--ease-out-quad);
+}
+
+.adw-expander-row[open] .adw-expander-arrow {
+  transform: rotate(180deg);
+}
+
+.adw-expander-content {
+  background-color: color-mix(in srgb, var(--card-shade-color) 50%, transparent);
+  border-block-start: 1px solid var(--card-shade-color);
+  padding: var(--space-2) 14px;
+}
+
+/* ---- Icon.astro ---- */
+.adw-icon {
+  flex: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ---- Kbd.astro ---- */
+.adw-kbd {
+  display: inline-block;
+  min-inline-size: 1.6em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background-color: var(--button-color);
+  box-shadow: inset 0 -1px var(--border-color);
+  font-family: var(--font-sans);
+  font-size: 0.8125em;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ---- StatusPage.astro ---- */
+.adw-status-page {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-2);
+  text-align: center;
+}
+
+.adw-status-icon {
+  opacity: var(--dim-opacity);
+  margin-block-end: var(--space-3);
+}
+
+.adw-status-title {
+  font-size: var(--text-title-1);
+  font-weight: 800;
+}
+
+.adw-status-description {
+  max-inline-size: 36rem;
+  text-wrap: balance;
+}
+
+.adw-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  margin-block-start: var(--space-3);
+}
+
+.adw-status-actions:empty {
+  display: none;
+}
+
+/* ---- ViewSwitcher.astro ---- */
+.adw-view-switcher {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border-radius: calc(var(--radius-button) + 3px);
+  background-color: var(--button-color);
+  max-inline-size: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.adw-view-switcher-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 32px;
+  padding: 4px 14px;
+  border-radius: var(--radius-button);
+  color: inherit;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--duration) var(--ease-out-quad);
+}
+
+.adw-view-switcher-item:hover {
+  background-color: var(--hover-color);
+  text-decoration: none;
+}
+
+.adw-view-switcher-item[aria-current="page"] {
+  background-color: light-dark(#ffffff, rgb(255 255 255 / 20%));
+  box-shadow: 0 1px 3px rgb(0 0 6 / 12%);
+}

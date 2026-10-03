@@ -1,102 +1,67 @@
 name: CI
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
 
-# A push that supersedes an in-flight run makes that run irrelevant; cancel it
-# rather than paying for both. `main` is excluded so pushes there always finish
-# — a cancelled run on the default branch leaves the badge lying about state.
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
-  ci:
-    name: check · lint · test · build
+  checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
+      - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v5
         with:
-          # Read from the root package.json "packageManager" field rather than
-          # tracking latest — a toolchain that moves without a commit is how
-          # Biome 2.5 silently started failing lint on untouched files.
-          bun-version-file: package.json
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Workspace boundaries
-        run: bun run check:boundaries
-
-      - name: Lint & format (Biome)
-        run: bun run lint
-
-      - name: Typecheck
-        run: bun run check
-
-      - name: Test
-        run: bun run test
-
-      - name: Build (web + api dry-run)
-        run: bun run build
+          node-version: 22
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - run: bun run check
+      - run: bun run sync:validate
+      - run: bun scripts/validate-catalog.ts
+      - run: bun run test
+      - run: bun run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 3
 
   e2e:
-    name: e2e · accessibility
+    needs: checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
+      - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v5
         with:
-          bun-version-file: package.json
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      # Chromium is ~150 MB and changes only when Playwright does, so key the
-      # cache on the resolved Playwright version rather than the lockfile —
-      # otherwise every unrelated dependency bump throws the browser away.
-      - name: Resolve Playwright version
-        id: pw
-        working-directory: apps/web
-        run: echo "version=$(bunx playwright --version | tr ' ' '-')" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Playwright browsers
-        id: pw-cache
-        uses: actions/cache@v4
+          node-version: 22
+      - run: bun install --frozen-lockfile
+      - uses: actions/download-artifact@v5
         with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
+          name: dist
+          path: dist
+      - run: bunx playwright install --with-deps chromium
+      - run: bun run test:e2e
 
-      - name: Install Playwright Chromium
-        working-directory: apps/web
-        run: bunx playwright install --with-deps chromium
-        if: steps.pw-cache.outputs.cache-hit != 'true'
-
-      # A cache hit restores the browser but not its OS packages, which are
-      # outside ~/.cache. This installs those alone and is a no-op otherwise.
-      - name: Install Chromium system dependencies
-        working-directory: apps/web
-        run: bunx playwright install-deps chromium
-        if: steps.pw-cache.outputs.cache-hit == 'true'
-
-      # The e2e suite runs against the production build, and the axe job is
-      # part of the accessibility gate in .ai/roadmap.md — both must block.
-      - name: Build web
-        run: bun run --filter '@linuxhub/web' build
-
-      - name: E2E + accessibility (Playwright + axe)
-        working-directory: apps/web
-        run: bun run test:e2e
-
-      - name: Upload Playwright report on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
+  lighthouse:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          name: playwright-report
-          path: apps/web/playwright-report
-          retention-days: 7
+          node-version: 22
+      - uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist
+      - name: Lighthouse budgets (performance ≥ 95, a11y/best practices/SEO = 100)
+        run: npx --yes @lhci/cli@0.15.x autorun

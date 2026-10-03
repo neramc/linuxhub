@@ -1,0 +1,47 @@
+{/*
+  Shared step: create a bootable USB drive. Usage: <WriteUsb />
+*/}
+import Callout from "~/components/adw/Callout.astro";
+import Tab from "~/components/mdx/Tab.astro";
+import Tabs from "~/components/mdx/Tabs.astro";
+
+You need a **USB drive of 8 GB or more**. **Everything on it will be erased**, so copy off anything you need first.
+
+<Tabs>
+  <Tab label="Windows" open>
+    **Rufus** ([rufus.ie](https://rufus.ie)) is the most common tool; a portable version runs without installing.
+
+    1. Start Rufus and pick your USB drive under **Device**.
+    2. Under **Boot selection**, click **SELECT** and open the image you downloaded.
+    3. Leave **Partition scheme** on **GPT** for any recent PC (UEFI). Choose **MBR** only for very old PCs with a legacy BIOS.
+    4. Click **START**. If asked how to write the image, keep the default **ISO Image mode**; if the drive then doesn’t boot, recreate it in **DD Image mode**.
+
+    **balenaEtcher** ([etcher.balena.io](https://etcher.balena.io)) is even simpler: choose the image, choose the drive, click **Flash!**.
+  </Tab>
+  <Tab label="macOS">
+    **balenaEtcher** ([etcher.balena.io](https://etcher.balena.io)) is the easiest: **Flash from file**, **Select target** (your USB drive), then **Flash!**.
+
+    If you’re comfortable in Terminal, `dd` works too. Double-check the `diskN` number: picking the wrong disk erases it.
+
+    ```bash
+    diskutil list                       # find your USB drive's diskN
+    diskutil unmountDisk /dev/diskN
+    sudo dd if=~/Downloads/image.iso of=/dev/rdiskN bs=4m
+    diskutil eject /dev/diskN
+    ```
+  </Tab>
+  <Tab label="Linux">
+    On GNOME, open **Disks**, select the USB drive, choose **Restore Disk Image…** from the menu at the top right, and pick the image. The **Impression** app on Flathub does the same in one step.
+
+    In a terminal, use `dd`. First identify the USB device (for example `/dev/sdb`) with `lsblk`.
+
+    ```bash
+    lsblk
+    sudo dd if=~/Downloads/image.iso of=/dev/sdX bs=4M status=progress oflag=sync
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="tip" title="Several distros on one drive">
+  Install **Ventoy** ([ventoy.net](https://www.ventoy.net)) on a USB drive once; after that you just copy ISO files onto it and pick one from its boot menu. Handy for trying several distributions.
+</Callout>

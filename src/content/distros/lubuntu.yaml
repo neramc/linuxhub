@@ -1,0 +1,51 @@
+name: Lubuntu
+order: 24
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: fixed
+desktops: [lxqt]
+packageManagers: [apt, dpkg, snap]
+initSystem: systemd
+installer: calamares
+useCases: [lightweight, desktop, beginner]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2011-10-13
+requirements:
+  ramGB: 2
+  diskGB: 20
+  note:
+    ko: 메모리는 Ubuntu 26.04 릴리스 노트 기준이며, 디스크는 공식 수치가 없어 일반적인 기준으로 적었습니다.
+    en: RAM follows the Ubuntu 26.04 release notes; no official disk figure is published, so that value is a general guideline.
+links:
+  home: https://lubuntu.me/
+  download: https://lubuntu.me/downloads/
+  docs: https://manual.lubuntu.me/
+  forum: https://discourse.ubuntu.com/c/flavors/lubuntu/343
+  releaseNotes: https://lubuntu.me/blog/
+  source: https://github.com/lubuntu-team
+tagline:
+  ko: 가벼운 Qt 기반 LXQt 데스크톱의 Ubuntu 공식 플레이버
+  en: The official Ubuntu flavor with the lightweight, Qt-based LXQt desktop
+aliases: [루분투, lubuntu linux]
+logo:
+  file: lubuntu.svg
+  source: https://raw.githubusercontent.com/lubuntu-team/artwork/ubuntu/plucky/src/usr/share/lxqt/themes/Lubuntu%20Arc/mainmenu.svg
+  license: GPL-2.0-or-later (lubuntu-artwork package); Lubuntu is a trademark of Canonical Ltd.
+  trademark: https://canonical.com/legal/intellectual-property-policy
+download:
+  strategy: mirrors
+sources:
+  - https://lubuntu.me/downloads/
+  - https://lubuntu.me/lubuntu-26-04-lts-released/
+  - https://cdimage.ubuntu.com/lubuntu/releases/26.04.1/release/lubuntu-26.04.1-desktop-amd64.manifest
+  - https://documentation.ubuntu.com/release-notes/26.04/
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2011-October/000153.html
+  - https://raw.githubusercontent.com/lubuntu-team/artwork/ubuntu/plucky/debian/copyright
+  - https://canonical.com/legal/trademarks
+lastReviewed: 2026-10-03

@@ -1,0 +1,181 @@
+---
+/**
+ * About: how the site works, data sources, privacy, the sync bot, and
+ * credits for every logo, font and icon (generated from the catalog).
+ */
+import { localePaths, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { getDistros } from "~/lib/catalog";
+import "~/styles/prose.css";
+
+export const getStaticPaths = localePaths;
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const distros = [...(await getDistros())].sort((a, b) => a.data.name.localeCompare(b.data.name));
+const ko = locale === "ko";
+const repo = "https://github.com/neramc/linuxhub";
+---
+
+<Base locale={locale} title={t("about.title")} description={t("about.lead")}>
+  <div class="container page">
+    <article class="prose">
+      <h1>{t("about.title")}</h1>
+      <p class="lead">{t("about.lead")}</p>
+
+      {
+        ko ? (
+          <>
+            <h2>무엇을 하나요</h2>
+            <p>
+              Linuxhub는 인기 리눅스 배포판의 핵심 정보를 짧게 정리하고, 공식 미러에서 설치 이미지를 내려받게 하고, 설치를
+              처음부터 끝까지 안내합니다. 회원 가입이나 광고, 추적 스크립트는 없습니다.
+            </p>
+            <h2>데이터는 어디서 오나요</h2>
+            <ul>
+              <li>
+                <strong>버전, 파일, 체크섬, 미러</strong>는 각 프로젝트의 공식 API, 체크섬 파일, 공식 미러 목록에서
+                6시간마다(미러 목록은 하루 한 번) 자동으로 가져옵니다. 가져온 데이터는 검증을 거쳐 저장소에 기록되고,
+                바뀌었을 때만 사이트가 다시 배포됩니다.
+              </li>
+              <li>
+                <strong>배포판 소개와 설치 가이드</strong>는 공식 문서를 참고해 직접 다시 쓴 글이며, 문서마다 참고한 공식
+                자료와 마지막 검토일을 밝힙니다. 공식 문서를 그대로 옮기지 않습니다.
+              </li>
+              <li>
+                수록 배포판은 편집자가 고릅니다. 다른 사이트의 인기 순위를 가져오지 않습니다.
+              </li>
+            </ul>
+            <h2 id="privacy">위치 정보와 개인정보</h2>
+            <p>
+              가장 가까운 미러를 추천하기 위해, 다운로드 화면을 열면 서버가 접속 IP로부터 추정한 대략적인 국가와 좌표(도시
+              수준)를 한 번 알려 줍니다. 이 값은 저장하거나 기록하지 않으며 캐시하지도 않습니다. 브라우저의 위치 권한은
+              요청하지 않습니다. 선택한 다운로드 옵션과 화면 테마는 이 브라우저의 로컬 저장소에만 남습니다.
+            </p>
+            <h2 id="bot">LinuxhubBot</h2>
+            <p>
+              자동 갱신은 <code>LinuxhubBot</code>이라는 이름으로 접속합니다. robots.txt와 Crawl-delay를 지키고, 같은
+              서버에는 최소 1초 간격으로 요청하며, ETag/If-Modified-Since로 바뀐 내용만 받습니다. 문제가 있으면
+              <a href={`${repo}/issues`}>이슈</a>로 알려 주세요.
+            </p>
+            <h2>상표와 로고</h2>
+            <p>
+              배포판 이름과 로고는 각 소유자의 상표이며, 해당 프로젝트를 알리기 위해서만 원본 그대로 사용합니다. 로고
+              사용에 문제가 있다면 <a href={`${repo}/issues`}>이슈</a>로 알려 주시면 바로 조치하겠습니다.
+            </p>
+          </>
+        ) : (
+          <>
+            <h2>What it does</h2>
+            <p>
+              Linuxhub summarizes what matters about popular Linux distributions, lets you download installation images
+              from official mirrors, and walks you through installing them. No accounts, no ads, no tracking scripts.
+            </p>
+            <h2>Where the data comes from</h2>
+            <ul>
+              <li>
+                <strong>Versions, files, checksums and mirrors</strong> are pulled automatically every 6 hours (mirror
+                lists daily) from each project’s official APIs, checksum files and mirror lists. The data is validated,
+                committed to the repository, and the site redeploys only when something changed.
+              </li>
+              <li>
+                <strong>Overviews and install guides</strong> are written in our own words from the official
+                documentation; every document lists its official sources and when it was last reviewed. We never copy
+                official docs verbatim.
+              </li>
+              <li>The list of distributions is editorial; we don’t import popularity rankings from other sites.</li>
+            </ul>
+            <h2 id="privacy">Location and privacy</h2>
+            <p>
+              To suggest the nearest mirror, opening the download panel asks our server once for the approximate country
+              and city-level coordinates derived from your IP address. Nothing is stored, logged or cached, and we never
+              ask for your browser’s location permission. Your download choices and theme stay in this browser’s local
+              storage.
+            </p>
+            <h2 id="bot">LinuxhubBot</h2>
+            <p>
+              The automatic refresh identifies itself as <code>LinuxhubBot</code>. It honors robots.txt and Crawl-delay,
+              waits at least one second between requests to the same server, and revalidates with ETag /
+              If-Modified-Since. Report problems via <a href={`${repo}/issues`}>issues</a>.
+            </p>
+            <h2>Trademarks and logos</h2>
+            <p>
+              Distribution names and logos are trademarks of their respective owners, used unmodified and only to
+              identify the projects. If something is wrong, please <a href={`${repo}/issues`}>open an issue</a> and we’ll
+              fix it promptly.
+            </p>
+          </>
+        )
+      }
+
+      <h2>{ko ? "로고 출처" : "Logo credits"}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>{ko ? "배포판" : "Distribution"}</th>
+            <th>{ko ? "라이선스 / 상표" : "License / trademark"}</th>
+            <th>{ko ? "출처" : "Source"}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            distros.map((d) => (
+              <tr>
+                <td>
+                  <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
+                </td>
+                <td>
+                  {d.data.logo.license}
+                  {d.data.logo.trademark && (
+                    <>
+                      {" · "}
+                      <a href={d.data.logo.trademark} rel="noopener external">
+                        {ko ? "상표 정책" : "Trademark policy"}
+                      </a>
+                    </>
+                  )}
+                </td>
+                <td>
+                  <a href={d.data.logo.source} rel="noopener external">
+                    {new URL(d.data.logo.source).hostname}
+                  </a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+
+      <h2>{ko ? "글꼴과 아이콘" : "Fonts and icons"}</h2>
+      <ul>
+        <li>
+          Adwaita Sans · Adwaita Mono — GNOME Project, SIL Open Font License 1.1 (
+          <a href="https://gitlab.gnome.org/GNOME/adwaita-fonts" rel="noopener external">adwaita-fonts</a>)
+        </li>
+        <li>
+          {ko ? "아이콘" : "Icons"}: Adwaita icon theme & libadwaita — GNOME Project, CC BY-SA 3.0 / LGPL (
+          <a href="https://gitlab.gnome.org/GNOME/adwaita-icon-theme" rel="noopener external">adwaita-icon-theme</a>)
+        </li>
+        <li>
+          {ko ? "국가 좌표" : "Country locations"}: Natural Earth (public domain) · IANA Time Zone Database (public
+          domain)
+        </li>
+      </ul>
+
+      <h2>{ko ? "라이선스와 소스 코드" : "License and source code"}</h2>
+      <p>
+        {t("footer.license")} <a href={repo} rel="noopener external">{repo.replace("https://", "")}</a>
+      </p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .lead {
+    font-size: 1.1875rem;
+    opacity: var(--dim-opacity);
+  }
+</style>

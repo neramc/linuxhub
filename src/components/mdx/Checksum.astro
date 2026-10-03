@@ -1,0 +1,17 @@
+---
+/** The official checksum of the default image: <Checksum slug="fedora" />. */
+import { lookup } from "./data";
+
+interface Props {
+  slug: string;
+}
+const { artifact } = await lookup(Astro.props.slug);
+---
+
+{artifact?.checksum ? <code class="checksum-inline">{artifact.checksum.value}</code> : <span>—</span>}
+
+<style>
+  .checksum-inline {
+    overflow-wrap: anywhere;
+  }
+</style>

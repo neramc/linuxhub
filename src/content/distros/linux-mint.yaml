@@ -1,0 +1,52 @@
+name: Linux Mint
+order: 1
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: lts
+desktops: [cinnamon, xfce, mate]
+packageManagers: [apt, dpkg, flatpak]
+initSystem: systemd
+installer: other
+useCases: [beginner, desktop]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: partial
+immutable: false
+origin:
+  country: IE
+  firstRelease: 2006-08
+requirements:
+  ramGB: 4
+  diskGB: 20
+  note:
+    ko: 메모리는 권장 사양(최소 2GB), 디스크는 최소 사양(권장 100GB)입니다.
+    en: RAM is the recommended amount (2 GB minimum); disk is the minimum (100 GB recommended).
+links:
+  home: https://www.linuxmint.com/
+  download: https://www.linuxmint.com/download.php
+  docs: https://linuxmint-user-guide.readthedocs.io/en/latest/
+  installGuide: https://linuxmint-installation-guide.readthedocs.io/en/latest/
+  forum: https://forums.linuxmint.com/
+  releaseNotes: https://blog.linuxmint.com/
+  source: https://github.com/linuxmint
+tagline:
+  ko: 쓰기 쉬움을 앞세운 Cinnamon 데스크톱의 Ubuntu 기반 배포판
+  en: An easy-to-use Ubuntu-based distro and the home of the Cinnamon desktop
+aliases: [리눅스 민트, 민트, mint, lmde]
+logo:
+  file: linux-mint.svg
+  source: https://raw.githubusercontent.com/linuxmint/mintstick/master/share/icons/hicolor/scalable/status/mintstick-logo-linuxmint.svg
+  license: GPL-2.0-or-later (mintstick package); Linux Mint trademark, used to identify the project
+download:
+  strategy: mirrors
+sources:
+  - https://www.linuxmint.com/download.php
+  - https://www.linuxmint.com/edition.php?id=326
+  - https://www.linuxmint.com/rel_zena.php
+  - https://blog.linuxmint.com/?p=4981
+  - https://www.linuxmint.com/about.php
+  - https://www.linuxmint.com/privacy.php
+  - https://linuxmint-installation-guide.readthedocs.io/en/latest/efi.html
+  - https://www.linuxmint.com/mirrors.php
+lastReviewed: 2026-10-03

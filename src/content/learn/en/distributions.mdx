@@ -1,0 +1,205 @@
+---
+title: Understanding Linux distributions
+description: What a distribution is made of, how the big families (Debian, Fedora, Arch, SUSE and independents) and release models differ, what immutable “atomic” distros are, and how to pick the right one for you.
+navTitle: Distributions
+order: 4
+group: distros
+icon: grid
+related: [ubuntu, fedora, debian, arch]
+sources:
+  - https://www.gnu.org/gnu/linux-and-gnu.html
+  - https://www.debian.org/releases/
+  - https://www.debian.org/derivatives/
+  - https://wiki.debian.org/LTS
+  - https://ubuntu.com/about/release-cycle
+  - https://ubuntu.com/desktop/flavours
+  - https://www.linuxmint.com/download_lmde.php
+  - https://zorin.com/os/
+  - https://system76.com/pop/
+  - https://docs.fedoraproject.org/en-US/releases/lifecycle/
+  - https://www.centos.org/centos-stream/
+  - https://access.redhat.com/support/policy/updates/errata
+  - https://almalinux.org/
+  - https://rockylinux.org/about
+  - https://wiki.archlinux.org/title/Arch_Linux
+  - https://wiki.archlinux.org/title/Arch-based_distributions
+  - https://manjaro.org/
+  - https://endeavouros.com/
+  - https://cachyos.org/
+  - https://neon.kde.org/faq
+  - https://get.opensuse.org/tumbleweed/
+  - https://get.opensuse.org/leap/16.0/
+  - https://get.opensuse.org/microos/
+  - https://www.gentoo.org/get-started/about/
+  - https://alpinelinux.org/about/
+  - https://voidlinux.org/
+  - https://nixos.org/
+  - https://docs.fedoraproject.org/en-US/fedora-silverblue/
+  - https://docs.fedoraproject.org/en-US/fedora-silverblue/technical-information/
+  - https://docs.fedoraproject.org/en-US/fedora-silverblue/updates-upgrades-rollbacks/
+  - https://universal-blue.org/
+  - https://docs.fedoraproject.org/en-US/bootc/
+  - https://ubuntu.com/core
+lastReviewed: 2026-10-03
+---
+
+Strictly speaking, “Linux” is only the kernel — the core that talks to the hardware. A kernel on its own isn’t something you can use, so projects bundle it with tools, libraries, an installer and a desktop, and ship the result as a complete operating system. That bundle is a **distribution**, or **distro** for short.
+
+There are hundreds of distros, but most belong to a handful of **families**, and they update in one of a few ways. Once you know those two things, the long list of names becomes far less intimidating.
+
+## What a distro is made of
+
+Distros look different on the surface, but underneath they’re assembled from the same kinds of parts.
+
+| Part | What it does | Examples |
+|---|---|---|
+| Kernel | Manages hardware and shares it between programs | Linux |
+| Base tools and libraries | The shell, file utilities, the C library and other basics | GNU coreutils, glibc, musl |
+| Init system | Starts and supervises services after boot | systemd, OpenRC, runit |
+| Package manager and repositories | Installs, updates and removes software | APT, DNF, pacman, zypper |
+| Installer | Partitions the disk and installs the system | Calamares, Anaconda |
+| Desktop environment | The screen, windows, menus and settings | GNOME, KDE Plasma, Xfce |
+
+This is also why the GNU Project asks people to say “GNU/Linux”: the kernel is Linux, but many of the basic tools on top of it come from GNU. [What is Linux?](../what-is-linux/) covers that background.
+
+What actually sets distros apart comes down to four things:
+
+- **Package format and tools** — `.deb` with APT, `.rpm` with DNF, and so on, depending on the family. See [Package management](../package-management/).
+- **Release model** — new versions every few months or years, or a continuous stream of updates.
+- **Defaults** — which desktop, apps, file system and settings you get out of the box.
+- **Who makes it, and why** — a company or a community, and whether it prioritizes convenience or minimalism.
+
+## Distribution families
+
+Most new distros aren’t built from scratch. They start from an existing distro’s packages and repositories and add their own defaults and tools on top — hence labels like “Ubuntu-based” or “Arch-based.” Distros in the same family share a package format and commands, so most documentation and know-how carries over.
+
+| Family | Packages · tools | Well-known members |
+|---|---|---|
+| Debian · Ubuntu | `.deb` · APT | Debian, Ubuntu, Linux Mint, Pop!\_OS, Zorin OS, Kali Linux |
+| Fedora · RHEL | `.rpm` · DNF | Fedora, CentOS Stream, RHEL, AlmaLinux, Rocky Linux |
+| Arch | pacman · AUR | Arch Linux, Manjaro, EndeavourOS, CachyOS |
+| SUSE | `.rpm` · zypper | openSUSE Tumbleweed, openSUSE Leap, SUSE Linux Enterprise |
+| Independent | Each their own | Gentoo, Slackware, Alpine Linux, Void Linux, NixOS |
+
+The [family tree](../../family/) shows who is based on whom.
+
+### Debian and Ubuntu
+
+**Debian** is a long-running community distro that always maintains three branches side by side: **stable** (the official release), **testing** (what will become the next stable) and **unstable**, nicknamed sid, where development happens. Stable is what Debian recommends for everyday use, and the Debian LTS project stretches every stable release’s lifetime to at least five years.
+
+**Ubuntu** is built on Debian by Canonical. A new version arrives every six months, and every two years one of them is an **LTS (long-term support)** release that gets five years of standard security maintenance. Official *flavors* such as Kubuntu, Xubuntu and Lubuntu swap in a different desktop.
+
+Many popular distros are in turn built on Ubuntu, including [Linux Mint](../../distros/linux-mint/), [Pop!\_OS](../../distros/pop-os/) and [Zorin OS](../../distros/zorin-os/). Linux Mint also offers LMDE, an edition built directly on Debian instead. This family has the most users, so answers are easy to find, and plenty of commercial software is offered as a `.deb` package.
+
+### Fedora and Red Hat
+
+**Fedora** is a community distro sponsored by Red Hat. A new release comes out roughly every six months and each one is maintained for about 13 months. It adopts new technology early, which makes it a good fit if you want a current, clean desktop.
+
+On the enterprise side, things flow in one direction: technology matures in Fedora, moves into **CentOS Stream**, and from there into **Red Hat Enterprise Linux (RHEL)**. CentOS Stream is a continuously updated “midstream” that sits just ahead of RHEL. RHEL itself follows a ten-year life cycle per major version. **AlmaLinux** and **Rocky Linux** are free, community-run distros that are binary compatible with RHEL; both appeared after Red Hat announced in late 2020 that it would end CentOS Linux in favor of CentOS Stream. They’re common choices for servers.
+
+### Arch
+
+**Arch Linux** is an independently developed x86-64 distro that keeps most software at the latest stable version through a rolling release model. It ships software the way upstream developers released it, with minimal changes, and leaves decisions about how to build your system to you. The community-maintained **AUR (Arch User Repository)** and the remarkably thorough **Arch Wiki** are two of its biggest draws.
+
+Several derivatives make Arch easier to adopt. **Manjaro** tests packages itself and releases them in stages; **EndeavourOS** gives you an easy route to a lightweight, terminal-centric Arch system; and **CachyOS** focuses on performance with packages and a kernel tuned for modern CPUs.
+
+<Callout type="note" title="Ask derivative questions in the derivative’s community">
+  The Arch community and developers don’t support Arch-based distros. If something goes wrong on Manjaro or EndeavourOS, start with that project’s forum. The same goes for other families.
+</Callout>
+
+### SUSE
+
+**openSUSE Tumbleweed** is a rolling release that tests not just each new package on its own but also groups of packages against each other before shipping them. You can also roll back to an earlier snapshot with a single command. **openSUSE Leap** is a regular-release distro that combines source code from the enterprise **SUSE Linux Enterprise (SLE)** with community work, with stability as its priority.
+
+### Independent distros
+
+Some distros don’t belong to any family and do things their own way:
+
+- **Gentoo** builds software from source on your machine with a tool called Portage, tuned exactly to your needs. It’s configurable enough that the project calls it a “metadistribution.”
+- **Alpine Linux** is a tiny distro built on musl libc and BusyBox, using the apk package manager and OpenRC. Its small size makes it popular for container images.
+- **Void Linux** is an independent, volunteer-run rolling distro with the XBPS package manager and the runit init system, available in both glibc and musl variants.
+- **NixOS** builds your whole system from a declarative configuration file. Updates are designed not to break other packages, and rolling back to a previous state is easy.
+- **Slackware** is one of the long-standing distros and sticks to a simple, traditional Unix approach.
+
+## Release models
+
+How a distro delivers updates matters as much as which family it’s in.
+
+| Model | How it works | Upside | Keep in mind | Examples |
+|---|---|---|---|---|
+| Fixed release | New versions on a schedule; within a version, mostly security and bug fixes | Predictable and stable | You need to upgrade before support ends | Fedora, Ubuntu interim releases, Debian stable |
+| Long-term support (LTS) | Selected releases are supported for years | Little maintenance for a long time | New hardware support and features arrive slowly | Ubuntu LTS, RHEL, AlmaLinux, Rocky Linux |
+| Rolling | No versions — packages are continuously updated | Always the newest kernel, drivers and apps | Update often and be ready to deal with changes | Arch Linux, openSUSE Tumbleweed, Void Linux |
+| Semi-rolling | A fixed or delayed base, with some parts updated continuously | A middle ground between stable and fresh | Means something slightly different for each distro | Manjaro, KDE neon |
+
+“Semi-rolling” isn’t a formally defined term. Manjaro, for example, holds back Arch packages until they’ve been tested and then releases them in stages, while KDE neon keeps an Ubuntu LTS base and rolls only the KDE software on top.
+
+<Callout type="tip" title="Rolling doesn’t mean unstable">
+  Rolling distros test packages too. The difference is that change never stops, so it’s better to update little and often than to skip months at a time — and to glance at the distro’s news before big updates.
+</Callout>
+
+You can filter the catalog to [fixed release](../../distros/?model=fixed), [LTS](../../distros/?model=lts), [rolling](../../distros/?model=rolling) or [semi-rolling](../../distros/?model=semi-rolling) distros.
+
+## Immutable and atomic distros
+
+A growing group of distros keeps the core system **read-only** and updates the whole operating system as a single image. The new image is prepared next to the running one and swapped in on the next restart. A power cut mid-update can’t leave you with a half-upgraded system, and if the new version misbehaves you simply boot the previous image.
+
+| | Traditional distro | Immutable / atomic distro |
+|---|---|---|
+| System files | Edited directly as administrator | Read-only (only config in `/etc` and data in `/var` are writable) |
+| Updates | Packages replaced one by one | Whole image replaced, applied on reboot |
+| Rolling back | Needs a separate snapshot tool | Boot the previous image |
+| Installing apps | Distro packages | Flatpak, containers such as Toolbx, and package layering only when needed |
+
+Well-known examples:
+
+- **Fedora Atomic Desktops** — Silverblue (GNOME), Kinoite (KDE Plasma), plus Sway, Budgie and COSMIC variants.
+- **Universal Blue images** — built from Fedora Atomic Desktops with extra hardware support and fixes, delivered as container images. The gaming-focused [Bazzite](../../distros/bazzite/) is the best known.
+- **openSUSE MicroOS** — transactional updates on top of a read-only Btrfs root.
+- **NixOS** — technically a different approach, but its declarative configuration and easy rollbacks offer similar benefits.
+- **Ubuntu Core** — an immutable distro for devices and IoT that keeps the kernel, OS and apps separate and updates each independently.
+
+**Bootable containers (bootc)**, which let you build and ship an entire OS like an ordinary container image, belong to the same movement. On Fedora Atomic, day-to-day commands look like this:
+
+```bash
+rpm-ostree status      # show the current and previous images
+rpm-ostree upgrade     # download a new image (applied after a restart)
+rpm-ostree rollback    # go back to the previous image
+```
+
+<Callout type="note" title="When an immutable distro isn’t the best fit">
+  If you often tinker deep in the system, need to build drivers or kernel modules yourself, or rely on software whose installer writes into system directories, a traditional distro will probably be less hassle.
+</Callout>
+
+## Choosing a distro
+
+There’s no single best distro — only the one that suits your situation. A few questions narrow things down quickly:
+
+- **What’s it for?** Everyday work, gaming, development, servers and reviving old PCs each have different starting points.
+- **How hands-on do you want to be?** If you want to install and go, pick a beginner-friendly distro. If you’d rather assemble everything yourself, Arch or Gentoo will suit you.
+- **Stability or freshness?** For a set-and-forget system choose LTS; if new hardware or the latest apps matter, Fedora or a rolling distro is better.
+- **Which desktop feels right?** First impressions come from the [desktop environment](../desktop-environments/) more than the distro.
+
+| If you… | Start by looking at |
+|---|---|
+| Are new to Linux and like a Windows-style layout | [Linux Mint](../../distros/linux-mint/), [Zorin OS](../../distros/zorin-os/), [Kubuntu](../../distros/kubuntu/) |
+| Want current software and a clean default desktop | [Fedora](../../distros/fedora/), [Ubuntu](../../distros/ubuntu/) |
+| Mainly play games | [Bazzite](../../distros/bazzite/), [Pop!\_OS](../../distros/pop-os/) — see [Gaming](../gaming/) |
+| Have an older or low-spec PC | [Xubuntu](../../distros/xubuntu/), [Linux Lite](../../distros/linux-lite/), [MX Linux](../../distros/mx-linux/) |
+| Run servers or always-on machines | [Debian](../../distros/debian/), [AlmaLinux](../../distros/almalinux/), [Rocky Linux](../../distros/rocky-linux/) |
+| Want to learn Linux deeply and build your own setup | [Arch Linux](../../distros/arch/), [NixOS](../../distros/nixos/), [Gentoo](../../distros/gentoo/) |
+
+On Linuxhub, this is the path we suggest:
+
+<Steps>
+
+1. Answer a few questions in the [distro finder](../../finder/) to narrow things down to two or three candidates.
+2. Filter the [distro catalog](../../distros/) by use case, family, desktop and release model, and [compare](../../compare/) the ones you like.
+3. Boot each candidate from a live USB and try it. Without installing anything, you can check the look and whether Wi-Fi and sound work.
+4. Once you’ve decided, read [Preparing to install](../installation-prep/) and install it.
+
+</Steps>
+
+<Callout type="tip" title="Your first distro doesn’t have to be your last">
+  Almost everything you learn carries over when you switch distros, and within a family even the commands stay the same. Keep your personal files backed up and you can try another distro whenever you like.
+</Callout>

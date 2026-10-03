@@ -1,0 +1,37 @@
+---
+/**
+ * Adwaita symbolic icon, inlined at build time (no request, no JS).
+ * Icons live in src/assets/icons/*.svg (Adwaita icon theme 51 / libadwaita 1.10,
+ * CC BY-SA 3.0 / LGPL — credited on the About page) and use currentColor.
+ */
+const icons = import.meta.glob<string>("/src/assets/icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+export type IconName = string;
+
+interface Props {
+  name: IconName;
+  size?: number | undefined;
+  /** Accessible label; omit for decorative icons (the default). */
+  label?: string | undefined;
+  class?: string | undefined;
+}
+
+const { name, size = 16, label, class: className } = Astro.props;
+const raw = icons[`/src/assets/icons/${name}.svg`];
+if (!raw) throw new Error(`Unknown icon "${name}"`);
+
+const attrs = [
+  `width="${size}"`,
+  `height="${size}"`,
+  `class="adw-icon${className ? ` ${className}` : ""}"`,
+  label ? `role="img" aria-label="${label.replace(/"/g, "&quot;")}"` : `aria-hidden="true"`,
+  `focusable="false"`,
+].join(" ");
+const svg = raw.replace(/<svg\b/, `<svg ${attrs}`);
+---
+
+<Fragment set:html={svg} />

@@ -1,0 +1,85 @@
+---
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+/** "At a glance" facts for a distro, as an Adwaita boxed list of property rows. */
+import type { Distro } from "~/lib/catalog";
+import { featuredRelease, formatDate } from "~/lib/catalog";
+import type { ReleasesFile } from "~/lib/data-schemas";
+import {
+  ARCHITECTURES,
+  DESKTOPS,
+  DIFFICULTIES,
+  FAMILIES,
+  INSTALLERS,
+  RELEASE_MODELS,
+  SECURE_BOOT,
+} from "~/lib/taxonomy";
+import ActionRow from "./adw/ActionRow.astro";
+import BoxedList from "./adw/BoxedList.astro";
+
+interface Props {
+  distro: Distro;
+  base?: Distro | undefined;
+  releases: ReleasesFile | undefined;
+  locale: Locale;
+}
+
+const { distro, base, releases, locale } = Astro.props;
+const d = distro.data;
+const t = useTranslations(locale);
+const release = featuredRelease(releases);
+const regions = new Intl.DisplayNames([locale], { type: "region" });
+const country =
+  d.origin.country === "INT"
+    ? locale === "ko"
+      ? "국제 커뮤니티"
+      : "International"
+    : regions.of(d.origin.country);
+const year = d.origin.firstRelease.slice(0, 4);
+const latestSubtitle = release
+  ? release.channel === "rolling"
+    ? t("facts.rolling")
+    : release.releaseDate
+      ? t("facts.released", { date: formatDate(release.releaseDate, locale) ?? "" })
+      : undefined
+  : undefined;
+const list = (items: string[]) => items.join(" · ");
+---
+
+<BoxedList title={t("distro.facts")} level={2}>
+  {
+    release && (
+      <ActionRow title={release.codename ? `${release.version} “${release.codename}”` : release.version} subtitle={t("facts.latest")} property>
+        {latestSubtitle && <span class="caption dim-label">{latestSubtitle}</span>}
+      </ActionRow>
+    )
+  }
+  {release?.eol && <ActionRow title={formatDate(release.eol, locale) ?? ""} subtitle={t("facts.eol")} property />}
+  <ActionRow
+    title={base ? `${FAMILIES[d.family][locale]} · ${base.data.name}` : d.upstream ? `${FAMILIES[d.family][locale]} · ${d.upstream}` : FAMILIES[d.family][locale]}
+    subtitle={base || d.upstream ? `${t("facts.family")} · ${t("facts.basedOn")}` : t("facts.family")}
+    property
+    href={base ? localizePath(`/distros/${base.id}/`, locale) : undefined}
+  />
+  <ActionRow title={RELEASE_MODELS[d.releaseModel][locale]} subtitle={t("facts.releaseModel")} property />
+  <ActionRow title={DESKTOPS[d.desktops[0] ?? "none"][locale]} subtitle={t("facts.desktop")} property>
+    {d.desktops.length > 1 && <span class="caption dim-label row-extra">{t("facts.otherDesktops")}: {list(d.desktops.slice(1).map((x) => DESKTOPS[x][locale]))}</span>}
+  </ActionRow>
+  <ActionRow title={list(d.packageManagers)} subtitle={t("facts.packages")} property />
+  <ActionRow title={INSTALLERS[d.installer][locale]} subtitle={t("facts.installer")} property />
+  <ActionRow title={list(d.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0] ?? a))} subtitle={t("facts.architectures")} property />
+  <ActionRow title={SECURE_BOOT[d.secureBoot][locale]} subtitle={t("facts.secureBoot")} property />
+  <ActionRow
+    title={t("facts.requirementsValue", { ram: d.requirements.ramGB, disk: d.requirements.diskGB })}
+    subtitle={t("facts.requirements")}
+    property
+  />
+  <ActionRow title={DIFFICULTIES[d.difficulty][locale]} subtitle={t("facts.difficulty")} property />
+  <ActionRow title={t("facts.originValue", { country: country ?? d.origin.country, year })} subtitle={t("facts.origin")} property />
+</BoxedList>
+
+<style>
+  .row-extra {
+    max-inline-size: 14rem;
+    text-align: end;
+  }
+</style>

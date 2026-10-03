@@ -1,0 +1,142 @@
+---
+title: Why use Linux?
+description: What Linux does well and, honestly, where it falls short. Covers cost, privacy, the security model and old hardware, the limits around games and commercial software, and the most common myths.
+navTitle: Why Linux?
+order: 3
+group: basics
+icon: star
+related: [linux-mint, zorin-os, linux-lite, bazzite]
+sources:
+  - https://www.gnu.org/philosophy/free-sw.html
+  - https://ubuntu.com/tutorials/try-ubuntu-before-you-install
+  - https://wiki.debian.org/SecureApt
+  - https://docs.kernel.org/admin-guide/LSM/index.html
+  - https://docs.flatpak.org/en/latest/sandbox-permissions.html
+  - https://www.xfce.org/about
+  - https://www.libreoffice.org/discover/libreoffice/
+  - https://github.com/ValveSoftware/Proton
+  - https://partner.steamgames.com/doc/steamdeck/proton
+  - https://www.steamdeck.com/en/verified
+  - https://store.steampowered.com/steamos
+  - https://ubuntu.com/server/docs/how-to/graphics/install-nvidia-drivers/
+  - https://fwupd.org/
+lastReviewed: 2026-10-03
+---
+
+No operating system is the best choice for everyone. Linux has real strengths, but depending on the software and hardware you rely on, it can also get in your way. This chapter lays out both sides, clears up some common myths, and ends with a simple way to find out whether Linux suits you.
+
+## Free to use, free to share
+
+Most distributions cost nothing to download, and you can install them on as many computers as you like. There are no product keys and no activation. Beyond the operating system itself, many of the apps you need every day (office suites, web browsers, photo and video editors) are free as well.
+
+The bigger point is **freedom**. As explained in [What is Linux?](../what-is-linux/), free software can be run, studied, changed and shared by anyone. A school or a community group can set up the same system on dozens of PCs without worrying about licenses. Some enterprise distributions sell support and long-term maintenance as a subscription, but there are plenty of free distributions that are more than enough for personal use.
+
+## You're in charge of your computer
+
+On Linux, you get a lot of say in what happens on your machine.
+
+- **You choose when to update.** Most distributions tell you when updates are available and leave it to you to decide when to install them and when to restart.
+- **No online account required.** Most distributions don't ask you to sign in to anything during setup; a local account on your computer is all you need.
+- **You can see what's inside.** The source code is public, so anyone can check what a program actually does. Some distributions do offer to send diagnostic data, so look at the choices in the installer and at the distribution's privacy policy.
+- **You can remove what you don't need.** Even preinstalled apps can be cleanly removed with the package manager, and you install only what you want.
+
+## Security by design
+
+Linux's reputation for security doesn't come from one magic trick. It comes from several layers of design working together.
+
+| Layer | What it does |
+|---|---|
+| Separate user and admin roles | Day to day you work in a limited account and use `sudo` to borrow admin rights only when changing the system. A mistake or a malicious program has a much harder time damaging the whole system. |
+| Signed repositories | Instead of downloading installers from random websites, you get software from your distribution's repositories, and the package manager checks digital signatures and checksums to detect tampering. |
+| Mandatory access control (MAC) | Built on the kernel's Linux Security Module (LSM) framework, features such as SELinux and AppArmor limit what each program is allowed to touch. |
+| App sandboxing | Flatpak apps run isolated from the rest of the system by default and reach outside only where you allow it, for example through the file picker. |
+| One place for updates | The package manager updates the operating system and your apps together, so security fixes are hard to miss. |
+
+The permission model is covered in [Users and permissions](../users-permissions/), software sources in [Package management](../package-management/), and hardening in [Security](../security/).
+
+## New life for old hardware
+
+A computer that struggles with a modern operating system can often become useful again with Linux. Lightweight desktop environments such as Xfce aim to be fast and easy on system resources, and several distributions use them by default:
+
+- [Xubuntu](../../distros/xubuntu/): the official Ubuntu flavor with the Xfce desktop
+- [Lubuntu](../../distros/lubuntu/): the official Ubuntu flavor with the lightweight LXQt desktop
+- [Linux Lite](../../distros/linux-lite/): an Xfce-based distribution designed for people coming from Windows
+- [antiX](../../distros/antix/): a Debian-based distribution that stays fast even on very old PCs
+
+<Callout type="tip" title="Check the requirements first">
+
+Distributions differ in their minimum specs and in which CPUs they support (32-bit or 64-bit). If your machine has very little memory or an old 32-bit processor, check the system requirements on the distribution's page first. Swapping a hard drive for an SSD can also make a big difference.
+
+</Callout>
+
+## Make it yours, and learn along the way
+
+Linux lets you change almost everything, from the look of the desktop to the internals of the system.
+
+- **Pick your desktop.** GNOME, KDE Plasma and Xfce look and work very differently. Choose the one you like, then move panels, change shortcuts and swap themes. [Desktop environments](../desktop-environments/) compares them.
+- **Mix and match components.** If you want to, you can pick your own file system, boot setup and even kernel.
+- **Try before you install.** Most distributions offer a **live session**: boot from a USB stick and use the system without installing anything. Remove the stick and restart, and your computer is exactly as it was.
+
+Using Linux also teaches you how computers work. Since Linux underpins servers, the cloud, embedded devices and Android, skills like using the terminal, understanding file permissions and managing processes carry straight over into development and IT work. [Terminal basics](../terminal-basics/) and [Development](../development/) are good starting points.
+
+## The honest downsides
+
+Linux isn't right for everyone. Check these points before you switch.
+
+### Some commercial software is missing
+
+Some professional design and video tools, and some business applications, are only made for Windows or macOS. Security plug-ins required by certain banking or government websites in some countries may also be Windows-only, so check what your bank or agency supports. Often a web version or a Linux alternative fills the gap:
+
+| Task | Linux options |
+|---|---|
+| Documents, spreadsheets, slides | LibreOffice, web-based office suites |
+| Photo editing and painting | GIMP, Krita |
+| Vector graphics | Inkscape |
+| Video editing | Kdenlive, Shotcut |
+
+There's also **Wine**, a compatibility layer that runs Windows programs on Linux. Plenty of programs work well with it, but results vary by program and version, so test anything you depend on for work before committing.
+
+### Most games work, but not all
+
+Thanks to **Proton**, Valve's Wine-based compatibility tool, a large part of the Steam library runs on Linux unchanged. The Steam Deck compatibility ratings (Verified, Playable, Unsupported, Unknown) give a good idea of how well a game will run.
+
+The main obstacle is **anti-cheat** in some online games. Proton supports Easy Anti-Cheat and BattlEye, but each game's developer has to switch that support on. Games whose developers haven't done so won't let you play online on Linux. If competitive multiplayer is your main thing, check your must-play games first. The [Gaming](../gaming/) chapter goes deeper.
+
+### Some hardware needs extra care
+
+Most devices work out of the box with drivers built into the kernel. A few may need extra steps:
+
+- **NVIDIA graphics cards**: getting full performance often means installing the proprietary driver. Some distributions make this easy; Ubuntu, for example, has a dedicated tool, `ubuntu-drivers`.
+- **Certain Wi-Fi chips, fingerprint readers and laptop-specific features**: if the manufacturer doesn't provide Linux drivers, these may not work, or support may arrive late.
+- **Firmware updates**: when a manufacturer takes part in the LVFS, you can update firmware on Linux with `fwupd`, but not every manufacturer does.
+
+Booting a live USB before installing and checking Wi-Fi, sound, screen brightness and the touchpad will reveal most of these issues early. Fixes are collected in [Hardware and drivers](../hardware-drivers/).
+
+### There's a learning curve
+
+Installing software, where files live and keyboard shortcuts all work differently from Windows or macOS. And because there are so many distributions, the same task can involve slightly different commands on each one. With free distributions, help usually comes from official documentation and community forums rather than a vendor's support line. Wherever distributions differ, this guide splits the instructions into tabs.
+
+## Common myths
+
+| Myth | Reality |
+|---|---|
+| Linux is only for developers and experts | Modern distributions come with graphical installers and app stores; you can do everyday work without ever opening a terminal. |
+| Linux can't get viruses | Malware for Linux does exist. Its design simply makes damage easier to contain, so keep the system updated and install software only from trusted sources. |
+| Free means low quality | Linux runs supercomputers, servers and phones. It's free because of its license, not because of its quality. |
+| Installing Linux means wiping Windows | You can try it from a live USB without installing, or install it alongside Windows and choose at boot (dual boot). |
+| You can't game on Linux | Proton runs a large number of Windows games. The exceptions are some online games whose developers haven't enabled Linux anti-cheat support. |
+| Linux is a product from one company | The kernel and the software around it are built by individuals, communities and companies together, and distributions come in many varieties for different needs. |
+
+## Is Linux right for you?
+
+<Steps>
+
+1. **List the software you can't live without.** For each app, check whether there's a Linux version, a web version or a good alternative.
+2. **Check your favorite games.** Look up their Steam Deck rating and whether their anti-cheat supports Linux.
+3. **Try a live USB.** Boot without installing to see whether your hardware works and whether you like how the system feels.
+4. **Pick a distribution.** If you're new, answer a few questions in the [distro finder](../../finder/) to get a recommendation.
+5. **Prepare to install.** Plan your backups and decide on dual boot with [Installation prep](../installation-prep/).
+
+</Steps>
+
+If you're coming from Windows or macOS, [Switching to Linux](../switching/) walks you through what's different.

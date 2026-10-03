@@ -1,0 +1,50 @@
+# Template for every catalog entry. Facts must come from the official sources
+# listed under `sources`. Versions/files/checksums do NOT belong here (src/data/).
+name: Fedora Linux
+order: 4
+family: fedora
+basedOn: null
+status: active
+releaseModel: fixed
+desktops: [gnome, kde, xfce, cinnamon, mate, lxqt, budgie, sway, i3]
+packageManagers: [dnf, rpm, flatpak]
+initSystem: systemd
+installer: anaconda
+useCases: [desktop, developer, beginner]
+difficulty: intermediate
+architectures: [x86_64, aarch64, ppc64le, s390x]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2003-11-06
+requirements:
+  ramGB: 4
+  diskGB: 20
+  note:
+    ko: Fedora Workstation 기준 권장 사양입니다(2GHz 듀얼코어 이상).
+    en: Recommended for Fedora Workstation (2 GHz dual-core or better).
+links:
+  home: https://fedoraproject.org/
+  download: https://fedoraproject.org/workstation/download
+  docs: https://docs.fedoraproject.org/
+  installGuide: https://docs.fedoraproject.org/en-US/fedora/latest/getting-started/
+  forum: https://discussion.fedoraproject.org/
+  releaseNotes: https://docs.fedoraproject.org/en-US/fedora/latest/release-notes/
+  source: https://src.fedoraproject.org/
+tagline:
+  ko: 최신 기술을 빠르게 담아내는, Red Hat이 후원하는 커뮤니티 배포판
+  en: A community distro, sponsored by Red Hat, that ships new technology early
+aliases: [페도라, fedora workstation]
+logo:
+  file: fedora.svg
+  source: https://commons.wikimedia.org/wiki/File:Fedora_icon_(2021).svg
+  license: Public domain (simple geometry); Fedora trademark
+  trademark: https://fedoraproject.org/legal/trademarks/
+download:
+  strategy: redirector
+sources:
+  - https://fedoraproject.org/
+  - https://docs.fedoraproject.org/en-US/fedora/latest/release-notes/welcome/Hardware_Overview/
+  - https://fedoraproject.org/wiki/History_of_Fedora_release_names
+lastReviewed: 2026-10-03

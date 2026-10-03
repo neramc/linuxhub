@@ -1,0 +1,141 @@
+---
+title: How to install Fedora Linux
+description: Download and verify Fedora Workstation, create a bootable USB drive, install it with Anaconda, and finish first-time setup.
+sources:
+  - https://docs.fedoraproject.org/en-US/fedora/latest/getting-started/
+  - https://docs.fedoraproject.org/en-US/quick-docs/creating-and-using-a-live-installation-image/
+  - https://fedoraproject.org/security/
+  - https://rpmfusion.org/Configuration
+  - https://rpmfusion.org/Howto/Multimedia
+  - https://rpmfusion.org/Howto/NVIDIA
+  - https://flathub.org/setup/Fedora
+lastReviewed: 2026-10-03
+---
+import BootUsb from "~/content/partials/en/boot-usb.mdx";
+import DualBoot from "~/content/partials/en/dual-boot.mdx";
+import Verify from "~/content/partials/en/verify.mdx";
+import WriteUsb from "~/content/partials/en/write-usb.mdx";
+
+This guide follows the most popular edition, **Fedora Workstation <Latest slug="fedora" />** (GNOME). The KDE Plasma Desktop edition and the Spins install almost the same way.
+
+## Before you begin
+
+- **Recommended hardware**: a 64-bit dual-core CPU at 2 GHz or faster, 4 GB of RAM and at least 20 GB of storage. A PC with UEFI firmware is recommended.
+- **Back up**: installing can erase the disk. Copy important files to an external drive or cloud storage first.
+- **Internet**: not required to install, but you’ll want it for updates and drivers right afterwards.
+
+### Keeping Windows (dual boot)
+
+<DualBoot />
+
+<Anchor id="download" />
+## 1. Download the installation image
+
+In the [download panel](../#download), pick **Workstation** and your architecture (**x86_64** for most PCs); the file comes from the nearest official server. The current default image is <IsoName slug="fedora" />.
+
+<Callout type="tip" title="The easy way: Fedora Media Writer">
+  **Fedora Media Writer**, made by the Fedora Project, downloads the image and writes the USB drive in one go. Windows and macOS installers are on Fedora’s official download page; on Linux, get it from Flathub. With it you can skip steps 2 and 3.
+</Callout>
+
+<Anchor id="verify" />
+## 2. Verify the download
+
+<Verify slug="fedora" />
+
+Each release’s `CHECKSUM` file is signed with the Fedora Project’s GPG keys. How to check the signature, and the current keys, are on [Fedora’s security page](https://fedoraproject.org/security/).
+
+<Anchor id="usb" />
+## 3. Create a bootable USB drive
+
+<WriteUsb />
+
+<Anchor id="boot" />
+## 4. Boot from the USB drive
+
+<BootUsb secureBoot="yes" />
+
+Choose **Start Fedora-Workstation-Live** in the boot menu to open the live desktop.
+
+<Anchor id="install" />
+## 5. Install Fedora
+
+In the live desktop’s welcome window, click **Install Fedora…** (or **Install to Hard Drive** in the Dash) to start the **Anaconda** installer. Screen names may differ slightly between releases.
+
+<Steps>
+
+1. **Language**: choose the language for the installer and the installed system.
+2. **Installation method**: choose the target disk, then how to use it.
+   - **Use entire disk** erases everything on the selected disk and installs only Fedora.
+   - **Share disk with other operating systems** keeps Windows (or another system) and installs into the free space you prepared (dual boot).
+   - To partition by hand, open the **storage editor** under the advanced options. Fedora uses the Btrfs file system by default, with `/` and `/home` as subvolumes.
+3. **Disk encryption** (optional): turn on **Encrypt my data** and set a passphrase for LUKS full-disk encryption — recommended on laptops. If you forget this passphrase, the data can’t be recovered.
+4. **Review and install**: check your choices and click **Erase data and install** (or **Install**). Installation usually takes 5–15 minutes.
+5. **Restart**: click **Reboot** on the final screen and remove the USB drive when the screen goes dark.
+
+</Steps>
+
+### First-time setup
+
+After the restart, GNOME Initial Setup walks you through:
+
+<Steps>
+
+1. **Privacy**: choose whether to enable location services and automatic problem reporting.
+2. **Third-party repositories**: turning these on lets GNOME Software install outside software such as NVIDIA drivers, Steam and Google Chrome, plus the full Flathub catalog. Most people should enable them.
+3. **Online accounts** (optional): connect Google, Microsoft or Nextcloud accounts for calendars, contacts and files.
+4. **About you and password**: set your name, user name and login password. This account can use `sudo` for administrative tasks.
+
+</Steps>
+
+<Anchor id="after-install" />
+## 6. After installing
+
+### Update the system
+
+Updates keep coming after the image was built. Use the **Updates** tab in GNOME Software, or run:
+
+```bash
+sudo dnf upgrade --refresh
+```
+
+### Media codecs (RPM Fusion)
+
+Fedora leaves out patent-encumbered codecs, so some videos may not play. Adding the community repository **RPM Fusion** fixes that:
+
+```bash
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing
+sudo dnf install @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+```
+
+### NVIDIA graphics
+
+To get full performance from an NVIDIA GPU, install the proprietary driver from RPM Fusion. After adding RPM Fusion, run the command below, wait a few minutes for the kernel module to build, then restart.
+
+```bash
+sudo dnf install akmod-nvidia
+```
+
+<Callout type="warning" title="With Secure Boot enabled">
+  Locally built driver modules only load after their signing key is enrolled in the firmware. Follow the Secure Boot section of [RPM Fusion’s NVIDIA guide](https://rpmfusion.org/Howto/NVIDIA).
+</Callout>
+
+### Flathub apps
+
+If you enabled third-party repositories during setup, Flathub apps are already available in GNOME Software. To add Flathub yourself, run:
+
+```bash
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+```
+
+## Troubleshooting
+
+- **The USB drive doesn’t boot**: choose the boot menu entry marked **UEFI**. If you used Rufus, recreate the drive in **DD Image mode**.
+- **Black screen before or after installing** (usually NVIDIA): in the GRUB menu press <Kbd>e</Kbd>, add `nomodeset` to the end of the line starting with `linux`, and boot with <Kbd>Ctrl</Kbd>+<Kbd>X</Kbd>. Once the NVIDIA driver is installed you no longer need it.
+- **Windows is missing from the boot menu**: make sure Windows Fast Startup is off, then rebuild the menu with `sudo grub2-mkconfig -o /boot/grub2/grub.cfg`.
+- **No Wi-Fi**: some Broadcom wireless chips need the `broadcom-wl` package from RPM Fusion. Connect with a cable or USB tethering from your phone first.
+
+## Upgrading to the next release
+
+GNOME Software tells you when a new version is available. Each release is supported for about 13 months, so upgrade before yours reaches end of life. The command-line method is in [Fedora’s upgrade guide](https://docs.fedoraproject.org/en-US/quick-docs/upgrading-fedora-offline/).

@@ -1,0 +1,55 @@
+---
+/**
+ * libadwaita AdwActionRow inside a boxed list: optional prefix icon, title,
+ * subtitle, and a suffix slot. With `href` the whole row is a link (activatable)
+ * and shows a trailing chevron or external-link icon.
+ */
+import Icon from "./Icon.astro";
+
+interface Props {
+  title: string;
+  subtitle?: string | undefined;
+  icon?: string | undefined;
+  href?: string | undefined;
+  external?: boolean | undefined;
+  /** Render the subtitle above the title, like AdwActionRow's `subtitle-lines` property style used for property rows. */
+  property?: boolean | undefined;
+  monospaceSubtitle?: boolean | undefined;
+}
+
+const {
+  title,
+  subtitle,
+  icon,
+  href,
+  external = false,
+  property = false,
+  monospaceSubtitle = false,
+} = Astro.props;
+const Tag = href ? "a" : "div";
+const hasSubtitleSlot = Astro.slots.has("subtitle");
+---
+
+<li class="adw-row-item">
+  <Tag
+    class:list={["adw-action-row", { activatable: href, property }]}
+    {...(href ? { href, ...(external ? { rel: "noopener external", target: "_blank" } : {}) } : {})}
+  >
+    {icon && <Icon name={icon} size={16} class="adw-row-prefix" />}
+    <span class="adw-row-text">
+      <span class="adw-row-title">{title}</span>
+      {
+        (subtitle || hasSubtitleSlot) && (
+          <span class:list={["adw-row-subtitle", { mono: monospaceSubtitle }]}>
+            {subtitle}
+            <slot name="subtitle" />
+          </span>
+        )
+      }
+    </span>
+    <span class="adw-row-suffix">
+      <slot />
+      {href && <Icon name={external ? "external" : "go-next"} class="adw-row-chevron" />}
+    </span>
+  </Tag>
+</li>

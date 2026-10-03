@@ -1,0 +1,54 @@
+name: Ubuntu
+order: 2
+family: ubuntu
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [gnome, kde, xfce, lxqt, mate, budgie, cinnamon, ukui]
+packageManagers: [apt, dpkg, snap]
+initSystem: systemd
+installer: ubuntu-desktop
+useCases: [desktop, beginner, developer, server]
+difficulty: beginner
+architectures: [x86_64, aarch64, ppc64le, s390x, riscv64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: GB
+  firstRelease: 2004-10-20
+requirements:
+  ramGB: 6
+  diskGB: 25
+  note:
+    ko: Ubuntu Desktop 26.04 LTS 기준 권장 사양입니다(2GHz 듀얼코어 이상).
+    en: Recommended for Ubuntu Desktop 26.04 LTS (2 GHz dual-core or better).
+links:
+  home: https://ubuntu.com/
+  download: https://ubuntu.com/download/desktop
+  docs: https://ubuntu.com/desktop/docs/en/latest/
+  installGuide: https://ubuntu.com/desktop/docs/en/latest/tutorial/install-ubuntu-desktop/
+  forum: https://discourse.ubuntu.com/
+  releaseNotes: https://documentation.ubuntu.com/release-notes/
+  source: https://code.launchpad.net/ubuntu
+tagline:
+  ko: 6개월마다 새 버전, 2년마다 LTS를 내는 Canonical의 배포판
+  en: Canonical's distro, with a new release every six months and an LTS every two years
+aliases: [우분투, ubuntu desktop, ubuntu linux]
+logo:
+  file: ubuntu.svg
+  source: https://assets.ubuntu.com/v1/ce518a18-CoF-2022_solid+O.svg
+  license: Trademark of Canonical Ltd., used to identify the project (Wikimedia Commons lists the 2022 Circle of Friends as GPL-3.0-or-later)
+  trademark: https://canonical.com/legal/intellectual-property-policy
+download:
+  strategy: mirrors
+sources:
+  - https://ubuntu.com/download/desktop
+  - https://ubuntu.com/desktop/flavors
+  - https://documentation.ubuntu.com/release-notes/26.04/
+  - https://documentation.ubuntu.com/security/security-features/platform-protections/secure-boot/
+  - https://cdimage.ubuntu.com/releases/26.04/release/
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2004-October/000003.html
+  - https://canonical.com/legal/data-privacy
+  - https://design.ubuntu.com/brand
+  - https://canonical.com/legal/trademarks
+lastReviewed: 2026-10-03

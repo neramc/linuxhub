@@ -1,0 +1,51 @@
+name: Devuan GNU+Linux
+order: 46
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [xfce]
+packageManagers: [apt, dpkg]
+initSystem: SysVinit
+installer: debian-installer
+useCases: [server, desktop, tinkerer]
+difficulty: intermediate
+architectures: [x86_64, aarch64, armhf, ppc64le, riscv64]
+secureBoot: partial
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2017-05-25
+requirements:
+  ramGB: 2
+  diskGB: 10
+  note:
+    ko: 공식 권장 사양이 없어 기반인 Debian의 데스크톱 권장 사양을 적었습니다.
+    en: Devuan publishes no figures of its own; these follow Debian's recommended desktop requirements.
+links:
+  home: https://www.devuan.org/
+  download: https://www.devuan.org/get-devuan
+  installGuide: https://www.devuan.org/os/install
+  forum: https://dev1galaxy.org/
+  releaseNotes: https://www.devuan.org/os/releases
+  source: https://git.devuan.org/
+tagline:
+  ko: systemd 없이 init을 직접 고를 수 있게 만든 Debian 포크
+  en: A Debian fork without systemd that leaves the choice of init system to you
+aliases: [데부안, devuan]
+logo:
+  file: devuan.svg
+  source: https://commons.wikimedia.org/wiki/File:Devuan-emblem.svg
+  license: Public domain (simple geometry); Devuan trademark of the Dyne.org foundation
+download:
+  strategy: mirrors
+sources:
+  - https://www.devuan.org/
+  - https://www.devuan.org/get-devuan
+  - https://www.devuan.org/os/init-freedom
+  - https://www.devuan.org/os/announce/stable-jessie-announce-052517
+  - https://www.devuan.org/os/announce/excalibur-release-announce-2025-11-02
+  - https://www.devuan.org/os/documentation/install-guides/excalibur/install-devuan
+  - https://files.devuan.org/devuan_excalibur/Release_notes.txt
+  - https://files.devuan.org/devuan_excalibur/desktop-live/README_desktop-live.txt
+lastReviewed: 2026-10-03

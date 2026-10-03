@@ -1,0 +1,223 @@
+---
+import { render } from "astro:content";
+import Icon from "~/components/adw/Icon.astro";
+import ChapterNav from "~/components/ChapterNav.astro";
+import DistroCard from "~/components/DistroCard.astro";
+import DocSources from "~/components/DocSources.astro";
+import { mdxComponents } from "~/components/mdx";
+import Toc from "~/components/Toc.astro";
+import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
+import Base from "~/layouts/Base.astro";
+import { getDistros } from "~/lib/catalog";
+import { getChapters, readingMinutes } from "~/lib/learn";
+import "~/styles/prose.css";
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const locale of LOCALES) {
+    for (const c of await getChapters(locale)) {
+      paths.push({
+        params: { locale: localeParam(locale), chapter: c.slug },
+        props: { locale, slug: c.slug },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, slug } = Astro.props as { locale: Locale; slug: string };
+const t = useTranslations(locale);
+const chapters = await getChapters(locale);
+const index = chapters.findIndex((c) => c.slug === slug);
+const chapter = chapters[index];
+if (!chapter) throw new Error(`unknown chapter ${slug}`);
+const { Content, headings } = await render(chapter);
+const prev = chapters[index - 1];
+const next = chapters[index + 1];
+const distros = await getDistros();
+const related = chapter.data.related
+  .map((s) => distros.find((d) => d.id === s))
+  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+const href = (s: string) => localizePath(`/learn/${s}/`, locale);
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: chapter.data.title,
+    description: chapter.data.description,
+    inLanguage: locale,
+    dateModified: chapter.data.lastReviewed,
+    isPartOf: { "@type": "CreativeWorkSeries", name: t("learn.title") },
+  },
+];
+---
+
+<Base locale={locale} title={chapter.data.title} description={chapter.data.description} mono jsonLd={jsonLd} image="/og/learn.png">
+  <div class="container page">
+    <aside class="sidebar" aria-label={t("learn.chapters")}>
+      <details class="chapter-menu">
+        <summary class="heading">{t("learn.chapters")} · {chapter.data.navTitle}</summary>
+        <ChapterNav chapters={chapters} current={slug} locale={locale} />
+      </details>
+      <div class="chapter-nav-wide">
+        <ChapterNav chapters={chapters} current={slug} locale={locale} />
+      </div>
+    </aside>
+
+    <div class="content">
+      <article class="prose" data-pagefind-body>
+        <p class="caption dim-label kicker">
+          {t(`learn.groups.${chapter.data.group}`)} · {t("learn.readingTime", { minutes: readingMinutes(chapter.body, locale) })}
+        </p>
+        <h1>{chapter.data.title}</h1>
+        <p class="lead">{chapter.data.description}</p>
+        <Content components={mdxComponents} />
+        <DocSources sources={chapter.data.sources} lastReviewed={chapter.data.lastReviewed} locale={locale} />
+      </article>
+
+      {
+        related.length > 0 && (
+          <section class="related" aria-labelledby="related-title" data-pagefind-ignore>
+            <h2 id="related-title">{t("learn.related")}</h2>
+            <ul class="related-grid" role="list">
+              {related.map((d) => <li><DistroCard distro={d} locale={locale} /></li>)}
+            </ul>
+          </section>
+        )
+      }
+
+      <nav class="pager" aria-label={t("learn.chapters")} data-pagefind-ignore>
+        {
+          prev ? (
+            <a class="pager-link adw-card activatable" href={href(prev.slug)} rel="prev">
+              <span class="caption dim-label"><Icon name="go-previous" /> {t("learn.previous")}</span>
+              <span class="heading">{prev.data.navTitle}</span>
+            </a>
+          ) : <span />
+        }
+        {
+          next && (
+            <a class="pager-link next adw-card activatable" href={href(next.slug)} rel="next">
+              <span class="caption dim-label">{t("learn.next")} <Icon name="go-next" /></span>
+              <span class="heading">{next.data.navTitle}</span>
+            </a>
+          )
+        }
+      </nav>
+    </div>
+
+    <aside class="toc-col">
+      <Toc headings={headings} title={t("install.onThisPage")} />
+    </aside>
+  </div>
+</Base>
+
+<script>
+  import "~/scripts/copy-code";
+</script>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .chapter-menu {
+    border-radius: var(--radius-card);
+    background: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-2);
+  }
+
+  .chapter-menu > summary {
+    cursor: pointer;
+    padding: 4px 6px;
+  }
+
+  .chapter-nav-wide {
+    display: none;
+  }
+
+  .content {
+    display: grid;
+    gap: var(--space-5);
+    min-inline-size: 0;
+  }
+
+  .kicker {
+    margin-block-end: -0.5em;
+  }
+
+  .lead {
+    font-size: 1.1875rem;
+    opacity: var(--dim-opacity);
+  }
+
+  .related {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .related-grid {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .pager-link {
+    display: grid;
+    gap: 4px;
+    padding: var(--space-2) var(--space-3);
+    color: inherit;
+  }
+
+  .pager-link.next {
+    text-align: end;
+    grid-column: 2;
+  }
+
+  .toc-col {
+    display: none;
+  }
+
+  @media (min-width: 960px) {
+    .page {
+      grid-template-columns: 250px minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      inset-block-start: calc(var(--headerbar-height) + var(--space-3));
+      max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-5));
+      overflow-y: auto;
+    }
+
+    .chapter-menu {
+      display: none;
+    }
+
+    .chapter-nav-wide {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .page {
+      grid-template-columns: 240px minmax(0, 1fr) 200px;
+    }
+
+    .toc-col {
+      display: block;
+      position: sticky;
+      inset-block-start: calc(var(--headerbar-height) + var(--space-3));
+    }
+  }
+</style>

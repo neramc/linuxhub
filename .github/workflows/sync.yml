@@ -1,0 +1,136 @@
+name: Data sync
+
+# Refreshes release data (every 6 h) and official mirror lists (daily) from
+# official sources, validates them, and commits src/data/ when something
+# changed. The push to main triggers a Vercel production deploy.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # releases
+    - cron: "43 3 * * *" # mirror lists
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "What to sync"
+        type: choice
+        options: [all, releases, mirrors]
+        default: all
+      only:
+        description: "Comma-separated slugs (empty = all)"
+        required: false
+        default: ""
+
+concurrency:
+  group: data-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Restore HTTP revalidation cache (ETag / Last-Modified)
+        uses: actions/cache@v4
+        with:
+          path: scripts/sync/.cache
+          key: sync-http-${{ github.run_id }}
+          restore-keys: sync-http-
+
+      - run: bun install --frozen-lockfile
+
+      - name: Choose what to sync
+        id: plan
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "kind=${{ inputs.kind }}" >> "$GITHUB_OUTPUT"
+            echo "only=${{ inputs.only }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "43 3 * * *" ]; then
+            echo "kind=mirrors" >> "$GITHUB_OUTPUT"
+          else
+            echo "kind=releases" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync from official sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          ARGS="--kind=${{ steps.plan.outputs.kind }}"
+          if [ -n "${{ steps.plan.outputs.only }}" ]; then ARGS="$ARGS --only=${{ steps.plan.outputs.only }}"; fi
+          bun run sync -- $ARGS
+
+      - name: Validate data
+        run: bun run sync:validate
+
+      - name: Type-check the site against the new data
+        run: bunx astro sync && bun run check
+
+      - name: Commit and push when data changed
+        id: commit
+        run: |
+          if git diff --quiet -- src/data; then
+            echo "No data changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data
+          git commit -m "chore(data): sync $(date -u +%Y-%m-%d) (${{ steps.plan.outputs.kind }})"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger Vercel deploy hook (optional)
+        if: steps.commit.outputs.changed == 'true' && env.DEPLOY_HOOK != ''
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: curl -fsS -X POST "$DEPLOY_HOOK" > /dev/null
+
+      - name: Track failing sources in an issue
+        if: always()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require("node:fs");
+            const path = "scripts/sync/.cache/report.json";
+            if (!fs.existsSync(path)) return;
+            const report = JSON.parse(fs.readFileSync(path, "utf8"));
+            const dayMs = 24 * 3600 * 1000;
+            // A source counts as broken after ~1 day (4 scheduled runs) of failures.
+            const broken = report.failing.filter((f) => Date.parse(report.today) - Date.parse(f.since) >= dayMs);
+            const title = "Data sync: failing sources";
+            const { data: issues } = await github.rest.issues.listForRepo({
+              ...context.repo, state: "open", labels: "sync-failure", per_page: 10,
+            });
+            const existing = issues.find((i) => i.title === title);
+            if (!broken.length) {
+              if (existing) {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: existing.number, body: "All sources recovered. Closing." });
+                await github.rest.issues.update({ ...context.repo, issue_number: existing.number, state: "closed", state_reason: "completed" });
+              }
+              return;
+            }
+            const rows = broken.map((f) => `| \`${f.slug}\` | ${f.kind} | ${f.since} | ${String(f.error ?? "").replaceAll("|", "\\|")} |`);
+            const body = [
+              "The data sync keeps the last good data for these sources, but they have been failing for over a day.",
+              "",
+              "| Source | Kind | Failing since | Last error |",
+              "|---|---|---|---|",
+              ...rows,
+              "",
+              `Updated by [run ${context.runId}](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`,
+            ].join("\n");
+            if (existing) await github.rest.issues.update({ ...context.repo, issue_number: existing.number, body });
+            else await github.rest.issues.create({ ...context.repo, title, body, labels: ["sync-failure"] });

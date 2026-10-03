@@ -1,0 +1,14 @@
+---
+/** libadwaita AdwBanner: a full-width accent-tinted strip with an optional action. */
+interface Props {
+  title: string;
+  class?: string | undefined;
+}
+
+const { title, class: className } = Astro.props;
+---
+
+<div class:list={["adw-banner", className]} role="status">
+  <p class="adw-banner-title">{title}</p>
+  <slot />
+</div>

@@ -1,0 +1,55 @@
+name: Manjaro
+order: 9
+family: arch
+basedOn: arch
+status: active
+releaseModel: rolling
+desktops: [kde, xfce, gnome, cinnamon, i3, sway]
+packageManagers: [pacman, pamac, flatpak]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, beginner]
+difficulty: beginner
+architectures: [x86_64, aarch64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: DE
+  firstRelease: 2011
+requirements:
+  ramGB: 4
+  diskGB: 30
+  note:
+    ko: Manjaro 위키의 권장 사양입니다(듀얼코어 CPU 이상).
+    en: Recommended in the Manjaro wiki (dual-core CPU or better).
+links:
+  home: https://manjaro.org/
+  download: https://manjaro.org/products/download/x86
+  docs: https://wiki.manjaro.org/
+  installGuide: https://wiki.manjaro.org/index.php?title=Installation_Guides
+  forum: https://forum.manjaro.org/
+  releaseNotes: https://forum.manjaro.org/c/announcements/11
+tagline:
+  ko: 업데이트를 한 번 더 시험해 내보내는 Arch 기반 롤링 배포판
+  en: An Arch-based rolling distro that tests updates before they ship
+aliases: [만자로, 만자로 리눅스, manjaro linux]
+logo:
+  file: manjaro.svg
+  source: https://manjaro.org/logo.svg
+  license: Public domain (simple geometry); Manjaro registered trademark of Manjaro GmbH & Co. KG
+  trademark: https://manjaro.org/terms-of-use
+download:
+  strategy: redirector
+sources:
+  - https://manjaro.org/products/download/x86
+  - https://manjaro.org/products/download/arm
+  - https://wiki.manjaro.org/index.php?title=About_Manjaro
+  - https://wiki.manjaro.org/index.php?title=Manjaro:_A_Different_Kind_of_Beast
+  - https://wiki.manjaro.org/index.php?title=The_Rolling_Release_Development_Model
+  - https://wiki.manjaro.org/index.php?title=UEFI_-_Install_Guide
+  - https://forum.manjaro.org/t/manjaro-26-1-bian-may-released/189526
+  - https://download.manjaro.org/kde/26.1.2/manjaro-kde-26.1.2-260910-linux71.iso.pkgs
+  - https://manjaro.org/team
+  - https://manjaro.org/imprint
+  - https://manjaro.org/terms-of-use
+lastReviewed: 2026-10-03

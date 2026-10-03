@@ -1,0 +1,152 @@
+{
+  "slug": "pop-os",
+  "sources": [
+    "https://api.pop-os.org/builds/",
+    "https://endoflife.date/pop-os"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "24.04",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2025-12-11",
+      "eol": "2029-05-31",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "generic",
+          "name": "Intel/AMD",
+          "desktop": "cosmic",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pop-os_24.04_amd64_generic_28.iso",
+              "path": null,
+              "url": "https://iso.pop-os.org/24.04/amd64/generic/28/pop-os_24.04_amd64_generic_28.iso",
+              "size": 3526164480,
+              "checksum": {
+                "type": "sha256",
+                "value": "8d78e500fc95da765a91cddcf2ab7ba71ce4e7997e4f008456d4d872ee8f8221",
+                "url": null
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "pop-os_24.04_arm64_generic_3.iso",
+              "path": null,
+              "url": "https://iso.pop-os.org/24.04/arm64/generic/3/pop-os_24.04_arm64_generic_3.iso",
+              "size": 2888884224,
+              "checksum": {
+                "type": "sha256",
+                "value": "7b4cce0e92dc5c903464e7e7c33760c4417f1400165e9ecfcd064fbceb68ef22",
+                "url": null
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "desktop": "cosmic",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pop-os_24.04_amd64_nvidia_28.iso",
+              "path": null,
+              "url": "https://iso.pop-os.org/24.04/amd64/nvidia/28/pop-os_24.04_amd64_nvidia_28.iso",
+              "size": 3934945280,
+              "checksum": {
+                "type": "sha256",
+                "value": "bd867a6b93810769b2189471cfc2d7b6b9c642213c7bf827de511be5f42ce666",
+                "url": null
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "pop-os_24.04_arm64_nvidia_3.iso",
+              "path": null,
+              "url": "https://iso.pop-os.org/24.04/arm64/nvidia/3/pop-os_24.04_arm64_nvidia_3.iso",
+              "size": 3213494272,
+              "checksum": {
+                "type": "sha256",
+                "value": "8bc00f77a60baf5d189c0dc924523df0f67daa92c944c2f3203fe17f1b70ac50",
+                "url": null
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "22.04",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2022-04-25",
+      "eol": "2027-04-25",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "generic",
+          "name": "Intel/AMD",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pop-os_22.04_amd64_intel_58.iso",
+              "path": null,
+              "url": "https://iso.pop-os.org/22.04/amd64/intel/58/pop-os_22.04_amd64_intel_58.iso",
+              "size": 2751463424,
+              "checksum": {
+                "type": "sha256",
+                "value": "4e1c5e391062c79dc611ce383c2a709fecac36798ebd81444a734fd41252608e",
+                "url": null
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pop-os_22.04_amd64_nvidia_58.iso",
+              "path": null,
+              "url": "https://iso.pop-os.org/22.04/amd64/nvidia/58/pop-os_22.04_amd64_nvidia_58.iso",
+              "size": 3242065920,
+              "checksum": {
+                "type": "sha256",
+                "value": "2b622525da3fd4deb913540810ffe68651a529acd57bcf44bb7f69df6161fec0",
+                "url": null
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

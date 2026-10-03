@@ -1,0 +1,35 @@
+---
+/**
+ * libadwaita AdwViewSwitcher / toggle group as navigation links. Pass items;
+ * the current one gets aria-current="page". Use for tabs between pages or
+ * views (e.g. Overview / Install guide).
+ */
+import Icon from "./Icon.astro";
+
+interface Item {
+  href: string;
+  label: string;
+  icon?: string;
+  current?: boolean;
+}
+
+interface Props {
+  [key: `data-${string}`]: unknown;
+  items: Item[];
+  label: string;
+  class?: string | undefined;
+}
+
+const { items, label, class: className, ...rest } = Astro.props;
+---
+
+<nav class:list={["adw-view-switcher", className]} aria-label={label} {...rest}>
+  {
+    items.map((item) => (
+      <a href={item.href} class="adw-view-switcher-item" aria-current={item.current ? "page" : undefined}>
+        {item.icon && <Icon name={item.icon} />}
+        <span>{item.label}</span>
+      </a>
+    ))
+  }
+</nav>

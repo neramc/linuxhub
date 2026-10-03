@@ -1,0 +1,47 @@
+{/*
+  공용 단계: 부팅 USB 만들기. 사용법: <WriteUsb />  (props.tool 로 배포판 전용 도구를 덧붙일 수 있음)
+*/}
+import Callout from "~/components/adw/Callout.astro";
+import Tab from "~/components/mdx/Tab.astro";
+import Tabs from "~/components/mdx/Tabs.astro";
+
+**8GB 이상의 USB 메모리**를 준비하세요. USB에 있던 내용은 **모두 지워지므로** 필요한 파일은 미리 옮겨 두세요.
+
+<Tabs>
+  <Tab label="Windows" open>
+    **Rufus**([rufus.ie](https://rufus.ie))를 가장 많이 씁니다. 설치 없이 실행되는 포터블 버전도 있습니다.
+
+    1. Rufus를 실행하고 **장치**에서 USB를 고릅니다.
+    2. **부트 선택**의 **선택** 버튼을 눌러 내려받은 이미지 파일을 엽니다.
+    3. **파티션 방식**은 최근 PC라면 **GPT**(UEFI)로 둡니다. 아주 오래된 PC(레거시 BIOS)라면 **MBR**을 고릅니다.
+    4. **시작**을 누릅니다. 쓰기 방식을 묻는 창이 뜨면 기본값인 **ISO 이미지 모드**를 고르세요. 그 방식으로 부팅되지 않으면 **DD 이미지 모드**로 다시 만드세요.
+
+    더 간단한 **balenaEtcher**([etcher.balena.io](https://etcher.balena.io))도 있습니다. 이미지 선택 → USB 선택 → **Flash!** 순서로 끝납니다.
+  </Tab>
+  <Tab label="macOS">
+    **balenaEtcher**([etcher.balena.io](https://etcher.balena.io))가 가장 쉽습니다. **Flash from file**로 이미지를 고르고, **Select target**에서 USB를 고른 뒤 **Flash!**를 누릅니다.
+
+    터미널이 익숙하다면 `dd`로도 만들 수 있습니다. `diskN`의 숫자를 **반드시** 확인하세요. 다른 디스크를 고르면 그 디스크의 데이터가 지워집니다.
+
+    ```bash
+    diskutil list                       # USB의 diskN 번호 확인
+    diskutil unmountDisk /dev/diskN
+    sudo dd if=~/Downloads/이미지.iso of=/dev/rdiskN bs=4m
+    diskutil eject /dev/diskN
+    ```
+  </Tab>
+  <Tab label="Linux">
+    GNOME을 쓴다면 **디스크**(GNOME Disks) 앱에서 USB를 고르고 오른쪽 위 메뉴의 **디스크 이미지 복원…**을 누른 뒤 이미지를 고르면 됩니다. Flathub의 **Impression** 앱도 같은 일을 간단하게 해 줍니다.
+
+    터미널에서는 `dd`를 씁니다. 먼저 `lsblk`로 USB 장치 이름(예: `/dev/sdb`)을 정확히 확인하세요.
+
+    ```bash
+    lsblk
+    sudo dd if=~/Downloads/이미지.iso of=/dev/sdX bs=4M status=progress oflag=sync
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="tip" title="USB 하나에 여러 배포판을">
+  **Ventoy**([ventoy.net](https://www.ventoy.net))를 USB에 한 번 설치해 두면, 그다음부터는 ISO 파일을 USB에 복사하기만 해도 부팅 메뉴에서 골라 쓸 수 있습니다. 여러 배포판을 시험해 볼 때 편합니다.
+</Callout>

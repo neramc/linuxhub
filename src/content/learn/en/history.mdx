@@ -1,0 +1,136 @@
+---
+title: A history of Linux
+description: From Unix in 1969 through the GNU Project, Linus Torvalds' 1991 announcement, the first distributions and desktops, and the enterprise and Android eras, to Linux today.
+navTitle: History
+order: 2
+group: basics
+icon: recent
+related: [debian, slackware, fedora, ubuntu]
+sources:
+  - https://www.unix.org/unix_history.html
+  - https://www.unix.org/fun_facts.html
+  - https://www.kernel.org/category/about.html
+  - https://www.gnu.org/gnu/initial-announcement.html
+  - https://www.gnu.org/gnu/thegnuproject.html
+  - https://lwn.net/2001/0823/a/lt-announcement.php3
+  - https://training.linuxfoundation.org/announcements/happy-30th-linux/
+  - https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01
+  - https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12
+  - https://www.kernel.org/pub/linux/kernel/v1.0/
+  - https://www.kernel.org/pub/linux/kernel/v2.0/
+  - https://www.slackware.com/info/
+  - https://www.debian.org/doc/manuals/project-history/intro.en.html
+  - https://www.debian.org/doc/manuals/project-history/detailed.en.html
+  - https://www.redhat.com/en/blog/spooktacular-tale-red-hats-halloween-release
+  - https://www.redhat.com/en/blog/25-things-you-should-know-about-red-hat-0
+  - https://kde.org/announcements/announcement/
+  - https://www.gnome.org/about/
+  - https://opensource.org/history
+  - https://fedoramagazine.org/announcing-fedora-linux-39/
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2004-October/000003.html
+  - https://android-developers.googleblog.com/2008/09/announcing-android-10-sdk-release-1.html
+  - https://source.android.com/docs/core/architecture/kernel
+  - https://www.top500.org/lists/top500/2026/06/
+  - https://store.steampowered.com/news/app/1675180/view/3117055056380003048
+  - https://store.steampowered.com/steamos
+lastReviewed: 2026-10-03
+---
+
+Linux didn't appear out of nowhere. It grew out of Unix, born at Bell Labs in the late 1960s, the free software movement of the 1980s, and a new kind of collaboration between developers connected by the internet. This chapter follows that path, sticking to dates that are backed by primary records.
+
+## Timeline at a glance
+
+| Year | Event |
+|---|---|
+| 1969 | Ken Thompson, Dennis Ritchie and colleagues at Bell Labs begin work on Unix |
+| 1973 | Unix is rewritten in the C programming language |
+| 1975 | The Sixth Edition becomes the first Unix widely available outside Bell Labs |
+| 1983 | September 27: Richard Stallman announces the GNU Project |
+| 1985 | The Free Software Foundation (FSF) is founded |
+| 1988 | POSIX.1, a common standard for Unix-like systems, is published |
+| 1991 | August 25: Linus Torvalds first mentions the operating system he is writing |
+| 1992 | With release 0.12, Linux moves to the GNU GPL, effective February 1 |
+| 1993 | Red Hat is founded (March 26), Slackware's first beta (April), Debian is founded (August 16) |
+| 1994 | Linux 1.0 (March); first public Red Hat Linux release (October 31) |
+| 1996 | Linux 2.0 (June); the KDE project is announced (October 14) |
+| 1997 | The GNOME project starts |
+| 1998 | The term "open source" is coined and the Open Source Initiative (OSI) is founded |
+| 2002 | Red Hat Enterprise Linux arrives (first called Red Hat Linux Advanced Server) |
+| 2003 | Fedora Core 1 is released (November 6) |
+| 2004 | Ubuntu 4.10 is released (October 20) |
+| 2008 | The Android 1.0 SDK ships alongside the first Android phone, the T-Mobile G1 (September 23) |
+| 2022 | Valve's Steam Deck handheld gaming PC launches (February) |
+
+## Unix: where it all began
+
+In 1969, Ken Thompson, Dennis Ritchie and others at Bell Labs started building a new operating system on a little-used PDP-7 tucked away in a corner of the lab. That system became Unix. It was first written in PDP-7 assembly language, but in 1973 it was rewritten in C, which freed it from any one machine and made it portable. Writing an operating system in a high-level language that could move between computers was a turning point in OS history.
+
+The Sixth Edition of 1975 was the first version to spread widely beyond Bell Labs, and the University of California, Berkeley built its BSD line on it. Berkeley's 4.2BSD added TCP/IP, the protocol suite the internet still runs on. As more vendors shipped their own incompatible flavors of Unix, the industry responded with the **POSIX** standard in 1988.
+
+Linux inherited no Unix code. It was written from scratch following Unix's design and aims to comply with standards like POSIX, which is why it is called **Unix-like**.
+
+## The GNU Project: a free Unix
+
+In the 1970s, the MIT Artificial Intelligence Lab had a culture of freely sharing programs and source code. By the early 1980s that was disappearing: software had become a closed product, and you often had to sign a non-disclosure agreement just to get a working copy. In response, Richard Stallman announced the **GNU Project** on September 27, 1983. The goal was a complete, Unix-compatible operating system that anyone could use and share freely.
+
+- **1984**: Stallman left his job at MIT in January to work on GNU full time, so that MIT couldn't claim ownership of the work. In September he began GNU Emacs.
+- **1985**: He set up the **Free Software Foundation (FSF)**, a non-profit to fund development.
+- **Copyleft**: GNU came up with a way to keep software free in all future versions and put it into practice as the **GNU GPL**.
+- **Core pieces**: FSF staff wrote components that almost every Linux system still includes, such as the GNU C library (glibc) and the **Bash** shell.
+
+By around 1990 GNU was nearly complete, except for the kernel. The GNU kernel, **Hurd**, was an ambitious design in which a set of server programs running on the Mach microkernel shared the kernel's work. It proved very hard to debug and kept slipping. Linux filled the gap.
+
+## 1991: "just a hobby"
+
+On August 25, 1991, Linus Torvalds, then a student at the University of Helsinki, posted to the Usenet newsgroup comp.os.minix. He was writing a free operating system for 386 and 486 PCs, he explained, as a hobby that wouldn't be big and professional like GNU. He had already ported Bash and GCC to it and wanted to know what features people would like.
+
+The first public source release, version 0.01, supported only a handful of devices on 386 AT machines (hard disk, screen, keyboard and serial ports), and its release notes openly called it immature. Its original license even forbade distributing it for money. In the 0.12 release notes, Torvalds announced a switch to the GNU copyleft, which took effect on February 1, 1992. From then on, GNU tools plus the Linux kernel made an operating system that was free software from top to bottom.
+
+As developers around the world started sending in code over the internet, progress sped up. Linux 1.0 arrived in March 1994, and Linux 2.0 in June 1996.
+
+## The first distributions
+
+Early Linux users had to gather the kernel and GNU tools themselves, write floppy disk images, partition their drives and install programs one by one. **Distributions** appeared to take that work off their hands by bundling a kernel with a ready-made selection of software.
+
+- **Slackware** put out its first beta in April 1993 with the aim of being the most Unix-like Linux distribution, and it is still around today.
+- **Debian** was founded by Ian Murdock on August 16, 1993, as a distribution made openly in the spirit of Linux and GNU. By 1995 many developers were maintaining their own packages, installed with `dpkg`. That community model and packaging system later became the foundation for Ubuntu and many others.
+- **Red Hat** was founded on March 26, 1993. Its first public release, a paid beta numbered 0.9, came out on October 31, 1994, earning it the nickname "Halloween".
+
+To see how distributions branched off from one another, explore the [family tree](../../family/). For choosing one today, read [Distributions](../distributions/).
+
+## Desktop environments arrive
+
+In the mid-1990s, graphical Unix and Linux programs were built with a mix of different widget toolkits, so menus, buttons and scroll bars looked and behaved differently from one application to the next. On October 14, 1996, Matthias Ettrich proposed **KDE** (originally the "Kool Desktop Environment"): a complete graphical environment where every application would share the same look and behavior. KDE was built on Troll Tech's Qt toolkit.
+
+The catch was that Qt was not free software at the time. So in 1997 Miguel de Icaza and Federico Mena started **GNOME**, a desktop built entirely from free software. In November 1998, Qt's developers announced a license change, and the conflict gradually faded. Today GNOME and KDE Plasma are both free software and among the most widely known Linux desktops.
+
+More on today's desktops is in [Desktop environments](../desktop-environments/), and on the technology underneath them in [Display servers](../display-servers/).
+
+## Open source and the enterprise era
+
+Shortly after Netscape announced it would release its browser's source code, a strategy session on February 3, 1998 adopted the label **open source**, suggested by Christine Peterson. Later that month Eric Raymond and Bruce Perens founded the **Open Source Initiative (OSI)**.
+
+In the 2000s, Linux reached both businesses and home users in earnest:
+
+- **2002**: Red Hat introduced **Red Hat Enterprise Linux** (first called Red Hat Linux Advanced Server), pioneering a business model in which the software is open and support and certification are sold as subscriptions.
+- **November 6, 2003**: the Red Hat-sponsored community project [Fedora](../../distros/fedora/) shipped its first release, Fedora Core 1.
+- **October 20, 2004**: [Ubuntu](../../distros/ubuntu/) released its first version, 4.10. It paired the vast software collection of [Debian](../../distros/debian/) with an easy installer, a new release every six months and 18 months of security support for each one.
+
+## Android and Linux today
+
+On September 23, 2008, Google released the Android 1.0 SDK on the same day T-Mobile unveiled the first Android phone, the **T-Mobile G1**. Android's kernel is a long-term support (LTS) Linux kernel with Android-specific patches. Apps run very differently than on a desktop distribution, but underneath, the Linux kernel is what drives the hardware. Through Android, the Linux kernel ended up in a great many pockets.
+
+Here is where Linux stands today:
+
+- **Supercomputers**: the top systems on the TOP500 list run Linux-based operating systems such as RHEL and HPE Cray OS.
+- **Servers and cloud**: a standard operating system for web services and cloud infrastructure.
+- **Gaming**: in February 2022 Valve launched the Steam Deck, running SteamOS, which is based on Arch Linux. Proton, a compatibility layer for running Windows games on Linux, makes much of the Steam library playable. See [Gaming](../gaming/) for details.
+- **Desktop**: modern desktop environments such as GNOME and KDE Plasma, and app formats like Flatpak, have made Linux much easier to use as an everyday system.
+
+<Callout type="tip" title="Read the history yourself">
+
+kernel.org still hosts the earliest Linux sources and release notes. The [0.01 release notes](https://www.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.01) show just how small the project was at the start.
+
+</Callout>
+
+What began as "just a hobby" has grown into a vast collaborative project, built by individuals and companies together. Why people choose it is the subject of the next chapter, [Why Linux?](../why-linux/).

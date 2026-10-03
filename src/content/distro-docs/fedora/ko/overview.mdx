@@ -1,0 +1,15 @@
+---
+title: Fedora Linux 소개
+description: Red Hat이 후원하는 커뮤니티 배포판 Fedora Linux의 특징과 어울리는 사용자.
+sources:
+  - https://fedoraproject.org/
+  - https://docs.fedoraproject.org/en-US/releases/lifecycle/
+  - https://rpmfusion.org/Configuration
+lastReviewed: 2026-10-03
+---
+
+Fedora Linux는 Red Hat이 후원하고 전 세계 커뮤니티가 함께 만드는 배포판입니다. 대략 6개월마다 새 버전이 나오고, 각 버전은 두 버전 뒤의 릴리스가 나온 다음 약 한 달까지(약 13개월) 업데이트를 받습니다. 새 커널과 GNOME, 시스템 도구 같은 최신 오픈소스 기술을 빨리 받아들이는 편이며, 여기서 다듬어진 기술은 이후 CentOS Stream과 Red Hat Enterprise Linux로 이어집니다.
+
+대표 에디션인 **Workstation**은 손을 거의 대지 않은 순정 GNOME 데스크톱을 제공하고, **KDE Plasma Desktop**도 정식 에디션입니다. Xfce, Cinnamon 같은 다른 데스크톱은 'Spins'로, 시스템이 이미지 단위로 업데이트되는 **Silverblue**·**Kinoite** 같은 불변(atomic) 변형도 고를 수 있습니다. 시스템 패키지는 `dnf`로, 데스크톱 앱은 Flatpak으로 설치합니다.
+
+최신 소프트웨어와 안정성 사이의 균형을 원하는 개발자와 일반 사용자에게 잘 맞습니다. 다만 특허 문제로 일부 미디어 코덱과 NVIDIA 같은 독점 드라이버는 기본으로 들어 있지 않아, 필요하면 RPM Fusion 같은 외부 저장소를 추가해야 합니다.

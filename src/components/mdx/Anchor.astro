@@ -1,0 +1,19 @@
+---
+/**
+ * Fixed link target for cross-page anchors (MDX has no `{#id}` heading syntax).
+ * Standard targets in install guides: verify, usb, boot, install, after-install.
+ */
+interface Props {
+  id: string;
+}
+---
+
+<span id={Astro.props.id} class="anchor-target"></span>
+
+<style>
+  .anchor-target {
+    display: block;
+    block-size: 0;
+    scroll-margin-block-start: calc(var(--headerbar-height) + 18px);
+  }
+</style>

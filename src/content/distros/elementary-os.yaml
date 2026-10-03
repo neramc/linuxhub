@@ -1,0 +1,50 @@
+name: elementary OS
+order: 13
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: fixed
+desktops: [pantheon]
+packageManagers: [apt, dpkg, flatpak]
+initSystem: systemd
+installer: elementary-installer
+useCases: [desktop, beginner]
+difficulty: beginner
+architectures: [x86_64, aarch64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2011-03-31
+requirements:
+  ramGB: 4
+  diskGB: 32
+  note:
+    ko: 권장 사양 기준입니다(최신 Core i3급 듀얼코어, SSD).
+    en: Recommended specs (a recent Core i3-class dual-core CPU and an SSD).
+links:
+  home: https://elementary.io/
+  download: https://elementary.io/#download
+  docs: https://elementary.io/docs
+  installGuide: https://elementary.io/docs/installation
+  releaseNotes: https://blog.elementary.io/
+  source: https://github.com/elementary
+tagline:
+  ko: 디자인을 중시한 Pantheon 데스크톱의 Ubuntu 기반 배포판
+  en: An Ubuntu-based distro built around the design-focused Pantheon desktop
+aliases: [엘리멘터리, 엘리멘터리 OS, 엘리멘트리, elementary, elementaryos]
+logo:
+  file: elementary-os.svg
+  source: https://raw.githubusercontent.com/elementary/brand/master/logomark.svg
+  license: Trademark of elementary, Inc., used to identify the project
+  trademark: https://elementary.io/brand
+download:
+  strategy: official-page
+sources:
+  - https://elementary.io/
+  - https://elementary.io/docs/installation
+  - https://elementary.io/brand
+  - https://blog.elementary.io/ten-years/
+  - https://blog.elementary.io/os-8-1-available-now/
+  - https://github.com/elementary/os/wiki/OS-8-FAQ
+lastReviewed: 2026-10-03

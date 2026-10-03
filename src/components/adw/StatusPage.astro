@@ -1,0 +1,22 @@
+---
+/** libadwaita AdwStatusPage: big dimmed icon, title, description, actions. */
+import Icon from "./Icon.astro";
+
+interface Props {
+  icon?: string | undefined;
+  title: string;
+  description?: string | undefined;
+  /** Heading level; 1 for full-page states (404), 2 inside a page. */
+  level?: 1 | 2 | undefined;
+}
+
+const { icon, title, description, level = 1 } = Astro.props;
+const Heading = `h${level}` as "h1" | "h2";
+---
+
+<div class="adw-status-page">
+  {icon && <Icon name={icon} size={96} class="adw-status-icon" />}
+  <Heading class="adw-status-title">{title}</Heading>
+  {description && <p class="adw-status-description">{description}</p>}
+  <div class="adw-status-actions"><slot /></div>
+</div>

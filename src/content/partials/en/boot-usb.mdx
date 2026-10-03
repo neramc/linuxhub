@@ -1,0 +1,41 @@
+{/*
+  Shared step: boot from the USB drive. Usage: <BootUsb secureBoot="yes|partial|no" />
+*/}
+import Callout from "~/components/adw/Callout.astro";
+import Kbd from "~/components/adw/Kbd.astro";
+
+Restart the PC with the USB drive plugged in and choose it from the **boot menu**. The key that opens the boot menu depends on the manufacturer; press it repeatedly right after powering on.
+
+| Manufacturer | Boot menu key | Firmware (UEFI) setup key |
+|---|---|---|
+| Dell | <Kbd>F12</Kbd> | <Kbd>F2</Kbd> |
+| HP | <Kbd>F9</Kbd> (or <Kbd>Esc</Kbd>, then <Kbd>F9</Kbd>) | <Kbd>F10</Kbd> |
+| Lenovo | <Kbd>F12</Kbd> (Novo button on some models) | <Kbd>F1</Kbd> / <Kbd>F2</Kbd> |
+| ASUS | <Kbd>F8</Kbd> (laptops: <Kbd>Esc</Kbd>) | <Kbd>F2</Kbd> / <Kbd>Del</Kbd> |
+| Acer | <Kbd>F12</Kbd> | <Kbd>F2</Kbd> |
+| MSI | <Kbd>F11</Kbd> | <Kbd>Del</Kbd> |
+| Gigabyte | <Kbd>F12</Kbd> | <Kbd>Del</Kbd> |
+| ASRock | <Kbd>F11</Kbd> | <Kbd>F2</Kbd> / <Kbd>Del</Kbd> |
+| Samsung | <Kbd>F10</Kbd> / <Kbd>Esc</Kbd> | <Kbd>F2</Kbd> |
+| LG | <Kbd>F10</Kbd> | <Kbd>F2</Kbd> |
+| Intel Mac | Hold <Kbd>Option ⌥</Kbd> while powering on | — |
+
+If the key doesn’t work, you can get there from Windows: **Settings → System → Recovery → Advanced startup → Restart now → Use a device**, then pick the USB drive.
+
+If the same drive appears twice in the boot menu, choose the entry marked **UEFI**.
+
+{props.secureBoot === "no" ? (
+  <Callout type="warning" title="Turn off Secure Boot">
+    This distribution’s installer won’t boot with Secure Boot enabled. In the firmware (UEFI) setup, open the **Security** or **Boot** menu, set **Secure Boot** to **Disabled**, save, and restart.
+  </Callout>
+) : props.secureBoot === "partial" ? (
+  <Callout type="note" title="Secure Boot">
+    Secure Boot support here comes with conditions. If the drive doesn’t boot, temporarily disable Secure Boot in the firmware setup, or follow the steps (such as key enrollment) in the installation section below.
+  </Callout>
+) : (
+  <Callout type="tip" title="Secure Boot">
+    This distribution boots with Secure Boot enabled; there’s no need to turn it off.
+  </Callout>
+)}
+
+Most distributions start a **live session** first. Before installing anything, check that Wi-Fi, sound, display brightness and the other hardware you care about work.

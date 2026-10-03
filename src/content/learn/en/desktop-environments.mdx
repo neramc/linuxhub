@@ -1,0 +1,211 @@
+---
+title: Desktop environments and window managers
+description: Compare desktop environments such as GNOME, KDE Plasma, Xfce and Cinnamon with tiling window managers like i3, Sway and Hyprland, and learn how to try or install a different desktop.
+navTitle: Desktop environments
+order: 5
+group: distros
+icon: app-grid
+related: [kubuntu, linux-mint, xubuntu, pop-os]
+sources:
+  - https://wiki.archlinux.org/title/Desktop_environment
+  - https://wiki.archlinux.org/title/Window_manager
+  - https://wiki.archlinux.org/title/Display_manager
+  - https://www.gnome.org/
+  - https://wiki.archlinux.org/title/GNOME
+  - https://kde.org/plasma-desktop/
+  - https://wiki.archlinux.org/title/KDE
+  - https://blogs.kde.org/2025/11/26/going-all-in-on-a-wayland-future/
+  - https://www.xfce.org/about
+  - https://wiki.archlinux.org/title/Xfce
+  - https://www.linuxmint.com/download.php
+  - https://www.linuxmint.com/rel_virginia_whatsnew.php
+  - https://wiki.archlinux.org/title/Cinnamon
+  - https://mate-desktop.org/
+  - https://lxqt-project.org/about/
+  - https://wiki.archlinux.org/title/LXQt
+  - https://buddiesofbudgie.org/
+  - https://wiki.archlinux.org/title/Budgie
+  - https://system76.com/cosmic
+  - https://wiki.archlinux.org/title/COSMIC
+  - https://elementary.io/
+  - https://wiki.archlinux.org/title/Pantheon
+  - https://i3wm.org/
+  - https://wiki.archlinux.org/title/I3
+  - https://wiki.archlinux.org/title/Wayland
+  - https://fedoraproject.org/atomic-desktops/
+  - https://swaywm.org/
+  - https://hypr.land/
+  - https://wiki.archlinux.org/title/Hyprland
+  - https://ubuntu.com/desktop/flavours
+  - https://wiki.debian.org/DesktopEnvironment
+  - https://docs.fedoraproject.org/en-US/quick-docs/switching-desktop-environments/
+lastReviewed: 2026-10-03
+---
+
+On Windows and macOS, the look of the desktop is part of the operating system. On Linux, the **desktop environment (DE)** is a separate, swappable layer. The same distro can look like a completely different system depending on its desktop — and if you don’t like yours, you can change it without reinstalling.
+
+This chapter explains what a desktop environment is made of, what sets the major desktops apart, how keyboard-driven tiling window managers work, and how to try a different desktop safely.
+
+## What makes up a desktop environment
+
+A desktop environment is a matched set of programs:
+
+- A **window manager** or **compositor**, which draws windows and decides how they move and overlap.
+- **Panels and launchers** — the taskbar, app menu, system tray and notifications.
+- A **settings app** for displays, keyboard, network and appearance.
+- **Core apps** such as a file manager, terminal, text editor and image viewer.
+
+On top of that sits a **display manager** — the login screen. GNOME usually uses GDM and KDE Plasma uses SDDM, while LightDM isn’t tied to any one desktop. With several desktops installed, the login screen lets you choose which **session** to start.
+
+Desktops are built on different **toolkits**. GNOME, Xfce, Cinnamon, MATE, Budgie and Pantheon use **GTK**; KDE Plasma and LXQt use **Qt**; COSMIC uses the Rust toolkit **iced**. Apps built with any toolkit run on any desktop, though themes and dialogs may look a little out of place. Because most desktops follow shared freedesktop.org specifications, basics like app menus, icons and autostart work across all of them.
+
+<Callout type="note" title="Window managers and compositors">
+  On X11, the window manager, the compositing manager and the display server are separate programs. On Wayland, a single compositor does all three jobs. [X11 and Wayland](../display-servers/) covers the difference in detail.
+</Callout>
+
+## At a glance
+
+| Desktop | Toolkit | Default layout | Resource use (rough) | Suits | Typical distros |
+|---|---|---|---|---|---|
+| GNOME | GTK | Top bar and Activities overview | Medium to high | A focused, minimal workflow; touchpad gestures | Fedora Workstation, Ubuntu |
+| KDE Plasma | Qt | Bottom panel and app launcher | Medium | People who love to customize; Windows switchers | Kubuntu, Fedora KDE |
+| Xfce | GTK | Classic panel and menu | Low | Older PCs; a light, steady desktop | Xubuntu, Linux Mint Xfce |
+| Cinnamon | GTK | Bottom panel and menu | Medium | Newcomers who want a Windows-like layout | Linux Mint |
+| MATE | GTK | GNOME 2-style top and bottom panels | Low | Fans of the classic desktop | Ubuntu MATE |
+| LXQt | Qt | Bottom panel and menu | Very low | Low-spec machines | Lubuntu |
+| Budgie | GTK | Panel, Raven sidebar, choice of layouts | Medium | A tidy desktop that’s easy to personalize | Ubuntu Budgie |
+| COSMIC | iced | Panel and dock, optional tiling | Medium | Mixing mouse use with tiling | Pop!\_OS |
+| Pantheon | GTK | Top bar and bottom dock | Medium | A simple, polished design | elementary OS |
+
+<Callout type="tip" title="Resource use is only a relative guide">
+  The resource column is a rough ordering, not a measurement. Real memory use varies a lot with the distro’s defaults, the version and whatever apps you have open — a handful of browser tabs often uses more memory than the desktop itself.
+</Callout>
+
+## The major desktops
+
+### GNOME
+
+GNOME is built around the **Activities** overview: press <Kbd>Super</Kbd> to launch apps, switch windows and search, all from one place. It’s designed to give you room to work across workspaces, and its core apps share the same design principles. It’s the default on Fedora Workstation, Ubuntu, Debian, RHEL and others, and some distros adjust its default look. Extensions let you change how it behaves. GNOME runs on Wayland, with X11 apps handled by XWayland.
+
+### KDE Plasma
+
+Plasma starts out with a familiar bottom panel and app launcher, but its defining trait is that nearly everything — panel position, colors, fonts, widgets — can be changed. **KRunner** finds apps, files and even calculation results as you type, and **Discover** manages distro packages, Flatpaks and Snaps in one place. The Wayland session is the default, and KDE is moving to drop the X11 session altogether.
+
+### Xfce
+
+Xfce is a lightweight GTK desktop that aims to be fast and easy on system resources. Its parts — window manager, panel, file manager and so on — are packaged separately, so you can pick only what you need. Its traditional layout has stayed consistent for years, which makes it familiar and dependable. Wayland support is still experimental.
+
+### Cinnamon
+
+Cinnamon is developed primarily by and for Linux Mint and pairs a traditional layout with modern effects. It started as a fork of GNOME but is now a complete, independent desktop. It has long run on X11, and since Cinnamon 6.0 it has also offered a Wayland session as an experimental option.
+
+### MATE and LXQt
+
+**MATE** continues GNOME 2, keeping its classic top-and-bottom-panel layout while staying light. **LXQt** is a lightweight Qt desktop that aims for a modern look without slowing the system down. Both are good matches for older laptops and PCs with little memory. LXQt can use different window managers on X11 and also runs on top of several Wayland compositors.
+
+### Budgie
+
+Budgie began as part of Solus and is now developed by the Buddies of Budgie project. Its **Raven** sidebar gathers notifications and widgets, and its settings let you switch between a traditional, a Unity-like and a macOS-like layout. Starting with Budgie 10.10 it moved to Wayland and dropped X11 support.
+
+### COSMIC
+
+COSMIC is System76’s desktop for Pop!\_OS. It started life as a heavily modified GNOME and was then rebuilt from scratch in Rust. It’s Wayland-only by design and lets you turn automatic **tiling** on or off on top of a normal mouse-driven layout. Fedora offers a COSMIC edition as well.
+
+### Pantheon
+
+Pantheon is elementary OS’s desktop, written in Vala with GTK and elementary’s Granite library. It favors a simple, consistent design with a top bar and a bottom dock, and elementary OS is moving to Wayland through its “Secure Session.”
+
+## Tiling window managers and compositors
+
+Most desktops use a **stacking** (or floating) model, where windows overlap like sheets of paper. A **tiling** window manager instead arranges windows automatically so they never overlap, and you drive it mostly with keyboard shortcuts. **Dynamic** window managers can switch between the two.
+
+| Name | Display server | What stands out |
+|---|---|---|
+| i3 | X11 | A tiling window manager written from scratch, with a simple config file and good documentation |
+| Sway | Wayland | A Wayland compositor designed as a drop-in replacement for i3; most i3 configs work as-is |
+| Hyprland | Wayland | Dynamic tiling plus animations, rounded corners and blur, extensible with plugins |
+| niri | Wayland | A scrollable-tiling compositor that lays windows out in an endless horizontal strip |
+
+An i3 or Sway configuration looks like this. `$mod` is usually set to the <Kbd>Super</Kbd> key (Mod4); i3’s own default is <Kbd>Alt</Kbd> (Mod1).
+
+```text
+set $mod Mod4
+bindsym $mod+Return exec foot
+bindsym $mod+h focus left
+bindsym $mod+1 workspace number 1
+bindsym $mod+Shift+q kill
+```
+
+Tiling window managers often handle only windows, so you choose and configure the rest yourself: a status bar, an app launcher, notifications, a screen locker and a wallpaper tool. The result is light and fits you exactly, but expect to spend some time on the initial setup.
+
+<Callout type="tip" title="An easier way to try tiling">
+  If building everything from scratch sounds like a lot, start with a desktop that includes tiling (COSMIC) or a distro edition with Sway preconfigured, such as Fedora Sway Atomic. You can also browse distros that ship [i3](../../distros/?desktop=i3), [Sway](../../distros/?desktop=sway) or [Hyprland](../../distros/?desktop=hyprland).
+</Callout>
+
+## Trying a different desktop
+
+From lowest to highest risk, there are three ways to try another desktop:
+
+<Steps>
+
+1. **Boot a live USB** of a distro that ships the desktop you’re curious about — Kubuntu, Xubuntu or Fedora KDE, for example — and use it without installing.
+2. **Install it in a virtual machine** such as GNOME Boxes or VirtualBox and live with it for a while, without touching your current system.
+3. **Add it to your current system** with the commands below, log out, and pick the new session on the login screen. In GDM, select your user and then use the settings (gear) icon that appears.
+
+</Steps>
+
+<Tabs>
+<Tab label="Ubuntu/Debian" open>
+
+On Ubuntu, install an official flavor’s metapackage; on Debian, install a `task-` package.
+
+```bash
+# Ubuntu: KDE Plasma (Kubuntu), Xfce (Xubuntu)
+sudo apt install kubuntu-desktop
+sudo apt install xubuntu-desktop
+
+# Debian: KDE Plasma, Xfce
+sudo apt install task-kde-desktop
+sudo apt install task-xfce-desktop
+```
+
+If you’re asked to choose a default display manager during installation, keeping the one you already use is fine.
+
+</Tab>
+<Tab label="Fedora">
+
+List the available desktops, then install one by prefixing its name with `@`.
+
+```bash
+dnf environment list --available | grep -i desktop
+sudo dnf install @kde-desktop-environment
+```
+
+</Tab>
+<Tab label="Arch">
+
+```bash
+# KDE Plasma
+sudo pacman -S plasma-meta
+# Xfce plus extra plugins
+sudo pacman -S xfce4 xfce4-goodies
+# GNOME
+sudo pacman -S gnome
+```
+
+</Tab>
+</Tabs>
+
+<Callout type="warning" title="Mixing several desktops">
+  A full desktop package brings its own settings app, file manager and themes. With several desktops on one system, your app menu fills up with duplicates, themes and settings can interfere with each other, and removing a desktop cleanly later is hard. If you plan to stick with a desktop, test it in a VM or live session first, then install a distro that ships it by default.
+</Callout>
+
+## Which desktop should you choose?
+
+- **New to Linux and used to Windows?** Cinnamon or KDE Plasma will feel the least foreign.
+- **Want a calm, distraction-free screen?** Try GNOME or Pantheon.
+- **Working with modest hardware?** Xfce, MATE and LXQt are the lightest.
+- **Care about high-DPI displays, per-monitor scaling or touchpad gestures?** Wayland-first desktops such as GNOME, KDE Plasma and COSMIC have the edge.
+- **Prefer to do everything from the keyboard?** Give a tiling setup like Sway, Hyprland or i3 a try.
+
+You can filter the catalog by desktop: [GNOME](../../distros/?desktop=gnome), [KDE Plasma](../../distros/?desktop=kde), [Xfce](../../distros/?desktop=xfce), [Cinnamon](../../distros/?desktop=cinnamon), [MATE](../../distros/?desktop=mate) and [LXQt](../../distros/?desktop=lxqt). For choosing the distro itself, see [Understanding distributions](../distributions/).

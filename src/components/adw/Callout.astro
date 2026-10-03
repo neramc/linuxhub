@@ -1,0 +1,31 @@
+---
+/**
+ * A note/tip/warning block for documentation, styled from libadwaita's
+ * semantic colors (tinted card + matching icon). Not a libadwaita widget, but
+ * built only from its tokens.
+ */
+import Icon from "./Icon.astro";
+
+type Kind = "note" | "tip" | "warning" | "danger";
+
+interface Props {
+  type?: Kind | undefined;
+  title?: string | undefined;
+}
+
+const { type = "note", title } = Astro.props;
+const icons: Record<Kind, string> = {
+  note: "info",
+  tip: "check",
+  warning: "warning",
+  danger: "important",
+};
+---
+
+<aside class:list={["adw-callout", type]}>
+  <Icon name={icons[type]} size={18} class="adw-callout-icon" />
+  <div class="adw-callout-body">
+    {title && <p class="adw-callout-title">{title}</p>}
+    <slot />
+  </div>
+</aside>
