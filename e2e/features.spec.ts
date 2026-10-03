@@ -33,3 +33,19 @@ test("install guide renders with live data and anchors", async ({ page }) => {
   await expect(page.locator("#usb")).toBeAttached();
   await expect(page.locator("article.prose")).toContainText(/Fedora-Workstation-Live-\d+/);
 });
+
+test("pages run under the production CSP without violations", async ({ page }) => {
+  const violations: string[] = [];
+  page.on("console", (m) => {
+    if (/Content Security Policy|Refused to/i.test(m.text())) violations.push(m.text());
+  });
+  for (const path of ["/", "/distros/fedora/", "/finder/", "/compare/"]) {
+    const res = await page.goto(path);
+    expect(res?.headers()["content-security-policy"]).toContain("script-src");
+  }
+  // Theme menu, search (Pagefind WebAssembly) and the download wizard all execute script.
+  await page.keyboard.press("Control+k");
+  await page.locator("[data-search-input]").fill("Debian");
+  await expect(page.locator("[data-search-results] a").first()).toBeVisible({ timeout: 10_000 });
+  expect(violations).toEqual([]);
+});

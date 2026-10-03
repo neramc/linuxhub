@@ -6,13 +6,33 @@
  *
  * Usage: bun scripts/serve.ts [--port=4322]
  */
-import { existsSync, statSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { join, normalize } from "node:path";
 
 const port = Number(process.argv.find((a) => a.startsWith("--port="))?.split("=")[1] ?? 4322);
 // With an on-demand route the adapter puts static files in dist/client/.
 const dist = join(import.meta.dir, "..", "dist");
 const root = existsSync(join(dist, "client")) ? join(dist, "client") : dist;
+
+// Emulate Vercel's per-route static headers (the CSP Astro computes per page).
+const routeHeaders = new Map<string, Record<string, string>>();
+const configPath = join(import.meta.dir, "..", ".vercel", "output", "config.json");
+if (existsSync(configPath)) {
+  const config = JSON.parse(readFileSync(configPath, "utf8")) as {
+    routes?: { src?: string; headers?: Record<string, string>; status?: number }[];
+  };
+  for (const route of config.routes ?? []) {
+    if (
+      route.src &&
+      route.headers &&
+      !route.status &&
+      route.src.startsWith("/") &&
+      !/[\^$()*?[\]]/.test(route.src)
+    ) {
+      routeHeaders.set(route.src, route.headers);
+    }
+  }
+}
 
 function resolve(pathname: string): string | null {
   const safe = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, "");
@@ -37,7 +57,8 @@ Bun.serve({
       return Response.redirect(`${url.pathname}/${url.search}`, 308);
     }
     const file = resolve(url.pathname);
-    if (file) return new Response(Bun.file(file));
+    if (file)
+      return new Response(Bun.file(file), { headers: routeHeaders.get(url.pathname) ?? {} });
     const notFound = join(root, "404.html");
     return new Response(existsSync(notFound) ? Bun.file(notFound) : "Not found", {
       status: 404,
