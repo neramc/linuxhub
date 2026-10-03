@@ -14,15 +14,16 @@ interface Item {
 }
 
 interface Props {
+  [key: `data-${string}`]: unknown;
   items: Item[];
   label: string;
   class?: string | undefined;
 }
 
-const { items, label, class: className } = Astro.props;
+const { items, label, class: className, ...rest } = Astro.props;
 ---
 
-<nav class:list={["adw-view-switcher", className]} aria-label={label}>
+<nav class:list={["adw-view-switcher", className]} aria-label={label} {...rest}>
   {
     items.map((item) => (
       <a href={item.href} class="adw-view-switcher-item" aria-current={item.current ? "page" : undefined}>
