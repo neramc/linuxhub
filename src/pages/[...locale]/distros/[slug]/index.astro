@@ -78,7 +78,7 @@ const jsonLd = [
 ];
 ---
 
-<Base locale={locale} title={d.name} description={description} jsonLd={jsonLd}>
+<Base locale={locale} title={d.name} description={description} jsonLd={jsonLd} image={`/og/${slug}.png`}>
   <div class="container page" data-pagefind-body>
     <p class="visually-hidden" aria-hidden="true" data-pagefind-weight="6">{[slug, ...d.aliases].join(" ")}</p>
     <nav class="breadcrumb caption" aria-label="Breadcrumb" data-pagefind-ignore>

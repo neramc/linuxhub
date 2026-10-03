@@ -92,6 +92,8 @@ export default defineConfig({
     },
   ],
   prefetch: { prefetchAll: true, defaultStrategy: "hover" },
+  // Prefetch via the Speculation Rules API (prerenders on hover where supported).
+  experimental: { clientPrerender: true },
   build: { inlineStylesheets: "always", format: "directory" },
   markdown: { syntaxHighlight: "prism" },
   security: {

@@ -47,7 +47,7 @@ const jsonLd = doc
   : [];
 ---
 
-<Base locale={locale} title={title} description={doc?.data.description ?? t("install.description", { name: d.name })} mono jsonLd={jsonLd}>
+<Base locale={locale} title={title} description={doc?.data.description ?? t("install.description", { name: d.name })} mono jsonLd={jsonLd} image={`/og/${slug}.png`}>
   <div class="container page">
     <nav class="breadcrumb caption" aria-label="Breadcrumb">
       <a href={localizePath("/distros/", locale)}>{t("distro.breadcrumb")}</a>
