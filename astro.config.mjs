@@ -2,7 +2,7 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import pagefind from "astro-pagefind";
 
 /**
@@ -37,6 +37,60 @@ export default defineConfig({
     defaultLocale: "ko",
     routing: { prefixDefaultLocale: false },
   },
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "Adwaita Sans",
+      cssVariable: "--font-adwaita-sans",
+      // Adwaita Sans has no Hangul: Korean text falls through to system fonts.
+      fallbacks: [
+        "Apple SD Gothic Neo",
+        "Malgun Gothic",
+        "Noto Sans KR",
+        "Noto Sans CJK KR",
+        "system-ui",
+        "sans-serif",
+      ],
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/AdwaitaSans-latin.woff2"],
+            weight: "400 800",
+            style: "normal",
+            display: "swap",
+          },
+          {
+            src: ["./src/assets/fonts/AdwaitaSans-Italic-latin.woff2"],
+            weight: "400 700",
+            style: "italic",
+            display: "swap",
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Adwaita Mono",
+      cssVariable: "--font-adwaita-mono",
+      fallbacks: ["ui-monospace", "SFMono-Regular", "Consolas", "monospace"],
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/AdwaitaMono-latin.woff2"],
+            weight: "400",
+            style: "normal",
+            display: "swap",
+          },
+          {
+            src: ["./src/assets/fonts/AdwaitaMono-Bold-latin.woff2"],
+            weight: "700",
+            style: "normal",
+            display: "swap",
+          },
+        ],
+      },
+    },
+  ],
   prefetch: { prefetchAll: true, defaultStrategy: "hover" },
   build: { inlineStylesheets: "always", format: "directory" },
   markdown: { syntaxHighlight: "prism" },

@@ -1,0 +1,170 @@
+---
+/**
+ * Site header styled as a libadwaita AdwHeaderBar: brand on the start side,
+ * primary navigation in the middle (wide screens), search + primary menu on the
+ * end side. On narrow screens the navigation moves to the bottom bar.
+ */
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import Icon from "../adw/Icon.astro";
+import BrandMark from "./BrandMark.astro";
+import MainMenu from "./MainMenu.astro";
+import { primaryNav } from "./nav";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const nav = primaryNav(locale, Astro.url.pathname);
+---
+
+<header class="headerbar">
+  <div class="headerbar-inner container">
+    <a class="brand" href={localizePath("/", locale)}>
+      <BrandMark />
+      <span class="brand-name">{t("site.name")}</span>
+    </a>
+
+    <nav class="primary-nav" aria-label={t("nav.primary")}>
+      {
+        nav.map((item) => (
+          <a href={item.href} class="primary-nav-item" aria-current={item.current ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="headerbar-end">
+      <button class="search-trigger" type="button" data-search-open aria-haspopup="dialog">
+        <Icon name="search" />
+        <span class="search-trigger-label">{t("search.placeholder")}</span>
+        <kbd class="search-trigger-kbd" aria-hidden="true">{t("search.shortcut")}</kbd>
+        <span class="visually-hidden">{t("search.open")}</span>
+      </button>
+      <MainMenu locale={locale} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .headerbar {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 10;
+    background-color: var(--headerbar-bg-color);
+    color: var(--headerbar-fg-color);
+    box-shadow: inset 0 -1px var(--headerbar-shade-color);
+  }
+
+  .headerbar-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    block-size: var(--headerbar-height);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    font-weight: 800;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    border-radius: var(--radius-button);
+    padding: 4px 6px 4px 2px;
+    margin-inline-start: -2px;
+  }
+
+  .brand:hover {
+    text-decoration: none;
+  }
+
+  .primary-nav {
+    display: none;
+    gap: 2px;
+    margin-inline-start: var(--space-2);
+  }
+
+  .primary-nav-item {
+    padding: 6px 12px;
+    border-radius: var(--radius-button);
+    color: inherit;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: background-color var(--duration) var(--ease-out-quad);
+  }
+
+  .primary-nav-item:hover {
+    background-color: var(--hover-color);
+    text-decoration: none;
+  }
+
+  .primary-nav-item[aria-current="page"] {
+    background-color: var(--selected-color);
+  }
+
+  .headerbar-end {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-inline-start: auto;
+  }
+
+  /* Looks like an Adwaita search entry; opens the search dialog. */
+  .search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    block-size: 36px;
+    min-inline-size: 36px;
+    padding-inline: 10px;
+    border: 0;
+    border-radius: var(--radius-button);
+    background-color: var(--button-color);
+    color: inherit;
+    font-size: 0.9375rem;
+    transition: background-color var(--duration) var(--ease-out-quad);
+  }
+
+  .search-trigger:hover {
+    background-color: var(--button-hover-color);
+  }
+
+  .search-trigger-label,
+  .search-trigger-kbd {
+    display: none;
+  }
+
+  .search-trigger-label {
+    opacity: var(--dim-opacity);
+    min-inline-size: 13rem;
+    text-align: start;
+  }
+
+  .search-trigger-kbd {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: var(--dim-opacity);
+    padding: 1px 6px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1px var(--border-color);
+  }
+
+  @media (min-width: 900px) {
+    .primary-nav {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .search-trigger-label,
+    .search-trigger-kbd {
+      display: inline;
+    }
+  }
+</style>

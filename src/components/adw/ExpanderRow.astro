@@ -1,0 +1,62 @@
+---
+/**
+ * libadwaita AdwExpanderRow built on <details>/<summary> (no JS). Nested
+ * content appears in a darker inset area, as in libadwaita.
+ */
+import Icon from "./Icon.astro";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  icon?: string;
+  open?: boolean;
+  name?: string;
+}
+
+const { title, subtitle, icon, open = false, name } = Astro.props;
+---
+
+<li class="adw-row-item">
+  <details class="adw-expander-row" open={open} name={name}>
+    <summary class="adw-action-row activatable">
+      {icon && <Icon name={icon} class="adw-row-prefix" />}
+      <span class="adw-row-text">
+        <span class="adw-row-title">{title}</span>
+        {subtitle && <span class="adw-row-subtitle">{subtitle}</span>}
+      </span>
+      <span class="adw-row-suffix">
+        <slot name="suffix" />
+        <Icon name="pan-down" class="adw-expander-arrow" />
+      </span>
+    </summary>
+    <div class="adw-expander-content">
+      <slot />
+    </div>
+  </details>
+</li>
+
+<style is:global>
+  .adw-expander-row > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .adw-expander-row > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .adw-expander-arrow {
+    opacity: var(--dim-opacity);
+    transition: transform var(--duration) var(--ease-out-quad);
+  }
+
+  .adw-expander-row[open] .adw-expander-arrow {
+    transform: rotate(180deg);
+  }
+
+  .adw-expander-content {
+    background-color: color-mix(in srgb, var(--card-shade-color) 50%, transparent);
+    border-block-start: 1px solid var(--card-shade-color);
+    padding: var(--space-2) 14px;
+  }
+</style>

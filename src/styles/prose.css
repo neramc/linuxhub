@@ -1,0 +1,202 @@
+/*
+ * Long-form documentation (install guides, Linux guide). Applied with the
+ * `.prose` class on the MDX container. Code blocks use Prism classes emitted
+ * at build time; the palette is libadwaita's (GNOME Builder "Adwaita" scheme).
+ */
+
+.prose {
+  max-inline-size: var(--text-width);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose > * + * {
+  margin-block-start: 1em;
+}
+
+.prose h2 {
+  margin-block-start: 2.2em;
+  padding-block-start: 0.2em;
+  font-size: var(--text-title-2);
+}
+
+.prose h3 {
+  margin-block-start: 1.8em;
+  font-size: var(--text-title-3);
+}
+
+.prose h4 {
+  margin-block-start: 1.5em;
+}
+
+.prose h2 + *,
+.prose h3 + *,
+.prose h4 + * {
+  margin-block-start: 0.6em;
+}
+
+.prose :is(h2, h3, h4) > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose ul,
+.prose ol {
+  padding-inline-start: 1.4em;
+}
+
+.prose li + li {
+  margin-block-start: 0.35em;
+}
+
+.prose li::marker {
+  color: color-mix(in srgb, currentColor 55%, transparent);
+}
+
+.prose strong {
+  font-weight: 700;
+  color: color-mix(in srgb, currentColor 100%, transparent);
+}
+
+.prose blockquote {
+  padding-inline-start: 1em;
+  border-inline-start: 3px solid var(--border-color);
+  opacity: var(--dim-opacity);
+}
+
+.prose img {
+  border-radius: var(--radius-card);
+}
+
+.prose table {
+  inline-size: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9375rem;
+  background: var(--card-bg-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  padding: 10px 14px;
+  text-align: start;
+  vertical-align: top;
+}
+
+.prose thead th {
+  font-weight: 700;
+  background: color-mix(in srgb, var(--card-shade-color) 60%, transparent);
+}
+
+.prose tbody tr + tr td,
+.prose thead + tbody tr td {
+  border-block-start: 1px solid var(--card-shade-color);
+}
+
+/* Inline code */
+.prose :not(pre) > code {
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--button-color);
+  font-size: 0.875em;
+  overflow-wrap: anywhere;
+}
+
+/* Code blocks */
+.prose pre,
+pre.code-block {
+  position: relative;
+  margin-block: 1.2em;
+  padding: 14px 16px;
+  border-radius: var(--radius-card);
+  background: light-dark(#f6f5f4, #1d1d20);
+  box-shadow: inset 0 0 0 1px var(--border-color);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+.prose pre code {
+  font-size: inherit;
+  background: none;
+  padding: 0;
+}
+
+/* Copy button added by src/scripts/copy-code.ts */
+.code-copy {
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-end: 8px;
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease-out-quad);
+}
+
+pre:hover .code-copy,
+pre:focus-within .code-copy,
+.code-copy[data-copied] {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .code-copy {
+    opacity: 1;
+  }
+}
+
+/* Prism tokens — libadwaita palette */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: light-dark(#6e6c74, #9a9996);
+  font-style: italic;
+}
+
+.token.punctuation,
+.token.operator {
+  color: light-dark(#5e5c64, #c0bfbc);
+}
+
+.token.keyword,
+.token.builtin,
+.token.important {
+  color: light-dark(#a51d2d, #f66151);
+  font-weight: 700;
+}
+
+.token.function,
+.token.class-name {
+  color: light-dark(#1a5fb4, #62a0ea);
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex {
+  color: light-dark(#26794a, #8ff0a4);
+}
+
+.token.number,
+.token.boolean,
+.token.constant,
+.token.symbol {
+  color: light-dark(#9c4800, #ffa348);
+}
+
+.token.variable,
+.token.parameter,
+.token.property {
+  color: light-dark(#613583, #dc8add);
+}
+
+.token.tag,
+.token.selector,
+.token.attr-name {
+  color: light-dark(#1a5fb4, #99c1f1);
+}

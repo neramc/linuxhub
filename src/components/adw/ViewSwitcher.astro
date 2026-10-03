@@ -1,0 +1,72 @@
+---
+/**
+ * libadwaita AdwViewSwitcher / toggle group as navigation links. Pass items;
+ * the current one gets aria-current="page". Use for tabs between pages or
+ * views (e.g. Overview / Install guide).
+ */
+import Icon from "./Icon.astro";
+
+interface Item {
+  href: string;
+  label: string;
+  icon?: string;
+  current?: boolean;
+}
+
+interface Props {
+  items: Item[];
+  label: string;
+  class?: string;
+}
+
+const { items, label, class: className } = Astro.props;
+---
+
+<nav class:list={["adw-view-switcher", className]} aria-label={label}>
+  {
+    items.map((item) => (
+      <a href={item.href} class="adw-view-switcher-item" aria-current={item.current ? "page" : undefined}>
+        {item.icon && <Icon name={item.icon} />}
+        <span>{item.label}</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style is:global>
+  .adw-view-switcher {
+    display: inline-flex;
+    gap: 3px;
+    padding: 3px;
+    border-radius: calc(var(--radius-button) + 3px);
+    background-color: var(--button-color);
+    max-inline-size: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .adw-view-switcher-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-block-size: 32px;
+    padding: 4px 14px;
+    border-radius: var(--radius-button);
+    color: inherit;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color var(--duration) var(--ease-out-quad);
+  }
+
+  .adw-view-switcher-item:hover {
+    background-color: var(--hover-color);
+    text-decoration: none;
+  }
+
+  .adw-view-switcher-item[aria-current="page"] {
+    background-color: light-dark(#ffffff, rgb(255 255 255 / 20%));
+    box-shadow: 0 1px 3px rgb(0 0 6 / 12%);
+  }
+</style>

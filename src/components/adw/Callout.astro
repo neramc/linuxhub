@@ -1,0 +1,75 @@
+---
+/**
+ * A note/tip/warning block for documentation, styled from libadwaita's
+ * semantic colors (tinted card + matching icon). Not a libadwaita widget, but
+ * built only from its tokens.
+ */
+import Icon from "./Icon.astro";
+
+type Kind = "note" | "tip" | "warning" | "danger";
+
+interface Props {
+  type?: Kind;
+  title?: string;
+}
+
+const { type = "note", title } = Astro.props;
+const icons: Record<Kind, string> = {
+  note: "info",
+  tip: "check",
+  warning: "warning",
+  danger: "important",
+};
+---
+
+<aside class:list={["adw-callout", type]}>
+  <Icon name={icons[type]} size={18} class="adw-callout-icon" />
+  <div class="adw-callout-body">
+    {title && <p class="adw-callout-title">{title}</p>}
+    <slot />
+  </div>
+</aside>
+
+<style is:global>
+  .adw-callout {
+    --callout-color: var(--accent-color);
+    --callout-bg: var(--accent-bg-color);
+    display: flex;
+    gap: var(--space-2);
+    margin-block: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-card);
+    background-color: color-mix(in srgb, var(--callout-bg) 12%, var(--view-bg-color));
+  }
+
+  .adw-callout.tip {
+    --callout-color: var(--success-color);
+    --callout-bg: var(--success-bg-color);
+  }
+
+  .adw-callout.warning {
+    --callout-color: var(--warning-color);
+    --callout-bg: var(--warning-bg-color);
+  }
+
+  .adw-callout.danger {
+    --callout-color: var(--destructive-color);
+    --callout-bg: var(--destructive-bg-color);
+  }
+
+  .adw-callout-icon {
+    color: var(--callout-color);
+    margin-block-start: 0.2em;
+  }
+
+  .adw-callout-body {
+    min-inline-size: 0;
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .adw-callout-title {
+    font-weight: 700;
+    color: var(--callout-color);
+  }
+</style>

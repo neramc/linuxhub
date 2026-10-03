@@ -1,0 +1,44 @@
+---
+/**
+ * Official distro logo on a neutral "thumbnail" tile, like app icons on
+ * Flathub. Rendered as <img> (cached, never inlined) with fixed dimensions to
+ * avoid layout shift.
+ */
+import { logoUrl } from "~/lib/logos";
+
+interface Props {
+  file: string;
+  name: string;
+  size?: number;
+  eager?: boolean;
+  /** Decorative when the name is already next to it (default). */
+  decorative?: boolean;
+}
+
+const { file, name, size = 64, eager = false, decorative = true } = Astro.props;
+---
+
+<span class="distro-logo" data-size={size}>
+  <img
+    src={logoUrl(file)}
+    alt={decorative ? "" : name}
+    width={size}
+    height={size}
+    loading={eager ? "eager" : "lazy"}
+    decoding="async"
+    fetchpriority={eager ? "high" : undefined}
+  />
+</span>
+
+<style>
+  .distro-logo {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+  }
+
+  .distro-logo img {
+    object-fit: contain;
+    max-inline-size: 100%;
+  }
+</style>

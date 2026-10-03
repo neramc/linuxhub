@@ -1,0 +1,213 @@
+---
+/**
+ * GNOME-style primary menu (the "hamburger" popover in a header bar):
+ * style switcher, language, and secondary links. Built on the HTML Popover API,
+ * so opening/closing needs no JS; only the style switcher has a tiny module.
+ */
+import {
+  LOCALE_META,
+  LOCALES,
+  type Locale,
+  localizePath,
+  stripLocale,
+  useTranslations,
+} from "~/i18n";
+import Icon from "../adw/Icon.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const basePath = stripLocale(Astro.url.pathname);
+const links = [
+  { href: localizePath("/releases/", locale), label: t("nav.releases"), icon: "update" },
+  { href: localizePath("/compare/", locale), label: t("nav.compare"), icon: "compare" },
+  { href: localizePath("/about/", locale), label: t("nav.about"), icon: "info" },
+];
+const themes = [
+  { value: "system", label: t("theme.system") },
+  { value: "light", label: t("theme.light") },
+  { value: "dark", label: t("theme.dark") },
+] as const;
+---
+
+<button
+  class="adw-button flat image-button main-menu-button"
+  popovertarget="main-menu"
+  aria-label={t("nav.mainMenu")}
+  title={t("nav.mainMenu")}
+>
+  <Icon name="menu" />
+</button>
+
+<div id="main-menu" class="main-menu" popover>
+  <fieldset class="style-switcher">
+    <legend class="visually-hidden">{t("theme.label")}</legend>
+    {
+      themes.map((theme) => (
+        <label class:list={["style-option", theme.value]} title={theme.label}>
+          <input type="radio" name="lh-theme" value={theme.value} />
+          <span class="visually-hidden">{theme.label}</span>
+          <Icon name="check" class="style-check" />
+        </label>
+      ))
+    }
+  </fieldset>
+
+  <div class="menu-section" role="group" aria-label={t("language.label")}>
+    {
+      LOCALES.map((l) => (
+        <a
+          class="menu-item"
+          href={localizePath(basePath, l)}
+          hreflang={LOCALE_META[l].htmlLang}
+          lang={LOCALE_META[l].htmlLang}
+          aria-current={l === locale ? "true" : undefined}
+        >
+          <Icon name="language" />
+          <span>{LOCALE_META[l].label}</span>
+          {l === locale && <Icon name="check" class="menu-item-check" />}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="menu-section">
+    {
+      links.map((link) => (
+        <a class="menu-item" href={link.href}>
+          <Icon name={link.icon} />
+          <span>{link.label}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import "~/scripts/theme";
+</script>
+
+<style>
+  .main-menu {
+    position: fixed;
+    inset: auto;
+    inset-block-start: calc(var(--headerbar-height) + 4px);
+    inset-inline-end: max(var(--gutter), calc((100vw - var(--content-width)) / 2));
+    margin: 0;
+    min-inline-size: 240px;
+    padding: 6px;
+    border: 0;
+    border-radius: var(--radius-popover);
+    background-color: var(--popover-bg-color);
+    color: var(--popover-fg-color);
+    box-shadow: var(--shadow-popover);
+  }
+
+  .main-menu:popover-open {
+    display: grid;
+    gap: 6px;
+  }
+
+  .style-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 0;
+    padding: 12px 6px 14px;
+    border: 0;
+    border-block-end: 1px solid var(--border-color);
+  }
+
+  .style-option {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px var(--border-color);
+  }
+
+  .style-option.system {
+    background: linear-gradient(-45deg, #222226 49.99%, #ffffff 50.01%);
+  }
+
+  .style-option.light {
+    background: #ffffff;
+  }
+
+  .style-option.dark {
+    background: #222226;
+  }
+
+  .style-option input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .style-option:has(input:checked) {
+    box-shadow: 0 0 0 2px var(--accent-bg-color);
+  }
+
+  .style-option:has(input:focus-visible) {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 3px;
+  }
+
+  .style-check {
+    opacity: 0;
+    padding: 2px;
+    border-radius: 50%;
+    background: var(--accent-bg-color);
+    color: var(--accent-fg-color);
+    position: absolute;
+    inset-block-end: -2px;
+    inset-inline-end: -2px;
+    inline-size: 18px;
+    block-size: 18px;
+  }
+
+  .style-option:has(input:checked) .style-check {
+    opacity: 1;
+  }
+
+  .menu-section {
+    display: grid;
+  }
+
+  .menu-section + .menu-section {
+    padding-block-start: 6px;
+    border-block-start: 1px solid var(--border-color);
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-block-size: 40px;
+    padding: 6px 12px;
+    border-radius: var(--radius-menu);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .menu-item:hover {
+    background-color: var(--hover-color);
+    text-decoration: none;
+  }
+
+  .menu-item:active {
+    background-color: var(--active-color);
+  }
+
+  .menu-item-check {
+    margin-inline-start: auto;
+  }
+</style>

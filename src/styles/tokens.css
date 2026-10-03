@@ -1,0 +1,168 @@
+/*
+ * Linuxhub design tokens — a faithful web port of libadwaita 1.10
+ * (src/stylesheet/_colors.scss, _palette.scss, _common.scss, widgets/_misc.scss).
+ *
+ * Theme: the system preference by default; `data-theme="light|dark"` on <html>
+ * forces one. Every color uses light-dark(), so a single declaration covers
+ * both themes and `color-scheme` decides which side applies.
+ *
+ * Deliberate deviations from libadwaita, for WCAG 2.2 AA (docs/decisions.md ADR-0009):
+ *   --accent-bg-color  #1c71d8 (blue_4) instead of #3584e4 — white text on it
+ *                      reaches 4.9:1 instead of 3.9:1.
+ *   --dim-opacity      70% instead of 55% — dimmed body text stays ≥ 4.5:1.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Palette (libadwaita _palette.scss) ---- */
+  --blue-1: #99c1f1;
+  --blue-2: #62a0ea;
+  --blue-3: #3584e4;
+  --blue-4: #1c71d8;
+  --blue-5: #1a5fb4;
+  --green-4: #2ec27e;
+  --green-5: #26a269;
+  --yellow-5: #e5a50a;
+  --orange-3: #ff7800;
+  --red-3: #e01b24;
+  --red-4: #c01c28;
+  --purple-3: #9141ac;
+  --light-3: #deddda;
+  --dark-3: #3d3846;
+
+  /* ---- Semantic colors ---- */
+  --accent-bg-color: var(--blue-4);
+  --accent-fg-color: #ffffff;
+  /* oklab(from bg min(l,.5) a b) / max(l,.85) — precomputed from #3584e4 */
+  --accent-color: light-dark(#0461be, #81d0ff);
+
+  --destructive-bg-color: light-dark(#e01b24, #c01c28);
+  --destructive-fg-color: #ffffff;
+  --destructive-color: light-dark(#c30000, #ff938b);
+
+  --success-bg-color: light-dark(#2ec27e, #26a269);
+  --success-fg-color: #ffffff;
+  --success-color: light-dark(#007c3d, #78e9ab);
+
+  --warning-bg-color: light-dark(#e5a50a, #cd9309);
+  --warning-fg-color: rgb(0 0 0 / 80%);
+  --warning-color: light-dark(#905400, #ffc252);
+
+  --error-bg-color: var(--destructive-bg-color);
+  --error-fg-color: #ffffff;
+  --error-color: var(--destructive-color);
+
+  --window-bg-color: light-dark(#fafafb, #222226);
+  --window-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+
+  --view-bg-color: light-dark(#ffffff, #1d1d20);
+  --view-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+
+  --headerbar-bg-color: light-dark(#ffffff, #2e2e32);
+  --headerbar-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+  --headerbar-shade-color: light-dark(rgb(0 0 6 / 12%), rgb(0 0 6 / 36%));
+
+  --sidebar-bg-color: light-dark(#ebebed, #2e2e32);
+  --sidebar-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+  --secondary-sidebar-bg-color: light-dark(#f3f3f5, #28282c);
+
+  --card-bg-color: light-dark(#ffffff, rgb(255 255 255 / 8%));
+  --card-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+  --card-shade-color: light-dark(rgb(0 0 6 / 7%), rgb(0 0 6 / 36%));
+
+  --dialog-bg-color: light-dark(#fafafb, #36363a);
+  --dialog-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+
+  --popover-bg-color: light-dark(#ffffff, #36363a);
+  --popover-fg-color: light-dark(rgb(0 0 6 / 80%), #ffffff);
+  --popover-shade-color: light-dark(rgb(0 0 6 / 7%), rgb(0 0 6 / 25%));
+
+  --thumbnail-bg-color: light-dark(#ffffff, #39393d);
+  --overview-bg-color: light-dark(#f3f3f5, #28282c);
+  --shade-color: light-dark(rgb(0 0 6 / 7%), rgb(0 0 6 / 25%));
+
+  --toast-bg-color: #505053;
+  --toast-fg-color: #ffffff;
+
+  /* ---- Opacities & derived colors (libadwaita _colors.scss) ---- */
+  --border-opacity: 15%;
+  --dim-opacity: 70%;
+  --disabled-opacity: 50%;
+  --border-color: color-mix(in srgb, currentColor var(--border-opacity), transparent);
+  --hover-color: color-mix(in srgb, currentColor 7%, transparent);
+  --active-color: color-mix(in srgb, currentColor 16%, transparent);
+  --selected-color: color-mix(in srgb, currentColor 10%, transparent);
+  --view-hover-color: color-mix(in srgb, currentColor 4%, transparent);
+  --view-active-color: color-mix(in srgb, currentColor 8%, transparent);
+  --view-selected-color: color-mix(in srgb, var(--accent-bg-color) 25%, transparent);
+  --button-color: color-mix(in srgb, currentColor 10%, transparent);
+  --button-hover-color: color-mix(in srgb, currentColor 15%, transparent);
+  --button-active-color: color-mix(in srgb, currentColor 30%, transparent);
+  --focus-ring-color: color-mix(in srgb, var(--accent-color) 50%, transparent);
+  --link-color: var(--accent-color);
+  --link-visited-color: color-mix(in srgb, var(--accent-color) 80%, var(--view-fg-color));
+
+  /* ---- Shape (libadwaita _common.scss) ---- */
+  --radius-button: 9px;
+  --radius-card: 12px;
+  --radius-menu: 9px;
+  --radius-popover: 15px;
+  --radius-dialog: 15px;
+  --radius-pill: 9999px;
+
+  --shadow-card:
+    0 0 0 1px rgb(0 0 6 / 3%), 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
+  --shadow-popover:
+    0 0 0 1px rgb(0 0 0 / 5%), 0 1px 5px 1px rgb(0 0 0 / 9%), 0 2px 14px 3px rgb(0 0 0 / 5%);
+  --shadow-dialog:
+    0 0 14px 2px rgb(0 0 6 / 3%), 0 0 5px 2px rgb(0 0 6 / 10%), 0 0 0 1px rgb(0 0 0 / 5%);
+  --shadow-toast: 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
+
+  /* ---- Spacing (6px grid, as in Adwaita layouts) ---- */
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 18px;
+  --space-4: 24px;
+  --space-5: 36px;
+  --space-6: 48px;
+  --space-7: 72px;
+
+  /* ---- Layout ---- */
+  --content-width: 1200px;
+  --text-width: 760px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --headerbar-height: 56px;
+
+  /* ---- Type (libadwaita title-1…caption, scaled to a 16px web base) ---- */
+  /* The font stacks (incl. Hangul system fallbacks) come from astro.config.mjs `fonts`. */
+  --font-sans: var(--font-adwaita-sans);
+  --font-mono: var(--font-adwaita-mono);
+  --text-display: clamp(2rem, 1.35rem + 2.6vw, 3rem);
+  --text-title-1: clamp(1.625rem, 1.4rem + 0.9vw, 2rem);
+  --text-title-2: 1.4rem;
+  --text-title-3: 1.2rem;
+  --text-title-4: 1.0625rem;
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
+
+  /* ---- Motion (libadwaita $ease-out-quad, 200ms) ---- */
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration: 200ms;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --border-opacity: 50%;
+    --dim-opacity: 90%;
+    --focus-ring-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
+  }
+}

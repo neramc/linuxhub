@@ -1,0 +1,74 @@
+---
+/**
+ * Flathub-style app tile for a distribution: logo, name, one-line tagline and
+ * a couple of facet badges. The whole card is one link.
+ */
+import type { CollectionEntry } from "astro:content";
+import { type Locale, localizePath } from "~/i18n";
+import { FAMILIES, RELEASE_MODELS } from "~/lib/taxonomy";
+import Badge from "./adw/Badge.astro";
+import Card from "./adw/Card.astro";
+import DistroLogo from "./DistroLogo.astro";
+
+interface Props {
+  distro: CollectionEntry<"distros">;
+  locale: Locale;
+  eager?: boolean;
+  headingLevel?: 2 | 3;
+}
+
+const { distro, locale, eager = false, headingLevel = 3 } = Astro.props;
+const d = distro.data;
+const Heading = `h${headingLevel}` as "h2" | "h3";
+---
+
+<Card href={localizePath(`/distros/${distro.id}/`, locale)} class="distro-card" padded={false}>
+  <DistroLogo file={d.logo.file} name={d.name} size={64} eager={eager} />
+  <div class="distro-card-text">
+    <Heading class="distro-card-name">{d.name}</Heading>
+    <p class="distro-card-tagline">{d.tagline[locale]}</p>
+    <div class="distro-card-badges">
+      <Badge>{FAMILIES[d.family][locale]}</Badge>
+      <Badge>{RELEASE_MODELS[d.releaseModel][locale]}</Badge>
+    </div>
+  </div>
+</Card>
+
+<style>
+  :global(.distro-card) {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    block-size: 100%;
+  }
+
+  .distro-card-text {
+    display: grid;
+    gap: 4px;
+    min-inline-size: 0;
+  }
+
+  .distro-card-name {
+    font-size: var(--text-title-4);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .distro-card-tagline {
+    opacity: var(--dim-opacity);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .distro-card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-block-start: 6px;
+  }
+</style>

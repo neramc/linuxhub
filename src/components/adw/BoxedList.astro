@@ -1,0 +1,80 @@
+---
+/**
+ * libadwaita `list.boxed-list` (widgets/_lists.scss): a card containing
+ * separated rows. Put ActionRow / ExpanderRow children inside. Optional
+ * heading + description render like an AdwPreferencesGroup.
+ */
+interface Props {
+  title?: string;
+  description?: string;
+  /** Heading level for the group title. */
+  level?: 2 | 3 | 4;
+  class?: string;
+  id?: string;
+}
+
+const { title, description, level = 3, class: className, id } = Astro.props;
+const Heading = `h${level}` as "h2" | "h3" | "h4";
+const headingId = id ? `${id}-title` : undefined;
+---
+
+<section class:list={["adw-group", className]} id={id} aria-labelledby={title ? headingId : undefined}>
+  {
+    (title || Astro.slots.has("suffix")) && (
+      <div class="adw-group-header">
+        <div>
+          {title && (
+            <Heading class="adw-group-title" id={headingId}>
+              {title}
+            </Heading>
+          )}
+          {description && <p class="adw-group-description dim-label">{description}</p>}
+        </div>
+        <slot name="suffix" />
+      </div>
+    )
+  }
+  <ul class="adw-boxed-list" role="list">
+    <slot />
+  </ul>
+</section>
+
+<style is:global>
+  .adw-group {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .adw-group-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-inline: 2px;
+  }
+
+  .adw-group-title {
+    font-size: var(--text-body);
+    font-weight: 700;
+  }
+
+  .adw-group-description {
+    font-size: var(--text-caption);
+    margin-block-start: 2px;
+  }
+
+  .adw-boxed-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--card-bg-color);
+    color: var(--card-fg-color);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .adw-boxed-list > li + li {
+    border-block-start: 1px solid var(--card-shade-color);
+  }
+</style>

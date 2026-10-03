@@ -53,3 +53,23 @@
 ## ADR-0008 — 배포판 목록은 편집자가 정한다
 - **결정:** DistroWatch를 크롤링하지 않는다(robots.txt가 AI 봇을 금지한다). 수록 목록(약 50개)은 편집자가 정한다.
 - **정렬:** 인기 순위를 다른 사이트에서 가져와 표시하지 않는다. 정렬은 추천순(편집), 이름순, 최근 업데이트순만 둔다.
+
+## ADR-0009 — 접근성을 위해 libadwaita 값을 일부 바꾼다
+- **결정:** libadwaita 토큰을 그대로 쓰되, WCAG 2.2 AA를 지키기 위해 아래 두 값만 바꾼다.
+  - **`--accent-bg-color`:** `#3584e4`(blue_3) 대신 `#1c71d8`(blue_4)를 쓴다. 흰 글자와의 대비가 3.9:1에서 4.9:1로 올라간다.
+  - **`--dim-opacity`:** 55% 대신 70%를 쓴다. 흐리게 표시한 본문 글자도 4.5:1 이상을 유지한다.
+- **그대로 두는 값:** 링크와 강조 글자색 `--accent-color`(#0461be / #81d0ff)는 원래 값으로 AA를 통과하므로 바꾸지 않는다.
+- **적용 방식:** 모든 색은 `light-dark()`로 한 번만 선언한다. `data-theme` 속성으로 라이트/다크를 강제할 수 있다.
+
+## ADR-0010 — 아이콘과 폰트 출처
+- **아이콘:** Adwaita icon theme 51.0과 libadwaita 1.10.0의 symbolic 아이콘을 `currentColor`로 바꾸고 SVGO로 최적화해 `src/assets/icons/`에 둔다. 출처는 그 폴더의 `README.md`에 적는다.
+  - 빌드할 때 인라인 SVG로 넣으므로 추가 요청이 없다.
+- **폰트:** Adwaita Sans와 Mono 51.0을 쓴다.
+  - **Adwaita Sans:** `opsz=14`로 고정하고 굵기 범위를 400–800으로 줄인 뒤 라틴 subset만 남겨 woff2로 만든다(약 33KB).
+  - **Adwaita Mono:** 굵기 400과 700을 ASCII만 남겨 각 17KB로 만든다.
+  - 라이선스는 OFL이며 `src/assets/fonts/OFL.txt`에 둔다. 예약 폰트명(RFN)이 없어 subset을 만들어도 이름을 바꿀 필요가 없다.
+
+## ADR-0011 — CSP와 인라인 스크립트
+- **문제:** Astro CSP는 `is:inline` 스크립트의 해시를 자동으로 넣지 않는다.
+- **해결:** 테마 초기화 스크립트는 `src/scripts/theme-init.ts`의 문자열 하나로 관리한다. `Base.astro`에서 `Astro.csp.insertScriptHash()`로 그 해시를 등록한다.
+- **검증:** 빌드 결과의 모든 인라인 script와 style 해시가 `.vercel/output/config.json`의 CSP 헤더에 들어 있는지 확인한다.
