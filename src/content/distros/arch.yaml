@@ -1,0 +1,52 @@
+name: Arch Linux
+order: 11
+family: arch
+basedOn: null
+status: active
+releaseModel: rolling
+desktops: [none]
+packageManagers: [pacman]
+initSystem: systemd
+installer: archinstall
+useCases: [tinkerer, developer, desktop]
+difficulty: advanced
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: CA
+  firstRelease: 2002-03-11
+requirements:
+  ramGB: 0.5
+  diskGB: 2
+  note:
+    ko: 기본 설치의 공식 최소 사양입니다. 라이브 환경 부팅과 데스크톱 환경에는 메모리와 공간이 더 필요합니다.
+    en: Official minimum for a base install. Booting the live system and adding a desktop need more memory and space.
+links:
+  home: https://archlinux.org/
+  download: https://archlinux.org/download/
+  docs: https://wiki.archlinux.org/
+  installGuide: https://wiki.archlinux.org/title/Installation_guide
+  forum: https://bbs.archlinux.org/
+  releaseNotes: https://archlinux.org/news/
+  source: https://gitlab.archlinux.org/archlinux
+tagline:
+  ko: 최소 구성에서 직접 쌓아 올리는 단순한 롤링 릴리스 배포판
+  en: A simple, lightweight rolling-release distro you build up yourself
+aliases: [아치, 아치 리눅스, 아치리눅스, archlinux, arch linux]
+logo:
+  file: arch.svg
+  source: https://sources.archlinux.org/other/artwork/archlinux-artwork-1.6.tar.gz
+  license: CC BY-NC-SA 3.0 (archlinux-artwork); Arch Linux trademark, used to identify the project
+  trademark: https://terms.archlinux.org/docs/trademark-policy/
+download:
+  strategy: mirrors
+sources:
+  - https://archlinux.org/download/
+  - https://wiki.archlinux.org/title/Installation_guide
+  - https://wiki.archlinux.org/title/Arch_Linux
+  - https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot
+  - https://archlinux.org/art/
+  - https://sources.archlinux.org/other/artwork/archlinux-artwork-1.6.tar.gz
+  - https://terms.archlinux.org/docs/trademark-policy/
+lastReviewed: 2026-10-03

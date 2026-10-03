@@ -1,0 +1,52 @@
+name: deepin
+order: 35
+family: independent
+basedOn: null
+status: active
+releaseModel: fixed
+desktops: [dde]
+packageManagers: [apt, dpkg, linyaps]
+initSystem: systemd
+installer: deepin-installer
+useCases: [desktop, beginner]
+difficulty: beginner
+architectures: [x86_64, aarch64, riscv64]
+secureBoot: "no"
+immutable: true
+origin:
+  country: CN
+  firstRelease: 2004
+requirements:
+  ramGB: 8
+  diskGB: 64
+  note:
+    ko: deepin 25 공식 권장 사양입니다(SSD, Intel 6세대 Core 또는 AMD Zen2 이상). 이보다 낮으면 설치가 실패하거나 많이 느릴 수 있다고 안내합니다.
+    en: Official recommendation for deepin 25 (SSD; Intel 6th-gen Core or AMD Zen 2 and newer). The project warns that installs below this may fail or lag badly.
+links:
+  home: https://www.deepin.org/en/
+  download: https://www.deepin.org/en/download/
+  docs: https://wiki.deepin.org/en/home
+  installGuide: https://www.deepin.org/en/deepin-25-installation/
+  forum: https://bbs.deepin.org/en
+  releaseNotes: https://www.deepin.org/en/release-notes/
+  source: https://github.com/linuxdeepin
+tagline:
+  ko: 자체 DDE 데스크톱과 불변 시스템을 갖춘 중국의 배포판
+  en: A Chinese distro with its own DDE desktop and an immutable core system
+aliases: [딥인, 디핀, deepin linux, linux deepin, hiweed linux]
+logo:
+  file: deepin.svg
+  source: https://github.com/linuxdeepin/dtkwidget
+  license: LGPL-3.0-or-later (dtkwidget repository); deepin trademark of Wuhan Deepin Technology Co., Ltd.
+download:
+  strategy: mirrors
+sources:
+  - https://www.deepin.org/en/aboutus/
+  - https://www.deepin.org/en/download/
+  - https://www.deepin.org/en/deepin-25-installation/
+  - https://www.deepin.org/en/deepin-25-release/
+  - https://www.deepin.org/en/deepin-25-2-release/
+  - https://www.deepin.org/en/deepin-23-is-officially-released/
+  - https://www.deepin.org/en/deepin-os-v23-alpha-2-released/
+  - https://www.deepin.org/en/mirrors/releases/
+lastReviewed: 2026-10-03

@@ -1,0 +1,109 @@
+{
+  "slug": "lubuntu",
+  "sources": [
+    "https://endoflife.date/ubuntu",
+    "https://cdimage.ubuntu.com/lubuntu/releases/"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "26.04.1",
+      "channel": "lts",
+      "codename": "Resolute Raccoon",
+      "releaseDate": "2026-04-23",
+      "eol": "2031-05-29",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "lubuntu-26.04.1-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/lubuntu/releases/26.04/release/lubuntu-26.04.1-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a8038585420f2270845549c6f493e0ec98e68d4b2c49571cbe500a4b5fab3062",
+                "url": "https://cdimage.ubuntu.com/lubuntu/releases/26.04/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/lubuntu/releases/26.04/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/lubuntu/releases/26.04/release/lubuntu-26.04.1-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "24.04.5",
+      "channel": "lts",
+      "codename": "Noble Numbat",
+      "releaseDate": "2024-04-25",
+      "eol": "2029-05-31",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "lubuntu-24.04.5-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/lubuntu/releases/24.04/release/lubuntu-24.04.5-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "303a769f681014c801844e33d7918842878067eb644e3c418d699db25f4b4bc6",
+                "url": "https://cdimage.ubuntu.com/lubuntu/releases/24.04/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/lubuntu/releases/24.04/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/lubuntu/releases/24.04/release/lubuntu-24.04.5-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "22.04.5",
+      "channel": "lts",
+      "codename": "Jammy Jellyfish",
+      "releaseDate": "2022-04-21",
+      "eol": "2027-06-01",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "lubuntu-22.04.5-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/lubuntu-22.04.5-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "8ebc2104d822205263d78cc1bee58d17f3e8d8de7aa8e2f249ac2093ec0dd4bc",
+                "url": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/lubuntu-22.04.5-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

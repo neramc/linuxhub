@@ -1,0 +1,53 @@
+name: Zorin OS
+order: 10
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: fixed
+desktops: [gnome, xfce]
+packageManagers: [apt, dpkg, flatpak, snap]
+initSystem: systemd
+installer: other
+useCases: [beginner, desktop]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: partial
+immutable: false
+origin:
+  country: IE
+  firstRelease: 2009-07-01
+requirements:
+  ramGB: 2
+  diskGB: 15
+  note:
+    ko: Core 에디션 최소 사양입니다(1GHz 듀얼코어 이상). Education은 35GB, Pro는 45GB가 필요합니다.
+    en: Minimum for the Core edition (1 GHz dual-core or better). Education needs 35 GB and Pro needs 45 GB.
+links:
+  home: https://zorin.com/os/
+  download: https://zorin.com/os/download/
+  docs: https://help.zorin.com/
+  installGuide: https://help.zorin.com/docs/getting-started/install-zorin-os/
+  forum: https://forum.zorin.com/
+  releaseNotes: https://blog.zorin.com/
+tagline:
+  ko: Windows에서 옮겨 오기 쉽게 다듬은 Ubuntu 기반 배포판
+  en: An Ubuntu-based distro polished for people moving from Windows
+aliases: [조린, 조린 OS, zorin, zorinos]
+logo:
+  file: zorin-os.svg
+  source: https://zorin.com/press/
+  license: Registered trademark of Zorin Technology Group Ltd.; press-kit logomark, use permitted for non-commercial purposes
+  trademark: https://zorin.com/press/
+download:
+  strategy: redirector
+sources:
+  - https://zorin.com/os/
+  - https://zorin.com/os/download/
+  - https://zorin.com/about/
+  - https://zorin.com/os/archive/
+  - https://help.zorin.com/docs/getting-started/system-requirements/
+  - https://help.zorin.com/docs/getting-started/install-zorin-os/
+  - https://help.zorin.com/docs/getting-started/getting-zorin-os-lite/
+  - https://help.zorin.com/docs/apps-games/install-apps/
+  - https://zorin.com/press/
+lastReviewed: 2026-10-03

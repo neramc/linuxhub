@@ -1,0 +1,50 @@
+name: KDE neon
+order: 22
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: semi-rolling
+desktops: [kde]
+packageManagers: [apt, dpkg, flatpak, snap]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, developer]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2016-06-08
+requirements:
+  ramGB: 4
+  diskGB: 25
+  note:
+    ko: 공식 권장 사양이 없어 일반적인 기준으로 적었습니다.
+    en: KDE neon publishes no official requirements; these are conservative general values.
+links:
+  home: https://neon.kde.org/
+  download: https://neon.kde.org/download
+  docs: https://neon.kde.org/faq
+  forum: https://discuss.kde.org/tag/neon
+  releaseNotes: https://blog.neon.kde.org/
+  source: https://invent.kde.org/neon
+tagline:
+  ko: KDE가 직접 만든 최신 Plasma를 담은 Ubuntu LTS 배포판
+  en: The latest Plasma and KDE apps, packaged by KDE itself on an Ubuntu LTS base
+aliases: [케이디이 네온, KDE 네온, neon, kde neon user edition]
+logo:
+  file: kde-neon.svg
+  source: https://neon.kde.org/media/128x128.svg
+  license: KDE neon logo by the KDE community; KDE is a trademark of KDE e.V., used to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://neon.kde.org/
+  - https://neon.kde.org/faq
+  - https://neon.kde.org/download
+  - https://dot.kde.org/2016/06/08/kde-neon-user-edition-56-available-now/
+  - https://blog.neon.kde.org/2020/08/10/kde-neon-rebased-on-20-04/
+  - https://community.kde.org/Neon
+  - https://files.kde.org/neon/images/desktop/user/current/neon-user-desktop-current.manifest
+lastReviewed: 2026-10-03

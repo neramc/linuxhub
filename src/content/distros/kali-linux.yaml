@@ -1,0 +1,55 @@
+name: Kali Linux
+order: 16
+family: debian
+basedOn: debian
+status: active
+releaseModel: rolling
+desktops: [xfce, gnome, kde]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: debian-installer
+useCases: [security]
+difficulty: advanced
+architectures: [x86_64, aarch64, armhf]
+secureBoot: "no"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2013-03-13
+requirements:
+  ramGB: 2
+  diskGB: 20
+  note:
+    ko: 기본 Xfce 데스크톱과 기본 도구 묶음(kali-linux-default) 기준 공식 권장치입니다. Burp Suite 같은 무거운 도구는 8GB RAM 이상을 권장합니다.
+    en: Official guidance for the default Xfce desktop with the kali-linux-default tool set; heavy tools such as Burp Suite call for 8 GB of RAM or more.
+links:
+  home: https://www.kali.org/
+  download: https://www.kali.org/get-kali/
+  docs: https://www.kali.org/docs/
+  installGuide: https://www.kali.org/docs/installation/hard-disk-install/
+  forum: https://forums.kali.org/
+  releaseNotes: https://www.kali.org/releases/
+  source: https://gitlab.com/kalilinux
+tagline:
+  ko: 침투 테스트와 보안 감사 도구를 모은 Debian 기반 배포판
+  en: A Debian-based distro built around penetration testing and security auditing tools
+aliases: [칼리 리눅스, 칼리, backtrack]
+logo:
+  file: kali-linux.svg
+  source: https://gitlab.com/kalilinux/documentation/press-pack
+  license: Trademark of OffSec, used to identify the project (official press pack)
+  trademark: https://www.kali.org/docs/policy/trademark/
+download:
+  strategy: redirector
+sources:
+  - https://www.kali.org/docs/installation/hard-disk-install/
+  - https://www.kali.org/docs/introduction/what-image-to-download/
+  - https://www.kali.org/docs/installation/installation-sizes/
+  - https://www.kali.org/docs/introduction/should-i-use-kali-linux/
+  - https://www.kali.org/docs/introduction/kali-linux-history/
+  - https://www.kali.org/docs/introduction/press-release/
+  - https://www.kali.org/docs/general-use/kali-branches/
+  - https://www.kali.org/blog/kali-linux-2024-4-release/
+  - https://www.kali.org/get-kali/
+  - https://www.kali.org/docs/policy/trademark/
+lastReviewed: 2026-10-03

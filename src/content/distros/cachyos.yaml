@@ -1,0 +1,54 @@
+name: CachyOS
+order: 6
+family: arch
+basedOn: arch
+status: active
+releaseModel: rolling
+desktops: [kde, gnome, xfce, cosmic, hyprland, niri, sway, i3, budgie, cinnamon, mate, lxqt, lxde, openbox]
+packageManagers: [pacman]
+initSystem: systemd
+installer: calamares
+useCases: [gaming, desktop, developer]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: DE
+  firstRelease: 2021
+requirements:
+  ramGB: 8
+  diskGB: 50
+  note:
+    ko: 공식 권장 사양입니다(최소 3GB RAM·30GB, x86-64-v3 CPU 권장).
+    en: Official recommended specs (3 GB RAM and 30 GB minimum; an x86-64-v3 CPU is recommended).
+links:
+  home: https://cachyos.org/
+  download: https://cachyos.org/download/
+  docs: https://wiki.cachyos.org/
+  installGuide: https://wiki.cachyos.org/installation/installation_on_root/
+  forum: https://discuss.cachyos.org/
+  releaseNotes: https://wiki.cachyos.org/cachyos_basic/changelogs/gui_installer/
+  source: https://github.com/CachyOS
+tagline:
+  ko: CPU에 맞춰 최적화한 패키지와 커널을 쓰는 Arch 기반 배포판
+  en: An Arch-based distro with CPU-optimized packages and a tuned kernel
+aliases: [캐시OS, 캐시 OS, 캐치OS, cachy, cachy os]
+logo:
+  file: cachyos.svg
+  source: https://cachyos.org/favicon.svg
+  license: GPL-2.0-or-later (released by founder Peter Jung on Wikimedia Commons); CachyOS mark, used to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://cachyos.org/
+  - https://cachyos.org/download/
+  - https://cachyos.org/about/
+  - https://wiki.cachyos.org/installation/installation_prepare/
+  - https://wiki.cachyos.org/installation/installation_on_root/
+  - https://wiki.cachyos.org/installation/desktop_environments/
+  - https://wiki.cachyos.org/configuration/secure_boot_setup/
+  - https://wiki.cachyos.org/cachyos_basic/download/
+  - https://wiki.cachyos.org/cachyos_basic/changelogs/gui_installer/
+  - https://commons.wikimedia.org/wiki/File:CachyOS_Logo.svg
+lastReviewed: 2026-10-03

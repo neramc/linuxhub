@@ -1,0 +1,51 @@
+name: Linux Lite
+order: 26
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: lts
+desktops: [xfce]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: calamares
+useCases: [beginner, desktop, lightweight]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: NZ
+  firstRelease: 2012
+requirements:
+  ramGB: 4
+  diskGB: 40
+  note:
+    ko: 공식 최소 사양입니다(1.5GHz 듀얼코어 CPU, 1366×768 이상 화면).
+    en: Official minimum (1.5 GHz dual-core CPU, 1366×768 or larger display).
+links:
+  home: https://www.linuxliteos.com/
+  download: https://www.linuxliteos.com/download.php
+  docs: https://wiki.linuxliteos.com/en/home
+  installGuide: https://wiki.linuxliteos.com/en/install
+  forum: https://www.linuxliteos.com/forums/
+  releaseNotes: https://www.linuxliteos.com/forums/forumdisplay.php?fid=11
+  source: https://gitlab.com/linuxlite
+tagline:
+  ko: Windows 사용자를 위한 Ubuntu LTS 기반 Xfce 배포판
+  en: An Xfce distro on Ubuntu LTS, made for people coming from Windows
+aliases: [리눅스 라이트, linuxlite, lite]
+logo:
+  file: linux-lite.svg
+  source: https://www.linuxliteos.com/artwork.html
+  license: Official Linux Lite feather logo (artwork pack, used unmodified); Linux Lite trademark, used to identify the project
+  trademark: https://www.linuxliteos.com/artwork.html
+download:
+  strategy: mirrors
+sources:
+  - https://www.linuxliteos.com/
+  - https://www.linuxliteos.com/download.php
+  - https://www.linuxliteos.com/forums/showthread.php?tid=9866
+  - https://wiki.linuxliteos.com/en/install
+  - https://www.linuxliteos.com/artwork.html
+  - https://mirrors.linuxliteos.com/status/mirrors
+lastReviewed: 2026-10-03

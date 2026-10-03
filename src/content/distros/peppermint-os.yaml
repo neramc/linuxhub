@@ -1,0 +1,50 @@
+name: Peppermint OS
+order: 48
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [xfce]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: calamares
+useCases: [lightweight, tinkerer, desktop]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2010-05-09
+requirements:
+  ramGB: 4
+  diskGB: 32
+  note:
+    ko: 공식 권장 사양입니다(최소 1GB RAM, 10GB 디스크).
+    en: Officially recommended (minimum 1 GB RAM and 10 GB disk).
+links:
+  home: https://peppermintos.com/
+  download: https://peppermintos.com/trixie-base-downloads/
+  docs: https://peppermint_os.codeberg.page/html/
+  forum: https://sourceforge.net/p/peppermintos/pepos/
+  releaseNotes: https://sourceforge.net/p/peppermintos/pepwiki/BuildDate/
+  source: https://codeberg.org/Peppermint_OS
+tagline:
+  ko: 필요한 앱만 골라 까는 최소 구성의 Debian 기반 Xfce 배포판
+  en: A minimal Debian-based Xfce desktop where you choose every app yourself
+aliases: [페퍼민트, 페퍼민트 OS, peppermint, pepos]
+logo:
+  file: peppermint-os.svg
+  source: https://commons.wikimedia.org/wiki/File:Peppermint_OS_Master_Banner_1.svg
+  license: CC BY-SA 4.0 (uploaded by the Peppermint OS team); Peppermint OS trademark
+download:
+  strategy: sourceforge
+sources:
+  - https://peppermintos.com/
+  - https://peppermintos.com/about/
+  - https://peppermintos.com/trixie-base-downloads/
+  - https://peppermintos.com/2025/10/peppermint-os-trixie-base-released/
+  - https://peppermintos.com/2010/05/come-and-get-it/
+  - https://sourceforge.net/p/peppermintos/pepos/general/thread/af01953291/
+  - https://sourceforge.net/p/peppermintos/pepwiki/UEFI%20and%20Secure%20Boot%20Install/
+lastReviewed: 2026-10-03

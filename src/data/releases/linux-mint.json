@@ -1,0 +1,168 @@
+{
+  "slug": "linux-mint",
+  "sources": [
+    "https://endoflife.date/linuxmint",
+    "https://pub.linuxmint.io/stable/"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "22.3",
+      "channel": "lts",
+      "codename": "Zena",
+      "releaseDate": "2026-01-11",
+      "eol": "2029-04-30",
+      "notesUrl": "https://linuxmint.com/rel_zena.php",
+      "editions": [
+        {
+          "id": "cinnamon",
+          "name": "Cinnamon Edition",
+          "desktop": "cinnamon",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-cinnamon-64bit.iso",
+              "path": "stable/22.3/linuxmint-22.3-cinnamon-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-cinnamon-64bit.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a081ab202cfda17f6924128dbd2de8b63518ac0531bcfe3f1a1b88097c459bd4",
+                "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce Edition",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-xfce-64bit.iso",
+              "path": "stable/22.3/linuxmint-22.3-xfce-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-xfce-64bit.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "45a835b5dddaf40e84d776549e0b19b3fbd49673b6cc6434ebddbfcd217df776",
+                "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE Edition",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-mate-64bit.iso",
+              "path": "stable/22.3/linuxmint-22.3-mate-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-mate-64bit.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "7609294da613b75eea89bb918292125e9f06418a368136fb190466e15bf8c373",
+                "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "21.3",
+      "channel": "lts",
+      "codename": "Virginia",
+      "releaseDate": "2024-01-12",
+      "eol": "2027-04-30",
+      "notesUrl": "https://linuxmint.com/rel_virginia.php",
+      "editions": [
+        {
+          "id": "cinnamon",
+          "name": "Cinnamon Edition",
+          "desktop": "cinnamon",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-21.3-cinnamon-64bit.iso",
+              "path": "stable/21.3/linuxmint-21.3-cinnamon-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-cinnamon-64bit.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "5aa24abbc616807ab754a6a3b586f24460b0c213b6cacb0bf8b9a80b65013ecc",
+                "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce Edition",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-21.3-xfce-64bit.iso",
+              "path": "stable/21.3/linuxmint-21.3-xfce-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-xfce-64bit.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "b284afcc298cc6f5da6ab4d483318c453b2074485974b71b16fdfc7256527cb1",
+                "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE Edition",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-21.3-mate-64bit.iso",
+              "path": "stable/21.3/linuxmint-21.3-mate-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-mate-64bit.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "c7b0c703476fcf7cfcfc66974b60984f35479fe1f2f054b00bc3c4cb97f37687",
+                "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

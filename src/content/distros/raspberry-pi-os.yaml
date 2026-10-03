@@ -1,0 +1,52 @@
+name: Raspberry Pi OS
+order: 38
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [lxde]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: raspberry-pi-imager
+useCases: [education, tinkerer, lightweight]
+difficulty: beginner
+architectures: [aarch64, armhf]
+secureBoot: "no"
+immutable: false
+origin:
+  country: GB
+  firstRelease: 2012-07
+requirements:
+  ramGB: 1
+  diskGB: 32
+  note:
+    ko: Raspberry Pi 보드 전용입니다. 데스크톱 판은 32GB 이상 SD 카드를 권장하며, 공식 RAM 권장치는 없지만 Pi 3(1GB) 이상에서 쓸 만하다고 안내합니다. PC용 UEFI Secure Boot는 해당되지 않습니다.
+    en: Runs on Raspberry Pi boards only. A 32 GB or larger SD card is recommended for the desktop image; there is no official RAM figure, but Pi 3 (1 GB) and newer are described as practical. PC-style UEFI Secure Boot does not apply.
+links:
+  home: https://www.raspberrypi.com/software/
+  download: https://www.raspberrypi.com/software/operating-systems/
+  docs: https://www.raspberrypi.com/documentation/computers/os.html
+  installGuide: https://www.raspberrypi.com/documentation/computers/getting-started.html
+  forum: https://forums.raspberrypi.com/
+  source: https://github.com/RPi-Distro/pi-gen
+tagline:
+  ko: Raspberry Pi 보드를 위한 Debian 기반 공식 운영체제
+  en: The official Debian-based operating system for Raspberry Pi computers
+aliases: [라즈베리 파이 OS, 라즈베리파이, raspbian, 라즈비안, raspios]
+logo:
+  file: raspberry-pi-os.svg
+  source: https://github.com/raspberrypi/documentation
+  license: Trademark of Raspberry Pi Ltd, used to identify the product (logo from the official documentation site header)
+  trademark: https://www.raspberrypi.com/trademark-rules/
+download:
+  strategy: official-page
+sources:
+  - https://www.raspberrypi.com/software/operating-systems/
+  - https://www.raspberrypi.com/documentation/computers/os.html
+  - https://www.raspberrypi.com/documentation/computers/getting-started.html
+  - https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/
+  - https://www.raspberrypi.com/news/a-new-release-of-raspberry-pi-os/
+  - https://www.raspberrypi.com/news/introducing-pixel/
+  - https://www.raspberrypi.com/news/raspbian-sneak-peek-from-dom/
+  - https://www.raspberrypi.com/trademark-rules/
+lastReviewed: 2026-10-03

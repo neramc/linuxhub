@@ -1,0 +1,2393 @@
+{
+  "slug": "ubuntu",
+  "sources": [
+    "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
+  ],
+  "updated": "2026-10-03",
+  "mirrors": [
+    {
+      "url": "https://ae.releases.ubuntu.com/",
+      "country": "AE",
+      "name": "Root License",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.sitsa.com.ar/ubuntu-releases/",
+      "country": "AR",
+      "name": "SiTSA Telecomunicaciones",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://releases.ubuntu.unc.edu.ar/",
+      "country": "AR",
+      "name": "Universidad Nacional de Córdoba",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.zero.com.ar/releases/",
+      "country": "AR",
+      "name": "Zero.com.ar",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kumi.systems/ubuntureleases/",
+      "country": "AT",
+      "name": "Kumi Systems",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.anexia.at/ubuntu-releases/",
+      "country": "AT",
+      "name": "ANEXIA Internetdienstleistungs GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gsl-syd.mm.fcix.net/ubuntu-releases/",
+      "country": "AU",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lchs.mm.fcix.net/ubuntu-releases/",
+      "country": "AU",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.aarnet.edu.au/pub/ubuntu/releases/",
+      "country": "AU",
+      "name": "AARNet Pty Ltd",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.internet.asn.au/pub/ubuntu/releases/",
+      "country": "AU",
+      "name": "Internet Association of Australia Inc.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ourhost.az/ubuntu-releases/",
+      "country": "AZ",
+      "name": "OUR Host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yer.az/ubuntu/releases/",
+      "country": "AZ",
+      "name": "YER Hosting",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.xeonbd.com/ubuntu-releases/",
+      "country": "BD",
+      "name": "XeonBD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.belnet.be/ubuntu-releases/",
+      "country": "BE",
+      "name": "Belnet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.unix-solutions.be/ubuntu-releases/",
+      "country": "BE",
+      "name": "Unix-Solutions",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirror-services.net/releases/",
+      "country": "BE",
+      "name": "BOINC Team Belgium",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/ubuntu-releases/",
+      "country": "BG",
+      "name": "Telepoint.bg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.neterra.net/ubuntu/releases/",
+      "country": "BG",
+      "name": "Neterra LTD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.netix.net/ubuntu/releases/",
+      "country": "BG",
+      "name": "Netix Ltd.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.storpool.com/ubuntu/releases/",
+      "country": "BG",
+      "name": "StorPool Storage",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.ipacct.com/releases/",
+      "country": "BG",
+      "name": "IPACCT",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://deb.campolargo.pr.gov.br/ubuntu/releases/",
+      "country": "BR",
+      "name": "Prefeitura Municipal de Campo Largo",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pop-sc.rnp.br/mirror/ubuntu-releases/",
+      "country": "BR",
+      "name": "PoP-SC/RNP",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.uepg.br/ubuntu-releases/",
+      "country": "BR",
+      "name": "Universidade Estadual de Ponta Grossa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.univassouras.edu.br/releases/",
+      "country": "BR",
+      "name": "Univassouras",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gpl.savoirfairelinux.net/pub/mirrors/ubuntu-releases/",
+      "country": "CA",
+      "name": "Savoir-faire Linux",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lesnet.mm.fcix.net/ubuntu-releases/",
+      "country": "CA",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cpsc.ucalgary.ca/mirror/ubuntu.com/releases/",
+      "country": "CA",
+      "name": "University of Calgary",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.csclub.uwaterloo.ca/ubuntu-releases/",
+      "country": "CA",
+      "name": "University of Waterloo Computer Science Club",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.digitaloceans.dev/ubuntu-releases/",
+      "country": "CA",
+      "name": "mirror.digitaloceans.dev",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hep.gg/ubuntu-releases/",
+      "country": "CA",
+      "name": "Team Hydra / Hep.gg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.it.ubc.ca/ubuntu-releases/",
+      "country": "CA",
+      "name": "The University of British Columbia",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.quantum5.ca/ubuntu-releases/",
+      "country": "CA",
+      "name": "Quantum",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.xenyth.net/ubuntu-releases/",
+      "country": "CA",
+      "name": "GoCodeIT Inc",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://muug.ca/mirror/ubuntu-releases/",
+      "country": "CA",
+      "name": "Manitoba Unix User Group",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://yxeix.mm.fcix.net/ubuntu-releases/",
+      "country": "CA",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ipng.mm.fcix.net/ubuntu-releases/",
+      "country": "CH",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.gofoss.xyz/ubuntu-releases/",
+      "country": "CH",
+      "name": "GoFoss",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.init7.net/ubuntu-releases/",
+      "country": "CH",
+      "name": "Init7 (Schweiz) AG",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.solnet.ch/ubuntu-releases/",
+      "country": "CH",
+      "name": "BSE Software GmbH, SolNet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://elmirror.cl/ubuntu-releases/",
+      "country": "CL",
+      "name": "ElMirror.cl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hnd.cl/ubuntu-releases/",
+      "country": "CL",
+      "name": "Hostednode SpA",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.sjtu.edu.cn/ubuntu-cd/",
+      "country": "CN",
+      "name": "Shanghai Jiao Tong University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Nanyang Institute of Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hit.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Harbin Institute of Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.qlu.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Qilu Univertity of Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Tsinghua University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xjtu.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Xi'an Jiaotong University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.zju.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Zhejiang University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.huaweicloud.com/ubuntu-releases/",
+      "country": "CN",
+      "name": "Huawei Cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.atlas.net.co/ubuntu-releases/",
+      "country": "CO",
+      "name": "Atlas Internet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cz.releases.ubuntu.com/releases/",
+      "country": "CZ",
+      "name": "CZ.NIC, z.s.p.o.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dkm.cz/ubuntu-releases/",
+      "country": "CZ",
+      "name": "Vodafone Czech Republic a. s.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.it4i.cz/ubuntu-releases/",
+      "country": "CZ",
+      "name": "IT4Innovations National Supercomputing Center",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://drmirror.physi.uni-heidelberg.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "Physikalisches Institut Uni Heidelberg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fau.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "Universität Erlangen-Nürnberg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "RWTH Aachen University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tu-chemnitz.de/pub/linux/ubuntu-releases/",
+      "country": "DE",
+      "name": "Technische Universität Chemnitz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp5.gwdg.de/pub/linux/debian/ubuntu/iso/",
+      "country": "DE",
+      "name": "GWDG",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://level66.mm.fcix.net/ubuntu-releases/",
+      "country": "DE",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.23m.com/ubuntu-releases/",
+      "country": "DE",
+      "name": "23M GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.de.leaseweb.net/ubuntu-releases/",
+      "country": "DE",
+      "name": "LeaseWeb Germany GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dogado.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "dogado GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.faigner.de/ubuntu/",
+      "country": "DE",
+      "name": "FAigner",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.imt-systems.com/ubuntu/",
+      "country": "DE",
+      "name": "IMT-Systems GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kamp.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "KAMP Netzwerkdienste GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kkg.berlin/ubuntu-releases/",
+      "country": "DE",
+      "name": "KKG Berlin",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.level66.network/ubuntu-releases/",
+      "country": "DE",
+      "name": "level66.network UG (haftungsbeschränkt)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netzwerge.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "Netzwerge GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.scaleuptech.com/ubuntu-releases/",
+      "country": "DE",
+      "name": "ScaleUp Technologies GmbH & Co. KG",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wtnet.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "wilhelm.tel GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "xTom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://releases.ubuntu.repulsive.eu/",
+      "country": "DE",
+      "name": "releases.ubuntu.repulsive.eu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netsite.dk/ubuntu/releases/",
+      "country": "DK",
+      "name": "Netsite",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.one.com/ubuntu-cd/",
+      "country": "DK",
+      "name": "One.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.c0urier.net/linux/ubuntu-cd/",
+      "country": "DK",
+      "name": "c0urier.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/ubuntu-cd/",
+      "country": "DK",
+      "name": "dotsrc.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.fibianet.dk/ubuntu-releases/",
+      "country": "DK",
+      "name": "Fibia P/S",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cedia.org.ec/ubuntu-releases/",
+      "country": "EC",
+      "name": "Consorcio Ecuatoriano para Desarrollo de Internet Avanzado - CEDIA",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.linux.ec/ubuntu-releases/",
+      "country": "EC",
+      "name": "NodoVIP",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.ee/ubuntu-releases/",
+      "country": "EE",
+      "name": "xTom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.caliu.cat/pub/distribucions/ubuntu/releases/",
+      "country": "ES",
+      "name": "Caliu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.rediris.es/mirror/ubuntu-releases/",
+      "country": "ES",
+      "name": "RedIRIS",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://labs.eif.urjc.es/mirror/ubuntu-releases/",
+      "country": "ES",
+      "name": "Laboratorios Docentes Linux EIF - URJC (Universidad Rey Juan Carlos)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.redparra.com/ubuntureleases/",
+      "country": "ES",
+      "name": "Redparra",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://softlibre.unizar.es/ubuntu/releases/",
+      "country": "ES",
+      "name": "University of Zaragoza",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubunturel.javinator9889.com/",
+      "country": "ES",
+      "name": "Javinator9889",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.5i.fi/ubuntu-releases/",
+      "country": "FI",
+      "name": "mirror.5i.fi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fi.ossplanet.net/ubuntu-releases/",
+      "country": "FI",
+      "name": "Ubuntu-TW / OSSPlanet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://www.nic.funet.fi/pub/mirrors/releases.ubuntu.com/",
+      "country": "FI",
+      "name": "CSC / Funet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bakertelekom.fr/Ubuntu/",
+      "country": "FR",
+      "name": "Baker Telekom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.johnnybegood.fr/ubuntu-cd/",
+      "country": "FR",
+      "name": "mirror.johnnybegood.fr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ircam.fr/pub/ubuntu/releases/",
+      "country": "FR",
+      "name": "Ircam",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirrors.ovh.net/ubuntu-releases/",
+      "country": "FR",
+      "name": "OVHcloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.univ-nantes.fr/ubuntu-cd/",
+      "country": "FR",
+      "name": "Université de Nantes",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://www-ftp.lip6.fr/pub/linux/distributions/Ubuntu/releases/",
+      "country": "FR",
+      "name": "LIP6/Sorbonne Université",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ask4.mm.fcix.net/ubuntu-releases/",
+      "country": "GB",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://b4sh.mm.fcix.net/ubuntu-releases/",
+      "country": "GB",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://divergentnetworks.mm.fcix.net/ubuntu-releases/",
+      "country": "GB",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freethought-internet.co.uk/ubuntu-releases/",
+      "country": "GB",
+      "name": "Freethought Internet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.server.net/ubuntu-releases/",
+      "country": "GB",
+      "name": "Server.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vinehost.net/ubuntu-releases/",
+      "country": "GB",
+      "name": "VineHost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.20i.com/pub/releases.ubuntu.com/",
+      "country": "GB",
+      "name": "20i.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.vinters.com/ubuntu-releases/",
+      "country": "GB",
+      "name": "Vinters",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://releases.ubuntu.com/",
+      "country": "GB",
+      "name": "Canonical Ltd.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://www.mirrorservice.org/sites/releases.ubuntu.com/",
+      "country": "GB",
+      "name": "University Of Kent UK Mirror Service",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ordunet.ge/ubuntu-releases/",
+      "country": "GE",
+      "name": "Ordunet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.grena.ge/releases/",
+      "country": "GE",
+      "name": "GRENA",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror-hk.koddos.net/ubuntu-releases/",
+      "country": "HK",
+      "name": "KoDDoS",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.01link.hk/ubuntu-releases/",
+      "country": "HK",
+      "name": "01Link Network Services Limited",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.xtom.com.hk/ubuntu-releases/",
+      "country": "HK",
+      "name": "xTom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.niif.hu/ubuntu-releases/",
+      "country": "HU",
+      "name": "Governmental Agency for IT Development, Hungary",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://linux.domainesia.com/ubuntu/iso-release/",
+      "country": "ID",
+      "name": "DomaiNesia",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.citrahost.com/ubuntu-releases/",
+      "country": "ID",
+      "name": "Citrahost by Citranet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.gi.co.id/ubuntu-releases/",
+      "country": "ID",
+      "name": "PT Global Intermedia Nusantara",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.jagoanhosting.id/ubuntu-releases/",
+      "country": "ID",
+      "name": "mirror.jagoanhosting.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nevacloud.com/ubuntu/iso-release/",
+      "country": "ID",
+      "name": "Nevacloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.papua.go.id/ubuntu-releases/",
+      "country": "ID",
+      "name": "Pemerintah Provinsi Papua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.unair.ac.id/ubuntu-cd/",
+      "country": "ID",
+      "name": "Universitas Airlangga",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.usk.ac.id/iso/ubuntu/",
+      "country": "ID",
+      "name": "Universitas Syiah Kuala",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pablosec.com/",
+      "country": "IE",
+      "name": "Pablosec Solutions",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.isoc.org.il/pub/ubuntu-releases/",
+      "country": "IL",
+      "name": "Israel Internet Association",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ajl.albony.in/ubuntu-releases/",
+      "country": "IN",
+      "name": "Shrirang Kahale",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bharatdatacenter.com/ubuntu-releases/",
+      "country": "IN",
+      "name": "Bharat Datacenter",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ir.releases.ubuntu.com/",
+      "country": "IR",
+      "name": "HostBaran",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ir.ubuntu.sindad.cloud/releases/",
+      "country": "IR",
+      "name": "Sindad LLC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.famaserver.com/cd-image/",
+      "country": "IR",
+      "name": "FamaServer",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.parsdev.com/ubuntu-releases/",
+      "country": "IR",
+      "name": "ParsDev",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rasanegaar.com/ubuntu-cd/",
+      "country": "IR",
+      "name": "Rasanegar",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rasanegar.com/ubuntu-cd/",
+      "country": "IR",
+      "name": "Rasanegar ",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mobinhost.com/releases/",
+      "country": "IR",
+      "name": "Mobinhost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.opensource.is/ubuntu-releases/",
+      "country": "IS",
+      "name": "Opin Kerfi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://it1.mirror.vhosting-it.com/ubuntu-releases/",
+      "country": "IT",
+      "name": "VHosting Solution (IT1 - Milan)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://it2.mirror.vhosting-it.com/ubuntu-releases/",
+      "country": "IT",
+      "name": "VHosting Solution (IT2 - Turin)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirror.garr.it/releases/",
+      "country": "IT",
+      "name": "Consortium GARR",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.maru.co.jp/ubuntu-releases/",
+      "country": "JP",
+      "name": "OTO GK",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.riken.jp/Linux/ubuntu-releases/",
+      "country": "JP",
+      "name": "RIKEN",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tsukuba.wide.ad.jp/Linux/ubuntu-releases/",
+      "country": "JP",
+      "name": "Tsukuba WIDE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.udx.icscoe.jp/Linux/ubuntu-releases/",
+      "country": "JP",
+      "name": "ICSCoE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/releases/",
+      "country": "JP",
+      "name": "Yamagata University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hashy0917.net/ubuntu-releases/",
+      "country": "JP",
+      "name": "hashy10G",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lc/ubuntu-releases/",
+      "country": "JP",
+      "name": "mirror.lc - Releases",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.krnk.org/ubuntu-releases/",
+      "country": "JP",
+      "name": "KuronekoServer",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirror.ac.ke/ubuntu-release/",
+      "country": "KE",
+      "name": "KENET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.kaist.ac.kr/ubuntu-cd/",
+      "country": "KR",
+      "name": "KAIST FTP",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lanet.kr/ubuntu-releases/",
+      "country": "KR",
+      "name": "LANET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://kr.mirror.tefexia.net/ubuntu-releases/",
+      "country": "KR",
+      "name": "Tefexia LC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kakao.com/ubuntu-releases/",
+      "country": "KR",
+      "name": "Kakao Corp.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.koreapixel.kr/ubuntu-releases/",
+      "country": "KR",
+      "name": "Daon Mirror",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.krfoss.org/ubuntu-releases/",
+      "country": "KR",
+      "name": "ROKFOSS PROJECT - CD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mahiro.kr/ubuntu-releases/",
+      "country": "KR",
+      "name": "Mahiro Network",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.siwoo.org/ubuntu-cd/",
+      "country": "KR",
+      "name": "Archive of Siwoo-CD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.textcord.xyz/ubuntu-releases/",
+      "country": "KR",
+      "name": "TextCord",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wane.kr/ubuntu-releases/",
+      "country": "KR",
+      "name": "WANE MIRROR",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wonchan.net/ubuntu-cd/",
+      "country": "KR",
+      "name": "Wonchan Mirror - Ubuntu CD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.zzunipark.com/ubuntu-releases/",
+      "country": "KR",
+      "name": "zzuniMirror",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.krfoss.org/ubuntu-releases/",
+      "country": "KR",
+      "name": "ROKFOSS PROJECT - CD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fst.kz/ubuntu-cd/",
+      "country": "KZ",
+      "name": "Fst.kz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hoster.kz/ubuntu-releases/",
+      "country": "KZ",
+      "name": "LLP Kompaniya Hoster.KZ",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ps.kz/ubuntu-releases/",
+      "country": "KZ",
+      "name": "PS Internet Company LLC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bacloud.com/ubuntu-mirror/releases/",
+      "country": "LT",
+      "name": "Informacinės sistemos ir technologijos, UAB logotipas Informacinės sistemos ir technologijos, UAB",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu-release.mirror.serveriai.lt/",
+      "country": "LT",
+      "name": "Interneto Vizija",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.linux.edu.lv/ubuntu-releases/",
+      "country": "LV",
+      "name": "University of Latvia",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.koyanet.lv/releases/",
+      "country": "LV",
+      "name": "koyanet.lv",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.marwan.ma/ubuntu-releases/",
+      "country": "MA",
+      "name": "MARWAN",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ihost.md/ubuntu-releases/",
+      "country": "MD",
+      "name": "iHost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mangohost.net/ubuntu-releases/",
+      "country": "MD",
+      "name": "MangoHost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.t-home.mk/ubuntu-releases/",
+      "country": "MK",
+      "name": "Macedonian Telecom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.gbnetwork.com/ubuntu-releases/",
+      "country": "MY",
+      "name": "GB Network Solutions",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ipserverone.com/ubuntu-releases/",
+      "country": "MY",
+      "name": "IP Serverone Solutions Sdn Bhd",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.tuxuri.com/releases/",
+      "country": "MY",
+      "name": "Tuxuri",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntureleases.mirror.thegigabit.com/",
+      "country": "MY",
+      "name": "Gigabit Hosting Sdn Bhd",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.nluug.nl/os/Linux/distr/ubuntu-releases/",
+      "country": "NL",
+      "name": "Nluug",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.snt.utwente.nl/pub/linux/ubuntu-releases/",
+      "country": "NL",
+      "name": "University of Twente",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.snt.utwente.nl/pub/os/linux/ubuntu-releases/",
+      "country": "NL",
+      "name": "University of Twente, The Netherlands",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mijn.host/ubuntu-releases/",
+      "country": "NL",
+      "name": "mijn.host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nl.altushost.com/ubuntu-releases/",
+      "country": "NL",
+      "name": "AltusHost B.V.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nl.leaseweb.net/ubuntu-releases/",
+      "country": "NL",
+      "name": "LeaseWeb Global B.V.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.previder.nl/ubuntu-releases/",
+      "country": "NL",
+      "name": "Previder B.V.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.tngnet.com/releases/",
+      "country": "NL",
+      "name": "TNGNET B.V.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hostiserver.com/ubuntu-releases/",
+      "country": "NL",
+      "name": "IT Services Company S.R.O.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.nl/ubuntu-releases/",
+      "country": "NL",
+      "name": "xTom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirror.wearetriple.com/releases/",
+      "country": "NL",
+      "name": "Triple",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.hi.no/releases/",
+      "country": "NO",
+      "name": "Institute of Marine Research",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nepalicloud.com/ubuntu-releases/",
+      "country": "NP",
+      "name": "Nepali Cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.2degrees.nz/ubuntu-releases/",
+      "country": "NZ",
+      "name": "2degrees",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/ubuntu-releases/",
+      "country": "PL",
+      "name": "ICM - Interdisciplinary Centre for Mathematical and Computational Modelling",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.man.lodz.pl/ubuntu-releases/",
+      "country": "PL",
+      "name": "Miejska Sieć Komputerowa LODMAN / Politechnika Łódzka UCI",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.upr.edu/ubuntu-releases/",
+      "country": "PR",
+      "name": "University of Puerto Rico",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.rnl.tecnico.ulisboa.pt/pub/ubuntu/releases/",
+      "country": "PT",
+      "name": "Rede das Novas Licenciaturas - Técnico Lisboa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://glua.ua.pt/pub/ubuntu-releases/",
+      "country": "PT",
+      "name": "Grupo de Linux da Universidade de Aveiro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.up.pt/pub/ubuntu-releases/",
+      "country": "PT",
+      "name": "Universidade do Porto",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lug.ro/ubuntu-releases/",
+      "country": "RO",
+      "name": "ftp.lug.ro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.efect.ro/ubuntu/releases/",
+      "country": "RO",
+      "name": "efectRO",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.flo.c-f.ro/ubuntu-releases/",
+      "country": "RO",
+      "name": "Cyber_Folks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.chroot.ro/ubuntu-releases/",
+      "country": "RO",
+      "name": "Chroot",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hostico.ro/ubuntu/releases/",
+      "country": "RO",
+      "name": "Hostico",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nav.ro/ubuntu-releases/",
+      "country": "RO",
+      "name": "NAV Communications",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nxthost.com/ubuntu-releases/",
+      "country": "RO",
+      "name": "NXTHOST.COM",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.pidginhost.com/ubuntu-releases/",
+      "country": "RO",
+      "name": "Pidgin Host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror1.sox.rs/ubuntu/releases/",
+      "country": "RS",
+      "name": "Serbian Open eXchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.corbina.net/ubuntu-cd/",
+      "country": "RU",
+      "name": "Beeline",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.docker.ru/ubuntu-releases/",
+      "country": "RU",
+      "name": "mirror.docker.ru-release",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.team-host.ru/ubuntu-cdimage/",
+      "country": "RU",
+      "name": "team-host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.timeweb.ru/ubuntu-releases/",
+      "country": "RU",
+      "name": "TIMEWEB",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.truenetwork.ru/ubuntu-releases/",
+      "country": "RU",
+      "name": "Truenetwork",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/ubuntu-releases/",
+      "country": "RU",
+      "name": "Yandex",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.maeen.sa/apt-mirror-releases/",
+      "country": "SA",
+      "name": "Maeen Network",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lysator.liu.se/ubuntu-releases/",
+      "country": "SE",
+      "name": "Lysator",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftpmirror.infania.net/mirror/ubuntu-releases/",
+      "country": "SE",
+      "name": "Infania Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bahnhof.net/ubuntu-releases/",
+      "country": "SE",
+      "name": "Bahnhof",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.improve.nordlo.cloud/ubuntu-cd/",
+      "country": "SE",
+      "name": "Nordlo Group AB",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.retropc.se/ubuntu-releases/",
+      "country": "SE",
+      "name": "Swedish Retro Computer Association",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu-releases.braindrainlan.nu/",
+      "country": "SE",
+      "name": "Brain Drain Lan",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.arnes.si/pub/mirrors/ubuntu-cdimage/",
+      "country": "SI",
+      "name": "Arnes",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cmkl.ac.th/ubuntu-releases/",
+      "country": "TH",
+      "name": "CMKL University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kku.ac.th/ubuntu-releases/",
+      "country": "TH",
+      "name": "Khon Kaen University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.cloudforest.co.th/ubuntu-releases/",
+      "country": "TH",
+      "name": "CLOUDFOREST CO., LTD.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu-releases.sit.kmutt.ac.th/",
+      "country": "TH",
+      "name": "School of Information Technology, KMUTT",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.linux.org.tr/ubuntu-releases/",
+      "country": "TR",
+      "name": "Linux Kullanıcıları Derneği",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.ulak.net.tr/ubuntu-releases/",
+      "country": "TR",
+      "name": "ULAKBIM",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.alastyr.com/ubuntu/ubuntu-releases/",
+      "country": "TR",
+      "name": "ALASTYR",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.domainhizmetleri.com/ubuntu-releases/",
+      "country": "TR",
+      "name": "Domainhizmetleri.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rabisu.com/ubuntu/ubuntu-releases/",
+      "country": "TR",
+      "name": "Rabisu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.verinomi.com/ubuntu/ubuntu-releases/",
+      "country": "TR",
+      "name": "Verinomi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.veritescil.com.tr/ubuntu-releases/",
+      "country": "TR",
+      "name": "UPCELL ANKARA DATACENTER",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://free.nchc.org.tw/ubuntu-cd/",
+      "country": "TW",
+      "name": "NCHC, Taiwan",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
+      "country": "TW",
+      "name": "TaiChung City Education Network Center",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/ubuntu-releases/",
+      "country": "TW",
+      "name": "Taiwan Digital Streaming Co.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.ccns.ncku.edu.tw/ubuntu-cd/",
+      "country": "TW",
+      "name": "NCKU CCNS",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distrohub.kyiv.ua/ubuntucd/",
+      "country": "UA",
+      "name": "Distrohub",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hostiko.network/ubuntu-releases/",
+      "country": "UA",
+      "name": "Hostiko",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu-releases.ip-connect.vn.ua/",
+      "country": "UA",
+      "name": "IP-Connect LLC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.volia.net/ubuntu-releases/",
+      "country": "UA",
+      "name": "Volia Broadband",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://abqix.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cfhcable.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://codingflyboy.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "FCIX/CodingFlyBoy MicroMirror",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cofractal-ewr.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cofractal-sea.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://coresite-atl.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://coresite.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://forksystems.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.ussg.iu.edu/linux/ubuntu-releases/",
+      "country": "US",
+      "name": "ftp.ussg.iu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gigsouth.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://insect.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://irltoolkit.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://isos.ubuntu.mirror.constant.com/",
+      "country": "US",
+      "name": "Constant.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ix-denver.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lolhost.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.arizona.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "University of Arizona",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.clarkson.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "Clarkson University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.jmu.edu/pub/ubuntu-iso/",
+      "country": "US",
+      "name": "James Madison University Department of Computer Science",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.odu.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "Old Dominion University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lstn.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Limestone Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mrjester.net/ubuntu/release/",
+      "country": "US",
+      "name": "MrJester",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nexcess.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Nexcess",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pilotfiber.com/ubuntu-iso/",
+      "country": "US",
+      "name": "Pilot Fiber",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pnl.gov/releases/",
+      "country": "US",
+      "name": "Pacific NorthWest National Lab",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.steadfastnet.com/ubuntu-releases/",
+      "country": "US",
+      "name": "Steadfast Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.techrich.hk/ubuntu/",
+      "country": "US",
+      "name": "Techrich",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.umd.edu/ubuntu-iso/",
+      "country": "US",
+      "name": "University of Maryland",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.us.leaseweb.net/ubuntu-releases/",
+      "country": "US",
+      "name": "LeaseWeb USA, Inc",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wayne.edu/ubuntu/releases/",
+      "country": "US",
+      "name": "Wayne State University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.bmcc.edu/ubuntu-isos/",
+      "country": "US",
+      "name": "Bay Mills Community College",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.cat.pdx.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "Portland State University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.gigenet.com/ubuntu-releases/",
+      "country": "US",
+      "name": "GigeNET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.gigenet.com/ubuntucd/",
+      "country": "US",
+      "name": "GigeNET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.iu13.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Lancaster-Lebanon IU13",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.lug.mtu.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "MTU Linux Users Group",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.mit.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "MIT SIPB",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.netmanageit.com/ubuntu-releases/",
+      "country": "US",
+      "name": "NetmanageIT",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ocf.berkeley.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "Open Computing Facility at UC Berkeley",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.rit.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "Rochester Institute of Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.sarak.as/ubuntu-releases/",
+      "country": "US",
+      "name": "Sarakas",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tscak.com/ubuntu-releases/",
+      "country": "US",
+      "name": "Snowcloud Services",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xmission.com/ubuntu-cd/",
+      "country": "US",
+      "name": "Xmission",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.com/ubuntu-releases/",
+      "country": "US",
+      "name": "xTom",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nnenix.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nocix.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nullroute.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ohioix.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opencolo.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://paducahix.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ryamer.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://solidrock.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://southfront.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirror.shastacoe.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Shasta County Office of Education",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mirrors.hoobly.com/",
+      "country": "US",
+      "name": "Hoobly Classifieds",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.osuosl.org/releases/",
+      "country": "US",
+      "name": "OSU Open Source Lab",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://veronanetworks.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://volico.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ziply.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.cure.edu.uy/ubuntu/distribuciones/",
+      "country": "UY",
+      "name": "UDELAR-CURE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repos.interior.edu.uy/releases/",
+      "country": "UY",
+      "name": "Universidad de la República",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.repo.cure.edu.uy/ubuntu-releases/",
+      "country": "UY",
+      "name": "UDELAR-CURE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://vn-mirrors.vhost.vn/ubuntu-release/",
+      "country": "VN",
+      "name": "vHost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu-releases.mirror.net.za/",
+      "country": "ZA",
+      "name": "South African Mirror Project",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

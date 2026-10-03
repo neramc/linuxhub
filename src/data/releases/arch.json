@@ -1,0 +1,75 @@
+{
+  "slug": "arch",
+  "sources": [
+    "https://archlinux.org/releng/releases/json/"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "2026.10.01",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-10-01",
+      "eol": null,
+      "notesUrl": "https://archlinux.org/releng/releases/2026.10.01/",
+      "editions": [
+        {
+          "id": "live",
+          "name": "Live ISO",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "archlinux-2026.10.01-x86_64.iso",
+              "path": "iso/2026.10.01/archlinux-2026.10.01-x86_64.iso",
+              "url": "https://geo.mirror.pkgbuild.com/iso/2026.10.01/archlinux-2026.10.01-x86_64.iso",
+              "size": 1640497152,
+              "checksum": {
+                "type": "sha256",
+                "value": "684ded26c63240ff4a41e8c25ee84ea6da233f557364821f13d12c2b0a9059a5",
+                "url": "https://archlinux.org/iso/2026.10.01/sha256sums.txt"
+              },
+              "signatureUrl": "https://archlinux.org/iso/2026.10.01/archlinux-2026.10.01-x86_64.iso.sig",
+              "torrentUrl": "https://archlinux.org/releng/releases/2026.10.01/torrent/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "2026.09.01",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-09-01",
+      "eol": null,
+      "notesUrl": "https://archlinux.org/releng/releases/2026.09.01/",
+      "editions": [
+        {
+          "id": "live",
+          "name": "Live ISO",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "archlinux-2026.09.01-x86_64.iso",
+              "path": "iso/2026.09.01/archlinux-2026.09.01-x86_64.iso",
+              "url": "https://geo.mirror.pkgbuild.com/iso/2026.09.01/archlinux-2026.09.01-x86_64.iso",
+              "size": 1608286208,
+              "checksum": {
+                "type": "sha256",
+                "value": "be8458032f8105e60ee2a3067f950b6e3c007ee51b38dac50e8b48e765561c91",
+                "url": "https://archlinux.org/iso/2026.09.01/sha256sums.txt"
+              },
+              "signatureUrl": "https://archlinux.org/iso/2026.09.01/archlinux-2026.09.01-x86_64.iso.sig",
+              "torrentUrl": "https://archlinux.org/releng/releases/2026.09.01/torrent/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

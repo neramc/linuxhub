@@ -1,0 +1,51 @@
+name: Q4OS
+order: 47
+family: debian
+basedOn: debian
+status: active
+releaseModel: lts
+desktops: [kde, trinity]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: calamares
+useCases: [beginner, lightweight, desktop]
+difficulty: beginner
+architectures: [x86_64, aarch64, i686]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: CZ
+  firstRelease: 2014
+requirements:
+  ramGB: 2
+  diskGB: 8
+  note:
+    ko: Plasma 데스크톱 기준 공식 최소 사양입니다(Trinity는 512MB RAM, 6GB 디스크).
+    en: Official minimum for the Plasma desktop (Trinity needs 512 MB RAM and 6 GB disk).
+links:
+  home: https://www.q4os.org/
+  download: https://www.q4os.org/downloads1.html
+  docs: https://www.q4os.org/documents.html
+  installGuide: https://www.q4os.org/dqa018.html
+  forum: https://www.q4os.org/forum/
+  releaseNotes: https://www.q4os.org/blog.html
+tagline:
+  ko: Plasma나 Trinity를 고르는 Debian 기반 장기 지원 배포판
+  en: A Debian-based LTS desktop with a choice of Plasma or the lightweight Trinity
+aliases: [큐포스, 큐포에스, q4os andromeda]
+logo:
+  file: q4os.svg
+  source: https://commons.wikimedia.org/wiki/File:Q4OS_logo.svg
+  license: Public domain (text logo, vectorized from the official banner); Q4OS trademark
+download:
+  strategy: sourceforge
+sources:
+  - https://www.q4os.org/
+  - https://www.q4os.org/downloads1.html
+  - https://www.q4os.org/blog.html
+  - https://www.q4os.org/business.html
+  - https://www.q4os.org/dqa018.html
+  - https://www.q4os.org/dqa014.html
+  - https://www.q4os.org/forum/viewtopic.php?id=5030
+  - https://www.q4os.org/forum/viewtopic.php?id=3540
+lastReviewed: 2026-10-03

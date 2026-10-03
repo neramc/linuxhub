@@ -1,0 +1,53 @@
+name: ParrotOS
+order: 34
+family: debian
+basedOn: debian
+status: active
+releaseModel: semi-rolling
+desktops: [kde, mate, lxqt]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: calamares
+useCases: [security, privacy, developer]
+difficulty: intermediate
+architectures: [x86_64, aarch64, riscv64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: IT
+  firstRelease: 2013-04-10
+requirements:
+  ramGB: 8
+  diskGB: 40
+  note:
+    ko: Security 에디션 권장 사양입니다(최소 4GB RAM, 쿼드코어 CPU). Home 에디션은 4GB RAM, 20GB 디스크면 됩니다.
+    en: Recommended for the Security edition (4 GB RAM minimum, quad-core CPU). The Home edition is fine with 4 GB RAM and 20 GB of disk.
+links:
+  home: https://parrotsec.org/
+  download: https://parrotsec.org/download/
+  docs: https://parrotsec.org/docs/
+  installGuide: https://parrotsec.org/docs/installation/installation-parrot/
+  forum: https://community.parrotsec.org/
+  releaseNotes: https://parrotsec.org/blog/
+  source: https://gitlab.com/parrotsec
+tagline:
+  ko: 보안 점검과 개인정보 보호에 맞춘 Debian 기반 배포판
+  en: A Debian-based distro for security work and privacy, with a daily-use Home edition
+aliases: [패럿, 패럿 OS, parrot os, parrot security, parrotsec]
+logo:
+  file: parrot-os.svg
+  source: https://parrotsec.org/docs/
+  license: Trademark of Parrot Security CIC, used to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://parrotsec.org/docs/
+  - https://parrotsec.org/download/
+  - https://parrotsec.org/docs/installation/installation-parrot/
+  - https://parrotsec.org/docs/installation/dualboot-with-windows/
+  - https://parrotsec.org/docs/configuration/desktop-environments/
+  - https://parrotsec.org/docs/mirrors/mirrors-list/
+  - https://parrotsec.org/blog/2025-12-24-parrot-7.0-release-notes/
+  - https://parrotsec.org/blog/2026-06-30-parrot-7.3-release-notes/
+  - https://parrotsec.org/blog/2026-07-03-parrot-speaks-riscv/
+lastReviewed: 2026-10-03

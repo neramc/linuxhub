@@ -1,0 +1,49 @@
+name: Pop!_OS
+order: 5
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: lts
+desktops: [cosmic]
+packageManagers: [apt, dpkg, flatpak]
+initSystem: systemd
+installer: pop-installer
+useCases: [desktop, gaming, developer]
+difficulty: beginner
+architectures: [x86_64, aarch64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2017-10
+requirements:
+  ramGB: 8
+  diskGB: 20
+  note:
+    ko: System76 설치 문서의 권장 사양입니다(최소 메모리 4GB).
+    en: Recommended in System76's install guide (4 GB RAM minimum).
+links:
+  home: https://system76.com/pop
+  download: https://system76.com/download-pop/
+  docs: https://system76.com/support/
+  installGuide: https://system76.com/support/install-pop/
+  forum: https://chat.pop-os.org/
+  source: https://github.com/pop-os
+tagline:
+  ko: System76이 만든 COSMIC 데스크톱의 Ubuntu 기반 배포판
+  en: System76's Ubuntu-based distro with its own COSMIC desktop
+aliases: [팝OS, 팝 OS, pop os, popos, pop_os]
+logo:
+  file: pop-os.svg
+  source: https://raw.githubusercontent.com/pop-os/default-settings/master/usr/share/icons/pop-os-branding/round-logos/64/distributor-logo.svg
+  license: GPL-3.0-or-later (pop-default-settings); Pop!_OS mark of System76, used to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://system76.com/pop
+  - https://system76.com/download-pop/
+  - https://system76.com/support/install-pop/
+  - https://system76.com/blog/post/celebrating-5-years-of-pop_os
+  - https://api.pop-os.org/builds/24.04/generic?arch=amd64
+  - https://raw.githubusercontent.com/pop-os/default-settings/master/debian/copyright
+lastReviewed: 2026-10-03

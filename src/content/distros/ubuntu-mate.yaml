@@ -1,0 +1,51 @@
+name: Ubuntu MATE
+order: 25
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: fixed
+desktops: [mate]
+packageManagers: [apt, dpkg, snap]
+initSystem: systemd
+installer: ubuntu-desktop
+useCases: [desktop, lightweight, beginner]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2014-10-23
+requirements:
+  ramGB: 4
+  diskGB: 20
+  note:
+    ko: 권장 사양 기준입니다(Core i3 이상, SSD). 최소 사양은 메모리 2GB, 디스크 10GB입니다.
+    en: Recommended specs (Core i3 or better, SSD). The minimum is 2 GB of RAM and 10 GB of disk.
+links:
+  home: https://ubuntu-mate.org/
+  download: https://ubuntu-mate.org/download/
+  docs: https://guide.ubuntu-mate.org/
+  forum: https://ubuntu-mate.community/
+  releaseNotes: https://ubuntu-mate.org/blog/
+  source: https://github.com/ubuntu-mate
+tagline:
+  ko: 전통적인 MATE 데스크톱을 쓰는 Ubuntu 공식 플레이버
+  en: The official Ubuntu flavor with the traditional MATE desktop
+aliases: [우분투 메이트, 우분투 마테, ubuntu-mate]
+logo:
+  file: ubuntu-mate.svg
+  source: https://ubuntu-mate.org/images/brands/ubuntu-mate.svg
+  license: CC BY-SA 4.0 (ubuntu-mate.org graphics); Ubuntu is a trademark of Canonical Ltd.
+  trademark: https://canonical.com/legal/intellectual-property-policy
+download:
+  strategy: mirrors
+sources:
+  - https://ubuntu-mate.org/about/requirements/
+  - https://ubuntu-mate.org/about/history/
+  - https://ubuntu-mate.org/download/
+  - https://ubuntu-mate.org/blog/ubuntu-mate-noble-numbat-release-notes/
+  - https://ubuntu-mate.org/blog/ubuntu-mate-utopic-final-release/
+  - https://cdimage.ubuntu.com/ubuntu-mate/releases/
+  - https://raw.githubusercontent.com/ubuntu-mate/ubuntu-mate.org/master/LICENSE.md
+lastReviewed: 2026-10-03

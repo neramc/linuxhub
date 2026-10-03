@@ -1,0 +1,393 @@
+{
+  "slug": "debian",
+  "sources": [
+    "https://mirror-master.debian.org/status/Mirrors.masterlist"
+  ],
+  "updated": "2026-10-03",
+  "mirrors": [
+    {
+      "url": "https://debian-mirror.behostings.net/debian-cd/",
+      "country": "BE",
+      "name": "debian-mirror.behostings.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.as35701.net/debian-cd/",
+      "country": "BE",
+      "name": "mirror.as35701.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.blue3.com.br/debian-cd/",
+      "country": "BR",
+      "name": "mirror.blue3.com.br",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lzu.edu.cn/debian-cd/",
+      "country": "CN",
+      "name": "mirror.lzu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.nic.cz/debian-cd/",
+      "country": "CZ",
+      "name": "debian.nic.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dkm.cz/debian-cd/",
+      "country": "CZ",
+      "name": "mirror.dkm.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian-cd.repulsive.eu/",
+      "country": "DE",
+      "name": "debian-cd.repulsive.eu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.netcologne.de/debian-cd/",
+      "country": "DE",
+      "name": "debian.netcologne.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.uni-due.de/debian-cd/",
+      "country": "DE",
+      "name": "debian.uni-due.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp-stud.hs-esslingen.de/debian-cd/",
+      "country": "DE",
+      "name": "ftp-stud.hs-esslingen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fau.de/debian-cd/",
+      "country": "DE",
+      "name": "ftp.fau.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.gwdg.de/debian-cd/",
+      "country": "DE",
+      "name": "ftp.gwdg.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/debian-cd/",
+      "country": "DE",
+      "name": "ftp.halifax.rwth-aachen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.hosteurope.de/mirror/ftp.debian.org/debian-cd/",
+      "country": "DE",
+      "name": "ftp.hosteurope.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.uni-hannover.de/debian/debian-cd/",
+      "country": "DE",
+      "name": "ftp.uni-hannover.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.checkdomain.de/debian-cd/",
+      "country": "DE",
+      "name": "mirror.checkdomain.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.caliu.cat/debian-cd/",
+      "country": "ES",
+      "name": "ftp.caliu.cat",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.cica.es/debian-cd/",
+      "country": "ES",
+      "name": "ftp.cica.es",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.crifo.org/debian-cd/",
+      "country": "FR",
+      "name": "ftp.crifo.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrorservice.org/sites/cdimage.debian.org/debian-cd/",
+      "country": "GB",
+      "name": "mirrorservice.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.grena.ge/debian-cd/",
+      "country": "GE",
+      "name": "debian.grena.ge",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.bme.hu/debian-cd/",
+      "country": "HU",
+      "name": "ftp.bme.hu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://kartolo.sby.datautama.net.id/debian-cd/",
+      "country": "ID",
+      "name": "kartolo.sby.datautama.net.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.connesi.it/",
+      "country": "IT",
+      "name": "debian.connesi.it",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.jaist.ac.jp/debian-cd/",
+      "country": "JP",
+      "name": "ftp.jaist.ac.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.riken.jp/Linux/debian/debian-cd/",
+      "country": "JP",
+      "name": "ftp.riken.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/debian-cd/",
+      "country": "JP",
+      "name": "ftp.yz.yamagata-u.ac.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.siwoo.org/debian-cd/",
+      "country": "KR",
+      "name": "mirror.siwoo.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lidsol.fi-b.unam.mx/debian-cd/",
+      "country": "MX",
+      "name": "lidsol.fi-b.unam.mx",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.lagoon.nc/debian-cd/",
+      "country": "NC",
+      "name": "debian.lagoon.nc",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.snt.utwente.nl/debian-cd/",
+      "country": "NL",
+      "name": "debian.snt.utwente.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.duocast.net/debian-cd/",
+      "country": "NL",
+      "name": "mirror.duocast.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/debian-cd/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.up.pt/debian-cd/",
+      "country": "PT",
+      "name": "mirrors.up.pt",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.pidginhost.com/debian-cd/",
+      "country": "RO",
+      "name": "mirrors.pidginhost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.psn.ru/debian-cd/",
+      "country": "RU",
+      "name": "ftp.psn.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.truenetwork.ru/debian-cd/",
+      "country": "RU",
+      "name": "mirror.truenetwork.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.maeen.sa/debian-cd/",
+      "country": "SA",
+      "name": "mirror.maeen.sa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.acc.umu.se/debian-cd/",
+      "country": "SE",
+      "name": "ftp.acc.umu.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.cloudforest.co.th/debian-cd/",
+      "country": "TH",
+      "name": "mirrors.cloudforest.co.th",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.cs.nycu.edu.tw/debian-cd/",
+      "country": "TW",
+      "name": "debian.cs.nycu.edu.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/debian-cd/",
+      "country": "TW",
+      "name": "mirror.twds.com.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.volia.net/debian-cd/",
+      "country": "UA",
+      "name": "debian.volia.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.osuosl.org/debian-cdimage/",
+      "country": "US",
+      "name": "debian.osuosl.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cogentco.com/debian-cd/",
+      "country": "US",
+      "name": "mirror.cogentco.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.steadfast.net/debian-cd/",
+      "country": "US",
+      "name": "mirror.steadfast.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.lug.mtu.edu/debian-cd/",
+      "country": "US",
+      "name": "mirrors.lug.mtu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.as3741.net/debian-cd/",
+      "country": "ZA",
+      "name": "debian.as3741.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}
