@@ -1,0 +1,25 @@
+# build output
+dist/
+.vercel/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs & env
+*.log
+.env
+.env.*
+!.env.example
+
+# test output
+test-results/
+playwright-report/
+coverage/
+.lighthouseci/
+
+# sync http cache (ETag/Last-Modified), regenerated per run
+scripts/sync/.cache/
+
+# os
+.DS_Store
