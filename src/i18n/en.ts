@@ -179,6 +179,7 @@ export const en = {
     verifyLink: "How to verify",
     nextStep: "Next: create a bootable USB drive",
     auto: "Automatic — nearest official server",
+    origin: "Official server",
     autoHint: "The official server picks a mirror near you.",
     recommended: "Recommended for you",
     recommendedFor: "Nearest to {place}",

@@ -104,10 +104,27 @@ function recordHistory(slug: string, prev: ReleasesFile | undefined, next: Relea
   }
 }
 
+const ARCH_ORDER = ["x86_64", "aarch64", "i686", "armhf", "riscv64", "ppc64le", "s390x"];
+
+/** Stable artifact order: x86_64 first (the default most people need), then other arches. */
+function normalizeOrder(releases: ReleasesFile["releases"]): ReleasesFile["releases"] {
+  return releases.map((r) => ({
+    ...r,
+    editions: r.editions.map((e) => ({
+      ...e,
+      artifacts: [...e.artifacts].sort(
+        (a, b) =>
+          ARCH_ORDER.indexOf(a.arch) - ARCH_ORDER.indexOf(b.arch) || a.file.localeCompare(b.file),
+      ),
+    })),
+  }));
+}
+
 async function syncReleases(source: DistroSource, ctx: SyncContext) {
   if (!source.releases) return;
   try {
     const result = await source.releases(ctx);
+    result.releases = normalizeOrder(result.releases);
     const prev = readReleases(source.slug);
     const draft: ReleasesFile = {
       slug: source.slug,

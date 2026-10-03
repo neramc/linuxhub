@@ -177,6 +177,7 @@ export const ko: DictionaryShape = {
     verifyLink: "검증 방법",
     nextStep: "다음 단계: 부팅 USB 만들기",
     auto: "자동 — 가장 가까운 공식 서버",
+    origin: "공식 서버",
     autoHint: "공식 서버가 가까운 미러로 자동 연결합니다.",
     recommended: "추천 서버",
     recommendedFor: "{place}에서 가장 가까움",

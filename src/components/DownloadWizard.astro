@@ -156,7 +156,11 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
               <span class="combo-title">{t("download.mirror")}</span>
               <span class="mirror-value">
                 <span class="mirror-label" data-mirror-label>
-                  {mirrorMode ? t("download.locating") : t("download.auto")}
+                  {mirrorMode
+                    ? t("download.locating")
+                    : strategy === "redirector" || strategy === "sourceforge"
+                      ? t("download.auto")
+                      : t("download.origin")}
                 </span>
                 {mirrorMode && (
                   <select name="mirror" class="combo-select" aria-label={t("download.mirror")} hidden>
