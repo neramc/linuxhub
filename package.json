@@ -19,7 +19,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "sync": "bun scripts/sync/run.ts",
-    "sync:validate": "bun scripts/sync/validate.ts"
+    "sync:validate": "bun scripts/sync/validate.ts",
+    "sync:docs": "bun scripts/sync/docs.ts"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.1",
