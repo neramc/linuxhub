@@ -50,3 +50,18 @@ jobs:
           path: dist
       - run: bunx playwright install --with-deps chromium
       - run: bun run test:e2e
+
+  lighthouse:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist
+      - name: Lighthouse budgets (performance ≥ 95, a11y/best practices/SEO = 100)
+        run: npx --yes @lhci/cli@0.15.x autorun
