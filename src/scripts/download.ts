@@ -304,7 +304,10 @@ function init(root: HTMLElement) {
       const place = country(geo.cc);
       mirrorLabel.textContent =
         best && place ? labels.recommendedFor.replace("{place}", place) : labels.recommended;
-      if (current) render(current);
+      // The server-rendered link points at the official default; rebuild it
+      // from the data so it uses the chosen mirror + the file's relative path.
+      await loadReleases();
+      cascade(snapshot());
     };
     mirrorSel.addEventListener("change", () => {
       if (current) render(current);
