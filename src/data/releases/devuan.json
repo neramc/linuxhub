@@ -1,0 +1,135 @@
+{
+  "slug": "devuan",
+  "sources": [
+    "https://files.devuan.org/",
+    "https://endoflife.date/devuan"
+  ],
+  "updated": "2026-10-04",
+  "releases": [
+    {
+      "version": "6.1.1",
+      "channel": "stable",
+      "codename": "Excalibur",
+      "releaseDate": "2026-04-25",
+      "eol": "2030-06-30",
+      "notesUrl": "https://files.devuan.org/devuan_excalibur/Release_notes.txt",
+      "editions": [
+        {
+          "id": "desktop-live",
+          "name": "Desktop Live",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_excalibur_6.1.1_amd64_desktop-live.iso",
+              "path": null,
+              "url": "https://files.devuan.org/devuan_excalibur/desktop-live/devuan_excalibur_6.1.1_amd64_desktop-live.iso",
+              "size": 1801322496,
+              "checksum": {
+                "type": "sha256",
+                "value": "d0d5fc8d8e0b980ff4ccc9f2653a5d549f3ee227ac4e01f3d194d0ca2fe85886",
+                "url": "https://files.devuan.org/devuan_excalibur/desktop-live/devuan_excalibur_6.1.1_amd64_desktop-live.iso.sha256"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_excalibur/desktop-live/devuan_excalibur_6.1.1_amd64_desktop-live.iso.sha256.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "netinstall",
+          "name": "Netinstall",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_excalibur_6.1.1_amd64_netinstall.iso",
+              "path": null,
+              "url": "https://files.devuan.org/devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_netinstall.iso",
+              "size": 622985216,
+              "checksum": {
+                "type": "sha256",
+                "value": "87be42bfcec010f90f86444b404c1efeefbdc9b08a2e82f766d6defefdf654e4",
+                "url": "https://files.devuan.org/devuan_excalibur/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_excalibur/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server",
+          "name": "Server (CD1)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_excalibur_6.1.1_amd64_server.iso",
+              "path": null,
+              "url": "https://files.devuan.org/devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_server.iso",
+              "size": 659685376,
+              "checksum": {
+                "type": "sha256",
+                "value": "0e1daf640ef96446017d5c886b6d9607ced35afcd9d05faf854389b710511e39",
+                "url": "https://files.devuan.org/devuan_excalibur/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_excalibur/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "desktop",
+          "name": "Desktop DVD",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_excalibur_6.1.1_amd64_desktop.iso",
+              "path": null,
+              "url": "https://files.devuan.org/devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_desktop.iso",
+              "size": 4630773760,
+              "checksum": {
+                "type": "sha256",
+                "value": "27434c58f43d672922021b3f109f90b09e54d78e936223dd55d395d3e8d07036",
+                "url": "https://files.devuan.org/devuan_excalibur/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_excalibur/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "minimal-live",
+          "name": "Minimal Live",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_excalibur_6.1.1_amd64_minimal-live.iso",
+              "path": null,
+              "url": "https://files.devuan.org/devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso",
+              "size": 919601152,
+              "checksum": {
+                "type": "sha256",
+                "value": "392032e530b6c03b1e92431401de734fc7746342ae883df486d4a3a4fe403805",
+                "url": "https://files.devuan.org/devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso.sha256"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso.sha256.asc",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

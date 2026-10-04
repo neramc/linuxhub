@@ -1,31 +1,24 @@
 ---
 /**
- * The Linuxhub mark: a rounded "window" tile in the Adwaita accent blue with a
- * stylised terminal prompt — drawn for this project (no third-party artwork).
+ * The Linuxhub mark: Tux, the Linux mascot by Larry Ewing (drawn with The
+ * GIMP), unmodified — credits in src/assets/brand/README.md and on /about/.
+ * Rendered as a cached <img> rather than inline SVG, so its ~12 KB (gzip)
+ * are downloaded once instead of with every page.
  */
+import tux from "~/assets/brand/tux.svg?url";
+
 interface Props {
+  /** Rendered height in px; Tux is 216 × 256. */
   size?: number;
 }
-const { size = 28 } = Astro.props;
+const { size = 32 } = Astro.props;
 ---
 
-<svg
+<img
   class="brand-mark"
-  width={size}
+  src={tux}
+  width={Math.round((size * 216) / 256)}
   height={size}
-  viewBox="0 0 32 32"
-  aria-hidden="true"
-  focusable="false"
->
-  <rect x="1" y="1" width="30" height="30" rx="8" fill="#1c71d8"></rect>
-  <rect x="1" y="1" width="30" height="9" rx="8" fill="#3584e4"></rect>
-  <rect x="1" y="6" width="30" height="4" fill="#3584e4"></rect>
-  <path
-    d="M8 15.5l5 3.5-5 3.5"
-    fill="none"
-    stroke="#fff"
-    stroke-width="2.4"
-    stroke-linecap="round"
-    stroke-linejoin="round"></path>
-  <path d="M16 23h8" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path>
-</svg>
+  alt=""
+  decoding="async"
+/>

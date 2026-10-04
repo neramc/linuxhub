@@ -1,0 +1,248 @@
+{
+  "slug": "parrot-os",
+  "sources": [
+    "https://parrotsec.org/download/",
+    "https://parrotsec.org/sitemap.xml"
+  ],
+  "updated": "2026-10-04",
+  "releases": [
+    {
+      "version": "7.4",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://parrotsec.org/blog/2026-10-03-parrot-7.4-release-notes/",
+      "editions": [
+        {
+          "id": "security",
+          "name": "Security",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-security-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-security-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-security-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "home",
+          "name": "Home",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-home-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "htb",
+          "name": "Hack The Box",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-spin-htb-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-htb-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-htb-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "security-tuned",
+          "name": "Security (tuned)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-security-tuned-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-security-tuned-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-security-tuned-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "home-tuned",
+          "name": "Home (tuned)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-home-tuned-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-tuned-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-tuned-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE spin",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-spin-mate-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-mate-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-mate-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "lxqt",
+          "name": "LXQt spin",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-spin-lxqt-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-lxqt-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-lxqt-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "enlightenment",
+          "name": "Enlightenment spin",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Parrot-spin-enlightenment-7.4_amd64.iso",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-enlightenment-7.4_amd64.iso",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-spin-enlightenment-7.4_amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "security-rpi",
+          "name": "Security (Raspberry Pi)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "Parrot-security-7.4_rpi.img.xz",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-security-7.4_rpi.img.xz",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-security-7.4_rpi.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "home-rpi",
+          "name": "Home (Raspberry Pi)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "Parrot-home-7.4_rpi.img.xz",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-7.4_rpi.img.xz",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-7.4_rpi.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "core-rpi",
+          "name": "Core (Raspberry Pi)",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "Parrot-core-7.4_rpi.img.xz",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-core-7.4_rpi.img.xz",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-core-7.4_rpi.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "core",
+          "name": "Core (RISC-V tarball)",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "tar.xz",
+              "file": "Parrot-core-7.4_riscv64.tar.xz",
+              "path": null,
+              "url": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-core-7.4_riscv64.tar.xz",
+              "size": null,
+              "checksum": null,
+              "signatureUrl": "https://deb.parrot.sh/parrot/iso/7.4/signed-hashes.txt",
+              "torrentUrl": "https://deb.parrot.sh/parrot/iso/7.4/Parrot-core-7.4_riscv64.tar.xz.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
