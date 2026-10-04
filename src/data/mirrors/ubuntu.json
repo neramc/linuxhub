@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-04",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -89,14 +89,6 @@
       "url": "https://mirror.ourhost.az/ubuntu-releases/",
       "country": "AZ",
       "name": "OUR Host",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.yer.az/ubuntu/releases/",
-      "country": "AZ",
-      "name": "YER Hosting",
       "lat": null,
       "lon": null,
       "score": null
@@ -1406,14 +1398,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.mijn.host/ubuntu-releases/",
-      "country": "NL",
-      "name": "mijn.host",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.nl.altushost.com/ubuntu-releases/",
       "country": "NL",
       "name": "AltusHost B.V.",
@@ -1825,6 +1809,14 @@
       "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
       "country": "TW",
       "name": "TaiChung City Education Network Center",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ossplanet.net/ubuntu-releases/",
+      "country": "TW",
+      "name": "OSSPlanet",
       "lat": null,
       "lon": null,
       "score": null
