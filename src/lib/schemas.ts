@@ -70,8 +70,11 @@ export const distroSchema = z.object({
   /** Search aliases: romanizations, Hangul spellings, abbreviations. */
   aliases: z.array(z.string()).default([]),
   logo: z.object({
-    /** File name in src/assets/logos/ */
-    file: z.string().regex(/^[a-z0-9-]+\.svg$/),
+    /**
+     * File name in src/assets/logos/. SVG unless the project publishes its
+     * logo only as a raster image (ADR-0012).
+     */
+    file: z.string().regex(/^[a-z0-9-]+\.(svg|png)$/),
     source: url,
     license: z.string(),
     trademark: url.optional(),

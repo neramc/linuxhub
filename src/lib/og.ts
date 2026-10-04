@@ -46,16 +46,16 @@ const BRAND = `<g transform="translate(80 520) scale(1.75)">
 export interface OgInput {
   title: string;
   subtitle: string;
-  /** Raw SVG markup of a logo to show on the right. */
-  logoSvg?: string;
+  /** Logo to show on the right, as a data: URI (see readLogo). */
+  logo?: string;
 }
 
-export function renderOg({ title, subtitle, logoSvg }: OgInput): Uint8Array {
+export function renderOg({ title, subtitle, logo: logoHref }: OgInput): Uint8Array {
   const titleSize = title.length > 18 ? 64 : 80;
-  const sub = wrap(subtitle, logoSvg ? 34 : 52, 3);
-  const logo = logoSvg
+  const sub = wrap(subtitle, logoHref ? 34 : 52, 3);
+  const logo = logoHref
     ? `<rect x="790" y="135" width="330" height="330" rx="48" fill="#ffffff" stroke="rgb(0 0 6 / 0.08)" stroke-width="2"/>
-       <image x="835" y="180" width="240" height="240" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,${Buffer.from(logoSvg).toString("base64")}"/>`
+       <image x="835" y="180" width="240" height="240" preserveAspectRatio="xMidYMid meet" href="${logoHref}"/>`
     : "";
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
@@ -66,8 +66,8 @@ export function renderOg({ title, subtitle, logoSvg }: OgInput): Uint8Array {
   </defs>
   <rect width="1200" height="630" fill="#fafafb"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
-  <text x="80" y="${logoSvg ? 250 : 260}" font-family="Adwaita Sans" font-weight="800" font-size="${titleSize}" fill="#1f1f22" letter-spacing="-1.5">${escapeXml(title)}</text>
-  ${sub.map((l, i) => `<text x="80" y="${(logoSvg ? 320 : 330) + i * 46}" font-family="Adwaita Sans" font-weight="500" font-size="34" fill="#55555c">${escapeXml(l)}</text>`).join("\n  ")}
+  <text x="80" y="${logoHref ? 250 : 260}" font-family="Adwaita Sans" font-weight="800" font-size="${titleSize}" fill="#1f1f22" letter-spacing="-1.5">${escapeXml(title)}</text>
+  ${sub.map((l, i) => `<text x="80" y="${(logoHref ? 320 : 330) + i * 46}" font-family="Adwaita Sans" font-weight="500" font-size="34" fill="#55555c">${escapeXml(l)}</text>`).join("\n  ")}
   ${logo}
   ${BRAND}
 </svg>`;
@@ -78,6 +78,9 @@ export function renderOg({ title, subtitle, logoSvg }: OgInput): Uint8Array {
   return png.asPng();
 }
 
+/** A logo from src/assets/logos/ as a data: URI (SVG or PNG, ADR-0012). */
 export function readLogo(file: string): string {
-  return readFileSync(join(root, "src/assets/logos", file), "utf8");
+  const mime = file.endsWith(".png") ? "image/png" : "image/svg+xml";
+  const data = readFileSync(join(root, "src/assets/logos", file)).toString("base64");
+  return `data:${mime};base64,${data}`;
 }

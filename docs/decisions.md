@@ -73,3 +73,11 @@
 - **문제:** Astro CSP는 `is:inline` 스크립트의 해시를 자동으로 넣지 않는다.
 - **해결:** 테마 초기화 스크립트는 `src/scripts/theme-init.ts`의 문자열 하나로 관리한다. `Base.astro`에서 `Astro.csp.insertScriptHash()`로 그 해시를 등록한다.
 - **검증:** 빌드 결과의 모든 인라인 script와 style 해시가 `.vercel/output/config.json`의 CSP 헤더에 들어 있는지 확인한다.
+
+## ADR-0012 — 벡터 로고가 없는 배포판은 공식 PNG를 쓴다
+- **문제:** antiX, Bodhi Linux, SparkyLinux처럼 공식 로고를 래스터 이미지로만 배포하는 프로젝트가 있다. 래스터를 SVG로 바꾸면(트레이싱) 공식 로고를 수정하는 셈이 된다.
+- **결정:** 공식 SVG가 어디에도 없을 때만 공식 PNG를 쓴다.
+  - `bun scripts/assets/raster-logo.ts <파일> <slug>`로 투명 여백만 잘라 내고 256px 안에 맞춰 줄인다. 색 변경, 팔레트 양자화, 확대는 하지 않는다.
+  - `logo.file`은 `<slug>.png`, `logo.source`는 원본 PNG의 공식 URL로 적는다.
+  - `scripts/validate-catalog.ts`가 형식(PNG), 크기(긴 변 128–512px), 용량(80KB 이하)을 검사한다.
+- **영향:** 로고 URL과 OG 이미지 코드는 SVG와 PNG를 모두 받는다. 공식 SVG가 나오면 SVG로 바꾼다.
