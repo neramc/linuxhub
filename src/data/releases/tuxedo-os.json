@@ -1,0 +1,43 @@
+{
+  "slug": "tuxedo-os",
+  "sources": [
+    "https://os.tuxedocomputers.com/",
+    "https://os.tuxedocomputers.com/checksums/"
+  ],
+  "updated": "2026-10-04",
+  "releases": [
+    {
+      "version": "2026.09.16",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-09-16",
+      "eol": null,
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "TUXEDO OS",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "TUXEDO-OS-202609161651.iso",
+              "path": null,
+              "url": "https://os.tuxedocomputers.com/TUXEDO-OS-202609161651.iso",
+              "size": 5000638464,
+              "checksum": {
+                "type": "sha256",
+                "value": "8239e847b958a676dd108df53529de63b16eda422e35599a2f079ea59d5f0520",
+                "url": "https://os.tuxedocomputers.com/checksums/TUXEDO-OS-202609161651.iso.sha256"
+              },
+              "signatureUrl": "https://os.tuxedocomputers.com/checksums/TUXEDO-OS-202609161651.iso.sha256.asc",
+              "torrentUrl": "https://os.tuxedocomputers.com/TUXEDO-OS-202609161651.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
