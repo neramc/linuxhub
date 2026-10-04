@@ -72,6 +72,7 @@ Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
     <link rel="alternate" hreflang="x-default" href={new URL(localizePath(basePath, DEFAULT_LOCALE), Astro.site)} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={t("footer.rss")} href={localizePath("/rss.xml", locale)} />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#2e2e32" media="(prefers-color-scheme: dark)" />

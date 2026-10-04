@@ -34,14 +34,10 @@ function wrap(text: string, max: number, lines: number): string[] {
   return out;
 }
 
-const BRAND = `<g transform="translate(80 520) scale(1.75)">
-  <rect x="1" y="1" width="30" height="30" rx="8" fill="#1c71d8"/>
-  <rect x="1" y="1" width="30" height="9" rx="8" fill="#3584e4"/>
-  <rect x="1" y="6" width="30" height="4" fill="#3584e4"/>
-  <path d="M8 15.5l5 3.5-5 3.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M16 23h8" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
-</g>
-<text x="148" y="563" font-family="Adwaita Sans" font-weight="800" font-size="34" fill="#1f1f22">Linuxhub</text>`;
+/** Tux (src/assets/brand/README.md) + the site name, bottom left. */
+const TUX = readFileSync(join(root, "src/assets/brand/tux.svg")).toString("base64");
+const BRAND = `<image x="80" y="504" width="54" height="64" href="data:image/svg+xml;base64,${TUX}"/>
+<text x="150" y="551" font-family="Adwaita Sans" font-weight="800" font-size="34" fill="#1f1f22">Linuxhub</text>`;
 
 export interface OgInput {
   title: string;
