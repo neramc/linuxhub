@@ -7,7 +7,14 @@ const prebuilt = "/opt/pw-browsers/chromium";
 const executablePath =
   process.env.PLAYWRIGHT_CHROMIUM_PATH ?? (existsSync(prebuilt) ? prebuilt : undefined);
 
-const PORT = 4322;
+// E2E_PORT / E2E_ROOT / E2E_CONFIG let several checkouts or build snapshots
+// run their own server side by side (see scripts/serve.ts).
+const PORT = Number(process.env.E2E_PORT ?? 4322);
+const serveArgs = [
+  `--port=${PORT}`,
+  ...(process.env.E2E_ROOT ? [`--root=${process.env.E2E_ROOT}`] : []),
+  ...(process.env.E2E_CONFIG ? [`--config=${process.env.E2E_CONFIG}`] : []),
+].join(" ");
 
 export default defineConfig({
   testDir: "e2e",
@@ -30,7 +37,7 @@ export default defineConfig({
   ],
   webServer: {
     // Serves the production build in dist/ (run `bun run build` first).
-    command: `bun scripts/serve.ts --port=${PORT}`,
+    command: `bun scripts/serve.ts ${serveArgs}`,
     port: PORT,
     reuseExistingServer: !process.env.CI,
   },

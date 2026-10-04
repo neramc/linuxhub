@@ -5,7 +5,8 @@
  *   disallowed URLs
  * - serializes requests per host with at least 1 s between them, or the
  *   host's Crawl-delay when larger
- * - retries 429/5xx/network errors with exponential backoff (never 4xx)
+ * - retries 429/5xx/network errors with exponential backoff (never 4xx),
+ *   waiting at least as long as the server's Retry-After (capped at 60 s)
  * - revalidates with ETag / Last-Modified, keeping bodies in .cache/
  */
 import { createHash } from "node:crypto";
@@ -19,6 +20,7 @@ const UA_TOKEN = "LinuxhubBot";
 const MIN_INTERVAL_MS = 1000;
 const TIMEOUT_MS = 30_000;
 const RETRIES = 2;
+const MAX_RETRY_AFTER_MS = 60_000;
 
 const CACHE_DIR = join(import.meta.dir, ".cache");
 const CACHE_INDEX = join(CACHE_DIR, "index.json");
@@ -158,6 +160,14 @@ export interface FetchResult {
   fromCache: boolean;
 }
 
+/** Retry-After (delta-seconds or HTTP-date) in ms, capped; null when absent or invalid. */
+function retryAfterMs(value: string | null): number | null {
+  if (!value) return null;
+  const seconds = Number(value);
+  const ms = Number.isFinite(seconds) ? seconds * 1000 : Date.parse(value) - Date.now();
+  return Number.isFinite(ms) && ms > 0 ? Math.min(ms, MAX_RETRY_AFTER_MS) : null;
+}
+
 const stats = { requests: 0, notModified: 0, blocked: 0 };
 export const httpStats = () => ({ ...stats });
 
@@ -179,8 +189,9 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
   if (cached?.lastModified) headers["if-modified-since"] = cached.lastModified;
 
   let lastError: unknown;
+  let retryAfter = 0;
   for (let attempt = 0; attempt <= RETRIES; attempt++) {
-    if (attempt > 0) await Bun.sleep(2 ** attempt * 1000);
+    if (attempt > 0) await Bun.sleep(Math.max(2 ** attempt * 1000, retryAfter));
     try {
       const res = await schedule(u.host, () =>
         fetch(url, {
@@ -203,6 +214,7 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
         };
       }
       if (res.status === 429 || res.status >= 500) {
+        retryAfter = retryAfterMs(res.headers.get("retry-after")) ?? 0;
         lastError = new HttpError(`HTTP ${res.status}`, url, res.status);
         continue;
       }

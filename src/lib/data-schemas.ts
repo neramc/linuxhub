@@ -132,6 +132,30 @@ export const statusEntrySchema = z.object({
 
 export const statusFileSchema = z.record(z.string(), statusEntrySchema);
 
+/** One distro in the "popular today" ranking (ADR-0013). */
+export const popularityItemSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
+  /** Canonical English Wikipedia article title, with spaces (e.g. "Fedora Linux"). */
+  article: z.string().min(1),
+  /** Pageviews by people (agent=user, all-access) on `day`. */
+  views: z.number().int().nonnegative(),
+  /** 1 = most viewed on `day`. */
+  rank: z.number().int().positive(),
+  /** Rank among the same articles on the day before; null when that day has no data. */
+  prevRank: z.number().int().positive().nullable(),
+});
+
+/** src/data/popularity.json: Wikipedia pageview ranking of the catalog (ADR-0013). */
+export const popularityFileSchema = z.object({
+  /** Wikimedia Pageviews REST API endpoint the numbers came from (data is CC0). */
+  source: httpsUrl,
+  project: z.literal("en.wikipedia"),
+  /** The complete UTC day the ranking describes (normally yesterday). */
+  day: isoDate,
+  /** Sorted by views (desc), ties by slug; ranks are 1..n. */
+  items: z.array(popularityItemSchema),
+});
+
 export type Checksum = z.infer<typeof checksumSchema>;
 export type Artifact = z.infer<typeof artifactSchema>;
 export type Edition = z.infer<typeof editionSchema>;
@@ -141,3 +165,5 @@ export type Mirror = z.infer<typeof mirrorSchema>;
 export type MirrorsFile = z.infer<typeof mirrorsFileSchema>;
 export type HistoryEntry = z.infer<typeof historyEntrySchema>;
 export type StatusFile = z.infer<typeof statusFileSchema>;
+export type PopularityItem = z.infer<typeof popularityItemSchema>;
+export type PopularityFile = z.infer<typeof popularityFileSchema>;

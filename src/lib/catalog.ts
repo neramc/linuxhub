@@ -3,8 +3,21 @@
  * time (static output).
  */
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
-import type { Artifact, Edition, Release, ReleasesFile } from "./data-schemas";
-import { historyFileSchema, mirrorsFileSchema, statusFileSchema } from "./data-schemas";
+import type {
+  Artifact,
+  Edition,
+  PopularityFile,
+  PopularityItem,
+  Release,
+  ReleasesFile,
+} from "./data-schemas";
+import {
+  historyFileSchema,
+  mirrorsFileSchema,
+  popularityFileSchema,
+  statusFileSchema,
+} from "./data-schemas";
+import { type Movement, movement, rerank, wikipediaUrl } from "./popularity";
 
 export type Distro = CollectionEntry<"distros">;
 
@@ -68,6 +81,61 @@ export function getHistory() {
 
 export function getStatus() {
   return statusFileSchema.parse(Object.values(statusRaw)[0] ?? {});
+}
+
+const popularityRaw = import.meta.glob("/src/data/popularity.json", {
+  eager: true,
+  import: "default",
+});
+
+/** The raw "popular today" file (ADR-0013), or undefined before the first sync. */
+export function getPopularity(): PopularityFile | undefined {
+  const raw = Object.values(popularityRaw)[0];
+  return raw ? popularityFileSchema.parse(raw) : undefined;
+}
+
+/** A catalog distro joined with its place in the "popular today" ranking. */
+export interface PopularDistro extends PopularityItem {
+  distro: Distro;
+  /** The English Wikipedia article the views were counted on (for attribution). */
+  articleUrl: string;
+  /** Change since the day before; `delta` > 0 means it climbed that many places. */
+  movement: Movement;
+  delta: number;
+}
+
+export interface PopularToday {
+  /** UTC day (YYYY-MM-DD) the views were counted on, normally yesterday. */
+  day: string;
+  /** Wikimedia Pageviews API endpoint (pageview data is CC0). */
+  source: string;
+  /** Wikipedia edition, always "en.wikipedia". */
+  project: string;
+  /** Most viewed first; ranks are re-numbered 1..n over the distros the site shows. */
+  items: PopularDistro[];
+}
+
+/**
+ * The top `limit` distros by English Wikipedia pageviews on the latest synced
+ * day, or undefined when there is no ranking. Slugs missing from the catalog
+ * or discontinued are dropped and the rest re-ranked, so ranks have no gaps.
+ */
+export async function getPopular(limit = 10): Promise<PopularToday | undefined> {
+  const file = getPopularity();
+  if (!file) return undefined;
+  const distros = new Map((await getDistros()).map((d) => [d.id, d]));
+  const shown = rerank(
+    file.items.filter((i) => distros.get(i.slug)?.data.status === "active"),
+  ).slice(0, Math.max(0, limit));
+  const items = shown.flatMap((item) => {
+    const distro = distros.get(item.slug);
+    return distro
+      ? [{ ...item, distro, articleUrl: wikipediaUrl(item.article), ...movement(item) }]
+      : [];
+  });
+  return items.length
+    ? { day: file.day, source: file.source, project: file.project, items }
+    : undefined;
 }
 
 export function formatBytes(bytes: number | null, locale: string): string | null {

@@ -1,12 +1,14 @@
 /**
  * Regenerates the per-distro table in docs/data-sources.md from the catalog
  * and the synced data (`bun run sync:docs`), so the documentation always says
- * where each distro's data really comes from.
+ * where each distro's data really comes from, including the Wikipedia article
+ * behind the "popular today" ranking (ADR-0013).
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { SOURCES } from "./sources";
+import { WIKIPEDIA_ARTICLES } from "./wikipedia-articles";
 
 const root = join(import.meta.dir, "..", "..");
 const docPath = join(root, "docs", "data-sources.md");
@@ -30,14 +32,15 @@ const rows = catalog.map((d) => {
   const releases = json(join(root, "src/data/releases", `${d.slug}.json`));
   const mirrors = json(join(root, "src/data/mirrors", `${d.slug}.json`));
   const latest = releases?.releases?.[0]?.version ?? "—";
-  return `| ${d.name} | ${d.download?.strategy ?? "—"} | ${source ? "✓" : "—"} | ${hostList(releases?.sources) || "—"} | ${latest} | ${mirrors ? `${mirrors.mirrors.length} (${hostList(mirrors.sources)})` : "—"} |`;
+  const article = WIKIPEDIA_ARTICLES[d.slug];
+  return `| ${d.name} | ${d.download?.strategy ?? "—"} | ${source ? "✓" : "—"} | ${hostList(releases?.sources) || "—"} | ${latest} | ${mirrors ? `${mirrors.mirrors.length} (${hostList(mirrors.sources)})` : "—"} | ${article ?? "—"} |`;
 });
 
 const table = [
   START,
   "",
-  "| 배포판 | 다운로드 전략 | 동기화 모듈 | 릴리스 데이터 출처(호스트) | 현재 최신 | 미러 목록 |",
-  "|---|---|---|---|---|---|",
+  "| 배포판 | 다운로드 전략 | 동기화 모듈 | 릴리스 데이터 출처(호스트) | 현재 최신 | 미러 목록 | 위키백과 문서(인기 순위) |",
+  "|---|---|---|---|---|---|---|",
   ...rows,
   "",
   `_${new Date().toISOString().slice(0, 10)} 기준, \`bun run sync:docs\`로 생성._`,

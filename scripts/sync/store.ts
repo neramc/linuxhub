@@ -9,6 +9,8 @@ import {
   historyFileSchema,
   type MirrorsFile,
   mirrorsFileSchema,
+  type PopularityFile,
+  popularityFileSchema,
   type ReleasesFile,
   releasesFileSchema,
   type StatusFile,
@@ -20,6 +22,7 @@ export const releasesPath = (slug: string) => join(DATA_DIR, "releases", `${slug
 export const mirrorsPath = (slug: string) => join(DATA_DIR, "mirrors", `${slug}.json`);
 export const HISTORY_PATH = join(DATA_DIR, "history.json");
 export const STATUS_PATH = join(DATA_DIR, "status.json");
+export const POPULARITY_PATH = join(DATA_DIR, "popularity.json");
 
 function readJson(path: string): unknown {
   return existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : undefined;
@@ -48,6 +51,11 @@ export function readStatus(): StatusFile {
   return statusFileSchema.parse(readJson(STATUS_PATH) ?? {});
 }
 
+export function readPopularity(): PopularityFile | undefined {
+  const raw = readJson(POPULARITY_PATH);
+  return raw === undefined ? undefined : popularityFileSchema.parse(raw);
+}
+
 /** Same content ignoring the `updated` stamp? */
 export function sameContent<T extends { updated: string }>(a: T | undefined, b: T): boolean {
   if (!a) return false;
@@ -69,4 +77,8 @@ export function writeHistory(entries: HistoryEntry[]) {
 export function writeStatus(status: StatusFile) {
   const sorted = Object.fromEntries(Object.entries(status).sort(([a], [b]) => a.localeCompare(b)));
   writeJson(STATUS_PATH, statusFileSchema.parse(sorted));
+}
+
+export function writePopularity(file: PopularityFile) {
+  writeJson(POPULARITY_PATH, popularityFileSchema.parse(file));
 }

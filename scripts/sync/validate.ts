@@ -8,12 +8,15 @@ import { join } from "node:path";
 import {
   historyFileSchema,
   mirrorsFileSchema,
+  popularityFileSchema,
   releasesFileSchema,
   statusFileSchema,
 } from "../../src/lib/data-schemas";
+import { popularityProblems } from "../../src/lib/popularity";
 import { checkMirrors, checkReleases } from "./checks";
 import { SOURCES } from "./sources";
-import { DATA_DIR, HISTORY_PATH, STATUS_PATH } from "./store";
+import { DATA_DIR, HISTORY_PATH, POPULARITY_PATH, STATUS_PATH } from "./store";
+import { WIKIPEDIA_ARTICLES } from "./wikipedia-articles";
 
 const errors: string[] = [];
 const bySlug = new Map(SOURCES.map((s) => [s.slug, s]));
@@ -62,6 +65,32 @@ for (const [path, schema] of [
   if (!existsSync(path)) continue;
   const parsed = schema.safeParse(JSON.parse(readFileSync(path, "utf8")));
   if (!parsed.success) errors.push(`${path}: ${parsed.error.issues[0]?.message}`);
+}
+
+// "Popular today" (ADR-0013): every catalog distro needs a mapping entry (null = no article),
+// and the ranking may only name catalog distros under their mapped article.
+for (const slug of catalog)
+  if (!Object.hasOwn(WIKIPEDIA_ARTICLES, slug))
+    errors.push(
+      `popularity: ${slug} has no entry in scripts/sync/wikipedia-articles.ts (null when there is no article)`,
+    );
+if (existsSync(POPULARITY_PATH)) {
+  const parsed = popularityFileSchema.safeParse(JSON.parse(readFileSync(POPULARITY_PATH, "utf8")));
+  if (!parsed.success)
+    errors.push(
+      `popularity.json: ${parsed.error.issues[0]?.path.join(".")} ${parsed.error.issues[0]?.message}`,
+    );
+  else {
+    for (const p of popularityProblems(parsed.data)) errors.push(`popularity.json: ${p}`);
+    for (const item of parsed.data.items) {
+      if (!catalog.has(item.slug))
+        errors.push(`popularity.json: ${item.slug} is not in the catalog`);
+      else if (WIKIPEDIA_ARTICLES[item.slug] !== item.article)
+        errors.push(
+          `popularity.json: ${item.slug} uses "${item.article}", the mapping says ${JSON.stringify(WIKIPEDIA_ARTICLES[item.slug] ?? null)} (run bun run sync -- --kind=popularity)`,
+        );
+    }
+  }
 }
 
 if (errors.length) {

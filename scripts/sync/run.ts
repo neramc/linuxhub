@@ -1,9 +1,13 @@
 /**
- * Data sync entry point: `bun run sync [--only=a,b] [--kind=releases|mirrors|all] [--dry-run]`
+ * Data sync entry point:
+ * `bun run sync [--only=a,b] [--kind=all|releases|mirrors|popularity[,…]] [--dry-run]`
  *
  * Each distro source runs independently. A failing source never touches its
  * existing data; it is marked in src/data/status.json (failingSince) so the
  * site can flag stale data and the workflow can open an issue.
+ *
+ * `popularity` (ADR-0013) is not per-distro: it ignores --only, never touches
+ * status.json, and keeps src/data/popularity.json when it fails.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -17,6 +21,7 @@ import { mirrorsFileSchema, releasesFileSchema } from "../../src/lib/data-schema
 import { checkMirrors, checkReleases } from "./checks";
 import { httpStats } from "./http";
 import { compareVersions } from "./lib/versions";
+import { syncPopularity } from "./popularity";
 import type { DistroSource, SyncContext } from "./source";
 import { SOURCES } from "./sources";
 import {
@@ -38,14 +43,22 @@ const args = new Map(
   }),
 );
 const only = args.get("only")?.split(",").filter(Boolean);
-const kind = args.get("kind") ?? "all";
+const KINDS = ["releases", "mirrors", "popularity"] as const;
+type Kind = (typeof KINDS)[number];
+const requested = (args.get("kind") ?? "all").split(",").filter(Boolean);
+const unknownKinds = requested.filter((k) => k !== "all" && !KINDS.includes(k as Kind));
+if (unknownKinds.length) {
+  console.error(`Unknown kind(s): ${unknownKinds.join(", ")} (use all, ${KINDS.join(", ")})`);
+  process.exit(2);
+}
+const kinds = new Set<Kind>(requested.includes("all") ? KINDS : (requested as Kind[]));
 const dryRun = args.get("dry-run") === "true";
 const today = new Date().toISOString().slice(0, 10);
 const HISTORY_LIMIT = 300;
 
 type Outcome = {
   slug: string;
-  kind: "releases" | "mirrors";
+  kind: Kind;
   result: "changed" | "unchanged" | "failed";
   detail?: string;
 };
@@ -204,14 +217,27 @@ if (only && selected.length !== only.length) {
   process.exit(2);
 }
 
+async function runPopularity() {
+  const ctx: SyncContext = { today, log: (m) => console.log(`[popularity] ${m}`) };
+  try {
+    const { result, detail } = await syncPopularity(ctx, { dryRun });
+    outcomes.push({ slug: "*", kind: "popularity", result, detail });
+  } catch (error) {
+    const detail = (error instanceof Error ? error.message : String(error)).slice(0, 300);
+    outcomes.push({ slug: "*", kind: "popularity", result: "failed", detail });
+  }
+}
+
+const perDistro = kinds.has("releases") || kinds.has("mirrors");
 const started = Date.now();
-await Promise.all(
-  selected.map(async (source) => {
+await Promise.all([
+  ...(perDistro ? selected : []).map(async (source) => {
     const ctx: SyncContext = { today, log: (m) => console.log(`[${source.slug}] ${m}`) };
-    if (kind === "all" || kind === "releases") await syncReleases(source, ctx);
-    if (kind === "all" || kind === "mirrors") await syncMirrors(source, ctx);
+    if (kinds.has("releases")) await syncReleases(source, ctx);
+    if (kinds.has("mirrors")) await syncMirrors(source, ctx);
   }),
-);
+  ...(kinds.has("popularity") ? [runPopularity()] : []),
+]);
 
 history = history
   .sort(
@@ -222,7 +248,7 @@ history = history
   )
   .slice(0, HISTORY_LIMIT);
 
-if (!dryRun) {
+if (!dryRun && perDistro) {
   writeHistory(history);
   writeStatus(status);
 }
