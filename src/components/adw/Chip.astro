@@ -1,0 +1,30 @@
+---
+/**
+ * A pill "chip": a 44px-tall toggle-style pill (libadwaita button colors) for
+ * shortcuts such as use-case filters. A link with `href`, otherwise a
+ * <button type="button"> (pass `aria-pressed` for a toggle). `current` marks
+ * the active link with aria-current and the checked toggle color.
+ *
+ *   <Chip href="/distros/?use=gaming" icon="gaming">게이밍</Chip>
+ */
+import type { HTMLAttributes } from "astro/types";
+import Icon from "./Icon.astro";
+
+type Props = (HTMLAttributes<"a"> & HTMLAttributes<"button">) & {
+  href?: string | undefined;
+  icon?: string | undefined;
+  current?: boolean | undefined;
+};
+
+const { href, icon, current = false, class: className, ...rest } = Astro.props;
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  class:list={["adw-chip", { "with-icon": icon }, className]}
+  {...(href ? { href, "aria-current": current ? "page" : undefined } : { type: "button" })}
+  {...rest}
+>
+  {icon && <Icon name={icon} />}
+  <span><slot /></span>
+</Tag>

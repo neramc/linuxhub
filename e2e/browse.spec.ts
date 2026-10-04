@@ -53,3 +53,22 @@ test("theme switcher persists the choice", async ({ page }) => {
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
+
+test("main menu holds the primary destinations on narrow screens", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/distros/fedora/");
+  await expect(page.locator(".primary-nav")).toBeHidden();
+  await page.getByRole("button", { name: "주 메뉴" }).click();
+  const menu = page.locator("#main-menu");
+  await expect(menu.getByRole("link", { name: "배포판", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+  for (const name of ["리눅스 가이드", "배포판 추천", "계보", "릴리스 소식", "비교", "소개"]) {
+    await expect(menu.getByRole("link", { name, exact: true })).toBeVisible();
+  }
+  const english = menu.getByRole("link", { name: "English" });
+  await expect(english).toHaveAttribute("hreflang", "en");
+  await expect(english).toHaveAttribute("href", "/en/distros/fedora/");
+  await expect(menu.getByRole("link", { name: "한국어" })).toHaveCount(0);
+});

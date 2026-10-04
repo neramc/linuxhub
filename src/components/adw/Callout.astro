@@ -1,12 +1,14 @@
 ---
 /**
- * A note/tip/warning block for documentation, styled from libadwaita's
- * semantic colors (tinted card + matching icon). Not a libadwaita widget, but
- * built only from its tokens.
+ * A note/tip/warning block for documentation. Not a libadwaita widget, but
+ * built only from its tokens, in two looks (ADR-0014): note, tip, info and
+ * success are a neutral card with an accent icon; warning and danger are
+ * tinted, so color signals real risk. The icon and the title are the non-color
+ * cues (WCAG 1.4.1).
  */
 import Icon from "./Icon.astro";
 
-type Kind = "note" | "tip" | "warning" | "danger";
+type Kind = "note" | "info" | "tip" | "success" | "warning" | "danger";
 
 interface Props {
   type?: Kind | undefined;
@@ -16,7 +18,9 @@ interface Props {
 const { type = "note", title } = Astro.props;
 const icons: Record<Kind, string> = {
   note: "info",
+  info: "info",
   tip: "check",
+  success: "check",
   warning: "warning",
   danger: "important",
 };

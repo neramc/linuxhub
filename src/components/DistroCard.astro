@@ -1,43 +1,46 @@
 ---
 /**
- * Flathub-style app tile for a distribution: logo, name, one-line tagline and
- * a couple of facet badges. The whole card is one link.
+ * Flathub-style app tile for a distribution: the logo on a 64px app tile, the
+ * name and a two-line tagline (ADR-0014: no badges). The whole card is one
+ * link. Facets for filtering live as data-* attributes on the list item that
+ * wraps the card, not on the card. Extra attributes are passed to the card.
  */
 import type { CollectionEntry } from "astro:content";
 import { type Locale, localizePath } from "~/i18n";
-import { FAMILIES, RELEASE_MODELS } from "~/lib/taxonomy";
-import Badge from "./adw/Badge.astro";
 import Card from "./adw/Card.astro";
 import DistroLogo from "./DistroLogo.astro";
 
 interface Props {
+  [key: `data-${string}`]: unknown;
   distro: CollectionEntry<"distros">;
   locale: Locale;
   eager?: boolean | undefined;
   headingLevel?: 2 | 3 | undefined;
+  class?: string | undefined;
 }
 
-const { distro, locale, eager = false, headingLevel = 3 } = Astro.props;
+const { distro, locale, eager = false, headingLevel = 3, class: className, ...rest } = Astro.props;
 const d = distro.data;
 const Heading = `h${headingLevel}` as "h2" | "h3";
 ---
 
-<Card href={localizePath(`/distros/${distro.id}/`, locale)} class="distro-card" padded={false}>
+<Card
+  href={localizePath(`/distros/${distro.id}/`, locale)}
+  class={className ? `distro-card ${className}` : "distro-card"}
+  padded={false}
+  {...rest}
+>
   <DistroLogo file={d.logo.file} name={d.name} size={64} eager={eager} />
   <div class="distro-card-text">
     <Heading class="distro-card-name">{d.name}</Heading>
     <p class="distro-card-tagline">{d.tagline[locale]}</p>
-    <div class="distro-card-badges">
-      <Badge>{FAMILIES[d.family][locale]}</Badge>
-      <Badge>{RELEASE_MODELS[d.releaseModel][locale]}</Badge>
-    </div>
   </div>
 </Card>
 
 <style>
   :global(.adw-card.distro-card) {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-3);
     padding: var(--space-3);
     block-size: 100%;
@@ -45,7 +48,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
 
   .distro-card-text {
     display: grid;
-    gap: 4px;
+    gap: 2px;
     min-inline-size: 0;
   }
 
@@ -63,12 +66,5 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  .distro-card-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-block-start: 6px;
   }
 </style>

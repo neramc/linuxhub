@@ -133,16 +133,22 @@ a.adw-badge:hover {
   color: var(--error-color);
 }
 
-/* ---- Banner.astro ---- */
+/* ---- Banner.astro (AdwBanner, widgets/_toolbars.scss:251-256) ---- */
 .adw-banner {
+  --banner-color: #7d7d83;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: var(--space-1) var(--space-2);
   padding: 8px var(--gutter);
-  background-color: color-mix(in srgb, var(--accent-bg-color) 30%, transparent);
+  background-color: color-mix(in srgb, var(--banner-color) 30%, var(--window-bg-color));
+  color: var(--window-fg-color);
   text-align: center;
+}
+
+.adw-banner.accent {
+  --banner-color: var(--accent-bg-color);
 }
 
 .adw-banner-title {
@@ -305,6 +311,25 @@ a.adw-badge:hover {
   padding-inline: 0;
 }
 
+/* On-screen display button over content, e.g. carousel arrows
+   (widgets/_buttons.scss:112-153). 44px instead of 32px for touch (ADR-0009). */
+.adw-button.osd {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  color: var(--osd-fg-color);
+  background-color: var(--osd-button-bg-color);
+}
+
+.adw-button.osd:hover {
+  color: #ffffff;
+  background-color: color-mix(in srgb, black calc(0.85 * 65%), currentColor calc(0.15 * 65%));
+}
+
+.adw-button.osd:active {
+  color: #ffffff;
+  background-color: color-mix(in srgb, black calc(0.75 * 65%), currentColor calc(0.25 * 65%));
+}
+
 .adw-button[disabled],
 .adw-button[aria-disabled="true"] {
   opacity: var(--disabled-opacity);
@@ -312,26 +337,36 @@ a.adw-badge:hover {
 }
 
 @media (prefers-contrast: more) {
-  .adw-button:not(.flat, .suggested, .destructive) {
+  .adw-button:not(.flat, .suggested, .destructive, .osd) {
     box-shadow: inset 0 0 0 1px var(--border-color);
+  }
+
+  .adw-button.osd {
+    box-shadow: 0 0 0 1px currentColor;
   }
 }
 
-/* ---- Callout.astro ---- */
+/* ---- Callout.astro ----
+   Two looks only (ADR-0014): a neutral note on the card surface with an accent
+   icon (note, tip, info, success), and a tinted box for real risks (warning,
+   danger) using AdwBanner's 30% mix into the window background. */
 .adw-callout {
   --callout-color: var(--accent-color);
-  --callout-bg: var(--accent-bg-color);
   display: flex;
   gap: var(--space-2);
   margin-block: var(--space-3);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-card);
-  background-color: color-mix(in srgb, var(--callout-bg) 12%, var(--view-bg-color));
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
+  box-shadow: var(--shadow-card);
 }
 
-.adw-callout.tip {
-  --callout-color: var(--success-color);
-  --callout-bg: var(--success-bg-color);
+.adw-callout.warning,
+.adw-callout.danger {
+  background-color: color-mix(in srgb, var(--callout-bg) 30%, var(--window-bg-color));
+  color: var(--window-fg-color);
+  box-shadow: none;
 }
 
 .adw-callout.warning {
@@ -342,6 +377,12 @@ a.adw-badge:hover {
 .adw-callout.danger {
   --callout-color: var(--destructive-color);
   --callout-bg: var(--destructive-bg-color);
+}
+
+/* Links keep their underline but take the text color on tints (the accent
+   link color drops to 3.5:1 on the light danger tint). */
+.adw-callout:is(.warning, .danger) a {
+  color: inherit;
 }
 
 .adw-callout-icon {
@@ -357,7 +398,12 @@ a.adw-badge:hover {
 
 .adw-callout-title {
   font-weight: 700;
-  color: var(--callout-color);
+}
+
+@media (prefers-contrast: more) {
+  .adw-callout {
+    box-shadow: 0 0 0 1px var(--border-color);
+  }
 }
 
 /* ---- Card.astro ---- */
@@ -375,7 +421,9 @@ a.adw-badge:hover {
 }
 
 .adw-card.activatable {
-  transition: background-image var(--duration) var(--ease-out-quad);
+  transition:
+    background-image var(--duration) var(--ease-out-quad),
+    box-shadow var(--duration) var(--ease-out-quad);
 }
 
 .adw-card.activatable:hover {
@@ -386,11 +434,19 @@ a.adw-badge:hover {
   text-decoration: none;
 }
 
+/* A slight lift on pointer hover: card → popover elevation (ADR-0014). */
+@media (hover: hover) {
+  .adw-card.activatable:hover {
+    box-shadow: var(--shadow-popover);
+  }
+}
+
 .adw-card.activatable:active {
   background-image: linear-gradient(
     color-mix(in srgb, currentColor 8%, transparent),
     color-mix(in srgb, currentColor 8%, transparent)
   );
+  box-shadow: var(--shadow-card);
 }
 
 .adw-card.activatable:focus-visible {
@@ -423,8 +479,11 @@ a.adw-badge:hover {
   transition: transform var(--duration) var(--ease-out-quad);
 }
 
+/* Open: arrow up, full opacity, accent color (widgets/_lists.scss:408-415). */
 .adw-expander-row[open] .adw-expander-arrow {
   transform: rotate(180deg);
+  opacity: 1;
+  color: var(--accent-color);
 }
 
 .adw-expander-content {
@@ -524,6 +583,221 @@ a.adw-badge:hover {
 }
 
 .adw-view-switcher-item[aria-current="page"] {
-  background-color: light-dark(#ffffff, rgb(255 255 255 / 20%));
-  box-shadow: 0 1px 3px rgb(0 0 6 / 12%);
+  /* toggle-group :checked (widgets/_toggle-group.scss:76-84) */
+  background-color: var(--active-toggle-bg-color);
+  box-shadow: var(--shadow-raised);
+}
+
+/* ---- AppTile.astro ----
+   An official logo on a GNOME app-icon base: a light top face over a darker
+   front profile, with the app-icon drop shadow. The logo itself is never
+   modified (CLAUDE.md rule 8). Geometry from the HIG and the App Icon Preview
+   template: radius = face × 8/104, front profile = face × 4/128 (rounded),
+   logo box = 75% of the face; wide logos use 7/8 of the face width. Light
+   face #ffffff over #deddda, dark face #f6f5f4 over #c0bfbc (the template's own
+   base colors), so dark logos stay visible in the dark theme. */
+.app-tile {
+  --tile-size: 64px;
+  --tile-depth: 2px;
+  --tile-radius: 5px;
+  --tile-logo: 48px;
+  --tile-face: light-dark(var(--light-1), var(--light-2));
+  --tile-front: light-dark(var(--light-3), var(--light-4));
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  inline-size: var(--tile-size);
+  block-size: calc(var(--tile-size) + var(--tile-depth));
+  padding-block-end: var(--tile-depth);
+  border-radius: var(--tile-radius);
+  background-color: var(--tile-front);
+  box-shadow: var(--shadow-icon);
+}
+
+.app-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 var(--tile-depth);
+  z-index: -1;
+  border-radius: inherit;
+  background-color: var(--tile-face);
+}
+
+.app-tile > img {
+  inline-size: var(--tile-logo);
+  max-inline-size: none;
+  block-size: var(--tile-logo);
+  object-fit: contain;
+}
+
+.app-tile.wide > img {
+  inline-size: calc(var(--tile-size) * 7 / 8);
+}
+
+.app-tile.size-24 {
+  --tile-size: 24px;
+  --tile-depth: 1px;
+  --tile-radius: 2px;
+  --tile-logo: 18px;
+}
+
+.app-tile.size-36 {
+  --tile-size: 36px;
+  --tile-depth: 1px;
+  --tile-radius: 3px;
+  --tile-logo: 28px;
+}
+
+.app-tile.size-48 {
+  --tile-size: 48px;
+  --tile-depth: 2px;
+  --tile-radius: 4px;
+  --tile-logo: 36px;
+}
+
+.app-tile.size-64 {
+  --tile-size: 64px;
+  --tile-depth: 2px;
+  --tile-radius: 5px;
+  --tile-logo: 48px;
+}
+
+.app-tile.size-96 {
+  --tile-size: 96px;
+  --tile-depth: 3px;
+  --tile-radius: 7px;
+  --tile-logo: 72px;
+}
+
+.app-tile.size-128 {
+  --tile-size: 128px;
+  --tile-depth: 4px;
+  --tile-radius: 10px;
+  --tile-logo: 96px;
+}
+
+.app-tile.size-160 {
+  --tile-size: 160px;
+  --tile-depth: 5px;
+  --tile-radius: 12px;
+  --tile-logo: 120px;
+}
+
+/* Optional smaller tile on narrow screens (AppTile `narrowSize`). */
+@media (width < 700px) {
+  .app-tile.narrow-24 {
+    --tile-size: 24px;
+    --tile-depth: 1px;
+    --tile-radius: 2px;
+    --tile-logo: 18px;
+  }
+
+  .app-tile.narrow-36 {
+    --tile-size: 36px;
+    --tile-depth: 1px;
+    --tile-radius: 3px;
+    --tile-logo: 28px;
+  }
+
+  .app-tile.narrow-48 {
+    --tile-size: 48px;
+    --tile-depth: 2px;
+    --tile-radius: 4px;
+    --tile-logo: 36px;
+  }
+
+  .app-tile.narrow-64 {
+    --tile-size: 64px;
+    --tile-depth: 2px;
+    --tile-radius: 5px;
+    --tile-logo: 48px;
+  }
+
+  .app-tile.narrow-96 {
+    --tile-size: 96px;
+    --tile-depth: 3px;
+    --tile-radius: 7px;
+    --tile-logo: 72px;
+  }
+
+  .app-tile.narrow-128 {
+    --tile-size: 128px;
+    --tile-depth: 4px;
+    --tile-radius: 10px;
+    --tile-logo: 96px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .app-tile {
+    box-shadow:
+      0 0 0 1px var(--border-color),
+      var(--shadow-icon);
+  }
+}
+
+@media (forced-colors: active) {
+  .app-tile {
+    outline: 1px solid CanvasText;
+  }
+}
+
+/* ---- Chip.astro ----
+   A pill toggle-button link (widgets/_buttons.scss colors) at a 44px touch
+   height. The current chip uses the checked toggle color. */
+.adw-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-pill);
+  background-color: var(--button-color);
+  color: inherit;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--duration) var(--ease-out-quad);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.adw-chip.with-icon {
+  padding-inline: 16px 20px;
+}
+
+.adw-chip:hover {
+  background-color: var(--button-hover-color);
+  text-decoration: none;
+}
+
+.adw-chip:active {
+  background-color: var(--button-active-color);
+}
+
+.adw-chip:is([aria-current]:not([aria-current="false"]), [aria-pressed="true"]) {
+  background-color: var(--button-checked-color);
+}
+
+.adw-chip:is([aria-current]:not([aria-current="false"]), [aria-pressed="true"]):hover {
+  background-color: var(--button-checked-hover-color);
+}
+
+.adw-chip:is([aria-current]:not([aria-current="false"]), [aria-pressed="true"]):active {
+  background-color: var(--button-checked-active-color);
+}
+
+.adw-chip:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 1px;
+  border-radius: var(--radius-pill);
+}
+
+@media (prefers-contrast: more) {
+  .adw-chip {
+    box-shadow: inset 0 0 0 1px var(--border-color);
+  }
 }

@@ -1,44 +1,75 @@
 ---
 /**
- * Official distro logo on a neutral "thumbnail" tile, like app icons on
- * Flathub. Rendered as <img> (cached, never inlined) with fixed dimensions to
- * avoid layout shift.
+ * A distro's official logo on a GNOME app-icon tile (AppTile, ADR-0014).
+ * Rendered as a cached <img> (never inlined) with fixed dimensions, so there is
+ * no layout shift. `size` snaps to the nearest tile size (24, 36, 48, 64, 96,
+ * 128, 160). Wordmark logos (aspect ratio ≥ 2, read from the file at build
+ * time) get the wider logo box automatically.
  */
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import AppTile from "~/components/adw/AppTile.astro";
+import { nearestTileSize, type TileSize } from "~/components/adw/app-tile";
 import { logoUrl } from "~/lib/logos";
 
 interface Props {
+  [key: `data-${string}`]: unknown;
   file: string;
   name: string;
   size?: number | undefined;
+  /** A smaller tile below 700px viewport width. */
+  narrowSize?: TileSize | undefined;
   eager?: boolean | undefined;
+  fetchpriority?: "high" | "low" | "auto" | undefined;
   /** Decorative when the name is already next to it (default). */
   decorative?: boolean | undefined;
+  class?: string | undefined;
+  /** Attributes for the <img> itself, e.g. `{ "data-pagefind-meta": "image[src]" }`. */
+  imgAttrs?: Record<string, string | number | boolean | undefined> | undefined;
 }
 
-const { file, name, size = 64, eager = false, decorative = true } = Astro.props;
+const {
+  file,
+  name,
+  size = 64,
+  narrowSize,
+  eager = false,
+  fetchpriority,
+  decorative = true,
+  class: className,
+  imgAttrs,
+  ...rest
+} = Astro.props;
+
+/** Width / height of a logo in src/assets/logos/ (SVG viewBox or PNG header). */
+function aspectRatio(name: string): number {
+  let ratio = 1;
+  try {
+    const buf = readFileSync(join(process.cwd(), "src/assets/logos", name));
+    if (name.endsWith(".png")) {
+      ratio = buf.readUInt32BE(16) / buf.readUInt32BE(20); // IHDR width, height
+    } else {
+      const head = buf.subarray(0, 4096).toString("utf8");
+      const svg = head.match(/<svg\b[^>]*>/)?.[0] ?? "";
+      const box = svg.match(/viewBox="\s*[-\d.e]+[\s,]+[-\d.e]+[\s,]+([\d.e]+)[\s,]+([\d.e]+)/);
+      if (box) ratio = Number(box[1]) / Number(box[2]);
+    }
+  } catch {
+    ratio = 1;
+  }
+  return Number.isFinite(ratio) && ratio > 0 ? ratio : 1;
+}
 ---
 
-<span class="distro-logo" data-size={size}>
-  <img
-    src={logoUrl(file)}
-    alt={decorative ? "" : name}
-    width={size}
-    height={size}
-    loading={eager ? "eager" : "lazy"}
-    decoding="async"
-    fetchpriority={eager ? "high" : undefined}
-  />
-</span>
-
-<style>
-  .distro-logo {
-    display: inline-grid;
-    place-items: center;
-    flex: none;
-  }
-
-  .distro-logo img {
-    object-fit: contain;
-    max-inline-size: 100%;
-  }
-</style>
+<AppTile
+  src={logoUrl(file)}
+  alt={decorative ? "" : name}
+  size={nearestTileSize(size)}
+  narrowSize={narrowSize}
+  wide={aspectRatio(file) >= 2}
+  eager={eager}
+  fetchpriority={fetchpriority}
+  class={className ? `distro-logo ${className}` : "distro-logo"}
+  imgAttrs={imgAttrs}
+  {...rest}
+/>

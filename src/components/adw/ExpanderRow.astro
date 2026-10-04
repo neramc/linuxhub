@@ -1,11 +1,16 @@
 ---
 /**
  * libadwaita AdwExpanderRow built on <details>/<summary> (no JS). Nested
- * content appears in a darker inset area, as in libadwaita.
+ * content appears in a darker inset area, as in libadwaita. Use it inside a
+ * BoxedList. `id` and data-* attributes go on the <details>. (Browsers open a
+ * closed <details> when the URL fragment targets an element inside it, not
+ * the <details> itself.)
  */
 import Icon from "./Icon.astro";
 
 interface Props {
+  [key: `data-${string}`]: unknown;
+  id?: string | undefined;
   title: string;
   subtitle?: string | undefined;
   icon?: string | undefined;
@@ -13,11 +18,11 @@ interface Props {
   name?: string | undefined;
 }
 
-const { title, subtitle, icon, open = false, name } = Astro.props;
+const { title, subtitle, icon, open = false, name, id, ...rest } = Astro.props;
 ---
 
 <li class="adw-row-item">
-  <details class="adw-expander-row" open={open} name={name}>
+  <details class="adw-expander-row" open={open} name={name} id={id} {...rest}>
     <summary class="adw-action-row activatable">
       {icon && <Icon name={icon} class="adw-row-prefix" />}
       <span class="adw-row-text">

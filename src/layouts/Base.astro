@@ -1,13 +1,12 @@
 ---
 /**
  * Root layout: document head (SEO, alternates, fonts, theme), the Adwaita
- * header bar, page content, footer and the mobile bottom bar.
+ * header bar, page content and footer.
  */
 import { Font } from "astro:assets";
 import "~/styles/tokens.css";
 import "~/styles/base.css";
 import "~/styles/adwaita.css";
-import BottomBar from "~/components/site/BottomBar.astro";
 import HeaderBar from "~/components/site/HeaderBar.astro";
 import SearchDialog from "~/components/site/SearchDialog.astro";
 import SiteFooter from "~/components/site/SiteFooter.astro";
@@ -101,7 +100,6 @@ Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
       <slot />
     </main>
     <SiteFooter locale={locale} />
-    <BottomBar locale={locale} />
     <SearchDialog locale={locale} />
   </body>
 </html>

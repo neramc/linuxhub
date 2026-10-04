@@ -3,24 +3,42 @@ import { type Locale, localizePath, stripLocale, useTranslations } from "~/i18n"
 export interface NavItem {
   href: string;
   label: string;
-  icon: string;
   current: boolean;
 }
 
-/** Primary destinations shown in the header (desktop) and bottom bar (mobile). */
-export function primaryNav(locale: Locale, pathname: string): NavItem[] {
-  const t = useTranslations(locale);
+function navItems(
+  locale: Locale,
+  pathname: string,
+  items: [base: string, label: string][],
+): NavItem[] {
   const path = stripLocale(pathname);
-  const item = (base: string, label: string, icon: string): NavItem => ({
+  return items.map(([base, label]) => ({
     href: localizePath(base, locale),
     label,
-    icon,
     current: path === base || path.startsWith(base),
-  });
-  return [
-    item("/distros/", t("nav.distros"), "app-grid"),
-    item("/learn/", t("nav.learn"), "contents"),
-    item("/finder/", t("nav.finder"), "star"),
-    item("/family/", t("nav.family"), "community"),
-  ];
+  }));
+}
+
+/**
+ * Primary destinations: in the header on wide screens, first in the main
+ * menu on narrow ones.
+ */
+export function primaryNav(locale: Locale, pathname: string): NavItem[] {
+  const t = useTranslations(locale);
+  return navItems(locale, pathname, [
+    ["/distros/", t("nav.distros")],
+    ["/learn/", t("nav.learn")],
+    ["/finder/", t("nav.finder")],
+    ["/family/", t("nav.family")],
+  ]);
+}
+
+/** Secondary destinations: in the main menu and the footer. */
+export function secondaryNav(locale: Locale, pathname: string): NavItem[] {
+  const t = useTranslations(locale);
+  return navItems(locale, pathname, [
+    ["/releases/", t("nav.releases")],
+    ["/compare/", t("nav.compare")],
+    ["/about/", t("nav.about")],
+  ]);
 }

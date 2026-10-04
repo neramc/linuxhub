@@ -10,6 +10,12 @@
  *   --accent-bg-color  #1c71d8 (blue_4) instead of #3584e4 — white text on it
  *                      reaches 4.9:1 instead of 3.9:1.
  *   --dim-opacity      70% instead of 55% — dimmed body text stays ≥ 4.5:1.
+ *   --focus-ring-color 80% accent (libadwaita's high-contrast value) instead of
+ *                      50% — 3.97:1 on the window background instead of 2.25:1.
+ *
+ * Depth (ADR-0014) uses only libadwaita's own vocabulary: the elevation ladder
+ * card → raised → popover → dialog, the raised top bar, and the app-icon
+ * drop shadow. No gradients, glass or translate/scale lifts.
  */
 
 :root {
@@ -28,8 +34,22 @@
   --red-3: #e01b24;
   --red-4: #c01c28;
   --purple-3: #9141ac;
+  --light-1: #ffffff;
+  --light-2: #f6f5f4;
   --light-3: #deddda;
+  --light-4: #c0bfbc;
   --dark-3: #3d3846;
+
+  /* ---- Accent palette (_colors.scss:155-164; the same in light and dark) ---- */
+  --accent-blue: #3584e4;
+  --accent-teal: #2190a4;
+  --accent-green: #3a944a;
+  --accent-yellow: #c88800;
+  --accent-orange: #ed5b00;
+  --accent-red: #e62d42;
+  --accent-pink: #d56199;
+  --accent-purple: #9141ac;
+  --accent-slate: #6f8396;
 
   /* ---- Semantic colors ---- */
   --accent-bg-color: var(--blue-4);
@@ -85,6 +105,10 @@
   --toast-bg-color: #505053;
   --toast-fg-color: #ffffff;
 
+  /* On-screen display controls over content (_colors.scss:291, _buttons.scss:119). */
+  --osd-fg-color: rgb(255 255 255 / 90%);
+  --osd-button-bg-color: rgb(0 0 0 / 65%);
+
   /* ---- Opacities & derived colors (libadwaita _colors.scss) ---- */
   --border-opacity: 15%;
   --dim-opacity: 70%;
@@ -99,7 +123,15 @@
   --button-color: color-mix(in srgb, currentColor 10%, transparent);
   --button-hover-color: color-mix(in srgb, currentColor 15%, transparent);
   --button-active-color: color-mix(in srgb, currentColor 30%, transparent);
-  --focus-ring-color: color-mix(in srgb, var(--accent-color) 50%, transparent);
+  /* Toggle buttons (widgets/_buttons.scss:4-6) and the toggle-group/view-switcher
+     current item (_colors.scss:238/247). */
+  --button-checked-color: color-mix(in srgb, currentColor 30%, transparent);
+  --button-checked-hover-color: color-mix(in srgb, currentColor 35%, transparent);
+  --button-checked-active-color: color-mix(in srgb, currentColor 40%, transparent);
+  --active-toggle-bg-color: light-dark(#ffffff, rgb(255 255 255 / 20%));
+  /* ADR-0009: libadwaita's 50% ring is 2.25:1 on #fafafb; 80% is its own
+     high-contrast value and reaches 3.97:1. Tinted surfaces use 100%. */
+  --focus-ring-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
   --link-color: var(--accent-color);
   --link-visited-color: color-mix(in srgb, var(--accent-color) 80%, var(--view-fg-color));
 
@@ -118,6 +150,19 @@
   --shadow-dialog:
     0 0 14px 2px rgb(0 0 6 / 3%), 0 0 5px 2px rgb(0 0 6 / 10%), 0 0 0 1px rgb(0 0 0 / 5%);
   --shadow-toast: 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
+  /* Elevation ladder: card (above) → raised (_toggle-group.scss:82-83) → popover → dialog. */
+  --shadow-raised: 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
+  /* Raised top/bottom toolbars (_toolbars.scss:314-316 / 332-334). */
+  --shadow-top-bar:
+    0 1px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent),
+    0 2px 4px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent);
+  --shadow-bottom-bar:
+    0 -1px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent),
+    0 -2px 4px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent);
+  /* .icon-dropshadow (_common.scss:98-104), -gtk-icon-shadow as a box-shadow. */
+  --shadow-icon:
+    0 1px 12px rgb(0 0 6 / 5%), 0 -1px rgb(0 0 6 / 5%), 1px 0 rgb(0 0 6 / 10%),
+    0 1px rgb(0 0 6 / 30%), -1px 0 rgb(0 0 6 / 10%);
 
   /* ---- Spacing (6px grid, as in Adwaita layouts) ---- */
   --space-1: 6px;
@@ -163,6 +208,60 @@
   :root {
     --border-opacity: 50%;
     --dim-opacity: 90%;
-    --focus-ring-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
+    --shadow-top-bar:
+      0 1px var(--border-color),
+      0 2px 4px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent);
   }
+}
+
+/*
+ * Per-accent tints (CSP-safe: a class instead of an inline style). --tint is the
+ * libadwaita accent; --tint-standalone is its text/icon color on plain
+ * backgrounds, oklab(from accent min(l, .5) a b) / max(l, .85) precomputed
+ * (_colors.scss:145-153, adw_rgba_to_standalone). Use --tint only as a 30%
+ * mix into the window background (AdwBanner), never behind text at 100%.
+ */
+.accent-blue {
+  --tint: var(--accent-blue);
+  --tint-standalone: light-dark(#0461be, #81d0ff);
+}
+
+.accent-teal {
+  --tint: var(--accent-teal);
+  --tint-standalone: light-dark(#007184, #7bdff4);
+}
+
+.accent-green {
+  --tint: var(--accent-green);
+  --tint-standalone: light-dark(#15772e, #8de698);
+}
+
+.accent-yellow {
+  --tint: var(--accent-yellow);
+  --tint-standalone: light-dark(#905300, #ffc057);
+}
+
+.accent-orange {
+  --tint: var(--accent-orange);
+  --tint-standalone: light-dark(#b62200, #ff9c5b);
+}
+
+.accent-red {
+  --tint: var(--accent-red);
+  --tint-standalone: light-dark(#c00023, #ff888c);
+}
+
+.accent-pink {
+  --tint: var(--accent-pink);
+  --tint-standalone: light-dark(#a2326c, #ffa0d8);
+}
+
+.accent-purple {
+  --tint: var(--accent-purple);
+  --tint-standalone: light-dark(#8939a4, #fba7ff);
+}
+
+.accent-slate {
+  --tint: var(--accent-slate);
+  --tint-standalone: light-dark(#526678, #bbd1e5);
 }

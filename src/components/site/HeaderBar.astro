@@ -1,8 +1,9 @@
 ---
 /**
- * Site header styled as a libadwaita AdwHeaderBar: brand on the start side,
- * primary navigation in the middle (wide screens), search + primary menu on the
- * end side. On narrow screens the navigation moves to the bottom bar.
+ * Site header styled as a libadwaita AdwHeaderBar, raised over the content
+ * like a toolbar top bar: brand on the start side, primary navigation (wide
+ * screens), search + main menu on the end side. On narrow screens the primary
+ * destinations are the first items of the main menu.
  */
 import { type Locale, localizePath, useTranslations } from "~/i18n";
 import Icon from "../adw/Icon.astro";
@@ -55,7 +56,7 @@ const nav = primaryNav(locale, Astro.url.pathname);
     z-index: 10;
     background-color: var(--headerbar-bg-color);
     color: var(--headerbar-fg-color);
-    box-shadow: inset 0 -1px var(--headerbar-shade-color);
+    box-shadow: var(--shadow-top-bar);
   }
 
   .headerbar-inner {

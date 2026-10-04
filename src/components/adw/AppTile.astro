@@ -1,0 +1,61 @@
+---
+/**
+ * GNOME app-icon tile (ADR-0014): an image — an official logo, never altered —
+ * centered on a light top face with a darker front profile and the app-icon
+ * drop shadow. Sizes follow the HIG geometry (see .app-tile in adwaita.css).
+ *
+ *   <AppTile src={url} size={64} />
+ *   <AppTile src={url} size={128} narrowSize={96} eager fetchpriority="high" />
+ *
+ * The tile is decorative by default (alt=""), because a name is shown next to
+ * it. Extra attributes go on the wrapper; `imgAttrs` go on the <img> (e.g.
+ * `data-pagefind-meta`).
+ */
+import type { HTMLAttributes } from "astro/types";
+import type { TileSize } from "./app-tile";
+
+type Props = Omit<HTMLAttributes<"span">, "children"> & {
+  src: string;
+  /** Text alternative; "" (default) when the name is already next to the tile. */
+  alt?: string | undefined;
+  size?: TileSize | undefined;
+  /** A smaller tile below 700px viewport width. */
+  narrowSize?: TileSize | undefined;
+  /** Wide logos (wordmarks) use 7/8 of the face width instead of 3/4. */
+  wide?: boolean | undefined;
+  eager?: boolean | undefined;
+  fetchpriority?: "high" | "low" | "auto" | undefined;
+  imgAttrs?: Record<string, string | number | boolean | undefined> | undefined;
+};
+
+const {
+  src,
+  alt = "",
+  size = 64,
+  narrowSize,
+  wide = false,
+  eager = false,
+  fetchpriority,
+  imgAttrs = {},
+  class: className,
+  ...rest
+} = Astro.props;
+// Intrinsic size of the logo box (75% of the face) for layout stability.
+const box = Math.round(size * 0.75);
+---
+
+<span
+  class:list={["app-tile", `size-${size}`, narrowSize && `narrow-${narrowSize}`, { wide }, className]}
+  {...rest}
+>
+  <img
+    src={src}
+    alt={alt}
+    width={wide ? Math.round((size * 7) / 8) : box}
+    height={box}
+    loading={eager ? "eager" : "lazy"}
+    decoding="async"
+    fetchpriority={fetchpriority}
+    {...imgAttrs}
+  />
+</span>

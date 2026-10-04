@@ -1,8 +1,10 @@
 ---
 /**
- * GNOME-style primary menu (the "hamburger" popover in a header bar):
- * style switcher, language, and secondary links. Built on the HTML Popover API,
- * so opening/closing needs no JS; only the style switcher has a tiny module.
+ * GNOME-style primary menu (the "hamburger" popover in a header bar), without
+ * leading icons: on narrow screens the four primary destinations first, then
+ * Releases, Compare and About, then the style switcher and one row that
+ * switches to the other language. Built on the HTML Popover API, so opening and
+ * closing need no JS; only the style switcher has a tiny module.
  */
 import {
   LOCALE_META,
@@ -13,6 +15,7 @@ import {
   useTranslations,
 } from "~/i18n";
 import Icon from "../adw/Icon.astro";
+import { primaryNav, secondaryNav } from "./nav";
 
 interface Props {
   locale: Locale;
@@ -21,11 +24,9 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const basePath = stripLocale(Astro.url.pathname);
-const links = [
-  { href: localizePath("/releases/", locale), label: t("nav.releases"), icon: "update" },
-  { href: localizePath("/compare/", locale), label: t("nav.compare"), icon: "compare" },
-  { href: localizePath("/about/", locale), label: t("nav.about"), icon: "info" },
-];
+const primary = primaryNav(locale, Astro.url.pathname);
+const secondary = secondaryNav(locale, Astro.url.pathname);
+const other = LOCALES.find((l) => l !== locale) ?? locale;
 const themes = [
   { value: "system", label: t("theme.system") },
   { value: "light", label: t("theme.light") },
@@ -43,7 +44,27 @@ const themes = [
 </button>
 
 <div id="main-menu" class="main-menu" popover>
-  <fieldset class="style-switcher">
+  <div class="menu-section menu-primary">
+    {
+      primary.map((item) => (
+        <a class="menu-item" href={item.href} aria-current={item.current ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="menu-section">
+    {
+      secondary.map((item) => (
+        <a class="menu-item" href={item.href} aria-current={item.current ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+  </div>
+
+  <fieldset class="menu-section style-switcher">
     <legend class="visually-hidden">{t("theme.label")}</legend>
     {
       themes.map((theme) => (
@@ -56,33 +77,15 @@ const themes = [
     }
   </fieldset>
 
-  <div class="menu-section" role="group" aria-label={t("language.label")}>
-    {
-      LOCALES.map((l) => (
-        <a
-          class="menu-item"
-          href={localizePath(basePath, l)}
-          hreflang={LOCALE_META[l].htmlLang}
-          lang={LOCALE_META[l].htmlLang}
-          aria-current={l === locale ? "true" : undefined}
-        >
-          <Icon name="language" />
-          <span>{LOCALE_META[l].label}</span>
-          {l === locale && <Icon name="check" class="menu-item-check" />}
-        </a>
-      ))
-    }
-  </div>
-
   <div class="menu-section">
-    {
-      links.map((link) => (
-        <a class="menu-item" href={link.href}>
-          <Icon name={link.icon} />
-          <span>{link.label}</span>
-        </a>
-      ))
-    }
+    <a
+      class="menu-item"
+      href={localizePath(basePath, other)}
+      hreflang={LOCALE_META[other].htmlLang}
+      lang={LOCALE_META[other].htmlLang}
+    >
+      {LOCALE_META[other].label}
+    </a>
   </div>
 </div>
 
@@ -97,7 +100,12 @@ const themes = [
     inset-block-start: calc(var(--headerbar-height) + 4px);
     inset-inline-end: max(var(--gutter), calc((100vw - var(--content-width)) / 2));
     margin: 0;
+    inline-size: max-content;
     min-inline-size: 240px;
+    max-inline-size: calc(100vw - 2 * var(--gutter));
+    max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-2));
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 6px;
     border: 0;
     border-radius: var(--radius-popover);
@@ -108,17 +116,62 @@ const themes = [
 
   .main-menu:popover-open {
     display: grid;
-    gap: 6px;
+  }
+
+  .menu-section {
+    display: grid;
+  }
+
+  /* GtkPopoverMenu separators between sections. */
+  .menu-section + .menu-section {
+    margin-block-start: 6px;
+    padding-block-start: 6px;
+    border-block-start: 1px solid var(--border-color);
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding: 6px 12px;
+    border-radius: var(--radius-menu);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .menu-item:hover {
+    background-color: var(--hover-color);
+    text-decoration: none;
+  }
+
+  .menu-item:active {
+    background-color: var(--active-color);
+  }
+
+  .menu-item[aria-current="page"] {
+    background-color: var(--selected-color);
+    font-weight: 700;
+  }
+
+  .menu-item:focus-visible {
+    outline-offset: -2px;
+    border-radius: var(--radius-menu);
   }
 
   .style-switcher {
     display: flex;
     justify-content: center;
     gap: 18px;
-    margin: 0;
-    padding: 12px 6px 14px;
-    border: 0;
-    border-block-end: 1px solid var(--border-color);
+    min-inline-size: 0;
+    margin-inline: 0;
+    padding-inline: 6px;
+    padding-block-end: 8px;
+    border-inline: 0;
+    border-block-end: 0;
+  }
+
+  .menu-section.style-switcher {
+    padding-block-start: 12px;
   }
 
   .style-option {
@@ -132,6 +185,7 @@ const themes = [
     box-shadow: inset 0 0 0 1px var(--border-color);
   }
 
+  /* The switcher previews each style's window background (#ffffff / #222226). */
   .style-option.system {
     background: linear-gradient(-45deg, #222226 49.99%, #ffffff 50.01%);
   }
@@ -161,7 +215,8 @@ const themes = [
     outline-offset: 3px;
   }
 
-  .style-check {
+  /* Icon renders raw SVG, which carries no scoped-style attribute. */
+  .style-option :global(.style-check) {
     opacity: 0;
     padding: 2px;
     border-radius: 50%;
@@ -174,40 +229,23 @@ const themes = [
     block-size: 18px;
   }
 
-  .style-option:has(input:checked) .style-check {
+  .style-option:has(input:checked) :global(.style-check) {
     opacity: 1;
   }
 
-  .menu-section {
-    display: grid;
-  }
+  @media (min-width: 900px) {
+    .menu-primary {
+      display: none;
+    }
 
-  .menu-section + .menu-section {
-    padding-block-start: 6px;
-    border-block-start: 1px solid var(--border-color);
-  }
+    .menu-primary + .menu-section {
+      margin-block-start: 0;
+      padding-block-start: 0;
+      border-block-start: 0;
+    }
 
-  .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-block-size: 40px;
-    padding: 6px 12px;
-    border-radius: var(--radius-menu);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .menu-item:hover {
-    background-color: var(--hover-color);
-    text-decoration: none;
-  }
-
-  .menu-item:active {
-    background-color: var(--active-color);
-  }
-
-  .menu-item-check {
-    margin-inline-start: auto;
+    .menu-item {
+      min-block-size: 40px;
+    }
   }
 </style>

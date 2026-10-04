@@ -40,7 +40,7 @@ optimized with SVGO (`scripts/assets/svgo.config.mjs`).
 | important | emblem-important | terminal | utilities-terminal |
 | info | dialog-information | time | preferences-system-time |
 | keyboard | input-keyboard | update | software-update-available |
-| | | usb | drive-removable-media |
+| media-playback-pause / -start | media-playback-pause / -start | usb | drive-removable-media |
 | | | utilities | applications-utilities |
 | | | warning | dialog-warning |
 | | | website | web-browser |

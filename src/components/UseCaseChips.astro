@@ -1,0 +1,124 @@
+---
+/**
+ * Use-case shortcuts as one row of pill chips linking to the filtered catalog
+ * (/distros/?use=…). Shared by the home page and the catalog. Wraps on wide
+ * screens; on narrow screens it is one horizontally scrollable row that bleeds
+ * into the page gutter (the page itself never scrolls sideways).
+ *
+ *   <UseCaseChips locale={locale} />                       (home)
+ *   <UseCaseChips locale={locale} active={use} showAll />  (catalog)
+ *
+ * Hooks for scripts: the row has `data-use-chips`; each chip has
+ * `data-use-chip="<use>"` ("" for the "All" chip) and the current one has
+ * aria-current="page".
+ */
+import Chip from "~/components/adw/Chip.astro";
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import { USE_CASES, type UseCase } from "~/lib/taxonomy";
+import { USE_ICONS } from "~/lib/use-icons";
+
+interface Props {
+  locale: Locale;
+  /** The use case currently filtered on, if any. */
+  active?: UseCase | undefined;
+  /** Which use cases to show, in order (default: the 8 most common). */
+  uses?: readonly UseCase[] | undefined;
+  /** Prepend an "All" chip linking to the unfiltered catalog. */
+  showAll?: boolean | undefined;
+  /** Show the Adwaita symbolic icon of each use case (default true). */
+  icons?: boolean | undefined;
+  /** Accessible name of the row (default t("chips.label")). */
+  label?: string | undefined;
+  class?: string | undefined;
+}
+
+const DEFAULT_USES: readonly UseCase[] = [
+  "beginner",
+  "gaming",
+  "developer",
+  "server",
+  "lightweight",
+  "privacy",
+  "security",
+  "creative",
+];
+
+const {
+  locale,
+  active,
+  uses = DEFAULT_USES,
+  showAll = false,
+  icons = true,
+  label,
+  class: className,
+} = Astro.props;
+const t = useTranslations(locale);
+const catalog = localizePath("/distros/", locale);
+---
+
+<nav class:list={["use-chips", className]} aria-label={label ?? t("chips.label")} data-use-chips>
+  <ul role="list">
+    {
+      showAll && (
+        <li>
+          <Chip href={catalog} current={!active} data-use-chip="">
+            {t("chips.all")}
+          </Chip>
+        </li>
+      )
+    }
+    {
+      uses.map((u) => (
+        <li>
+          <Chip
+            href={`${catalog}?use=${u}`}
+            icon={icons ? USE_ICONS[u] : undefined}
+            current={active === u}
+            data-use-chip={u}
+          >
+            {USE_CASES[u][locale]}
+          </Chip>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .use-chips {
+    min-inline-size: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    flex: none;
+  }
+
+  /* Narrow screens: a single scrollable row from edge to edge. The block
+     padding keeps focus rings inside the scroll box. */
+  @media (width < 700px) {
+    .use-chips {
+      margin: -4px calc(-1 * var(--gutter));
+    }
+
+    ul {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-padding-inline: var(--gutter);
+      scrollbar-width: none;
+      padding: 4px var(--gutter);
+    }
+
+    ul::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>

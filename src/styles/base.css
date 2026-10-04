@@ -141,7 +141,7 @@
     background: color-mix(in srgb, var(--accent-bg-color) 30%, transparent);
   }
 
-  /* libadwaita focus ring: 2px, 50% accent, animated in. */
+  /* libadwaita focus ring: 2px accent outline (80% opacity, ADR-0009). */
   :focus-visible {
     outline: 2px solid var(--focus-ring-color);
     outline-offset: 2px;
@@ -257,7 +257,7 @@
 .adw-toast {
   position: fixed;
   inset-inline: 0;
-  inset-block-end: calc(80px + env(safe-area-inset-bottom));
+  inset-block-end: calc(var(--space-4) + env(safe-area-inset-bottom));
   z-index: 50;
   inline-size: fit-content;
   max-inline-size: calc(100vw - 32px);
@@ -279,12 +279,6 @@
 .adw-toast[data-visible] {
   opacity: 1;
   translate: 0 0;
-}
-
-@media (min-width: 900px) {
-  .adw-toast {
-    inset-block-end: 24px;
-  }
 }
 
 /* libadwaita dropdown (AdwComboRow / GtkDropDown look) on a native <select>. */

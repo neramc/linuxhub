@@ -42,13 +42,17 @@ export const en = {
     label: "Language",
   },
   footer: {
-    about: "About Linuxhub",
-    data: "Release data refreshes automatically from official sources.",
+    label: "Site",
+    feed: "RSS",
     trademarks:
       "Distribution names and logos are trademarks of their respective owners and are used only to identify the projects.",
     license: "Text is available under CC BY-SA 4.0; code under the MIT License.",
     rss: "Release feed (RSS)",
     source: "Source code",
+  },
+  chips: {
+    label: "Find by purpose",
+    all: "All",
   },
   common: {
     loading: "Loading…",

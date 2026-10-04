@@ -12,7 +12,7 @@ export const ko: DictionaryShape = {
     home: "홈",
     distros: "배포판",
     learn: "리눅스 가이드",
-    finder: "배포판 찾기",
+    finder: "배포판 추천",
     family: "계보",
     releases: "릴리스 소식",
     compare: "비교",
@@ -41,13 +41,17 @@ export const ko: DictionaryShape = {
     label: "언어",
   },
   footer: {
-    about: "Linuxhub 소개",
-    data: "릴리스 정보는 공식 소스에서 자동으로 갱신됩니다.",
+    label: "사이트",
+    feed: "RSS",
     trademarks:
       "배포판 이름과 로고는 각 소유자의 상표이며, 해당 프로젝트를 알리는 용도로만 사용합니다.",
     license: "글은 CC BY-SA 4.0, 코드는 MIT 라이선스를 따릅니다.",
     rss: "릴리스 피드 (RSS)",
     source: "소스 코드",
+  },
+  chips: {
+    label: "용도별로 찾기",
+    all: "전체",
   },
   common: {
     loading: "불러오는 중…",
@@ -66,7 +70,7 @@ export const ko: DictionaryShape = {
     title: "나에게 맞는 리눅스를 찾아보세요",
     lead: "인기 배포판을 둘러보고, 가장 가까운 공식 미러에서 내려받고, 단계별 설치 가이드를 따라 설치하세요.",
     browse: "배포판 둘러보기",
-    finder: "배포판 찾기 시작",
+    finder: "추천받기",
     featured: "추천 배포판",
     featuredLead: "처음 시작하기 좋고 지원이 탄탄한 배포판입니다.",
     byUse: "용도별로 찾기",
@@ -224,7 +228,7 @@ export const ko: DictionaryShape = {
     start: "처음부터 읽기",
   },
   finder: {
-    title: "배포판 찾기",
+    title: "배포판 추천",
     lead: "몇 가지 질문에 답하면 잘 맞는 배포판을 이유와 함께 추천해 드립니다.",
     q: {
       experience: "리눅스를 얼마나 써 보셨나요?",
@@ -277,7 +281,7 @@ export const ko: DictionaryShape = {
     restart: "다시 하기",
     compare: "추천 결과 비교하기",
     noscript:
-      "배포판 찾기는 JavaScript가 필요합니다. 배포판 목록에서 용도·계열·데스크톱으로 직접 골라 볼 수도 있습니다.",
+      "배포판 추천은 JavaScript가 필요합니다. 배포판 목록에서 용도·계열·데스크톱으로 직접 골라 볼 수도 있습니다.",
   },
   compare: {
     title: "배포판 비교",
