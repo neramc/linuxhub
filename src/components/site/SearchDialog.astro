@@ -3,6 +3,11 @@
  * Site search (Ctrl/⌘+K, "/" or the header search button): an Adwaita dialog
  * over Pagefind's static index. Pagefind's JS (~30 KB) and the index chunks
  * load only when the dialog first opens.
+ *
+ * Results are grouped by page type (the `type` Pagefind meta set on each
+ * page's body root): distributions show their app tile, name and tagline
+ * (`tagline` / `image` meta from the detail page), install guides and Linux
+ * guide chapters show their title and a one-line excerpt.
  */
 import { type Locale, useTranslations } from "~/i18n";
 import Icon from "../adw/Icon.astro";
@@ -17,6 +22,12 @@ const labels = {
   noResults: t("search.noResults", { query: "{query}" }),
   loading: t("search.loading"),
   results: t("search.results", { count: "{count}" }),
+  groups: {
+    distro: t("search.groups.distro"),
+    install: t("search.groups.install"),
+    guide: t("search.groups.guide"),
+    other: t("search.groups.other"),
+  },
 };
 ---
 
@@ -30,17 +41,20 @@ const labels = {
         placeholder={t("search.placeholder")}
         autocomplete="off"
         spellcheck="false"
+        enterkeyhint="search"
         aria-label={t("search.placeholder")}
         aria-controls="search-results"
         data-search-input
       />
     </label>
-    <button class="adw-button flat image-button" value="close" aria-label={t("search.close")} title={t("search.close")}>
+    <button class="adw-button flat image-button circular" value="close" aria-label={t("search.close")} title={t("search.close")}>
       <Icon name="close" />
     </button>
   </form>
   <p class="search-status caption dim-label" data-search-status aria-live="polite">{t("search.hint")}</p>
-  <ul id="search-results" class="search-results" role="list" data-search-results></ul>
+  <div id="search-results" class="search-results" data-search-results></div>
+  <template data-search-icon="guide"><span class="result-icon"><Icon name="dictionary" size={20} /></span></template>
+  <template data-search-icon="other"><span class="result-icon"><Icon name="document" size={20} /></span></template>
 </dialog>
 
 <script>
@@ -50,7 +64,7 @@ const labels = {
 <style>
   .search-dialog {
     inline-size: min(640px, calc(100vw - 24px));
-    max-block-size: min(70vh, 640px);
+    max-block-size: min(72vh, 640px);
     margin: 10vh auto auto;
     padding: 0;
     border: 0;
@@ -72,6 +86,7 @@ const labels = {
 
   .search-head {
     display: flex;
+    align-items: center;
     gap: 6px;
     padding: 10px;
     border-block-end: 1px solid var(--border-color);
@@ -82,6 +97,7 @@ const labels = {
     display: flex;
     align-items: center;
     gap: 10px;
+    min-inline-size: 0;
     padding-inline: 12px;
     border-radius: var(--radius-button);
     background: var(--button-color);
@@ -89,6 +105,11 @@ const labels = {
 
   .search-entry:focus-within {
     outline: 2px solid var(--focus-ring-color);
+    outline-offset: 1px;
+  }
+
+  .search-entry :global(.adw-icon) {
+    opacity: var(--dim-opacity);
   }
 
   .search-entry input {
@@ -101,43 +122,117 @@ const labels = {
     font-size: 1.0625rem;
   }
 
+  /* The dialog's own close button is the only "×". */
+  .search-entry input::-webkit-search-cancel-button,
+  .search-entry input::-webkit-search-decoration {
+    appearance: none;
+    display: none;
+  }
+
+  .search-head .adw-button {
+    flex: none;
+    min-block-size: 40px;
+    min-inline-size: 40px;
+  }
+
   .search-status {
-    padding: 10px 16px 0;
+    padding: 10px 18px 0;
+  }
+
+  .search-status:empty {
+    display: none;
   }
 
   .search-results {
-    list-style: none;
-    margin: 0;
-    padding: 8px;
+    display: grid;
+    gap: var(--space-2);
+    padding: 8px 8px 12px;
     overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .search-results:empty {
+    display: none;
+  }
+
+  .search-results :global(.search-group) {
+    display: grid;
+    gap: 2px;
+  }
+
+  .search-results :global(.search-group-title) {
+    padding: 4px 10px;
+    font-size: var(--text-caption);
+    font-weight: 700;
+    opacity: var(--dim-opacity);
+  }
+
+  .search-results :global(ul) {
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .search-results :global(a) {
-    display: grid;
-    gap: 2px;
-    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: 54px;
+    padding: 8px 10px;
     border-radius: var(--radius-menu);
     color: inherit;
     text-decoration: none;
   }
 
-  .search-results :global(a:hover),
-  .search-results :global(a[aria-selected="true"]) {
+  .search-results :global(a:hover) {
     background: var(--hover-color);
+  }
+
+  .search-results :global(a:active) {
+    background: var(--active-color);
+  }
+
+  .search-results :global(a:focus-visible) {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: -2px;
+    background: var(--hover-color);
+  }
+
+  .search-results :global(.result-icon) {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: 36px;
+    block-size: 36px;
+    opacity: var(--dim-opacity);
+  }
+
+  .search-results :global(.result-text) {
+    display: grid;
+    min-inline-size: 0;
+    gap: 1px;
   }
 
   .search-results :global(.result-title) {
     font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .search-results :global(.result-excerpt) {
+  .search-results :global(.result-subtitle) {
     font-size: var(--text-caption);
     opacity: var(--dim-opacity);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .search-results :global(mark) {
-    background: color-mix(in srgb, var(--accent-bg-color) 25%, transparent);
+    background: none;
     color: inherit;
-    border-radius: 3px;
+    font-weight: 700;
   }
 </style>

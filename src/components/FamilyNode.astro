@@ -16,7 +16,7 @@ const kids = childrenOf.get(distro.id) ?? [];
 
 <li>
   <a class="node" href={localizePath(`/distros/${distro.id}/`, locale)}>
-    <DistroLogo file={distro.data.logo.file} name={distro.data.name} size={28} />
+    <DistroLogo file={distro.data.logo.file} name={distro.data.name} size={24} />
     <span class="node-name">{distro.data.name}</span>
     <span class="node-year caption dim-label">{distro.data.origin.firstRelease.slice(0, 4)}</span>
   </a>

@@ -1,13 +1,18 @@
 ---
-import Button from "~/components/adw/Button.astro";
-import Icon from "~/components/adw/Icon.astro";
 /**
  * Catalog: every distro as a Flathub-style card. All cards are in the HTML
  * (works without JS); src/scripts/catalog-filter.ts filters/sorts them in
  * place and mirrors the state in the URL (?use=&family=&desktop=&model=&level=&sort=&q=).
+ *
+ * One toolbar row (ADR-0014): search entry, a "Filters" disclosure (native
+ * <details> holding the five facet dropdowns and the sort as combo rows) and
+ * the result count; the use-case chip row sits above the grid.
  */
+import Button from "~/components/adw/Button.astro";
+import Icon from "~/components/adw/Icon.astro";
 import StatusPage from "~/components/adw/StatusPage.astro";
 import DistroCard from "~/components/DistroCard.astro";
+import UseCaseChips from "~/components/UseCaseChips.astro";
 import { localePaths, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { featuredRelease, getDistros, getReleases } from "~/lib/catalog";
@@ -28,11 +33,14 @@ const usedDesktops = [...new Set(distros.flatMap((d) => d.data.desktops))].filte
   (k) => k !== "none",
 );
 const usedFamilies = [...new Set(distros.map((d) => d.data.family))];
-const filters = [
+const usedUses = new Set(distros.flatMap((d) => d.data.useCases));
+const facets = [
   {
     name: "use",
     label: t("catalog.use"),
-    options: Object.keys(USE_CASES).map((k) => [k, USE_CASES[k as keyof typeof USE_CASES][locale]]),
+    options: Object.keys(USE_CASES)
+      .filter((k) => usedUses.has(k as never))
+      .map((k) => [k, USE_CASES[k as keyof typeof USE_CASES][locale]]),
   },
   {
     name: "family",
@@ -65,43 +73,65 @@ const filters = [
     ]),
   },
 ] as const;
+const sort = {
+  name: "sort",
+  label: t("catalog.sort"),
+  any: t("catalog.sortRecommended"),
+  options: [
+    ["name", t("catalog.sortName")],
+    ["updated", t("catalog.sortUpdated")],
+  ],
+} as const;
+// Two boxed lists side by side on wide screens: three facets, then two + sort.
+const lists = [
+  facets.slice(0, 3).map((f) => ({ ...f, any: t("catalog.any") })),
+  [...facets.slice(3).map((f) => ({ ...f, any: t("catalog.any") })), sort],
+];
 ---
 
 <Base locale={locale} title={t("catalog.title")} description={t("catalog.lead", { count: distros.length })}>
   <div class="container page">
-    <header class="page-header">
-      <h1>{t("catalog.title")}</h1>
-      <p class="dim-label">{t("catalog.lead", { count: distros.length })}</p>
-    </header>
+    <h1>{t("catalog.title")}</h1>
 
     <form class="filters" data-filters role="search" aria-label={t("catalog.filter")}>
-      <label class="search-field">
+      <label class="search-entry">
         <Icon name="search" />
         <input type="search" name="q" placeholder={t("catalog.search")} autocomplete="off" aria-label={t("catalog.search")} />
       </label>
-      <div class="filter-row">
-        {
-          filters.map((f) => (
-            <label class="filter">
-              <span class="caption-heading dim-label">{f.label}</span>
-              <select name={f.name} class="combo-select">
-                <option value="">{t("catalog.any")}</option>
-                {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
-              </select>
-            </label>
-          ))
-        }
-        <label class="filter">
-          <span class="caption-heading dim-label">{t("catalog.sort")}</span>
-          <select name="sort" class="combo-select">
-            <option value="">{t("catalog.sortRecommended")}</option>
-            <option value="name">{t("catalog.sortName")}</option>
-            <option value="updated">{t("catalog.sortUpdated")}</option>
-          </select>
-        </label>
-      </div>
-      <p class="caption dim-label" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
+      <details class="filter-menu" data-filter-panel>
+        <summary class="adw-button image-text-button" data-active-label={t("catalog.activeFilters", { count: "{count}" })}>
+          <span>{t("catalog.filter")}</span>
+          <span class="adw-badge accent numeric" data-filter-count hidden aria-hidden="true"></span>
+          <span class="visually-hidden" data-filter-count-label></span>
+          <Icon name="pan-down" class="filter-arrow" />
+        </summary>
+        <div class="filter-panel">
+          {
+            lists.map((rows) => (
+              <ul class="adw-boxed-list" role="list">
+                {rows.map((f) => (
+                  <li>
+                    <label class="adw-action-row">
+                      <span class="adw-row-text">
+                        <span class="adw-row-title">{f.label}</span>
+                      </span>
+                      <select name={f.name} class="combo-select">
+                        <option value="">{f.any}</option>
+                        {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
+                      </select>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            ))
+          }
+        </div>
+      </details>
+      <Button variant="flat" icon="refresh" class="reset" data-reset data-reset-row hidden>{t("catalog.reset")}</Button>
+      <p class="count caption dim-label numeric" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
     </form>
+
+    <UseCaseChips locale={locale} showAll class="chips" />
 
     <ul class="grid" role="list" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
       {
@@ -139,67 +169,145 @@ const filters = [
 <style>
   .page {
     display: grid;
-    gap: var(--space-4);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
     padding-block: var(--space-4) var(--space-6);
   }
 
-  .page-header {
-    display: grid;
-    gap: 6px;
-  }
-
+  /* Toolbar: search entry · Filters · count. The <details> box is dissolved
+     (display: contents) so its summary sits in the row and its panel wraps
+     onto a full-width line of its own below it. */
   .filters {
-    display: grid;
-    gap: var(--space-2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 var(--space-2);
   }
 
-  .search-field {
+  .search-entry {
+    flex: 0 1 28rem;
     display: flex;
     align-items: center;
     gap: 10px;
-    max-inline-size: 28rem;
+    min-inline-size: 0;
     min-block-size: 40px;
     padding-inline: 12px;
     border-radius: var(--radius-button);
-    background: var(--button-color);
+    background-color: var(--button-color);
   }
 
-  .search-field:focus-within {
+  .search-entry:focus-within {
     outline: 2px solid var(--focus-ring-color);
+    outline-offset: 1px;
   }
 
-  .search-field input {
+  .search-entry input {
     flex: 1;
     min-inline-size: 0;
+    block-size: 40px;
     border: 0;
     background: transparent;
     outline: none;
-    block-size: 40px;
   }
 
-  .filter-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
+  .search-entry :global(.adw-icon) {
+    opacity: var(--dim-opacity);
   }
 
-  .filter {
+  .filter-menu {
+    display: contents;
+  }
+
+  .filter-menu::details-content {
+    order: 10;
+    flex-basis: 100%;
+  }
+
+  .filter-menu > summary {
+    order: 2;
+    min-block-size: 40px;
+    gap: 8px;
+    padding-inline: 14px 12px;
+    list-style: none;
+  }
+
+  .filter-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* An open menu button shows the checked toggle color (GtkMenuButton). */
+  .filter-menu[open] > summary {
+    background-color: var(--button-checked-color);
+  }
+
+  .filter-menu .adw-badge {
+    min-inline-size: 24px;
+    justify-content: center;
+    padding-inline: 7px;
+  }
+
+  .filter-menu :global(.filter-arrow) {
+    transition: transform var(--duration) var(--ease-out-quad);
+  }
+
+  .filter-menu[open] :global(.filter-arrow) {
+    transform: rotate(180deg);
+  }
+
+  .count {
+    order: 3;
+    margin-inline-start: auto;
+    padding-block: 10px;
+    white-space: nowrap;
+  }
+
+  .filter-panel {
     display: grid;
-    gap: 4px;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
   }
 
-  .filter .combo-select {
-    max-inline-size: none;
-    min-inline-size: 9rem;
+  .filter-panel .adw-action-row {
+    cursor: pointer;
+  }
+
+  .filter-panel .combo-select {
+    flex: none;
+    inline-size: 12.5rem;
+    max-inline-size: 60%;
+  }
+
+  .reset {
+    order: 2;
+    min-block-size: 40px;
+  }
+
+  @media (width >= 700px) {
+    .filter-panel {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   .grid {
     display: grid;
     gap: var(--space-2);
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    margin-block-start: var(--space-1);
   }
 
   .grid > li[hidden] {
     display: none;
+  }
+
+  @media (width < 700px) {
+    .search-entry {
+      flex: 1 1 14rem;
+    }
+
+    .count {
+      padding-block: 6px 0;
+    }
   }
 </style>

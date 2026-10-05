@@ -1,6 +1,11 @@
 ---
+/**
+ * "At a glance" facts for a distro (ADR-0014): an Adwaita boxed list of
+ * property rows with the key facts visible and the rest in a "More details"
+ * expander row (native <details>, so it ships in the HTML for search and
+ * SEO). Under the list, when the release data was last updated.
+ */
 import { type Locale, localizePath, useTranslations } from "~/i18n";
-/** "At a glance" facts for a distro, as an Adwaita boxed list of property rows. */
 import type { Distro } from "~/lib/catalog";
 import { featuredRelease, formatDate } from "~/lib/catalog";
 import type { ReleasesFile } from "~/lib/data-schemas";
@@ -12,9 +17,11 @@ import {
   INSTALLERS,
   RELEASE_MODELS,
   SECURE_BOOT,
+  USE_CASES,
 } from "~/lib/taxonomy";
 import ActionRow from "./adw/ActionRow.astro";
 import BoxedList from "./adw/BoxedList.astro";
+import ExpanderRow from "./adw/ExpanderRow.astro";
 
 interface Props {
   distro: Distro;
@@ -29,13 +36,9 @@ const t = useTranslations(locale);
 const release = featuredRelease(releases);
 const regions = new Intl.DisplayNames([locale], { type: "region" });
 const country =
-  d.origin.country === "INT"
-    ? locale === "ko"
-      ? "국제 커뮤니티"
-      : "International"
-    : regions.of(d.origin.country);
+  d.origin.country === "INT" ? t("facts.international") : regions.of(d.origin.country);
 const year = d.origin.firstRelease.slice(0, 4);
-const latestSubtitle = release
+const latestSuffix = release
   ? release.channel === "rolling"
     ? t("facts.rolling")
     : release.releaseDate
@@ -43,43 +46,98 @@ const latestSubtitle = release
       : undefined
   : undefined;
 const list = (items: string[]) => items.join(" · ");
+const catalog = localizePath("/distros/", locale);
+const upstream = base?.data.name ?? d.upstream;
+
+// The date the data was last updated: synced release data when there is some,
+// otherwise the editorial review date of the catalog entry.
+const stamp = releases
+  ? { key: "facts.dataUpdated" as const, iso: releases.updated }
+  : { key: "facts.reviewed" as const, iso: d.lastReviewed };
+const [stampBefore, stampAfter] = t(stamp.key, { date: "\u0000" }).split("\u0000");
 ---
 
-<BoxedList title={t("distro.facts")} level={2}>
-  {
-    release && (
-      <ActionRow title={release.codename ? `${release.version} “${release.codename}”` : release.version} subtitle={t("facts.latest")} property>
-        {latestSubtitle && <span class="caption dim-label">{latestSubtitle}</span>}
-      </ActionRow>
-    )
-  }
-  {release?.eol && <ActionRow title={formatDate(release.eol, locale) ?? ""} subtitle={t("facts.eol")} property />}
-  <ActionRow
-    title={base ? `${FAMILIES[d.family][locale]} · ${base.data.name}` : d.upstream ? `${FAMILIES[d.family][locale]} · ${d.upstream}` : FAMILIES[d.family][locale]}
-    subtitle={base || d.upstream ? `${t("facts.family")} · ${t("facts.basedOn")}` : t("facts.family")}
-    property
-    href={base ? localizePath(`/distros/${base.id}/`, locale) : undefined}
-  />
-  <ActionRow title={RELEASE_MODELS[d.releaseModel][locale]} subtitle={t("facts.releaseModel")} property />
-  <ActionRow title={DESKTOPS[d.desktops[0] ?? "none"][locale]} subtitle={t("facts.desktop")} property>
-    {d.desktops.length > 1 && <span class="caption dim-label row-extra">{t("facts.otherDesktops")}: {list(d.desktops.slice(1).map((x) => DESKTOPS[x][locale]))}</span>}
-  </ActionRow>
-  <ActionRow title={list(d.packageManagers)} subtitle={t("facts.packages")} property />
-  <ActionRow title={INSTALLERS[d.installer][locale]} subtitle={t("facts.installer")} property />
-  <ActionRow title={list(d.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0] ?? a))} subtitle={t("facts.architectures")} property />
-  <ActionRow title={SECURE_BOOT[d.secureBoot][locale]} subtitle={t("facts.secureBoot")} property />
-  <ActionRow
-    title={t("facts.requirementsValue", { ram: d.requirements.ramGB, disk: d.requirements.diskGB })}
-    subtitle={t("facts.requirements")}
-    property
-  />
-  <ActionRow title={DIFFICULTIES[d.difficulty][locale]} subtitle={t("facts.difficulty")} property />
-  <ActionRow title={t("facts.originValue", { country: country ?? d.origin.country, year })} subtitle={t("facts.origin")} property />
-</BoxedList>
+<div class="facts">
+  <BoxedList title={t("distro.facts")} level={2}>
+    {
+      release && (
+        <ActionRow title={release.codename ? `${release.version} “${release.codename}”` : release.version} subtitle={t("facts.latest")} property>
+          {latestSuffix && <span class="caption dim-label row-extra">{latestSuffix}</span>}
+        </ActionRow>
+      )
+    }
+    {release?.eol && <ActionRow title={formatDate(release.eol, locale) ?? ""} subtitle={t("facts.eol")} property />}
+    <ActionRow
+      title={upstream ? `${FAMILIES[d.family][locale]} · ${upstream}` : FAMILIES[d.family][locale]}
+      subtitle={upstream ? `${t("facts.family")} · ${t("facts.basedOn")}` : t("facts.family")}
+      property
+      href={base ? localizePath(`/distros/${base.id}/`, locale) : `${catalog}?family=${d.family}`}
+    />
+    <ActionRow title={DESKTOPS[d.desktops[0] ?? "none"][locale]} subtitle={t("facts.desktop")} property />
+    <ActionRow title={list(d.packageManagers)} subtitle={t("facts.packages")} property />
+    <ActionRow title={INSTALLERS[d.installer][locale]} subtitle={t("facts.installer")} property />
+    <ActionRow title={list(d.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0] ?? a))} subtitle={t("facts.architectures")} property />
+    <ActionRow
+      title={t("facts.requirementsValue", { ram: d.requirements.ramGB, disk: d.requirements.diskGB })}
+      subtitle={t("facts.requirements")}
+      property
+    />
+    <ExpanderRow title={t("facts.more")}>
+      <ul class="nested-rows" role="list">
+        <ActionRow title={RELEASE_MODELS[d.releaseModel][locale]} subtitle={t("facts.releaseModel")} property />
+        {
+          d.desktops.length > 1 && (
+            <ActionRow title={list(d.desktops.slice(1).map((x) => DESKTOPS[x][locale]))} subtitle={t("facts.otherDesktops")} property />
+          )
+        }
+        <ActionRow title={SECURE_BOOT[d.secureBoot][locale]} subtitle={t("facts.secureBoot")} property />
+        <ActionRow title={DIFFICULTIES[d.difficulty][locale]} subtitle={t("facts.difficulty")} property />
+        <ActionRow title={t("facts.originValue", { country: country ?? d.origin.country, year })} subtitle={t("facts.origin")} property />
+        <li class="adw-row-item">
+          <div class="adw-action-row property">
+            <span class="adw-row-text">
+              <span class="adw-row-title use-links">
+                {d.useCases.map((u) => <a href={`${catalog}?use=${u}`}>{USE_CASES[u][locale]}</a>)}
+              </span>
+              <span class="adw-row-subtitle">{t("facts.useCases")}</span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </ExpanderRow>
+  </BoxedList>
+  <p class="caption dim-label stamp">
+    {stampBefore}<time datetime={stamp.iso}>{formatDate(stamp.iso, locale)}</time>{stampAfter}
+  </p>
+</div>
 
 <style>
+  .facts {
+    display: grid;
+    gap: var(--space-1);
+  }
+
   .row-extra {
     max-inline-size: 14rem;
     text-align: end;
+  }
+
+  /* Rows nested in the expander sit flush in its inset area (AdwExpanderRow). */
+  .nested-rows {
+    margin: calc(-1 * var(--space-2)) -14px;
+  }
+
+  .nested-rows > :global(li + li) {
+    border-block-start: 1px solid var(--card-shade-color);
+  }
+
+  .use-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
+  }
+
+  .stamp {
+    padding-inline: 2px;
   }
 </style>

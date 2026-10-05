@@ -1,0 +1,263 @@
+---
+/**
+ * "Popular today" banner carousel at the top of the home page (ADR-0013,
+ * ADR-0014): the top 5 distros by yesterday's English Wikipedia pageviews, or
+ * editorial picks without ranks before the first popularity sync. Each slide
+ * is tinted with the libadwaita accent nearest to the distro's logo color
+ * (30% into the window background, like AdwBanner) and shows the logo on a
+ * 160px app tile, the name, tagline, latest version and two actions.
+ */
+import Button from "~/components/adw/Button.astro";
+import Carousel from "~/components/adw/Carousel.astro";
+import Icon from "~/components/adw/Icon.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import { brandAccent } from "~/lib/brand-accent";
+import { featuredRelease, formatDate, getReleases, type TodaysDistros } from "~/lib/catalog";
+import { addDays } from "~/lib/popularity";
+
+interface Props {
+  locale: Locale;
+  /** From getTodaysDistros() (the page also uses it to avoid repeating these distros). */
+  today: TodaysDistros;
+}
+
+const { locale, today } = Astro.props;
+const t = useTranslations(locale);
+
+const slides = await Promise.all(
+  today.items.map(async (distro, i) => {
+    const release = featuredRelease(await getReleases(distro.id));
+    return {
+      slug: distro.id,
+      name: distro.data.name,
+      tagline: distro.data.tagline[locale],
+      logo: distro.data.logo.file,
+      accent: await brandAccent(distro.data.logo.file, distro.data.logo.accent),
+      rank: today.ranked ? i + 1 : undefined,
+      version: release?.version,
+      date: release?.releaseDate ?? null,
+      href: localizePath(`/distros/${distro.id}/`, locale),
+    };
+  }),
+);
+
+// "By English Wikipedia pageviews yesterday" — or the date, when the build is
+// not the day after the counted day.
+const day = today.day;
+const yesterday = addDays(new Date().toISOString().slice(0, 10), -1);
+const dayText =
+  day === yesterday
+    ? t("home.popular.yesterday")
+    : t("home.popular.onDay", { date: formatDate(day ?? null, locale) ?? "" });
+const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}");
+---
+
+<Carousel
+  id="popular"
+  class="popular"
+  title={t(today.ranked ? "home.popular.title" : "home.popular.picks")}
+  count={slides.length}
+  locale={locale}
+>
+  {
+    today.ranked && day && (
+      <p slot="caption" class="caption basis">
+        <span class="dim-label">{basisBefore}<time datetime={day}>{dayText}</time>{basisAfter}</span>
+        <span class="dim-label separator" aria-hidden="true">·</span>
+        <a href={`${localizePath("/about/", locale)}#popularity`}>{t("home.popular.about")}</a>
+      </p>
+    )
+  }
+  {
+    slides.map((s, i) => (
+      <div
+        class={`slide accent-${s.accent}`}
+        role="group"
+        aria-roledescription={t("carousel.slide")}
+        aria-labelledby={`slide-${s.slug}-name`}
+        data-name={s.name}
+        data-slug={s.slug}
+      >
+        <div class="slide-text">
+          {s.rank && (
+            <p class="slide-rank">
+              <Icon name="star" />
+              {t("home.popular.rank", { rank: s.rank })}
+            </p>
+          )}
+          <h3 class="slide-name" id={`slide-${s.slug}-name`}>
+            {s.name}
+          </h3>
+          <p class="slide-tagline">{s.tagline}</p>
+          {s.version && (
+            <p class="slide-meta">
+              {t("home.popular.latest", { version: s.version })}
+              {s.date && (
+                <>
+                  {" · "}
+                  <time datetime={s.date}>{formatDate(s.date, locale, "medium")}</time>
+                </>
+              )}
+            </p>
+          )}
+          <div class="slide-actions">
+            <Button href={s.href} pill>
+              {t("common.learnMore")}
+              <span class="visually-hidden">: {s.name}</span>
+            </Button>
+            <Button href={`${s.href}#download`} variant="suggested" pill icon="download">
+              {t("distro.download")}
+              <span class="visually-hidden">: {s.name}</span>
+            </Button>
+          </div>
+        </div>
+        <DistroLogo
+          file={s.logo}
+          name={s.name}
+          size={160}
+          class="slide-tile"
+          eager
+          fetchpriority={i === 0 ? "high" : undefined}
+        />
+      </div>
+    ))
+  }
+</Carousel>
+
+<style>
+  .basis {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.4em;
+  }
+
+  /* Narrow screens: the link may wrap; no dangling separator then. */
+  @media (width < 700px) {
+    .basis {
+      column-gap: 0.75em;
+    }
+
+    .separator {
+      display: none;
+    }
+  }
+
+  /* A tinted banner (AdwBanner: accent 30% into the window background) with
+     the normal window text: ≥ 8.9:1 in light and dark. No dimmed text on tints. */
+  .slide {
+    --focus-ring-color: var(--accent-color); /* 80% would be < 3:1 on light tints (ADR-0009) */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-5);
+    min-block-size: 300px;
+    padding: var(--space-5) var(--carousel-arrow-room);
+    background-color: color-mix(in srgb, var(--tint) 30%, var(--window-bg-color));
+    color: var(--window-fg-color);
+  }
+
+  .slide-text {
+    display: grid;
+    justify-items: start;
+    min-inline-size: 0;
+  }
+
+  .slide-rank {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-caption);
+    font-weight: 700;
+  }
+
+  .slide-rank :global(.adw-icon) {
+    color: var(--tint-standalone); /* non-text, ≥ 3.8:1 on every tint */
+  }
+
+  .slide-name {
+    margin-block: 4px 6px;
+    font-size: var(--text-title-1);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  .slide-tagline {
+    max-inline-size: 36rem;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .slide-meta {
+    margin-block-start: 6px;
+    font-size: var(--text-caption);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .slide-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+  }
+
+  /* HIG app-icon geometry at 160 / 128 / 96px (face / front / radius / logo). */
+  .slide :global(.app-tile.slide-tile) {
+    --tile-size: 160px;
+    --tile-depth: 5px;
+    --tile-radius: 12px;
+    --tile-logo: 120px;
+    margin-inline-end: var(--space-2);
+  }
+
+  @media (width < 900px) {
+    .slide :global(.app-tile.slide-tile) {
+      --tile-size: 128px;
+      --tile-depth: 4px;
+      --tile-radius: 10px;
+      --tile-logo: 96px;
+    }
+  }
+
+  @media (width < 700px) {
+    .slide {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      align-content: start;
+      gap: var(--space-2);
+      min-block-size: 0;
+      padding: var(--space-4) var(--carousel-arrow-room);
+      text-align: center;
+    }
+
+    .slide-text {
+      justify-items: center;
+    }
+
+    .slide-name {
+      font-size: var(--text-title-2);
+    }
+
+    .slide-tagline {
+      -webkit-line-clamp: 3;
+    }
+
+    .slide-actions {
+      justify-content: center;
+    }
+
+    .slide :global(.app-tile.slide-tile) {
+      --tile-size: 96px;
+      --tile-depth: 3px;
+      --tile-radius: 7px;
+      --tile-logo: 72px;
+      order: -1;
+      margin: 0;
+    }
+  }
+</style>

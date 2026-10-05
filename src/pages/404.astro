@@ -1,7 +1,7 @@
 ---
 /**
  * Vercel serves /404.html for unknown paths in every locale. The page is in
- * Korean with an English line; the language switch still works.
+ * Korean with a small English line and link; the language switch still works.
  */
 import Button from "~/components/adw/Button.astro";
 import StatusPage from "~/components/adw/StatusPage.astro";
@@ -16,9 +16,11 @@ const en = useTranslations("en");
   <div class="container">
     <StatusPage icon="search" title={t("notFound.title")} description={t("notFound.description")}>
       <Button href="/" variant="suggested" pill>{t("notFound.home")}</Button>
-      <Button href="/en/" pill lang="en">{en("notFound.home")}</Button>
     </StatusPage>
-    <p class="caption dim-label en-note" lang="en">{en("notFound.title")} — {en("notFound.description")}</p>
+    <p class="caption en-note" lang="en">
+      <span class="dim-label">{en("notFound.title")} ·</span>{" "}
+      <a href="/en/" hreflang="en">{en("notFound.home")}</a>
+    </p>
   </div>
 </Base>
 

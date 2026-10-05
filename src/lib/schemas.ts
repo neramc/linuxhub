@@ -12,6 +12,23 @@ import {
   USE_CASES,
 } from "./taxonomy";
 
+/**
+ * libadwaita's nine accent colors (AdwAccentColor, _colors.scss), in palette
+ * order. Brand tints (src/lib/brand-accent.ts) are always one of these.
+ */
+export const ACCENTS = [
+  "blue",
+  "teal",
+  "green",
+  "yellow",
+  "orange",
+  "red",
+  "pink",
+  "purple",
+  "slate",
+] as const;
+export type Accent = (typeof ACCENTS)[number];
+
 const url = z.url({ protocol: /^https$/ });
 const localized = z.object({ ko: z.string().min(1), en: z.string().min(1) });
 /** YAML turns bare dates into Date objects and bare years into numbers. */
@@ -78,6 +95,11 @@ export const distroSchema = z.object({
     source: url,
     license: z.string(),
     trademark: url.optional(),
+    /**
+     * Editorial override for the brand tint (ADR-0014). Normally derived from
+     * the logo's dominant color at build time; set only when that guess is off.
+     */
+    accent: z.enum(ACCENTS).optional(),
   }),
   download: z.object({
     strategy: z.enum(keysOf(DOWNLOAD_STRATEGIES)),

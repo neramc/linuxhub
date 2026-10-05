@@ -1,8 +1,9 @@
 ---
 import { render } from "astro:content";
+import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
+import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import StatusPage from "~/components/adw/StatusPage.astro";
-import ViewSwitcher from "~/components/adw/ViewSwitcher.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import DocSources from "~/components/DocSources.astro";
 import { mdxComponents } from "~/components/mdx";
@@ -48,7 +49,7 @@ const jsonLd = doc
 ---
 
 <Base locale={locale} title={title} description={doc?.data.description ?? t("install.description", { name: d.name })} mono jsonLd={jsonLd} image={`/og/${slug}.png`}>
-  <div class="container page" data-pagefind-body>
+  <div class="container page" data-pagefind-body data-pagefind-meta="type:install">
     <nav class="breadcrumb caption" aria-label="Breadcrumb" data-pagefind-ignore>
       <a href={localizePath("/distros/", locale)}>{t("distro.breadcrumb")}</a>
       <span aria-hidden="true">/</span>
@@ -57,18 +58,9 @@ const jsonLd = doc
       <span aria-current="page">{t("distro.installGuide")}</span>
     </nav>
 
-    <ViewSwitcher
-      data-pagefind-ignore
-      label={d.name}
-      items={[
-        { href: distroHref, label: t("distro.overview"), icon: "info" },
-        { href: localizePath(`/distros/${slug}/install/`, locale), label: t("distro.installGuide"), icon: "contents", current: true },
-      ]}
-    />
-
     <header class="doc-header">
-      <DistroLogo file={d.logo.file} name={d.name} size={56} eager />
-      <div>
+      <DistroLogo file={d.logo.file} name={d.name} size={64} eager imgAttrs={{ "data-pagefind-meta": "image[src]" }} />
+      <div class="doc-title">
         <h1>{title}</h1>
         <p class="caption dim-label">
           {t("install.meta", { installer: INSTALLERS[d.installer][locale], secureBoot: SECURE_BOOT[d.secureBoot][locale], difficulty: DIFFICULTIES[d.difficulty][locale] })}
@@ -84,6 +76,13 @@ const jsonLd = doc
     {
       rendered ? (
         <div class="doc-layout">
+          <div class="toc-narrow" data-pagefind-ignore>
+            <BoxedList>
+              <ExpanderRow title={t("install.onThisPage")}>
+                <Toc headings={rendered.headings} title={t("install.onThisPage")} hideTitle />
+              </ExpanderRow>
+            </BoxedList>
+          </div>
           <aside class="doc-toc" data-pagefind-ignore>
             <Toc headings={rendered.headings} title={t("install.onThisPage")} />
           </aside>
@@ -100,8 +99,6 @@ const jsonLd = doc
         </StatusPage>
       )
     }
-
-    <a class="back" href={distroHref} data-pagefind-ignore>← {t("install.backToDistro", { name: d.name })}</a>
   </div>
 </Base>
 
@@ -110,8 +107,11 @@ const jsonLd = doc
 </script>
 
 <style>
+  /* minmax(0, 1fr) and min-inline-size: 0 keep wide tables and code blocks
+     from stretching the page on phones; they scroll in their own boxes. */
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-3);
     padding-block: var(--space-3) var(--space-6);
   }
@@ -127,10 +127,29 @@ const jsonLd = doc
     color: inherit;
   }
 
+  .page > *,
+  .doc-layout > * {
+    min-inline-size: 0;
+  }
+
+  /* The same for the grids inside MDX components (OS tabs, numbered steps).
+     TODO(lead): move into src/components/mdx/{Tabs,Steps}.astro, where the
+     learn chapters need it too. */
+  .prose :global(.os-tabs),
+  .prose :global(.steps > ol) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .doc-header {
     display: flex;
     align-items: center;
     gap: var(--space-3);
+  }
+
+  .doc-title {
+    display: grid;
+    gap: 4px;
+    min-inline-size: 0;
   }
 
   .doc-header h1 {
@@ -143,8 +162,15 @@ const jsonLd = doc
     gap: var(--space-2);
   }
 
+  @media (max-width: 599px) {
+    .actions > :global(.adw-button) {
+      flex: 1 1 0;
+    }
+  }
+
   .doc-layout {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     margin-block-start: var(--space-2);
   }
@@ -153,11 +179,15 @@ const jsonLd = doc
     display: none;
   }
 
-  .back {
-    margin-block-start: var(--space-4);
+  .toc-narrow {
+    max-inline-size: var(--text-width);
   }
 
   @media (min-width: 1100px) {
+    .toc-narrow {
+      display: none;
+    }
+
     .doc-layout {
       grid-template-columns: minmax(0, 1fr) 240px;
       align-items: start;

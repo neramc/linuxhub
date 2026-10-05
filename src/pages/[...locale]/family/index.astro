@@ -1,9 +1,10 @@
 ---
 /**
- * Family tree (from each distro's `basedOn`) and a timeline of first releases.
- * Plain nested lists — accessible, responsive, zero JS.
+ * Family tree (from each distro's `basedOn`) and a timeline of first releases,
+ * one row per decade with "year · name" chips. Plain nested lists —
+ * accessible, responsive, zero JS.
  */
-import DistroLogo from "~/components/DistroLogo.astro";
+import Chip from "~/components/adw/Chip.astro";
 import FamilyNode from "~/components/FamilyNode.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
@@ -33,20 +34,18 @@ const sections = familyOrder
   .filter((s) => s.roots.length > 0);
 const countTree = (d: Distro): number =>
   1 + (childrenOf.get(d.id) ?? []).reduce((n, k) => n + countTree(k), 0);
+const members = (list: Distro[]) => list.reduce((n, r) => n + countTree(r), 0);
 
-const years = new Map<string, Distro[]>();
+const decades = new Map<number, Distro[]>();
 for (const d of [...distros].sort(byYear)) {
-  const y = d.data.origin.firstRelease.slice(0, 4);
-  years.set(y, [...(years.get(y) ?? []), d]);
+  const decade = Math.floor(Number(d.data.origin.firstRelease.slice(0, 4)) / 10) * 10;
+  decades.set(decade, [...(decades.get(decade) ?? []), d]);
 }
 ---
 
 <Base locale={locale} title={t("family.title")} description={t("family.lead")}>
   <div class="container page">
-    <header class="page-header">
-      <h1>{t("family.title")}</h1>
-      <p class="dim-label">{t("family.lead")}</p>
-    </header>
+    <h1>{t("family.title")}</h1>
 
     <section aria-labelledby="tree-title" class="section">
       <h2 id="tree-title">{t("family.tree")}</h2>
@@ -56,7 +55,7 @@ for (const d of [...distros].sort(byYear)) {
             <section class="family adw-card padded" aria-label={FAMILIES[s.family][locale]}>
               <h3>{FAMILIES[s.family][locale]}</h3>
               <p class="caption dim-label">
-                {t("family.roots", { count: s.roots.reduce((n, r) => n + countTree(r), 0) })}
+                {members(s.roots) === 1 ? t("family.root") : t("family.roots", { count: members(s.roots) })}
                 {s.roots[0]?.data.upstream && !s.roots[0].data.basedOn ? ` · ${s.roots[0].data.upstream}` : ""}
               </p>
               <ul class="tree" role="list">
@@ -72,19 +71,17 @@ for (const d of [...distros].sort(byYear)) {
 
     <section aria-labelledby="timeline-title" class="section">
       <h2 id="timeline-title">{t("family.timeline")}</h2>
-      <p class="dim-label">{t("family.timelineLead")}</p>
       <ol class="timeline" role="list">
         {
-          [...years].map(([year, list]) => (
-            <li class="year">
-              <span class="year-label numeric">{year}</span>
-              <ul class="year-items" role="list">
+          [...decades].map(([decade, list]) => (
+            <li class="decade">
+              <h3 class="decade-label numeric">{t("family.decade", { decade })}</h3>
+              <ul class="decade-items" role="list">
                 {list.map((d) => (
                   <li>
-                    <a class="chip" href={localizePath(`/distros/${d.id}/`, locale)}>
-                      <DistroLogo file={d.data.logo.file} name={d.data.name} size={22} />
-                      {d.data.name}
-                    </a>
+                    <Chip href={localizePath(`/distros/${d.id}/`, locale)}>
+                      {d.data.origin.firstRelease.slice(0, 4)} · {d.data.name}
+                    </Chip>
                   </li>
                 ))}
               </ul>
@@ -99,26 +96,27 @@ for (const d of [...distros].sort(byYear)) {
 <style>
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     padding-block: var(--space-4) var(--space-6);
   }
 
-  .page-header,
   .section {
     display: grid;
     gap: var(--space-2);
   }
 
+  /* Columns rather than a grid, so short families fill in beside the long one. */
   .families {
-    display: grid;
-    gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-    align-items: start;
+    columns: 2 340px;
+    column-gap: var(--space-2);
   }
 
   .family {
     display: grid;
     gap: 6px;
+    break-inside: avoid;
+    margin-block-end: var(--space-2);
   }
 
   .tree,
@@ -166,60 +164,49 @@ for (const d of [...distros].sort(byYear)) {
     font-weight: 700;
   }
 
+  /* One boxed-list row per decade: the decade, then its chips. */
   .timeline {
-    list-style: none;
-    padding: 0;
     margin: 0;
-    border-inline-start: 2px solid var(--border-color);
-    margin-inline-start: 28px;
+    padding: 0;
+    list-style: none;
+    border-radius: var(--radius-card);
+    background-color: var(--card-bg-color);
+    color: var(--card-fg-color);
+    box-shadow: var(--shadow-card);
   }
 
-  .year {
-    position: relative;
+  .decade {
     display: grid;
-    gap: 8px;
-    padding: 0 0 var(--space-3) var(--space-3);
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-2) 14px;
   }
 
-  .year::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: -7px;
-    inset-block-start: 6px;
-    inline-size: 12px;
-    block-size: 12px;
-    border-radius: 50%;
-    background: var(--accent-bg-color);
+  .decade + .decade {
+    border-block-start: 1px solid var(--card-shade-color);
   }
 
-  .year-label {
-    font-weight: 800;
+  .decade-label {
     font-size: var(--text-title-4);
+    font-weight: 700;
   }
 
-  .year-items {
+  .decade-items {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    list-style: none;
-    padding: 0;
   }
 
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px 12px 4px 6px;
-    border-radius: var(--radius-pill);
-    background: var(--card-bg-color);
-    box-shadow: var(--shadow-card);
-    color: inherit;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    text-decoration: none;
+  @media (max-width: 599px) {
+    .decade {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
-  .chip:hover {
-    background-image: linear-gradient(var(--hover-color), var(--hover-color));
+  @media (prefers-contrast: more) {
+    .timeline {
+      box-shadow: 0 0 0 1px var(--border-color), var(--shadow-card);
+    }
   }
 </style>

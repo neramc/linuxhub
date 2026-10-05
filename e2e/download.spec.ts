@@ -32,3 +32,35 @@ test("mirror list distros suggest the nearest official mirror", async ({ page })
   expect(href?.startsWith(chosen)).toBe(true);
   expect(href).toMatch(/archlinux-.*-x86_64\.iso$/);
 });
+
+test("the detail page offers exactly two hero actions and ends the wizard with the USB step", async ({
+  page,
+}) => {
+  await page.goto("/distros/fedora/");
+  const actions = page.locator(".hero-actions a");
+  await expect(actions).toHaveCount(2);
+  await expect(actions.first()).toHaveAttribute("href", "#download");
+  await expect(actions.nth(1)).toHaveAttribute("href", "/distros/fedora/install/");
+  await expect(page.locator('#download a[href="/distros/fedora/install/#usb"]')).toBeVisible();
+});
+
+test("secondary facts sit in a closed native disclosure", async ({ page }) => {
+  await page.goto("/en/distros/fedora/");
+  const more = page.locator("details", { hasText: "More details" });
+  await expect(more).not.toHaveAttribute("open");
+  const use = more.locator('a[href^="/en/distros/?use="]').first();
+  await expect(use).toBeHidden();
+  await more.locator("summary").click();
+  await expect(use).toBeVisible();
+});
+
+test("the install guide does not scroll sideways on a phone", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/distros/fedora/install/");
+  await expect(page.locator("article.prose")).toBeVisible();
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBeLessThanOrEqual(0);
+  await expect(page.locator("details.doc-sources")).not.toHaveAttribute("open");
+});

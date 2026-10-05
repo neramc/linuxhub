@@ -5,16 +5,18 @@ import type { MarkdownHeading } from "astro";
 interface Props {
   headings: MarkdownHeading[];
   title: string;
+  /** Omit the visible title when a surrounding disclosure already shows it. */
+  hideTitle?: boolean | undefined;
 }
 
-const { headings, title } = Astro.props;
+const { headings, title, hideTitle = false } = Astro.props;
 const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
 {
   items.length > 0 && (
     <nav class="toc" aria-label={title}>
-      <p class="caption-heading dim-label">{title}</p>
+      {!hideTitle && <p class="caption-heading dim-label">{title}</p>}
       <ul role="list">
         {items.map((h) => (
           <li class:list={[`depth-${h.depth}`]}>

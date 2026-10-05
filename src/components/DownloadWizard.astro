@@ -10,6 +10,7 @@ import { defaultArtifact, featuredRelease, formatBytes, formatDate } from "~/lib
  */
 import type { Artifact, Release, ReleasesFile } from "~/lib/data-schemas";
 import { ARCHITECTURES, type DownloadStrategy } from "~/lib/taxonomy";
+import ActionRow from "./adw/ActionRow.astro";
 import Button from "./adw/Button.astro";
 import Icon from "./adw/Icon.astro";
 
@@ -191,7 +192,6 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
             {choice.artifact.file}
           </p>
           {strategy === "sourceforge" && <p class="caption dim-label">{t("download.sourceforge")}</p>}
-          {strategy === "redirector" && <p class="caption dim-label">{t("download.autoHint")}</p>}
         </div>
 
         <div class="verify" data-verify hidden={!choice.artifact.checksum}>
@@ -222,7 +222,6 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
             </a>
             <a href={`${installHref}#verify`}>{t("download.verifyLink")}</a>
           </p>
-          <p class="caption dim-label">{t("download.verifyHint")}</p>
         </div>
 
         <noscript>
@@ -245,11 +244,9 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
     )
   }
 
-  <a class="next-step" href={`${installHref}#usb`}>
-    <Icon name="usb" size={20} />
-    <span>{t("download.nextStep")}</span>
-    <Icon name="go-next" />
-  </a>
+  <ul class="adw-boxed-list next-step" role="list">
+    <ActionRow title={t("download.nextStep")} icon="usb" href={`${installHref}#usb`} />
+  </ul>
   <span class="visually-hidden">{name}</span>
 </section>
 
@@ -261,6 +258,11 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
   .download {
     display: grid;
     gap: var(--space-2);
+  }
+
+  .download > h2 {
+    font-size: var(--text-title-3);
+    font-weight: 700;
   }
 
   .download-card {
@@ -301,6 +303,25 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
   .mirror-label {
     font-size: 0.9375rem;
     opacity: var(--dim-opacity);
+  }
+
+  /* On phones the mirror list gets the full row, so host names stay readable. */
+  @media (max-width: 599px) {
+    .mirror-row:has(select:not([hidden])) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding-block: 10px;
+    }
+
+    .mirror-value {
+      align-items: stretch;
+      text-align: start;
+    }
+
+    .mirror-value .combo-select {
+      max-inline-size: none;
+    }
   }
 
   .download-action {
@@ -352,23 +373,6 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
   }
 
   .next-step {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: 12px 14px;
-    border-radius: var(--radius-card);
-    background: color-mix(in srgb, var(--accent-bg-color) 10%, var(--card-bg-color));
-    color: inherit;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .next-step:hover {
-    background: color-mix(in srgb, var(--accent-bg-color) 16%, var(--card-bg-color));
-    text-decoration: none;
-  }
-
-  .next-step span {
-    flex: 1;
+    margin-block-start: var(--space-1);
   }
 </style>

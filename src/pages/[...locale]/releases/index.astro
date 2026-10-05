@@ -1,26 +1,35 @@
 ---
+/**
+ * Release news by month. Rows are grouped like the home page (one row per
+ * distro and series; same-day flavors join their parent's row) and show only
+ * the day, since the month is the heading. The RSS feed keeps one item per
+ * version (src/pages/[...locale]/rss.xml.ts).
+ */
 import Button from "~/components/adw/Button.astro";
 import Icon from "~/components/adw/Icon.astro";
 import StatusPage from "~/components/adw/StatusPage.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
-import { formatDate, getDistros, getHistory } from "~/lib/catalog";
+import { getDistros, getHistory, groupReleases, type ReleaseGroup } from "~/lib/catalog";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const bySlug = new Map((await getDistros()).map((d) => [d.id, d]));
-const history = getHistory().filter((h) => bySlug.has(h.slug));
-const byMonth = new Map<string, typeof history>();
-for (const h of history) {
-  const key = h.date.slice(0, 7);
-  byMonth.set(key, [...(byMonth.get(key) ?? []), h]);
+const groups = groupReleases(getHistory(), await getDistros());
+const byMonth = new Map<string, ReleaseGroup[]>();
+for (const g of groups) {
+  const key = g.date.slice(0, 7);
+  byMonth.set(key, [...(byMonth.get(key) ?? []), g]);
 }
-const monthLabel = (ym: string) =>
-  new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", timeZone: "UTC" }).format(
-    new Date(`${ym}-01T00:00:00Z`),
-  );
+const utc = (iso: string) => new Date(`${iso}T00:00:00Z`);
+const monthFormat = new Intl.DateTimeFormat(locale, {
+  year: "numeric",
+  month: "long",
+  timeZone: "UTC",
+});
+const dayFormat = new Intl.DateTimeFormat(locale, { day: "numeric", timeZone: "UTC" });
+const list = new Intl.ListFormat(locale, { style: "short", type: "unit" });
 ---
 
 <Base locale={locale} title={t("releases.title")} description={t("releases.lead")}>
@@ -32,30 +41,36 @@ const monthLabel = (ym: string) =>
     </header>
 
     {
-      history.length === 0 ? (
+      groups.length === 0 ? (
         <StatusPage icon="update" title={t("releases.empty")} level={2} />
       ) : (
-        [...byMonth].map(([month, items]) => (
-          <section class="month" aria-label={monthLabel(month)}>
-            <h2>{monthLabel(month)}</h2>
+        [...byMonth].map(([month, rows]) => (
+          <section class="month" aria-labelledby={`month-${month}`}>
+            <h2 id={`month-${month}`}>
+              <time datetime={month}>{monthFormat.format(utc(`${month}-01`))}</time>
+            </h2>
             <ul class="adw-boxed-list" role="list">
-              {items.map((h) => {
-                const d = bySlug.get(h.slug);
-                return d ? (
-                  <li>
-                    <a class="adw-action-row activatable" href={localizePath(`/distros/${h.slug}/`, locale)}>
-                      <DistroLogo file={d.data.logo.file} name={d.data.name} size={36} />
-                      <span class="adw-row-text">
-                        <span class="adw-row-title">
-                          {d.data.name} {h.version}
-                        </span>
-                        <span class="adw-row-subtitle">{formatDate(h.date, locale)}</span>
+              {rows.map((g) => (
+                <li>
+                  <a class="adw-action-row activatable" href={localizePath(`/distros/${g.distro.id}/`, locale)}>
+                    <DistroLogo file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
+                    <span class="adw-row-text">
+                      <span class="adw-row-title">
+                        {g.distro.data.name} {list.format(g.versions)}
                       </span>
+                      {g.flavors.length > 0 && (
+                        <span class="adw-row-subtitle">{g.flavors.map((f) => f.data.name).join(" · ")}</span>
+                      )}
+                    </span>
+                    <span class="adw-row-suffix">
+                      <time class="day dim-label" datetime={g.date}>
+                        {dayFormat.format(utc(g.date))}
+                      </time>
                       <Icon name="go-next" class="adw-row-chevron" />
-                    </a>
-                  </li>
-                ) : null;
-              })}
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </section>
         ))
@@ -67,6 +82,7 @@ const monthLabel = (ym: string) =>
 <style>
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     padding-block: var(--space-4) var(--space-6);
     max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
@@ -76,5 +92,13 @@ const monthLabel = (ym: string) =>
   .month {
     display: grid;
     gap: var(--space-2);
+  }
+
+  .month h2 {
+    font-size: var(--text-title-4);
+  }
+
+  .day {
+    font-variant-numeric: tabular-nums;
   }
 </style>

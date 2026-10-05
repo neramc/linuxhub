@@ -1,42 +1,43 @@
 ---
 /**
- * Distro finder quiz. Questions are plain HTML form controls; scoring runs in
- * the browser (src/lib/finder.ts) over a compact JSON of catalog attributes.
+ * Distro finder quiz. Questions are plain HTML form controls on one card
+ * surface; scoring runs in the browser (src/lib/finder.ts) over a compact
+ * JSON of catalog attributes. Each result explains itself in one dim line
+ * built from the answers it matched (src/scripts/finder.ts).
  */
 import Button from "~/components/adw/Button.astro";
+import Icon from "~/components/adw/Icon.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import type { FinderDistro } from "~/lib/finder";
-import { logoUrl } from "~/lib/logos";
+import { DESKTOPS } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const distros = await getDistros();
-const data: (FinderDistro & { tagline: string; logo: string; href: string })[] = distros.map(
-  (d) => ({
-    id: d.id,
-    name: d.data.name,
-    order: d.data.order,
-    difficulty: d.data.difficulty,
-    useCases: d.data.useCases,
-    desktops: d.data.desktops,
-    releaseModel: d.data.releaseModel,
-    ramGB: d.data.requirements.ramGB,
-    immutable: d.data.immutable,
-    status: d.data.status,
-    tagline: d.data.tagline[locale],
-    logo: logoUrl(d.data.logo.file),
-    href: localizePath(`/distros/${d.id}/`, locale),
-  }),
-);
+const distros = (await getDistros()).filter((d) => d.data.status === "active");
+const data: (FinderDistro & { tagline: string; href: string })[] = distros.map((d) => ({
+  id: d.id,
+  name: d.data.name,
+  order: d.data.order,
+  difficulty: d.data.difficulty,
+  useCases: d.data.useCases,
+  desktops: d.data.desktops,
+  releaseModel: d.data.releaseModel,
+  ramGB: d.data.requirements.ramGB,
+  immutable: d.data.immutable,
+  status: d.data.status,
+  tagline: d.data.tagline[locale],
+  href: localizePath(`/distros/${d.id}/`, locale),
+}));
 const single = [
-  { name: "experience", options: ["new", "some", "expert"] },
-  { name: "hardware", options: ["modern", "average", "old"] },
-  { name: "look", options: ["windows", "macos", "gnome", "any"] },
-  { name: "updates", options: ["stable", "latest", "any"] },
-  { name: "privacy", options: ["yes", "no"] },
+  { name: "experience", options: ["new", "some", "expert"], checked: "new" },
+  { name: "hardware", options: ["modern", "average", "old"], checked: "average" },
+  { name: "look", options: ["windows", "macos", "gnome", "any"], checked: "windows" },
+  { name: "updates", options: ["stable", "latest", "any"], checked: "stable" },
+  { name: "privacy", options: ["yes", "no"], checked: "no" },
 ] as const;
 const uses = [
   "desktop",
@@ -47,13 +48,60 @@ const uses = [
   "security",
   "education",
 ] as const;
-const reasons = {
-  experience: t("finder.reasons.experience"),
-  use: t("finder.reasons.use"),
-  hardware: t("finder.reasons.hardware"),
-  look: t("finder.reasons.look"),
-  updates: t("finder.reasons.updates"),
-  privacy: t("finder.reasons.privacy"),
+const questions = [
+  {
+    name: "experience",
+    legend: t("finder.q.experience"),
+    type: "radio" as const,
+    choices: single[0].options.map((o) => ({
+      value: o,
+      label: t(`finder.a.experience.${o}`),
+      checked: o === single[0].checked,
+    })),
+  },
+  {
+    name: "uses",
+    legend: t("finder.q.uses"),
+    type: "checkbox" as const,
+    choices: uses.map((u) => ({
+      value: u,
+      label: t(`finder.uses.${u}`),
+      checked: u === "desktop",
+    })),
+  },
+  ...single.slice(1).map((q) => ({
+    name: q.name,
+    legend: t(`finder.q.${q.name}`),
+    type: "radio" as const,
+    choices: q.options.map((o) => ({
+      value: o,
+      label: t(`finder.a.${q.name}.${o}` as never),
+      checked: o === q.checked,
+    })),
+  })),
+];
+// Strings for the one-line "why" of each result.
+const why = {
+  label: t("finder.why.label"),
+  experience: {
+    beginner: t("finder.why.experience.beginner"),
+    intermediate: t("finder.why.experience.intermediate"),
+    advanced: t("finder.why.experience.advanced"),
+  },
+  use: t("finder.why.use", { uses: "{uses}" }),
+  uses: Object.fromEntries(uses.map((u) => [u, t(`finder.uses.${u}`)])),
+  hardware: t("finder.why.hardware", { ram: "{ram}" }),
+  look: t("finder.why.look", { desktop: "{desktop}" }),
+  desktops: Object.fromEntries(
+    [...new Set(distros.flatMap((d) => d.data.desktops))].map((k) => [k, DESKTOPS[k][locale]]),
+  ),
+  updates: {
+    fixed: t("finder.why.updates.fixed"),
+    lts: t("finder.why.updates.lts"),
+    rolling: t("finder.why.updates.rolling"),
+    "semi-rolling": t("finder.why.updates.semiRolling"),
+  },
+  privacy: t("finder.why.privacy"),
 };
 ---
 
@@ -65,57 +113,49 @@ const reasons = {
     </header>
 
     <form class="quiz" data-finder data-compare={localizePath("/compare/", locale)}>
-      <fieldset class="question adw-card padded">
-        <legend class="heading">1. {t("finder.q.experience")}</legend>
-        <div class="choices">
-          {single[0].options.map((o, i) => (
-            <label class="choice"><input type="radio" name="experience" value={o} checked={i === 0} /><span>{t(`finder.a.experience.${o}`)}</span></label>
-          ))}
-        </div>
-      </fieldset>
-
-      <fieldset class="question adw-card padded">
-        <legend class="heading">2. {t("finder.q.uses")}</legend>
-        <div class="choices">
-          {uses.map((u) => (
-            <label class="choice"><input type="checkbox" name="uses" value={u} checked={u === "desktop"} /><span>{t(`finder.uses.${u}`)}</span></label>
-          ))}
-        </div>
-      </fieldset>
-
-      {
-        single.slice(1).map((q, qi) => (
-          <fieldset class="question adw-card padded">
-            <legend class="heading">{qi + 3}. {t(`finder.q.${q.name}`)}</legend>
-            <div class="choices">
-              {q.options.map((o, i) => (
-                <label class="choice">
-                  <input type="radio" name={q.name} value={o} checked={i === (q.name === "privacy" ? 1 : q.name === "hardware" ? 1 : 0)} />
-                  <span>{t(`finder.a.${q.name}.${o}` as never)}</span>
-                </label>
-              ))}
-            </div>
-          </fieldset>
-        ))
-      }
+      <div class="questions adw-card">
+        {
+          questions.map((q, qi) => (
+            <fieldset class="question">
+              <legend class="question-title">
+                <span class="question-num numeric">{qi + 1}.</span> {q.legend}
+              </legend>
+              <div class="choices">
+                {q.choices.map((c) => (
+                  <label class="choice">
+                    <input type={q.type} name={q.name} value={c.value} checked={c.checked} />
+                    <span class="adw-chip">
+                      <Icon name="check" class="choice-check" />
+                      <span>{c.label}</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          ))
+        }
+      </div>
 
       <div class="actions">
-        <Button type="submit" variant="suggested" pill icon="star">{t("finder.submit")}</Button>
+        <Button type="submit" variant="suggested" pill>{t("finder.submit")}</Button>
       </div>
       <noscript><p class="dim-label">{t("finder.noscript")} <a href={localizePath("/distros/", locale)}>{t("nav.distros")}</a></p></noscript>
     </form>
 
-    <section class="results" data-results hidden aria-live="polite" aria-labelledby="results-title">
+    <section class="results" data-results hidden aria-labelledby="results-title">
       <h2 id="results-title" tabindex="-1">{t("finder.results")}</h2>
-      <p class="dim-label">{t("finder.resultsLead")}</p>
       <ol class="result-list" role="list" data-result-list></ol>
       <div class="actions">
         <Button href="#" pill icon="compare" data-compare-link>{t("finder.compare")}</Button>
-        <Button variant="flat" icon="refresh" data-restart>{t("finder.restart")}</Button>
+        <Button variant="flat" pill icon="refresh" data-restart>{t("finder.restart")}</Button>
       </div>
     </section>
 
-    <script type="application/json" id="finder-data" set:html={JSON.stringify({ distros: data, reasons }).replace(/</g, "\\u003c")}></script>
+    <template id="finder-tiles">
+      {distros.map((d) => <DistroLogo file={d.data.logo.file} name={d.data.name} size={64} data-tile={d.id} />)}
+    </template>
+    <template id="finder-check"><Icon name="check" class="result-why-icon" /></template>
+    <script type="application/json" id="finder-data" set:html={JSON.stringify({ distros: data, why }).replace(/</g, "\\u003c")}></script>
   </div>
 </Base>
 
@@ -126,6 +166,7 @@ const reasons = {
 <style>
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     padding-block: var(--space-4) var(--space-6);
     max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
@@ -138,20 +179,35 @@ const reasons = {
 
   .quiz {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-4);
+  }
+
+  /* All questions on one card; fieldsets separated by spacing only. */
+  .questions {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-4);
   }
 
   .question {
-    border: 0;
+    min-inline-size: 0;
     margin: 0;
-    display: grid;
-    gap: var(--space-2);
+    padding: 0;
+    border: 0;
   }
 
-  .question legend {
+  .question-title {
     float: left;
     inline-size: 100%;
     margin-block-end: var(--space-2);
+    padding: 0;
+    font-size: var(--text-title-4);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .question-num {
+    opacity: var(--dim-opacity);
   }
 
   .choices {
@@ -164,87 +220,122 @@ const reasons = {
   .choice {
     position: relative;
     display: inline-flex;
+    max-inline-size: 100%;
   }
 
   .choice input {
     position: absolute;
-    opacity: 0;
     inset: 0;
     margin: 0;
+    opacity: 0;
     cursor: pointer;
   }
 
-  .choice span {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: 40px;
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    background: var(--button-color);
-    font-weight: 700;
-    font-size: 0.9375rem;
-    transition: background-color var(--duration) var(--ease-out-quad);
+  .choice .adw-chip {
+    max-inline-size: 100%;
+    padding-inline: 20px;
+    white-space: normal;
+    text-align: start;
   }
 
-  .choice:hover span {
-    background: var(--button-hover-color);
+  .choice :global(.choice-check) {
+    display: none;
   }
 
-  .choice input:checked + span {
-    background: var(--accent-bg-color);
-    color: var(--accent-fg-color);
+  /* Checked: the toggle-button checked color plus a check mark, so the state
+     does not rely on the shade alone (WCAG 1.4.1). */
+  .choice input:checked + .adw-chip {
+    padding-inline: 14px 20px;
+    background-color: var(--button-checked-color);
   }
 
-  .choice input:focus-visible + span {
+  .choice input:checked + .adw-chip :global(.choice-check) {
+    display: inline-block;
+  }
+
+  .choice:hover input:checked + .adw-chip {
+    background-color: var(--button-checked-hover-color);
+  }
+
+  .choice:hover input:not(:checked) + .adw-chip {
+    background-color: var(--button-hover-color);
+  }
+
+  .choice input:focus-visible + .adw-chip {
     outline: 2px solid var(--focus-ring-color);
-    outline-offset: 2px;
+    outline-offset: 1px;
   }
 
   .actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2);
-    margin-block-start: var(--space-2);
   }
 
   .results {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
+    scroll-margin-block-start: calc(var(--headerbar-height) + var(--space-3));
   }
 
   .result-list {
     display: grid;
     gap: var(--space-2);
+    margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .result-list :global(a) {
     display: flex;
+    align-items: center;
     gap: var(--space-3);
-    align-items: flex-start;
     padding: var(--space-3);
-    color: inherit;
   }
 
-  .result-list :global(img) {
-    flex: none;
-  }
-
-  .result-list :global(.result-rank) {
-    font-weight: 800;
-    color: var(--accent-color);
+  .result-list :global(.result-text) {
+    display: grid;
+    gap: 2px;
+    min-inline-size: 0;
   }
 
   .result-list :global(.result-name) {
     font-size: var(--text-title-3);
-    font-weight: 800;
+    font-weight: 700;
+    line-height: 1.3;
   }
 
-  .result-list :global(.result-reasons) {
+  .result-list :global(.result-rank) {
+    opacity: var(--dim-opacity);
+  }
+
+  .result-list :global(.result-tagline) {
+    font-size: 0.9375rem;
+    opacity: var(--dim-opacity);
+  }
+
+  .result-list :global(.result-why) {
     display: flex;
-    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 6px;
-    margin-block-start: 6px;
+    margin-block-start: 4px;
+    font-size: var(--text-caption);
+    opacity: var(--dim-opacity);
+  }
+
+  .result-list :global(.result-why-icon) {
+    margin-block-start: 0.25em;
+  }
+
+  @media (width < 700px) {
+    .questions {
+      padding: var(--space-3);
+      gap: var(--space-4);
+    }
+
+    .result-list :global(a) {
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
   }
 </style>

@@ -1,8 +1,10 @@
 ---
 /**
- * About: how the site works, data sources, privacy, the sync bot, and
- * credits for every logo, font and icon (generated from the catalog).
+ * About: how the site works, data sources, the "popular today" ranking
+ * (#popularity, ADR-0013), privacy, the sync bot, and credits for every logo
+ * (folded, #logos), font and icon (generated from the catalog).
  */
+import Icon from "~/components/adw/Icon.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
@@ -42,9 +44,26 @@ const repo = "https://github.com/neramc/linuxhub";
                 자료와 마지막 검토일을 밝힙니다. 공식 문서를 그대로 옮기지 않습니다.
               </li>
               <li>
-                수록 배포판은 편집자가 고릅니다. 다른 사이트의 인기 순위를 가져오지 않습니다.
+                수록 배포판과 추천 순서는 편집자가 정합니다. 홈 맨 위의 “오늘의 인기 배포판”만 영어 위키백과
+                조회수로 순위를 매기며(<a href="#popularity">아래</a> 참고), 다른 사이트가 매긴 인기 순위는 가져오지
+                않습니다.
               </li>
             </ul>
+            <h2 id="popularity">오늘의 인기 배포판</h2>
+            <p>
+              홈 맨 위의 순위는 각 배포판의 영어 위키백과 문서를 사람들이 전날(UTC 기준) 몇 번 읽었는지로 매깁니다.
+              Wikimedia가 공개하는 공식 <a href="https://wikimedia.org/api/rest_v1/" rel="noopener external">Pageviews API</a>를
+              6시간마다 확인하므로, 하루 집계가 공개되면 순위가 하루에 한 번 바뀝니다. 조회수 데이터는 CC0(퍼블릭
+              도메인)이며, 배포판마다 어느 문서를 셀지는 편집자가 정합니다.
+            </p>
+            <p>
+              Linuxhub 방문자의 행동은 순위에 쓰지 않습니다. 쿠키, 분석 스크립트, 방문 기록이 없습니다.
+            </p>
+            <p>
+              한계도 있습니다. 영어권 독자의 관심을 보여 줄 뿐 설치 수나 다운로드 수가 아니고, 오래되고 잘 알려진
+              배포판에 유리하며, 뉴스 하나로 하루만 순위가 튀기도 합니다. 영어 위키백과에 문서가 없는 배포판은 순위에
+              나오지 않습니다. 순위 데이터가 없을 때는 편집자가 고른 배포판을 순위 없이 보여 줍니다.
+            </p>
             <h2 id="privacy">위치 정보와 개인정보</h2>
             <p>
               가장 가까운 미러를 추천하기 위해, 다운로드 화면을 열면 서버가 접속 IP로부터 추정한 대략적인 국가와 좌표(도시
@@ -82,8 +101,30 @@ const repo = "https://github.com/neramc/linuxhub";
                 documentation; every document lists its official sources and when it was last reviewed. We never copy
                 official docs verbatim.
               </li>
-              <li>The list of distributions is editorial; we don’t import popularity rankings from other sites.</li>
+              <li>
+                The list of distributions and their recommended order are editorial. Only the “Popular today” ranking
+                at the top of the home page uses English Wikipedia pageviews (<a href="#popularity">see below</a>);
+                we don’t import popularity rankings made by other sites.
+              </li>
             </ul>
+            <h2 id="popularity">Popular today</h2>
+            <p>
+              The ranking at the top of the home page counts how many times people read each distribution’s English
+              Wikipedia article on the previous day (UTC). We check Wikimedia’s official
+              <a href="https://wikimedia.org/api/rest_v1/" rel="noopener external">Pageviews API</a> every 6 hours, so
+              the ranking changes once a day, when the day’s totals are published. Pageview data is CC0 (public
+              domain); which article counts for which distribution is an editorial choice.
+            </p>
+            <p>
+              Nothing about Linuxhub’s own visitors goes into it: there are no cookies, analytics scripts or visit
+              logs.
+            </p>
+            <p>
+              It has limits. It reflects the interest of English-speaking readers, not installs or downloads; it favors
+              older, well-known distributions; and a single news story can lift one for a day. Distributions without
+              an English Wikipedia article are not ranked. When no ranking is available, the home page shows editorial
+              picks without ranks.
+            </p>
             <h2 id="privacy">Location and privacy</h2>
             <p>
               To suggest the nearest mirror, opening the download panel asks our server once for the approximate country
@@ -107,43 +148,52 @@ const repo = "https://github.com/neramc/linuxhub";
         )
       }
 
-      <h2>{ko ? "로고 출처" : "Logo credits"}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>{ko ? "배포판" : "Distribution"}</th>
-            <th>{ko ? "라이선스 / 상표" : "License / trademark"}</th>
-            <th>{ko ? "출처" : "Source"}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            distros.map((d) => (
+      <details class="logo-credits adw-expander-row">
+        <summary class="adw-action-row activatable">
+          <span class="adw-row-text">
+            <span class="adw-row-title">{t("about.logos", { count: distros.length })}</span>
+          </span>
+          <span class="adw-row-suffix"><Icon name="pan-down" class="adw-expander-arrow" /></span>
+        </summary>
+        <div class="adw-expander-content" id="logos">
+          <table>
+            <thead>
               <tr>
-                <td>
-                  <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
-                </td>
-                <td>
-                  {d.data.logo.license}
-                  {d.data.logo.trademark && (
-                    <>
-                      {" · "}
-                      <a href={d.data.logo.trademark} rel="noopener external">
-                        {ko ? "상표 정책" : "Trademark policy"}
-                      </a>
-                    </>
-                  )}
-                </td>
-                <td>
-                  <a href={d.data.logo.source} rel="noopener external">
-                    {new URL(d.data.logo.source).hostname}
-                  </a>
-                </td>
+                <th>{ko ? "배포판" : "Distribution"}</th>
+                <th>{ko ? "라이선스 / 상표" : "License / trademark"}</th>
+                <th>{ko ? "출처" : "Source"}</th>
               </tr>
-            ))
-          }
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {
+                distros.map((d) => (
+                  <tr>
+                    <td>
+                      <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
+                    </td>
+                    <td>
+                      {d.data.logo.license}
+                      {d.data.logo.trademark && (
+                        <>
+                          {" · "}
+                          <a href={d.data.logo.trademark} rel="noopener external">
+                            {ko ? "상표 정책" : "Trademark policy"}
+                          </a>
+                        </>
+                      )}
+                    </td>
+                    <td>
+                      <a href={d.data.logo.source} rel="noopener external">
+                        {new URL(d.data.logo.source).hostname}
+                      </a>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </details>
 
       <h2>{ko ? "사이트 로고, 글꼴, 아이콘" : "Site logo, fonts and icons"}</h2>
       <ul>
@@ -188,5 +238,80 @@ const repo = "https://github.com/neramc/linuxhub";
   .lead {
     font-size: 1.1875rem;
     opacity: var(--dim-opacity);
+  }
+
+  /* A one-row boxed list folding the credits table (opens on /about/#logos).
+     Doubled selectors keep .prose's flow rules from leaking in. */
+  .logo-credits.logo-credits {
+    border-radius: var(--radius-card);
+    background-color: var(--card-bg-color);
+    color: var(--card-fg-color);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    font-size: var(--text-body);
+    line-height: 1.5;
+  }
+
+  .logo-credits > summary:focus-visible {
+    border-radius: var(--radius-card);
+  }
+
+  .logo-credits[open] > summary:focus-visible {
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  .logo-credits .adw-expander-content {
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  /* The table sits flat inside the expander (the row already is the card). */
+  .logo-credits.logo-credits table {
+    display: table;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .logo-credits td:first-child {
+    white-space: nowrap;
+  }
+
+  /* Phones: one stacked block per distro instead of a sideways-scrolling table. */
+  @media (width < 640px) {
+    .logo-credits thead {
+      display: none;
+    }
+
+    .logo-credits.logo-credits :is(table, tbody, tr, td) {
+      display: block;
+    }
+
+    .logo-credits tr {
+      padding-block: 10px;
+    }
+
+    .logo-credits tr + tr {
+      border-block-start: 1px solid var(--card-shade-color);
+    }
+
+    .logo-credits.logo-credits td {
+      padding: 0 14px;
+      border: 0;
+    }
+
+    .logo-credits td:first-child {
+      font-weight: 700;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .logo-credits.logo-credits {
+      box-shadow:
+        0 0 0 1px var(--border-color),
+        var(--shadow-card);
+    }
   }
 </style>

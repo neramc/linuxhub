@@ -1,11 +1,17 @@
 ---
+/**
+ * Linux guide chapter: two columns (AdwNavigationSplitView-like). The sidebar
+ * lists the chapters with the current chapter's sections nested under it; on
+ * narrow screens it folds into a "Contents" expander above the article. The
+ * chapter ends with its sources, three related distros and prev/next.
+ */
 import { render } from "astro:content";
+import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import Icon from "~/components/adw/Icon.astro";
 import ChapterNav from "~/components/ChapterNav.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DocSources from "~/components/DocSources.astro";
 import { mdxComponents } from "~/components/mdx";
-import Toc from "~/components/Toc.astro";
 import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
@@ -37,8 +43,10 @@ const next = chapters[index + 1];
 const distros = await getDistros();
 const related = chapter.data.related
   .map((s) => distros.find((d) => d.id === s))
-  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+  .filter((d): d is NonNullable<typeof d> => Boolean(d))
+  .slice(0, 3);
 const href = (s: string) => localizePath(`/learn/${s}/`, locale);
+const minutes = readingMinutes(chapter.body, locale);
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -54,20 +62,21 @@ const jsonLd = [
 
 <Base locale={locale} title={chapter.data.title} description={chapter.data.description} mono jsonLd={jsonLd} image="/og/learn.png">
   <div class="container page">
-    <aside class="sidebar" aria-label={t("learn.chapters")}>
-      <details class="chapter-menu">
-        <summary class="heading">{t("learn.chapters")} · {chapter.data.navTitle}</summary>
-        <ChapterNav chapters={chapters} current={slug} locale={locale} />
-      </details>
+    <div class="sidebar">
+      <ul class="adw-boxed-list chapter-menu" role="list">
+        <ExpanderRow title={t("learn.chapters")} subtitle={`${chapter.data.order}. ${chapter.data.navTitle}`}>
+          <ChapterNav chapters={chapters} current={slug} locale={locale} headings={headings} label={t("learn.chapters")} />
+        </ExpanderRow>
+      </ul>
       <div class="chapter-nav-wide">
-        <ChapterNav chapters={chapters} current={slug} locale={locale} />
+        <ChapterNav chapters={chapters} current={slug} locale={locale} headings={headings} label={t("learn.chapters")} />
       </div>
-    </aside>
+    </div>
 
     <div class="content">
-      <article class="prose" data-pagefind-body>
-        <p class="caption dim-label kicker">
-          {t(`learn.groups.${chapter.data.group}`)} · {t("learn.readingTime", { minutes: readingMinutes(chapter.body, locale) })}
+      <article class="prose" data-pagefind-body data-pagefind-meta="type:guide">
+        <p class="kicker caption dim-label" data-pagefind-ignore>
+          {t(`learn.groups.${chapter.data.group}`)} · {t("learn.readingTime", { minutes })}
         </p>
         <h1>{chapter.data.title}</h1>
         <p class="lead">{chapter.data.description}</p>
@@ -86,11 +95,11 @@ const jsonLd = [
         )
       }
 
-      <nav class="pager" aria-label={t("learn.chapters")} data-pagefind-ignore>
+      <nav class="pager" aria-label={t("learn.pager")} data-pagefind-ignore>
         {
           prev ? (
             <a class="pager-link adw-card activatable" href={href(prev.slug)} rel="prev">
-              <span class="caption dim-label"><Icon name="go-previous" /> {t("learn.previous")}</span>
+              <span class="caption dim-label pager-label"><Icon name="go-previous" /> {t("learn.previous")}</span>
               <span class="heading">{prev.data.navTitle}</span>
             </a>
           ) : <span />
@@ -98,51 +107,72 @@ const jsonLd = [
         {
           next && (
             <a class="pager-link next adw-card activatable" href={href(next.slug)} rel="next">
-              <span class="caption dim-label">{t("learn.next")} <Icon name="go-next" /></span>
+              <span class="caption dim-label pager-label">{t("learn.next")} <Icon name="go-next" /></span>
               <span class="heading">{next.data.navTitle}</span>
             </a>
           )
         }
       </nav>
     </div>
-
-    <aside class="toc-col">
-      <Toc headings={headings} title={t("install.onThisPage")} />
-    </aside>
   </div>
 </Base>
 
 <script>
   import "~/scripts/copy-code";
+
+  // On phones wide tables scroll sideways inside their own box (prose.css).
+  // A scrolling box must be reachable by keyboard (WCAG 2.1.1), so it gets a
+  // tab stop while (and only while) it actually overflows.
+  const tables = [...document.querySelectorAll<HTMLTableElement>(".prose table")];
+  const sync = () => {
+    for (const table of tables) {
+      if (table.scrollWidth > table.clientWidth + 1) table.tabIndex = 0;
+      else table.removeAttribute("tabindex");
+    }
+  };
+  if (tables.length) {
+    sync();
+    let frame = 0;
+    addEventListener("resize", () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(sync);
+    });
+  }
 </script>
 
 <style>
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     padding-block: var(--space-4) var(--space-6);
   }
 
-  .chapter-menu {
-    border-radius: var(--radius-card);
-    background: var(--card-bg-color);
-    box-shadow: var(--shadow-card);
-    padding: var(--space-2);
-  }
-
-  .chapter-menu > summary {
-    cursor: pointer;
-    padding: 4px 6px;
+  .sidebar,
+  .content {
+    min-inline-size: 0;
   }
 
   .chapter-nav-wide {
     display: none;
   }
 
+  .chapter-menu :global(.adw-expander-content) {
+    padding: var(--space-2) 8px;
+  }
+
+  /* Sources, related distros and prev/next line up with the article. */
   .content {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
-    min-inline-size: 0;
+    max-inline-size: var(--text-width);
+  }
+
+  /* No horizontal page scroll at 390px: wide code inside <Tabs> scrolls in
+     its own box instead of widening the article (audit [18]). */
+  .prose :global(.os-tabs) {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .kicker {
@@ -159,37 +189,45 @@ const jsonLd = [
     gap: var(--space-2);
   }
 
+  .related h2 {
+    font-size: var(--text-title-3);
+  }
+
   .related-grid {
     display: grid;
     gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .pager {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-2);
   }
 
   .pager-link {
     display: grid;
+    align-content: start;
     gap: 4px;
     padding: var(--space-2) var(--space-3);
-    color: inherit;
+  }
+
+  .pager-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
 
   .pager-link.next {
-    text-align: end;
     grid-column: 2;
-  }
-
-  .toc-col {
-    display: none;
+    justify-items: end;
+    text-align: end;
   }
 
   @media (min-width: 960px) {
     .page {
-      grid-template-columns: 250px minmax(0, 1fr);
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: var(--space-5);
       align-items: start;
     }
 
@@ -198,6 +236,10 @@ const jsonLd = [
       inset-block-start: calc(var(--headerbar-height) + var(--space-3));
       max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-5));
       overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      padding: 2px;
+      margin: -2px;
     }
 
     .chapter-menu {
@@ -206,18 +248,6 @@ const jsonLd = [
 
     .chapter-nav-wide {
       display: block;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .page {
-      grid-template-columns: 240px minmax(0, 1fr) 200px;
-    }
-
-    .toc-col {
-      display: block;
-      position: sticky;
-      inset-block-start: calc(var(--headerbar-height) + var(--space-3));
     }
   }
 </style>

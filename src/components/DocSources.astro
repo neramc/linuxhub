@@ -1,7 +1,13 @@
 ---
-import { type Locale } from "~/i18n";
-/** Citation footer for a document: official sources + last reviewed date. */
+/**
+ * Citation footer for a document (CLAUDE.md rule 7): the official sources and
+ * the last review date, as a closed expander row ("Official sources (N) ·
+ * Last reviewed …"). Everything stays in the HTML; only the list is folded.
+ * Used at the end of install guides and Linux guide chapters (inside .prose).
+ */
+import { type Locale, useTranslations } from "~/i18n";
 import { formatDate } from "~/lib/catalog";
+import Icon from "./adw/Icon.astro";
 
 interface Props {
   sources: string[];
@@ -10,40 +16,74 @@ interface Props {
 }
 
 const { sources, lastReviewed, locale } = Astro.props;
-const heading = locale === "ko" ? "참고한 공식 자료" : "Official sources";
-const reviewed =
-  locale === "ko"
-    ? `마지막 검토: ${formatDate(lastReviewed, locale)}`
-    : `Last reviewed ${formatDate(lastReviewed, locale)}`;
-const note =
-  locale === "ko"
-    ? "이 문서는 아래 공식 자료를 바탕으로 직접 정리한 것입니다. 최종 기준은 언제나 공식 문서입니다."
-    : "This page summarizes the official sources below in our own words. The official documentation always takes precedence.";
+const t = useTranslations(locale);
+const [before, after] = t("sources.reviewed", { date: "\u0000" }).split("\u0000");
 ---
 
-<aside class="doc-sources" data-pagefind-ignore>
-  <h2 class="caption-heading">{heading}</h2>
-  <p class="caption dim-label">{note}</p>
-  <ul>
-    {sources.map((url) => <li><a href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
-  </ul>
-  <p class="caption dim-label">{reviewed}</p>
-</aside>
+<details class="doc-sources adw-expander-row" data-pagefind-ignore>
+  <summary class="adw-action-row activatable">
+    <span class="adw-row-text">
+      <span class="adw-row-title">{t("sources.title", { count: sources.length })}</span>
+      <span class="adw-row-subtitle">
+        {before}<time datetime={lastReviewed}>{formatDate(lastReviewed, locale)}</time>{after}
+      </span>
+    </span>
+    <span class="adw-row-suffix">
+      <Icon name="pan-down" class="adw-expander-arrow" />
+    </span>
+  </summary>
+  <div class="adw-expander-content">
+    <p class="caption dim-label">{t("sources.note")}</p>
+    <ul>
+      {sources.map((url) => <li><a href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
+    </ul>
+  </div>
+</details>
 
 <style>
-  .doc-sources {
-    display: grid;
-    gap: 6px;
+  /* A one-row boxed list. The selectors are doubled so .prose's flow rules
+     (margins, list padding, font size) do not leak in. */
+  .doc-sources.doc-sources {
     margin-block-start: var(--space-5);
-    padding: var(--space-3);
     border-radius: var(--radius-card);
-    background: var(--card-bg-color);
+    background-color: var(--card-bg-color);
+    color: var(--card-fg-color);
     box-shadow: var(--shadow-card);
+    overflow: hidden;
+    font-size: var(--text-body);
+    line-height: 1.5;
+  }
+
+  .doc-sources .adw-expander-content {
+    display: grid;
+    gap: var(--space-1);
     font-size: 0.9375rem;
   }
 
   .doc-sources ul {
+    margin: 0;
     padding-inline-start: 1.2em;
     overflow-wrap: anywhere;
+  }
+
+  .doc-sources > summary:focus-visible {
+    border-radius: var(--radius-card);
+  }
+
+  .doc-sources[open] > summary:focus-visible {
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  .doc-sources li + li {
+    margin-block-start: 2px;
+  }
+
+  @media (prefers-contrast: more) {
+    .doc-sources.doc-sources {
+      box-shadow:
+        0 0 0 1px var(--border-color),
+        var(--shadow-card);
+    }
   }
 </style>

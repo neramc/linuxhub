@@ -1,0 +1,265 @@
+---
+/**
+ * Banner carousel after AdwCarousel + GNOME Software's featured carousel, as a
+ * WAI-ARIA APG "basic" carousel (ADR-0014). Without JS it is a native
+ * scroll-snap row; src/scripts/carousel.ts adds auto-rotation (8 s), the
+ * rotation button, OSD arrows, dots and announcements.
+ *
+ *   <Carousel id="popular" title="…" count={slides.length} locale={locale}>
+ *     <p slot="caption">…</p>
+ *     <div class="carousel-slide" role="group" aria-roledescription={t("carousel.slide")}
+ *          aria-labelledby="…" data-name="…">…</div>
+ *   </Carousel>
+ *
+ * Slides are the direct children of the default slot: each one fills the
+ * frame, carries role="group" + aria-roledescription + aria-labelledby (its
+ * visible name) and `data-name` (used in the status announcement). Slides
+ * keep `--carousel-arrow-room` free at both sides for the overlaid arrows.
+ * Controls carry `data-js`: they keep their space before the script runs (no
+ * layout shift) but stay hidden and unfocusable. Tab order: rotation button,
+ * the caption's links, previous, next, then the current slide.
+ */
+import { type Locale, useTranslations } from "~/i18n";
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  /** Base id; the visible heading gets `${id}-title`. */
+  id: string;
+  /** Visible heading (h2). Must not contain the word "carousel". */
+  title: string;
+  /** Number of slides (one dot each). */
+  count: number;
+  locale: Locale;
+  class?: string | undefined;
+}
+
+const { id, title, count, locale, class: className } = Astro.props;
+const t = useTranslations(locale);
+const titleId = `${id}-title`;
+---
+
+<section
+  class:list={["carousel", className]}
+  id={id}
+  data-carousel
+  aria-roledescription={t("carousel.roledescription")}
+  aria-labelledby={titleId}
+>
+  <div class="carousel-header">
+    {/* First in the tab order (APG); shown at the end of the header row. */}
+    <button
+      type="button"
+      class="adw-button flat circular image-button carousel-rotate playing"
+      data-rotate
+      data-js
+      data-stop={t("carousel.stop")}
+      data-start={t("carousel.start")}
+      aria-label={t("carousel.stop")}
+      title={t("carousel.stop")}
+    >
+      <Icon name="media-playback-pause" class="icon-pause" />
+      <Icon name="media-playback-start" class="icon-play" />
+    </button>
+    <div class="carousel-heading">
+      <h2 id={titleId}>{title}</h2>
+      <slot name="caption" />
+    </div>
+  </div>
+  <div class="carousel-frame">
+    {/* Before the slides in the tab order; placed over the card by grid areas. */}
+    <Button variant="osd" circular icon="go-previous" label={t("carousel.previous")} class="carousel-nav prev" data-prev data-js />
+    <Button variant="osd" circular icon="go-next" label={t("carousel.next")} class="carousel-nav next" data-next data-js />
+    <div class="carousel-viewport">
+      <div class="carousel-track" data-track>
+        <slot />
+      </div>
+    </div>
+    <div class="carousel-dots" data-dots data-js aria-hidden="true">
+      {Array.from({ length: count }, (_, i) => <span class:list={{ current: i === 0 }} />)}
+    </div>
+  </div>
+  <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-status data-template={t("carousel.status")}></p>
+</section>
+
+<script>
+  import "~/scripts/carousel";
+</script>
+
+<style>
+  .carousel {
+    --carousel-arrow-room: 72px; /* 12px inset + 44px button + 16px */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* the track's min-content must not widen the page */
+    gap: var(--space-2);
+  }
+
+  .carousel-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .carousel-heading {
+    display: grid;
+    gap: 2px;
+    min-inline-size: 0;
+  }
+
+  .carousel-rotate {
+    order: 1;
+  }
+
+  /* The arrows overlap the card in the same grid area (no absolute positioning). */
+  .carousel-frame {
+    display: grid;
+    grid-template-areas: "card" "dots";
+    row-gap: var(--space-2);
+  }
+
+  /* Controls keep their space before JS runs (no layout shift), unseen and unfocusable. */
+  .carousel:not(:global(.enhanced)) :global([data-js]) {
+    visibility: hidden;
+  }
+
+  .carousel-frame,
+  .carousel-viewport {
+    min-inline-size: 0;
+  }
+
+  .carousel-viewport {
+    grid-area: card;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background-color: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+  }
+
+  .carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel:global(.enhanced) .carousel-track {
+    scrollbar-width: none;
+  }
+
+  .carousel:global(.enhanced) .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* position: relative keeps absolutely positioned descendants (e.g.
+     .visually-hidden text) inside the scroller instead of widening the page. */
+  .carousel-track > :global(*) {
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-inline-size: 0;
+  }
+
+  .carousel-frame > :global(.carousel-nav) {
+    grid-area: card;
+    align-self: center;
+    z-index: 1;
+    margin-inline: 12px; /* GNOME Software: .featured-carousel button { margin: 12px } */
+  }
+
+  .carousel-frame > :global(.carousel-nav.prev) {
+    justify-self: start;
+  }
+
+  .carousel-frame > :global(.carousel-nav.next) {
+    justify-self: end;
+  }
+
+  /* AdwCarouselIndicatorDots: 6px dots, 8px current, 7px apart. */
+  .carousel-dots {
+    grid-area: dots;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    block-size: 20px;
+  }
+
+  .carousel-dots > span {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.55; /* libadwaita's 0.3 is 1.78:1; 0.55 is ≥ 3:1 (ADR-0009) */
+    scale: 0.75;
+    transition:
+      opacity var(--duration) var(--ease-out-quad),
+      scale var(--duration) var(--ease-out-quad);
+  }
+
+  .carousel-dots > span.current {
+    opacity: 0.9;
+    scale: 1;
+  }
+
+  .carousel-rotate :global(.icon-play),
+  .carousel-rotate:not(.playing) :global(.icon-pause) {
+    display: none;
+  }
+
+  .carousel-rotate:not(.playing) :global(.icon-play) {
+    display: block;
+  }
+
+  /* Narrow: the arrows leave the card and flank the dots: [<] • • ● • • [>] */
+  @media (width < 700px) {
+    .carousel {
+      --carousel-arrow-room: var(--space-3);
+    }
+
+    .carousel-frame {
+      grid-template-areas: "card card card" "prev dots next";
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+    }
+
+    .carousel-frame > :global(.carousel-nav) {
+      margin: 0;
+    }
+
+    .carousel-frame > :global(.carousel-nav.prev) {
+      grid-area: prev;
+    }
+
+    .carousel-frame > :global(.carousel-nav.next) {
+      grid-area: next;
+    }
+
+    /* Off the card the arrows are ordinary raised circular buttons. */
+    .carousel-frame > :global(.carousel-nav.adw-button.osd) {
+      color: inherit;
+      background-color: var(--button-color);
+    }
+
+    .carousel-frame > :global(.carousel-nav.adw-button.osd:hover) {
+      background-color: var(--button-hover-color);
+    }
+
+    .carousel-frame > :global(.carousel-nav.adw-button.osd:active) {
+      background-color: var(--button-active-color);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .carousel-dots > span {
+      forced-color-adjust: none;
+      background-color: CanvasText;
+    }
+
+    .carousel-dots > span.current {
+      background-color: Highlight;
+    }
+  }
+</style>

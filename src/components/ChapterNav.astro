@@ -1,4 +1,11 @@
 ---
+/**
+ * Linux guide sidebar (navigation-sidebar style): chapters by group, with the
+ * current chapter's h2 sections nested under it (this replaces a separate
+ * "On this page" column). Used in the wide sidebar and in the narrow-screen
+ * chapters disclosure.
+ */
+import type { MarkdownHeading } from "astro";
 import { type Locale, localizePath, useTranslations } from "~/i18n";
 import { type Chapter, GROUPS } from "~/lib/learn";
 
@@ -6,13 +13,18 @@ interface Props {
   chapters: (Chapter & { slug: string })[];
   current: string;
   locale: Locale;
+  /** Headings of the current chapter; its h2 sections are listed under it. */
+  headings?: MarkdownHeading[] | undefined;
+  /** Accessible name of the <nav>. */
+  label: string;
 }
 
-const { chapters, current, locale } = Astro.props;
+const { chapters, current, locale, headings = [], label } = Astro.props;
 const t = useTranslations(locale);
+const sections = headings.filter((h) => h.depth === 2);
 ---
 
-<nav class="chapter-nav">
+<nav class="chapter-nav" aria-label={label}>
   {
     GROUPS.map((group) => {
       const items = chapters.filter((c) => c.data.group === group);
@@ -22,9 +34,22 @@ const t = useTranslations(locale);
           <ul role="list">
             {items.map((c) => (
               <li>
-                <a href={localizePath(`/learn/${c.slug}/`, locale)} aria-current={c.slug === current ? "page" : undefined}>
+                <a
+                  class="chapter-link"
+                  href={localizePath(`/learn/${c.slug}/`, locale)}
+                  aria-current={c.slug === current ? "page" : undefined}
+                >
                   {c.data.navTitle}
                 </a>
+                {c.slug === current && sections.length > 0 && (
+                  <ul class="sections" role="list">
+                    {sections.map((h) => (
+                      <li>
+                        <a href={`#${h.slug}`}>{h.text}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
@@ -37,7 +62,7 @@ const t = useTranslations(locale);
 <style>
   .chapter-nav {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .chapter-nav-group {
@@ -45,26 +70,63 @@ const t = useTranslations(locale);
     gap: 2px;
   }
 
-  .chapter-nav-group p {
-    padding-inline: 10px;
+  .chapter-nav-group > p {
+    padding-inline: 12px;
     margin-block-end: 2px;
   }
 
-  .chapter-nav-group a {
+  ul {
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
     display: block;
-    padding: 6px 10px;
+    padding: 7px 12px;
     border-radius: var(--radius-menu);
     color: inherit;
     text-decoration: none;
     font-size: 0.9375rem;
+    line-height: 1.4;
+    transition: background-color var(--duration) var(--ease-out-quad);
   }
 
-  .chapter-nav-group a:hover {
-    background: var(--hover-color);
+  a:hover {
+    background-color: var(--hover-color);
   }
 
-  .chapter-nav-group a[aria-current="page"] {
-    background: var(--selected-color);
+  a:active {
+    background-color: var(--active-color);
+  }
+
+  a:focus-visible {
+    outline-offset: -2px;
+    border-radius: var(--radius-menu);
+  }
+
+  .chapter-link[aria-current="page"] {
+    background-color: var(--selected-color);
     font-weight: 700;
+  }
+
+  /* Sections of the current chapter: indented, smaller, dim until hovered. */
+  .sections {
+    margin-block: 2px 4px;
+    margin-inline-start: 12px;
+    padding-inline-start: 2px;
+    border-inline-start: 1px solid var(--border-color);
+  }
+
+  .sections a {
+    padding-block: 5px;
+    font-size: 0.875rem;
+    opacity: var(--dim-opacity);
+  }
+
+  .sections a:hover {
+    opacity: 1;
   }
 </style>

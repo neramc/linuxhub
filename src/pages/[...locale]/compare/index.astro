@@ -1,13 +1,14 @@
 ---
 /**
  * Side-by-side comparison of up to three distros. Every cell is pre-rendered
- * per locale into a compact JSON; the page shows a default trio without JS and
+ * per locale into a compact JSON, and every column header (app tile + name)
+ * into a <template>; the page shows a default trio without JS and
  * src/scripts/compare.ts swaps columns from the selects / ?d=a,b,c.
  */
+import DistroLogo from "~/components/DistroLogo.astro";
 import { localePaths, localizePath, type MessageKey, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { featuredRelease, formatDate, getDistros, getReleases } from "~/lib/catalog";
-import { logoUrl } from "~/lib/logos";
 import {
   ARCHITECTURES,
   DESKTOPS,
@@ -26,12 +27,10 @@ const distros = await getDistros();
 const byId = new Map(distros.map((d) => [d.id, d]));
 const regions = new Intl.DisplayNames([locale], { type: "region" });
 const ROWS = [
-  "latest",
-  "released",
+  "version",
   "eol",
   "family",
   "model",
-  "desktop",
   "desktops",
   "packages",
   "installer",
@@ -42,29 +41,25 @@ const ROWS = [
   "uses",
   "origin",
 ] as const;
+type Row = (typeof ROWS)[number];
+/** A plain value, or [emphasized, …rest] (the default desktop, then the others). */
+type Cell = string | string[];
 
-const cells: Record<
-  string,
-  Record<(typeof ROWS)[number], string> & { name: string; logo: string; href: string }
-> = {};
+const cells: Record<string, Record<Row, Cell>> = {};
 for (const d of distros) {
   const x = d.data;
   const release = featuredRelease(await getReleases(d.id));
   const base = x.basedOn ? byId.get(x.basedOn)?.data.name : x.upstream;
+  const when =
+    release?.channel === "rolling"
+      ? RELEASE_MODELS.rolling[locale]
+      : formatDate(release?.releaseDate ?? null, locale);
   cells[d.id] = {
-    name: x.name,
-    logo: logoUrl(x.logo.file),
-    href: localizePath(`/distros/${d.id}/`, locale),
-    latest: release ? release.version : "—",
-    released:
-      release?.channel === "rolling"
-        ? RELEASE_MODELS.rolling[locale]
-        : (formatDate(release?.releaseDate ?? null, locale) ?? "—"),
+    version: release ? [release.version, when].filter(Boolean).join(" · ") : "—",
     eol: formatDate(release?.eol ?? null, locale) ?? "—",
     family: base ? `${FAMILIES[x.family][locale]} · ${base}` : FAMILIES[x.family][locale],
     model: RELEASE_MODELS[x.releaseModel][locale],
-    desktop: DESKTOPS[x.desktops[0] ?? "none"][locale],
-    desktops: x.desktops.map((k) => DESKTOPS[k][locale]).join(", "),
+    desktops: x.desktops.map((k) => DESKTOPS[k][locale]),
     packages: x.packageManagers.join(", "),
     installer: INSTALLERS[x.installer][locale],
     arch: x.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0]).join(", "),
@@ -75,7 +70,7 @@ for (const d of distros) {
     }),
     difficulty: DIFFICULTIES[x.difficulty][locale],
     uses: x.useCases.map((u) => USE_CASES[u][locale]).join(", "),
-    origin: `${x.origin.country === "INT" ? "INT" : (regions.of(x.origin.country) ?? x.origin.country)} · ${x.origin.firstRelease.slice(0, 4)}`,
+    origin: `${x.origin.country === "INT" ? t("facts.international") : (regions.of(x.origin.country) ?? x.origin.country)} · ${x.origin.firstRelease.slice(0, 4)}`,
   };
 }
 const preferred = ["ubuntu", "fedora", "linux-mint"].filter((id) => byId.has(id));
@@ -83,16 +78,13 @@ const defaults = (preferred.length >= 2 ? preferred : distros.slice(0, 3).map((d
   0,
   3,
 );
-const rowLabel = (r: (typeof ROWS)[number]) => t(`compare.rows.${r}` as MessageKey);
+const rowLabel = (r: Row) => t(`compare.rows.${r}` as MessageKey);
 const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <Base locale={locale} title={t("compare.title")} description={t("compare.lead")}>
   <div class="container page">
-    <header class="page-header">
-      <h1>{t("compare.title")}</h1>
-      <p class="dim-label">{t("compare.lead")}</p>
-    </header>
+    <h1>{t("compare.title")}</h1>
 
     <div class="pickers" data-compare>
       {
@@ -119,13 +111,13 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
             <td></td>
             {
               [0, 1, 2].map((i) => {
-                const c = defaults[i] ? cells[defaults[i] as string] : undefined;
+                const d = defaults[i] ? byId.get(defaults[i] as string) : undefined;
                 return (
                   <th scope="col" data-head={i}>
-                    {c && (
-                      <a href={c.href} class="head-link">
-                        <img src={c.logo} alt="" width="48" height="48" />
-                        <span>{c.name}</span>
+                    {d && (
+                      <a href={localizePath(`/distros/${d.id}/`, locale)} class="head-link">
+                        <DistroLogo file={d.data.logo.file} name={d.data.name} size={36} eager />
+                        <span>{d.data.name}</span>
                       </a>
                     )}
                   </th>
@@ -139,15 +131,37 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
             ROWS.map((row) => (
               <tr>
                 <th scope="row">{rowLabel(row)}</th>
-                {[0, 1, 2].map((i) => (
-                  <td data-cell={`${i}:${row}`}>{defaults[i] ? cells[defaults[i] as string]?.[row] : ""}</td>
-                ))}
+                {[0, 1, 2].map((i) => {
+                  const value = defaults[i] ? cells[defaults[i] as string]?.[row] : "";
+                  return (
+                    <td data-cell={`${i}:${row}`}>
+                      {Array.isArray(value) ? (
+                        <>
+                          <strong>{value[0]}</strong>
+                          {value.length > 1 && ` · ${value.slice(1).join(", ")}`}
+                        </>
+                      ) : (
+                        value
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
             ))
           }
         </tbody>
       </table>
     </div>
+    {
+      sortedOptions.map((d) => (
+        <template data-head-template={d.id}>
+          <a href={localizePath(`/distros/${d.id}/`, locale)} class="head-link">
+            <DistroLogo file={d.data.logo.file} name={d.data.name} size={36} />
+            <span>{d.data.name}</span>
+          </a>
+        </template>
+      ))
+    }
     <script type="application/json" id="compare-data" set:html={JSON.stringify(cells).replace(/</g, "\\u003c")}></script>
   </div>
 </Base>
@@ -159,13 +173,9 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
 <style>
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     padding-block: var(--space-4) var(--space-6);
-  }
-
-  .page-header {
-    display: grid;
-    gap: 6px;
   }
 
   .pickers {
@@ -202,8 +212,12 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
   .compare-table td {
     padding: 12px 14px;
     text-align: start;
-    vertical-align: top;
+    vertical-align: baseline;
     inline-size: 28%;
+  }
+
+  .compare-table thead :is(th, td) {
+    vertical-align: middle;
   }
 
   .compare-table tbody th {
@@ -217,13 +231,22 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
     border-block-start: 1px solid var(--card-shade-color);
   }
 
-  .head-link {
-    display: grid;
-    gap: 6px;
-    justify-items: start;
+  .compare-table td :global(strong) {
+    font-weight: 700;
+  }
+
+  .compare-table :global(.head-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     color: inherit;
     font-size: var(--text-title-4);
-    font-weight: 800;
+    font-weight: 700;
+    line-height: 1.3;
     text-decoration: none;
+  }
+
+  .compare-table :global(.head-link:hover span) {
+    text-decoration: underline;
   }
 </style>

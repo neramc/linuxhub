@@ -1,6 +1,11 @@
 ---
+/**
+ * Linux guide index: one boxed list per group (AdwPreferencesPage-like clamp).
+ * Row = "N. title", a one-line description and the reading time.
+ */
+import ActionRow from "~/components/adw/ActionRow.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
-import Icon from "~/components/adw/Icon.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { GROUPS, getChapters, readingMinutes } from "~/lib/learn";
@@ -15,34 +20,25 @@ const first = chapters[0];
 <Base locale={locale} title={t("learn.title")} description={t("learn.lead")} image="/og/learn.png">
   <div class="container page">
     <header class="page-header">
-      <h1 class="title-display">{t("learn.title")}</h1>
-      <p class="lead dim-label">{t("learn.lead")}</p>
-      {first && <div><Button href={localizePath(`/learn/${first.slug}/`, locale)} variant="suggested" pill icon="contents">{t("learn.start")}</Button></div>}
+      <h1>{t("learn.title")}</h1>
+      {first && <Button href={localizePath(`/learn/${first.slug}/`, locale)} variant="suggested" pill icon="contents">{t("learn.start")}</Button>}
     </header>
 
     {
       GROUPS.map((group) => {
         const items = chapters.filter((c) => c.data.group === group);
         return items.length ? (
-          <section class="group" aria-labelledby={`group-${group}`}>
-            <h2 id={`group-${group}`}>{t(`learn.groups.${group}`)}</h2>
-            <ul class="chapters" role="list">
-              {items.map((c) => (
-                <li>
-                  <a class="chapter adw-card activatable" href={localizePath(`/learn/${c.slug}/`, locale)}>
-                    <span class="chapter-icon"><Icon name={c.data.icon} size={20} /></span>
-                    <span class="chapter-text">
-                      <span class="chapter-title">
-                        <span class="chapter-num numeric">{c.data.order}.</span> {c.data.navTitle}
-                      </span>
-                      <span class="chapter-desc">{c.data.description}</span>
-                      <span class="caption dim-label">{t("learn.readingTime", { minutes: readingMinutes(c.body, locale) })}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <BoxedList title={t(`learn.groups.${group}`)} level={2} id={`group-${group}`} class="learn-chapters">
+            {items.map((c) => (
+              <ActionRow
+                title={`${c.data.order}. ${c.data.navTitle}`}
+                subtitle={c.data.description}
+                href={localizePath(`/learn/${c.slug}/`, locale)}
+              >
+                <span class="reading caption dim-label">{t("learn.readingTime", { minutes: readingMinutes(c.body, locale) })}</span>
+              </ActionRow>
+            ))}
+          </BoxedList>
         ) : null;
       })
     }
@@ -52,66 +48,30 @@ const first = chapters[0];
 <style>
   .page {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
-    padding-block: var(--space-5) var(--space-6);
+    padding-block: var(--space-4) var(--space-6);
+    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
   }
 
   .page-header {
-    display: grid;
-    gap: var(--space-2);
-    max-inline-size: 48rem;
-  }
-
-  .lead {
-    font-size: 1.125rem;
-  }
-
-  .group {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .chapters {
-    display: grid;
-    gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  }
-
-  .chapter {
     display: flex;
-    gap: var(--space-2);
-    block-size: 100%;
-    padding: var(--space-3);
-    color: inherit;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-3);
   }
 
-  .chapter-icon {
-    display: grid;
-    place-items: center;
-    flex: none;
-    inline-size: 40px;
-    block-size: 40px;
-    border-radius: 10px;
-    background: color-mix(in srgb, var(--accent-bg-color) 14%, transparent);
-    color: var(--accent-color);
+  /* One line of description per row (the chapter page and its meta
+     description carry the full text). BoxedList does not take this page's
+     scope, hence the page-unique global class. */
+  :global(.learn-chapters .adw-row-subtitle) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .chapter-text {
-    display: grid;
-    gap: 4px;
-  }
-
-  .chapter-title {
-    font-weight: 700;
-    font-size: var(--text-title-4);
-  }
-
-  .chapter-num {
-    opacity: var(--dim-opacity);
-  }
-
-  .chapter-desc {
-    opacity: var(--dim-opacity);
-    font-size: 0.9375rem;
+  .reading {
+    white-space: nowrap;
   }
 </style>

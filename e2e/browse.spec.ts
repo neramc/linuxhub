@@ -16,6 +16,10 @@ test("home → catalog → distro detail", async ({ page }) => {
 
 test("catalog filters keep state in the URL", async ({ page }) => {
   await page.goto("/distros/?family=fedora");
+  // A facet in the URL opens the Filters disclosure and counts as one filter.
+  const filters = page.locator("[data-filter-panel]");
+  await expect(filters).toHaveAttribute("open", "");
+  await expect(page.locator("[data-filter-count]")).toHaveText("1");
   const visible = page.locator("[data-distro]:not([hidden])");
   await expect(visible.first()).toBeVisible();
   for (const family of await visible.evaluateAll((els) =>
@@ -25,8 +29,36 @@ test("catalog filters keep state in the URL", async ({ page }) => {
   }
   await page.locator('select[name="family"]').selectOption("");
   await expect(page).toHaveURL(/\/distros\/$/);
+  await expect(page.locator("[data-filter-count]")).toBeHidden();
   await page.locator('[data-filters] input[name="q"]').fill("zzzz-no-such-distro");
   await expect(page.locator("[data-empty]")).toBeVisible();
+});
+
+test("catalog filters disclosure and use-case chips", async ({ page }) => {
+  await page.goto("/distros/");
+  const filters = page.locator("[data-filter-panel]");
+  await expect(filters).not.toHaveAttribute("open", "");
+  await filters.locator("summary").click();
+  await page.locator('select[name="level"]').selectOption("beginner");
+  await expect(page).toHaveURL(/level=beginner/);
+  await expect(page.locator("[data-filter-count]")).toHaveText("1");
+  // The chip row filters in place and marks the current chip.
+  const chips = page.locator("[data-use-chips]");
+  await chips.locator('[data-use-chip="gaming"]').click();
+  await expect(page).toHaveURL(/use=gaming/);
+  await expect(chips.locator('[data-use-chip="gaming"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator('select[name="use"]')).toHaveValue("gaming");
+  for (const uses of await page
+    .locator("[data-distro]:not([hidden])")
+    .evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.use))) {
+    expect(uses?.split(" ")).toContain("gaming");
+  }
+  await chips.locator('[data-use-chip=""]').click();
+  await expect(page).not.toHaveURL(/use=/);
+  // A use-case link from the home page keeps the disclosure closed (the chip shows it).
+  await page.goto("/distros/?use=gaming");
+  await expect(filters).not.toHaveAttribute("open", "");
+  await expect(chips.locator('[data-use-chip="gaming"]')).toHaveAttribute("aria-current", "page");
 });
 
 test("English pages use the /en/ prefix and hreflang alternates", async ({ page }) => {

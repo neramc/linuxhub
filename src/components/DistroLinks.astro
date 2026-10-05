@@ -1,4 +1,9 @@
 ---
+/**
+ * Official links of a distro. A row shows its host name only when the link
+ * leaves the project's own domain (e.g. GitHub, SourceForge), so readers can
+ * still tell where an outside link goes without seven repeated host names.
+ */
 import { type Locale, useTranslations } from "~/i18n";
 import type { Distro } from "~/lib/catalog";
 import ActionRow from "./adw/ActionRow.astro";
@@ -21,6 +26,31 @@ const rows = [
   { key: "forum", url: l.forum, icon: "community" },
   { key: "source", url: l.source, icon: "terminal" },
 ] as const;
+
+/** Second-level public suffixes, so "example.co.uk" is not read as "co.uk". */
+const MULTI_LABEL_SUFFIXES = new Set([
+  "co.uk",
+  "org.uk",
+  "com.au",
+  "co.jp",
+  "com.cn",
+  "com.br",
+  "co.kr",
+  "or.kr",
+]);
+
+/** The registrable domain of a URL's host ("docs.fedoraproject.org" → "fedoraproject.org"). */
+function site(url: string): string {
+  const labels = new URL(url).hostname.split(".");
+  const two = labels.slice(-2).join(".");
+  return MULTI_LABEL_SUFFIXES.has(two) ? labels.slice(-3).join(".") : two;
+}
+
+const home = site(l.home);
+const hostLabel = (url: string) => {
+  const host = new URL(url).hostname;
+  return site(url) === home ? undefined : host.replace(/^www\./, "");
+};
 ---
 
 <BoxedList title={t("distro.links")} level={2}>
@@ -28,7 +58,7 @@ const rows = [
     rows
       .filter((r) => r.url)
       .map((r) => (
-        <ActionRow title={t(`links.${r.key}`)} subtitle={new URL(r.url as string).hostname} icon={r.icon} href={r.url} external />
+        <ActionRow title={t(`links.${r.key}`)} subtitle={hostLabel(r.url as string)} icon={r.icon} href={r.url} external />
       ))
   }
 </BoxedList>

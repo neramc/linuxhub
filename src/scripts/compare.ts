@@ -1,8 +1,25 @@
-/** Swaps comparison columns from the selects and keeps ?d=a,b,c in the URL. */
-type Cells = Record<string, Record<string, string> & { name: string; logo: string; href: string }>;
+/**
+ * Swaps comparison columns from the selects and keeps ?d=a,b,c in the URL.
+ * Cell values come from #compare-data; column headers (app tile + name) are
+ * cloned from the server-rendered <template data-head-template="<slug>">.
+ */
+type Cell = string | string[];
+type Cells = Record<string, Record<string, Cell>>;
 
 const root = document.querySelector<HTMLElement>("[data-compare]");
 const raw = document.getElementById("compare-data")?.textContent;
+
+/** A plain value, or [emphasized, …rest] → "<strong>first</strong> · rest". */
+function fillCell(cell: HTMLElement, value: Cell | undefined) {
+  if (!Array.isArray(value)) {
+    cell.textContent = value ?? "";
+    return;
+  }
+  const [first = "", ...rest] = value;
+  const strong = document.createElement("strong");
+  strong.textContent = first;
+  cell.replaceChildren(strong, ...(rest.length ? [` · ${rest.join(", ")}`] : []));
+}
 
 if (root && raw) {
   const cells = JSON.parse(raw) as Cells;
@@ -11,26 +28,13 @@ if (root && raw) {
   function render(column: number, id: string) {
     const c = cells[id];
     const head = document.querySelector<HTMLElement>(`[data-head="${column}"]`);
-    if (head) {
-      head.replaceChildren();
-      if (c) {
-        const a = document.createElement("a");
-        a.className = "head-link";
-        a.href = c.href;
-        const img = document.createElement("img");
-        img.src = c.logo;
-        img.alt = "";
-        img.width = 48;
-        img.height = 48;
-        const name = document.createElement("span");
-        name.textContent = c.name;
-        a.append(img, name);
-        head.append(a);
-      }
-    }
+    const template = id
+      ? document.querySelector<HTMLTemplateElement>(`template[data-head-template="${id}"]`)
+      : null;
+    head?.replaceChildren(...(c && template ? [template.content.cloneNode(true)] : []));
     for (const cell of document.querySelectorAll<HTMLElement>(`[data-cell^="${column}:"]`)) {
       const key = cell.dataset.cell?.split(":")[1] ?? "";
-      cell.textContent = c?.[key] ?? "";
+      fillCell(cell, c?.[key]);
     }
   }
 
