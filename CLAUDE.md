@@ -53,6 +53,82 @@ The approved plan lives in `docs/plan.md` (Korean). Decisions are logged in
 9. **Privacy.** `/api/geo` returns country/coordinates with
    `Cache-Control: private, no-store` and never logs them.
 
+## Web quality (all UI work)
+
+Linuxhub should read as a GNOME app (Flathub / GNOME Software), not a SaaS
+template. These rules apply hard rule 3; where a skill suggests a new palette,
+typeface or visual style, the Adwaita tokens and ADR-0006/0009/0014 win.
+
+- **No generic SaaS / template UI.** No hero-plus-stats blocks, feature-card
+  grids, Tailwind-default look, eyebrow or ALL-CAPS labels, "→" in button text,
+  01/02/03 markers on content that isn't a sequence, invented numbers, emoji,
+  or decorative icons and illustrations. Every badge, icon, divider and color
+  carries information; color signals real risk only.
+- **Shape and depth come from tokens only.** Radii: `--radius-button`/`-menu`
+  9px, `--radius-card` 12px, `--radius-popover`/`-dialog` 15px; pills only for
+  chips, badges, pill buttons and toasts; no card inside a card. Shadows: only
+  the ladder `--shadow-card` → `-raised` → `-popover` → `-dialog`, plus
+  `--shadow-top-bar` and `--shadow-icon`. No gradients (except libadwaita's
+  same-color hover overlay and the style-switcher swatch), no `backdrop-filter`
+  or glassmorphism (translucency only on `.osd` controls), no decorative motion.
+- **Spacing and layout.** `--space-1…7` on the 6px grid (widget internals keep
+  the libadwaita values in `adwaita.css`); GNOME density, no oversized padding or
+  empty bands. Card grids only for collections of peer items (`DistroCard`);
+  facts, releases and links go in `BoxedList` rows; text stays prose.
+- **Typography.** A clear hierarchy from the scale tokens only (`--text-display`
+  … `--text-caption`); one h1 per page, no skipped levels; Adwaita Mono only for
+  code, file names and checksums.
+- **Real workflows.** Design for: find → choose → download from an official
+  mirror → verify → install. One primary action per view (at most two hero
+  actions); secondary details in native `<details>`.
+- **States.** Every island that loads, filters, submits or copies has loading,
+  empty, error and success states with i18n copy that says what happened and
+  what to do next. Never memoize a rejected promise or leave "loading…" up.
+- **Accessibility.** WCAG 2.2 AA; everything works by keyboard with the visible
+  focus ring; native `button`/`a`/`details`/`dialog`/popover before ARIA; 44px
+  touch targets.
+- **Responsive and motion.** No horizontal scroll at 320px or 390px; check
+  390px and 1366px in light and dark. Motion only in response to user actions
+  (200ms ease-out-quad, no translate/scale lifts); honor
+  `prefers-reduced-motion`.
+- **Performance and dependencies.** Keep Lighthouse at 100 (CI floor:
+  performance ≥ 0.95, CLS ≤ 0.02, TBT ≤ 100ms); lab mobile LCP ≤ 2.0s; page JS
+  ≤ 15KB gzip. Add JavaScript only for real interaction. Every new dependency
+  needs a reason in the commit; a new runtime dependency needs an ADR. No
+  analytics or RUM (rule 9).
+- **Evidence.** Verify on the production build in a real browser (CSP on).
+  Never claim a performance, accessibility or visual improvement without
+  before/after numbers or screenshots; otherwise write "not measured".
+
+## UI work process
+
+Project skills live in `.claude/skills/` (see its README); the
+`chrome-devtools` MCP server is in `.mcp.json`.
+
+1. **Structure.** Read the route in `src/pages/[...locale]/`, its components,
+   its island in `src/scripts/`, its i18n keys and its e2e spec.
+2. **Design system.** Read `src/styles/tokens.css`, `adwaita.css` and
+   ADR-0006/0009/0014.
+3. **Reuse.** Check `src/components/adw/`, `site/` and the domain components
+   first; new patterns go into `adw/` and the `/design/` showcase.
+4. **Direction.** Write a short contract: the user's task, the primary action,
+   the components used, the four states, responsive behavior, and what is
+   rejected (`frontend-ui-engineering`; critique against `frontend-design`).
+5. **Implement.** Static HTML first; a small vanilla island only for real
+   interaction.
+6. **Browser check.** `bun run build && bun run preview`, then screenshots at
+   320/390/1366 in light and dark with a clean console
+   (`browser-testing-with-devtools`).
+7. **Accessibility.** Keyboard walk-through, accessibility-tree snapshot, axe
+   (`E2E_PORT=<free port> bunx playwright test e2e/a11y.spec.ts`).
+8. **Performance.** Lighthouse on the changed pages before and after
+   (`performance-optimization`).
+9. **Review.** Bugs, duplication, needless abstraction, dependencies and these
+   rules (`code-review-and-quality`, plus built-in `/code-review` and
+   `/simplify` when available).
+10. **Fix** the findings.
+11. **Re-verify.** The commands below plus steps 6–8; report the numbers.
+
 ## Commands (run before every commit)
 
 ```bash

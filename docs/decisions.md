@@ -138,3 +138,13 @@
 - **배포판 상세:** 위쪽은 128px 타일(700px 미만은 96px), 이름, 소개, 버튼 두 개(다운로드, 설치 가이드)만 둔다. 사실 목록은 핵심 줄만 보이고 나머지는 "더 보기"로 접는다.
 - **안내 상자(Callout):** 두 가지 모양만 쓴다. 참고·팁·정보·성공은 카드 바탕에 강조색 아이콘, 경고·위험만 색을 입힌다. 색은 실제 위험을 알릴 때만 쓴다.
 - **접근성:** 이 결정으로 생긴 libadwaita 값 변경은 ADR-0009에 함께 적는다.
+
+## ADR-0015 — Claude Code 스킬과 브라우저 검증 도구 (2026-10-05)
+- **목표:** AI가 만든 UI가 템플릿처럼 보이지 않게 하고, 실제 브라우저에서 접근성과 성능을 숫자로 확인하게 한다. 기존 디자인(ADR-0006/0009/0014)과 구조를 바꾸지 않는다.
+- **결정:** 프로젝트 범위의 스킬 5개를 `.claude/skills/`에 커밋한다. 로컬 세션과 Claude Code on the web 모두 저장소 클론에서 그대로 읽는다.
+  - `frontend-design` (anthropics/claude-plugins-official, Apache-2.0): 수정 없이 복사한다. 새 팔레트나 글꼴을 제안해도 Adwaita 규칙이 우선한다(CLAUDE.md "Web quality").
+  - `frontend-ui-engineering`, `browser-testing-with-devtools`, `performance-optimization`, `code-review-and-quality` (addyosmani/agent-skills, MIT): 각 SKILL.md 제목 아래에 "Linuxhub overlay" 블록을 넣어 이 프로젝트의 규칙(Astro + 바닐라 아일랜드, CSP, Adwaita 토큰, Bun, 실험실 측정만)을 먼저 적용한다. 출처 커밋과 바꾼 부분은 `.claude/skills/README.md`에 적는다.
+  - addyosmani/web-quality-skills(MIT)는 설치하지 않는다. 겹치지 않는 WCAG 2.2 표와 LCP·INP·CLS 진단만 위 스킬의 참고 파일로 옮긴다. 나머지는 이미 있는 Lighthouse·axe 검사와 겹치거나 CSP를 어기는 예시가 있다.
+- **플러그인으로 설치하지 않는 이유:** 저장소 설정의 `enabledPlugins`는 클라우드 세션에서 설치되지 않는다. 로컬에서 플러그인과 복사본을 함께 쓰면 같은 스킬이 두 번 뜬다.
+- **MCP:** `.mcp.json`에 `chrome-devtools` 서버 하나를 둔다. `chrome-devtools-mcp@1.10.1`(Apache-2.0)로 버전을 고정하고, 헤드리스·임시 프로필로 띄운다. 사용 통계와 CrUX 조회는 끈다(규칙 9). 클라우드 컨테이너에서는 미리 설치된 Chromium을 쓴다. 로컬에서는 프로젝트 MCP 서버를 처음 한 번 승인해야 한다(Claude Code on the web 세션은 바로 연결된다).
+- **성능 근거:** 실험실 측정(Lighthouse CI, DevTools 트레이스)만 쓴다. RUM이나 `web-vitals` 같은 수집 스크립트는 넣지 않는다(규칙 9, ADR-0013). 측정하지 않은 개선은 주장하지 않는다.

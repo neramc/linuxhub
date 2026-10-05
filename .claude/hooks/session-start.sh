@@ -20,6 +20,8 @@ bunx astro sync >/dev/null
 if [ -x /opt/pw-browsers/chromium ] && [ -n "${CLAUDE_ENV_FILE:-}" ]; then
   echo 'export PLAYWRIGHT_CHROMIUM_PATH="/opt/pw-browsers/chromium"' >> "$CLAUDE_ENV_FILE"
   echo 'export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1' >> "$CLAUDE_ENV_FILE"
+  # Lighthouse CI (performance-optimization skill) looks for Chrome here.
+  echo 'export CHROME_PATH="/opt/pw-browsers/chromium"' >> "$CLAUDE_ENV_FILE"
 fi
 
 echo "linuxhub: dependencies installed, Astro types synced."

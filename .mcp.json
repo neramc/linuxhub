@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "sh",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/.claude/mcp/chrome-devtools.sh"]
+    }
+  }
+}
