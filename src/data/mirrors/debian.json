@@ -3,7 +3,7 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-06",
   "mirrors": [
     {
       "url": "https://debian-mirror.behostings.net/debian-cd/",
@@ -105,14 +105,6 @@
       "url": "https://ftp.halifax.rwth-aachen.de/debian-cd/",
       "country": "DE",
       "name": "ftp.halifax.rwth-aachen.de",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ftp.hosteurope.de/mirror/ftp.debian.org/debian-cd/",
-      "country": "DE",
-      "name": "ftp.hosteurope.de",
       "lat": null,
       "lon": null,
       "score": null
@@ -257,6 +249,14 @@
       "url": "https://mirror.duocast.net/debian-cd/",
       "country": "NL",
       "name": "mirror.duocast.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/debian-cd/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
       "lat": null,
       "lon": null,
       "score": null

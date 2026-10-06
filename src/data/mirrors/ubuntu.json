@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -369,6 +369,14 @@
       "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/",
       "country": "CN",
       "name": "Tsinghua University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ustc.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "USTC Linux User Group",
       "lat": null,
       "lon": null,
       "score": null
@@ -857,6 +865,14 @@
       "url": "https://ubuntu.grena.ge/releases/",
       "country": "GE",
       "name": "GRENA",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.cc.uoc.gr/mirrors/linux/ubuntu/releases/",
+      "country": "GR",
+      "name": "University of Crete",
       "lat": null,
       "lon": null,
       "score": null
