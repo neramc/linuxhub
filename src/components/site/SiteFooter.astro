@@ -1,12 +1,12 @@
 ---
 /**
- * Minimal footer (ADR-0014): the Tux brand, one row of links (About,
+ * Minimal footer (ADR-0014, SPEC §10): the Tux brand, one row of links (About,
  * Releases, Compare, RSS, source code) and one legal line (trademark notice +
  * license). The header and main menu carry the rest of the navigation.
  */
 import { type Locale, localizePath, useTranslations } from "~/i18n";
 import BrandMark from "./BrandMark.astro";
-import { secondaryNav } from "./nav";
+import { navItem } from "./nav";
 
 interface Props {
   locale: Locale;
@@ -15,14 +15,14 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const year = new Date().getFullYear();
-const [releases, compare, about] = secondaryNav(locale, Astro.url.pathname);
+const path = Astro.url.pathname;
 const links = [
-  about,
-  releases,
-  compare,
+  navItem("about", locale, path),
+  navItem("releases", locale, path),
+  navItem("compare", locale, path),
   { href: localizePath("/rss.xml", locale), label: t("footer.feed") },
   { href: "https://github.com/neramc/linuxhub", label: t("footer.source") },
-].filter((link) => link !== undefined);
+];
 ---
 
 <footer class="site-footer">
@@ -37,7 +37,8 @@ const links = [
       </ul>
     </nav>
     <p class="footer-legal caption dim-label">
-      {`${t("footer.trademarks")} ${t("footer.license")} © ${year} Linuxhub`}
+      {/* No-break spaces keep "© year Linuxhub" on one line (no lone "©"). */}
+      {`${t("footer.trademarks")} ${t("footer.license")} ©\u00a0${year}\u00a0Linuxhub`}
     </p>
   </div>
 </footer>
@@ -46,7 +47,6 @@ const links = [
   .site-footer {
     margin-block-start: auto;
     padding-block: var(--space-5) calc(var(--space-5) + env(safe-area-inset-bottom));
-    border-block-start: 1px solid var(--border-color);
   }
 
   .footer-inner {
@@ -57,7 +57,7 @@ const links = [
   .footer-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-2);
   }
 
   .footer-links {
@@ -69,7 +69,7 @@ const links = [
   .footer-links a {
     display: inline-flex;
     align-items: center;
-    min-block-size: 32px;
+    min-block-size: var(--control-height); /* 36px; 44px on touch screens */
     color: inherit;
     text-decoration: none;
   }
@@ -78,7 +78,16 @@ const links = [
     text-decoration: underline;
   }
 
-  @media (min-width: 900px) {
+  /* 44px wide targets for short labels (RSS) on touch screens, without
+     moving the text: the padding is taken back by the margin. */
+  @media (pointer: coarse) {
+    .footer-links a {
+      padding-inline: var(--space-1);
+      margin-inline: calc(-1 * var(--space-1));
+    }
+  }
+
+  @media (width >= 1000px) {
     .footer-inner {
       grid-template-columns: auto minmax(0, 1fr);
       align-items: center;

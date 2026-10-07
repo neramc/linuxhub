@@ -177,8 +177,9 @@
   /* ---- Layout ---- */
   /* Breakpoints (media queries cannot read custom properties, so use these
      literals in range syntax): layout (width < 600px) · (600px <= width < 1000px)
-     · (width >= 1000px); header only (width >= 768px) primary nav ·
-     (width >= 1100px) search entry button; touch targets (pointer: coarse). */
+     · (width >= 1000px); header only (width >= 768px) and (width >= 48em)
+     primary nav · (width >= 1100px) and (width >= 68.75em) search entry button
+     (em follows the browser's font size); touch targets (pointer: coarse). */
   --content-width: 1200px;
   --text-width: 760px;
   --prose-measure: var(--text-width); /* running text in .prose; en: 55ch, below */

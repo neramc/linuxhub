@@ -615,6 +615,16 @@ a.adw-badge:hover {
   box-shadow: var(--shadow-raised);
 }
 
+/* ViewSwitcher links: the raised item is only about 1.2:1 against the trough,
+   so while one link is current the others' labels are dim as a second cue
+   (ADR-0016). Forced colors fill the current one with Highlight instead and
+   keep the user's text colors. */
+@media (forced-colors: none) {
+  .adw-toggle-group:has(> [aria-current="page"]) > .adw-toggle:not([aria-current]) > * {
+    opacity: var(--dim-opacity);
+  }
+}
+
 /* A radio or checkbox toggle: the native input covers the label, invisible. */
 .adw-toggle > input {
   position: absolute;
@@ -624,9 +634,11 @@ a.adw-badge:hover {
   cursor: pointer;
 }
 
+/* The ring sits in the trough's 3px padding/gap, outside the toggle, so it
+   keeps ≥ 3:1 against the trough also on the lighter raised (current) item. */
 .adw-toggle:is(:focus-visible, :has(input:focus-visible)) {
   outline: 2px solid var(--focus-ring-color);
-  outline-offset: -2px;
+  outline-offset: 1px;
   border-radius: var(--radius-button);
 }
 
@@ -671,11 +683,20 @@ a.adw-badge:hover {
   }
 }
 
-/* The selected shade is lost in forced colors; use the system selection. */
+/* The selected shade is lost in forced colors; use the system selection.
+   Without forced-color-adjust the browser paints a Canvas backplate behind
+   the text, which hides HighlightText. Only system colors are used here. The
+   focus ring sits inside the fill (an edge ring would meet the canvas). */
 @media (forced-colors: active) {
   .adw-nav-row[aria-current]:not([aria-current="false"]) {
+    forced-color-adjust: none;
     background-color: Highlight;
     color: HighlightText;
+  }
+
+  .adw-nav-row[aria-current]:not([aria-current="false"]):focus-visible {
+    outline-color: HighlightText;
+    outline-offset: -4px;
   }
 }
 
@@ -1097,5 +1118,27 @@ a.adw-badge:hover {
   :is(.adw-toggle, .adw-chip):is([aria-current]:not([aria-current="false"]), [aria-pressed="true"]),
   .adw-toggle:has(input:checked) {
     border-color: Highlight;
+  }
+
+  /* The raised toggle loses its fill and shadow: fill it like the current
+     menu row (.adw-nav-row), so it does not rest on a border color alone, and
+     draw its focus ring inside the fill. */
+  .adw-toggle:is(
+    [aria-current]:not([aria-current="false"]),
+    [aria-pressed="true"],
+    :has(input:checked)
+  ) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .adw-toggle:is(
+    [aria-current]:not([aria-current="false"]),
+    [aria-pressed="true"],
+    :has(input:checked)
+  ):is(:focus-visible, :has(input:focus-visible)) {
+    outline-color: HighlightText;
+    outline-offset: -4px;
   }
 }

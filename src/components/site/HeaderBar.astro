@@ -1,12 +1,23 @@
 ---
 /**
  * Site header styled as a libadwaita AdwHeaderBar, raised over the content
- * like a toolbar top bar: brand on the start side, primary navigation (wide
- * screens), search + main menu on the end side. On narrow screens the primary
- * destinations are the first items of the main menu.
+ * like a toolbar top bar (SPEC §10): Tux + Linuxhub on the start side; from
+ * 768px the four primary destinations as a view switcher (toggle group, the
+ * current page raised); search and the main menu on the end side. The search
+ * button looks like a search entry with its shortcut from 1100px and is a flat
+ * 44px icon button below. On narrow screens the primary destinations are the
+ * first items of the main menu.
+ *
+ * The two header breakpoints are also written in em (48em, 68.75em = 768px,
+ * 1100px at the default 16px). Media-query em follow the browser's font-size
+ * setting, so with larger text the nav and the entry look wait until their
+ * rem-sized labels fit, instead of being cut off (ADR-0016). MainMenu.astro
+ * uses the same nav query.
  */
 import { type Locale, localizePath, useTranslations } from "~/i18n";
 import Icon from "../adw/Icon.astro";
+import Kbd from "../adw/Kbd.astro";
+import ViewSwitcher from "../adw/ViewSwitcher.astro";
 import BrandMark from "./BrandMark.astro";
 import MainMenu from "./MainMenu.astro";
 import { primaryNav } from "./nav";
@@ -17,32 +28,36 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const nav = primaryNav(locale, Astro.url.pathname);
 ---
 
 <header class="headerbar">
   <div class="headerbar-inner container">
     <a class="brand" href={localizePath("/", locale)}>
       <BrandMark />
-      <span class="brand-name">{t("site.name")}</span>
+      <span>{t("site.name")}</span>
     </a>
 
-    <nav class="primary-nav" aria-label={t("nav.primary")}>
-      {
-        nav.map((item) => (
-          <a href={item.href} class="primary-nav-item" aria-current={item.current ? "page" : undefined}>
-            {item.label}
-          </a>
-        ))
-      }
-    </nav>
+    <ViewSwitcher
+      class="primary-nav"
+      items={primaryNav(locale, Astro.url.pathname)}
+      label={t("nav.primary")}
+    />
 
     <div class="headerbar-end">
-      <button class="search-trigger" type="button" data-search-open aria-haspopup="dialog">
+      <button
+        class="adw-button flat image-button search-trigger"
+        type="button"
+        data-search-open
+        aria-haspopup="dialog"
+        aria-keyshortcuts="Control+K Meta+K"
+        title={t("search.open")}
+      >
         <Icon name="search" />
         <span class="search-trigger-label">{t("search.placeholder")}</span>
-        <kbd class="search-trigger-kbd" aria-hidden="true">{t("search.shortcut")}</kbd>
-        <span class="visually-hidden">{t("search.open")}</span>
+        <span class="search-trigger-keys" aria-hidden="true">
+          {t("search.shortcut").split(" ").map((key) => <Kbd>{key}</Kbd>)}
+        </span>
+        <span class="search-trigger-name visually-hidden">{t("search.open")}</span>
       </button>
       <MainMenu locale={locale} />
     </div>
@@ -59,113 +74,116 @@ const nav = primaryNav(locale, Astro.url.pathname);
     box-shadow: var(--shadow-top-bar);
   }
 
+  /* GtkHeaderBar spacing: 6px between children, 12px after the brand. */
   .headerbar-inner {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
     block-size: var(--headerbar-height);
   }
 
   .brand {
+    flex: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: inherit;
-    font-weight: 800;
-    font-size: 1.0625rem;
-    text-decoration: none;
-    border-radius: var(--radius-button);
-    padding: 4px 6px 4px 2px;
+    gap: var(--space-2);
+    min-block-size: 44px;
+    padding-inline: 2px 6px;
     margin-inline-start: -2px;
+    border-radius: var(--radius-button);
+    color: inherit;
+    font-size: var(--text-heading);
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    text-decoration: none;
   }
 
   .brand:hover {
     text-decoration: none;
   }
 
+  /* The view switcher (adwaita.css toggle group) from 768px; the main menu
+     holds the same links below. */
   .primary-nav {
     display: none;
-    gap: 2px;
-    margin-inline-start: var(--space-2);
-  }
-
-  .primary-nav-item {
-    padding: 6px 12px;
-    border-radius: var(--radius-button);
-    color: inherit;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    text-decoration: none;
-    transition: background-color var(--duration) var(--ease-out-quad);
-  }
-
-  .primary-nav-item:hover {
-    background-color: var(--hover-color);
-    text-decoration: none;
-  }
-
-  .primary-nav-item[aria-current="page"] {
-    background-color: var(--selected-color);
   }
 
   .headerbar-end {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: var(--space-1);
     margin-inline-start: auto;
   }
 
-  /* Looks like an Adwaita search entry; opens the search dialog. */
+  /* A flat 44 × 44 icon button (SPEC §7, §10); the label and the shortcut
+     appear with the entry look from 1100px. */
   .search-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    block-size: 36px;
-    min-inline-size: 36px;
-    padding-inline: 10px;
-    border: 0;
-    border-radius: var(--radius-button);
-    background-color: var(--button-color);
-    color: inherit;
-    font-size: 0.9375rem;
-    transition: background-color var(--duration) var(--ease-out-quad);
-  }
-
-  .search-trigger:hover {
-    background-color: var(--button-hover-color);
+    --control-height: 44px;
   }
 
   .search-trigger-label,
-  .search-trigger-kbd {
+  .search-trigger-keys {
     display: none;
   }
 
-  .search-trigger-label {
-    opacity: var(--dim-opacity);
-    min-inline-size: 13rem;
-    text-align: start;
-  }
-
-  .search-trigger-kbd {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 700;
-    opacity: var(--dim-opacity);
-    padding: 1px 6px;
-    border-radius: 6px;
-    box-shadow: inset 0 0 0 1px var(--border-color);
-  }
-
-  @media (min-width: 900px) {
+  /* Never shrunk or scrolled: the queries keep it fitting, an overflow would
+     show as header overflow, and the raised item's shadow is not clipped. */
+  @media (width >= 768px) and (width >= 48em) {
     .primary-nav {
-      display: flex;
+      display: inline-flex;
+      flex: none;
+      overflow: visible;
+      margin-inline-start: var(--space-1);
     }
   }
 
-  @media (min-width: 1100px) {
-    .search-trigger-label,
-    .search-trigger-kbd {
+  /* The search entry look (SearchEntry: filled, 9px, dim icon and text), with
+     the shortcut as key caps at the end. The visible text names the button. */
+  @media (width >= 1100px) and (width >= 68.75em) {
+    .search-trigger {
+      --control-height: inherit;
+      justify-content: flex-start;
+      padding-inline: 12px 6px;
+      background-color: var(--button-color);
+      font-size: var(--text-body);
+      font-weight: 400;
+    }
+
+    .search-trigger:hover {
+      background-color: var(--button-hover-color);
+    }
+
+    .search-trigger:active {
+      background-color: var(--button-active-color);
+    }
+
+    .search-trigger > :global(.adw-icon),
+    .search-trigger-label {
+      opacity: var(--dim-opacity);
+    }
+
+    .search-trigger-label {
       display: inline;
+      min-inline-size: 13rem;
+      text-align: start;
+    }
+
+    .search-trigger-keys {
+      display: inline-flex;
+      gap: 3px;
+      margin-inline-start: auto;
+      opacity: var(--dim-opacity);
+    }
+
+    .search-trigger-name {
+      display: none;
+    }
+  }
+
+  /* The high-contrast ring of .adw-entry (adwaita.css) for the entry look. */
+  @media (width >= 1100px) and (width >= 68.75em) and (prefers-contrast: more) {
+    .search-trigger {
+      box-shadow: inset 0 0 0 1px var(--border-color);
     }
   }
 </style>

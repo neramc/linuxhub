@@ -105,12 +105,16 @@ Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
 </html>
 
 <style>
+  /* A 44px target (SPEC §7) over the header bar while focused. */
   .skip-link {
     position: absolute;
     inset-inline-start: var(--space-2);
     inset-block-start: -100px;
     z-index: 100;
-    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding: 6px 16px;
     border-radius: var(--radius-button);
     background: var(--accent-bg-color);
     color: var(--accent-fg-color);

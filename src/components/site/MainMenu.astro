@@ -1,10 +1,12 @@
 ---
 /**
  * GNOME-style primary menu (the "hamburger" popover in a header bar), without
- * leading icons: on narrow screens the four primary destinations first, then
- * Releases, Compare and About, then the style switcher and one row that
- * switches to the other language. Built on the HTML Popover API, so opening and
- * closing need no JS; only the style switcher has a tiny module.
+ * leading icons (SPEC §10): below 768px the four primary destinations first,
+ * then Releases, Family and About, then the style switcher and one row that
+ * switches to the other language. Built on the HTML Popover API, so opening,
+ * closing on Esc (focus returns to the button) and light dismiss need no JS.
+ * theme.ts wires the style switcher (hidden without JS), closes the menu when
+ * focus leaves it, and keeps the query and hash on the language row.
  */
 import {
   LOCALE_META,
@@ -14,6 +16,7 @@ import {
   stripLocale,
   useTranslations,
 } from "~/i18n";
+import Button from "../adw/Button.astro";
 import Icon from "../adw/Icon.astro";
 import { primaryNav, secondaryNav } from "./nav";
 
@@ -34,20 +37,19 @@ const themes = [
 ] as const;
 ---
 
-<button
-  class="adw-button flat image-button main-menu-button"
+<Button
+  variant="flat"
+  icon="menu"
+  label={t("nav.mainMenu")}
+  class="main-menu-button"
   popovertarget="main-menu"
-  aria-label={t("nav.mainMenu")}
-  title={t("nav.mainMenu")}
->
-  <Icon name="menu" />
-</button>
+/>
 
 <div id="main-menu" class="main-menu" popover>
   <div class="menu-section menu-primary">
     {
       primary.map((item) => (
-        <a class="menu-item" href={item.href} aria-current={item.current ? "page" : undefined}>
+        <a class="adw-nav-row" href={item.href} aria-current={item.current ? "page" : undefined}>
           {item.label}
         </a>
       ))
@@ -57,14 +59,14 @@ const themes = [
   <div class="menu-section">
     {
       secondary.map((item) => (
-        <a class="menu-item" href={item.href} aria-current={item.current ? "page" : undefined}>
+        <a class="adw-nav-row" href={item.href} aria-current={item.current ? "page" : undefined}>
           {item.label}
         </a>
       ))
     }
   </div>
 
-  <fieldset class="menu-section style-switcher">
+  <fieldset class="menu-section style-switcher" data-js-only>
     <legend class="visually-hidden">{t("theme.label")}</legend>
     {
       themes.map((theme) => (
@@ -79,10 +81,11 @@ const themes = [
 
   <div class="menu-section">
     <a
-      class="menu-item"
+      class="adw-nav-row"
       href={localizePath(basePath, other)}
       hreflang={LOCALE_META[other].htmlLang}
       lang={LOCALE_META[other].htmlLang}
+      data-lang-switch
     >
       {LOCALE_META[other].label}
     </a>
@@ -94,6 +97,11 @@ const themes = [
 </script>
 
 <style>
+  /* Header icon buttons are 44 × 44 at every width (SPEC §7). */
+  .main-menu-button {
+    --control-height: 44px;
+  }
+
   .main-menu {
     position: fixed;
     inset: auto;
@@ -127,35 +135,6 @@ const themes = [
     margin-block-start: 6px;
     padding-block-start: 6px;
     border-block-start: 1px solid var(--border-color);
-  }
-
-  .menu-item {
-    display: flex;
-    align-items: center;
-    min-block-size: 44px;
-    padding: 6px 12px;
-    border-radius: var(--radius-menu);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .menu-item:hover {
-    background-color: var(--hover-color);
-    text-decoration: none;
-  }
-
-  .menu-item:active {
-    background-color: var(--active-color);
-  }
-
-  .menu-item[aria-current="page"] {
-    background-color: var(--selected-color);
-    font-weight: 700;
-  }
-
-  .menu-item:focus-visible {
-    outline-offset: -2px;
-    border-radius: var(--radius-menu);
   }
 
   .style-switcher {
@@ -233,7 +212,32 @@ const themes = [
     opacity: 1;
   }
 
-  @media (min-width: 900px) {
+  /* Forced colors drop the popover shadow: a transparent border gives it an
+     edge (SPEC §4). The swatches preview real colors: keep them, or they
+     would be blank circles, and edge them in the system text color (the dark
+     swatch on a black canvas). */
+  @media (forced-colors: active) {
+    .main-menu {
+      border: 1px solid transparent;
+    }
+
+    .style-option {
+      forced-color-adjust: none;
+      border: 1px solid CanvasText;
+    }
+
+    .style-option:has(input:focus-visible) {
+      outline-color: Highlight;
+    }
+
+    .style-option:has(input:checked) {
+      box-shadow: 0 0 0 2px Highlight;
+    }
+  }
+
+  /* From 768px the header shows the primary destinations (the same query as
+     HeaderBar.astro: em follows the browser's font-size setting). */
+  @media (width >= 768px) and (width >= 48em) {
     .menu-primary {
       display: none;
     }
@@ -242,10 +246,6 @@ const themes = [
       margin-block-start: 0;
       padding-block-start: 0;
       border-block-start: 0;
-    }
-
-    .menu-item {
-      min-block-size: 40px;
     }
   }
 </style>

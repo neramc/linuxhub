@@ -230,11 +230,13 @@
 
   .caption {
     font-size: var(--text-caption);
+    line-height: var(--line-height-caption);
   }
 
   .caption-heading {
     font-size: var(--text-caption);
     font-weight: 700;
+    line-height: var(--line-height-caption);
   }
 
   .heading {

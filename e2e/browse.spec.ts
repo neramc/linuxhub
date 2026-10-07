@@ -104,3 +104,47 @@ test("main menu holds the primary destinations on narrow screens", async ({ page
   await expect(english).toHaveAttribute("href", "/en/distros/fedora/");
   await expect(menu.getByRole("link", { name: "한국어" })).toHaveCount(0);
 });
+
+test("the header holds the four primary destinations with Compare", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await page.goto("/compare/");
+  const nav = page.locator(".primary-nav");
+  await expect(nav).toBeVisible();
+  await expect(nav.getByRole("link", { name: "비교", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+  await expect(nav.getByRole("link", { name: "계보" })).toHaveCount(0);
+});
+
+test("the main menu closes when keyboard focus leaves it", async ({ page }) => {
+  await page.goto("/");
+  const button = page.getByRole("button", { name: "주 메뉴" });
+  const menu = page.locator("#main-menu");
+  await button.focus();
+  await page.keyboard.press("Enter");
+  await expect(menu).toBeVisible();
+  const inMenu = () => page.evaluate(() => Boolean(document.activeElement?.closest("#main-menu")));
+  let stops = 0;
+  for (let i = 0; i < 20; i++) {
+    await page.keyboard.press("Tab");
+    if (!(await inMenu())) break;
+    stops++;
+  }
+  expect(stops).toBeGreaterThan(0);
+  expect(await menu.evaluate((m) => m.matches(":popover-open"))).toBe(false);
+  // Focus moved on to the page, not back to the menu button.
+  expect(
+    await page.evaluate(() => {
+      const active = document.activeElement;
+      return active !== document.body && !active?.matches('[popovertarget="main-menu"]');
+    }),
+  ).toBe(true);
+});
+
+test("the language switch keeps the query", async ({ page }) => {
+  await page.goto("/compare/?d=fedora,ubuntu");
+  await page.getByRole("button", { name: "주 메뉴" }).click();
+  await page.locator("#main-menu").getByRole("link", { name: "English" }).click();
+  await expect(page).toHaveURL(/\/en\/compare\/\?d=fedora,ubuntu$/);
+});
