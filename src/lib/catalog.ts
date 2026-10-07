@@ -20,6 +20,9 @@ import {
 } from "./data-schemas";
 import { type Movement, movement, rerank, wikipediaUrl } from "./popularity";
 
+/** Display formats live in a client-safe module; build-time code imports them from here too. */
+export { formatBytes, formatDate } from "./format";
+
 export type Distro = CollectionEntry<"distros">;
 
 let cache: Distro[] | undefined;
@@ -137,29 +140,6 @@ export async function getPopular(limit = 10): Promise<PopularToday | undefined> 
   return items.length
     ? { day: file.day, source: file.source, project: file.project, items }
     : undefined;
-}
-
-export function formatBytes(bytes: number | null, locale: string): string | null {
-  if (!bytes) return null;
-  const units = ["B", "KB", "MB", "GB", "TB"];
-  let value = bytes;
-  let unit = 0;
-  while (value >= 1000 && unit < units.length - 1) {
-    value /= 1000;
-    unit++;
-  }
-  return `${new Intl.NumberFormat(locale, { maximumFractionDigits: value < 10 ? 1 : 0 }).format(value)} ${units[unit]}`;
-}
-
-export function formatDate(
-  iso: string | null,
-  locale: string,
-  style: "long" | "medium" = "long",
-): string | null {
-  if (!iso) return null;
-  return new Intl.DateTimeFormat(locale, { dateStyle: style, timeZone: "UTC" }).format(
-    new Date(`${iso}T00:00:00Z`),
-  );
 }
 
 type DocEntry = CollectionEntry<"distroDocs">;

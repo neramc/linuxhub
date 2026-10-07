@@ -307,11 +307,11 @@ const repo = "https://github.com/neramc/linuxhub";
     }
   }
 
-  @media (prefers-contrast: more) {
+  /* The high-contrast ring comes with --shadow-card; forced colors drop the
+     shadow, so a transparent border keeps the card's edge (SPEC §4). */
+  @media (forced-colors: active) {
     .logo-credits.logo-credits {
-      box-shadow:
-        0 0 0 1px var(--border-color),
-        var(--shadow-card);
+      border: 1px solid transparent;
     }
   }
 </style>

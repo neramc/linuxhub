@@ -9,7 +9,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import AppTile from "~/components/adw/AppTile.astro";
-import { nearestTileSize, type TileSize } from "~/components/adw/app-tile";
+import { type NarrowTileSize, nearestTileSize } from "~/components/adw/app-tile";
 import { logoUrl } from "~/lib/logos";
 
 interface Props {
@@ -17,8 +17,8 @@ interface Props {
   file: string;
   name: string;
   size?: number | undefined;
-  /** A smaller tile below 700px viewport width. */
-  narrowSize?: TileSize | undefined;
+  /** A smaller tile below 600px viewport width. */
+  narrowSize?: NarrowTileSize | undefined;
   eager?: boolean | undefined;
   fetchpriority?: "high" | "low" | "auto" | undefined;
   /** Decorative when the name is already next to it (default). */

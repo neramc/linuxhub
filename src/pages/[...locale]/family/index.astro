@@ -188,7 +188,7 @@ for (const d of [...distros].sort(byYear)) {
   }
 
   .decade-label {
-    font-size: var(--text-title-4);
+    font-size: var(--text-heading);
     font-weight: 700;
   }
 
@@ -201,12 +201,6 @@ for (const d of [...distros].sort(byYear)) {
   @media (max-width: 599px) {
     .decade {
       grid-template-columns: minmax(0, 1fr);
-    }
-  }
-
-  @media (prefers-contrast: more) {
-    .timeline {
-      box-shadow: 0 0 0 1px var(--border-color), var(--shadow-card);
     }
   }
 </style>

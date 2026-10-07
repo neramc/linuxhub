@@ -11,13 +11,16 @@ import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
 import Callout from "~/components/adw/Callout.astro";
 import Card from "~/components/adw/Card.astro";
+import Chip from "~/components/adw/Chip.astro";
 import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import Kbd from "~/components/adw/Kbd.astro";
+import SearchEntry from "~/components/adw/SearchEntry.astro";
 import StatusPage from "~/components/adw/StatusPage.astro";
 import ViewSwitcher from "~/components/adw/ViewSwitcher.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import { LOCALES, localeParam } from "~/i18n";
 import Base from "~/layouts/Base.astro";
+import "~/styles/prose.css";
 
 export function getStaticPaths() {
   if (!import.meta.env.DEV && !process.env.LINUXHUB_SHOWCASE) return [];
@@ -46,14 +49,14 @@ const swatches = [
   <Banner title="Linuxhub design review — libadwaita 1.10 tokens">
     <Button variant="suggested" pill={false}>Action</Button>
   </Banner>
+  <Banner tone="warning" title="최근 공식 소스에 접속하지 못해 표시된 정보가 오래되었을 수 있습니다." />
   <div class="container showcase">
     <section>
-      <h1 class="title-display">리눅스, 바로 시작하기</h1>
-      <p class="dim-label">Adwaita Sans · 한글은 시스템 고딕 · 12px card radius · 9px buttons</p>
       <h1>Title 1 — 배포판 목록</h1>
+      <p class="dim-label">Adwaita Sans · 한글은 시스템 고딕 · 12px card radius · 9px buttons</p>
       <h2>Title 2 — 설치 가이드</h2>
       <h3>Title 3 — 부팅 USB 만들기</h3>
-      <h4>Title 4 — 체크섬 확인</h4>
+      <h4>Heading — 체크섬 확인</h4>
       <p>
         본문 텍스트입니다. Linux Mint는 Ubuntu LTS를 기반으로 하는 입문자 친화적 배포판입니다.
         <a href="#">링크 스타일</a>과 <code>sudo apt update</code> 인라인 코드, <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd>.
@@ -66,7 +69,6 @@ const swatches = [
       <Button variant="suggested">Suggested</Button>
       <Button>Default</Button>
       <Button variant="flat">Flat</Button>
-      <Button variant="opaque">Opaque</Button>
       <Button variant="destructive">Destructive</Button>
       <Button icon="copy" label="복사" />
       <Button icon="menu" label="메뉴" variant="flat" circular />
@@ -77,24 +79,47 @@ const swatches = [
       <ViewSwitcher
         label="Views"
         items={[
-          { href: "#", label: "개요", icon: "info", current: true },
+          { href: "#", label: "개요", icon: "about", current: true },
           { href: "#", label: "설치 가이드", icon: "contents" },
           { href: "#", label: "다운로드", icon: "download" },
         ]}
       />
       <Badge>Debian 계열</Badge>
-      <Badge tone="accent">LTS</Badge>
       <Badge tone="success">지원 중</Badge>
       <Badge tone="warning">곧 지원 종료</Badge>
       <Badge tone="error">지원 종료</Badge>
     </section>
+
+    <section class="row">
+      <Chip href="#" icon="gaming" current>게이밍</Chip>
+      <Chip href="#" icon="terminal">개발</Chip>
+      <Chip href="#">Debian 계열</Chip>
+    </section>
+
+    <section class="row">
+      <div class="adw-toggle-group" role="radiogroup" aria-label="Linux 경험">
+        <label class="adw-toggle"><input type="radio" name="experience" value="new" checked /><span>처음이에요</span></label>
+        <label class="adw-toggle"><input type="radio" name="experience" value="some" /><span>조금 써 봤어요</span></label>
+        <label class="adw-toggle"><input type="radio" name="experience" value="expert" /><span>익숙해요</span></label>
+      </div>
+      <SearchEntry locale={locale} name="q" label="배포판 검색" />
+      <p class="row"><span class="adw-spinner" aria-hidden="true"></span>가까운 미러를 찾는 중…</p>
+    </section>
+
+    <nav class="nav-rows" aria-label="Navigation rows">
+      <ul role="list">
+        <li><a class="adw-nav-row" href="#" aria-current="page">리눅스란 무엇인가</a></li>
+        <li><a class="adw-nav-row" href="#">배포판이란</a></li>
+        <li><a class="adw-nav-row" href="#">데스크톱 환경</a></li>
+      </ul>
+    </nav>
 
     <section class="grid">
       {distros.map((d, i) => <DistroCard distro={d} locale={locale} eager={i < 3} />)}
     </section>
 
     <section class="two">
-      <BoxedList title="정보" description="공식 소스에서 확인한 사실">
+      <BoxedList title="정보">
         <ActionRow title="Fedora 43" subtitle="최신 버전" property />
         <ActionRow title="GNOME" subtitle="기본 데스크톱" property />
         <ActionRow title="dnf · rpm · flatpak" subtitle="패키지 관리" property />
@@ -102,7 +127,7 @@ const swatches = [
         <ActionRow title="설치 가이드" icon="contents" href="#" />
       </BoxedList>
       <BoxedList title="다운로드">
-        <ExpanderRow title="Workstation · x86_64" subtitle="2.3 GB · ISO" icon="disc" open>
+        <ExpanderRow title="Workstation · x86_64" subtitle="2.3 GB · ISO">
           <p class="caption mono">SHA256 3f1c…9ab2</p>
         </ExpanderRow>
         <ActionRow title="미러" subtitle="KAIST (대한민국) · 추천">
@@ -115,10 +140,10 @@ const swatches = [
       <Callout type="note" title="참고">체크섬은 항상 공식 원본 서버의 값을 보여줍니다.</Callout>
       <Callout type="tip" title="팁">Ventoy를 쓰면 USB 하나에 여러 ISO를 넣을 수 있습니다.</Callout>
       <Callout type="warning" title="주의">설치 중 디스크를 지우면 데이터가 모두 사라집니다.</Callout>
-      <Callout type="danger" title="위험">BitLocker를 해제하기 전에 복구 키를 백업하세요.</Callout>
     </section>
 
-    <section>
+    <section class="prose">
+      <p>체크섬 파일과 이미지를 같은 폴더에 두고 확인합니다.</p>
       <pre class="language-bash"><code class="language-bash">sha256sum -c SHA256SUMS --ignore-missing
 sudo dnf upgrade --refresh</code></pre>
     </section>
@@ -165,6 +190,10 @@ sudo dnf upgrade --refresh</code></pre>
 
   .mono {
     font-family: var(--font-mono);
+  }
+
+  .nav-rows {
+    max-inline-size: var(--sidebar-width);
   }
 
   .swatches {

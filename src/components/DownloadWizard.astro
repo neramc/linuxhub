@@ -375,4 +375,11 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
   .next-step {
     margin-block-start: var(--space-1);
   }
+
+  /* The filled checksum box keeps an edge in forced colors (SPEC §4). */
+  @media (forced-colors: active) {
+    .checksum-box {
+      border: 1px solid transparent;
+    }
+  }
 </style>

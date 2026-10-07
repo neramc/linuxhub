@@ -1,18 +1,19 @@
 ---
 /**
  * libadwaita AdwBanner: a full-width strip with an optional action. Neutral
- * gray by default (as in libadwaita); `accent` tints it with the accent color.
+ * gray by default (as in libadwaita); `tone="warning"` tints it with the
+ * warning color for a real risk, such as stale release data (SPEC §16).
  */
 interface Props {
   title: string;
-  accent?: boolean | undefined;
+  tone?: "neutral" | "warning" | undefined;
   class?: string | undefined;
 }
 
-const { title, accent = false, class: className } = Astro.props;
+const { title, tone = "neutral", class: className } = Astro.props;
 ---
 
-<div class:list={["adw-banner", { accent }, className]} role="status">
+<div class:list={["adw-banner", { warning: tone === "warning" }, className]} role="status">
   <p class="adw-banner-title">{title}</p>
   <slot />
 </div>

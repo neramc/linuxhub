@@ -1,8 +1,8 @@
 ---
 /**
- * Flathub-style app tile for a distribution: the logo on a 64px app tile, the
- * name and a two-line tagline (ADR-0014: no badges). The whole card is one
- * link. Facets for filtering live as data-* attributes on the list item that
+ * Flathub-style app tile for a distribution: the logo on a 64px app tile
+ * (48px below 600px), the name and a tagline of up to three lines
+ * (ADR-0014: no badges). The whole card is one link. Facets for filtering live as data-* attributes on the list item that
  * wraps the card, not on the card. Extra attributes are passed to the card.
  */
 import type { CollectionEntry } from "astro:content";
@@ -30,7 +30,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
   padded={false}
   {...rest}
 >
-  <DistroLogo file={d.logo.file} name={d.name} size={64} eager={eager} />
+  <DistroLogo file={d.logo.file} name={d.name} size={64} narrowSize={48} eager={eager} />
   <div class="distro-card-text">
     <Heading class="distro-card-name">{d.name}</Heading>
     <p class="distro-card-tagline">{d.tagline[locale]}</p>
@@ -53,17 +53,17 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
   }
 
   .distro-card-name {
-    font-size: var(--text-title-4);
+    font-size: var(--text-heading);
     font-weight: 700;
-    line-height: 1.3;
+    line-height: var(--line-height-heading);
   }
 
   .distro-card-tagline {
     opacity: var(--dim-opacity);
-    font-size: 0.9375rem;
-    line-height: 1.45;
+    font-size: var(--text-body);
+    line-height: var(--line-height-body);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

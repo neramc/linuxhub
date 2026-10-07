@@ -2,17 +2,20 @@
 /**
  * Inline value from the synced release data, so docs never hand-type a
  * version: <Latest slug="fedora" /> → "44"; field="releaseDate" | "eol" | "codename" | "name".
+ * Dates use the page's locale (from the URL) unless `locale` is given.
  */
+import { type Locale, localeFromParam } from "~/i18n";
 import { formatDate } from "~/lib/catalog";
 import { lookup } from "./data";
 
 interface Props {
   slug: string;
   field?: "version" | "releaseDate" | "eol" | "codename" | "name";
-  locale?: "ko" | "en";
+  locale?: Locale;
 }
 
-const { slug, field = "version", locale = "ko" } = Astro.props;
+const { slug, field = "version" } = Astro.props;
+const locale = Astro.props.locale ?? localeFromParam(Astro.url.pathname.split("/")[1]);
 const { distro, release } = await lookup(slug);
 const value =
   field === "name"

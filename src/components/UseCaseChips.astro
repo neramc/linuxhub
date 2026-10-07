@@ -10,7 +10,8 @@
  *
  * Hooks for scripts: the row has `data-use-chips`; each chip has
  * `data-use-chip="<use>"` ("" for the "All" chip) and the current one has
- * aria-current="page".
+ * aria-current="page". Only a filter row (`showAll` or `active`, the
+ * catalog) has a current chip, so only its chips carry the check cue.
  */
 import Chip from "~/components/adw/Chip.astro";
 import { type Locale, localizePath, useTranslations } from "~/i18n";
@@ -54,6 +55,7 @@ const {
 } = Astro.props;
 const t = useTranslations(locale);
 const catalog = localizePath("/distros/", locale);
+const filter = showAll || active !== undefined;
 ---
 
 <nav class:list={["use-chips", className]} aria-label={label ?? t("chips.label")} data-use-chips>
@@ -61,7 +63,7 @@ const catalog = localizePath("/distros/", locale);
     {
       showAll && (
         <li>
-          <Chip href={catalog} current={!active} data-use-chip="">
+          <Chip href={catalog} icon={icons ? "app-grid" : undefined} current={!active} data-use-chip="">
             {t("chips.all")}
           </Chip>
         </li>
@@ -73,7 +75,7 @@ const catalog = localizePath("/distros/", locale);
           <Chip
             href={`${catalog}?use=${u}`}
             icon={icons ? USE_ICONS[u] : undefined}
-            current={active === u}
+            current={filter ? active === u : undefined}
             data-use-chip={u}
           >
             {USE_CASES[u][locale]}

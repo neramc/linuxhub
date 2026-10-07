@@ -1,6 +1,8 @@
 /*
- * Global base styles: reset, typography, links, focus ring, utilities.
- * Component styles live next to their components (Astro scoped styles).
+ * Global base styles: reset, typography, links, focus ring, layout utilities.
+ * Widget styles live in adwaita.css; page and component specifics in Astro
+ * scoped styles. Everything here is layered, so unlayered component and
+ * scoped styles always win over it.
  */
 
 @layer reset, base, utilities;
@@ -69,7 +71,7 @@
     color: var(--window-fg-color);
     font-family: var(--font-sans);
     font-size: 100%;
-    line-height: 1.6;
+    line-height: var(--line-height-body);
     font-feature-settings: "kern", "calt";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -88,35 +90,46 @@
   h2,
   h3,
   h4 {
-    line-height: 1.25;
     text-wrap: balance;
     color: inherit;
   }
 
   h1 {
     font-size: var(--text-title-1);
-    font-weight: 800;
+    font-weight: var(--font-weight-title);
+    line-height: var(--line-height-title-1);
+  }
+
+  /* Tighter tracking suits Adwaita Sans at display sizes, not Hangul. */
+  h1:lang(en) {
     letter-spacing: -0.015em;
   }
 
   h2 {
     font-size: var(--text-title-2);
-    font-weight: 800;
-    letter-spacing: -0.01em;
+    font-weight: var(--font-weight-title);
+    line-height: var(--line-height-title-2);
   }
 
   h3 {
     font-size: var(--text-title-3);
     font-weight: 700;
+    line-height: var(--line-height-title-3);
   }
 
   h4 {
-    font-size: var(--text-title-4);
+    font-size: var(--text-heading);
     font-weight: 700;
+    line-height: var(--line-height-heading);
   }
 
   p {
     text-wrap: pretty;
+  }
+
+  /* Dates line up in lists (SPEC §1: tabular numerals). */
+  time {
+    font-variant-numeric: tabular-nums;
   }
 
   a {
@@ -152,9 +165,12 @@
     outline: none;
   }
 
-  hr {
-    border: 0;
-    border-block-start: 1px solid var(--border-color);
+  /* The search dialog is modal: the page behind it does not scroll. The
+     gutter reserved meanwhile keeps the page from shifting sideways when a
+     classic scrollbar goes away. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+    scrollbar-gutter: stable;
   }
 
   /* Native cross-document view transitions (no JS). */
@@ -225,92 +241,100 @@
     font-weight: 700;
   }
 
-  .title-display {
-    font-size: var(--text-display);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-  }
-
-  .accent {
-    color: var(--accent-color);
-  }
-
-  .success {
-    color: var(--success-color);
-  }
-
-  .warning {
-    color: var(--warning-color);
-  }
-
-  .error {
-    color: var(--error-color);
-  }
-
   [hidden] {
     display: none !important;
   }
-}
 
-/* libadwaita AdwToast (created by src/scripts/toast.ts) */
-.adw-toast {
-  position: fixed;
-  inset-inline: 0;
-  inset-block-end: calc(var(--space-4) + env(safe-area-inset-bottom));
-  z-index: 50;
-  inline-size: fit-content;
-  max-inline-size: calc(100vw - 32px);
-  margin-inline: auto;
-  padding: 10px 20px;
-  border-radius: var(--radius-pill);
-  background: var(--toast-bg-color);
-  color: var(--toast-fg-color);
-  box-shadow: var(--shadow-toast);
-  font-weight: 700;
-  opacity: 0;
-  translate: 0 8px;
-  pointer-events: none;
-  transition:
-    opacity var(--duration) var(--ease-out-quad),
-    translate var(--duration) var(--ease-out-quad);
-}
+  /* Controls that do nothing without JavaScript (theme switcher, copy
+     buttons, live filters) disappear when scripting is off. */
+  @media (scripting: none) {
+    [data-js-only] {
+      display: none !important;
+    }
+  }
 
-.adw-toast[data-visible] {
-  opacity: 1;
-  translate: 0 0;
-}
+  /*
+   * Page layout (SPEC §3, §9, §18). Pages adopt these instead of re-declaring
+   * the same grid in their scoped styles; a scoped rule on the same class
+   * still wins (unlayered), so pages move over one at a time.
+   */
+  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-section);
+    padding-block: var(--space-4) var(--space-6);
+  }
 
-/* libadwaita dropdown (AdwComboRow / GtkDropDown look) on a native <select>. */
-.combo-select {
-  min-inline-size: 0;
-  max-inline-size: 65%;
-  min-block-size: 36px;
-  padding: 6px 32px 6px 12px;
-  border: 0;
-  border-radius: var(--radius-button);
-  background-color: var(--button-color);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23888' d='M3.293 5.293a1 1 0 0 1 1.414 0L8 8.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 14px;
-  font-weight: 700;
-  font-size: 0.9375rem;
-  text-overflow: ellipsis;
-  appearance: none;
-  cursor: pointer;
-}
+  /* Single-column pages and articles. */
+  .page.narrow {
+    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
+  }
 
-.combo-select:hover {
-  background-color: var(--button-hover-color);
-}
+  /* h1 + lead + toolbar of a page. */
+  .page-header {
+    display: grid;
+    gap: var(--space-2);
+  }
 
-.combo-select:focus-visible {
-  outline: 2px solid var(--focus-ring-color);
-  outline-offset: 1px;
-}
+  .lead {
+    font-size: var(--text-prose);
+    opacity: var(--dim-opacity);
+  }
 
-.combo-select option {
-  background: var(--popover-bg-color);
-  color: var(--popover-fg-color);
+  .section {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  /* A section h2 with an optional flat button at the end. */
+  .section-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: var(--space-2);
+  }
+
+  /* Line the flat button's label up with the content edge. */
+  .section-header > .adw-button.flat {
+    margin-inline-end: -8px;
+  }
+
+  /* Peer collections only (DistroCard): 1 / 2 / 3 columns. */
+  .card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-grid);
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (width >= 600px) {
+    .card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 1000px) {
+    .card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* One or two actions; on phones they share the row 50/50 at 44px. */
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  @media (width < 600px) {
+    .button-row {
+      --control-height: 44px;
+    }
+
+    .button-row > * {
+      flex: 1 1 0;
+    }
+  }
 }

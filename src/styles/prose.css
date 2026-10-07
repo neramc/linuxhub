@@ -6,33 +6,39 @@
 
 .prose {
   max-inline-size: var(--text-width);
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  font-size: var(--text-prose);
+  line-height: var(--line-height-prose);
 }
 
+/* The reading measure (en 55ch, ko the full 760px) applies to running text
+   only. Tables, code blocks, boxed lists and callouts keep the article's
+   width, so they line up with the sections around the article. */
+.prose > :is(p, ul, ol, blockquote, h2, h3, h4, .steps) {
+  max-inline-size: var(--prose-measure);
+}
+
+/* Flow: 18px between blocks, 36 / 24 / 18px above h2 / h3 / h4, 12px from a
+   heading to its content. Heading sizes come from base.css. */
 .prose > * + * {
-  margin-block-start: 1em;
+  margin-block-start: var(--space-3);
 }
 
 .prose h2 {
-  margin-block-start: 2.2em;
-  padding-block-start: 0.2em;
-  font-size: var(--text-title-2);
+  margin-block-start: var(--space-5);
 }
 
 .prose h3 {
-  margin-block-start: 1.8em;
-  font-size: var(--text-title-3);
+  margin-block-start: var(--space-4);
 }
 
 .prose h4 {
-  margin-block-start: 1.5em;
+  margin-block-start: var(--space-3);
 }
 
 .prose h2 + *,
 .prose h3 + *,
 .prose h4 + * {
-  margin-block-start: 0.6em;
+  margin-block-start: var(--space-2);
 }
 
 .prose :is(h2, h3, h4) > a {
@@ -42,15 +48,15 @@
 
 .prose ul,
 .prose ol {
-  padding-inline-start: 1.4em;
+  padding-inline-start: var(--space-4);
 }
 
 .prose li + li {
-  margin-block-start: 0.35em;
+  margin-block-start: var(--space-1);
 }
 
 .prose li::marker {
-  color: color-mix(in srgb, currentColor 55%, transparent);
+  color: color-mix(in srgb, currentColor var(--dim-opacity), transparent);
 }
 
 .prose strong {
@@ -59,8 +65,8 @@
 }
 
 .prose blockquote {
-  padding-inline-start: 1em;
-  border-inline-start: 3px solid var(--border-color);
+  padding-inline-start: var(--space-3);
+  border-inline-start: 1px solid var(--border-color);
   opacity: var(--dim-opacity);
 }
 
@@ -72,16 +78,23 @@
   inline-size: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 0.9375rem;
+  font-size: var(--text-body);
   background: var(--card-bg-color);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
-@media (max-width: 640px) {
+/* Below 1000px the article can be narrower than a table's narrowest layout
+   (up to 626px today), and a real table box cannot shrink or clip: it would
+   widen the page. There the table is its own horizontal scroll box, as wide
+   as its rows (fit-content) and never wider than the article. From 1000px
+   every article column is wide enough. */
+@media (width < 1000px) {
   .prose table {
     display: block;
+    inline-size: fit-content;
+    max-inline-size: 100%;
     overflow-x: auto;
   }
 }
@@ -103,28 +116,40 @@
   border-block-start: 1px solid var(--card-shade-color);
 }
 
-/* Inline code */
+/* Inline code (0.9em from base.css) */
 .prose :not(pre) > code {
   padding: 0.12em 0.4em;
   border-radius: 6px;
   background: var(--button-color);
-  font-size: 0.875em;
   overflow-wrap: anywhere;
 }
 
-/* Code blocks */
-.prose pre,
-pre.code-block {
+/* Code blocks: a filled surface, not a bordered one. */
+.prose pre {
   position: relative;
-  margin-block: 1.2em;
+  margin-block: var(--space-3);
   padding: 14px 16px;
-  border-radius: var(--radius-card);
-  background: light-dark(#f6f5f4, #1d1d20);
-  box-shadow: inset 0 0 0 1px var(--border-color);
-  font-size: 0.875rem;
+  border-radius: var(--radius-button);
+  background: light-dark(var(--light-2), #1d1d20);
+  font-size: var(--text-code);
   line-height: 1.6;
   overflow-x: auto;
   tab-size: 2;
+}
+
+/* Keep the block's edge in high contrast (the 1px ring other filled
+   controls get) and in forced colors (a border, so the focus ring of the
+   scrollable block stays the base outline). */
+@media (prefers-contrast: more) {
+  .prose pre {
+    box-shadow: inset 0 0 0 1px var(--border-color);
+  }
+}
+
+@media (forced-colors: active) {
+  .prose pre {
+    border: 1px solid transparent;
+  }
 }
 
 .prose pre code {
@@ -133,7 +158,9 @@ pre.code-block {
   padding: 0;
 }
 
-/* Copy button added by src/scripts/copy-code.ts */
+/* Copy button added by src/scripts/copy-code.ts: shown on hover or focus with
+   a mouse, always on touch screens (its 44px there comes from the
+   image-button's --control-height). */
 .code-copy {
   position: absolute;
   inset-block-start: 8px;
@@ -148,10 +175,52 @@ pre:focus-within .code-copy,
   opacity: 1;
 }
 
-@media (hover: none) {
-  .code-copy {
+/* On touch screens the button stays visible over the code (in prose blocks
+   and in surface-less OS tabs), so it is an ordinary raised button on an
+   opaque base instead of a transparent flat one: code never shows through. */
+@media (hover: none), (pointer: coarse) {
+  .prose pre .code-copy {
     opacity: 1;
+    background-color: var(--view-bg-color);
+    background-image: linear-gradient(var(--button-color), var(--button-color));
   }
+
+  .prose pre .code-copy:hover {
+    background-color: var(--view-bg-color);
+    background-image: linear-gradient(var(--button-hover-color), var(--button-hover-color));
+  }
+
+  .prose pre .code-copy:active {
+    background-color: var(--view-bg-color);
+    background-image: linear-gradient(var(--button-active-color), var(--button-active-color));
+  }
+}
+
+/* The 44px button and its ring need 8 + 44 + 3px: a one-line block grows to
+   fit instead of scrolling vertically by 2px. */
+@media (pointer: coarse) {
+  .prose pre {
+    padding-block: var(--space-3);
+  }
+}
+
+/* Components inside an article keep their own type and flow: a boxed list
+   (group title, rows) and a callout are not prose. Their grid gaps space
+   their children and a boxed list has no list indent. The content of an
+   expander row (MDX <Tab>, DocSources) is text again and follows the rules
+   above. */
+.prose .adw-group {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+}
+
+.prose :is(.adw-group-header, .adw-callout) :is(h2, h3, h4, ul, ol, li, p),
+.prose .adw-boxed-list > li {
+  margin: 0;
+}
+
+.prose .adw-boxed-list {
+  padding: 0;
 }
 
 /* Prism tokens — libadwaita palette */

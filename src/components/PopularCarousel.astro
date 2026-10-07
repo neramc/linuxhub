@@ -96,7 +96,7 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
               {s.date && (
                 <>
                   {" · "}
-                  <time datetime={s.date}>{formatDate(s.date, locale, "medium")}</time>
+                  <time datetime={s.date}>{formatDate(s.date, locale)}</time>
                 </>
               )}
             </p>

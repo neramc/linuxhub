@@ -2,32 +2,43 @@
 /**
  * libadwaita AdwExpanderRow built on <details>/<summary> (no JS). Nested
  * content appears in a darker inset area, as in libadwaita. Use it inside a
- * BoxedList. `id` and data-* attributes go on the <details>. (Browsers open a
- * closed <details> when the URL fragment targets an element inside it, not
- * the <details> itself.)
+ * BoxedList. `id`, `class` and data-* attributes go on the <details> (e.g.
+ * `class="doc-sources"`). The subtitle is `subtitle`, or a `subtitle` slot
+ * (e.g. with a <time>), as in ActionRow. `open` starts it expanded. `flush`
+ * drops the inset padding so nested rows or a table fill the area edge to
+ * edge, with row separators. (Browsers open a closed <details> when the URL
+ * fragment targets an element inside it, not the <details> itself.)
  */
 import Icon from "./Icon.astro";
 
 interface Props {
   [key: `data-${string}`]: unknown;
   id?: string | undefined;
+  class?: string | undefined;
   title: string;
   subtitle?: string | undefined;
-  icon?: string | undefined;
   open?: boolean | undefined;
-  name?: string | undefined;
+  /** Content without the inset padding: nested rows or a table. */
+  flush?: boolean | undefined;
 }
 
-const { title, subtitle, icon, open = false, name, id, ...rest } = Astro.props;
+const { title, subtitle, open = false, flush = false, id, class: className, ...rest } = Astro.props;
+const hasSubtitleSlot = Astro.slots.has("subtitle");
 ---
 
 <li class="adw-row-item">
-  <details class="adw-expander-row" open={open} name={name} id={id} {...rest}>
+  <details class:list={["adw-expander-row", { flush }, className]} id={id} open={open} {...rest}>
     <summary class="adw-action-row activatable">
-      {icon && <Icon name={icon} class="adw-row-prefix" />}
       <span class="adw-row-text">
         <span class="adw-row-title">{title}</span>
-        {subtitle && <span class="adw-row-subtitle">{subtitle}</span>}
+        {
+          (subtitle || hasSubtitleSlot) && (
+            <span class="adw-row-subtitle">
+              {subtitle}
+              <slot name="subtitle" />
+            </span>
+          )
+        }
       </span>
       <span class="adw-row-suffix">
         <slot name="suffix" />

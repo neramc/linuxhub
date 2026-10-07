@@ -1,19 +1,20 @@
 ---
 /**
  * libadwaita `list.boxed-list` (widgets/_lists.scss): a card containing
- * separated rows. Put ActionRow / ExpanderRow children inside. Optional
- * heading + description render like an AdwPreferencesGroup.
+ * separated rows. Put ActionRow / ExpanderRow children inside. An optional
+ * title renders like an AdwPreferencesGroup heading: `level={2}` is a section
+ * h2 (title-2), levels 3 and 4 a 16px group heading. The `suffix` slot sits at
+ * the end of the heading row (e.g. a flat "All releases" button).
  */
 interface Props {
   title?: string | undefined;
-  description?: string | undefined;
   /** Heading level for the group title. */
   level?: 2 | 3 | 4 | undefined;
   class?: string | undefined;
   id?: string | undefined;
 }
 
-const { title, description, level = 3, class: className, id } = Astro.props;
+const { title, level = 3, class: className, id } = Astro.props;
 const Heading = `h${level}` as "h2" | "h3" | "h4";
 const headingId = id ? `${id}-title` : undefined;
 ---
@@ -22,14 +23,11 @@ const headingId = id ? `${id}-title` : undefined;
   {
     (title || Astro.slots.has("suffix")) && (
       <div class="adw-group-header">
-        <div>
-          {title && (
-            <Heading class="adw-group-title" id={headingId}>
-              {title}
-            </Heading>
-          )}
-          {description && <p class="adw-group-description dim-label">{description}</p>}
-        </div>
+        {title && (
+          <Heading class="adw-group-title" id={headingId}>
+            {title}
+          </Heading>
+        )}
         <slot name="suffix" />
       </div>
     )

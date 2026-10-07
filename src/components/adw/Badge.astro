@@ -1,11 +1,12 @@
 ---
 /**
- * Small pill label for facets (family, release model, desktop…). Neutral by
- * default; `accent`/`success`/`warning`/`error` use libadwaita semantic colors.
- * With `href` it becomes a link (e.g. to a filtered catalog).
+ * Small pill label. Neutral by default (families, desktops, counts); the
+ * `success` / `warning` / `error` tones use libadwaita's semantic colors and
+ * are for real status only: a verified checksum, end of life soon, end of life
+ * (SPEC §2). With `href` it becomes a link (e.g. to a filtered catalog).
  */
 interface Props {
-  tone?: "neutral" | "accent" | "success" | "warning" | "error" | undefined;
+  tone?: "neutral" | "success" | "warning" | "error" | undefined;
   href?: string | undefined;
   class?: string | undefined;
 }

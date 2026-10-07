@@ -38,9 +38,13 @@ optimized with SVGO (`scripts/assets/svgo.config.mjs`).
 | grid | view-grid | sun | weather-clear |
 | harddisk | drive-harddisk | system | applications-system |
 | important | emblem-important | terminal | utilities-terminal |
-| info | dialog-information | time | preferences-system-time |
-| keyboard | input-keyboard | update | software-update-available |
+| keyboard | input-keyboard | time | preferences-system-time |
+| lightbulb | dialog-information ¹ | update | software-update-available |
 | media-playback-pause / -start | media-playback-pause / -start | usb | drive-removable-media |
 | | | utilities | applications-utilities |
 | | | warning | dialog-warning |
 | | | website | web-browser |
+
+¹ Adwaita 51 draws `dialog-information-symbolic` as a lightbulb, so the file is
+named after what it shows: the tip icon. A note uses `about` (`help-about`, the
+"i" in a circle). One meaning per icon (SPEC §2).

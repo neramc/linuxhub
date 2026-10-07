@@ -1,31 +1,31 @@
 ---
 /**
- * libadwaita AdwActionRow inside a boxed list: optional prefix icon, title,
- * subtitle, and a suffix slot. With `href` the whole row is a link (activatable)
- * and shows a trailing chevron or external-link icon.
+ * libadwaita AdwActionRow inside a boxed list: a prefix (a 16px `icon`, or
+ * any `prefix` slot content such as an app tile), the title (`title`, or a
+ * rich `title` slot), an optional subtitle (`subtitle`, or a `subtitle` slot,
+ * e.g. with a <time>), and a suffix (default slot). With `href` the whole row
+ * is a link (activatable) and ends with a chevron or the external-link icon.
+ *
+ *   <ActionRow href={url} title={name}>
+ *     <DistroLogo slot="prefix" file={file} name={name} size={36} />
+ *   </ActionRow>
+ *
+ * `property` rows show a fact: the subtitle is the dim label, the title its
+ * value; stacked in narrow lists, label | value from a 480px-wide list.
  */
 import Icon from "./Icon.astro";
 
 interface Props {
-  title: string;
+  title?: string | undefined;
   subtitle?: string | undefined;
   icon?: string | undefined;
   href?: string | undefined;
   external?: boolean | undefined;
-  /** Render the subtitle above the title, like AdwActionRow's `subtitle-lines` property style used for property rows. */
+  /** A fact row: dim subtitle label, title value (AdwActionRow `.property`). */
   property?: boolean | undefined;
-  monospaceSubtitle?: boolean | undefined;
 }
 
-const {
-  title,
-  subtitle,
-  icon,
-  href,
-  external = false,
-  property = false,
-  monospaceSubtitle = false,
-} = Astro.props;
+const { title, subtitle, icon, href, external = false, property = false } = Astro.props;
 const Tag = href ? "a" : "div";
 const hasSubtitleSlot = Astro.slots.has("subtitle");
 ---
@@ -36,11 +36,12 @@ const hasSubtitleSlot = Astro.slots.has("subtitle");
     {...(href ? { href, ...(external ? { rel: "noopener external", target: "_blank" } : {}) } : {})}
   >
     {icon && <Icon name={icon} size={16} class="adw-row-prefix" />}
+    <slot name="prefix" />
     <span class="adw-row-text">
-      <span class="adw-row-title">{title}</span>
+      <span class="adw-row-title">{title}<slot name="title" /></span>
       {
         (subtitle || hasSubtitleSlot) && (
-          <span class:list={["adw-row-subtitle", { mono: monospaceSubtitle }]}>
+          <span class="adw-row-subtitle">
             {subtitle}
             <slot name="subtitle" />
           </span>

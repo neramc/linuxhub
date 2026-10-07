@@ -101,7 +101,7 @@ const lists = [
       <details class="filter-menu" data-filter-panel>
         <summary class="adw-button image-text-button" data-active-label={t("catalog.activeFilters", { count: "{count}" })}>
           <span>{t("catalog.filter")}</span>
-          <span class="adw-badge accent numeric" data-filter-count hidden aria-hidden="true"></span>
+          <span class="adw-badge numeric" data-filter-count hidden aria-hidden="true"></span>
           <span class="visually-hidden" data-filter-count-label></span>
           <Icon name="pan-down" class="filter-arrow" />
         </summary>
@@ -308,6 +308,13 @@ const lists = [
 
     .count {
       padding-block: 6px 0;
+    }
+  }
+
+  /* The filled entry keeps an edge in forced colors (SPEC §4). */
+  @media (forced-colors: active) {
+    .search-entry {
+      border: 1px solid transparent;
     }
   }
 </style>

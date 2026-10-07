@@ -1,5 +1,5 @@
 ---
-/** The official checksum of the default image: <Checksum slug="fedora" />. */
+/** The official checksum of the default image: <Checksum slug="fedora" />. Styled by the shared .checksum rule (adwaita.css). */
 import { lookup } from "./data";
 
 interface Props {
@@ -8,10 +8,4 @@ interface Props {
 const { artifact } = await lookup(Astro.props.slug);
 ---
 
-{artifact?.checksum ? <code class="checksum-inline">{artifact.checksum.value}</code> : <span>—</span>}
-
-<style>
-  .checksum-inline {
-    overflow-wrap: anywhere;
-  }
-</style>
+{artifact?.checksum ? <code class="checksum">{artifact.checksum.value}</code> : <span>—</span>}

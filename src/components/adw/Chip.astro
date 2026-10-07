@@ -6,6 +6,13 @@
  * the active link with aria-current and the checked toggle color.
  *
  *   <Chip href="/distros/?use=gaming" icon="gaming">게이밍</Chip>
+ *
+ * A chip that can be current (`current` passed, true or false, or an
+ * `aria-pressed` toggle) carries a hidden check icon: while
+ * aria-current="page" or aria-pressed="true" is set (by the server or by a
+ * script) CSS shows it in place of the icon, a current-state cue that does
+ * not rely on color. Plain shortcut chips (home, family) never are current
+ * and skip it.
  */
 import type { HTMLAttributes } from "astro/types";
 import Icon from "./Icon.astro";
@@ -13,11 +20,13 @@ import Icon from "./Icon.astro";
 type Props = (HTMLAttributes<"a"> & HTMLAttributes<"button">) & {
   href?: string | undefined;
   icon?: string | undefined;
+  /** Marks the current link; pass false for the other chips of a filter row. */
   current?: boolean | undefined;
 };
 
-const { href, icon, current = false, class: className, ...rest } = Astro.props;
+const { href, icon, current, class: className, ...rest } = Astro.props;
 const Tag = href ? "a" : "button";
+const checkable = current !== undefined || rest["aria-pressed"] !== undefined;
 ---
 
 <Tag
@@ -25,6 +34,7 @@ const Tag = href ? "a" : "button";
   {...(href ? { href, "aria-current": current ? "page" : undefined } : { type: "button" })}
   {...rest}
 >
-  {icon && <Icon name={icon} />}
+  {icon && <Icon name={icon} class="adw-chip-icon" />}
+  {checkable && <Icon name="check" class="adw-chip-check" />}
   <span><slot /></span>
 </Tag>

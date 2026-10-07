@@ -2,7 +2,8 @@
 /**
  * GNOME app-icon tile (ADR-0014): an image — an official logo, never altered —
  * centered on a light top face with a darker front profile and the app-icon
- * drop shadow. Sizes follow the HIG geometry (see .app-tile in adwaita.css).
+ * drop shadow (none at 24 and 36px). Sizes follow the HIG geometry (see
+ * .app-tile in adwaita.css).
  *
  *   <AppTile src={url} size={64} />
  *   <AppTile src={url} size={128} narrowSize={96} eager fetchpriority="high" />
@@ -12,15 +13,15 @@
  * `data-pagefind-meta`).
  */
 import type { HTMLAttributes } from "astro/types";
-import type { TileSize } from "./app-tile";
+import type { NarrowTileSize, TileSize } from "./app-tile";
 
 type Props = Omit<HTMLAttributes<"span">, "children"> & {
   src: string;
   /** Text alternative; "" (default) when the name is already next to the tile. */
   alt?: string | undefined;
   size?: TileSize | undefined;
-  /** A smaller tile below 700px viewport width. */
-  narrowSize?: TileSize | undefined;
+  /** A smaller tile below 600px viewport width. */
+  narrowSize?: NarrowTileSize | undefined;
   /** Wide logos (wordmarks) use 7/8 of the face width instead of 3/4. */
   wide?: boolean | undefined;
   eager?: boolean | undefined;

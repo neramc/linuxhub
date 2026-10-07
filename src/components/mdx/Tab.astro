@@ -1,4 +1,13 @@
 ---
+/**
+ * One OS in <Tabs>: an expander row (pan-down arrow, inset content) whose
+ * content is article text. Code blocks there have no surface of their own
+ * (SPEC §5, no card inside the card): monospace text indented one step. They
+ * run to the list's right edge, so a long command scrolls out under the edge
+ * of the list instead of stopping mid-air.
+ */
+import ExpanderRow from "../adw/ExpanderRow.astro";
+
 interface Props {
   label: string;
   open?: boolean;
@@ -6,30 +15,35 @@ interface Props {
 const { label, open = false } = Astro.props;
 ---
 
-<details class="os-tab" open={open}>
-  <summary>{label}</summary>
+<ExpanderRow title={label} open={open} class="os-tab">
   <div class="os-tab-body"><slot /></div>
-</details>
+</ExpanderRow>
 
 <style>
-  .os-tab {
-    border-radius: var(--radius-card);
-    background: var(--card-bg-color);
-    box-shadow: var(--shadow-card);
-  }
-
-  .os-tab > summary {
-    cursor: pointer;
-    padding: 12px 16px;
-    font-weight: 700;
-    list-style-position: inside;
-  }
-
   .os-tab-body {
-    padding: 0 16px 12px;
+    font-size: var(--text-prose);
+    line-height: var(--line-height-prose);
+  }
+
+  .os-tab-body > :global(*) {
+    margin-block: 0;
   }
 
   .os-tab-body > :global(* + *) {
-    margin-block-start: 0.8em;
+    margin-block-start: var(--space-3);
+  }
+
+  .os-tab-body > :global(pre) {
+    margin-inline-end: -14px;
+    padding-inline: var(--space-3) 14px;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Consecutive commands read as one group; each keeps its padding for the
+     copy button. */
+  .os-tab-body > :global(pre + pre) {
+    margin-block-start: 0;
   }
 </style>

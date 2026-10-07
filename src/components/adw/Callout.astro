@@ -1,14 +1,14 @@
 ---
 /**
- * A note/tip/warning block for documentation. Not a libadwaita widget, but
- * built only from its tokens, in two looks (ADR-0014): note, tip, info and
- * success are a neutral card with an accent icon; warning and danger are
- * tinted, so color signals real risk. The icon and the title are the non-color
- * cues (WCAG 1.4.1).
+ * A note, tip or warning block for documentation. Not a libadwaita widget,
+ * but built only from its tokens, in two looks (ADR-0014): a note ("i") and a
+ * tip (lightbulb) are a neutral card with an accent icon; a warning is tinted,
+ * so color signals real risk only. The icon and the title are the non-color
+ * cues (WCAG 1.4.1). It sets no outer margin: .prose spaces it like any block.
  */
 import Icon from "./Icon.astro";
 
-type Kind = "note" | "info" | "tip" | "success" | "warning" | "danger";
+type Kind = "note" | "tip" | "warning";
 
 interface Props {
   type?: Kind | undefined;
@@ -17,12 +17,9 @@ interface Props {
 
 const { type = "note", title } = Astro.props;
 const icons: Record<Kind, string> = {
-  note: "info",
-  info: "info",
-  tip: "check",
-  success: "check",
+  note: "about",
+  tip: "lightbulb",
   warning: "warning",
-  danger: "important",
 };
 ---
 

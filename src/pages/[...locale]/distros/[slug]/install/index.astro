@@ -132,14 +132,6 @@ const jsonLd = doc
     min-inline-size: 0;
   }
 
-  /* The same for the grids inside MDX components (OS tabs, numbered steps).
-     TODO(lead): move into src/components/mdx/{Tabs,Steps}.astro, where the
-     learn chapters need it too. */
-  .prose :global(.os-tabs),
-  .prose :global(.steps > ol) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .doc-header {
     display: flex;
     align-items: center;

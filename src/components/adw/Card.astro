@@ -2,18 +2,19 @@
 /**
  * libadwaita `.card` (widgets/_misc.scss). With `href` it becomes an
  * activatable card: the whole surface is one link, with the 3%/8% hover/active
- * tint libadwaita uses.
+ * tint libadwaita uses and the popover shadow on pointer hover (raised is the
+ * card shadow minus its ring, so it would read lower; ADR-0016).
+ * Cards are for peer collections only (DistroCard, SPEC §9).
  */
 import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"div"> & {
   href?: string | undefined;
-  as?: "div" | "article" | "section" | "li" | undefined;
   padded?: boolean | undefined;
 };
 
-const { href, as = "div", padded = true, class: className, ...rest } = Astro.props;
-const Tag = href ? "a" : as;
+const { href, padded = true, class: className, ...rest } = Astro.props;
+const Tag = href ? "a" : "div";
 ---
 
 <Tag

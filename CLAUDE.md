@@ -75,9 +75,9 @@ typeface or visual style, the Adwaita tokens and ADR-0006/0009/0014 win.
   the libadwaita values in `adwaita.css`); GNOME density, no oversized padding or
   empty bands. Card grids only for collections of peer items (`DistroCard`);
   facts, releases and links go in `BoxedList` rows; text stays prose.
-- **Typography.** A clear hierarchy from the scale tokens only (`--text-display`
-  … `--text-caption`); one h1 per page, no skipped levels; Adwaita Mono only for
-  code, file names and checksums.
+- **Typography.** A clear hierarchy from the scale tokens only (`--text-title-1`
+  … `--text-caption`, eight sizes, weights 400/700/800; ADR-0016); one h1 per
+  page, no skipped levels; Adwaita Mono only for code, file names and checksums.
 - **Real workflows.** Design for: find → choose → download from an official
   mirror → verify → install. One primary action per view (at most two hero
   actions); secondary details in native `<details>`.

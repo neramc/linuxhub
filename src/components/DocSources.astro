@@ -1,13 +1,15 @@
 ---
 /**
  * Citation footer for a document (CLAUDE.md rule 7): the official sources and
- * the last review date, as a closed expander row ("Official sources (N) ·
- * Last reviewed …"). Everything stays in the HTML; only the list is folded.
- * Used at the end of install guides and Linux guide chapters (inside .prose).
+ * the last review date as a one-row boxed list with a closed expander row
+ * ("Official sources (N)" · "Last reviewed …"). Everything stays in the HTML;
+ * only the list is folded. Used at the end of install guides and Linux guide
+ * chapters (inside .prose).
  */
 import { type Locale, useTranslations } from "~/i18n";
 import { formatDate } from "~/lib/catalog";
-import Icon from "./adw/Icon.astro";
+import BoxedList from "./adw/BoxedList.astro";
+import ExpanderRow from "./adw/ExpanderRow.astro";
 
 interface Props {
   sources: string[];
@@ -20,70 +22,40 @@ const t = useTranslations(locale);
 const [before, after] = t("sources.reviewed", { date: "\u0000" }).split("\u0000");
 ---
 
-<details class="doc-sources adw-expander-row" data-pagefind-ignore>
-  <summary class="adw-action-row activatable">
-    <span class="adw-row-text">
-      <span class="adw-row-title">{t("sources.title", { count: sources.length })}</span>
-      <span class="adw-row-subtitle">
-        {before}<time datetime={lastReviewed}>{formatDate(lastReviewed, locale)}</time>{after}
-      </span>
-    </span>
-    <span class="adw-row-suffix">
-      <Icon name="pan-down" class="adw-expander-arrow" />
-    </span>
-  </summary>
-  <div class="adw-expander-content">
-    <p class="caption dim-label">{t("sources.note")}</p>
-    <ul>
-      {sources.map((url) => <li><a href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
-    </ul>
-  </div>
-</details>
+<BoxedList class="doc-sources-group">
+  <ExpanderRow class="doc-sources" title={t("sources.title", { count: sources.length })} data-pagefind-ignore="">
+    <Fragment slot="subtitle">{before}<time datetime={lastReviewed}>{formatDate(lastReviewed, locale)}</time>{after}</Fragment>
+    <div class="doc-sources-body">
+      <p class="dim-label">{t("sources.note")}</p>
+      <ul>
+        {sources.map((url) => <li><a href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
+      </ul>
+    </div>
+  </ExpanderRow>
+</BoxedList>
 
 <style>
-  /* A one-row boxed list. The selectors are doubled so .prose's flow rules
-     (margins, list padding, font size) do not leak in. */
-  .doc-sources.doc-sources {
+  /* The citation footer ends the article: section spacing above it. */
+  :global(.prose > .doc-sources-group) {
     margin-block-start: var(--space-5);
-    border-radius: var(--radius-card);
-    background-color: var(--card-bg-color);
-    color: var(--card-fg-color);
-    box-shadow: var(--shadow-card);
-    overflow: hidden;
-    font-size: var(--text-body);
-    line-height: 1.5;
   }
 
-  .doc-sources .adw-expander-content {
+  .doc-sources-body {
     display: grid;
     gap: var(--space-1);
-    font-size: 0.9375rem;
+    font-size: var(--text-caption);
+    line-height: var(--line-height-caption);
   }
 
-  .doc-sources ul {
-    margin: 0;
-    padding-inline-start: 1.2em;
+  /* Discs, not the nested-list circles (the list sits inside the boxed list). */
+  .doc-sources-body ul {
+    list-style-type: disc;
+  }
+
+  /* Long URLs wrap anywhere instead of setting the list's min-content width
+     (the reset gives li `break-word`, which let them clip at 320/390px). */
+  .doc-sources-body li,
+  .doc-sources-body a {
     overflow-wrap: anywhere;
-  }
-
-  .doc-sources > summary:focus-visible {
-    border-radius: var(--radius-card);
-  }
-
-  .doc-sources[open] > summary:focus-visible {
-    border-end-start-radius: 0;
-    border-end-end-radius: 0;
-  }
-
-  .doc-sources li + li {
-    margin-block-start: 2px;
-  }
-
-  @media (prefers-contrast: more) {
-    .doc-sources.doc-sources {
-      box-shadow:
-        0 0 0 1px var(--border-color),
-        var(--shadow-card);
-    }
   }
 </style>

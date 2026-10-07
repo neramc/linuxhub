@@ -169,12 +169,6 @@ const jsonLd = [
     max-inline-size: var(--text-width);
   }
 
-  /* No horizontal page scroll at 390px: wide code inside <Tabs> scrolls in
-     its own box instead of widening the article (audit [18]). */
-  .prose :global(.os-tabs) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .kicker {
     margin-block-end: -0.5em;
   }
