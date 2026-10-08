@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-06",
+  "updated": "2026-10-08",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1849,6 +1849,14 @@
       "url": "https://ubuntu-releases.ip-connect.vn.ua/",
       "country": "UA",
       "name": "IP-Connect LLC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.netforce.hosting/ubuntu-releases/",
+      "country": "UA",
+      "name": "NetForce Ukraine LLC",
       "lat": null,
       "lon": null,
       "score": null
