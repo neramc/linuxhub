@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-10",
+  "updated": "2026-10-11",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -414,6 +414,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.ucr.ac.cr/ubuntu-cd/",
+      "country": "CR",
+      "name": "mirrors.ucr.ac.cr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://cz.releases.ubuntu.com/releases/",
       "country": "CZ",
       "name": "CZ.NIC, z.s.p.o.",
@@ -518,6 +526,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.funkfreundelandshut.de/ubuntu-releases/",
+      "country": "DE",
+      "name": "Funkfreunde Landshut e.V.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.imt-systems.com/ubuntu/",
       "country": "DE",
       "name": "IMT-Systems GmbH",
@@ -569,6 +585,14 @@
       "url": "https://mirror.wtnet.de/ubuntu-releases/",
       "country": "DE",
       "name": "wilhelm.tel GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror2.tuxinator.org/ubuntu-releases/",
+      "country": "DE",
+      "name": "mirror2.tuxinator.org-cdimage",
       "lat": null,
       "lon": null,
       "score": null
@@ -1054,14 +1078,6 @@
       "score": null
     },
     {
-      "url": "https://it2.mirror.vhosting-it.com/ubuntu-releases/",
-      "country": "IT",
-      "name": "VHosting Solution (IT2 - Turin)",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://ubuntu.mirror.garr.it/releases/",
       "country": "IT",
       "name": "Consortium GARR",
@@ -1465,6 +1481,14 @@
       "url": "https://mirror.2degrees.nz/ubuntu-releases/",
       "country": "NZ",
       "name": "2degrees",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fsmg.org.nz/ubuntu-releases/",
+      "country": "NZ",
+      "name": "Free Software Mirror Group (FSMG)",
       "lat": null,
       "lon": null,
       "score": null
@@ -2025,6 +2049,14 @@
       "url": "https://mirror.lstn.net/ubuntu-releases/",
       "country": "US",
       "name": "Limestone Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.math.princeton.edu/pub/ubuntu-iso/",
+      "country": "US",
+      "name": "Princeton Mathematics",
       "lat": null,
       "lon": null,
       "score": null
