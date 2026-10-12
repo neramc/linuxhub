@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -894,6 +894,14 @@
       "score": null
     },
     {
+      "url": "https://fosszone.csd.auth.gr/ubuntu-releases/",
+      "country": "GR",
+      "name": "Aristotle University of Thessaloniki",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ftp.cc.uoc.gr/mirrors/linux/ubuntu/releases/",
       "country": "GR",
       "name": "University of Crete",
@@ -1422,6 +1430,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.nl.mirhosting.net/ubuntu-releases/",
+      "country": "NL",
+      "name": "MIRhosting B.V.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.previder.nl/ubuntu-releases/",
       "country": "NL",
       "name": "Previder B.V.",
@@ -1713,6 +1729,14 @@
       "url": "https://ubuntu-releases.braindrainlan.nu/",
       "country": "SE",
       "name": "Brain Drain Lan",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/ubuntu-releases/",
+      "country": "SG",
+      "name": "Freedif",
       "lat": null,
       "lon": null,
       "score": null
