@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -209,14 +209,6 @@
       "url": "https://lesnet.mm.fcix.net/ubuntu-releases/",
       "country": "CA",
       "name": "Fremont Cabal Internet Exchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.cpsc.ucalgary.ca/mirror/ubuntu.com/releases/",
-      "country": "CA",
-      "name": "University of Calgary",
       "lat": null,
       "lon": null,
       "score": null
