@@ -3,7 +3,7 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "mirrors": [
     {
       "url": "https://debian.xfree.com.ar/debian-cd/",
@@ -238,6 +238,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.ihost.md/debian-cd/",
+      "country": "MD",
+      "name": "mirror.ihost.md",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://lidsol.fi-b.unam.mx/debian-cd/",
       "country": "MX",
       "name": "lidsol.fi-b.unam.mx",
@@ -337,6 +345,22 @@
       "url": "https://debian.volia.net/debian-cd/",
       "country": "UA",
       "name": "debian.volia.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.osuosl.org/debian-cdimage/",
+      "country": "US",
+      "name": "debian.osuosl.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.141networks.com/debian-cd/",
+      "country": "US",
+      "name": "mirror.141networks.com",
       "lat": null,
       "lon": null,
       "score": null

@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -329,6 +329,14 @@
       "url": "https://ftp.sjtu.edu.cn/ubuntu-cd/",
       "country": "CN",
       "name": "Shanghai Jiao Tong University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nju.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "eScience Center, Nanjing University",
       "lat": null,
       "lon": null,
       "score": null
@@ -1158,14 +1166,6 @@
       "score": null
     },
     {
-      "url": "https://ftp.kaist.ac.kr/ubuntu-cd/",
-      "country": "KR",
-      "name": "KAIST FTP",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://ftp.lanet.kr/ubuntu-releases/",
       "country": "KR",
       "name": "LANET",
@@ -1193,14 +1193,6 @@
       "url": "https://mirror.koreapixel.kr/ubuntu-releases/",
       "country": "KR",
       "name": "Daon Mirror",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.krfoss.org/ubuntu-releases/",
-      "country": "KR",
-      "name": "ROKFOSS PROJECT - CD",
       "lat": null,
       "lon": null,
       "score": null
@@ -2049,14 +2041,6 @@
       "url": "https://mirror.cs.odu.edu/ubuntu-releases/",
       "country": "US",
       "name": "Old Dominion University",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.fcix.net/ubuntu-releases/",
-      "country": "US",
-      "name": "Fremont Cabal Internet Exchange",
       "lat": null,
       "lon": null,
       "score": null
