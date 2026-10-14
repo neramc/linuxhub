@@ -1,12 +1,23 @@
 ---
+/**
+ * A distro's install guide: breadcrumb, app header (64px tile) with two
+ * actions (download the image, official install docs), then the guide with
+ * its table of contents: a sidebar from 1000px, a closed disclosure above
+ * the article below that.
+ *
+ * Distros without a written guide get a short, honest page instead (SPEC
+ * §15, ADR-0016): one sentence and one action, the official install docs.
+ * It is noindex, stays out of the search index (no data-pagefind-body) and
+ * out of the sitemap (astro.config.mjs); the route stays so old links work.
+ */
 import { render } from "astro:content";
+import AppHeader from "~/components/AppHeader.astro";
 import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
 import ExpanderRow from "~/components/adw/ExpanderRow.astro";
-import StatusPage from "~/components/adw/StatusPage.astro";
-import DistroLogo from "~/components/DistroLogo.astro";
 import DocSources from "~/components/DocSources.astro";
 import { mdxComponents } from "~/components/mdx";
+import Breadcrumb from "~/components/site/Breadcrumb.astro";
 import Toc from "~/components/Toc.astro";
 import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
@@ -33,6 +44,11 @@ const doc = await getDistroDoc(slug, locale, "install");
 const rendered = doc ? await render(doc) : null;
 const distroHref = localizePath(`/distros/${slug}/`, locale);
 const title = t("install.title", { name: d.name });
+const meta = [
+  t("install.installer", { installer: INSTALLERS[d.installer][locale] }),
+  t("install.secureBoot", { secureBoot: SECURE_BOOT[d.secureBoot][locale] }),
+  t("install.difficulty", { difficulty: DIFFICULTIES[d.difficulty][locale] }),
+];
 const jsonLd = doc
   ? [
       {
@@ -48,29 +64,45 @@ const jsonLd = doc
   : [];
 ---
 
-<Base locale={locale} title={title} description={doc?.data.description ?? t("install.description", { name: d.name })} mono jsonLd={jsonLd} image={`/og/${slug}.png`}>
-  <div class="container page" data-pagefind-body data-pagefind-meta="type:install">
-    <nav class="breadcrumb caption" aria-label="Breadcrumb" data-pagefind-ignore>
-      <a href={localizePath("/distros/", locale)}>{t("distro.breadcrumb")}</a>
-      <span aria-hidden="true">/</span>
-      <a href={distroHref}>{d.name}</a>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">{t("distro.installGuide")}</span>
-    </nav>
-
-    <header class="doc-header">
-      <DistroLogo file={d.logo.file} name={d.name} size={64} eager imgAttrs={{ "data-pagefind-meta": "image[src]" }} />
-      <div class="doc-title">
-        <h1>{title}</h1>
-        <p class="caption dim-label">
-          {t("install.meta", { installer: INSTALLERS[d.installer][locale], secureBoot: SECURE_BOOT[d.secureBoot][locale], difficulty: DIFFICULTIES[d.difficulty][locale] })}
-        </p>
-      </div>
-    </header>
-
-    <div class="actions" data-pagefind-ignore>
-      <Button href={`${distroHref}#download`} variant="suggested" pill icon="download">{t("install.downloadIso")}</Button>
-      {d.links.installGuide && <Button href={d.links.installGuide} pill iconEnd="external" external>{t("install.officialDocs")}</Button>}
+<Base
+  locale={locale}
+  title={title}
+  description={doc?.data.description ?? t("install.description", { name: d.name })}
+  mono={Boolean(rendered)}
+  noindex={!rendered}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+>
+  <div
+    class:list={["container page", { narrow: !rendered }]}
+    data-pagefind-body={rendered ? "" : undefined}
+    data-pagefind-meta={rendered ? "type:install" : undefined}
+  >
+    <div class="page-header">
+      <Breadcrumb
+        locale={locale}
+        links={[
+          { label: t("distro.breadcrumb"), href: localizePath("/distros/", locale) },
+          { label: d.name, href: distroHref },
+        ]}
+        current={t("distro.installGuide")}
+      />
+      <AppHeader logo={d.logo.file} name={d.name} title={title} meta={meta} size={64}>
+        {
+          rendered && (
+            <Fragment slot="actions">
+              <Button href={`${distroHref}#download`} variant="suggested" icon="download">
+                {t("install.downloadIso")}
+              </Button>
+              {d.links.installGuide && (
+                <Button href={d.links.installGuide} iconEnd="external" external>
+                  {t("install.officialDocs")}
+                </Button>
+              )}
+            </Fragment>
+          )
+        }
+      </AppHeader>
     </div>
 
     {
@@ -83,7 +115,7 @@ const jsonLd = doc
               </ExpanderRow>
             </BoxedList>
           </div>
-          <aside class="doc-toc" data-pagefind-ignore>
+          <aside class="doc-sidebar" data-pagefind-ignore>
             <Toc headings={rendered.headings} title={t("install.onThisPage")} />
           </aside>
           <article class="prose">
@@ -92,106 +124,74 @@ const jsonLd = doc
           </article>
         </div>
       ) : (
-        <StatusPage icon="contents" title={t("install.comingSoonTitle")} description={t("install.comingSoonLead")} level={2}>
-          <Button href={d.links.installGuide ?? d.links.docs ?? d.links.home} variant="suggested" pill iconEnd="external" external>
-            {t("install.officialDocs")}
-          </Button>
-        </StatusPage>
+        <div class="stub">
+          <p class="heading">{t("install.comingSoonTitle")}</p>
+          <p class="dim-label">{t("install.comingSoonLead")}</p>
+          <div class="button-row">
+            <Button href={d.links.installGuide ?? d.links.docs ?? d.links.home} variant="suggested" iconEnd="external" external>
+              {t("install.officialDocs")}
+            </Button>
+          </div>
+        </div>
       )
     }
   </div>
+
+  {/* Only a written guide has code blocks to copy. */}
+  {
+    rendered && (
+      <script>
+        import "~/scripts/copy-code";
+      </script>
+    )
+  }
 </Base>
 
-<script>
-  import "~/scripts/copy-code";
-</script>
-
 <style>
-  /* minmax(0, 1fr) and min-inline-size: 0 keep wide tables and code blocks
-     from stretching the page on phones; they scroll in their own boxes. */
-  .page {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-3);
-    padding-block: var(--space-3) var(--space-6);
-  }
-
-  .breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    opacity: var(--dim-opacity);
-  }
-
-  .breadcrumb a {
-    color: inherit;
-  }
-
-  .page > *,
-  .doc-layout > * {
-    min-inline-size: 0;
-  }
-
-  .doc-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  .doc-title {
-    display: grid;
-    gap: 4px;
-    min-inline-size: 0;
-  }
-
-  .doc-header h1 {
-    font-size: var(--text-title-1);
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  @media (max-width: 599px) {
-    .actions > :global(.adw-button) {
-      flex: 1 1 0;
-    }
-  }
-
+  /* Below 1000px the table of contents is a closed disclosure above the
+     article; from 1000px a sticky sidebar at the start of the row. */
   .doc-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
-    margin-block-start: var(--space-2);
-  }
-
-  .doc-toc {
-    display: none;
   }
 
   .toc-narrow {
     max-inline-size: var(--text-width);
   }
 
-  @media (min-width: 1100px) {
+  .doc-sidebar {
+    display: none;
+  }
+
+  @media (width >= 1000px) {
+    .doc-layout {
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      column-gap: var(--space-5);
+      align-items: start;
+    }
+
     .toc-narrow {
       display: none;
     }
 
-    .doc-layout {
-      grid-template-columns: minmax(0, 1fr) 240px;
-      align-items: start;
-    }
-
-    .doc-toc {
+    .doc-sidebar {
       display: block;
-      order: 2;
       position: sticky;
       inset-block-start: calc(var(--headerbar-height) + var(--space-3));
       max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-5));
       overflow-y: auto;
+      overscroll-behavior: contain;
     }
+  }
+
+  /* A guide that is not written yet: one sentence, one action. */
+  .stub {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .stub .button-row {
+    margin-block-start: var(--space-2);
   }
 </style>

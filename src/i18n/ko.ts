@@ -59,9 +59,10 @@ export const ko: DictionaryShape = {
   },
   common: {
     loading: "불러오는 중…",
-    copy: "복사",
     copied: "복사됨",
-    learnMore: "자세히 보기",
+  },
+  copy: {
+    checksum: "체크섬 복사",
   },
   home: {
     title: "나에게 맞는 리눅스를 찾아보세요",
@@ -79,6 +80,7 @@ export const ko: DictionaryShape = {
       about: "순위 안내",
       rank: "오늘의 인기 {rank}위",
       latest: "최신 버전 {version}",
+      view: "정보 보기",
     },
   },
   carousel: {
@@ -118,7 +120,6 @@ export const ko: DictionaryShape = {
     facts: "한눈에 보기",
     links: "공식 링크",
     related: "비슷한 배포판",
-    noOverview: "이 배포판의 소개 글은 곧 추가됩니다.",
     dataStale: "최근 공식 소스에 접속하지 못해 표시된 정보가 오래되었을 수 있습니다.",
     breadcrumb: "배포판",
   },
@@ -131,12 +132,16 @@ export const ko: DictionaryShape = {
     officialDocs: "공식 설치 문서",
     comingSoonTitle: "이 가이드는 작성 중입니다",
     comingSoonLead: "준비되는 동안에는 공식 설치 문서를 참고하세요.",
-    meta: "설치 프로그램: {installer} · Secure Boot: {secureBoot} · 난이도: {difficulty}",
+    installer: "설치 프로그램: {installer}",
+    secureBoot: "Secure Boot: {secureBoot}",
+    difficulty: "난이도: {difficulty}",
   },
   facts: {
     latest: "최신 버전",
     released: "{date} 출시",
     eol: "지원 종료",
+    eolPassed: "지원 종료됨",
+    eolSoon: "곧 지원 종료",
     rolling: "롤링 릴리스 — 항상 최신 상태",
     family: "계열",
     basedOn: "기반",
@@ -179,8 +184,7 @@ export const ko: DictionaryShape = {
     arch: "아키텍처",
     format: "파일 형식",
     mirror: "다운로드 서버",
-    button: "{file} 다운로드",
-    buttonShort: "다운로드",
+    button: "{format} 받기",
     checksum: "SHA-256 체크섬",
     checksumMd5: "MD5 체크섬",
     checksumOther: "체크섬",
@@ -189,6 +193,7 @@ export const ko: DictionaryShape = {
     torrent: "토렌트",
     verifyLink: "검증 방법",
     nextStep: "다음 단계: 부팅 USB 만들기",
+    nextStepOfficial: "다음 단계: 공식 설치 안내",
     auto: "자동 — 가장 가까운 공식 서버",
     origin: "공식 서버",
     recommended: "추천 서버",
@@ -196,9 +201,11 @@ export const ko: DictionaryShape = {
     locating: "가장 가까운 미러를 찾는 중…",
     mirrorCount: "공식 미러 {count}곳",
     distance: "약 {km}km",
-    officialPage: "공식 웹사이트에서 내려받기",
+    officialPage: "공식 다운로드 페이지 열기",
     officialPageHint:
       "이 프로젝트는 자체 웹사이트에서만 내려받을 수 있습니다(예: 만료되는 링크). 공식 페이지로 바로 연결합니다.",
+    notPrepared:
+      "이 배포판의 다운로드 정보는 아직 준비 중입니다. 공식 다운로드 페이지에서 받으세요.",
     sourceforge:
       "프로젝트의 공식 SourceForge 페이지에서 제공하며, 가까운 미러가 자동으로 선택됩니다.",
     noFiles: "이 조합에 해당하는 파일이 없습니다.",

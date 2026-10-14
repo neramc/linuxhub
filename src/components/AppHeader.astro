@@ -1,0 +1,141 @@
+---
+/**
+ * The header of a distro page, after the GNOME Software / Flathub app header:
+ * the official logo on an app tile, the page's h1, a one-line tagline (body,
+ * dim), an optional meta caption and the page's actions. One implementation
+ * for the distro detail page (`size={128}`, 64px below 600px) and the install
+ * guide (`size={64}`).
+ *
+ *   <AppHeader logo={d.logo.file} name={d.name} tagline={d.tagline[locale]}>
+ *     <Button slot="actions" href="#download" icon="download">{t("distro.download")}</Button>
+ *     <Button slot="actions" href={installHref}>{t("distro.installGuide")}</Button>
+ *   </AppHeader>
+ *
+ * The actions sit in a `.button-row` (two 50/50 buttons at 44px on phones):
+ * below the text, or at the end of the header row when the header itself is
+ * as wide as a full page at 1000px (not in a 760px single-column page, where
+ * they would squeeze the tagline). The row
+ * keeps the `hero-actions` class (e2e hook) and stays out of the search
+ * index; on pages that are indexed the logo is the result image and the
+ * tagline its summary (`data-pagefind-meta`).
+ */
+import DistroLogo from "~/components/DistroLogo.astro";
+
+interface Props {
+  /** Logo file in src/assets/logos/. */
+  logo: string;
+  /** The distro's name (the default title). */
+  name: string;
+  /** The page's h1, e.g. "Fedora Linux 설치 가이드" (default: `name`). */
+  title?: string | undefined;
+  tagline?: string | undefined;
+  /** A caption under the tagline; several facts wrap as separate spans
+      (no middle dots, SPEC §13). */
+  meta?: string | readonly string[] | undefined;
+  /** Tile size; the 128px tile shrinks to 64px below 600px. */
+  size?: 64 | 128 | undefined;
+}
+
+const { logo, name, title = name, tagline, meta = [], size = 128 } = Astro.props;
+const facts = typeof meta === "string" ? [meta] : meta;
+const large = size === 128;
+// A conditional `slot="actions"` still counts as a slot; render the row only
+// when it holds something.
+const actions = Astro.slots.has("actions") ? (await Astro.slots.render("actions")).trim() : "";
+---
+
+<header class="app-header">
+  <div class="app-header-grid">
+    <DistroLogo
+      file={logo}
+      name={name}
+      size={size}
+      narrowSize={large ? 64 : undefined}
+      eager
+      fetchpriority={large ? "high" : undefined}
+      imgAttrs={{ "data-pagefind-meta": "image[src]" }}
+    />
+    <div class="app-header-text">
+      <h1>{title}</h1>
+      {tagline && <p class="dim-label" data-pagefind-meta="tagline">{tagline}</p>}
+      {
+        facts.length > 0 && (
+          <p class="app-header-meta caption dim-label">
+            {/* The trailing space keeps the facts apart in copied text, the
+                search index and screen readers; flex layout drops it. */}
+            {facts.map((fact) => (
+              <span>{fact} </span>
+            ))}
+          </p>
+        )
+      }
+    </div>
+    {
+      actions && (
+        <div class="button-row hero-actions" data-pagefind-ignore>
+          <Fragment set:html={actions} />
+        </div>
+      )
+    }
+  </div>
+</header>
+
+<style>
+  /* The header measures itself (the actions' place depends on its width). */
+  .app-header {
+    container: app-header / inline-size;
+  }
+
+  .app-header-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-3) var(--space-4);
+  }
+
+  .app-header-text {
+    display: grid;
+    gap: var(--space-1);
+    min-inline-size: 0;
+  }
+
+  .app-header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-2);
+  }
+
+  /* Phones: the actions take the full width under the tile and the text. */
+  .hero-actions {
+    grid-column: 1 / -1;
+  }
+
+  /* Phones: the 64px tile lines up with the title, not with the middle of
+     a tagline that wraps onto several lines. */
+  @media (width < 600px) {
+    .app-header-grid {
+      align-items: start;
+      column-gap: var(--space-3);
+    }
+  }
+
+  /* Under the text from 600px. */
+  @media (width >= 600px) {
+    .hero-actions {
+      grid-column: 2;
+    }
+  }
+
+  /* At the end of the row in a header at least 900px wide: a full-width page
+     from about 1000px (936px there, 921px beside a classic scrollbar). A
+     760px single-column page keeps them under the text. */
+  @container app-header (width >= 900px) {
+    .app-header-grid {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    .hero-actions {
+      grid-column: auto;
+    }
+  }
+</style>

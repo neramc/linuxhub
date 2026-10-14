@@ -1,14 +1,17 @@
 ---
 /**
  * "At a glance" facts for a distro (ADR-0014): an Adwaita boxed list of
- * property rows with the key facts visible and the rest in a "More details"
- * expander row (native <details>, so it ships in the HTML for search and
- * SEO). Under the list, when the release data was last updated.
+ * property rows (SPEC §13) with the key facts visible and the rest in a
+ * "More details" expander row (native <details>, so it ships in the HTML for
+ * search and SEO). Lists read as lists (Intl.ListFormat), not middle-dot
+ * chains; an end of life that has passed or is near carries a status badge
+ * (SPEC §2). Under the list, when the release data was last updated.
  */
-import { type Locale, localizePath, useTranslations } from "~/i18n";
+import { type Locale, localizePath, splitAround, useTranslations } from "~/i18n";
 import type { Distro } from "~/lib/catalog";
-import { featuredRelease, formatDate } from "~/lib/catalog";
 import type { ReleasesFile } from "~/lib/data-schemas";
+import { formatDate } from "~/lib/format";
+import { eolStatus, featuredRelease, releaseName } from "~/lib/releases";
 import {
   ARCHITECTURES,
   DESKTOPS,
@@ -20,6 +23,7 @@ import {
   USE_CASES,
 } from "~/lib/taxonomy";
 import ActionRow from "./adw/ActionRow.astro";
+import Badge from "./adw/Badge.astro";
 import BoxedList from "./adw/BoxedList.astro";
 import ExpanderRow from "./adw/ExpanderRow.astro";
 
@@ -45,34 +49,59 @@ const latestSuffix = release
       ? t("facts.released", { date: formatDate(release.releaseDate, locale) ?? "" })
       : undefined
   : undefined;
-const list = (items: string[]) => items.join(" · ");
+// Computed when the site is built (PLAN C23).
+const eol = eolStatus(release?.eol ?? null, new Date().toISOString().slice(0, 10));
+const listFormat = new Intl.ListFormat(locale, { type: "conjunction" });
+const list = (items: string[]) => listFormat.format(items);
 const catalog = localizePath("/distros/", locale);
 const upstream = base?.data.name ?? d.upstream;
+
+// "Good for": the use cases as one list, each a link to the filtered catalog.
+let useCase = 0;
+const useParts = listFormat
+  .formatToParts(d.useCases.map((u) => USE_CASES[u][locale]))
+  .map((part) =>
+    part.type === "element"
+      ? { text: part.value, href: `${catalog}?use=${d.useCases[useCase++]}` }
+      : { text: part.value },
+  );
 
 // The date the data was last updated: synced release data when there is some,
 // otherwise the editorial review date of the catalog entry.
 const stamp = releases
   ? { key: "facts.dataUpdated" as const, iso: releases.updated }
   : { key: "facts.reviewed" as const, iso: d.lastReviewed };
-const [stampBefore, stampAfter] = t(stamp.key, { date: "\u0000" }).split("\u0000");
+const [stampBefore, stampAfter] = splitAround(t(stamp.key), "date");
 ---
 
 <div class="facts">
   <BoxedList title={t("distro.facts")} level={2}>
     {
       release && (
-        <ActionRow title={release.codename ? `${release.version} “${release.codename}”` : release.version} subtitle={t("facts.latest")} property>
+        <ActionRow title={releaseName(release)} subtitle={t("facts.latest")} property>
           {latestSuffix && <span class="caption dim-label row-extra">{latestSuffix}</span>}
         </ActionRow>
       )
     }
-    {release?.eol && <ActionRow title={formatDate(release.eol, locale) ?? ""} subtitle={t("facts.eol")} property />}
-    <ActionRow
-      title={upstream ? `${FAMILIES[d.family][locale]} · ${upstream}` : FAMILIES[d.family][locale]}
-      subtitle={upstream ? `${t("facts.family")} · ${t("facts.basedOn")}` : t("facts.family")}
-      property
-      href={base ? localizePath(`/distros/${base.id}/`, locale) : `${catalog}?family=${d.family}`}
-    />
+    {
+      release?.eol && (
+        <ActionRow title={formatDate(release.eol, locale) ?? ""} subtitle={t("facts.eol")} property>
+          {eol === "passed" && <Badge tone="error">{t("facts.eolPassed")}</Badge>}
+          {eol === "soon" && <Badge tone="warning">{t("facts.eolSoon")}</Badge>}
+        </ActionRow>
+      )
+    }
+    <ActionRow title={FAMILIES[d.family][locale]} subtitle={t("facts.family")} property href={`${catalog}?family=${d.family}`} />
+    {
+      upstream && (
+        <ActionRow
+          title={upstream}
+          subtitle={t("facts.basedOn")}
+          property
+          href={base ? localizePath(`/distros/${base.id}/`, locale) : undefined}
+        />
+      )
+    }
     <ActionRow title={DESKTOPS[d.desktops[0] ?? "none"][locale]} subtitle={t("facts.desktop")} property />
     <ActionRow title={list(d.packageManagers)} subtitle={t("facts.packages")} property />
     <ActionRow title={INSTALLERS[d.installer][locale]} subtitle={t("facts.installer")} property />
@@ -82,8 +111,8 @@ const [stampBefore, stampAfter] = t(stamp.key, { date: "\u0000" }).split("\u0000
       subtitle={t("facts.requirements")}
       property
     />
-    <ExpanderRow title={t("facts.more")}>
-      <ul class="nested-rows" role="list">
+    <ExpanderRow title={t("facts.more")} flush>
+      <ul role="list">
         <ActionRow title={RELEASE_MODELS[d.releaseModel][locale]} subtitle={t("facts.releaseModel")} property />
         {
           d.desktops.length > 1 && (
@@ -93,20 +122,13 @@ const [stampBefore, stampAfter] = t(stamp.key, { date: "\u0000" }).split("\u0000
         <ActionRow title={SECURE_BOOT[d.secureBoot][locale]} subtitle={t("facts.secureBoot")} property />
         <ActionRow title={DIFFICULTIES[d.difficulty][locale]} subtitle={t("facts.difficulty")} property />
         <ActionRow title={t("facts.originValue", { country: country ?? d.origin.country, year })} subtitle={t("facts.origin")} property />
-        <li class="adw-row-item">
-          <div class="adw-action-row property">
-            <span class="adw-row-text">
-              <span class="adw-row-title use-links">
-                {d.useCases.map((u) => <a href={`${catalog}?use=${u}`}>{USE_CASES[u][locale]}</a>)}
-              </span>
-              <span class="adw-row-subtitle">{t("facts.useCases")}</span>
-            </span>
-          </div>
-        </li>
+        <ActionRow subtitle={t("facts.useCases")} property>
+          <Fragment slot="title">{useParts.map((p) => (p.href ? <a href={p.href}>{p.text}</a> : p.text))}</Fragment>
+        </ActionRow>
       </ul>
     </ExpanderRow>
   </BoxedList>
-  <p class="caption dim-label stamp">
+  <p class="caption dim-label">
     {stampBefore}<time datetime={stamp.iso}>{formatDate(stamp.iso, locale)}</time>{stampAfter}
   </p>
 </div>
@@ -120,24 +142,5 @@ const [stampBefore, stampAfter] = t(stamp.key, { date: "\u0000" }).split("\u0000
   .row-extra {
     max-inline-size: 14rem;
     text-align: end;
-  }
-
-  /* Rows nested in the expander sit flush in its inset area (AdwExpanderRow). */
-  .nested-rows {
-    margin: calc(-1 * var(--space-2)) -14px;
-  }
-
-  .nested-rows > :global(li + li) {
-    border-block-start: 1px solid var(--card-shade-color);
-  }
-
-  .use-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 12px;
-  }
-
-  .stamp {
-    padding-inline: 2px;
   }
 </style>

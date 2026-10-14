@@ -177,6 +177,14 @@ const titleId = `${id}-title`;
     justify-self: end;
   }
 
+  /* Over the card the arrows sit on the slide's tint: the full-accent ring,
+     like the slide's own controls (80% drops below 3:1 there; PLAN C12). */
+  @media (width >= 700px) {
+    .carousel-frame > :global(.carousel-nav) {
+      --focus-ring-color: var(--accent-color);
+    }
+  }
+
   /* AdwCarouselIndicatorDots: 6px dots, 8px current, 7px apart. */
   .carousel-dots {
     grid-area: dots;
@@ -253,6 +261,11 @@ const titleId = `${id}-title`;
   }
 
   @media (forced-colors: active) {
+    /* The card keeps its edge without its fill and shadow (SPEC §4). */
+    .carousel-viewport {
+      border: 1px solid transparent;
+    }
+
     .carousel-dots > span {
       forced-color-adjust: none;
       background-color: CanvasText;

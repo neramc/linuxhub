@@ -3,15 +3,7 @@
  * time (static output).
  */
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
-import type {
-  Artifact,
-  Edition,
-  HistoryEntry,
-  PopularityFile,
-  PopularityItem,
-  Release,
-  ReleasesFile,
-} from "./data-schemas";
+import type { HistoryEntry, PopularityFile, PopularityItem, ReleasesFile } from "./data-schemas";
 import {
   historyFileSchema,
   mirrorsFileSchema,
@@ -20,8 +12,9 @@ import {
 } from "./data-schemas";
 import { type Movement, movement, rerank, wikipediaUrl } from "./popularity";
 
-/** Display formats live in a client-safe module; build-time code imports them from here too. */
+/** Display formats and release pickers live in client-safe modules; build-time code imports them from here too. */
 export { formatBytes, formatDate } from "./format";
+export { defaultArtifact, featuredRelease } from "./releases";
 
 export type Distro = CollectionEntry<"distros">;
 
@@ -39,27 +32,6 @@ export async function getDistro(slug: string): Promise<Distro | undefined> {
 
 export async function getReleases(slug: string): Promise<ReleasesFile | undefined> {
   return (await getEntry("releases", slug))?.data;
-}
-
-/** The release to feature: newest non-beta (stable/lts/rolling), else the first one. */
-export function featuredRelease(file: ReleasesFile | undefined): Release | undefined {
-  if (!file) return undefined;
-  return (
-    file.releases.find((r) => r.channel !== "beta" && r.channel !== "testing") ?? file.releases[0]
-  );
-}
-
-/** The default edition + artifact to offer: first edition, prefer x86_64 ISO. */
-export function defaultArtifact(
-  release: Release | undefined,
-): { edition: Edition; artifact: Artifact } | undefined {
-  const edition = release?.editions[0];
-  if (!edition) return undefined;
-  const artifact =
-    edition.artifacts.find((a) => a.arch === "x86_64" && a.format === "iso") ??
-    edition.artifacts.find((a) => a.arch === "x86_64") ??
-    edition.artifacts[0];
-  return artifact ? { edition, artifact } : undefined;
 }
 
 const mirrorFiles = import.meta.glob("/src/data/mirrors/*.json", {

@@ -60,9 +60,10 @@ export const en = {
   },
   common: {
     loading: "Loading…",
-    copy: "Copy",
     copied: "Copied",
-    learnMore: "Learn more",
+  },
+  copy: {
+    checksum: "Copy checksum",
   },
   home: {
     title: "Find the Linux that fits you",
@@ -80,6 +81,7 @@ export const en = {
       about: "About this ranking",
       rank: "#{rank} today",
       latest: "Latest {version}",
+      view: "View details",
     },
   },
   carousel: {
@@ -119,7 +121,6 @@ export const en = {
     facts: "At a glance",
     links: "Official links",
     related: "Similar distributions",
-    noOverview: "An overview for this distribution is coming soon.",
     dataStale: "We couldn’t reach the official source recently; the data shown may be out of date.",
     breadcrumb: "Distributions",
   },
@@ -133,12 +134,16 @@ export const en = {
     comingSoonTitle: "This guide is being written",
     comingSoonLead:
       "Until it’s ready, the official installation documentation is the best place to start.",
-    meta: "Installer: {installer} · Secure Boot: {secureBoot} · Difficulty: {difficulty}",
+    installer: "Installer: {installer}",
+    secureBoot: "Secure Boot: {secureBoot}",
+    difficulty: "Difficulty: {difficulty}",
   },
   facts: {
     latest: "Latest version",
     released: "Released {date}",
     eol: "Supported until",
+    eolPassed: "Ended",
+    eolSoon: "Ends soon",
     rolling: "Rolling release — always up to date",
     family: "Family",
     basedOn: "Based on",
@@ -181,8 +186,7 @@ export const en = {
     arch: "Architecture",
     format: "File type",
     mirror: "Download server",
-    button: "Download {file}",
-    buttonShort: "Download",
+    button: "Download {format}",
     checksum: "SHA-256 checksum",
     checksumMd5: "MD5 checksum",
     checksumOther: "Checksum",
@@ -191,6 +195,7 @@ export const en = {
     torrent: "Torrent",
     verifyLink: "How to verify",
     nextStep: "Next: create a bootable USB drive",
+    nextStepOfficial: "Next: the official install guide",
     auto: "Automatic — nearest official server",
     origin: "Official server",
     recommended: "Recommended for you",
@@ -198,9 +203,11 @@ export const en = {
     locating: "Finding the nearest mirror…",
     mirrorCount: "{count} official mirrors",
     distance: "about {km} km",
-    officialPage: "Download from the official website",
+    officialPage: "Open download page",
     officialPageHint:
       "This project only offers downloads from its own website (for example, links that expire). We send you there directly.",
+    notPrepared:
+      "Download details for this distribution aren’t ready yet. Get it from the official download page.",
     sourceforge: "Hosted on the project’s official SourceForge page, which picks a nearby mirror.",
     noFiles: "No files for this combination.",
     lts: "LTS",

@@ -127,9 +127,11 @@
     text-wrap: pretty;
   }
 
-  /* Dates line up in lists (SPEC §1: tabular numerals). */
+  /* Dates line up in lists (SPEC §1: tabular numerals) and never break
+     inside ("2026년 4월 23일", SPEC §13). */
   time {
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 
   a {
@@ -272,9 +274,12 @@
     max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
   }
 
-  /* h1 + lead + toolbar of a page. */
+  /* h1 + lead + toolbar of a page. Like .page, the column never grows to
+     an item's min-content (a chip scroller, a toolbar), so nothing widens
+     the page. */
   .page-header {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2);
   }
 
@@ -285,10 +290,12 @@
 
   .section {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2);
   }
 
-  /* A section h2 with an optional flat button at the end. */
+  /* A section h2 with an optional flat button at the end; also the title
+     row of a titled BoxedList. */
   .section-header {
     display: flex;
     flex-wrap: wrap;

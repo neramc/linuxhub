@@ -328,8 +328,8 @@
 }
 
 /*
- * The one background for tinted identity surfaces (carousel slide, detail
- * hero band) with the normal window text on it. Light: AdwBanner's 30% mix of
+ * The one background for tinted identity surfaces (today only the carousel
+ * slide) with the normal window text on it. Light: AdwBanner's 30% mix of
  * the accent into the window background. Dark: 25% of the standalone color in
  * oklab, which keeps the nine hues apart without the muddy sRGB browns; white
  * text stays ≥ 8.9:1 (ADR-0016). Focus rings on tints use the full accent

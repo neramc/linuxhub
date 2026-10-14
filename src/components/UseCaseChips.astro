@@ -1,9 +1,10 @@
 ---
 /**
  * Use-case shortcuts as one row of pill chips linking to the filtered catalog
- * (/distros/?use=…). Shared by the home page and the catalog. Wraps on wide
- * screens; on narrow screens it is one horizontally scrollable row that bleeds
- * into the page gutter (the page itself never scrolls sideways).
+ * (/distros/?use=…). Shared by the home page and the catalog. One line at
+ * every width (SPEC §18): when the chips do not fit, the row scrolls sideways
+ * (scroll-snap, no fade) and bleeds into the page gutter, so the page itself
+ * never scrolls sideways and a cut-off chip shows that there is more.
  *
  *   <UseCaseChips locale={locale} />                       (home)
  *   <UseCaseChips locale={locale} active={use} showAll />  (catalog)
@@ -22,18 +23,12 @@ interface Props {
   locale: Locale;
   /** The use case currently filtered on, if any. */
   active?: UseCase | undefined;
-  /** Which use cases to show, in order (default: the 8 most common). */
-  uses?: readonly UseCase[] | undefined;
   /** Prepend an "All" chip linking to the unfiltered catalog. */
   showAll?: boolean | undefined;
-  /** Show the Adwaita symbolic icon of each use case (default true). */
-  icons?: boolean | undefined;
-  /** Accessible name of the row (default t("chips.label")). */
-  label?: string | undefined;
-  class?: string | undefined;
 }
 
-const DEFAULT_USES: readonly UseCase[] = [
+/** The eight most common use cases, in order. */
+const USES: readonly UseCase[] = [
   "beginner",
   "gaming",
   "developer",
@@ -44,37 +39,29 @@ const DEFAULT_USES: readonly UseCase[] = [
   "creative",
 ];
 
-const {
-  locale,
-  active,
-  uses = DEFAULT_USES,
-  showAll = false,
-  icons = true,
-  label,
-  class: className,
-} = Astro.props;
+const { locale, active, showAll = false } = Astro.props;
 const t = useTranslations(locale);
 const catalog = localizePath("/distros/", locale);
 const filter = showAll || active !== undefined;
 ---
 
-<nav class:list={["use-chips", className]} aria-label={label ?? t("chips.label")} data-use-chips>
+<nav class="use-chips" aria-label={t("chips.label")} data-use-chips>
   <ul role="list">
     {
       showAll && (
         <li>
-          <Chip href={catalog} icon={icons ? "app-grid" : undefined} current={!active} data-use-chip="">
+          <Chip href={catalog} icon="app-grid" current={!active} data-use-chip="">
             {t("chips.all")}
           </Chip>
         </li>
       )
     }
     {
-      uses.map((u) => (
+      USES.map((u) => (
         <li>
           <Chip
             href={`${catalog}?use=${u}`}
-            icon={icons ? USE_ICONS[u] : undefined}
+            icon={USE_ICONS[u]}
             current={filter ? active === u : undefined}
             data-use-chip={u}
           >
@@ -87,36 +74,34 @@ const filter = showAll || active !== undefined;
 </nav>
 
 <style>
+  /* The row bleeds into the gutter; the block padding keeps focus rings
+     inside the scroll box. */
   .use-chips {
     min-inline-size: 0;
+    margin: -4px calc(-1 * var(--gutter));
   }
 
   ul {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--space-1);
     margin: 0;
-    padding: 0;
+    padding: 4px var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: thin;
   }
 
   li {
     flex: none;
   }
 
-  /* Narrow screens: a single scrollable row from edge to edge. The block
-     padding keeps focus rings inside the scroll box. */
-  @media (width < 700px) {
-    .use-chips {
-      margin: -4px calc(-1 * var(--gutter));
-    }
-
+  /* Touch screens swipe the row; a mouse keeps the thin scrollbar to reach
+     chips that do not fit. */
+  @media (pointer: coarse) {
     ul {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-      scroll-padding-inline: var(--gutter);
       scrollbar-width: none;
-      padding: 4px var(--gutter);
     }
 
     ul::-webkit-scrollbar {

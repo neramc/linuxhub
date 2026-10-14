@@ -4,14 +4,14 @@
  * ADR-0014): the top 5 distros by yesterday's English Wikipedia pageviews, or
  * editorial picks without ranks before the first popularity sync. Each slide
  * is tinted with the libadwaita accent nearest to the distro's logo color
- * (30% into the window background, like AdwBanner) and shows the logo on a
- * 160px app tile, the name, tagline, latest version and two actions.
+ * (--tint-bg-color) and shows the logo on a 160px app tile (96px below 600px),
+ * the name, tagline, latest version and two links: the distro page and its
+ * download section.
  */
 import Button from "~/components/adw/Button.astro";
 import Carousel from "~/components/adw/Carousel.astro";
-import Icon from "~/components/adw/Icon.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
-import { type Locale, localizePath, useTranslations } from "~/i18n";
+import { type Locale, localizePath, splitAround, useTranslations } from "~/i18n";
 import { brandAccent } from "~/lib/brand-accent";
 import { featuredRelease, formatDate, getReleases, type TodaysDistros } from "~/lib/catalog";
 import { addDays } from "~/lib/popularity";
@@ -50,7 +50,7 @@ const dayText =
   day === yesterday
     ? t("home.popular.yesterday")
     : t("home.popular.onDay", { date: formatDate(day ?? null, locale) ?? "" });
-const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}");
+const [basisBefore, basisAfter] = splitAround(t("home.popular.basis"), "day");
 ---
 
 <Carousel
@@ -80,18 +80,13 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
         data-slug={s.slug}
       >
         <div class="slide-text">
-          {s.rank && (
-            <p class="slide-rank">
-              <Icon name="star" />
-              {t("home.popular.rank", { rank: s.rank })}
-            </p>
-          )}
+          {s.rank && <p class="caption-heading">{t("home.popular.rank", { rank: s.rank })}</p>}
           <h3 class="slide-name" id={`slide-${s.slug}-name`}>
             {s.name}
           </h3>
           <p class="slide-tagline">{s.tagline}</p>
           {s.version && (
-            <p class="slide-meta">
+            <p class="slide-meta caption numeric">
               {t("home.popular.latest", { version: s.version })}
               {s.date && (
                 <>
@@ -101,9 +96,9 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
               )}
             </p>
           )}
-          <div class="slide-actions">
+          <div class="button-row slide-actions">
             <Button href={s.href} pill>
-              {t("common.learnMore")}
+              {t("home.popular.view")}
               <span class="visually-hidden">: {s.name}</span>
             </Button>
             <Button href={`${s.href}#download`} variant="suggested" pill icon="download">
@@ -116,6 +111,7 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
           file={s.logo}
           name={s.name}
           size={160}
+          narrowSize={96}
           class="slide-tile"
           eager
           fetchpriority={i === 0 ? "high" : undefined}
@@ -129,13 +125,13 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
   .basis {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 0.4em;
+    column-gap: var(--space-1);
   }
 
   /* Narrow screens: the link may wrap; no dangling separator then. */
-  @media (width < 700px) {
+  @media (width < 600px) {
     .basis {
-      column-gap: 0.75em;
+      column-gap: var(--space-2);
     }
 
     .separator {
@@ -143,17 +139,17 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
     }
   }
 
-  /* A tinted banner (AdwBanner: accent 30% into the window background) with
-     the normal window text: ≥ 8.9:1 in light and dark. No dimmed text on tints. */
+  /* A tinted banner with the normal window text (≥ 8.9:1 in light and dark).
+     No dimmed text on tints; the accent classes also set the full-accent
+     focus ring. */
   .slide {
-    --focus-ring-color: var(--accent-color); /* 80% would be < 3:1 on light tints (ADR-0009) */
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: var(--space-5);
     min-block-size: 300px;
     padding: var(--space-5) var(--carousel-arrow-room);
-    background-color: color-mix(in srgb, var(--tint) 30%, var(--window-bg-color));
+    background-color: var(--tint-bg-color);
     color: var(--window-fg-color);
   }
 
@@ -163,30 +159,12 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
     min-inline-size: 0;
   }
 
-  .slide-rank {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: var(--text-caption);
-    font-weight: 700;
-  }
-
-  .slide-rank :global(.adw-icon) {
-    color: var(--tint-standalone); /* non-text, ≥ 3.8:1 on every tint */
-  }
-
   .slide-name {
-    margin-block: 4px 6px;
-    font-size: var(--text-title-1);
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    line-height: 1.2;
+    margin-block: 4px var(--space-1);
   }
 
   .slide-tagline {
     max-inline-size: 36rem;
-    font-size: 1.0625rem;
-    line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -194,37 +172,18 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
   }
 
   .slide-meta {
-    margin-block-start: 6px;
-    font-size: var(--text-caption);
-    font-variant-numeric: tabular-nums;
+    margin-block-start: var(--space-1);
   }
 
   .slide-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
     margin-block-start: var(--space-3);
   }
 
-  /* HIG app-icon geometry at 160 / 128 / 96px (face / front / radius / logo). */
-  .slide :global(.app-tile.slide-tile) {
-    --tile-size: 160px;
-    --tile-depth: 5px;
-    --tile-radius: 12px;
-    --tile-logo: 120px;
+  .slide :global(.slide-tile) {
     margin-inline-end: var(--space-2);
   }
 
-  @media (width < 900px) {
-    .slide :global(.app-tile.slide-tile) {
-      --tile-size: 128px;
-      --tile-depth: 4px;
-      --tile-radius: 10px;
-      --tile-logo: 96px;
-    }
-  }
-
-  @media (width < 700px) {
+  @media (width < 600px) {
     .slide {
       grid-template-columns: minmax(0, 1fr);
       justify-items: center;
@@ -239,23 +198,16 @@ const [basisBefore = "", basisAfter = ""] = t("home.popular.basis").split("{day}
       justify-items: center;
     }
 
-    .slide-name {
-      font-size: var(--text-title-2);
-    }
-
     .slide-tagline {
       -webkit-line-clamp: 3;
     }
 
+    /* Two 50/50 buttons across the slide (.button-row). */
     .slide-actions {
-      justify-content: center;
+      justify-self: stretch;
     }
 
-    .slide :global(.app-tile.slide-tile) {
-      --tile-size: 96px;
-      --tile-depth: 3px;
-      --tile-radius: 7px;
-      --tile-logo: 72px;
+    .slide :global(.slide-tile) {
       order: -1;
       margin: 0;
     }

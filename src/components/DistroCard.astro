@@ -38,9 +38,11 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
 </Card>
 
 <style>
+  /* Top-aligned, so the names in a grid row line up whatever the length of
+     the taglines next to them. */
   :global(.adw-card.distro-card) {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: var(--space-3);
     padding: var(--space-3);
     block-size: 100%;

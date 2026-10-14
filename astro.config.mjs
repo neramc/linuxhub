@@ -1,4 +1,5 @@
 // @ts-check
+import { existsSync } from "node:fs";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
@@ -16,6 +17,20 @@ const site =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:4321");
 
+/**
+ * Install guides that are not written yet are short noindex pages (ADR-0016)
+ * and stay out of the sitemap. A guide is written when
+ * src/content/distro-docs/<slug>/<locale>/install.mdx exists.
+ * @param {string} page
+ */
+function isListed(page) {
+  const match = /^\/(?:(en)\/)?distros\/([^/]+)\/install\/$/.exec(new URL(page).pathname);
+  if (!match) return true;
+  const [, en, slug] = match;
+  const doc = `./src/content/distro-docs/${slug}/${en ? "en" : "ko"}/install.mdx`;
+  return existsSync(new URL(doc, import.meta.url));
+}
+
 export default defineConfig({
   site,
   output: "static",
@@ -29,6 +44,7 @@ export default defineConfig({
     mdx(),
     sitemap({
       i18n: { defaultLocale: "ko", locales: { ko: "ko-KR", en: "en-US" } },
+      filter: isListed,
     }),
     pagefind(),
   ],

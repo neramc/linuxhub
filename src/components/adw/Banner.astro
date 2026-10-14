@@ -2,8 +2,11 @@
 /**
  * libadwaita AdwBanner: a full-width strip with an optional action. Neutral
  * gray by default (as in libadwaita); `tone="warning"` tints it with the
- * warning color for a real risk, such as stale release data (SPEC §16).
+ * warning color and leads with the warning icon for a real risk, such as
+ * stale release data (SPEC §16: icon + color + text).
  */
+import Icon from "./Icon.astro";
+
 interface Props {
   title: string;
   tone?: "neutral" | "warning" | undefined;
@@ -11,9 +14,13 @@ interface Props {
 }
 
 const { title, tone = "neutral", class: className } = Astro.props;
+const warning = tone === "warning";
 ---
 
-<div class:list={["adw-banner", { warning: tone === "warning" }, className]} role="status">
-  <p class="adw-banner-title">{title}</p>
+<div class:list={["adw-banner", { warning }, className]} role="status">
+  <p class="adw-banner-title">
+    {warning && <Icon name="warning" class="adw-banner-icon" />}
+    <span>{title}</span>
+  </p>
   <slot />
 </div>

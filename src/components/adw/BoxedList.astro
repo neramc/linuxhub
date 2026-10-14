@@ -4,7 +4,9 @@
  * separated rows. Put ActionRow / ExpanderRow children inside. An optional
  * title renders like an AdwPreferencesGroup heading: `level={2}` is a section
  * h2 (title-2), levels 3 and 4 a 16px group heading. The `suffix` slot sits at
- * the end of the heading row (e.g. a flat "All releases" button).
+ * the end of the heading row (e.g. a flat "All releases" button); the row is
+ * the shared `.section-header` (base.css), so a titled list and a titled card
+ * grid on one page line up.
  */
 interface Props {
   title?: string | undefined;
@@ -22,7 +24,7 @@ const headingId = id ? `${id}-title` : undefined;
 <section class:list={["adw-group", className]} id={id} aria-labelledby={title ? headingId : undefined}>
   {
     (title || Astro.slots.has("suffix")) && (
-      <div class="adw-group-header">
+      <div class="adw-group-header section-header">
         {title && (
           <Heading class="adw-group-title" id={headingId}>
             {title}

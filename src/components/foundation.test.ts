@@ -1,12 +1,15 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { describe, expect, it } from "vitest";
+import AppHeader from "./AppHeader.astro";
 import ActionRow from "./adw/ActionRow.astro";
 import AppTile from "./adw/AppTile.astro";
 import { nearestTileSize } from "./adw/app-tile";
+import Banner from "./adw/Banner.astro";
 import Chip from "./adw/Chip.astro";
 import ExpanderRow from "./adw/ExpanderRow.astro";
 import SearchEntry from "./adw/SearchEntry.astro";
 import DistroLogo from "./DistroLogo.astro";
+import Breadcrumb from "./site/Breadcrumb.astro";
 import UseCaseChips from "./UseCaseChips.astro";
 
 const container = await AstroContainer.create();
@@ -61,6 +64,19 @@ describe("DistroLogo", () => {
     });
     expect(wide).toMatch(/class="app-tile size-64 wide distro-logo"/);
     expect(wide).toContain('alt="Raspberry Pi OS"');
+  });
+});
+
+describe("Banner", () => {
+  it("leads a warning with the warning icon (icon + color + text) and keeps the neutral one plain", async () => {
+    const warning = await render(Banner, { props: { title: "Stale", tone: "warning" } });
+    expect(warning).toMatch(/class="adw-banner warning"[^>]*role="status"/);
+    expect(warning).toMatch(
+      /<p class="adw-banner-title"><svg[^>]*class="adw-icon adw-banner-icon"[^>]*aria-hidden="true"/,
+    );
+    expect(warning).toContain("<span>Stale</span>");
+    const neutral = await render(Banner, { props: { title: "Note" } });
+    expect(neutral).not.toContain("<svg");
   });
 });
 
@@ -194,5 +210,79 @@ describe("UseCaseChips", () => {
     expect(html.match(/data-use-chip\b/g)).toHaveLength(8);
     expect(html).not.toContain("aria-current");
     expect(html).not.toContain("adw-chip-check");
+  });
+});
+
+describe("Breadcrumb", () => {
+  it("is a localized trail of links ending with the current page", async () => {
+    const html = await render(Breadcrumb, {
+      props: {
+        locale: "ko",
+        links: [{ label: "배포판", href: "/distros/" }],
+        current: "Fedora Linux",
+      },
+    });
+    expect(html).toMatch(
+      /<nav class="breadcrumb caption" aria-label="탐색 경로" data-pagefind-ignore/,
+    );
+    expect(html).toMatch(/<ol role="list"/);
+    expect(html).toMatch(
+      /<a href="\/distros\/"[^>]*>배포판<\/a><svg width="12" height="12" class="adw-icon" aria-hidden="true"/,
+    );
+    expect(html).toMatch(/<span aria-current="page"[^>]*>Fedora Linux<\/span>/);
+    expect(html.match(/<svg/g)).toHaveLength(1);
+  });
+});
+
+describe("AppHeader", () => {
+  it("renders the tile, one h1, the tagline, the meta caption and the hero actions", async () => {
+    const html = await render(AppHeader, {
+      props: { logo: "fedora.svg", name: "Fedora Linux", tagline: "Innovation", meta: "GNOME" },
+      slots: { actions: '<a href="#download">Download</a><a href="/i/">Install</a>' },
+    });
+    expect(html).toMatch(/class="app-tile size-128 narrow-64 distro-logo"/);
+    expect(html).toContain('fetchpriority="high"');
+    expect(html).toContain('data-pagefind-meta="image[src]"');
+    expect(html.match(/<h1\b/g)).toHaveLength(1);
+    expect(html).toMatch(/<h1[^>]*>Fedora Linux<\/h1>/);
+    expect(html).toMatch(/<p class="dim-label" data-pagefind-meta="tagline"[^>]*>Innovation<\/p>/);
+    expect(html).toMatch(
+      /<p class="app-header-meta caption dim-label"[^>]*><span[^>]*>GNOME <\/span><\/p>/,
+    );
+    expect(html).toMatch(
+      /<div class="button-row hero-actions" data-pagefind-ignore[^>]*><a href="#download">Download<\/a><a href="\/i\/">Install<\/a><\/div>/,
+    );
+  });
+
+  it("takes a page title and a 64px tile, and drops empty parts", async () => {
+    const html = await render(AppHeader, {
+      props: {
+        logo: "fedora.svg",
+        name: "Fedora Linux",
+        title: "Fedora Linux install guide",
+        size: 64,
+      },
+    });
+    expect(html).toMatch(/class="app-tile size-64 distro-logo"/);
+    expect(html).not.toContain("fetchpriority");
+    expect(html).toMatch(/<h1[^>]*>Fedora Linux install guide<\/h1>/);
+    expect(html).not.toContain("<p");
+    expect(html).not.toContain("hero-actions");
+  });
+
+  it("puts each meta fact in its own span and skips an actions slot with nothing in it", async () => {
+    const html = await render(AppHeader, {
+      props: {
+        logo: "fedora.svg",
+        name: "Fedora Linux",
+        meta: ["Installer: Anaconda", "Difficulty: Medium"],
+      },
+      slots: { actions: "  " },
+    });
+    expect(
+      html.match(/<span[^>]*>(Installer: Anaconda|Difficulty: Medium) <\/span>/g),
+    ).toHaveLength(2);
+    expect(html).not.toContain("·");
+    expect(html).not.toContain("hero-actions");
   });
 });

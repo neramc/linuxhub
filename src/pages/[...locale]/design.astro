@@ -4,6 +4,7 @@
  * when LINUXHUB_SHOWCASE=1 — never part of the production site.
  */
 import { getCollection } from "astro:content";
+import AppHeader from "~/components/AppHeader.astro";
 import ActionRow from "~/components/adw/ActionRow.astro";
 import Badge from "~/components/adw/Badge.astro";
 import Banner from "~/components/adw/Banner.astro";
@@ -18,8 +19,12 @@ import SearchEntry from "~/components/adw/SearchEntry.astro";
 import StatusPage from "~/components/adw/StatusPage.astro";
 import ViewSwitcher from "~/components/adw/ViewSwitcher.astro";
 import DistroCard from "~/components/DistroCard.astro";
-import { LOCALES, localeParam } from "~/i18n";
+import DistroLogo from "~/components/DistroLogo.astro";
+import Breadcrumb from "~/components/site/Breadcrumb.astro";
+import { LOCALES, localeParam, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
+import { formatDate } from "~/lib/catalog";
+import { DIFFICULTIES, INSTALLERS, SECURE_BOOT } from "~/lib/taxonomy";
 import "~/styles/prose.css";
 
 export function getStaticPaths() {
@@ -28,9 +33,11 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.props;
+const t = useTranslations(locale);
 const distros = (await getCollection("distros"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 6);
+const sample = distros[0]?.data;
 const swatches = [
   "accent-bg-color",
   "accent-color",
@@ -51,9 +58,33 @@ const swatches = [
   </Banner>
   <Banner tone="warning" title="최근 공식 소스에 접속하지 못해 표시된 정보가 오래되었을 수 있습니다." />
   <div class="container showcase">
+    {
+      sample && (
+        <div class="page-header">
+          <Breadcrumb
+            locale={locale}
+            links={[{ label: t("distro.breadcrumb"), href: localizePath("/distros/", locale) }]}
+            current={sample.name}
+          />
+          <AppHeader
+            logo={sample.logo.file}
+            name={sample.name}
+            tagline={sample.tagline[locale]}
+            meta={[
+              t("install.installer", { installer: INSTALLERS[sample.installer][locale] }),
+              t("install.secureBoot", { secureBoot: SECURE_BOOT[sample.secureBoot][locale] }),
+              t("install.difficulty", { difficulty: DIFFICULTIES[sample.difficulty][locale] }),
+            ]}
+          >
+            <Button slot="actions" href="#" icon="download">{t("distro.download")}</Button>
+            <Button slot="actions" href="#">{t("distro.installGuide")}</Button>
+          </AppHeader>
+        </div>
+      )
+    }
+
     <section>
-      <h1>Title 1 — 배포판 목록</h1>
-      <p class="dim-label">Adwaita Sans · 한글은 시스템 고딕 · 12px card radius · 9px buttons</p>
+      <p class="dim-label">AppHeader h1 = Title 1 · Adwaita Sans · 한글은 시스템 고딕 · 12px card radius · 9px buttons</p>
       <h2>Title 2 — 설치 가이드</h2>
       <h3>Title 3 — 부팅 USB 만들기</h3>
       <h4>Heading — 체크섬 확인</h4>
@@ -122,7 +153,7 @@ const swatches = [
       <BoxedList title="정보">
         <ActionRow title="Fedora 43" subtitle="최신 버전" property />
         <ActionRow title="GNOME" subtitle="기본 데스크톱" property />
-        <ActionRow title="dnf · rpm · flatpak" subtitle="패키지 관리" property />
+        <ActionRow title={new Intl.ListFormat(locale, { type: "conjunction" }).format(["dnf", "rpm", "flatpak"])} subtitle="패키지 관리" property />
         <ActionRow title="공식 웹사이트" icon="website" href="https://fedoraproject.org/" external />
         <ActionRow title="설치 가이드" icon="contents" href="#" />
       </BoxedList>
@@ -135,6 +166,17 @@ const swatches = [
         </ActionRow>
       </BoxedList>
     </section>
+
+    {/* A section-level list (h2, title-2) with a suffix button, as on the home page. */}
+    <BoxedList title={t("home.recent")} level={2}>
+      <Button slot="suffix" href="#" variant="flat" iconEnd="go-next">{t("home.allReleases")}</Button>
+      {distros.slice(0, 2).map((d) => (
+        <ActionRow href="#" title={`${d.data.name} 1.0`}>
+          <DistroLogo slot="prefix" file={d.data.logo.file} name={d.data.name} size={36} />
+          <Fragment slot="subtitle"><time datetime="2026-04-23">{formatDate("2026-04-23", locale)}</time></Fragment>
+        </ActionRow>
+      ))}
+    </BoxedList>
 
     <section>
       <Callout type="note" title="참고">체크섬은 항상 공식 원본 서버의 값을 보여줍니다.</Callout>
@@ -163,6 +205,7 @@ sudo dnf upgrade --refresh</code></pre>
 <style>
   .showcase {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     padding-block: var(--space-5);
   }

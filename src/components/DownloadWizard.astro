@@ -1,52 +1,51 @@
 ---
-import { type Locale, localizePath, useTranslations } from "~/i18n";
-import { defaultArtifact, featuredRelease, formatBytes, formatDate } from "~/lib/catalog";
 /**
  * Guided download (version → edition → architecture → file type → mirror).
  * The default choice is fully server-rendered, so the download button works
  * without JS. src/scripts/download.ts enhances it: other versions are fetched
  * on demand from /data/releases/<slug>.json and, for distros with an official
  * mirror list, the nearest mirror is suggested from /api/geo.
+ *
+ * The final button is the page's one suggested action (SPEC §7), labelled
+ * with the file it gets ("ISO 받기 · 2.3 GB"). Without usable data the
+ * wizard says which of the two true reasons applies and links the official
+ * download page (SPEC §15). It ends with the next step: this site's USB
+ * section when the install guide is written, else the official install docs.
  */
-import type { Artifact, Release, ReleasesFile } from "~/lib/data-schemas";
+import { type Locale, useTranslations } from "~/i18n";
+import type { ReleasesFile } from "~/lib/data-schemas";
+import { formatBytes } from "~/lib/format";
+import {
+  checksumLabel,
+  defaultArtifact,
+  downloadLabel,
+  featuredRelease,
+  versionLabel,
+} from "~/lib/releases";
 import { ARCHITECTURES, type DownloadStrategy } from "~/lib/taxonomy";
 import ActionRow from "./adw/ActionRow.astro";
+import BoxedList from "./adw/BoxedList.astro";
 import Button from "./adw/Button.astro";
-import Icon from "./adw/Icon.astro";
 
 interface Props {
   slug: string;
-  name: string;
   locale: Locale;
   strategy: DownloadStrategy;
   officialDownload: string;
   releases: ReleasesFile | undefined;
   hasMirrors: boolean;
+  /** This site's install guide, when it is written (its #verify and #usb sections exist). */
+  guide: string | undefined;
+  /** The project's own installation docs: the next step when there is no guide here. */
+  officialGuide: string;
 }
 
-const { slug, name, locale, strategy, officialDownload, releases, hasMirrors } = Astro.props;
+const { slug, locale, strategy, officialDownload, releases, hasMirrors, guide, officialGuide } =
+  Astro.props;
 const t = useTranslations(locale);
 const release = featuredRelease(releases);
 const choice = defaultArtifact(release);
 const usable = strategy !== "official-page" && release && choice;
-const installHref = localizePath(`/distros/${slug}/install/`, locale);
-
-function versionLabel(r: Release): string {
-  const tags: string[] = [];
-  if (r === release) tags.push(t("download.latest"));
-  if (r.channel === "beta" || r.channel === "testing")
-    tags.push(t(`download.channel.${r.channel}`));
-  if (r.channel === "lts") tags.push(t("download.lts"));
-  const label = r.codename ? `${r.version} “${r.codename}”` : r.version;
-  return tags.length ? `${label} (${tags.join(", ")})` : label;
-}
-
-function checksumLabel(a: Artifact): string {
-  if (!a.checksum) return t("download.checksumOther");
-  if (a.checksum.type === "sha256") return t("download.checksum");
-  if (a.checksum.type === "md5") return t("download.checksumMd5");
-  return `${a.checksum.type.toUpperCase()} ${t("download.checksumOther")}`;
-}
 
 const arches = choice ? [...new Set(choice.edition.artifacts.map((a) => a.arch))] : [];
 const formats = choice
@@ -80,13 +79,14 @@ const labels = {
   locating: t("download.locating"),
   distance: t("download.distance", { km: "{km}" }),
   noFiles: t("download.noFiles"),
-  button: t("download.buttonShort"),
+  /** "{format} 받기": the island fills in the file type of each choice. */
+  button: t("download.button"),
 };
 const arches_ = ARCHITECTURES as Record<string, { ko: string; en: string }>;
 const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k, v[locale]]));
 ---
 
-<section class="download" id="download" aria-labelledby="download-title">
+<section class="section" id="download" aria-labelledby="download-title">
   <h2 id="download-title">{t("download.title")}</h2>
 
   {
@@ -103,14 +103,14 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
         data-arches={JSON.stringify(archLabels)}
         data-default={JSON.stringify({ version: release.version, edition: choice.edition.id, arch: choice.artifact.arch, format: choice.artifact.format })}
       >
-        <ul class="adw-boxed-list download-options" role="list">
+        <BoxedList class="download-options">
           <li>
             <label class="combo-row">
               <span class="combo-title">{t("download.version")}</span>
               <select name="version" class="combo-select">
                 {releases?.releases.map((r) => (
                   <option value={r.version} selected={r === release}>
-                    {versionLabel(r)}
+                    {versionLabel(r, release, labels)}
                   </option>
                 ))}
               </select>
@@ -156,7 +156,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
             <div class="combo-row mirror-row">
               <span class="combo-title">{t("download.mirror")}</span>
               <span class="mirror-value">
-                <span class="mirror-label" data-mirror-label>
+                <span class="mirror-label caption" data-mirror-label>
                   {mirrorMode
                     ? t("download.locating")
                     : strategy === "redirector" || strategy === "sourceforge"
@@ -171,23 +171,19 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
               </span>
             </div>
           </li>
-        </ul>
+        </BoxedList>
 
         <div class="download-action">
-          <a
-            class="adw-button suggested pill image-text-button download-button"
+          <Button
             href={choice.artifact.url}
-            data-download
+            variant="suggested"
+            icon="download"
+            class="download-button"
             rel="noopener"
+            data-download
           >
-            <Icon name="download" />
-            <span>
-              {t("download.buttonShort")}
-              <span class="download-size" data-size>
-                {size ? ` · ${size}` : ""}
-              </span>
-            </span>
-          </a>
+            <span data-download-label>{downloadLabel(labels.button, choice.artifact.format, size)}</span>
+          </Button>
           <p class="download-file caption dim-label" data-file>
             {choice.artifact.file}
           </p>
@@ -196,16 +192,14 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
 
         <div class="verify" data-verify hidden={!choice.artifact.checksum}>
           <p class="verify-title heading" data-checksum-label>
-            {checksumLabel(choice.artifact)}
+            {checksumLabel(choice.artifact.checksum, labels)}
           </p>
           <div class="checksum-box">
-            <code class="checksum" data-checksum>
-              {choice.artifact.checksum?.value}
-            </code>
+            <code class="checksum" data-checksum>{choice.artifact.checksum?.value}</code>
             <Button
               variant="flat"
               icon="copy"
-              label={t("common.copy")}
+              label={t("copy.checksum")}
               data-copy={choice.artifact.checksum?.value}
               data-copy-checksum
             />
@@ -220,7 +214,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
             <a href={choice.artifact.torrentUrl ?? "#"} data-torrent-url hidden={!choice.artifact.torrentUrl} rel="noopener">
               {t("download.torrent")}
             </a>
-            <a href={`${installHref}#verify`}>{t("download.verifyLink")}</a>
+            {guide && <a href={`${guide}#verify`}>{t("download.verifyLink")}</a>}
           </p>
         </div>
 
@@ -229,25 +223,31 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
         </noscript>
       </div>
     ) : (
-      <div class="download-card official-only">
-        <p>{t("download.officialPageHint")}</p>
-        {release && (
-          <p class="caption dim-label">
-            {t("facts.latest")}: <strong>{release.version}</strong>
-            {release.releaseDate && ` · ${formatDate(release.releaseDate, locale)}`}
-          </p>
-        )}
-        <Button href={officialDownload} variant="suggested" pill iconEnd="external" external>
-          {t("download.officialPage")}
-        </Button>
+      <div class="download-card">
+        <BoxedList class="official-only">
+          <ActionRow
+            title={t(strategy === "official-page" ? "download.officialPageHint" : "download.notPrepared")}
+            subtitle={release ? t("home.popular.latest", { version: release.version }) : undefined}
+          />
+        </BoxedList>
+        <div class="download-action">
+          <Button href={officialDownload} variant="suggested" iconEnd="external" external class="download-button">
+            {t("download.officialPage")}
+          </Button>
+        </div>
       </div>
     )
   }
 
-  <ul class="adw-boxed-list next-step" role="list">
-    <ActionRow title={t("download.nextStep")} icon="usb" href={`${installHref}#usb`} />
-  </ul>
-  <span class="visually-hidden">{name}</span>
+  <BoxedList class="next-step">
+    {
+      guide ? (
+        <ActionRow title={t("download.nextStep")} icon="usb" href={`${guide}#usb`} />
+      ) : (
+        <ActionRow title={t("download.nextStepOfficial")} icon="contents" href={officialGuide} external />
+      )
+    }
+  </BoxedList>
 </section>
 
 <script>
@@ -255,27 +255,14 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
 </script>
 
 <style>
-  .download {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .download > h2 {
-    font-size: var(--text-title-3);
-    font-weight: 700;
-  }
-
   .download-card {
     display: grid;
     gap: var(--space-3);
   }
 
-  .official-only {
-    padding: var(--space-3);
-    border-radius: var(--radius-card);
-    background: var(--card-bg-color);
-    box-shadow: var(--shadow-card);
-    justify-items: start;
+  /* The next step stands apart from the wizard as its parts do (18px). */
+  .download-card + :global(.next-step) {
+    margin-block-start: var(--space-1);
   }
 
   .combo-row {
@@ -300,13 +287,13 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
     text-align: end;
   }
 
+  /* A status line or a fixed value, not a control (caption, SPEC §1). */
   .mirror-label {
-    font-size: 0.9375rem;
     opacity: var(--dim-opacity);
   }
 
   /* On phones the mirror list gets the full row, so host names stay readable. */
-  @media (max-width: 599px) {
+  @media (width < 600px) {
     .mirror-row:has(select:not([hidden])) {
       flex-direction: column;
       align-items: stretch;
@@ -327,16 +314,22 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
   .download-action {
     display: grid;
     justify-items: start;
-    gap: 6px;
+    gap: var(--space-1);
   }
 
+  /* The page's one suggested action: a regular 9px button (SPEC §5), 44px
+     tall, the full width on phones (SPEC §18), where a long label wraps
+     instead of widening the page at 320px. */
   .download-button {
-    min-block-size: 52px;
-    font-size: 1.0625rem;
+    min-block-size: 44px;
   }
 
-  .download-size {
-    font-weight: 400;
+  @media (width < 600px) {
+    .download-button {
+      inline-size: 100%;
+      white-space: normal;
+      text-align: center;
+    }
   }
 
   .download-file {
@@ -346,7 +339,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
 
   .verify {
     display: grid;
-    gap: 6px;
+    gap: var(--space-1);
   }
 
   .checksum-box {
@@ -358,22 +351,21 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
     background: var(--button-color);
   }
 
+  /* The shared .checksum look (adwaita.css), filling the box. */
   .checksum {
     flex: 1;
     min-inline-size: 0;
-    font-size: 0.8125rem;
-    overflow-wrap: anywhere;
-    line-height: 1.5;
   }
 
   .verify-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 16px;
+    gap: var(--space-1) var(--space-3);
   }
 
-  .next-step {
-    margin-block-start: var(--space-1);
+  /* No stray gap while the island keeps every link hidden for this file. */
+  .verify-links:not(:has(> a:not([hidden]))) {
+    display: none;
   }
 
   /* The filled checksum box keeps an edge in forced colors (SPEC §4). */

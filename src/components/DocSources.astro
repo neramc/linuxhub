@@ -6,7 +6,7 @@
  * only the list is folded. Used at the end of install guides and Linux guide
  * chapters (inside .prose).
  */
-import { type Locale, useTranslations } from "~/i18n";
+import { type Locale, splitAround, useTranslations } from "~/i18n";
 import { formatDate } from "~/lib/catalog";
 import BoxedList from "./adw/BoxedList.astro";
 import ExpanderRow from "./adw/ExpanderRow.astro";
@@ -19,7 +19,7 @@ interface Props {
 
 const { sources, lastReviewed, locale } = Astro.props;
 const t = useTranslations(locale);
-const [before, after] = t("sources.reviewed", { date: "\u0000" }).split("\u0000");
+const [before, after] = splitAround(t("sources.reviewed"), "date");
 ---
 
 <BoxedList class="doc-sources-group">

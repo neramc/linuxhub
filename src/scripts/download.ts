@@ -9,7 +9,9 @@
  * - The last choice per distro is remembered in localStorage.
  */
 import type { Artifact, Release } from "~/lib/data-schemas";
+import { formatBytes } from "~/lib/format";
 import { type GeoPoint, type MirrorPayload, type RankedMirror, rankMirrors } from "~/lib/mirrors";
+import { downloadLabel } from "~/lib/releases";
 
 interface Labels {
   latest: string;
@@ -24,6 +26,7 @@ interface Labels {
   locating: string;
   distance: string;
   noFiles: string;
+  /** The download.button template, "{format} 받기". */
   button: string;
 }
 
@@ -114,7 +117,7 @@ function init(root: HTMLElement) {
   const mirrorSel = select("mirror");
   const formatRow = root.querySelector<HTMLElement>("[data-format-row]");
   const download = root.querySelector<HTMLAnchorElement>("[data-download]");
-  const sizeEl = root.querySelector<HTMLElement>("[data-size]");
+  const labelEl = root.querySelector<HTMLElement>("[data-download-label]");
   const fileEl = root.querySelector<HTMLElement>("[data-file]");
   const verify = root.querySelector<HTMLElement>("[data-verify]");
   const checksumEl = root.querySelector<HTMLElement>("[data-checksum]");
@@ -128,18 +131,6 @@ function init(root: HTMLElement) {
   };
   if (!versionSel || !editionSel || !archSel || !formatSel || !download) return;
 
-  const bytes = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
-  const formatSize = (n: number | null) => {
-    if (!n) return "";
-    const units = ["B", "KB", "MB", "GB", "TB"];
-    let v = n;
-    let u = 0;
-    while (v >= 1000 && u < units.length - 1) {
-      v /= 1000;
-      u++;
-    }
-    return ` · ${bytes.format(v)} ${units[u]}`;
-  };
   const regionNames = (() => {
     try {
       return new Intl.DisplayNames([locale], { type: "region" });
@@ -187,7 +178,13 @@ function init(root: HTMLElement) {
     }
     download.removeAttribute("aria-disabled");
     download.href = href(artifact);
-    if (sizeEl) sizeEl.textContent = formatSize(artifact.size);
+    // The same label as the server renders: "ISO 받기 · 2.3 GB".
+    if (labelEl)
+      labelEl.textContent = downloadLabel(
+        labels.button,
+        artifact.format,
+        formatBytes(artifact.size, locale),
+      );
     if (fileEl) fileEl.textContent = artifact.file;
     const sum = artifact.checksum;
     if (verify) verify.hidden = !sum;

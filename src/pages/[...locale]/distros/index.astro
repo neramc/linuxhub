@@ -4,9 +4,10 @@
  * (works without JS); src/scripts/catalog-filter.ts filters/sorts them in
  * place and mirrors the state in the URL (?use=&family=&desktop=&model=&level=&sort=&q=).
  *
- * One toolbar row (ADR-0014): search entry, a "Filters" disclosure (native
- * <details> holding the five facet dropdowns and the sort as combo rows) and
- * the result count; the use-case chip row sits above the grid.
+ * The page header holds the title, one toolbar row (ADR-0014: search entry,
+ * a "Filters" disclosure — a native <details> holding the five facet
+ * dropdowns and the sort as combo rows — and the result count) and the
+ * use-case chip row; the card grid follows.
  */
 import Button from "~/components/adw/Button.astro";
 import Icon from "~/components/adw/Icon.astro";
@@ -91,73 +92,77 @@ const lists = [
 
 <Base locale={locale} title={t("catalog.title")} description={t("catalog.lead", { count: distros.length })}>
   <div class="container page">
-    <h1>{t("catalog.title")}</h1>
+    <header class="page-header">
+      <h1>{t("catalog.title")}</h1>
 
-    <form class="filters" data-filters role="search" aria-label={t("catalog.filter")}>
-      <label class="search-entry">
-        <Icon name="search" />
-        <input type="search" name="q" placeholder={t("catalog.search")} autocomplete="off" aria-label={t("catalog.search")} />
-      </label>
-      <details class="filter-menu" data-filter-panel>
-        <summary class="adw-button image-text-button" data-active-label={t("catalog.activeFilters", { count: "{count}" })}>
-          <span>{t("catalog.filter")}</span>
-          <span class="adw-badge numeric" data-filter-count hidden aria-hidden="true"></span>
-          <span class="visually-hidden" data-filter-count-label></span>
-          <Icon name="pan-down" class="filter-arrow" />
-        </summary>
-        <div class="filter-panel">
-          {
-            lists.map((rows) => (
-              <ul class="adw-boxed-list" role="list">
-                {rows.map((f) => (
-                  <li>
-                    <label class="adw-action-row">
-                      <span class="adw-row-text">
-                        <span class="adw-row-title">{f.label}</span>
-                      </span>
-                      <select name={f.name} class="combo-select">
-                        <option value="">{f.any}</option>
-                        {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
-                      </select>
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            ))
-          }
-        </div>
-      </details>
-      <Button variant="flat" icon="refresh" class="reset" data-reset data-reset-row hidden>{t("catalog.reset")}</Button>
-      <p class="count caption dim-label numeric" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
-    </form>
+      <form class="filters" data-filters role="search" aria-label={t("catalog.filter")}>
+        <label class="search-entry">
+          <Icon name="search" />
+          <input type="search" name="q" placeholder={t("catalog.search")} autocomplete="off" aria-label={t("catalog.search")} />
+        </label>
+        <details class="filter-menu" data-filter-panel>
+          <summary class="adw-button image-text-button" data-active-label={t("catalog.activeFilters", { count: "{count}" })}>
+            <span>{t("catalog.filter")}</span>
+            <span class="adw-badge numeric" data-filter-count hidden aria-hidden="true"></span>
+            <span class="visually-hidden" data-filter-count-label></span>
+            <Icon name="pan-down" class="filter-arrow" />
+          </summary>
+          <div class="filter-panel">
+            {
+              lists.map((rows) => (
+                <ul class="adw-boxed-list" role="list">
+                  {rows.map((f) => (
+                    <li>
+                      <label class="adw-action-row">
+                        <span class="adw-row-text">
+                          <span class="adw-row-title">{f.label}</span>
+                        </span>
+                        <select name={f.name} class="combo-select">
+                          <option value="">{f.any}</option>
+                          {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
+                        </select>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              ))
+            }
+          </div>
+        </details>
+        <Button variant="flat" icon="refresh" class="reset" data-reset data-reset-row hidden>{t("catalog.reset")}</Button>
+        <p class="count caption dim-label numeric" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
+      </form>
 
-    <UseCaseChips locale={locale} showAll class="chips" />
+      <UseCaseChips locale={locale} showAll />
+    </header>
 
-    <ul class="grid" role="list" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
-      {
-        distros.map((d, i) => (
-          <li
-            data-distro
-            data-order={d.data.order}
-            data-name={d.data.name.toLowerCase()}
-            data-search={[d.data.name, d.id, ...d.data.aliases, d.data.tagline.ko, d.data.tagline.en].join(" ").toLowerCase()}
-            data-use={d.data.useCases.join(" ")}
-            data-family={d.data.family}
-            data-desktop={d.data.desktops.join(" ")}
-            data-model={d.data.releaseModel}
-            data-level={d.data.difficulty}
-            data-updated={updated.get(d.id)}
-          >
-            <DistroCard distro={d} locale={locale} eager={i < 6} headingLevel={2} />
-          </li>
-        ))
-      }
-    </ul>
+    <div class="section">
+      <ul class="card-grid" role="list" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
+        {
+          distros.map((d, i) => (
+            <li
+              data-distro
+              data-order={d.data.order}
+              data-name={d.data.name.toLowerCase()}
+              data-search={[d.data.name, d.id, ...d.data.aliases, d.data.tagline.ko, d.data.tagline.en].join(" ").toLowerCase()}
+              data-use={d.data.useCases.join(" ")}
+              data-family={d.data.family}
+              data-desktop={d.data.desktops.join(" ")}
+              data-model={d.data.releaseModel}
+              data-level={d.data.difficulty}
+              data-updated={updated.get(d.id)}
+            >
+              <DistroCard distro={d} locale={locale} eager={i < 6} headingLevel={2} />
+            </li>
+          ))
+        }
+      </ul>
 
-    <div data-empty hidden>
-      <StatusPage icon="search" title={t("catalog.emptyTitle")} description={t("catalog.emptyLead")} level={2}>
-        <Button pill data-reset>{t("catalog.reset")}</Button>
-      </StatusPage>
+      <div data-empty hidden>
+        <StatusPage icon="search" title={t("catalog.emptyTitle")} description={t("catalog.emptyLead")} level={2}>
+          <Button pill data-reset>{t("catalog.reset")}</Button>
+        </StatusPage>
+      </div>
     </div>
   </div>
 </Base>
@@ -167,11 +172,10 @@ const lists = [
 </script>
 
 <style>
+  /* The chips filter the grid right below them: one group, 24px apart, not
+     a section gap. */
   .page {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-3);
-    padding-block: var(--space-4) var(--space-6);
+    row-gap: var(--space-4);
   }
 
   /* Toolbar: search entry · Filters · count. The <details> box is dissolved
@@ -288,17 +292,6 @@ const lists = [
     .filter-panel {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-  }
-
-  .grid {
-    display: grid;
-    gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-    margin-block-start: var(--space-1);
-  }
-
-  .grid > li[hidden] {
-    display: none;
   }
 
   @media (width < 700px) {

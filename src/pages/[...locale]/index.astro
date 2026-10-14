@@ -5,8 +5,8 @@
  * distro, flavors grouped) and a link into the Linux guide.
  */
 import ActionRow from "~/components/adw/ActionRow.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
-import Icon from "~/components/adw/Icon.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import PopularCarousel from "~/components/PopularCarousel.astro";
@@ -33,6 +33,7 @@ const featured = distros
   .slice(0, 6);
 const recent = latestReleaseGroups(groupReleases(getHistory(), distros), 5);
 const list = new Intl.ListFormat(locale, { style: "short", type: "unit" });
+const flavorList = new Intl.ListFormat(locale, { type: "conjunction" });
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -45,7 +46,7 @@ const jsonLd = [
 ---
 
 <Base locale={locale} jsonLd={jsonLd}>
-  <div class="container home">
+  <div class="container page">
     <h1 class="visually-hidden">{t("home.title")}</h1>
 
     <PopularCarousel locale={locale} today={today} />
@@ -57,79 +58,37 @@ const jsonLd = [
         <h2 id="featured-title">{t("home.featured")}</h2>
         <Button href={localizePath("/distros/", locale)} variant="flat" iconEnd="go-next">{t("home.browse")}</Button>
       </div>
-      <ul class="grid" role="list">
+      <ul class="card-grid" role="list">
         {featured.map((d) => <li><DistroCard distro={d} locale={locale} /></li>)}
       </ul>
     </section>
 
     {
       recent.length > 0 && (
-        <section aria-labelledby="recent-title" class="section">
-          <div class="section-header">
-            <h2 id="recent-title">{t("home.recent")}</h2>
-            <Button href={localizePath("/releases/", locale)} variant="flat" iconEnd="go-next">
-              {t("home.allReleases")}
-            </Button>
-          </div>
-          <ul class="adw-boxed-list" role="list">
-            {recent.map((g) => (
-              <li>
-                <a class="adw-action-row activatable" href={localizePath(`/distros/${g.distro.id}/`, locale)}>
-                  <DistroLogo file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
-                  <span class="adw-row-text">
-                    <span class="adw-row-title">
-                      {g.distro.data.name} {list.format(g.versions)}
-                    </span>
-                    <span class="adw-row-subtitle">
-                      {g.flavors.map((f) => `${f.data.name} · `).join("")}
-                      <time datetime={g.date}>{formatDate(g.date, locale)}</time>
-                    </span>
-                  </span>
-                  <Icon name="go-next" class="adw-row-chevron" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <BoxedList id="recent" title={t("home.recent")} level={2}>
+          <Button slot="suffix" href={localizePath("/releases/", locale)} variant="flat" iconEnd="go-next">
+            {t("home.allReleases")}
+          </Button>
+          {recent.map((g) => (
+            <ActionRow
+              href={localizePath(`/distros/${g.distro.id}/`, locale)}
+              title={`${g.distro.data.name} ${list.format(g.versions)}`}
+            >
+              <DistroLogo slot="prefix" file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
+              <Fragment slot="subtitle">
+                {g.flavors.length > 0 && `${flavorList.format(g.flavors.map((f) => f.data.name))} · `}
+                <time datetime={g.date}>{formatDate(g.date, locale)}</time>
+              </Fragment>
+            </ActionRow>
+          ))}
+        </BoxedList>
       )
     }
 
-    <ul class="adw-boxed-list" role="list">
-      <ActionRow href={localizePath("/learn/", locale)} title={t("home.newToLinux")} icon="contents">
+    <BoxedList>
+      <ActionRow href={localizePath("/learn/", locale)} title={t("home.newToLinux")} icon="dictionary">
         <span class="dim-label">{t("nav.learn")}</span>
       </ActionRow>
-    </ul>
+    </BoxedList>
   </div>
 </Base>
-
-<style>
-  .home {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
-    padding-block: var(--space-3) var(--space-6);
-  }
-
-  .section {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .section-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: var(--space-2);
-  }
-
-  .section-header > :global(.adw-button) {
-    margin-inline-end: -8px; /* align the flat button's label with the content edge */
-  }
-
-  .grid {
-    display: grid;
-    gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  }
-</style>
