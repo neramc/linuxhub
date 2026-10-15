@@ -12,10 +12,16 @@
  *
  * `property` rows show a fact: the subtitle is the dim label, the title its
  * value; stacked in narrow lists, label | value from a 480px-wide list.
+ *
+ * `tone="error"` is a failure inside a component (SPEC §16: icon + color +
+ * text): the `warning` icon in the error color, the sentence as the title
+ * and the way out (e.g. [Try again]) as the suffix. `hidden` and data-*
+ * attributes go on the row (<li>), which an island shows or hides.
  */
 import Icon from "./Icon.astro";
 
 interface Props {
+  [key: `data-${string}`]: unknown;
   title?: string | undefined;
   subtitle?: string | undefined;
   icon?: string | undefined;
@@ -23,16 +29,27 @@ interface Props {
   external?: boolean | undefined;
   /** A fact row: dim subtitle label, title value (AdwActionRow `.property`). */
   property?: boolean | undefined;
+  tone?: "error" | undefined;
+  hidden?: boolean | undefined;
 }
 
-const { title, subtitle, icon, href, external = false, property = false } = Astro.props;
+const {
+  title,
+  subtitle,
+  icon,
+  href,
+  external = false,
+  property = false,
+  tone,
+  ...rest
+} = Astro.props;
 const Tag = href ? "a" : "div";
 const hasSubtitleSlot = Astro.slots.has("subtitle");
 ---
 
-<li class="adw-row-item">
+<li class="adw-row-item" {...rest}>
   <Tag
-    class:list={["adw-action-row", { activatable: href, property }]}
+    class:list={["adw-action-row", { activatable: href, property }, tone]}
     {...(href ? { href, ...(external ? { rel: "noopener external", target: "_blank" } : {}) } : {})}
   >
     {icon && <Icon name={icon} size={16} class="adw-row-prefix" />}

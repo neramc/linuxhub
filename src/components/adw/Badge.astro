@@ -4,15 +4,18 @@
  * `success` / `warning` / `error` tones use libadwaita's semantic colors and
  * are for real status only: a verified checksum, end of life soon, end of life
  * (SPEC §2). With `href` it becomes a link (e.g. to a filtered catalog).
+ * Other attributes (data-*, hidden, aria-*) go on the badge, e.g. a count an
+ * island fills in.
  */
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"span"> & {
   tone?: "neutral" | "success" | "warning" | "error" | undefined;
   href?: string | undefined;
-  class?: string | undefined;
-}
+};
 
-const { tone = "neutral", href, class: className } = Astro.props;
+const { tone = "neutral", href, class: className, ...rest } = Astro.props;
 const Tag = href ? "a" : "span";
 ---
 
-<Tag class:list={["adw-badge", tone, className]} {...(href ? { href } : {})}><slot /></Tag>
+<Tag class:list={["adw-badge", tone, className]} {...(href ? { href } : {})} {...rest}><slot /></Tag>

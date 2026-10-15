@@ -61,6 +61,27 @@ test("catalog filters disclosure and use-case chips", async ({ page }) => {
   await expect(chips.locator('[data-use-chip="gaming"]')).toHaveAttribute("aria-current", "page");
 });
 
+test("catalog reset keeps keyboard focus and the empty state names the query", async ({ page }) => {
+  await page.goto("/distros/?level=beginner");
+  // The toolbar's Reset never hides itself: it is disabled once nothing is set.
+  const reset = page.locator("[data-filters] [data-reset]");
+  await expect(reset).toHaveAttribute("aria-disabled", "false");
+  await reset.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/distros\/$/);
+  await expect(reset).toBeFocused();
+  await expect(reset).toHaveAttribute("aria-disabled", "true");
+  // No match: one sentence with the query, and a reset that hands focus to the entry.
+  const q = page.locator('[data-filters] input[name="q"]');
+  await q.fill("zzzz-no-such-distro");
+  const empty = page.locator("[data-empty]");
+  await expect(empty).toContainText("“zzzz-no-such-distro”");
+  await empty.getByRole("button", { name: "필터 초기화" }).click();
+  await expect(empty).toBeHidden();
+  await expect(q).toBeFocused();
+  await expect(q).toHaveValue("");
+});
+
 test("English pages use the /en/ prefix and hreflang alternates", async ({ page }) => {
   await page.goto("/en/distros/fedora/");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");

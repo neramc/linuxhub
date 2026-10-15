@@ -39,6 +39,8 @@ const {
   external = false,
   type = "button",
   class: className,
+  // Astro's slot placement (e.g. a group header suffix), not an attribute.
+  slot: _slot,
   ...rest
 } = Astro.props;
 

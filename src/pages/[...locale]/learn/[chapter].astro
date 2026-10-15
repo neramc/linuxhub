@@ -9,6 +9,7 @@ import { render } from "astro:content";
 import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import Icon from "~/components/adw/Icon.astro";
 import ChapterNav from "~/components/ChapterNav.astro";
+import CopyButtons from "~/components/CopyButtons.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DocSources from "~/components/DocSources.astro";
 import { mdxComponents } from "~/components/mdx";
@@ -115,11 +116,10 @@ const jsonLd = [
       </nav>
     </div>
   </div>
+  <CopyButtons locale={locale} />
 </Base>
 
 <script>
-  import "~/scripts/copy-code";
-
   // On phones wide tables scroll sideways inside their own box (prose.css).
   // A scrolling box must be reachable by keyboard (WCAG 2.1.1), so it gets a
   // tab stop while (and only while) it actually overflows.

@@ -1,8 +1,11 @@
 /**
- * Distro finder: scores the catalog with src/lib/finder.ts and renders the top
- * three as activatable cards. Each card explains itself in one dim line made
- * of up to three concrete reasons ("Good for gaming · KDE Plasma desktop ·
- * Long-term support"), preferring reasons that differ between the results.
+ * Distro finder: scores the catalog with src/lib/finder.ts and shows the top
+ * three as clones of the server-rendered ActionRow <template id="finder-row">,
+ * filled with the distro's tile (from <template id="finder-tiles">), name and
+ * tagline. Each row explains itself in one dim line
+ * of up to three concrete reasons, joined as a list ("Good for gaming, KDE
+ * Plasma desktop and long-term support"), preferring reasons that differ
+ * between the results.
  */
 import {
   type FinderAnswers,
@@ -13,7 +16,9 @@ import {
   scoreDistro,
 } from "~/lib/finder";
 
-type Item = FinderDistro & { tagline: string; href: string };
+/** A finder-data entry: the scoring attributes plus the row's tagline. */
+type Item = FinderDistro & { tagline: string };
+
 interface Why {
   label: string;
   experience: Record<FinderDistro["difficulty"], string>;
@@ -29,6 +34,7 @@ interface Why {
 const form = document.querySelector<HTMLFormElement>("[data-finder]");
 const results = document.querySelector<HTMLElement>("[data-results]");
 const list = document.querySelector<HTMLOListElement>("[data-result-list]");
+const rowTemplate = document.querySelector<HTMLTemplateElement>("#finder-row");
 const tiles = document.querySelector<HTMLTemplateElement>("#finder-tiles");
 const check = document.querySelector<HTMLTemplateElement>("#finder-check");
 const raw = document.getElementById("finder-data")?.textContent;
@@ -44,6 +50,7 @@ if (form && results && list && raw) {
   const midSentence = (label: string) =>
     lang.startsWith("en") ? label.charAt(0).toLowerCase() + label.slice(1) : label;
 
+  /** Kept identical to el() in search.ts (ADR-0016, C19). */
   const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string) => {
     const node = document.createElement(tag);
     if (cls) node.className = cls;
@@ -98,12 +105,22 @@ if (form && results && list && raw) {
     });
   }
 
-  function tile(id: string): Node {
-    const node = tiles?.content.querySelector(`[data-tile="${CSS.escape(id)}"]`);
-    if (!node) return el("span");
-    const copy = node.cloneNode(true) as HTMLElement;
-    copy.querySelector("img")?.setAttribute("loading", "eager");
-    return copy;
+  /** The distro's row (an <li>): link, tile (loaded now that it is shown), name, tagline. */
+  function row(d: Item): HTMLElement | undefined {
+    const li = rowTemplate?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined;
+    const a = li?.querySelector("a");
+    if (!li || !a) return undefined;
+    a.setAttribute("href", `${a.getAttribute("href")}${d.id}/`);
+    const tile = tiles?.content.querySelector(`[data-tile="${CSS.escape(d.id)}"]`);
+    if (tile) {
+      const copy = tile.cloneNode(true) as HTMLElement;
+      copy.querySelector("img")?.setAttribute("loading", "eager");
+      a.prepend(copy);
+    }
+    const name = li.querySelector(".heading");
+    if (name) name.textContent = d.name;
+    li.querySelector(".adw-row-text")?.append(el("span", "adw-row-subtitle", d.tagline));
+    return li;
   }
 
   form.addEventListener("submit", (event) => {
@@ -120,27 +137,26 @@ if (form && results && list && raw) {
     const top = recommend(distros, answers, 3);
     const reasons = explain(top, answers);
     list.replaceChildren(
-      ...top.map((r, i) => {
-        const item = r.distro as Item;
-        const li = el("li");
-        const a = el("a", "adw-card activatable");
-        a.setAttribute("href", item.href);
-        const text = el("div", "result-text");
-        const title = el("h3", "result-name");
-        title.append(el("span", "result-rank numeric", `${i + 1}. `), item.name);
-        text.append(title, el("p", "result-tagline", item.tagline));
+      ...top.flatMap((r, i) => {
+        const li = row(r.distro as Item); // recommend() returns the entries it was given
+        if (!li) return [];
         const lines = reasons[i] ?? [];
         if (lines.length) {
-          const line = el("p", "result-why");
+          const line = el("span", "adw-row-subtitle result-why");
           if (check) line.append(check.content.cloneNode(true));
+          // The phrases are written mid-sentence (en lower case); the list
+          // starts with a capital. Korean phrases end in a predicate, after
+          // which "및" does not read: a comma list there.
+          const joined = lang.startsWith("ko") ? lines.join(", ") : listFormat.format(lines);
           const sentence = el("span");
-          sentence.append(el("span", "visually-hidden", `${why.label}: `), lines.join(" · "));
+          sentence.append(
+            el("span", "visually-hidden", `${why.label}: `),
+            joined.charAt(0).toUpperCase() + joined.slice(1),
+          );
           line.append(sentence);
-          text.append(line);
+          li.querySelector(".adw-row-text")?.append(line);
         }
-        a.append(tile(item.id), text);
-        li.append(a);
-        return li;
+        return [li];
       }),
     );
     const compare = results.querySelector<HTMLAnchorElement>("[data-compare-link]");

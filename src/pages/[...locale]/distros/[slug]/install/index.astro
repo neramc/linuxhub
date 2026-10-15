@@ -15,6 +15,7 @@ import AppHeader from "~/components/AppHeader.astro";
 import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
 import ExpanderRow from "~/components/adw/ExpanderRow.astro";
+import CopyButtons from "~/components/CopyButtons.astro";
 import DocSources from "~/components/DocSources.astro";
 import { mdxComponents } from "~/components/mdx";
 import Breadcrumb from "~/components/site/Breadcrumb.astro";
@@ -138,13 +139,7 @@ const jsonLd = doc
   </div>
 
   {/* Only a written guide has code blocks to copy. */}
-  {
-    rendered && (
-      <script>
-        import "~/scripts/copy-code";
-      </script>
-    )
-  }
+  {rendered && <CopyButtons locale={locale} />}
 </Base>
 
 <style>

@@ -39,6 +39,8 @@ const {
   fetchpriority,
   imgAttrs = {},
   class: className,
+  // Astro's slot placement (e.g. an ActionRow prefix), not an attribute.
+  slot: _slot,
   ...rest
 } = Astro.props;
 // Intrinsic size of the logo box (75% of the face) for layout stability.

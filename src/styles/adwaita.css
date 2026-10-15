@@ -27,7 +27,9 @@
   background-color: var(--view-active-color);
 }
 
-.adw-action-row.activatable:focus-visible {
+/* A row whose label wraps an input (ChoiceGroup) rings while the input has
+   focus, as AdwActionRow does for its activatable widget. */
+.adw-action-row.activatable:is(:focus-visible, :has(> input:focus-visible)) {
   outline: 2px solid var(--focus-ring-color);
   outline-offset: -2px;
   border-radius: 0;
@@ -35,13 +37,17 @@
 
 /* The inset ring follows the list's rounded corners on the first and last
    row (an expander's summary only while it is closed). */
-.adw-boxed-list > li:first-child > .adw-action-row.activatable:focus-visible,
+.adw-boxed-list
+  > li:first-child
+  > .adw-action-row.activatable:is(:focus-visible, :has(> input:focus-visible)),
 .adw-boxed-list > li:first-child > .adw-expander-row > summary:focus-visible {
   border-start-start-radius: var(--radius-card);
   border-start-end-radius: var(--radius-card);
 }
 
-.adw-boxed-list > li:last-child > .adw-action-row.activatable:focus-visible,
+.adw-boxed-list
+  > li:last-child
+  > .adw-action-row.activatable:is(:focus-visible, :has(> input:focus-visible)),
 .adw-boxed-list > li:last-child > .adw-expander-row:not([open]) > summary:focus-visible {
   border-end-start-radius: var(--radius-card);
   border-end-end-radius: var(--radius-card);
@@ -63,6 +69,23 @@
   font-size: var(--text-caption);
   opacity: var(--dim-opacity);
   overflow-wrap: anywhere;
+}
+
+/* ComboRow.astro (AdwComboRow): the title takes the free space and the
+   select (.combo-select below) keeps its own width at the end. When the
+   value does not fit beside the title, the row wraps and the select fills
+   the line under it: the title's huge grow factor leaves the select a
+   fraction of a pixel on a shared line, the whole free space on its own.
+   A value longer than the row wraps inside the select (Chromium), so it is
+   never cut (SPEC §8). */
+.adw-combo-row {
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+
+.adw-combo-row > .adw-row-text {
+  flex: 1000 0 auto;
+  max-inline-size: 100%;
 }
 
 /* Property rows (facts): the subtitle is the dim caption label, the title its
@@ -110,6 +133,23 @@
 .adw-row-chevron,
 .adw-row-prefix {
   opacity: var(--dim-opacity);
+}
+
+/* An error row (ActionRow tone="error", SPEC §16): the icon carries the
+   error color, at full strength; the sentence stays in the text color. On a
+   phone the way out ([Try again]) wraps under the sentence instead of
+   squeezing it into a narrow column. */
+.adw-action-row.error {
+  flex-wrap: wrap;
+}
+
+.adw-action-row.error > .adw-row-text {
+  flex: 1 1 13rem;
+}
+
+.adw-action-row.error > .adw-row-prefix {
+  color: var(--error-color);
+  opacity: 1;
 }
 
 /* ---- Badge.astro ---- */
@@ -241,6 +281,8 @@ a.adw-badge:hover {
   transition:
     background-color var(--duration) var(--ease-out-quad),
     outline-color var(--duration) var(--ease-out-quad);
+  /* The focus ring fades in from nothing, not from the text color. */
+  outline-color: transparent;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -354,11 +396,23 @@ a.adw-badge:hover {
   pointer-events: none;
 }
 
-/* High contrast: filled controls (and the entry and toggle trough, styled
-   below) get a 1px ring, as libadwaita's high-contrast style does. */
+/* A focusable disabled button (aria-disabled, e.g. the catalog's Reset) keeps
+   a full-strength focus ring: the element's opacity would fade the ring
+   below 3:1, so while focused only its content is faded. */
+.adw-button[aria-disabled="true"]:focus-visible {
+  opacity: 1;
+}
+
+.adw-button[aria-disabled="true"]:focus-visible > * {
+  opacity: var(--disabled-opacity);
+}
+
+/* High contrast: filled controls (and the entry, combo and toggle trough,
+   styled below) get a 1px ring, as libadwaita's high-contrast style does. */
 @media (prefers-contrast: more) {
   .adw-button:not(.flat, .suggested, .destructive, .osd),
   .adw-entry,
+  .combo-select,
   .adw-toggle-group {
     box-shadow: inset 0 0 0 1px var(--border-color);
   }
@@ -485,8 +539,10 @@ a.adw-badge:hover {
 }
 
 /* Open: arrow up, full opacity, accent color (widgets/_lists.scss:408-415).
-   pan-down turned 180°, so it never looks like the go-next row chevron. */
-.adw-expander-row[open] .adw-expander-arrow {
+   pan-down turned 180°, so it never looks like the go-next row chevron.
+   One rule for every disclosure (expander rows, the catalog's filter
+   button); only the <details>' own summary, not a nested closed one. */
+details[open] > summary .adw-expander-arrow {
   transform: rotate(180deg);
   opacity: 1;
   color: var(--accent-color);
@@ -616,12 +672,13 @@ a.adw-badge:hover {
   box-shadow: var(--shadow-raised);
 }
 
-/* ViewSwitcher links: the raised item is only about 1.2:1 against the trough,
-   so while one link is current the others' labels are dim as a second cue
-   (ADR-0016). Forced colors fill the current one with Highlight instead and
+/* ViewSwitcher links and radio toggles (finder): the raised item is only
+   about 1.2:1 against the trough, so while one is current or checked the
+   others' labels are dim as a second cue (ADR-0016). Forced colors fill the current one with Highlight instead and
    keep the user's text colors. */
 @media (forced-colors: none) {
-  .adw-toggle-group:has(> [aria-current="page"]) > .adw-toggle:not([aria-current]) > * {
+  .adw-toggle-group:has(> [aria-current="page"]) > .adw-toggle:not([aria-current]) > *,
+  .adw-toggle-group:has(input:checked) > .adw-toggle:not(:has(input:checked)) > span {
     opacity: var(--dim-opacity);
   }
 }
@@ -990,11 +1047,11 @@ a.adw-badge:hover {
   display: none;
 }
 
-/* ---- Combo select: AdwComboRow / GtkDropDown look on a native <select> ----
-   The 65% cap goes when the wizard, catalog and compare move to ComboRow. */
+/* ---- Combo select: GtkDropDown look on a native <select> (ComboRow) ---- */
 .combo-select {
+  flex: 1 1 auto;
   min-inline-size: 0;
-  max-inline-size: 65%;
+  max-inline-size: 100%;
   min-block-size: var(--control-height);
   padding: 6px 32px 6px 12px;
   border: 0;
@@ -1006,7 +1063,8 @@ a.adw-badge:hover {
   background-size: 14px;
   font-weight: 700;
   font-size: var(--text-control);
-  text-overflow: ellipsis;
+  line-height: var(--line-height-control);
+  white-space: normal;
   appearance: none;
   cursor: pointer;
 }
@@ -1025,7 +1083,7 @@ a.adw-badge:hover {
   color: var(--popover-fg-color);
 }
 
-/* ---- Toast: AdwToast, created by src/scripts/toast.ts ----
+/* ---- Toast: AdwToast, rendered empty by Base.astro, filled by src/scripts/toast.ts ----
    Fades only (no slide-in, SPEC §12/§17). */
 .adw-toast {
   position: fixed;
@@ -1111,7 +1169,8 @@ a.adw-badge:hover {
     .adw-toggle,
     .adw-chip,
     .adw-entry,
-    .combo-select
+    .combo-select,
+    .adw-toast
   ) {
     border: 1px solid transparent;
   }

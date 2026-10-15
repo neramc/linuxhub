@@ -1,16 +1,29 @@
 ---
 /**
- * Site search (Ctrl/⌘+K, "/" or the header search button): an Adwaita dialog
- * over Pagefind's static index. Pagefind's JS (~30 KB) and the index chunks
- * load only when the dialog first opens.
+ * Site search (Ctrl/⌘+K or the header search button): an Adwaita dialog over
+ * Pagefind's static index (SPEC §11). Pagefind's JS (~30 KB) and the index
+ * chunks load only when the dialog first opens.
+ *
+ * A title row (h2 + a 44px close button), then the search entry, pinned
+ * while the results scroll; below 600px the dialog is a full-height sheet.
+ * Enter in the entry opens the first result; Esc and the close button close
+ * the dialog (no <form method="dialog">, so Enter never closes it).
  *
  * Results are grouped by page type (the `type` Pagefind meta set on each
- * page's body root): distributions show their app tile, name and tagline
- * (`tagline` / `image` meta from the detail page), install guides and Linux
- * guide chapters show their title and a one-line excerpt.
+ * page's body root, one h3 per group): distributions show their app tile,
+ * name and tagline (`tagline` / `image` meta from the detail page), install
+ * guides and Linux guide chapters show their title and a one-line excerpt.
+ *
+ * States (src/scripts/search.ts): one status line says the hint, "searching"
+ * (only after 300 ms, with aria-busy on the results), the result count (or
+ * "10 of N" when cut), the no-results sentence or the error sentence. Under
+ * it, after no result or an error, the ways out: the catalog link, and
+ * [Try again] after an error (rendered here, hidden; no icons).
  */
-import { type Locale, useTranslations } from "~/i18n";
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import Button from "../adw/Button.astro";
 import Icon from "../adw/Icon.astro";
+import SearchEntry from "../adw/SearchEntry.astro";
 
 interface Props {
   locale: Locale;
@@ -18,10 +31,13 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const catalog = localizePath("/distros/", locale);
 const labels = {
   noResults: t("search.noResults", { query: "{query}" }),
   loading: t("search.loading"),
   results: t("search.results", { count: "{count}" }),
+  truncated: t("search.resultsTruncated", { count: "{count}", shown: "{shown}" }),
+  error: t("search.error"),
   groups: {
     distro: t("search.groups.distro"),
     install: t("search.groups.install"),
@@ -31,27 +47,23 @@ const labels = {
 };
 ---
 
-<dialog id="search-dialog" class="search-dialog" aria-label={t("search.open")} data-labels={JSON.stringify(labels)}>
-  <form method="dialog" class="search-head" role="search">
-    <label class="search-entry">
-      <Icon name="search" />
-      <input
-        type="search"
-        name="q"
-        placeholder={t("search.placeholder")}
-        autocomplete="off"
-        spellcheck="false"
-        enterkeyhint="search"
-        aria-label={t("search.placeholder")}
-        aria-controls="search-results"
-        data-search-input
-      />
-    </label>
-    <button class="adw-button flat image-button circular" value="close" aria-label={t("search.close")} title={t("search.close")}>
-      <Icon name="close" />
-    </button>
-  </form>
-  <p class="search-status caption dim-label" data-search-status aria-live="polite">{t("search.hint")}</p>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-title" data-labels={JSON.stringify(labels)}>
+  <div class="search-titlebar">
+    <h2 id="search-title">{t("search.open")}</h2>
+    <Button variant="flat" circular icon="close" label={t("search.close")} data-search-close />
+  </div>
+  <div class="search-head" role="search">
+    <SearchEntry locale={locale} name="q" label={t("search.placeholder")} controls="search-results" data-search-input />
+  </div>
+  <p class="search-status caption dim-label">
+    <span class="adw-spinner" aria-hidden="true"></span>
+    <Icon name="warning" class="search-error-icon" />
+    <span data-search-status aria-live="polite">{t("search.hint")}</span>
+  </p>
+  <div class="search-actions button-row" data-search-actions hidden>
+    <Button data-search-retry>{t("common.retry")}</Button>
+    <Button href={catalog}>{t("home.browse")}</Button>
+  </div>
   <div id="search-results" class="search-results" data-search-results></div>
   <template data-search-icon="guide"><span class="result-icon"><Icon name="dictionary" size={20} /></span></template>
   <template data-search-icon="other"><span class="result-icon"><Icon name="document" size={20} /></span></template>
@@ -62,10 +74,13 @@ const labels = {
 </script>
 
 <style>
+  /* Centered near the top (12vh), at most 640px wide and 70vh tall; the
+     results scroll inside (SPEC §11). The UA's own max sizes are replaced. */
   .search-dialog {
-    inline-size: min(640px, calc(100vw - 24px));
-    max-block-size: min(72vh, 640px);
-    margin: 10vh auto auto;
+    inline-size: min(640px, 100% - 32px);
+    max-inline-size: none;
+    max-block-size: 70vh;
+    margin: 12vh auto auto;
     padding: 0;
     border: 0;
     border-radius: var(--radius-dialog);
@@ -81,72 +96,78 @@ const labels = {
   }
 
   .search-dialog::backdrop {
-    background: rgb(0 0 6 / 30%);
+    background: rgb(0 0 6 / 32%);
+  }
+
+  /* Title and close button, then the entry: pinned above the results (only
+     the results shrink below their content, min-block-size: 0). */
+  .search-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-1) 0 var(--space-3);
+  }
+
+  /* 44 × 44 like the header buttons (SPEC §7, §11). */
+  .search-titlebar > :global(.adw-button) {
+    --control-height: 44px;
   }
 
   .search-head {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px;
+    padding: var(--space-1) var(--space-2) var(--space-2);
     border-block-end: 1px solid var(--border-color);
   }
 
-  .search-entry {
-    flex: 1;
+  /* The status line: a sentence, after 300 ms with a spinner (SPEC §14). */
+  .search-status {
     display: flex;
     align-items: center;
-    gap: 10px;
-    min-inline-size: 0;
-    padding-inline: 12px;
-    border-radius: var(--radius-button);
-    background: var(--button-color);
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3) 0;
   }
 
-  .search-entry:focus-within {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: 1px;
+  /* The last line of the dialog (no actions or results follow): the
+     dialog's own bottom padding. */
+  .search-status:has(+ [hidden] + :empty) {
+    padding-block-end: var(--space-3);
   }
 
-  .search-entry :global(.adw-icon) {
-    opacity: var(--dim-opacity);
-  }
-
-  .search-entry input {
-    flex: 1;
-    min-inline-size: 0;
-    block-size: 40px;
-    border: 0;
-    background: transparent;
-    outline: none;
-    font-size: 1.0625rem;
-  }
-
-  /* The dialog's own close button is the only "×". */
-  .search-entry input::-webkit-search-cancel-button,
-  .search-entry input::-webkit-search-decoration {
-    appearance: none;
+  .search-status > .adw-spinner,
+  .search-status > :global(.search-error-icon) {
     display: none;
   }
 
-  .search-head .adw-button {
+  /* Index failure (SPEC §16): icon + error colour + the sentence. */
+  .search-status[data-error] {
+    color: var(--error-color);
+    opacity: 1;
+  }
+
+  .search-status[data-error] > :global(.search-error-icon) {
+    display: inline-block;
     flex: none;
-    min-block-size: 40px;
-    min-inline-size: 40px;
   }
 
-  .search-status {
-    padding: 10px 18px 0;
+  .search-dialog:has(.search-results[aria-busy="true"]) .search-status > .adw-spinner {
+    display: inline-block;
   }
 
-  .search-status:empty {
-    display: none;
+  /* After no result or an error: the ways out (SPEC §15, §16). */
+  .search-actions {
+    padding: var(--space-2) var(--space-3) var(--space-3);
   }
 
+  /* Columns never grow to a one-line subtitle's width: it ends in an
+     ellipsis instead. */
   .search-results {
+    flex: 0 1 auto;
+    min-block-size: 0;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
     gap: var(--space-2);
-    padding: 8px 8px 12px;
+    padding: var(--space-1) var(--space-1) var(--space-2);
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -155,49 +176,21 @@ const labels = {
     display: none;
   }
 
-  .search-results :global(.search-group) {
+  /* Rows are .adw-nav-row links (adwaita.css), built by the script. */
+  .search-results :global(.search-group),
+  .search-results :global(ul) {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2px;
-  }
-
-  .search-results :global(.search-group-title) {
-    padding: 4px 10px;
-    font-size: var(--text-caption);
-    font-weight: 700;
-    opacity: var(--dim-opacity);
   }
 
   .search-results :global(ul) {
-    display: grid;
-    gap: 2px;
     margin: 0;
     padding: 0;
-    list-style: none;
   }
 
-  .search-results :global(a) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-block-size: 54px;
-    padding: 8px 10px;
-    border-radius: var(--radius-menu);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .search-results :global(a:hover) {
-    background: var(--hover-color);
-  }
-
-  .search-results :global(a:active) {
-    background: var(--active-color);
-  }
-
-  .search-results :global(a:focus-visible) {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: -2px;
-    background: var(--hover-color);
+  .search-results :global(.search-group-title) {
+    padding: var(--space-1) var(--space-2) 0;
   }
 
   .search-results :global(.result-icon) {
@@ -209,22 +202,8 @@ const labels = {
     opacity: var(--dim-opacity);
   }
 
-  .search-results :global(.result-text) {
-    display: grid;
-    min-inline-size: 0;
-    gap: 1px;
-  }
-
-  .search-results :global(.result-title) {
-    font-weight: 700;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
+  /* One line: the excerpt starts just before its first match (search.ts). */
   .search-results :global(.result-subtitle) {
-    font-size: var(--text-caption);
-    opacity: var(--dim-opacity);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -234,5 +213,32 @@ const labels = {
     background: none;
     color: inherit;
     font-weight: 700;
+  }
+
+  /* Phones: a full-height sheet from the bottom, top corners rounded, the
+     entry pinned at the top; safe-area insets keep it clear of the notch
+     and the home indicator. */
+  @media (width < 600px) {
+    .search-dialog {
+      inline-size: 100%;
+      block-size: calc(100% - var(--space-2) - env(safe-area-inset-top));
+      max-block-size: none;
+      margin: auto 0 0;
+      padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    .search-results {
+      flex-grow: 1;
+      padding-block-end: calc(var(--space-2) + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* The dialog keeps an edge in forced colors (SPEC §4). */
+  @media (forced-colors: active) {
+    .search-dialog {
+      border: 1px solid transparent;
+    }
   }
 </style>

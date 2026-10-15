@@ -101,6 +101,9 @@ Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
     </main>
     <SiteFooter locale={locale} />
     <SearchDialog locale={locale} />
+    {/* The toast live region exists, empty, before the first message, so that
+        message is announced too (SPEC §12; src/scripts/toast.ts). */}
+    <div class="adw-toast" role="status" data-toast></div>
   </body>
 </html>
 

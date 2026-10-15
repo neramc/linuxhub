@@ -31,6 +31,8 @@ export const ko: DictionaryShape = {
     loading: "검색 중…",
     hint: "배포판 이름, 데스크톱 환경, 주제를 입력해 보세요.",
     results: "결과 {count}개",
+    resultsTruncated: "결과 {count}개 중 {shown}개 표시",
+    error: "검색 색인을 불러오지 못했습니다. 다시 시도하거나 배포판 목록에서 찾아보세요.",
     groups: {
       distro: "배포판",
       install: "설치 가이드",
@@ -58,11 +60,13 @@ export const ko: DictionaryShape = {
     all: "전체",
   },
   common: {
-    loading: "불러오는 중…",
-    copied: "복사됨",
+    copied: "클립보드에 복사했습니다",
+    retry: "다시 시도",
   },
   copy: {
+    code: "코드 복사",
     checksum: "체크섬 복사",
+    failed: "복사하지 못했습니다. 텍스트를 선택해 두었으니 직접 복사하세요.",
   },
   home: {
     title: "나에게 맞는 리눅스를 찾아보세요",
@@ -111,7 +115,7 @@ export const ko: DictionaryShape = {
     count: "{count}개 표시",
     activeFilters: "적용된 필터 {count}개",
     emptyTitle: "조건에 맞는 배포판이 없습니다",
-    emptyLead: "필터를 하나 빼거나 다른 이름으로 찾아보세요.",
+    emptyQuery: "“{query}”에 해당하는 배포판이 없습니다",
   },
   distro: {
     download: "다운로드",
@@ -199,7 +203,8 @@ export const ko: DictionaryShape = {
     recommended: "추천 서버",
     recommendedFor: "{place}에서 가장 가까움",
     locating: "가장 가까운 미러를 찾는 중…",
-    mirrorCount: "공식 미러 {count}곳",
+    geoFallback: "위치를 알 수 없어 시간대로 골랐습니다",
+    mirrorsError: "미러 목록을 불러오지 못했습니다. 공식 기본 서버에서 받을 수 있습니다.",
     distance: "약 {km}km",
     officialPage: "공식 다운로드 페이지 열기",
     officialPageHint:
@@ -209,6 +214,8 @@ export const ko: DictionaryShape = {
     sourceforge:
       "프로젝트의 공식 SourceForge 페이지에서 제공하며, 가까운 미러가 자동으로 선택됩니다.",
     noFiles: "이 조합에 해당하는 파일이 없습니다.",
+    loadingFiles: "파일 정보를 불러오는 중…",
+    releasesError: "다른 버전 정보를 불러오지 못했습니다. 기본 이미지는 그대로 받을 수 있습니다.",
     lts: "LTS",
     latest: "최신",
     channel: { stable: "안정", lts: "LTS", rolling: "롤링", beta: "베타", testing: "테스트" },
@@ -302,7 +309,9 @@ export const ko: DictionaryShape = {
     title: "배포판 비교",
     lead: "최대 세 개의 배포판을 나란히 비교해 보세요.",
     pick: "배포판 {n}",
-    none: "—",
+    none: "선택 안 함",
+    missing: "찾을 수 없어 제외한 배포판: {ids}",
+    empty: "비교할 배포판을 위에서 고르세요.",
     rows: {
       version: "버전",
       eol: "지원 종료",

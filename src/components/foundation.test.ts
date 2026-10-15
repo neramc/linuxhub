@@ -4,8 +4,11 @@ import AppHeader from "./AppHeader.astro";
 import ActionRow from "./adw/ActionRow.astro";
 import AppTile from "./adw/AppTile.astro";
 import { nearestTileSize } from "./adw/app-tile";
+import Badge from "./adw/Badge.astro";
 import Banner from "./adw/Banner.astro";
 import Chip from "./adw/Chip.astro";
+import ChoiceGroup from "./adw/ChoiceGroup.astro";
+import ComboRow from "./adw/ComboRow.astro";
 import ExpanderRow from "./adw/ExpanderRow.astro";
 import SearchEntry from "./adw/SearchEntry.astro";
 import DistroLogo from "./DistroLogo.astro";
@@ -145,6 +148,21 @@ describe("ActionRow", () => {
     expect(html).toMatch(/<div class="adw-action-row property">/);
     expect(html).toMatch(/<svg width="16" height="16" class="adw-icon adw-row-prefix"/);
     expect(html).not.toContain("adw-row-chevron");
+    // Nothing extra on the row item by default.
+    expect(html).toMatch(/<li class="adw-row-item">/);
+  });
+
+  it("marks an error row and puts hidden and data-* on the row item", async () => {
+    const html = await render(ActionRow, {
+      props: { tone: "error", icon: "warning", hidden: true, "data-wizard-error": true },
+      slots: { title: '<span role="alert">Failed.</span>', default: "<button>Retry</button>" },
+    });
+    expect(html).toMatch(/<li class="adw-row-item" hidden data-wizard-error/);
+    expect(html).toMatch(
+      /<div class="adw-action-row error">\s*<svg[^>]*class="adw-icon adw-row-prefix"/,
+    );
+    expect(html).toMatch(/<span class="adw-row-title"><span role="alert">Failed\.<\/span><\/span>/);
+    expect(html).toMatch(/<span class="adw-row-suffix">\s*<button>Retry<\/button>/);
   });
 });
 
@@ -166,6 +184,99 @@ describe("ExpanderRow", () => {
     const html = await render(ExpanderRow, { props: { title: "Windows", open: true } });
     expect(html).toMatch(/<details class="adw-expander-row"[^>]*\bopen\b/);
     expect(html).not.toContain("adw-row-subtitle");
+  });
+});
+
+describe("ComboRow", () => {
+  it("labels a native select with the row title and selects the given value", async () => {
+    const html = await render(ComboRow, {
+      props: {
+        label: "Edition",
+        name: "edition",
+        options: [
+          ["workstation", "Workstation"],
+          ["kde", "KDE Plasma"],
+        ],
+        selected: "kde",
+        hidden: true,
+        "data-format-row": "",
+      },
+    });
+    // hidden and data-* go on the row, which islands show or hide.
+    expect(html).toMatch(/<li class="adw-row-item" hidden[^>]*data-format-row/);
+    expect(html).toMatch(
+      /<label class="adw-action-row adw-combo-row">\s*<span class="adw-row-text">\s*<span class="adw-row-title">Edition<\/span>\s*<\/span>\s*<select name="edition" class="combo-select">/,
+    );
+    expect(html).toMatch(/<option value="workstation">\s*Workstation\s*<\/option>/);
+    expect(html).toMatch(/<option value="kde" selected>\s*KDE Plasma\s*<\/option>/);
+    expect(html).not.toContain("adw-row-subtitle");
+  });
+
+  it("puts the subtitle slot under the title and can hide the select until it is filled", async () => {
+    const html = await render(ComboRow, {
+      props: { label: "Mirror", name: "mirror", options: [["", "Automatic"]], selectHidden: true },
+      slots: { subtitle: "<span data-mirror-label>Finding the nearest mirror…</span>" },
+    });
+    expect(html).toMatch(/<li class="adw-row-item">/);
+    expect(html).toMatch(
+      /<span class="adw-row-subtitle">\s*<span data-mirror-label>Finding the nearest mirror…<\/span>\s*<\/span>/,
+    );
+    expect(html).toMatch(/<select name="mirror" class="combo-select" hidden>/);
+    // No `selected`: the browser picks the first option.
+    expect(html).not.toMatch(/<option[^>]*selected/);
+  });
+});
+
+describe("ChoiceGroup", () => {
+  const choices = [
+    { value: "new", label: "New", checked: true },
+    { value: "expert", label: "Expert" },
+  ];
+  /** Rendered HTML without the scoped-style attributes. */
+  const plain = (html: string) => html.replace(/ data-astro-cid-\w+| astro-\w+(?=")/g, "");
+
+  it("renders radio rows in a boxed list under the legend, every choice a label.choice", async () => {
+    const html = plain(
+      await render(ChoiceGroup, { props: { legend: "Experience?", name: "q", choices } }),
+    );
+    expect(html).toMatch(
+      /^<fieldset class="adw-choice-group"><legend class="adw-choice-legend">Experience\?<\/legend>/,
+    );
+    expect(html).toContain('<ul class="adw-boxed-list adw-choices" role="list">');
+    expect(html).toContain(
+      '<li><label class="choice adw-action-row activatable"><input type="radio" name="q" value="new" checked class="adw-check"><span class="adw-row-title">New</span></label></li>',
+    );
+    expect(html).toContain('<input type="radio" name="q" value="expert" class="adw-check">');
+    expect(html).not.toContain("adw-toggle");
+  });
+
+  it("renders check rows for a multiple choice and a toggle group for a short one", async () => {
+    const checks = plain(
+      await render(ChoiceGroup, {
+        props: { legend: "Uses", name: "uses", type: "checkbox", choices },
+      }),
+    );
+    expect(checks.match(/<input type="checkbox" name="uses"/g)).toHaveLength(2);
+    const toggles = plain(
+      await render(ChoiceGroup, {
+        props: { legend: "Experience?", name: "q", choices, toggle: true },
+      }),
+    );
+    expect(toggles).toContain(
+      '<div class="adw-toggle-group adw-choices"><label class="choice adw-toggle"><input type="radio" name="q" value="new" checked class="adw-check"><span>New</span></label>',
+    );
+    expect(toggles).not.toContain("adw-boxed-list");
+  });
+});
+
+describe("Badge", () => {
+  it("is neutral by default and passes attributes through (a count an island fills in)", async () => {
+    const html = await render(Badge, {
+      props: { class: "numeric", "data-filter-count": "", hidden: true, "aria-hidden": "true" },
+    });
+    expect(html).toMatch(/^<span [^>]*><\/span>$/);
+    expect(html).toContain('class="adw-badge neutral numeric"');
+    expect(html).toMatch(/ data-filter-count hidden aria-hidden="true"/);
   });
 });
 

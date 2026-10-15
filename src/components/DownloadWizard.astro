@@ -11,6 +11,24 @@
  * wizard says which of the two true reasons applies and links the official
  * download page (SPEC §15). It ends with the next step: this site's USB
  * section when the install guide is written, else the official install docs.
+ *
+ * States (SPEC §14–16). Every sentence is rendered here; the island only
+ * shows, hides or picks them:
+ * - Loading: while another choice waits for the data, the button has no link
+ *   and the checksum is hidden; after 300 ms [data-loading] (spinner and
+ *   sentence) takes the file line's place.
+ * - Error: [data-wizard-error] (role="alert", after the visitor's change) with
+ *   [Try again]; the selects are back on the choice the link still serves.
+ *   [data-mirror-error] (role="status") when the mirror list did not load:
+ *   the link stays on the official server. The two fail apart.
+ * - Empty: [data-no-files] when no file matches the choice.
+ * - Copy: a checksum that could not be copied is selected, and the caption
+ *   under it ([data-copy-status], src/scripts/copy-code.ts) says so.
+ * - Announced: [data-wizard-status], outside the card (which is aria-busy
+ *   while it waits), says a wait or a failed retry the visitor caused once.
+ * - No JS: the link serves the server's choice, which the selects show until
+ *   they are changed (the noscript caption says only the default works); the
+ *   mirror row names the official server, which that link uses.
  */
 import { type Locale, useTranslations } from "~/i18n";
 import type { ReleasesFile } from "~/lib/data-schemas";
@@ -26,6 +44,8 @@ import { ARCHITECTURES, type DownloadStrategy } from "~/lib/taxonomy";
 import ActionRow from "./adw/ActionRow.astro";
 import BoxedList from "./adw/BoxedList.astro";
 import Button from "./adw/Button.astro";
+import ComboRow from "./adw/ComboRow.astro";
+import CopyButtons from "./CopyButtons.astro";
 
 interface Props {
   slug: string;
@@ -73,12 +93,11 @@ const labels = {
   checksum: t("download.checksum"),
   checksumMd5: t("download.checksumMd5"),
   checksumOther: t("download.checksumOther"),
-  auto: t("download.auto"),
+  origin: t("download.origin"),
   recommended: t("download.recommended"),
   recommendedFor: t("download.recommendedFor", { place: "{place}" }),
   locating: t("download.locating"),
   distance: t("download.distance", { km: "{km}" }),
-  noFiles: t("download.noFiles"),
   /** "{format} 받기": the island fills in the file type of each choice. */
   button: t("download.button"),
 };
@@ -98,79 +117,66 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
         data-locale={locale}
         data-strategy={strategy}
         data-mirrors={mirrorMode ? `/data/mirrors/${slug}.json` : undefined}
+        data-path={mirrorMode ? choice.artifact.path : undefined}
         data-releases-url={`/data/releases/${slug}.json`}
         data-labels={JSON.stringify(labels)}
         data-arches={JSON.stringify(archLabels)}
         data-default={JSON.stringify({ version: release.version, edition: choice.edition.id, arch: choice.artifact.arch, format: choice.artifact.format })}
       >
         <BoxedList class="download-options">
-          <li>
-            <label class="combo-row">
-              <span class="combo-title">{t("download.version")}</span>
-              <select name="version" class="combo-select">
-                {releases?.releases.map((r) => (
-                  <option value={r.version} selected={r === release}>
-                    {versionLabel(r, release, labels)}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </li>
-          <li>
-            <label class="combo-row">
-              <span class="combo-title">{t("download.edition")}</span>
-              <select name="edition" class="combo-select">
-                {release.editions.map((e) => (
-                  <option value={e.id} selected={e === choice.edition}>
-                    {e.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </li>
-          <li>
-            <label class="combo-row">
-              <span class="combo-title">{t("download.arch")}</span>
-              <select name="arch" class="combo-select">
-                {arches.map((a) => (
-                  <option value={a} selected={a === choice.artifact.arch}>
-                    {archLabels[a]}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </li>
-          <li data-format-row hidden={formats.length < 2}>
-            <label class="combo-row">
-              <span class="combo-title">{t("download.format")}</span>
-              <select name="format" class="combo-select">
-                {formats.map((f) => (
-                  <option value={f} selected={f === choice.artifact.format}>
-                    .{f}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </li>
-          <li>
-            <div class="combo-row mirror-row">
-              <span class="combo-title">{t("download.mirror")}</span>
-              <span class="mirror-value">
-                <span class="mirror-label caption" data-mirror-label>
-                  {mirrorMode
-                    ? t("download.locating")
-                    : strategy === "redirector" || strategy === "sourceforge"
-                      ? t("download.auto")
-                      : t("download.origin")}
-                </span>
-                {mirrorMode && (
-                  <select name="mirror" class="combo-select" aria-label={t("download.mirror")} hidden>
-                    <option value="">{t("download.auto")}</option>
-                  </select>
-                )}
+          <ComboRow
+            label={t("download.version")}
+            name="version"
+            options={(releases?.releases ?? []).map((r) => [r.version, versionLabel(r, release, labels)] as const)}
+            selected={release.version}
+          />
+          <ComboRow
+            label={t("download.edition")}
+            name="edition"
+            options={release.editions.map((e) => [e.id, e.name] as const)}
+            selected={choice.edition.id}
+          />
+          <ComboRow
+            label={t("download.arch")}
+            name="arch"
+            options={arches.map((a) => [a, archLabels[a] ?? a] as const)}
+            selected={choice.artifact.arch}
+          />
+          <ComboRow
+            label={t("download.format")}
+            name="format"
+            options={formats.map((f) => [f, `.${f}`] as const)}
+            selected={choice.artifact.format}
+            hidden={formats.length < 2}
+            data-format-row
+          />
+          <ActionRow tone="error" icon="warning" hidden data-wizard-error>
+            <span slot="title" id="download-releases-error" role="alert">{t("download.releasesError")}</span>
+            <Button aria-describedby="download-releases-error" data-wizard-retry>{t("common.retry")}</Button>
+          </ActionRow>
+          {mirrorMode ? (
+            <>
+              <ComboRow label={t("download.mirror")} name="mirror" options={[["", t("download.origin")]]} selectHidden>
+                <Fragment slot="subtitle">
+                  <span class="mirror-status">
+                    <span class="adw-spinner" aria-hidden="true" data-mirror-spinner hidden />
+                    <span data-mirror-label>{t("download.origin")}</span>
+                  </span>
+                  <span class="mirror-note" data-geo-fallback hidden>{t("download.geoFallback")}</span>
+                </Fragment>
+              </ComboRow>
+              <ActionRow tone="error" icon="warning" hidden data-mirror-error>
+                <span slot="title" id="download-mirrors-error" role="status">{t("download.mirrorsError")}</span>
+                <Button aria-describedby="download-mirrors-error" data-mirror-retry>{t("common.retry")}</Button>
+              </ActionRow>
+            </>
+          ) : (
+            <ActionRow title={t("download.mirror")}>
+              <span class="caption dim-label" data-mirror-label>
+                {strategy === "redirector" || strategy === "sourceforge" ? t("download.auto") : t("download.origin")}
               </span>
-            </div>
-          </li>
+            </ActionRow>
+          )}
         </BoxedList>
 
         <div class="download-action">
@@ -187,6 +193,11 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
           <p class="download-file caption dim-label" data-file>
             {choice.artifact.file}
           </p>
+          <p class="download-loading caption dim-label" data-loading hidden>
+            <span class="adw-spinner" aria-hidden="true"></span>
+            {t("download.loadingFiles")}
+          </p>
+          <p class="caption dim-label" data-no-files hidden>{t("download.noFiles")}</p>
           {strategy === "sourceforge" && <p class="caption dim-label">{t("download.sourceforge")}</p>}
         </div>
 
@@ -202,8 +213,10 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
               label={t("copy.checksum")}
               data-copy={choice.artifact.checksum?.value}
               data-copy-checksum
+              data-js-only
             />
           </div>
+          <p class="copy-status caption" role="status" data-copy-status></p>
           <p class="verify-links caption">
             <a href={choice.artifact.checksum?.url ?? "#"} data-checksum-url hidden={!choice.artifact.checksum?.url} rel="noopener">
               {t("download.checksumFile")}
@@ -221,6 +234,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
         <noscript>
           <p class="caption dim-label">{t("download.noscript")}</p>
         </noscript>
+        <CopyButtons locale={locale} />
       </div>
     ) : (
       <div class="download-card">
@@ -248,6 +262,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
       )
     }
   </BoxedList>
+  {usable && <p class="visually-hidden" role="status" data-wizard-status></p>}
 </section>
 
 <script>
@@ -263,52 +278,6 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
   /* The next step stands apart from the wizard as its parts do (18px). */
   .download-card + :global(.next-step) {
     margin-block-start: var(--space-1);
-  }
-
-  .combo-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    min-block-size: 54px;
-    padding: 6px 8px 6px 14px;
-  }
-
-  .combo-title {
-    flex: none;
-  }
-
-  .mirror-value {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-    min-inline-size: 0;
-    text-align: end;
-  }
-
-  /* A status line or a fixed value, not a control (caption, SPEC §1). */
-  .mirror-label {
-    opacity: var(--dim-opacity);
-  }
-
-  /* On phones the mirror list gets the full row, so host names stay readable. */
-  @media (width < 600px) {
-    .mirror-row:has(select:not([hidden])) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 4px;
-      padding-block: 10px;
-    }
-
-    .mirror-value {
-      align-items: stretch;
-      text-align: start;
-    }
-
-    .mirror-value .combo-select {
-      max-inline-size: none;
-    }
   }
 
   .download-action {
@@ -337,6 +306,19 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
     font-family: var(--font-mono);
   }
 
+  /* A spinner beside a sentence (SPEC §14): the file line while loading, and
+     the mirror row's status while it looks for the nearest mirror. */
+  .download-loading,
+  .mirror-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .mirror-note {
+    display: block;
+  }
+
   .verify {
     display: grid;
     gap: var(--space-1);
@@ -349,6 +331,25 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
     padding: 6px 6px 6px 12px;
     border-radius: var(--radius-button);
     background: var(--button-color);
+  }
+
+  /* Out of the grid (no gap) while it has nothing to say; still in the
+     accessibility tree, so its first message is announced. */
+  .copy-status:empty {
+    position: absolute;
+  }
+
+  /* Only a failed copy writes here: icon + error colour + sentence (SPEC §16). */
+  .copy-status:not(:empty) {
+    display: flex;
+    align-items: start;
+    gap: var(--space-1);
+    color: var(--error-color);
+  }
+
+  .copy-status > :global(svg) {
+    flex: none;
+    margin-block-start: 1px;
   }
 
   /* The shared .checksum look (adwaita.css), filling the box. */

@@ -4,14 +4,21 @@
  * (works without JS); src/scripts/catalog-filter.ts filters/sorts them in
  * place and mirrors the state in the URL (?use=&family=&desktop=&model=&level=&sort=&q=).
  *
- * The page header holds the title, one toolbar row (ADR-0014: search entry,
- * a "Filters" disclosure — a native <details> holding the five facet
- * dropdowns and the sort as combo rows — and the result count) and the
- * use-case chip row; the card grid follows.
+ * The page header holds the title, one toolbar (ADR-0014; it does nothing
+ * without JS, so it is hidden then and the chip links still navigate) and
+ * the use-case chip row; the card grid follows. The toolbar reads in DOM
+ * order — search entry, "Filters" (a native <details> whose summary opens the
+ * facet panel), Reset, result count — and the panel (five facets and the
+ * sort as combo rows) follows on a line of its own, so Tab never jumps back
+ * up. Reset stays in place, disabled while nothing is set (SPEC §15).
  */
+import ActionRow from "~/components/adw/ActionRow.astro";
+import Badge from "~/components/adw/Badge.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
+import ComboRow from "~/components/adw/ComboRow.astro";
 import Icon from "~/components/adw/Icon.astro";
-import StatusPage from "~/components/adw/StatusPage.astro";
+import SearchEntry from "~/components/adw/SearchEntry.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import UseCaseChips from "~/components/UseCaseChips.astro";
 import { localePaths, useTranslations } from "~/i18n";
@@ -35,7 +42,9 @@ const usedDesktops = [...new Set(distros.flatMap((d) => d.data.desktops))].filte
 );
 const usedFamilies = [...new Set(distros.map((d) => d.data.family))];
 const usedUses = new Set(distros.flatMap((d) => d.data.useCases));
-const facets = [
+/** A combo row option: [value, text]. */
+type Option = readonly [value: string, text: string];
+const facets: { name: string; label: string; options: Option[] }[] = [
   {
     name: "use",
     label: t("catalog.use"),
@@ -73,7 +82,7 @@ const facets = [
       DIFFICULTIES[k as keyof typeof DIFFICULTIES][locale],
     ]),
   },
-] as const;
+];
 const sort = {
   name: "sort",
   label: t("catalog.sort"),
@@ -95,49 +104,40 @@ const lists = [
     <header class="page-header">
       <h1>{t("catalog.title")}</h1>
 
-      <form class="filters" data-filters role="search" aria-label={t("catalog.filter")}>
-        <label class="search-entry">
-          <Icon name="search" />
-          <input type="search" name="q" placeholder={t("catalog.search")} autocomplete="off" aria-label={t("catalog.search")} />
-        </label>
+      <form class="filters" data-filters data-js-only role="search" aria-label={t("catalog.filter")}>
+        <SearchEntry locale={locale} name="q" label={t("catalog.search")} controls="catalog-grid" />
         <details class="filter-menu" data-filter-panel>
-          <summary class="adw-button image-text-button" data-active-label={t("catalog.activeFilters", { count: "{count}" })}>
+          <summary
+            class="adw-button image-text-button"
+            aria-controls="filter-panel"
+            data-active-label={t("catalog.activeFilters", { count: "{count}" })}
+          >
             <span>{t("catalog.filter")}</span>
-            <span class="adw-badge numeric" data-filter-count hidden aria-hidden="true"></span>
+            <Badge class="numeric" data-filter-count hidden aria-hidden="true" />
             <span class="visually-hidden" data-filter-count-label></span>
-            <Icon name="pan-down" class="filter-arrow" />
+            <Icon name="pan-down" class="adw-expander-arrow" />
           </summary>
-          <div class="filter-panel">
-            {
-              lists.map((rows) => (
-                <ul class="adw-boxed-list" role="list">
-                  {rows.map((f) => (
-                    <li>
-                      <label class="adw-action-row">
-                        <span class="adw-row-text">
-                          <span class="adw-row-title">{f.label}</span>
-                        </span>
-                        <select name={f.name} class="combo-select">
-                          <option value="">{f.any}</option>
-                          {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
-                        </select>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              ))
-            }
-          </div>
         </details>
-        <Button variant="flat" icon="refresh" class="reset" data-reset data-reset-row hidden>{t("catalog.reset")}</Button>
+        <Button variant="flat" icon="refresh" data-reset aria-disabled="true">{t("catalog.reset")}</Button>
         <p class="count caption dim-label numeric" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
+        <div class="filter-panel" id="filter-panel">
+          {
+            lists.map((rows) => (
+              <BoxedList>
+                {rows.map((f) => (
+                  <ComboRow label={f.label} name={f.name} options={[["", f.any], ...f.options]} />
+                ))}
+              </BoxedList>
+            ))
+          }
+        </div>
       </form>
 
       <UseCaseChips locale={locale} showAll />
     </header>
 
     <div class="section">
-      <ul class="card-grid" role="list" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
+      <ul class="card-grid" role="list" id="catalog-grid" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
         {
           distros.map((d, i) => (
             <li
@@ -158,10 +158,17 @@ const lists = [
         }
       </ul>
 
+      {/* No match: one sentence (naming the query when there is one) and the
+          one way out, in place of the grid (SPEC §15). */}
       <div data-empty hidden>
-        <StatusPage icon="search" title={t("catalog.emptyTitle")} description={t("catalog.emptyLead")} level={2}>
-          <Button pill data-reset>{t("catalog.reset")}</Button>
-        </StatusPage>
+        <BoxedList>
+          <ActionRow>
+            <span slot="title" data-empty-title data-query-template={t("catalog.emptyQuery")}>
+              {t("catalog.emptyTitle")}
+            </span>
+            <Button data-reset>{t("catalog.reset")}</Button>
+          </ActionRow>
+        </BoxedList>
       </div>
     </div>
   </div>
@@ -178,60 +185,22 @@ const lists = [
     row-gap: var(--space-4);
   }
 
-  /* Toolbar: search entry · Filters · count. The <details> box is dissolved
-     (display: contents) so its summary sits in the row and its panel wraps
-     onto a full-width line of its own below it. */
+  /* Toolbar: entry · Filters · Reset · count on one line (two or three on
+     phones, where Reset and the count move under the entry), then the panel. */
   .filters {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0 var(--space-2);
+    gap: var(--space-1) var(--space-2);
   }
 
-  .search-entry {
-    flex: 0 1 28rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-inline-size: 0;
-    min-block-size: 40px;
-    padding-inline: 12px;
-    border-radius: var(--radius-button);
-    background-color: var(--button-color);
-  }
-
-  .search-entry:focus-within {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: 1px;
-  }
-
-  .search-entry input {
-    flex: 1;
-    min-inline-size: 0;
-    block-size: 40px;
-    border: 0;
-    background: transparent;
-    outline: none;
-  }
-
-  .search-entry :global(.adw-icon) {
-    opacity: var(--dim-opacity);
-  }
-
-  .filter-menu {
-    display: contents;
-  }
-
-  .filter-menu::details-content {
-    order: 10;
-    flex-basis: 100%;
+  .filters > :global(.adw-entry) {
+    flex: 1 1 10rem;
+    max-inline-size: 28rem;
   }
 
   .filter-menu > summary {
-    order: 2;
-    min-block-size: 40px;
     gap: 8px;
-    padding-inline: 14px 12px;
     list-style: none;
   }
 
@@ -244,70 +213,28 @@ const lists = [
     background-color: var(--button-checked-color);
   }
 
-  .filter-menu .adw-badge {
-    min-inline-size: 24px;
-    justify-content: center;
-    padding-inline: 7px;
-  }
-
-  .filter-menu :global(.filter-arrow) {
-    transition: transform var(--duration) var(--ease-out-quad);
-  }
-
-  .filter-menu[open] :global(.filter-arrow) {
-    transform: rotate(180deg);
-  }
-
   .count {
-    order: 3;
     margin-inline-start: auto;
-    padding-block: 10px;
     white-space: nowrap;
   }
 
+  /* The summary's panel, shown while its <details> is open. */
   .filter-panel {
+    flex-basis: 100%;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: var(--space-2);
-    margin-block-start: var(--space-2);
+    margin-block-start: var(--space-1);
   }
 
-  .filter-panel .adw-action-row {
-    cursor: pointer;
+  .filters:not(:has(> .filter-menu[open])) > .filter-panel {
+    display: none;
   }
 
-  .filter-panel .combo-select {
-    flex: none;
-    inline-size: 12.5rem;
-    max-inline-size: 60%;
-  }
-
-  .reset {
-    order: 2;
-    min-block-size: 40px;
-  }
-
-  @media (width >= 700px) {
+  @media (width >= 600px) {
     .filter-panel {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (width < 700px) {
-    .search-entry {
-      flex: 1 1 14rem;
-    }
-
-    .count {
-      padding-block: 6px 0;
-    }
-  }
-
-  /* The filled entry keeps an edge in forced colors (SPEC §4). */
-  @media (forced-colors: active) {
-    .search-entry {
-      border: 1px solid transparent;
     }
   }
 </style>

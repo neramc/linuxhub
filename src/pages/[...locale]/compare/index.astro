@@ -3,8 +3,12 @@
  * Side-by-side comparison of up to three distros. Every cell is pre-rendered
  * per locale into a compact JSON, and every column header (app tile + name)
  * into a <template>; the page shows a default trio without JS and
- * src/scripts/compare.ts swaps columns from the selects / ?d=a,b,c.
+ * src/scripts/compare.ts swaps columns from the selects / ?d=a,b,c. Unknown
+ * ids in ?d= are named in a status caption ([data-compare-missing]); with no
+ * column chosen the table gives way to one sentence ([data-compare-empty]).
  */
+import BoxedList from "~/components/adw/BoxedList.astro";
+import ComboRow from "~/components/adw/ComboRow.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import { localePaths, localizePath, type MessageKey, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
@@ -26,6 +30,8 @@ const t = useTranslations(locale);
 const distros = await getDistros();
 const byId = new Map(distros.map((d) => [d.id, d]));
 const regions = new Intl.DisplayNames([locale], { type: "region" });
+const listFormat = new Intl.ListFormat(locale, { type: "conjunction" });
+const list = (items: string[]) => listFormat.format(items);
 const ROWS = [
   "version",
   "eol",
@@ -42,8 +48,15 @@ const ROWS = [
   "origin",
 ] as const;
 type Row = (typeof ROWS)[number];
-/** A plain value, or [emphasized, …rest] (the default desktop, then the others). */
-type Cell = string | string[];
+/**
+ * A plain value, or [emphasized, rest]: the default desktop, then the rest of
+ * the list as Intl.ListFormat words it (", KDE Plasma and Xfce").
+ */
+type Cell = string | [string, string];
+const emphasizeFirst = (items: string[]): Cell => {
+  const [first, ...rest] = listFormat.formatToParts(items);
+  return [first?.value ?? "", rest.map((p) => p.value).join("")];
+};
 
 const cells: Record<string, Record<Row, Cell>> = {};
 for (const d of distros) {
@@ -59,17 +72,17 @@ for (const d of distros) {
     eol: formatDate(release?.eol ?? null, locale) ?? "—",
     family: base ? `${FAMILIES[x.family][locale]} · ${base}` : FAMILIES[x.family][locale],
     model: RELEASE_MODELS[x.releaseModel][locale],
-    desktops: x.desktops.map((k) => DESKTOPS[k][locale]),
-    packages: x.packageManagers.join(", "),
+    desktops: emphasizeFirst(x.desktops.map((k) => DESKTOPS[k][locale])),
+    packages: list(x.packageManagers),
     installer: INSTALLERS[x.installer][locale],
-    arch: x.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0]).join(", "),
+    arch: list(x.architectures.map((a) => ARCHITECTURES[a][locale].split(" (")[0] ?? a)),
     secureBoot: SECURE_BOOT[x.secureBoot][locale],
     requirements: t("facts.requirementsValue", {
       ram: x.requirements.ramGB,
       disk: x.requirements.diskGB,
     }),
     difficulty: DIFFICULTIES[x.difficulty][locale],
-    uses: x.useCases.map((u) => USE_CASES[u][locale]).join(", "),
+    uses: list(x.useCases.map((u) => USE_CASES[u][locale])),
     origin: `${x.origin.country === "INT" ? t("facts.international") : (regions.of(x.origin.country) ?? x.origin.country)} · ${x.origin.firstRelease.slice(0, 4)}`,
   };
 }
@@ -80,6 +93,7 @@ const defaults = (preferred.length >= 2 ? preferred : distros.slice(0, 3).map((d
 );
 const rowLabel = (r: Row) => t(`compare.rows.${r}` as MessageKey);
 const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.data.name));
+const pickerOptions = sortedOptions.map((d) => [d.id, d.data.name] as const);
 ---
 
 <Base locale={locale} title={t("compare.title")} description={t("compare.lead")}>
@@ -87,24 +101,24 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
     <h1>{t("compare.title")}</h1>
 
     <div class="pickers" data-compare>
-      {
-        [0, 1, 2].map((i) => (
-          <label class="picker">
-            <span class="caption-heading dim-label">{t("compare.pick", { n: i + 1 })}</span>
-            <select class="combo-select" name={`d${i}`} data-column={i}>
-              <option value="">{t("compare.none")}</option>
-              {sortedOptions.map((d) => (
-                <option value={d.id} selected={defaults[i] === d.id}>
-                  {d.data.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        ))
-      }
+      <BoxedList>
+        {
+          [0, 1, 2].map((i) => (
+            <ComboRow
+              label={t("compare.pick", { n: i + 1 })}
+              name={`d${i}`}
+              options={[["", t("compare.none")], ...pickerOptions]}
+              selected={defaults[i]}
+              data-column={i}
+            />
+          ))
+        }
+      </BoxedList>
+      <p class="note caption dim-label" role="status" data-compare-missing data-template={t("compare.missing", { ids: "{ids}" })} hidden></p>
     </div>
 
-    <div class="table-wrap">
+    <p class="caption dim-label" data-compare-empty hidden>{t("compare.empty")}</p>
+    <div class="table-wrap" data-compare-table>
       <table class="compare-table">
         <thead>
           <tr>
@@ -132,13 +146,14 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
               <tr>
                 <th scope="row">{rowLabel(row)}</th>
                 {[0, 1, 2].map((i) => {
-                  const value = defaults[i] ? cells[defaults[i] as string]?.[row] : "";
+                  const id = defaults[i];
+                  const value = id ? cells[id]?.[row] : "";
                   return (
-                    <td data-cell={`${i}:${row}`}>
+                    <td data-cell={`${i}:${row}`} data-name={id ? byId.get(id)?.data.name : undefined}>
                       {Array.isArray(value) ? (
                         <>
                           <strong>{value[0]}</strong>
-                          {value.length > 1 && ` · ${value.slice(1).join(", ")}`}
+                          {value[1]}
                         </>
                       ) : (
                         value
@@ -178,20 +193,14 @@ const sortedOptions = [...distros].sort((a, b) => a.data.name.localeCompare(b.da
     padding-block: var(--space-4) var(--space-6);
   }
 
+  /* At most the text width, so no label sits a screen away from its value. */
   .pickers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-    gap: var(--space-2);
+    max-inline-size: var(--text-width);
   }
 
-  .picker {
-    display: grid;
-    gap: 4px;
-  }
-
-  .picker .combo-select {
-    max-inline-size: none;
-    inline-size: 100%;
+  .note {
+    margin-block-start: var(--space-2);
+    overflow-wrap: anywhere;
   }
 
   .table-wrap {
