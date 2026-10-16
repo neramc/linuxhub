@@ -1,12 +1,19 @@
 ---
 /**
- * About: how the site works, data sources, privacy, the sync bot, and
- * credits for every logo, font and icon (generated from the catalog).
+ * About: how the site works, data sources, the "popular today" ranking
+ * (#popularity, ADR-0013), privacy, the sync bot, and credits for every logo
+ * (folded, #logos), font and icon (generated from the catalog). The logo
+ * credits are one expander row; `#logos` sits inside its content, so the
+ * browser opens it for /about/#logos. On the Korean page the English license
+ * and credit strings carry lang="en".
  */
+import BoxedList from "~/components/adw/BoxedList.astro";
+import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import "~/styles/prose.css";
+import "~/styles/table.css";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
@@ -14,10 +21,12 @@ const t = useTranslations(locale);
 const distros = [...(await getDistros())].sort((a, b) => a.data.name.localeCompare(b.data.name));
 const ko = locale === "ko";
 const repo = "https://github.com/neramc/linuxhub";
+/** English text on the Korean page. */
+const en = ko ? "en" : undefined;
 ---
 
 <Base locale={locale} title={t("about.title")} description={t("about.lead")}>
-  <div class="container page">
+  <div class="container page narrow">
     <article class="prose">
       <h1>{t("about.title")}</h1>
       <p class="lead">{t("about.lead")}</p>
@@ -42,9 +51,26 @@ const repo = "https://github.com/neramc/linuxhub";
                 자료와 마지막 검토일을 밝힙니다. 공식 문서를 그대로 옮기지 않습니다.
               </li>
               <li>
-                수록 배포판은 편집자가 고릅니다. 다른 사이트의 인기 순위를 가져오지 않습니다.
+                수록 배포판과 추천 순서는 편집자가 정합니다. 홈 맨 위의 “오늘의 인기 배포판”만 영어 위키백과
+                조회수로 순위를 매기며(<a href="#popularity">아래</a> 참고), 다른 사이트가 매긴 인기 순위는 가져오지
+                않습니다.
               </li>
             </ul>
+            <h2 id="popularity">오늘의 인기 배포판</h2>
+            <p>
+              홈 맨 위의 순위는 각 배포판의 영어 위키백과 문서를 사람들이 전날(UTC 기준) 몇 번 읽었는지로 매깁니다.
+              Wikimedia가 공개하는 공식 <a href="https://wikimedia.org/api/rest_v1/" rel="noopener external">Pageviews API</a>를
+              6시간마다 확인하므로, 하루 집계가 공개되면 순위가 하루에 한 번 바뀝니다. 조회수 데이터는 CC0(퍼블릭
+              도메인)이며, 배포판마다 어느 문서를 셀지는 편집자가 정합니다.
+            </p>
+            <p>
+              Linuxhub 방문자의 행동은 순위에 쓰지 않습니다. 쿠키, 분석 스크립트, 방문 기록이 없습니다.
+            </p>
+            <p>
+              한계도 있습니다. 영어권 독자의 관심을 보여 줄 뿐 설치 수나 다운로드 수가 아니고, 오래되고 잘 알려진
+              배포판에 유리하며, 뉴스 하나로 하루만 순위가 튀기도 합니다. 영어 위키백과에 문서가 없는 배포판은 순위에
+              나오지 않습니다. 순위 데이터가 없을 때는 편집자가 고른 배포판을 순위 없이 보여 줍니다.
+            </p>
             <h2 id="privacy">위치 정보와 개인정보</h2>
             <p>
               가장 가까운 미러를 추천하기 위해, 다운로드 화면을 열면 서버가 접속 IP로부터 추정한 대략적인 국가와 좌표(도시
@@ -54,7 +80,7 @@ const repo = "https://github.com/neramc/linuxhub";
             <h2 id="bot">LinuxhubBot</h2>
             <p>
               자동 갱신은 <code>LinuxhubBot</code>이라는 이름으로 접속합니다. robots.txt와 Crawl-delay를 지키고, 같은
-              서버에는 최소 1초 간격으로 요청하며, ETag/If-Modified-Since로 바뀐 내용만 받습니다. 문제가 있으면
+              서버에는 최소 1초 간격으로 요청하며, ETag/If-Modified-Since로 바뀐 내용만 받습니다. 문제가 있으면{" "}
               <a href={`${repo}/issues`}>이슈</a>로 알려 주세요.
             </p>
             <h2>상표와 로고</h2>
@@ -82,8 +108,30 @@ const repo = "https://github.com/neramc/linuxhub";
                 documentation; every document lists its official sources and when it was last reviewed. We never copy
                 official docs verbatim.
               </li>
-              <li>The list of distributions is editorial; we don’t import popularity rankings from other sites.</li>
+              <li>
+                The list of distributions and their recommended order are editorial. Only the “Popular today” ranking
+                at the top of the home page uses English Wikipedia pageviews (<a href="#popularity">see below</a>);
+                we don’t import popularity rankings made by other sites.
+              </li>
             </ul>
+            <h2 id="popularity">Popular today</h2>
+            <p>
+              The ranking at the top of the home page counts how many times people read each distribution’s English
+              Wikipedia article on the previous day (UTC). We check Wikimedia’s official{" "}
+              <a href="https://wikimedia.org/api/rest_v1/" rel="noopener external">Pageviews API</a> every 6 hours, so
+              the ranking changes once a day, when the day’s totals are published. Pageview data is CC0 (public
+              domain); which article counts for which distribution is an editorial choice.
+            </p>
+            <p>
+              Nothing about Linuxhub’s own visitors goes into it: there are no cookies, analytics scripts or visit
+              logs.
+            </p>
+            <p>
+              It has limits. It reflects the interest of English-speaking readers, not installs or downloads; it favors
+              older, well-known distributions; and a single news story can lift one for a day. Distributions without
+              an English Wikipedia article are not ranked. When no ranking is available, the home page shows editorial
+              picks without ranks.
+            </p>
             <h2 id="privacy">Location and privacy</h2>
             <p>
               To suggest the nearest mirror, opening the download panel asks our server once for the approximate country
@@ -107,57 +155,77 @@ const repo = "https://github.com/neramc/linuxhub";
         )
       }
 
-      <h2>{ko ? "로고 출처" : "Logo credits"}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>{ko ? "배포판" : "Distribution"}</th>
-            <th>{ko ? "라이선스 / 상표" : "License / trademark"}</th>
-            <th>{ko ? "출처" : "Source"}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            distros.map((d) => (
-              <tr>
-                <td>
-                  <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
-                </td>
-                <td>
-                  {d.data.logo.license}
-                  {d.data.logo.trademark && (
-                    <>
-                      {" · "}
-                      <a href={d.data.logo.trademark} rel="noopener external">
-                        {ko ? "상표 정책" : "Trademark policy"}
-                      </a>
-                    </>
-                  )}
-                </td>
-                <td>
-                  <a href={d.data.logo.source} rel="noopener external">
-                    {new URL(d.data.logo.source).hostname}
-                  </a>
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+      <BoxedList>
+        <ExpanderRow class="logo-credits" flush title={t("about.logos", { count: distros.length })}>
+          {/* Explicit roles: phones restack the rows, which changes the table's display. */}
+          <div class="credits" id="logos">
+            <table class="adw-table" role="table">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th scope="col" role="columnheader">{t("about.credits.distro")}</th>
+                  <th scope="col" role="columnheader">{t("about.credits.license")}</th>
+                  <th scope="col" role="columnheader">{t("about.credits.source")}</th>
+                </tr>
+              </thead>
+              <tbody role="rowgroup">
+                {
+                  distros.map((d) => (
+                    <tr role="row">
+                      <th scope="row" role="rowheader">
+                        <a class="target-link" href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
+                      </th>
+                      <td role="cell" class="license">
+                        <span lang={en}>{d.data.logo.license}</span>
+                        {d.data.logo.trademark && (
+                          <>
+                            {" · "}
+                            <a href={d.data.logo.trademark} rel="noopener external">
+                              {t("about.credits.trademark")}
+                            </a>
+                          </>
+                        )}
+                      </td>
+                      <td role="cell" class="source">
+                        <a class="target-link" href={d.data.logo.source} rel="noopener external">
+                          {new URL(d.data.logo.source).hostname}
+                        </a>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </ExpanderRow>
+      </BoxedList>
 
-      <h2>{ko ? "글꼴과 아이콘" : "Fonts and icons"}</h2>
+      <h2>{ko ? "사이트 로고, 글꼴, 아이콘" : "Site logo, fonts and icons"}</h2>
       <ul>
         <li>
-          Adwaita Sans · Adwaita Mono — GNOME Project, SIL Open Font License 1.1 (
-          <a href="https://gitlab.gnome.org/GNOME/adwaita-fonts" rel="noopener external">adwaita-fonts</a>)
+          {
+            ko
+              ? "사이트 로고: Tux — Larry Ewing(lewing@isc.tamu.edu)이 The GIMP로 그렸고, Simon Budig이 벡터로 옮겼으며, Garrett LeSage가 다듬었습니다(CC0). 출처를 밝히면 자유롭게 쓸 수 있습니다"
+              : "Site logo: Tux — drawn by Larry Ewing (lewing@isc.tamu.edu) with The GIMP, vectorized by Simon Budig and cleaned up by Garrett LeSage (CC0). Free to use with attribution "
+          }
+          (<a href="https://commons.wikimedia.org/wiki/File:Tux.svg" rel="noopener external">Wikimedia Commons</a>,{" "}
+          <a href="https://github.com/neramc/linuxhub/blob/main/src/assets/brand/README.md" rel="noopener external">{
+            ko ? "저작권 고지" : "copyright notice"
+          }</a>).
+        </li>
+        <li lang={en}>
+          Adwaita Sans · Adwaita Mono — GNOME Project, SIL Open Font License 1.1
+          (<a href="https://gitlab.gnome.org/GNOME/adwaita-fonts" rel="noopener external">adwaita-fonts</a>)
         </li>
         <li>
-          {ko ? "아이콘" : "Icons"}: Adwaita icon theme & libadwaita — GNOME Project, CC BY-SA 3.0 / LGPL (
-          <a href="https://gitlab.gnome.org/GNOME/adwaita-icon-theme" rel="noopener external">adwaita-icon-theme</a>)
+          {ko ? "아이콘" : "Icons"}:{" "}
+          <span lang={en}>
+            Adwaita icon theme & libadwaita — GNOME Project, CC BY-SA 3.0 / LGPL
+            (<a href="https://gitlab.gnome.org/GNOME/adwaita-icon-theme" rel="noopener external">adwaita-icon-theme</a>)
+          </span>
         </li>
         <li>
-          {ko ? "국가 좌표" : "Country locations"}: Natural Earth (public domain) · IANA Time Zone Database (public
-          domain)
+          {ko ? "국가 좌표" : "Country locations"}:{" "}
+          <span lang={en}>Natural Earth (public domain) · IANA Time Zone Database (public domain)</span>
         </li>
       </ul>
 
@@ -170,12 +238,65 @@ const repo = "https://github.com/neramc/linuxhub";
 </Base>
 
 <style>
-  .page {
-    padding-block: var(--space-4) var(--space-6);
+  /* The credits table sits flat in its expander row (the list is the card).
+     Should the columns not fit (enlarged text), the row scrolls sideways,
+     never the page. */
+  .credits {
+    overflow-x: auto;
   }
 
-  .lead {
-    font-size: 1.1875rem;
-    opacity: var(--dim-opacity);
+  /* Names and host names stay whole; the license text wraps, inside a long
+     word too when the row would otherwise get wider than the list (just
+     above 600px; the other columns take their full width first). */
+  .credits th[scope="row"],
+  .source {
+    white-space: nowrap;
+  }
+
+  .credits th[scope="row"] {
+    font-weight: 400;
+  }
+
+  .license {
+    overflow-wrap: anywhere;
+  }
+
+  /* Phones: one block per distribution (name, license, source) instead of a
+     sideways-scrolling table; the column headings stay for screen readers. */
+  @media (width < 600px) {
+    .credits :is(table, tbody, tr, th, td) {
+      display: block;
+    }
+
+    .credits thead {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .credits tr {
+      padding-block: 10px;
+    }
+
+    .credits thead + tbody > tr:first-child {
+      border-block-start: 0;
+    }
+
+    .credits :is(th, td) {
+      padding: 0 14px;
+    }
+
+    .credits th[scope="row"] {
+      font-weight: 700;
+    }
+
+    .credits th[scope="row"],
+    .source {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
   }
 </style>

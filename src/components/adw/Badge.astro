@@ -1,17 +1,21 @@
 ---
 /**
- * Small pill label for facets (family, release model, desktop…). Neutral by
- * default; `accent`/`success`/`warning`/`error` use libadwaita semantic colors.
- * With `href` it becomes a link (e.g. to a filtered catalog).
+ * Small pill label. Neutral by default (families, desktops, counts); the
+ * `success` / `warning` / `error` tones use libadwaita's semantic colors and
+ * are for real status only: a verified checksum, end of life soon, end of life
+ * (SPEC §2). With `href` it becomes a link (e.g. to a filtered catalog).
+ * Other attributes (data-*, hidden, aria-*) go on the badge, e.g. a count an
+ * island fills in.
  */
-interface Props {
-  tone?: "neutral" | "accent" | "success" | "warning" | "error" | undefined;
-  href?: string | undefined;
-  class?: string | undefined;
-}
+import type { HTMLAttributes } from "astro/types";
 
-const { tone = "neutral", href, class: className } = Astro.props;
+type Props = HTMLAttributes<"span"> & {
+  tone?: "neutral" | "success" | "warning" | "error" | undefined;
+  href?: string | undefined;
+};
+
+const { tone = "neutral", href, class: className, ...rest } = Astro.props;
 const Tag = href ? "a" : "span";
 ---
 
-<Tag class:list={["adw-badge", tone, className]} {...(href ? { href } : {})}><slot /></Tag>
+<Tag class:list={["adw-badge", tone, className]} {...(href ? { href } : {})} {...rest}><slot /></Tag>

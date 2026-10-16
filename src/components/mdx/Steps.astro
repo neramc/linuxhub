@@ -1,15 +1,21 @@
 ---
-/** Numbered procedure: wrap an ordered list (1. … 2. …) to get Adwaita step badges. */
+/**
+ * Numbered procedure: wrap an ordered list (1. … 2. …) to get step badges.
+ * The badges are neutral (a number, not an action), like a default button.
+ */
 ---
 
 <div class="steps"><slot /></div>
 
 <style>
+  /* minmax(0, 1fr): wide code blocks inside a step scroll in place instead of
+     widening the article. */
   .steps :global(> ol) {
     list-style: none;
     padding-inline-start: 0;
     counter-reset: step;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-3);
   }
 
@@ -29,10 +35,12 @@
     inline-size: 30px;
     block-size: 30px;
     border-radius: 50%;
-    background: var(--accent-bg-color);
-    color: var(--accent-fg-color);
-    font-weight: 800;
-    font-size: 0.9375rem;
+    background: var(--button-color);
+    color: var(--window-fg-color);
+    font-size: var(--text-control);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: var(--line-height-control);
   }
 
   .steps :global(> ol > li + li) {

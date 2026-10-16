@@ -4,19 +4,31 @@
  * route with @astrojs/vercel. /api/geo is not served here: the download
  * wizard falls back to the browser's time zone, and e2e tests mock it.
  *
- * Usage: bun scripts/serve.ts [--port=4322]
+ * Usage: bun scripts/serve.ts [--port=4322] [--root=<dir>] [--config=<config.json>]
+ * --root/--config serve a copied build (e.g. a snapshot of dist/client and
+ * .vercel/output/config.json) instead of the current one.
  */
 import { existsSync, readFileSync, statSync } from "node:fs";
-import { join, normalize } from "node:path";
+import { join, normalize, resolve as resolvePath } from "node:path";
 
-const port = Number(process.argv.find((a) => a.startsWith("--port="))?.split("=")[1] ?? 4322);
+const arg = (name: string) =>
+  process.argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
+const port = Number(arg("port") ?? 4322);
 // With an on-demand route the adapter puts static files in dist/client/.
 const dist = join(import.meta.dir, "..", "dist");
-const root = existsSync(join(dist, "client")) ? join(dist, "client") : dist;
+const rootArg = arg("root");
+const root = rootArg
+  ? resolvePath(rootArg)
+  : existsSync(join(dist, "client"))
+    ? join(dist, "client")
+    : dist;
 
 // Emulate Vercel's per-route static headers (the CSP Astro computes per page).
 const routeHeaders = new Map<string, Record<string, string>>();
-const configPath = join(import.meta.dir, "..", ".vercel", "output", "config.json");
+const configArg = arg("config");
+const configPath = configArg
+  ? resolvePath(configArg)
+  : join(import.meta.dir, "..", ".vercel", "output", "config.json");
 if (existsSync(configPath)) {
   const config = JSON.parse(readFileSync(configPath, "utf8")) as {
     routes?: { src?: string; headers?: Record<string, string>; status?: number }[];

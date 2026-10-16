@@ -1,10 +1,28 @@
 {
+  "almalinux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "alpine-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
   "arch": {
     "releases": {
       "failingSince": null,
       "lastError": null
     },
     "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "centos-stream": {
+    "releases": {
       "failingSince": null,
       "lastError": null
     }
@@ -19,7 +37,35 @@
       "lastError": null
     }
   },
+  "deepin": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "devuan": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
   "fedora": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "kali-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "kde-neon": {
     "releases": {
       "failingSince": null,
       "lastError": null
@@ -43,7 +89,83 @@
       "lastError": null
     }
   },
+  "mageia": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "manjaro": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "nixos": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "nobara": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "opensuse": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "oracle-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "parrot-os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
   "pop-os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "qubes-os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "raspberry-pi-os": {
+    "releases": {
+      "failingSince": "2026-10-03",
+      "lastError": "HTTP 403 for https://api.github.com/repos/RPi-Distro/pi-gen/tags?per_page=100"
+    }
+  },
+  "rocky-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "tails": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "tuxedo-os": {
     "releases": {
       "failingSince": null,
       "lastError": null
@@ -60,6 +182,12 @@
     }
   },
   "ubuntu-mate": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "vanilla-os": {
     "releases": {
       "failingSince": null,
       "lastError": null

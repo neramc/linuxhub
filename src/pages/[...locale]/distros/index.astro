@@ -1,13 +1,26 @@
 ---
-import Button from "~/components/adw/Button.astro";
-import Icon from "~/components/adw/Icon.astro";
 /**
  * Catalog: every distro as a Flathub-style card. All cards are in the HTML
  * (works without JS); src/scripts/catalog-filter.ts filters/sorts them in
  * place and mirrors the state in the URL (?use=&family=&desktop=&model=&level=&sort=&q=).
+ *
+ * The page header holds the title, one toolbar (ADR-0014; it does nothing
+ * without JS, so it is hidden then and the chip links still navigate) and
+ * the use-case chip row; the card grid follows. The toolbar reads in DOM
+ * order — search entry, "Filters" (a native <details> whose summary opens the
+ * facet panel), Reset, result count — and the panel (five facets and the
+ * sort as combo rows) follows on a line of its own, so Tab never jumps back
+ * up. Reset stays in place, disabled while nothing is set (SPEC §15).
  */
-import StatusPage from "~/components/adw/StatusPage.astro";
+import ActionRow from "~/components/adw/ActionRow.astro";
+import Badge from "~/components/adw/Badge.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
+import Button from "~/components/adw/Button.astro";
+import ComboRow from "~/components/adw/ComboRow.astro";
+import Icon from "~/components/adw/Icon.astro";
+import SearchEntry from "~/components/adw/SearchEntry.astro";
 import DistroCard from "~/components/DistroCard.astro";
+import UseCaseChips from "~/components/UseCaseChips.astro";
 import { localePaths, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { featuredRelease, getDistros, getReleases } from "~/lib/catalog";
@@ -28,11 +41,16 @@ const usedDesktops = [...new Set(distros.flatMap((d) => d.data.desktops))].filte
   (k) => k !== "none",
 );
 const usedFamilies = [...new Set(distros.map((d) => d.data.family))];
-const filters = [
+const usedUses = new Set(distros.flatMap((d) => d.data.useCases));
+/** A combo row option: [value, text]. */
+type Option = readonly [value: string, text: string];
+const facets: { name: string; label: string; options: Option[] }[] = [
   {
     name: "use",
     label: t("catalog.use"),
-    options: Object.keys(USE_CASES).map((k) => [k, USE_CASES[k as keyof typeof USE_CASES][locale]]),
+    options: Object.keys(USE_CASES)
+      .filter((k) => usedUses.has(k as never))
+      .map((k) => [k, USE_CASES[k as keyof typeof USE_CASES][locale]]),
   },
   {
     name: "family",
@@ -64,70 +82,94 @@ const filters = [
       DIFFICULTIES[k as keyof typeof DIFFICULTIES][locale],
     ]),
   },
-] as const;
+];
+const sort = {
+  name: "sort",
+  label: t("catalog.sort"),
+  any: t("catalog.sortRecommended"),
+  options: [
+    ["name", t("catalog.sortName")],
+    ["updated", t("catalog.sortUpdated")],
+  ],
+} as const;
+// Two boxed lists side by side on wide screens: three facets, then two + sort.
+const lists = [
+  facets.slice(0, 3).map((f) => ({ ...f, any: t("catalog.any") })),
+  [...facets.slice(3).map((f) => ({ ...f, any: t("catalog.any") })), sort],
+];
 ---
 
 <Base locale={locale} title={t("catalog.title")} description={t("catalog.lead", { count: distros.length })}>
   <div class="container page">
     <header class="page-header">
       <h1>{t("catalog.title")}</h1>
-      <p class="dim-label">{t("catalog.lead", { count: distros.length })}</p>
+
+      <form class="filters" data-filters data-js-only role="search" aria-label={t("catalog.filter")}>
+        <SearchEntry locale={locale} name="q" label={t("catalog.search")} controls="catalog-grid" />
+        <details class="filter-menu" data-filter-panel>
+          <summary
+            class="adw-button image-text-button"
+            aria-controls="filter-panel"
+            data-active-label={t("catalog.activeFilters", { count: "{count}" })}
+          >
+            <span>{t("catalog.filter")}</span>
+            <Badge class="numeric" data-filter-count hidden aria-hidden="true" />
+            <span class="visually-hidden" data-filter-count-label></span>
+            <Icon name="pan-down" class="adw-expander-arrow" />
+          </summary>
+        </details>
+        <Button variant="flat" icon="refresh" data-reset aria-disabled="true">{t("catalog.reset")}</Button>
+        <p class="count caption dim-label numeric" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
+        <div class="filter-panel" id="filter-panel">
+          {
+            lists.map((rows) => (
+              <BoxedList>
+                {rows.map((f) => (
+                  <ComboRow label={f.label} name={f.name} options={[["", f.any], ...f.options]} />
+                ))}
+              </BoxedList>
+            ))
+          }
+        </div>
+      </form>
+
+      <UseCaseChips locale={locale} showAll />
     </header>
 
-    <form class="filters" data-filters role="search" aria-label={t("catalog.filter")}>
-      <label class="search-field">
-        <Icon name="search" />
-        <input type="search" name="q" placeholder={t("catalog.search")} autocomplete="off" aria-label={t("catalog.search")} />
-      </label>
-      <div class="filter-row">
+    <div class="section">
+      <ul class="card-grid" role="list" id="catalog-grid" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
         {
-          filters.map((f) => (
-            <label class="filter">
-              <span class="caption-heading dim-label">{f.label}</span>
-              <select name={f.name} class="combo-select">
-                <option value="">{t("catalog.any")}</option>
-                {f.options.map(([value, label]) => <option value={value}>{label}</option>)}
-              </select>
-            </label>
+          distros.map((d, i) => (
+            <li
+              data-distro
+              data-order={d.data.order}
+              data-name={d.data.name.toLowerCase()}
+              data-search={[d.data.name, d.id, ...d.data.aliases, d.data.tagline.ko, d.data.tagline.en].join(" ").toLowerCase()}
+              data-use={d.data.useCases.join(" ")}
+              data-family={d.data.family}
+              data-desktop={d.data.desktops.join(" ")}
+              data-model={d.data.releaseModel}
+              data-level={d.data.difficulty}
+              data-updated={updated.get(d.id)}
+            >
+              <DistroCard distro={d} locale={locale} eager={i < 6} headingLevel={2} />
+            </li>
           ))
         }
-        <label class="filter">
-          <span class="caption-heading dim-label">{t("catalog.sort")}</span>
-          <select name="sort" class="combo-select">
-            <option value="">{t("catalog.sortRecommended")}</option>
-            <option value="name">{t("catalog.sortName")}</option>
-            <option value="updated">{t("catalog.sortUpdated")}</option>
-          </select>
-        </label>
+      </ul>
+
+      {/* No match: one sentence (naming the query when there is one) and the
+          one way out, in place of the grid (SPEC §15). */}
+      <div data-empty hidden>
+        <BoxedList>
+          <ActionRow>
+            <span slot="title" data-empty-title data-query-template={t("catalog.emptyQuery")}>
+              {t("catalog.emptyTitle")}
+            </span>
+            <Button data-reset>{t("catalog.reset")}</Button>
+          </ActionRow>
+        </BoxedList>
       </div>
-      <p class="caption dim-label" data-count aria-live="polite">{t("catalog.count", { count: distros.length })}</p>
-    </form>
-
-    <ul class="grid" role="list" data-grid data-count-label={t("catalog.count", { count: "{count}" })}>
-      {
-        distros.map((d, i) => (
-          <li
-            data-distro
-            data-order={d.data.order}
-            data-name={d.data.name.toLowerCase()}
-            data-search={[d.data.name, d.id, ...d.data.aliases, d.data.tagline.ko, d.data.tagline.en].join(" ").toLowerCase()}
-            data-use={d.data.useCases.join(" ")}
-            data-family={d.data.family}
-            data-desktop={d.data.desktops.join(" ")}
-            data-model={d.data.releaseModel}
-            data-level={d.data.difficulty}
-            data-updated={updated.get(d.id)}
-          >
-            <DistroCard distro={d} locale={locale} eager={i < 6} headingLevel={2} />
-          </li>
-        ))
-      }
-    </ul>
-
-    <div data-empty hidden>
-      <StatusPage icon="search" title={t("catalog.emptyTitle")} description={t("catalog.emptyLead")} level={2}>
-        <Button pill data-reset>{t("catalog.reset")}</Button>
-      </StatusPage>
     </div>
   </div>
 </Base>
@@ -137,69 +179,62 @@ const filters = [
 </script>
 
 <style>
+  /* The chips filter the grid right below them: one group, 24px apart, not
+     a section gap. */
   .page {
-    display: grid;
-    gap: var(--space-4);
-    padding-block: var(--space-4) var(--space-6);
+    row-gap: var(--space-4);
   }
 
-  .page-header {
-    display: grid;
-    gap: 6px;
-  }
-
+  /* Toolbar: entry · Filters · Reset · count on one line (two or three on
+     phones, where Reset and the count move under the entry), then the panel. */
   .filters {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .search-field {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-inline-size: 28rem;
-    min-block-size: 40px;
-    padding-inline: 12px;
-    border-radius: var(--radius-button);
-    background: var(--button-color);
-  }
-
-  .search-field:focus-within {
-    outline: 2px solid var(--focus-ring-color);
-  }
-
-  .search-field input {
-    flex: 1;
-    min-inline-size: 0;
-    border: 0;
-    background: transparent;
-    outline: none;
-    block-size: 40px;
-  }
-
-  .filter-row {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
   }
 
-  .filter {
-    display: grid;
-    gap: 4px;
+  .filters > :global(.adw-entry) {
+    flex: 1 1 10rem;
+    max-inline-size: 28rem;
   }
 
-  .filter .combo-select {
-    max-inline-size: none;
-    min-inline-size: 9rem;
+  .filter-menu > summary {
+    gap: 8px;
+    list-style: none;
   }
 
-  .grid {
-    display: grid;
-    gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  }
-
-  .grid > li[hidden] {
+  .filter-menu > summary::-webkit-details-marker {
     display: none;
+  }
+
+  /* An open menu button shows the checked toggle color (GtkMenuButton). */
+  .filter-menu[open] > summary {
+    background-color: var(--button-checked-color);
+  }
+
+  .count {
+    margin-inline-start: auto;
+    white-space: nowrap;
+  }
+
+  /* The summary's panel, shown while its <details> is open. */
+  .filter-panel {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-2);
+    margin-block-start: var(--space-1);
+  }
+
+  .filters:not(:has(> .filter-menu[open])) > .filter-panel {
+    display: none;
+  }
+
+  @media (width >= 600px) {
+    .filter-panel {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 </style>

@@ -1,0 +1,225 @@
+---
+/**
+ * One form question as a <fieldset>: the legend (a 16px heading) and its
+ * choices, every one `label.choice > input + span` with a visible indicator
+ * (libadwaita GtkCheckButton, widgets/_checks.scss). Never pills (SPEC §8).
+ *
+ * - Default: radio rows (`type="radio"`) or check rows (`type="checkbox"`)
+ *   in a boxed list, AdwActionRow with the check button as its prefix; the
+ *   whole row is the label and draws the focus ring.
+ * - `toggle`: a short single choice is a linked toggle group
+ *   (.adw-toggle-group, adwaita.css) from 600px; below 600px, where its
+ *   labels would wrap, it is radio rows like the others (PLAN C4).
+ *
+ *   <ChoiceGroup legend="리눅스를 얼마나 써 보셨나요?" name="experience" toggle
+ *     choices={[{ value: "new", label: "처음이에요", checked: true }, …]} />
+ */
+interface Choice {
+  value: string;
+  label: string;
+  checked?: boolean | undefined;
+}
+
+interface Props {
+  legend: string;
+  name: string;
+  type?: "radio" | "checkbox" | undefined;
+  choices: readonly Choice[];
+  toggle?: boolean | undefined;
+}
+
+const { legend, name, type = "radio", choices, toggle = false } = Astro.props;
+const input = (c: Choice) => ({
+  type,
+  name,
+  value: c.value,
+  checked: c.checked,
+  class: "adw-check",
+});
+---
+
+<fieldset class="adw-choice-group">
+  <legend class="adw-choice-legend">{legend}</legend>
+  {
+    toggle ? (
+      <div class="adw-toggle-group adw-choices">
+        {choices.map((c) => (
+          <label class="choice adw-toggle">
+            <input {...input(c)} />
+            <span>{c.label}</span>
+          </label>
+        ))}
+      </div>
+    ) : (
+      <ul class="adw-boxed-list adw-choices" role="list">
+        {choices.map((c) => (
+          <li>
+            <label class="choice adw-action-row activatable">
+              <input {...input(c)} />
+              <span class="adw-row-title">{c.label}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</fieldset>
+
+<style>
+  .adw-choice-group {
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  /* Floated so its bottom margin spaces it from the list in every engine. */
+  .adw-choice-legend {
+    float: inline-start;
+    inline-size: 100%;
+    margin-block-end: var(--space-2);
+    padding: 0;
+    font-size: var(--text-heading);
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+  }
+
+  .adw-choices {
+    clear: both;
+  }
+
+  /* A block-level trough as wide as its toggles, under the floated legend. */
+  .adw-toggle-group {
+    display: flex;
+    inline-size: fit-content;
+  }
+
+  .choice {
+    cursor: pointer;
+  }
+
+  /* The indicator: 20px, a 2px ring at the dim-text strength (the empty box
+     keeps 3:1, WCAG 1.4.11; libadwaita's 15% ring does not), the accent fill
+     with a white mark when checked, round for radios. */
+  .adw-check {
+    appearance: none;
+    display: inline-grid;
+    place-content: center;
+    flex: none;
+    inline-size: 20px;
+    block-size: 20px;
+    margin: 0;
+    border: 2px solid color-mix(in srgb, currentColor var(--dim-opacity), transparent);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .adw-check[type="radio"] {
+    border-radius: 50%;
+  }
+
+  .adw-check:checked {
+    border-color: transparent;
+    background-color: var(--accent-bg-color);
+  }
+
+  .adw-check:checked::before {
+    content: "";
+  }
+
+  .adw-check[type="radio"]:checked::before {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-fg-color);
+  }
+
+  .adw-check[type="checkbox"]:checked::before {
+    inline-size: 6px;
+    block-size: 11px;
+    margin-block-start: -3px;
+    border: solid var(--accent-fg-color);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* The row (or toggle) around the input draws the focus ring. */
+  .adw-check:focus-visible {
+    outline: none;
+  }
+
+  /* Below 600px a toggle question is radio rows too: the trough becomes the
+     boxed list (.adw-boxed-list) and each toggle a row (.adw-action-row). */
+  @media (width < 600px) {
+    .adw-toggle-group {
+      display: grid;
+      inline-size: auto;
+      gap: 0;
+      padding: 0;
+      border-radius: var(--radius-card);
+      background-color: var(--card-bg-color);
+      color: var(--card-fg-color);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* No raised item: the indicator shows the choice, as in the rows. */
+    .adw-toggle,
+    .adw-toggle:has(> input:checked) {
+      justify-content: start;
+      gap: var(--space-2);
+      min-block-size: var(--row-min-height);
+      padding: 8px 14px;
+      border-radius: 0;
+      background-color: transparent;
+      box-shadow: none;
+      font: inherit;
+      white-space: normal;
+    }
+
+    .adw-toggle + .adw-toggle {
+      border-block-start: 1px solid var(--card-shade-color);
+    }
+
+    .adw-toggle:hover,
+    .adw-toggle:has(> input:checked):hover {
+      background-color: var(--view-hover-color);
+    }
+
+    .adw-toggle > .adw-check {
+      position: static;
+      opacity: 1;
+    }
+
+    /* The inset row ring, rounded with the list on the first and last row. */
+    .adw-toggle:has(> input:focus-visible) {
+      outline-offset: -2px;
+      border-radius: 0;
+    }
+
+    .adw-toggle:first-child:has(> input:focus-visible) {
+      border-start-start-radius: var(--radius-card);
+      border-start-end-radius: var(--radius-card);
+    }
+
+    .adw-toggle:last-child:has(> input:focus-visible) {
+      border-end-start-radius: var(--radius-card);
+      border-end-end-radius: var(--radius-card);
+    }
+  }
+
+  /* Native indicators take the system colors. Below 600px the checked
+     toggle row keeps the Highlight fill of adwaita.css (the transparent row
+     above would leave its HighlightText on the canvas). */
+  @media (forced-colors: active) {
+    .adw-check {
+      forced-color-adjust: auto;
+      appearance: auto;
+    }
+
+    @media (width < 600px) {
+      .adw-toggle:has(> input:checked) {
+        background-color: Highlight;
+      }
+    }
+  }
+</style>

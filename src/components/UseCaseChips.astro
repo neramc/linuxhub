@@ -1,0 +1,111 @@
+---
+/**
+ * Use-case shortcuts as one row of pill chips linking to the filtered catalog
+ * (/distros/?use=…). Shared by the home page and the catalog. One line at
+ * every width (SPEC §18): when the chips do not fit, the row scrolls sideways
+ * (scroll-snap, no fade) and bleeds into the page gutter, so the page itself
+ * never scrolls sideways and a cut-off chip shows that there is more.
+ *
+ *   <UseCaseChips locale={locale} />                       (home)
+ *   <UseCaseChips locale={locale} active={use} showAll />  (catalog)
+ *
+ * Hooks for scripts: the row has `data-use-chips`; each chip has
+ * `data-use-chip="<use>"` ("" for the "All" chip) and the current one has
+ * aria-current="page". Only a filter row (`showAll` or `active`, the
+ * catalog) has a current chip, so only its chips carry the check cue.
+ */
+import Chip from "~/components/adw/Chip.astro";
+import { type Locale, localizePath, useTranslations } from "~/i18n";
+import { USE_CASES, type UseCase } from "~/lib/taxonomy";
+import { USE_ICONS } from "~/lib/use-icons";
+
+interface Props {
+  locale: Locale;
+  /** The use case currently filtered on, if any. */
+  active?: UseCase | undefined;
+  /** Prepend an "All" chip linking to the unfiltered catalog. */
+  showAll?: boolean | undefined;
+}
+
+/** The eight most common use cases, in order. */
+const USES: readonly UseCase[] = [
+  "beginner",
+  "gaming",
+  "developer",
+  "server",
+  "lightweight",
+  "privacy",
+  "security",
+  "creative",
+];
+
+const { locale, active, showAll = false } = Astro.props;
+const t = useTranslations(locale);
+const catalog = localizePath("/distros/", locale);
+const filter = showAll || active !== undefined;
+---
+
+<nav class="use-chips" aria-label={t("chips.label")} data-use-chips>
+  <ul role="list">
+    {
+      showAll && (
+        <li>
+          <Chip href={catalog} icon="app-grid" current={!active} data-use-chip="">
+            {t("chips.all")}
+          </Chip>
+        </li>
+      )
+    }
+    {
+      USES.map((u) => (
+        <li>
+          <Chip
+            href={`${catalog}?use=${u}`}
+            icon={USE_ICONS[u]}
+            current={filter ? active === u : undefined}
+            data-use-chip={u}
+          >
+            {USE_CASES[u][locale]}
+          </Chip>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  /* The row bleeds into the gutter; the block padding keeps focus rings
+     inside the scroll box. */
+  .use-chips {
+    min-inline-size: 0;
+    margin: -4px calc(-1 * var(--gutter));
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 4px var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: thin;
+  }
+
+  li {
+    flex: none;
+  }
+
+  /* Touch screens swipe the row; a mouse keeps the thin scrollbar to reach
+     chips that do not fit. */
+  @media (pointer: coarse) {
+    ul {
+      scrollbar-width: none;
+    }
+
+    ul::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>

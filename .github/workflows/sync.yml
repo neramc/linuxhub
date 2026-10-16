@@ -1,21 +1,23 @@
 name: Data sync
 
 # Refreshes release data (every 6 h) and official mirror lists (daily) from
-# official sources, validates them, and commits src/data/ when something
-# changed. The push to main triggers a Vercel production deploy.
+# official sources, plus the "popular today" ranking from Wikipedia pageviews
+# (ADR-0013; it sends no request once the latest complete day is in), validates
+# them, and commits src/data/ when something changed. The push to main
+# triggers a Vercel production deploy.
 on:
   schedule:
-    - cron: "17 */6 * * *" # releases
+    - cron: "17 */6 * * *" # releases + popularity
     - cron: "43 3 * * *" # mirror lists
   workflow_dispatch:
     inputs:
       kind:
         description: "What to sync"
         type: choice
-        options: [all, releases, mirrors]
+        options: [all, releases, mirrors, popularity]
         default: all
       only:
-        description: "Comma-separated slugs (empty = all)"
+        description: "Comma-separated slugs (empty = all; popularity ignores it)"
         required: false
         default: ""
 
@@ -59,7 +61,7 @@ jobs:
           elif [ "${{ github.event.schedule }}" = "43 3 * * *" ]; then
             echo "kind=mirrors" >> "$GITHUB_OUTPUT"
           else
-            echo "kind=releases" >> "$GITHUB_OUTPUT"
+            echo "kind=releases,popularity" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Sync from official sources

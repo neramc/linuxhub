@@ -1,9 +1,11 @@
 ---
 /**
  * Family tree (from each distro's `basedOn`) and a timeline of first releases.
- * Plain nested lists — accessible, responsive, zero JS.
+ * One narrow column: each family is a boxed list (title, member count) holding
+ * its tree of FamilyNode rows; the timeline is one boxed list with a row per
+ * decade, its distros an inline list of "year name" links. Zero JS.
  */
-import DistroLogo from "~/components/DistroLogo.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
 import FamilyNode from "~/components/FamilyNode.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
@@ -14,38 +16,46 @@ export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const distros = await getDistros();
-const ids = new Set(distros.map((d) => d.id));
+const byId = new Map(distros.map((d) => [d.id, d]));
 const byYear = (a: Distro, b: Distro) =>
   a.data.origin.firstRelease.localeCompare(b.data.origin.firstRelease);
 
 const childrenOf = new Map<string, Distro[]>();
 for (const d of distros) {
-  if (d.data.basedOn && ids.has(d.data.basedOn)) {
+  if (d.data.basedOn && byId.has(d.data.basedOn)) {
     childrenOf.set(d.data.basedOn, [...(childrenOf.get(d.data.basedOn) ?? []), d]);
   }
 }
 for (const list of childrenOf.values()) list.sort(byYear);
 
-const roots = distros.filter((d) => !d.data.basedOn || !ids.has(d.data.basedOn)).sort(byYear);
+const roots = distros.filter((d) => !d.data.basedOn || !byId.has(d.data.basedOn)).sort(byYear);
 const familyOrder = Object.keys(FAMILIES) as Family[];
 const sections = familyOrder
   .map((family) => ({ family, roots: roots.filter((r) => r.data.family === family) }))
   .filter((s) => s.roots.length > 0);
 const countTree = (d: Distro): number =>
   1 + (childrenOf.get(d.id) ?? []).reduce((n, k) => n + countTree(k), 0);
+const members = (list: Distro[]) => list.reduce((n, r) => n + countTree(r), 0);
 
-const years = new Map<string, Distro[]>();
+const decades = new Map<number, Distro[]>();
 for (const d of [...distros].sort(byYear)) {
-  const y = d.data.origin.firstRelease.slice(0, 4);
-  years.set(y, [...(years.get(y) ?? []), d]);
+  const decade = Math.floor(Number(d.data.origin.firstRelease.slice(0, 4)) / 10) * 10;
+  decades.set(decade, [...(decades.get(decade) ?? []), d]);
 }
+/** "1993 Debian, 2002 Arch Linux and …": the list words, each item a link (by id). */
+const listFormat = new Intl.ListFormat(locale, { type: "conjunction" });
+const decadeParts = (list: Distro[]) =>
+  listFormat.formatToParts(list.map((d) => d.id)).map((p) => ({
+    text: p.value,
+    distro: p.type === "element" ? byId.get(p.value) : undefined,
+  }));
 ---
 
 <Base locale={locale} title={t("family.title")} description={t("family.lead")}>
-  <div class="container page">
+  <div class="container page narrow">
     <header class="page-header">
       <h1>{t("family.title")}</h1>
-      <p class="dim-label">{t("family.lead")}</p>
+      <p class="lead">{t("family.lead")}</p>
     </header>
 
     <section aria-labelledby="tree-title" class="section">
@@ -53,173 +63,84 @@ for (const d of [...distros].sort(byYear)) {
       <div class="families">
         {
           sections.map((s) => (
-            <section class="family adw-card padded" aria-label={FAMILIES[s.family][locale]}>
-              <h3>{FAMILIES[s.family][locale]}</h3>
-              <p class="caption dim-label">
-                {t("family.roots", { count: s.roots.reduce((n, r) => n + countTree(r), 0) })}
+            <BoxedList title={FAMILIES[s.family][locale]} id={`family-${s.family}`}>
+              <p slot="suffix" class="caption dim-label">
+                {members(s.roots) === 1 ? t("family.root") : t("family.roots", { count: members(s.roots) })}
                 {s.roots[0]?.data.upstream && !s.roots[0].data.basedOn ? ` · ${s.roots[0].data.upstream}` : ""}
               </p>
-              <ul class="tree" role="list">
-                {s.roots.map((r) => (
-                  <FamilyNode distro={r} childrenOf={childrenOf} locale={locale} />
-                ))}
-              </ul>
-            </section>
+              {s.roots.map((r) => (
+                <FamilyNode distro={r} childrenOf={childrenOf} locale={locale} />
+              ))}
+            </BoxedList>
           ))
         }
       </div>
     </section>
 
-    <section aria-labelledby="timeline-title" class="section">
-      <h2 id="timeline-title">{t("family.timeline")}</h2>
-      <p class="dim-label">{t("family.timelineLead")}</p>
-      <ol class="timeline" role="list">
-        {
-          [...years].map(([year, list]) => (
-            <li class="year">
-              <span class="year-label numeric">{year}</span>
-              <ul class="year-items" role="list">
-                {list.map((d) => (
-                  <li>
-                    <a class="chip" href={localizePath(`/distros/${d.id}/`, locale)}>
-                      <DistroLogo file={d.data.logo.file} name={d.data.name} size={22} />
-                      {d.data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
+    <BoxedList title={t("family.timeline")} level={2} id="timeline">
+      {
+        [...decades].map(([decade, list]) => (
+          <li class="adw-row-item">
+            <div class="adw-action-row decade">
+              <h3 class="decade-title numeric">{t("family.decade", { decade })}</h3>
+              <p class="decade-items numeric">
+                {decadeParts(list).map(({ text, distro }) =>
+                  distro ? (
+                    <a href={localizePath(`/distros/${distro.id}/`, locale)}>{`${distro.data.origin.firstRelease.slice(0, 4)} ${distro.data.name}`}</a>
+                  ) : (
+                    text
+                  ),
+                )}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </BoxedList>
   </div>
 </Base>
 
 <style>
-  .page {
-    display: grid;
-    gap: var(--space-5);
-    padding-block: var(--space-4) var(--space-6);
-  }
-
-  .page-header,
-  .section {
-    display: grid;
-    gap: var(--space-2);
-  }
-
+  /* Families are groups of one section: 24px apart, not a section gap. */
   .families {
     display: grid;
-    gap: var(--space-2);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-    align-items: start;
+    gap: var(--space-4);
   }
 
-  .family {
-    display: grid;
-    gap: 6px;
-  }
-
-  .tree,
-  .tree :global(ul) {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .tree :global(ul) {
-    margin-inline-start: 14px;
-    padding-inline-start: 14px;
-    border-inline-start: 2px solid var(--border-color);
-  }
-
-  .tree :global(li) {
-    position: relative;
-  }
-
-  .tree :global(ul > li)::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: -14px;
-    inset-block-start: 21px;
-    inline-size: 12px;
-    border-block-start: 2px solid var(--border-color);
-  }
-
-  .tree :global(.node) {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
-    margin-block: 2px;
-    border-radius: var(--radius-button);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .tree :global(.node:hover) {
-    background: var(--hover-color);
-  }
-
-  .tree :global(.node-name) {
-    font-weight: 700;
-  }
-
-  .timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-inline-start: 2px solid var(--border-color);
-    margin-inline-start: 28px;
-  }
-
-  .year {
-    position: relative;
-    display: grid;
-    gap: 8px;
-    padding: 0 0 var(--space-3) var(--space-3);
-  }
-
-  .year::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: -7px;
-    inset-block-start: 6px;
-    inline-size: 12px;
-    block-size: 12px;
-    border-radius: 50%;
-    background: var(--accent-bg-color);
-  }
-
-  .year-label {
-    font-weight: 800;
-    font-size: var(--text-title-4);
-  }
-
-  .year-items {
-    display: flex;
+  /* A decade row: the decade, then its distros beside it, or under it when
+     the row is too narrow for both. */
+  .decade {
     flex-wrap: wrap;
-    gap: 8px;
-    list-style: none;
-    padding: 0;
+    align-items: baseline;
+    row-gap: var(--space-1);
   }
 
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px 12px 4px 6px;
-    border-radius: var(--radius-pill);
-    background: var(--card-bg-color);
-    box-shadow: var(--shadow-card);
-    color: inherit;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    text-decoration: none;
+  .decade-title {
+    flex: 0 0 6.5rem;
+    font-size: var(--text-heading);
+    line-height: var(--line-height-heading);
   }
 
-  .chip:hover {
-    background-image: linear-gradient(var(--hover-color), var(--hover-color));
+  .decade-items {
+    flex: 1 1 20rem;
+    min-inline-size: 0;
+    margin: 0;
+  }
+
+  /* "2012 Linux Lite" is one item: lines break between items only. */
+  .decade-items a {
+    white-space: nowrap;
+  }
+
+  /* Touch screens: 44px lines, each link padded to fill its line, so every
+     link is a 44px target (CLAUDE.md) without overlapping the next line. */
+  @media (pointer: coarse) {
+    .decade-items {
+      line-height: 44px;
+    }
+
+    .decade-items a {
+      padding-block: 12px;
+    }
   }
 </style>

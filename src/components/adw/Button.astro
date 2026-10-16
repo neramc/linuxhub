@@ -1,13 +1,18 @@
 ---
 /**
  * libadwaita button (widgets/_buttons.scss): raised by default, plus
- * `suggested`, `destructive`, `flat` and `opaque` variants, and `pill` /
+ * `suggested`, `destructive`, `flat` and `osd` variants, and `pill` /
  * `circular` shapes. Renders <a> when `href` is set, otherwise <button>.
+ * 36px tall with a mouse, 44px on touch screens (--control-height). At most
+ * one `suggested` button per view (SPEC §7).
+ * `osd` is the dark on-screen-display button for controls laid over content
+ * (e.g. carousel arrows): `<Button variant="osd" circular icon="go-next" label="…" />`
+ * renders 44×44px.
  */
 import type { HTMLAttributes } from "astro/types";
 import Icon from "./Icon.astro";
 
-type Variant = "default" | "suggested" | "destructive" | "flat" | "opaque";
+type Variant = "default" | "suggested" | "destructive" | "flat" | "osd";
 
 type Props = (HTMLAttributes<"button"> & HTMLAttributes<"a">) & {
   variant?: Variant | undefined;
@@ -34,6 +39,8 @@ const {
   external = false,
   type = "button",
   class: className,
+  // Astro's slot placement (e.g. a group header suffix), not an attribute.
+  slot: _slot,
   ...rest
 } = Astro.props;
 

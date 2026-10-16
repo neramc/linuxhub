@@ -1,61 +1,54 @@
 ---
-/** "On this page" navigation from MDX headings (h2/h3). */
+/**
+ * "On this page" navigation from MDX headings: one flat navigation row
+ * (`.adw-nav-row`) per h2, h3 rows indented under their h2. `nested` (inside
+ * another navigation, ChapterNav) renders no landmark of its own and no
+ * visible title: the list itself carries the name.
+ */
 import type { MarkdownHeading } from "astro";
 
 interface Props {
   headings: MarkdownHeading[];
   title: string;
+  /** Omit the visible title when a surrounding disclosure already shows it. */
+  hideTitle?: boolean | undefined;
+  nested?: boolean | undefined;
 }
 
-const { headings, title } = Astro.props;
+const { headings, title, hideTitle = false, nested = false } = Astro.props;
 const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const Tag = nested ? "div" : "nav";
 ---
 
 {
   items.length > 0 && (
-    <nav class="toc" aria-label={title}>
-      <p class="caption-heading dim-label">{title}</p>
-      <ul role="list">
+    <Tag class="toc" aria-label={nested ? undefined : title}>
+      {!hideTitle && !nested && <p class="toc-title caption-heading dim-label">{title}</p>}
+      <ul role="list" aria-label={nested ? title : undefined}>
         {items.map((h) => (
-          <li class:list={[`depth-${h.depth}`]}>
-            <a href={`#${h.slug}`}>{h.text}</a>
+          <li>
+            <a class:list={["adw-nav-row", { sub: h.depth === 3 }]} href={`#${h.slug}`}>
+              {h.text}
+            </a>
           </li>
         ))}
       </ul>
-    </nav>
+    </Tag>
   )
 }
 
 <style>
   .toc {
     display: grid;
-    gap: 8px;
-    font-size: 0.9375rem;
+    gap: var(--space-1);
   }
 
-  .toc ul {
-    display: grid;
-    gap: 2px;
-    border-inline-start: 2px solid var(--border-color);
+  /* In line with the rows' text. */
+  .toc-title {
+    padding-inline: 12px;
   }
 
-  .toc a {
-    display: block;
-    padding: 4px 12px;
-    margin-inline-start: -2px;
-    border-inline-start: 2px solid transparent;
-    color: inherit;
-    opacity: var(--dim-opacity);
-    text-decoration: none;
-  }
-
-  .toc a:hover {
-    opacity: 1;
-    border-inline-start-color: var(--accent-color);
-  }
-
-  .toc .depth-3 a {
-    padding-inline-start: 24px;
-    font-size: 0.875rem;
+  .sub {
+    padding-inline-start: var(--space-4);
   }
 </style>

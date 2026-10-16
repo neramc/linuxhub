@@ -1,0 +1,29 @@
+---
+/**
+ * Turns on the copy buttons of a page: a copy button on every code block in
+ * `.prose`, and the server-rendered `[data-copy]` buttons (the wizard's
+ * checksum). Renders what src/scripts/copy-code.ts needs — its strings from
+ * the i18n dictionaries and its icons (copy, check, warning) from src/assets/icons — and loads
+ * the script, so a page that has no copy button carries neither.
+ *
+ *   <CopyButtons locale={locale} />
+ *
+ * The toast that confirms a copy is the page's live region in Base.astro.
+ */
+import { type Locale, useTranslations } from "~/i18n";
+import Icon from "./adw/Icon.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const t = useTranslations(Astro.props.locale);
+---
+
+<template data-copy-assets data-code-label={t("copy.code")} data-copied={t("common.copied")} data-failed={t("copy.failed")}>
+  <Icon name="copy" class="copy-icon" /><Icon name="check" class="check-icon" /><Icon name="warning" class="warning-icon" />
+</template>
+
+<script>
+  import "~/scripts/copy-code";
+</script>

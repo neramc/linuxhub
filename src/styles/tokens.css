@@ -10,6 +10,12 @@
  *   --accent-bg-color  #1c71d8 (blue_4) instead of #3584e4 — white text on it
  *                      reaches 4.9:1 instead of 3.9:1.
  *   --dim-opacity      70% instead of 55% — dimmed body text stays ≥ 4.5:1.
+ *   --focus-ring-color 80% accent (libadwaita's high-contrast value) instead of
+ *                      50% — 3.97:1 on the window background instead of 2.25:1.
+ *
+ * Depth (ADR-0014) uses only libadwaita's own vocabulary: the elevation ladder
+ * card → raised → popover → dialog, the raised top bar, and the app-icon
+ * drop shadow. No gradients, glass or translate/scale lifts.
  */
 
 :root {
@@ -28,8 +34,23 @@
   --red-3: #e01b24;
   --red-4: #c01c28;
   --purple-3: #9141ac;
+  --light-1: #ffffff;
+  --light-2: #f6f5f4;
   --light-3: #deddda;
+  --light-4: #c0bfbc;
+  --light-5: #9a9996; /* AppTile front edge in dark mode */
   --dark-3: #3d3846;
+
+  /* ---- Accent palette (_colors.scss:155-164; the same in light and dark) ---- */
+  --accent-blue: #3584e4;
+  --accent-teal: #2190a4;
+  --accent-green: #3a944a;
+  --accent-yellow: #c88800;
+  --accent-orange: #ed5b00;
+  --accent-red: #e62d42;
+  --accent-pink: #d56199;
+  --accent-purple: #9141ac;
+  --accent-slate: #6f8396;
 
   /* ---- Semantic colors ---- */
   --accent-bg-color: var(--blue-4);
@@ -85,6 +106,10 @@
   --toast-bg-color: #505053;
   --toast-fg-color: #ffffff;
 
+  /* On-screen display controls over content (_colors.scss:291, _buttons.scss:119). */
+  --osd-fg-color: rgb(255 255 255 / 90%);
+  --osd-button-bg-color: rgb(0 0 0 / 65%);
+
   /* ---- Opacities & derived colors (libadwaita _colors.scss) ---- */
   --border-opacity: 15%;
   --dim-opacity: 70%;
@@ -99,7 +124,15 @@
   --button-color: color-mix(in srgb, currentColor 10%, transparent);
   --button-hover-color: color-mix(in srgb, currentColor 15%, transparent);
   --button-active-color: color-mix(in srgb, currentColor 30%, transparent);
-  --focus-ring-color: color-mix(in srgb, var(--accent-color) 50%, transparent);
+  /* Toggle buttons (widgets/_buttons.scss:4-6) and the toggle-group/view-switcher
+     current item (_colors.scss:238/247). */
+  --button-checked-color: color-mix(in srgb, currentColor 30%, transparent);
+  --button-checked-hover-color: color-mix(in srgb, currentColor 35%, transparent);
+  --button-checked-active-color: color-mix(in srgb, currentColor 40%, transparent);
+  --active-toggle-bg-color: light-dark(#ffffff, rgb(255 255 255 / 20%));
+  /* ADR-0009: libadwaita's 50% ring is 2.25:1 on #fafafb; 80% is its own
+     high-contrast value and reaches 3.97:1. Tinted surfaces use 100%. */
+  --focus-ring-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
   --link-color: var(--accent-color);
   --link-visited-color: color-mix(in srgb, var(--accent-color) 80%, var(--view-fg-color));
 
@@ -118,6 +151,19 @@
   --shadow-dialog:
     0 0 14px 2px rgb(0 0 6 / 3%), 0 0 5px 2px rgb(0 0 6 / 10%), 0 0 0 1px rgb(0 0 0 / 5%);
   --shadow-toast: 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
+  /* Elevation ladder: card (above) → raised (_toggle-group.scss:82-83) → popover → dialog. */
+  --shadow-raised: 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
+  /* Raised top/bottom toolbars (_toolbars.scss:314-316 / 332-334). */
+  --shadow-top-bar:
+    0 1px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent),
+    0 2px 4px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent);
+  --shadow-bottom-bar:
+    0 -1px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent),
+    0 -2px 4px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent);
+  /* .icon-dropshadow (_common.scss:98-104), -gtk-icon-shadow as a box-shadow. */
+  --shadow-icon:
+    0 1px 12px rgb(0 0 6 / 5%), 0 -1px rgb(0 0 6 / 5%), 1px 0 rgb(0 0 6 / 10%),
+    0 1px rgb(0 0 6 / 30%), -1px 0 rgb(0 0 6 / 10%);
 
   /* ---- Spacing (6px grid, as in Adwaita layouts) ---- */
   --space-1: 6px;
@@ -129,22 +175,52 @@
   --space-7: 72px;
 
   /* ---- Layout ---- */
+  /* Breakpoints (media queries cannot read custom properties, so use these
+     literals in range syntax): layout (width < 600px) · (600px <= width < 1000px)
+     · (width >= 1000px); header only (width >= 768px) primary nav ·
+     (width >= 1100px) search entry button, each also behind a rem container
+     query on the header so larger text keeps them in the menu (HeaderBar);
+     touch targets (pointer: coarse). */
   --content-width: 1200px;
   --text-width: 760px;
+  --prose-measure: var(--text-width); /* running text in .prose; en: 55ch, below */
   --gutter: clamp(16px, 4vw, 32px);
   --headerbar-height: 56px;
+  --sidebar-width: 240px; /* install / Linux guide local navigation */
+  --aside-width: 360px; /* distro detail aside */
+  --space-section: var(--space-6); /* between page sections; 36px < 600px */
+  --space-grid: var(--space-3); /* card grid gap; 12px < 600px */
+  --control-height: 36px; /* buttons, entries, combos; 44px on coarse pointers */
+  --row-min-height: 50px; /* list rows; 56px on coarse pointers */
+  /* Text links that stand alone (.target-link in base.css): 24px (WCAG
+     2.5.8); 44px on coarse pointers. */
+  --target-size: 24px;
 
   /* ---- Type (libadwaita title-1…caption, scaled to a 16px web base) ---- */
-  /* The font stacks (incl. Hangul system fallbacks) come from astro.config.mjs `fonts`. */
+  /* The font stacks (incl. Hangul system fallbacks) come from astro.config.mjs `fonts`.
+     Adwaita Mono is loaded only on pages with code blocks (Base `mono`); elsewhere
+     (a checksum, inline code) the system monospace stands in, never the sans.
+     Eight sizes, weights 400 / 700 / 800 only (800 only through --font-weight-title). */
   --font-sans: var(--font-adwaita-sans);
-  --font-mono: var(--font-adwaita-mono);
-  --text-display: clamp(2rem, 1.35rem + 2.6vw, 3rem);
-  --text-title-1: clamp(1.625rem, 1.4rem + 0.9vw, 2rem);
-  --text-title-2: 1.4rem;
-  --text-title-3: 1.2rem;
-  --text-title-4: 1.0625rem;
+  --font-mono: var(--font-adwaita-mono, ui-monospace, "SFMono-Regular", Consolas, monospace);
+  --text-title-1: 2rem; /* 32px, 28px < 600px: the one h1 per page */
+  --text-title-2: 1.375rem; /* 22px: section h2 */
+  --text-title-3: 1.1875rem; /* 19px: h3, slide titles */
+  --text-heading: 1rem; /* 16px bold: card names, row emphasis, h4 */
   --text-body: 1rem;
+  --text-prose: 1.0625rem; /* 17px: install guides and Linux guide articles */
+  --text-control: 0.9375rem; /* 15px bold: buttons, combos, chips, toggles, toast */
   --text-caption: 0.8125rem;
+  --text-code: 0.875rem; /* 14px: code blocks only; inline code stays 0.9em */
+  --line-height-title-1: 1.2;
+  --line-height-title-2: 1.25;
+  --line-height-title-3: 1.3;
+  --line-height-heading: 1.4;
+  --line-height-body: 1.5;
+  --line-height-prose: 1.6; /* ko 1.75, below */
+  --line-height-control: 1.2;
+  --line-height-caption: 1.4;
+  --font-weight-title: 800; /* title-1 / title-2; ko 700, below */
 
   /* ---- Motion (libadwaita $ease-out-quad, 200ms) ---- */
   --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -159,10 +235,123 @@
   color-scheme: dark;
 }
 
+@media (width < 600px) {
+  :root {
+    --text-title-1: 1.75rem;
+    --space-section: var(--space-5);
+    --space-grid: var(--space-2);
+  }
+}
+
+/* 44px touch targets on touch screens (CLAUDE.md web-quality rules). */
+@media (pointer: coarse) {
+  :root {
+    --control-height: 44px;
+    --row-min-height: 56px;
+    --target-size: 44px;
+  }
+}
+
+/* Hangul system fonts: 800 next to Adwaita Sans looks uneven; long Hangul
+   lines need more leading. */
+:root:lang(ko) {
+  --font-weight-title: 700;
+  --line-height-prose: 1.75;
+}
+
+/* 55ch of Adwaita Sans at 17px (590px) sets about 70 characters per full
+   line (measured on the six en Linux guide chapters and the Fedora install
+   guide: medians 68–71, 90th percentile 73–75, max 78; 56ch gives medians
+   70–72, max 80; 60ch 74–77, max 85). prose.css applies it to running text
+   only. ADR-0016. */
+:root:lang(en) {
+  --prose-measure: 55ch;
+}
+
 @media (prefers-contrast: more) {
   :root {
     --border-opacity: 50%;
     --dim-opacity: 90%;
-    --focus-ring-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
+    --shadow-top-bar:
+      0 1px var(--border-color),
+      0 2px 4px color-mix(in srgb, var(--headerbar-shade-color) 50%, transparent);
+    --shadow-card:
+      0 0 0 1px var(--border-color), 0 1px 3px 1px rgb(0 0 6 / 7%), 0 2px 6px 2px rgb(0 0 6 / 3%);
   }
+}
+
+/*
+ * Per-accent tints (CSP-safe: a class instead of an inline style). --tint is the
+ * libadwaita accent; --tint-standalone is its text/icon color on plain
+ * backgrounds, oklab(from accent min(l, .5) a b) / max(l, .85) precomputed
+ * (_colors.scss:145-153, adw_rgba_to_standalone). Use --tint only through
+ * --tint-bg-color (below), never behind text at 100%.
+ */
+.accent-blue {
+  --tint: var(--accent-blue);
+  --tint-standalone: light-dark(#0461be, #81d0ff);
+}
+
+.accent-teal {
+  --tint: var(--accent-teal);
+  --tint-standalone: light-dark(#007184, #7bdff4);
+}
+
+.accent-green {
+  --tint: var(--accent-green);
+  --tint-standalone: light-dark(#15772e, #8de698);
+}
+
+.accent-yellow {
+  --tint: var(--accent-yellow);
+  --tint-standalone: light-dark(#905300, #ffc057);
+}
+
+.accent-orange {
+  --tint: var(--accent-orange);
+  --tint-standalone: light-dark(#b62200, #ff9c5b);
+}
+
+.accent-red {
+  --tint: var(--accent-red);
+  --tint-standalone: light-dark(#c00023, #ff888c);
+}
+
+.accent-pink {
+  --tint: var(--accent-pink);
+  --tint-standalone: light-dark(#a2326c, #ffa0d8);
+}
+
+.accent-purple {
+  --tint: var(--accent-purple);
+  --tint-standalone: light-dark(#8939a4, #fba7ff);
+}
+
+.accent-slate {
+  --tint: var(--accent-slate);
+  --tint-standalone: light-dark(#526678, #bbd1e5);
+}
+
+/*
+ * The one background for tinted identity surfaces (today only the carousel
+ * slide) with the normal window text on it. Light: AdwBanner's 30% mix of
+ * the accent into the window background. Dark: 25% of the standalone color in
+ * oklab, which keeps the nine hues apart without the muddy sRGB browns; white
+ * text stays ≥ 8.9:1 (ADR-0016). Focus rings on tints use the full accent
+ * (80% drops below 3:1 on light tints, ADR-0009).
+ */
+.accent-blue,
+.accent-teal,
+.accent-green,
+.accent-yellow,
+.accent-orange,
+.accent-red,
+.accent-pink,
+.accent-purple,
+.accent-slate {
+  --tint-bg-color: light-dark(
+    color-mix(in srgb, var(--tint) 30%, var(--window-bg-color)),
+    color-mix(in oklab, var(--tint-standalone) 25%, var(--window-bg-color))
+  );
+  --focus-ring-color: var(--accent-color);
 }

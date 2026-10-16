@@ -1,0 +1,157 @@
+{
+  "slug": "manjaro",
+  "sources": [
+    "https://manjaro.org/products/download/x86/"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "26.1.0",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-08-12",
+      "eol": null,
+      "notesUrl": "https://forum.manjaro.org/c/announcements/11",
+      "editions": [
+        {
+          "id": "kde",
+          "name": "KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "manjaro-kde-26.1.0-260812-linux71.iso",
+              "path": null,
+              "url": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-260812-linux71.iso",
+              "size": 5534201856,
+              "checksum": {
+                "type": "sha256",
+                "value": "711b64362abe0b45348dc33bd4a2c654641e069b50ae9ae37c01771da880aa99",
+                "url": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-260812-linux71.iso.sha256"
+              },
+              "signatureUrl": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-260812-linux71.iso.sig",
+              "torrentUrl": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-260812-linux71.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "kde-minimal",
+          "name": "KDE Plasma (minimal)",
+          "desktop": "kde",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "manjaro-kde-26.1.0-minimal-260812-linux71.iso",
+              "path": null,
+              "url": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-minimal-260812-linux71.iso",
+              "size": 4697554944,
+              "checksum": {
+                "type": "sha256",
+                "value": "d631c2ace9da691e7b892e2ce6a307d2a45b99e7148813474bfde7bb353765fc",
+                "url": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-minimal-260812-linux71.iso.sha256"
+              },
+              "signatureUrl": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-minimal-260812-linux71.iso.sig",
+              "torrentUrl": "https://download.manjaro.org/kde/26.1.0/manjaro-kde-26.1.0-minimal-260812-linux71.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "manjaro-xfce-26.1.0-260812-linux71.iso",
+              "path": null,
+              "url": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-260812-linux71.iso",
+              "size": 5142491136,
+              "checksum": {
+                "type": "sha256",
+                "value": "eb8e3d3f455475c06b508f0115e2247e8764562e36176203a2315552c84afc98",
+                "url": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-260812-linux71.iso.sha256"
+              },
+              "signatureUrl": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-260812-linux71.iso.sig",
+              "torrentUrl": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-260812-linux71.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce-minimal",
+          "name": "Xfce (minimal)",
+          "desktop": "xfce",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "manjaro-xfce-26.1.0-minimal-260812-linux71.iso",
+              "path": null,
+              "url": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-minimal-260812-linux71.iso",
+              "size": 4177051648,
+              "checksum": {
+                "type": "sha256",
+                "value": "17117105251b774dee69c2b24e58dee84360935f2a68b52043754a30e2f1568d",
+                "url": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-minimal-260812-linux71.iso.sha256"
+              },
+              "signatureUrl": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-minimal-260812-linux71.iso.sig",
+              "torrentUrl": "https://download.manjaro.org/xfce/26.1.0/manjaro-xfce-26.1.0-minimal-260812-linux71.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "gnome",
+          "name": "GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "manjaro-gnome-26.1.0-260812-linux71.iso",
+              "path": null,
+              "url": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-260812-linux71.iso",
+              "size": 5299992576,
+              "checksum": {
+                "type": "sha256",
+                "value": "b4c94d45c0da1992dfa9c7f3fbfd1bd5ebbdebaaa61f994660e0304357eb029f",
+                "url": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-260812-linux71.iso.sha256"
+              },
+              "signatureUrl": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-260812-linux71.iso.sig",
+              "torrentUrl": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-260812-linux71.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "gnome-minimal",
+          "name": "GNOME (minimal)",
+          "desktop": "gnome",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "manjaro-gnome-26.1.0-minimal-260812-linux71.iso",
+              "path": null,
+              "url": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-minimal-260812-linux71.iso",
+              "size": 4106379264,
+              "checksum": {
+                "type": "sha256",
+                "value": "9638ff4a49b9ca5548c91cbcb3776f42ee62c383590513444afade6d9da2b5a3",
+                "url": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-minimal-260812-linux71.iso.sha256"
+              },
+              "signatureUrl": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-minimal-260812-linux71.iso.sig",
+              "torrentUrl": "https://download.manjaro.org/gnome/26.1.0/manjaro-gnome-26.1.0-minimal-260812-linux71.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

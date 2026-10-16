@@ -29,7 +29,7 @@ export const GET: APIRoute = ({ props }) => {
   const png = renderOg({
     title: props.title as string,
     subtitle: props.subtitle as string,
-    ...(props.logo ? { logoSvg: readLogo(props.logo as string) } : {}),
+    ...(props.logo ? { logo: readLogo(props.logo as string) } : {}),
   });
   return new Response(new Blob([new Uint8Array(png)], { type: "image/png" }));
 };

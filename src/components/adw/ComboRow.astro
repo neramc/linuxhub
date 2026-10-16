@@ -1,0 +1,57 @@
+---
+/**
+ * libadwaita AdwComboRow inside a boxed list, on a native <select>: the row
+ * is the select's <label>, so its title is the accessible name (plus the
+ * optional `subtitle` slot, a status line such as the mirror suggestion).
+ * The select keeps its own width at the end of the row; when the value does
+ * not fit beside the title the row wraps and the select takes the full width
+ * under it, and a value longer than the row wraps inside the select instead
+ * of being cut (SPEC §8).
+ *
+ *   <BoxedList>
+ *     <ComboRow label={t("download.edition")} name="edition" options={[["kde", "KDE Plasma"]]} selected="kde" />
+ *   </BoxedList>
+ *
+ * `hidden` and data-* attributes go on the row (<li>), which islands show,
+ * hide or find (e.g. `data-format-row`); islands find the select by `name`.
+ * `selectHidden` keeps the select out of view until an island has filled it.
+ */
+interface Props {
+  [key: `data-${string}`]: unknown;
+  label: string;
+  name: string;
+  /** [value, text] pairs, in order. */
+  options: readonly (readonly [value: string, text: string])[];
+  /** The value of the selected option (default: the first option). */
+  selected?: string | undefined;
+  hidden?: boolean | undefined;
+  selectHidden?: boolean | undefined;
+}
+
+const { label, name, options, selected, hidden, selectHidden, ...rest } = Astro.props;
+const hasSubtitle = Astro.slots.has("subtitle");
+---
+
+<li class="adw-row-item" hidden={hidden} {...rest}>
+  <label class="adw-action-row adw-combo-row">
+    <span class="adw-row-text">
+      <span class="adw-row-title">{label}</span>
+      {
+        hasSubtitle && (
+          <span class="adw-row-subtitle">
+            <slot name="subtitle" />
+          </span>
+        )
+      }
+    </span>
+    <select name={name} class="combo-select" hidden={selectHidden}>
+      {
+        options.map(([value, text]) => (
+          <option value={value} selected={value === selected}>
+            {text}
+          </option>
+        ))
+      }
+    </select>
+  </label>
+</li>

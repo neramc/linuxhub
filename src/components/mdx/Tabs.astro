@@ -1,16 +1,11 @@
 ---
 /**
- * OS-specific instructions (Windows / macOS / Linux …) without JS: a group of
- * collapsible <Tab label="…"> sections styled as Adwaita cards.
+ * OS-specific instructions (Windows / macOS / Linux …) without JS: one boxed
+ * list whose rows are collapsible <Tab label="…"> expander rows. A long
+ * command scrolls inside its row instead of widening the article: the boxed
+ * list is an inline-size container, so its content never sets its width.
  */
+import BoxedList from "../adw/BoxedList.astro";
 ---
 
-<div class="os-tabs"><slot /></div>
-
-<style>
-  .os-tabs {
-    display: grid;
-    gap: 6px;
-    margin-block: 1.2em;
-  }
-</style>
+<BoxedList class="os-tabs"><slot /></BoxedList>

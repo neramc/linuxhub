@@ -1,0 +1,216 @@
+---
+/**
+ * "Popular today" banner carousel at the top of the home page (ADR-0013,
+ * ADR-0014): the top 5 distros by yesterday's English Wikipedia pageviews, or
+ * editorial picks without ranks before the first popularity sync. Each slide
+ * is tinted with the libadwaita accent nearest to the distro's logo color
+ * (--tint-bg-color) and shows the logo on a 160px app tile (96px below 600px),
+ * the name, tagline, latest version and two links: the distro page and its
+ * download section.
+ */
+import Button from "~/components/adw/Button.astro";
+import Carousel from "~/components/adw/Carousel.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
+import { type Locale, localizePath, splitAround, useTranslations } from "~/i18n";
+import { brandAccent } from "~/lib/brand-accent";
+import { featuredRelease, formatDate, getReleases, type TodaysDistros } from "~/lib/catalog";
+import { addDays } from "~/lib/popularity";
+
+interface Props {
+  locale: Locale;
+  /** From getTodaysDistros() (the page also uses it to avoid repeating these distros). */
+  today: TodaysDistros;
+}
+
+const { locale, today } = Astro.props;
+const t = useTranslations(locale);
+
+const slides = await Promise.all(
+  today.items.map(async (distro, i) => {
+    const release = featuredRelease(await getReleases(distro.id));
+    return {
+      slug: distro.id,
+      name: distro.data.name,
+      tagline: distro.data.tagline[locale],
+      logo: distro.data.logo.file,
+      accent: await brandAccent(distro.data.logo.file, distro.data.logo.accent),
+      rank: today.ranked ? i + 1 : undefined,
+      version: release?.version,
+      date: release?.releaseDate ?? null,
+      href: localizePath(`/distros/${distro.id}/`, locale),
+    };
+  }),
+);
+
+// "By English Wikipedia pageviews yesterday" — or the date, when the build is
+// not the day after the counted day.
+const day = today.day;
+const yesterday = addDays(new Date().toISOString().slice(0, 10), -1);
+const dayText =
+  day === yesterday
+    ? t("home.popular.yesterday")
+    : t("home.popular.onDay", { date: formatDate(day ?? null, locale) ?? "" });
+const [basisBefore, basisAfter] = splitAround(t("home.popular.basis"), "day");
+---
+
+<Carousel
+  id="popular"
+  class="popular"
+  title={t(today.ranked ? "home.popular.title" : "home.popular.picks")}
+  count={slides.length}
+  locale={locale}
+>
+  {
+    today.ranked && day && (
+      <p slot="caption" class="caption basis">
+        <span class="dim-label">{basisBefore}<time datetime={day}>{dayText}</time>{basisAfter}</span>
+        <span class="dim-label separator" aria-hidden="true">·</span>
+        <a class="target-link" href={`${localizePath("/about/", locale)}#popularity`}>{t("home.popular.about")}</a>
+      </p>
+    )
+  }
+  {
+    slides.map((s, i) => (
+      <div
+        class={`slide accent-${s.accent}`}
+        role="group"
+        aria-roledescription={t("carousel.slide")}
+        aria-labelledby={`slide-${s.slug}-name`}
+        data-name={s.name}
+        data-slug={s.slug}
+      >
+        <div class="slide-text">
+          {s.rank && <p class="caption-heading">{t("home.popular.rank", { rank: s.rank })}</p>}
+          <h3 class="slide-name" id={`slide-${s.slug}-name`}>
+            {s.name}
+          </h3>
+          <p class="slide-tagline">{s.tagline}</p>
+          {s.version && (
+            <p class="slide-meta caption numeric">
+              {t("home.popular.latest", { version: s.version })}
+              {s.date && (
+                <>
+                  {" · "}
+                  <time datetime={s.date}>{formatDate(s.date, locale)}</time>
+                </>
+              )}
+            </p>
+          )}
+          <div class="button-row slide-actions">
+            <Button href={s.href} pill>
+              {t("home.popular.view")}
+              <span class="visually-hidden">: {s.name}</span>
+            </Button>
+            <Button href={`${s.href}#download`} variant="suggested" pill icon="download">
+              {t("distro.download")}
+              <span class="visually-hidden">: {s.name}</span>
+            </Button>
+          </div>
+        </div>
+        <DistroLogo
+          file={s.logo}
+          name={s.name}
+          size={160}
+          narrowSize={96}
+          class="slide-tile"
+          eager
+          fetchpriority={i === 0 ? "high" : undefined}
+        />
+      </div>
+    ))
+  }
+</Carousel>
+
+<style>
+  .basis {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--space-1);
+  }
+
+  /* Narrow screens: the link may wrap; no dangling separator then. */
+  @media (width < 600px) {
+    .basis {
+      column-gap: var(--space-2);
+    }
+
+    .separator {
+      display: none;
+    }
+  }
+
+  /* A tinted banner with the normal window text (≥ 8.9:1 in light and dark).
+     No dimmed text on tints; the accent classes also set the full-accent
+     focus ring. */
+  .slide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-5);
+    min-block-size: 300px;
+    padding: var(--space-5) var(--carousel-arrow-room);
+    background-color: var(--tint-bg-color);
+    color: var(--window-fg-color);
+  }
+
+  .slide-text {
+    display: grid;
+    justify-items: start;
+    min-inline-size: 0;
+  }
+
+  .slide-name {
+    margin-block: 4px var(--space-1);
+  }
+
+  .slide-tagline {
+    max-inline-size: 36rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .slide-meta {
+    margin-block-start: var(--space-1);
+  }
+
+  .slide-actions {
+    margin-block-start: var(--space-3);
+  }
+
+  .slide :global(.slide-tile) {
+    margin-inline-end: var(--space-2);
+  }
+
+  @media (width < 600px) {
+    .slide {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      align-content: start;
+      gap: var(--space-2);
+      min-block-size: 0;
+      padding: var(--space-4) var(--carousel-arrow-room);
+      text-align: center;
+    }
+
+    .slide-text {
+      justify-items: center;
+    }
+
+    .slide-tagline {
+      -webkit-line-clamp: 3;
+    }
+
+    /* Two 50/50 buttons across the slide (.button-row). */
+    .slide-actions {
+      justify-self: stretch;
+    }
+
+    .slide :global(.slide-tile) {
+      order: -1;
+      margin: 0;
+    }
+  }
+</style>

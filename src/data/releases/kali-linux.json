@@ -1,0 +1,120 @@
+{
+  "slug": "kali-linux",
+  "sources": [
+    "https://cdimage.kali.org/current/",
+    "https://cdimage.kali.org/kali-2026.2/",
+    "https://www.kali.org/rss.xml"
+  ],
+  "updated": "2026-10-03",
+  "releases": [
+    {
+      "version": "2026.2",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-06-29",
+      "eol": null,
+      "notesUrl": "https://www.kali.org/blog/kali-linux-2026-2-release/",
+      "editions": [
+        {
+          "id": "installer",
+          "name": "Installer",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kali-linux-2026.2-installer-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-amd64.iso",
+              "size": 4802531328,
+              "checksum": {
+                "type": "sha256",
+                "value": "6dbefacc95e3b556c19c48e8bae39b8b505e2d3a1aba0bfb7ab62b036c3d2ba3",
+                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "kali-linux-2026.2-installer-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-arm64.iso",
+              "size": 3972624384,
+              "checksum": {
+                "type": "sha256",
+                "value": "b9a08050ee522fbee7cac703b1bc48178f79eb974c962d4ed9dc1ccfdfa77fb6",
+                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-arm64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "netinst",
+          "name": "NetInstaller",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kali-linux-2026.2-installer-netinst-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-amd64.iso",
+              "size": 779091968,
+              "checksum": {
+                "type": "sha256",
+                "value": "d32f929dacc48134a31461a09f2160d13ad1d26b820cee920446813ca979b39b",
+                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "kali-linux-2026.2-installer-netinst-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-arm64.iso",
+              "size": 748990464,
+              "checksum": {
+                "type": "sha256",
+                "value": "8ca1bdd6a85f37e380eca84c780256b6e634fc768426396f51967ec3be006ed1",
+                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-arm64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "purple",
+          "name": "Kali Purple",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kali-linux-2026.2-installer-purple-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-purple-amd64.iso",
+              "size": 4893106176,
+              "checksum": {
+                "type": "sha256",
+                "value": "bbde629937a9eabc110062989d49947fae7fd4c0fef19f590f990b1cb97a497c",
+                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-purple-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

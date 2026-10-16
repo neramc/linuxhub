@@ -1,0 +1,67 @@
+---
+/**
+ * Breadcrumb trail for sub-pages (SPEC §10): caption-size, dim links from the
+ * top level down, separated by a go-next icon (hidden from assistive
+ * technology), ending with the current page (aria-current, not a link).
+ * Links are --target-size targets (24px, 44px on touch screens). Left out of
+ * the search index.
+ *
+ *   <Breadcrumb
+ *     locale={locale}
+ *     links={[{ label: t("distro.breadcrumb"), href: localizePath("/distros/", locale) }]}
+ *     current={d.name}
+ *   />
+ */
+import Icon from "~/components/adw/Icon.astro";
+import { type Locale, useTranslations } from "~/i18n";
+
+interface Props {
+  locale: Locale;
+  /** The pages above this one, from the top level down. */
+  links: readonly { label: string; href: string }[];
+  /** This page's name. */
+  current: string;
+}
+
+const { locale, links, current } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<nav class="breadcrumb caption" aria-label={t("nav.breadcrumb")} data-pagefind-ignore>
+  <ol role="list">
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href} class="target-link">{link.label}</a>
+          <Icon name="go-next" size={12} />
+        </li>
+      ))
+    }
+    <li><span aria-current="page">{current}</span></li>
+  </ol>
+</nav>
+
+<style>
+  /* Dim text, not opacity: the focus ring keeps its full contrast. */
+  .breadcrumb {
+    color: color-mix(in srgb, currentColor var(--dim-opacity), transparent);
+  }
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--space-1);
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-inline-size: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+</style>

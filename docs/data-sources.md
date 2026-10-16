@@ -5,7 +5,7 @@ Linuxhub의 버전, 파일, 체크섬, 미러 정보는 모두 각 프로젝트�
 ## 공통 규칙
 - **식별**: User-Agent로 `LinuxhubBot/1.0 (+<site>/about/#bot)`를 보냅니다.
 - **robots.txt**: 호스트마다 확인하고 캐시합니다. `Crawl-delay`를 지키며, 막힌 URL은 요청하지 않습니다.
-- **요청 간격**: 같은 호스트에는 1초 이상 간격을 두고, 429·5xx만 백오프 후 재시도합니다.
+- **요청 간격**: 같은 호스트에는 1초 이상 간격을 두고, 429·5xx만 백오프 후 재시도합니다. 서버가 `Retry-After`를 보내면 그만큼(최대 60초) 기다립니다.
 - **재검증**: ETag와 If-Modified-Since로 바뀌지 않은 응답은 다시 받지 않습니다(GitHub Actions 캐시).
 - **허용하는 출처**:
   - endoflife.date는 출시일, 지원 종료일, LTS 여부에만 씁니다.
@@ -24,6 +24,14 @@ Linuxhub의 버전, 파일, 체크섬, 미러 정보는 모두 각 프로젝트�
 | `mirrors` | 공식 미러 목록이 있으면 방문자 위치로 순위를 매겨 추천합니다(`src/lib/mirrors.ts`). 목록이 없으면 공식 원본 서버를 씁니다 |
 | `sourceforge` | 공식 SourceForge 프로젝트에서 받으며, SourceForge가 미러를 고릅니다 |
 | `official-page` | 파일 링크를 자동화할 수 없어서(링크 만료, 봇 차단 등) 공식 다운로드 페이지로 안내합니다 |
+
+## 오늘의 인기 배포판 (위키백과 조회수)
+홈 맨 위 슬라이더의 순위입니다(ADR-0013). `src/data/popularity.json`에 저장합니다.
+- **출처**: [Wikimedia Pageviews REST API](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html)의 문서별 일간 조회수입니다. 영어 위키백과, 사람의 조회만(`agent=user`), 모든 접속 방식(`all-access`)을 셉니다. 조회수 데이터는 CC0입니다.
+- **기준일**: 집계가 끝난 가장 최근 UTC 하루(보통 어제)입니다. 그날 데이터가 절반 넘는 문서에 아직 올라오지 않았으면 그 전날로 순위를 매깁니다. 전날 순위도 함께 저장합니다.
+- **문서 매핑**: `scripts/sync/wikipedia-articles.ts`에서 편집자가 정합니다. 리다이렉트가 아닌 실제 문서 제목만 쓰고, 전용 문서가 없으면 `null`입니다. 카탈로그의 모든 배포판에 항목이 있어야 합니다(`bun run sync:validate`가 검사).
+- **요청**: 문서마다 최근 9일 치를 한 번에 받습니다. 기준일 순위가 이미 있으면 요청하지 않습니다. 6시간마다 releases와 함께 실행하며, 10분 안에 받지 못한 문서는 실패로 셉니다.
+- **개인정보**: 우리 사이트 방문자의 조회는 세지 않습니다. 쿠키나 분석 스크립트를 쓰지 않습니다.
 
 ## 로고
 배포판 YAML의 `logo` 항목(출처, 라이선스, 상표 정책)과 About 페이지의 크레딧 표를 보세요.

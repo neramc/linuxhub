@@ -1,22 +1,23 @@
 ---
-/** libadwaita AdwStatusPage: big dimmed icon, title, description, actions. */
+/**
+ * libadwaita AdwStatusPage: a dim 64px symbolic icon, the page's h1, one
+ * sentence and one action. For the 404 page only (SPEC §15); other empty
+ * states are an inline row inside their component.
+ */
 import Icon from "./Icon.astro";
 
 interface Props {
   icon?: string | undefined;
   title: string;
   description?: string | undefined;
-  /** Heading level; 1 for full-page states (404), 2 inside a page. */
-  level?: 1 | 2 | undefined;
 }
 
-const { icon, title, description, level = 1 } = Astro.props;
-const Heading = `h${level}` as "h1" | "h2";
+const { icon, title, description } = Astro.props;
 ---
 
 <div class="adw-status-page">
-  {icon && <Icon name={icon} size={96} class="adw-status-icon" />}
-  <Heading class="adw-status-title">{title}</Heading>
+  {icon && <Icon name={icon} size={64} class="adw-status-icon" />}
+  <h1>{title}</h1>
   {description && <p class="adw-status-description">{description}</p>}
   <div class="adw-status-actions"><slot /></div>
 </div>

@@ -1,0 +1,76 @@
+---
+/**
+ * Documentation layout shared by the install guides and the Linux guide
+ * chapters (SPEC §10, §18): local navigation and the document. Below 1000px
+ * the navigation is a closed expander row (`title`, `subtitle`) above the
+ * document; from 1000px a sticky sidebar at the start of the row.
+ *
+ *   <DocLayout title="On this page">
+ *     <Toc slot="narrow" … hideTitle />
+ *     <Toc slot="sidebar" … />
+ *     <article class="prose">…</article>
+ *   </DocLayout>
+ *
+ * `.toc-narrow` and `.doc-sidebar` are e2e hooks.
+ */
+import BoxedList from "./adw/BoxedList.astro";
+import ExpanderRow from "./adw/ExpanderRow.astro";
+
+interface Props {
+  title: string;
+  subtitle?: string | undefined;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="doc-layout">
+  <div class="toc-narrow" data-pagefind-ignore>
+    <BoxedList>
+      <ExpanderRow title={title} subtitle={subtitle}>
+        <slot name="narrow" />
+      </ExpanderRow>
+    </BoxedList>
+  </div>
+  <aside class="doc-sidebar" data-pagefind-ignore>
+    <slot name="sidebar" />
+  </aside>
+  <slot />
+</div>
+
+<style>
+  .doc-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .toc-narrow {
+    max-inline-size: var(--text-width);
+  }
+
+  .doc-sidebar {
+    display: none;
+  }
+
+  @media (width >= 1000px) {
+    .doc-layout {
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      column-gap: var(--space-5);
+      align-items: start;
+    }
+
+    .toc-narrow {
+      display: none;
+    }
+
+    .doc-sidebar {
+      display: block;
+      position: sticky;
+      inset-block-start: calc(var(--headerbar-height) + var(--space-3));
+      max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-5));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+/**
+ * GtkSearchEntry look (SPEC §8; .adw-entry in adwaita.css): a filled entry,
+ * 36px tall (44px on touch), with a leading dim search icon and its own flat
+ * clear button, shown only while there is text. The icon is the visible label;
+ * `label` is the input's accessible name (and its placeholder unless one is
+ * given; never empty, since the clear button hides on :placeholder-shown).
+ * data-* attributes go on the <input>, where islands look for them.
+ *
+ *   <SearchEntry locale={locale} name="q" label={t("catalog.search")} />
+ *
+ * No script of its own: the island that owns the entry handles a click on
+ * `[data-entry-clear]` (empty the input, dispatch "input", focus it). Without
+ * JavaScript the clear button is hidden (`data-js-only`).
+ */
+import { type Locale, useTranslations } from "~/i18n";
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  [key: `data-${string}`]: unknown;
+  locale: Locale;
+  name: string;
+  label: string;
+  placeholder?: string | undefined;
+  /** id of the element the entry filters or fills (aria-controls). */
+  controls?: string | undefined;
+  id?: string | undefined;
+  class?: string | undefined;
+}
+
+const { locale, name, label, placeholder, controls, id, class: className, ...rest } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<div class:list={["adw-entry", className]}>
+  <label class="adw-entry-field">
+    <Icon name="search" />
+    <input
+      type="search"
+      name={name}
+      id={id}
+      placeholder={placeholder || label}
+      aria-label={label}
+      aria-controls={controls}
+      autocomplete="off"
+      spellcheck="false"
+      enterkeyhint="search"
+      {...rest}
+    />
+  </label>
+  <Button
+    variant="flat"
+    circular
+    icon="close"
+    label={t("search.clear")}
+    class="adw-entry-clear"
+    data-entry-clear
+    data-js-only
+  />
+</div>

@@ -2,7 +2,8 @@
  * Validates src/content/distros/*.yaml against the catalog schema without a
  * full Astro sync, plus cross-entry rules the schema cannot express:
  * unique `order`, `basedOn` pointing at an existing slug, logo file present,
- * and a sane logo SVG. Usage: bun scripts/validate-catalog.ts [slug ...]
+ * and a sane logo (SVG, or a small PNG per ADR-0012).
+ * Usage: bun scripts/validate-catalog.ts [slug ...]
  */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -16,6 +17,20 @@ const files = readdirSync(DIR).filter((f) => f.endsWith(".yaml"));
 const slugs = new Set(files.map((f) => f.replace(/\.yaml$/, "")));
 const orders = new Map<number, string>();
 let failed = 0;
+
+/** Raster logos: real PNG, 128–512 px on the long side, small enough to inline-cache. */
+function checkPng(buf: Buffer): string[] {
+  if (buf.subarray(1, 4).toString("latin1") !== "PNG") return ["logo is not a PNG"];
+  const width = buf.readUInt32BE(16);
+  const height = buf.readUInt32BE(20);
+  const errors: string[] = [];
+  if (Math.max(width, height) < 128 || Math.max(width, height) > 512)
+    errors.push(
+      `PNG logo is ${width}×${height}; use 128–512 px (bun scripts/assets/raster-logo.ts)`,
+    );
+  if (buf.length > 80_000) errors.push(`PNG logo is large (${buf.length} bytes)`);
+  return errors;
+}
 
 for (const file of files) {
   const slug = file.replace(/\.yaml$/, "");
@@ -33,6 +48,7 @@ for (const file of files) {
       errors.push(`basedOn "${d.basedOn}" is not a catalog slug`);
     const logoPath = join(LOGOS, d.logo.file);
     if (!existsSync(logoPath)) errors.push(`logo ${logoPath} missing`);
+    else if (logoPath.endsWith(".png")) errors.push(...checkPng(readFileSync(logoPath)));
     else {
       const svg = readFileSync(logoPath, "utf8");
       if (!/<svg[\s>]/.test(svg)) errors.push("logo is not an SVG");

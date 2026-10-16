@@ -2,6 +2,7 @@
 /**
  * Fixed link target for cross-page anchors (MDX has no `{#id}` heading syntax).
  * Standard targets in install guides: verify, usb, boot, install, after-install.
+ * The header offset comes from the root scroll-padding (base.css).
  */
 interface Props {
   id: string;
@@ -14,6 +15,5 @@ interface Props {
   .anchor-target {
     display: block;
     block-size: 0;
-    scroll-margin-block-start: calc(var(--headerbar-height) + 18px);
   }
 </style>

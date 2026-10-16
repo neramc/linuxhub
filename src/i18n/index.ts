@@ -74,6 +74,22 @@ export function useTranslations(locale: Locale) {
   };
 }
 
+/**
+ * Splits a message around its `{name}` placeholder, so markup can take the
+ * placeholder's place (e.g. a <time>):
+ *
+ *   const [before, after] = splitAround(t("facts.reviewed"), "date");
+ *   {before}<time datetime={iso}>{formatDate(iso, locale)}</time>{after}
+ *
+ * (`t()` without `vars` keeps the placeholders.) Without the placeholder the
+ * whole message comes first.
+ */
+export function splitAround(message: string, name: string): [before: string, after: string] {
+  const placeholder = `{${name}}`;
+  const at = message.indexOf(placeholder);
+  return at < 0 ? [message, ""] : [message.slice(0, at), message.slice(at + placeholder.length)];
+}
+
 /** Picks the right side of a `{ ko, en }` object. */
 export function pick<T>(value: Record<Locale, T>, locale: Locale): T {
   return value[locale];

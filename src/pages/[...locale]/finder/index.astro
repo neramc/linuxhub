@@ -1,43 +1,50 @@
 ---
 /**
- * Distro finder quiz. Questions are plain HTML form controls; scoring runs in
- * the browser (src/lib/finder.ts) over a compact JSON of catalog attributes.
+ * Distro finder quiz. Each question is a ChoiceGroup (radio rows, check
+ * rows, or a toggle group for the two short ones from 600px); scoring runs
+ * in the browser (src/lib/finder.ts) over a compact JSON of catalog
+ * attributes. The three results are clones of one server-rendered ActionRow
+ * <template>, filled from that JSON with the distro's tile (one DistroLogo
+ * per distro in a second template), name and tagline, plus one dim line of
+ * the answers it matched (src/scripts/finder.ts).
  */
+import ActionRow from "~/components/adw/ActionRow.astro";
 import Button from "~/components/adw/Button.astro";
+import ChoiceGroup from "~/components/adw/ChoiceGroup.astro";
+import Icon from "~/components/adw/Icon.astro";
+import DistroLogo from "~/components/DistroLogo.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import type { FinderDistro } from "~/lib/finder";
-import { logoUrl } from "~/lib/logos";
+import { DESKTOPS } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const distros = await getDistros();
-const data: (FinderDistro & { tagline: string; logo: string; href: string })[] = distros.map(
-  (d) => ({
-    id: d.id,
-    name: d.data.name,
-    order: d.data.order,
-    difficulty: d.data.difficulty,
-    useCases: d.data.useCases,
-    desktops: d.data.desktops,
-    releaseModel: d.data.releaseModel,
-    ramGB: d.data.requirements.ramGB,
-    immutable: d.data.immutable,
-    status: d.data.status,
-    tagline: d.data.tagline[locale],
-    logo: logoUrl(d.data.logo.file),
-    href: localizePath(`/distros/${d.id}/`, locale),
-  }),
-);
+const distros = (await getDistros()).filter((d) => d.data.status === "active");
+const data: (FinderDistro & { tagline: string })[] = distros.map((d) => ({
+  id: d.id,
+  name: d.data.name,
+  order: d.data.order,
+  difficulty: d.data.difficulty,
+  useCases: d.data.useCases,
+  desktops: d.data.desktops,
+  releaseModel: d.data.releaseModel,
+  ramGB: d.data.requirements.ramGB,
+  immutable: d.data.immutable,
+  status: d.data.status,
+  tagline: d.data.tagline[locale],
+}));
 const single = [
-  { name: "experience", options: ["new", "some", "expert"] },
-  { name: "hardware", options: ["modern", "average", "old"] },
-  { name: "look", options: ["windows", "macos", "gnome", "any"] },
-  { name: "updates", options: ["stable", "latest", "any"] },
-  { name: "privacy", options: ["yes", "no"] },
+  { name: "experience", options: ["new", "some", "expert"], checked: "new" },
+  { name: "hardware", options: ["modern", "average", "old"], checked: "average" },
+  { name: "look", options: ["windows", "macos", "gnome", "any"], checked: "windows" },
+  { name: "updates", options: ["stable", "latest", "any"], checked: "stable" },
+  { name: "privacy", options: ["yes", "no"], checked: "no" },
 ] as const;
+/** Short labels: a toggle group from 600px (PLAN C4). */
+const toggles = new Set(["experience", "privacy"]);
 const uses = [
   "desktop",
   "gaming",
@@ -47,75 +54,106 @@ const uses = [
   "security",
   "education",
 ] as const;
-const reasons = {
-  experience: t("finder.reasons.experience"),
-  use: t("finder.reasons.use"),
-  hardware: t("finder.reasons.hardware"),
-  look: t("finder.reasons.look"),
-  updates: t("finder.reasons.updates"),
-  privacy: t("finder.reasons.privacy"),
+const questions = [
+  {
+    name: "experience",
+    legend: t("finder.q.experience"),
+    type: "radio" as const,
+    choices: single[0].options.map((o) => ({
+      value: o,
+      label: t(`finder.a.experience.${o}`),
+      checked: o === single[0].checked,
+    })),
+  },
+  {
+    name: "uses",
+    legend: t("finder.q.uses"),
+    type: "checkbox" as const,
+    choices: uses.map((u) => ({
+      value: u,
+      label: t(`finder.uses.${u}`),
+      checked: u === "desktop",
+    })),
+  },
+  ...single.slice(1).map((q) => ({
+    name: q.name,
+    legend: t(`finder.q.${q.name}`),
+    type: "radio" as const,
+    choices: q.options.map((o) => ({
+      value: o,
+      label: t(`finder.a.${q.name}.${o}` as never),
+      checked: o === q.checked,
+    })),
+  })),
+];
+// Strings for the one-line "why" of each result.
+const why = {
+  label: t("finder.why.label"),
+  experience: {
+    beginner: t("finder.why.experience.beginner"),
+    intermediate: t("finder.why.experience.intermediate"),
+    advanced: t("finder.why.experience.advanced"),
+  },
+  use: t("finder.why.use", { uses: "{uses}" }),
+  uses: Object.fromEntries(uses.map((u) => [u, t(`finder.uses.${u}`)])),
+  hardware: t("finder.why.hardware", { ram: "{ram}" }),
+  look: t("finder.why.look", { desktop: "{desktop}" }),
+  desktops: Object.fromEntries(
+    [...new Set(distros.flatMap((d) => d.data.desktops))].map((k) => [k, DESKTOPS[k][locale]]),
+  ),
+  updates: {
+    fixed: t("finder.why.updates.fixed"),
+    lts: t("finder.why.updates.lts"),
+    rolling: t("finder.why.updates.rolling"),
+    "semi-rolling": t("finder.why.updates.semiRolling"),
+  },
+  privacy: t("finder.why.privacy"),
 };
 ---
 
 <Base locale={locale} title={t("finder.title")} description={t("finder.lead")}>
-  <div class="container page">
+  <div class="container page narrow">
     <header class="page-header">
       <h1>{t("finder.title")}</h1>
-      <p class="dim-label">{t("finder.lead")}</p>
+      <p class="lead">{t("finder.lead")}</p>
     </header>
 
     <form class="quiz" data-finder data-compare={localizePath("/compare/", locale)}>
-      <fieldset class="question adw-card padded">
-        <legend class="heading">1. {t("finder.q.experience")}</legend>
-        <div class="choices">
-          {single[0].options.map((o, i) => (
-            <label class="choice"><input type="radio" name="experience" value={o} checked={i === 0} /><span>{t(`finder.a.experience.${o}`)}</span></label>
-          ))}
-        </div>
-      </fieldset>
-
-      <fieldset class="question adw-card padded">
-        <legend class="heading">2. {t("finder.q.uses")}</legend>
-        <div class="choices">
-          {uses.map((u) => (
-            <label class="choice"><input type="checkbox" name="uses" value={u} checked={u === "desktop"} /><span>{t(`finder.uses.${u}`)}</span></label>
-          ))}
-        </div>
-      </fieldset>
-
       {
-        single.slice(1).map((q, qi) => (
-          <fieldset class="question adw-card padded">
-            <legend class="heading">{qi + 3}. {t(`finder.q.${q.name}`)}</legend>
-            <div class="choices">
-              {q.options.map((o, i) => (
-                <label class="choice">
-                  <input type="radio" name={q.name} value={o} checked={i === (q.name === "privacy" ? 1 : q.name === "hardware" ? 1 : 0)} />
-                  <span>{t(`finder.a.${q.name}.${o}` as never)}</span>
-                </label>
-              ))}
-            </div>
-          </fieldset>
+        questions.map((q) => (
+          <ChoiceGroup
+            legend={q.legend}
+            name={q.name}
+            type={q.type}
+            choices={q.choices}
+            toggle={toggles.has(q.name)}
+          />
         ))
       }
-
-      <div class="actions">
-        <Button type="submit" variant="suggested" pill icon="star">{t("finder.submit")}</Button>
+      <div class="button-row" data-js-only>
+        <Button type="submit" variant="suggested">{t("finder.submit")}</Button>
       </div>
       <noscript><p class="dim-label">{t("finder.noscript")} <a href={localizePath("/distros/", locale)}>{t("nav.distros")}</a></p></noscript>
     </form>
 
-    <section class="results" data-results hidden aria-live="polite" aria-labelledby="results-title">
+    <section class="section results" data-results hidden aria-labelledby="results-title">
       <h2 id="results-title" tabindex="-1">{t("finder.results")}</h2>
-      <p class="dim-label">{t("finder.resultsLead")}</p>
-      <ol class="result-list" role="list" data-result-list></ol>
-      <div class="actions">
-        <Button href="#" pill icon="compare" data-compare-link>{t("finder.compare")}</Button>
+      <ol class="adw-boxed-list" role="list" data-result-list></ol>
+      <div class="button-row">
+        <Button href="#" icon="compare" data-compare-link>{t("finder.compare")}</Button>
         <Button variant="flat" icon="refresh" data-restart>{t("finder.restart")}</Button>
       </div>
     </section>
 
-    <script type="application/json" id="finder-data" set:html={JSON.stringify({ distros: data, reasons }).replace(/</g, "\\u003c")}></script>
+    {/* The href is the catalog's; the script appends the distro id. */}
+    <template id="finder-row">
+      <ActionRow href={localizePath("/distros/", locale)}><span slot="title" class="heading"></span></ActionRow>
+    </template>
+    <template id="finder-tiles">
+      {distros.map((d) => <DistroLogo file={d.data.logo.file} name={d.data.name} size={48} data-tile={d.id} />)}
+    </template>
+    <template id="finder-check"><Icon name="check" class="result-why-icon" /></template>
+    <script type="application/json" id="finder-data" set:html={JSON.stringify({ distros: data, why }).replace(/</g, "\\u003c")}></script>
   </div>
 </Base>
 
@@ -124,127 +162,22 @@ const reasons = {
 </script>
 
 <style>
-  .page {
-    display: grid;
-    gap: var(--space-4);
-    padding-block: var(--space-4) var(--space-6);
-    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
-  }
-
-  .page-header {
-    display: grid;
-    gap: 6px;
-  }
-
+  /* The questions sit 24px apart; the page's sections, 48px (.page). */
   .quiz {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-4);
   }
 
-  .question {
-    border: 0;
-    margin: 0;
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .question legend {
-    float: left;
-    inline-size: 100%;
-    margin-block-end: var(--space-2);
-  }
-
-  .choices {
-    clear: both;
+  /* The matched answers (a second dim subtitle line under the tagline), the
+     check icon on its first line. */
+  .results :global(.result-why) {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .choice {
-    position: relative;
-    display: inline-flex;
-  }
-
-  .choice input {
-    position: absolute;
-    opacity: 0;
-    inset: 0;
-    margin: 0;
-    cursor: pointer;
-  }
-
-  .choice span {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: 40px;
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    background: var(--button-color);
-    font-weight: 700;
-    font-size: 0.9375rem;
-    transition: background-color var(--duration) var(--ease-out-quad);
-  }
-
-  .choice:hover span {
-    background: var(--button-hover-color);
-  }
-
-  .choice input:checked + span {
-    background: var(--accent-bg-color);
-    color: var(--accent-fg-color);
-  }
-
-  .choice input:focus-visible + span {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: 2px;
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-block-start: var(--space-2);
-  }
-
-  .results {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .result-list {
-    display: grid;
-    gap: var(--space-2);
-    padding: 0;
-    list-style: none;
-  }
-
-  .result-list :global(a) {
-    display: flex;
-    gap: var(--space-3);
     align-items: flex-start;
-    padding: var(--space-3);
-    color: inherit;
-  }
-
-  .result-list :global(img) {
-    flex: none;
-  }
-
-  .result-list :global(.result-rank) {
-    font-weight: 800;
-    color: var(--accent-color);
-  }
-
-  .result-list :global(.result-name) {
-    font-size: var(--text-title-3);
-    font-weight: 800;
-  }
-
-  .result-list :global(.result-reasons) {
-    display: flex;
-    flex-wrap: wrap;
     gap: 6px;
-    margin-block-start: 6px;
+  }
+
+  .results :global(.result-why-icon) {
+    flex: none;
+    margin-block-start: 1px;
   }
 </style>

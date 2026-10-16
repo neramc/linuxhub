@@ -1,0 +1,242 @@
+---
+/**
+ * Banner carousel after AdwCarousel + GNOME Software's featured carousel, as a
+ * WAI-ARIA APG "basic" carousel without auto-rotation (ADR-0014, amended by
+ * ADR-0016): it moves only when the user asks. Without JS it is a native
+ * scroll-snap row; src/scripts/carousel.ts adds the OSD arrows, dots, arrow
+ * keys and announcements.
+ *
+ *   <Carousel id="popular" title="…" count={slides.length} locale={locale}>
+ *     <p slot="caption">…</p>
+ *     <div class="carousel-slide" role="group" aria-roledescription={t("carousel.slide")}
+ *          aria-labelledby="…" data-name="…">…</div>
+ *   </Carousel>
+ *
+ * Slides are the direct children of the default slot: each one fills the
+ * frame, carries role="group" + aria-roledescription + aria-labelledby (its
+ * visible name) and `data-name` (used in the status announcement). Slides
+ * keep `--carousel-arrow-room` free at both sides for the overlaid arrows.
+ * The arrows go over the card only while the carousel is at least 44rem wide
+ * (a container query, like AppHeader's): below that a side-by-side slide
+ * would be squeezed between them, so they flank the dots instead.
+ * Controls carry `data-js`: they keep their space before the script runs (no
+ * layout shift) but stay hidden and unfocusable. Tab order: the caption's
+ * links, previous, next, then the current slide.
+ */
+import { type Locale, useTranslations } from "~/i18n";
+import Button from "./Button.astro";
+
+interface Props {
+  /** Base id; the visible heading gets `${id}-title`. */
+  id: string;
+  /** Visible heading (h2). Must not contain the word "carousel". */
+  title: string;
+  /** Number of slides (one dot each). */
+  count: number;
+  locale: Locale;
+  class?: string | undefined;
+}
+
+const { id, title, count, locale, class: className } = Astro.props;
+const t = useTranslations(locale);
+const titleId = `${id}-title`;
+---
+
+<section
+  class:list={["carousel", className]}
+  id={id}
+  data-carousel
+  aria-roledescription={t("carousel.roledescription")}
+  aria-labelledby={titleId}
+>
+  <div class="carousel-heading">
+    <h2 id={titleId}>{title}</h2>
+    <slot name="caption" />
+  </div>
+  <div class="carousel-frame">
+    {/* Before the slides in the tab order; placed over the card by grid areas. */}
+    <Button variant="osd" circular icon="go-previous" label={t("carousel.previous")} class="carousel-nav prev" data-prev data-js />
+    <Button variant="osd" circular icon="go-next" label={t("carousel.next")} class="carousel-nav next" data-next data-js />
+    <div class="carousel-viewport">
+      <div class="carousel-track" data-track>
+        <slot />
+      </div>
+    </div>
+    <div class="carousel-dots" data-dots data-js aria-hidden="true">
+      {Array.from({ length: count }, (_, i) => <span class:list={{ current: i === 0 }} />)}
+    </div>
+  </div>
+  <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-status data-template={t("carousel.status")}></p>
+</section>
+
+<script>
+  import "~/scripts/carousel";
+</script>
+
+<style>
+  .carousel {
+    container: carousel / inline-size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* the track's min-content must not widen the page */
+    gap: var(--space-2);
+  }
+
+  .carousel-heading {
+    display: grid;
+    gap: 2px;
+    min-inline-size: 0;
+  }
+
+  /* The arrows overlap the card in the same grid area (no absolute positioning). */
+  .carousel-frame {
+    --carousel-arrow-room: 72px; /* 12px inset + 44px button + 16px */
+    display: grid;
+    grid-template-areas: "card" "dots";
+    row-gap: var(--space-2);
+  }
+
+  /* Controls keep their space before JS runs (no layout shift), unseen and unfocusable. */
+  .carousel:not(:global(.enhanced)) :global([data-js]) {
+    visibility: hidden;
+  }
+
+  .carousel-frame,
+  .carousel-viewport {
+    min-inline-size: 0;
+  }
+
+  .carousel-viewport {
+    grid-area: card;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background-color: var(--card-bg-color);
+    box-shadow: var(--shadow-card);
+  }
+
+  .carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel:global(.enhanced) .carousel-track {
+    scrollbar-width: none;
+  }
+
+  .carousel:global(.enhanced) .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* position: relative keeps absolutely positioned descendants (e.g.
+     .visually-hidden text) inside the scroller instead of widening the page. */
+  .carousel-track > :global(*) {
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-inline-size: 0;
+  }
+
+  .carousel-frame > :global(.carousel-nav) {
+    grid-area: card;
+    align-self: center;
+    z-index: 1;
+    margin-inline: 12px; /* GNOME Software: .featured-carousel button { margin: 12px } */
+  }
+
+  .carousel-frame > :global(.carousel-nav.prev) {
+    justify-self: start;
+  }
+
+  .carousel-frame > :global(.carousel-nav.next) {
+    justify-self: end;
+  }
+
+  /* Over the slide's tint every control in the frame gets the full-accent
+     ring, like the slide's own links (.accent-*); 80% drops below 3:1 there
+     (PLAN C12). */
+  @container carousel (width >= 44rem) {
+    .carousel-frame {
+      --focus-ring-color: var(--accent-color);
+    }
+  }
+
+  /* AdwCarouselIndicatorDots: 6px dots, 8px current, 7px apart. */
+  .carousel-dots {
+    grid-area: dots;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    block-size: 20px;
+  }
+
+  .carousel-dots > span {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.55; /* libadwaita's 0.3 is 1.78:1; 0.55 is ≥ 3:1 (ADR-0009) */
+    scale: 0.75; /* the size changes at once; only the opacity fades */
+    transition: opacity var(--duration) var(--ease-out-quad);
+  }
+
+  .carousel-dots > span.current {
+    opacity: 0.9;
+    scale: 1;
+  }
+
+  /* Narrow: the arrows leave the card and flank the dots: [<] • • ● • • [>] */
+  @container carousel (width < 44rem) {
+    .carousel-frame {
+      --carousel-arrow-room: var(--space-3);
+      grid-template-areas: "card card card" "prev dots next";
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+    }
+
+    .carousel-frame > :global(.carousel-nav) {
+      margin: 0;
+    }
+
+    .carousel-frame > :global(.carousel-nav.prev) {
+      grid-area: prev;
+    }
+
+    .carousel-frame > :global(.carousel-nav.next) {
+      grid-area: next;
+    }
+
+    /* Off the card the arrows are ordinary raised circular buttons. */
+    .carousel-frame > :global(.carousel-nav.adw-button.osd) {
+      color: inherit;
+      background-color: var(--button-color);
+    }
+
+    .carousel-frame > :global(.carousel-nav.adw-button.osd:hover) {
+      background-color: var(--button-hover-color);
+    }
+
+    .carousel-frame > :global(.carousel-nav.adw-button.osd:active) {
+      background-color: var(--button-active-color);
+    }
+  }
+
+  @media (forced-colors: active) {
+    /* The card keeps its edge without its fill and shadow (SPEC §4). */
+    .carousel-viewport {
+      border: 1px solid transparent;
+    }
+
+    .carousel-dots > span {
+      forced-color-adjust: none;
+      background-color: CanvasText;
+    }
+
+    .carousel-dots > span.current {
+      background-color: Highlight;
+    }
+  }
+</style>

@@ -1,13 +1,12 @@
 ---
 /**
  * Root layout: document head (SEO, alternates, fonts, theme), the Adwaita
- * header bar, page content, footer and the mobile bottom bar.
+ * header bar, page content and footer.
  */
 import { Font } from "astro:assets";
 import "~/styles/tokens.css";
 import "~/styles/base.css";
 import "~/styles/adwaita.css";
-import BottomBar from "~/components/site/BottomBar.astro";
 import HeaderBar from "~/components/site/HeaderBar.astro";
 import SearchDialog from "~/components/site/SearchDialog.astro";
 import SiteFooter from "~/components/site/SiteFooter.astro";
@@ -72,6 +71,7 @@ Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
     <link rel="alternate" hreflang="x-default" href={new URL(localizePath(basePath, DEFAULT_LOCALE), Astro.site)} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={t("footer.rss")} href={localizePath("/rss.xml", locale)} />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#2e2e32" media="(prefers-color-scheme: dark)" />
@@ -100,18 +100,24 @@ Astro.csp?.insertScriptHash(sha256Source(THEME_INIT));
       <slot />
     </main>
     <SiteFooter locale={locale} />
-    <BottomBar locale={locale} />
     <SearchDialog locale={locale} />
+    {/* The toast live region exists, empty, before the first message, so that
+        message is announced too (SPEC §12; src/scripts/toast.ts). */}
+    <div class="adw-toast" role="status" data-toast></div>
   </body>
 </html>
 
 <style>
+  /* A 44px target (SPEC §7) over the header bar while focused. */
   .skip-link {
     position: absolute;
     inset-inline-start: var(--space-2);
     inset-block-start: -100px;
     z-index: 100;
-    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding: 6px 16px;
     border-radius: var(--radius-button);
     background: var(--accent-bg-color);
     color: var(--accent-fg-color);

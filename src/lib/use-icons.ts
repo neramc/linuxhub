@@ -1,6 +1,10 @@
 import type { UseCase } from "./taxonomy";
 
-/** Adwaita symbolic icon per use case (src/assets/icons). */
+/**
+ * Adwaita symbolic icon per use case (src/assets/icons). One meaning per icon
+ * site-wide (SPEC §2): terminal = developer, engineering = source code
+ * (DistroLinks), system = enterprise.
+ */
 export const USE_ICONS: Record<UseCase, string> = {
   beginner: "star",
   desktop: "display",
@@ -12,6 +16,6 @@ export const USE_ICONS: Record<UseCase, string> = {
   lightweight: "computer",
   creative: "graphics",
   education: "science",
-  enterprise: "engineering",
+  enterprise: "system",
   tinkerer: "settings",
 };

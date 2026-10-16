@@ -1,22 +1,27 @@
 /**
  * libadwaita AdwToast: a small dark pill at the bottom of the window that
- * announces a transient message (also to screen readers via aria-live).
+ * confirms an action whose result is otherwise invisible (SPEC §12). The live
+ * region (`[data-toast]`, role="status") is rendered empty by Base.astro, so
+ * the first message is announced as well. One message at a time: a new one
+ * replaces the current one and restarts its 4 s.
  */
-let region: HTMLElement | null = null;
-let timer: number | undefined;
+const SHOWN_MS = 4000;
+/** Past the fade-out (--duration), the region is emptied again. */
+const FADE_MS = 250;
 
-export function toast(message: string, ms = 2500): void {
-  if (!region) {
-    region = document.createElement("div");
-    region.className = "adw-toast";
-    region.setAttribute("role", "status");
-    region.setAttribute("aria-live", "polite");
-    document.body.append(region);
-  }
+let hideTimer: number | undefined;
+let clearTimer: number | undefined;
+
+export function toast(message: string): void {
+  const region = document.querySelector<HTMLElement>("[data-toast]");
+  if (!region) return;
+  window.clearTimeout(hideTimer);
+  window.clearTimeout(clearTimer);
   region.textContent = message;
   region.dataset.visible = "";
-  window.clearTimeout(timer);
-  timer = window.setTimeout(() => {
-    if (region) delete region.dataset.visible;
-  }, ms);
+  hideTimer = window.setTimeout(() => {
+    delete region.dataset.visible;
+    // No stale message stays in the page for a screen reader to find later.
+    clearTimer = window.setTimeout(() => region.replaceChildren(), FADE_MS);
+  }, SHOWN_MS);
 }

@@ -16,6 +16,10 @@ test("home → catalog → distro detail", async ({ page }) => {
 
 test("catalog filters keep state in the URL", async ({ page }) => {
   await page.goto("/distros/?family=fedora");
+  // A facet in the URL opens the Filters disclosure and counts as one filter.
+  const filters = page.locator("[data-filter-panel]");
+  await expect(filters).toHaveAttribute("open", "");
+  await expect(page.locator("[data-filter-count]")).toHaveText("1");
   const visible = page.locator("[data-distro]:not([hidden])");
   await expect(visible.first()).toBeVisible();
   for (const family of await visible.evaluateAll((els) =>
@@ -25,8 +29,57 @@ test("catalog filters keep state in the URL", async ({ page }) => {
   }
   await page.locator('select[name="family"]').selectOption("");
   await expect(page).toHaveURL(/\/distros\/$/);
+  await expect(page.locator("[data-filter-count]")).toBeHidden();
   await page.locator('[data-filters] input[name="q"]').fill("zzzz-no-such-distro");
   await expect(page.locator("[data-empty]")).toBeVisible();
+});
+
+test("catalog filters disclosure and use-case chips", async ({ page }) => {
+  await page.goto("/distros/");
+  const filters = page.locator("[data-filter-panel]");
+  await expect(filters).not.toHaveAttribute("open", "");
+  await filters.locator("summary").click();
+  await page.locator('select[name="level"]').selectOption("beginner");
+  await expect(page).toHaveURL(/level=beginner/);
+  await expect(page.locator("[data-filter-count]")).toHaveText("1");
+  // The chip row filters in place and marks the current chip.
+  const chips = page.locator("[data-use-chips]");
+  await chips.locator('[data-use-chip="gaming"]').click();
+  await expect(page).toHaveURL(/use=gaming/);
+  await expect(chips.locator('[data-use-chip="gaming"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator('select[name="use"]')).toHaveValue("gaming");
+  for (const uses of await page
+    .locator("[data-distro]:not([hidden])")
+    .evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.use))) {
+    expect(uses?.split(" ")).toContain("gaming");
+  }
+  await chips.locator('[data-use-chip=""]').click();
+  await expect(page).not.toHaveURL(/use=/);
+  // A use-case link from the home page keeps the disclosure closed (the chip shows it).
+  await page.goto("/distros/?use=gaming");
+  await expect(filters).not.toHaveAttribute("open", "");
+  await expect(chips.locator('[data-use-chip="gaming"]')).toHaveAttribute("aria-current", "page");
+});
+
+test("catalog reset keeps keyboard focus and the empty state names the query", async ({ page }) => {
+  await page.goto("/distros/?level=beginner");
+  // The toolbar's Reset never hides itself: it is disabled once nothing is set.
+  const reset = page.locator("[data-filters] [data-reset]");
+  await expect(reset).toHaveAttribute("aria-disabled", "false");
+  await reset.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/distros\/$/);
+  await expect(reset).toBeFocused();
+  await expect(reset).toHaveAttribute("aria-disabled", "true");
+  // No match: one sentence with the query, and a reset that hands focus to the entry.
+  const q = page.locator('[data-filters] input[name="q"]');
+  await q.fill("zzzz-no-such-distro");
+  const empty = page.locator("[data-empty]");
+  await expect(empty).toContainText("“zzzz-no-such-distro”");
+  await empty.getByRole("button", { name: "필터 초기화" }).click();
+  await expect(empty).toBeHidden();
+  await expect(q).toBeFocused();
+  await expect(q).toHaveValue("");
 });
 
 test("English pages use the /en/ prefix and hreflang alternates", async ({ page }) => {
@@ -52,4 +105,67 @@ test("theme switcher persists the choice", async ({ page }) => {
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
+test("main menu holds the primary destinations on narrow screens", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/distros/fedora/");
+  await expect(page.locator(".primary-nav")).toBeHidden();
+  await page.getByRole("button", { name: "주 메뉴" }).click();
+  const menu = page.locator("#main-menu");
+  await expect(menu.getByRole("link", { name: "배포판", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+  for (const name of ["리눅스 가이드", "배포판 추천", "계보", "릴리스 소식", "비교", "소개"]) {
+    await expect(menu.getByRole("link", { name, exact: true })).toBeVisible();
+  }
+  const english = menu.getByRole("link", { name: "English" });
+  await expect(english).toHaveAttribute("hreflang", "en");
+  await expect(english).toHaveAttribute("href", "/en/distros/fedora/");
+  await expect(menu.getByRole("link", { name: "한국어" })).toHaveCount(0);
+});
+
+test("the header holds the four primary destinations with Compare", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await page.goto("/compare/");
+  const nav = page.locator(".primary-nav");
+  await expect(nav).toBeVisible();
+  await expect(nav.getByRole("link", { name: "비교", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+  await expect(nav.getByRole("link", { name: "계보" })).toHaveCount(0);
+});
+
+test("the main menu closes when keyboard focus leaves it", async ({ page }) => {
+  await page.goto("/");
+  const button = page.getByRole("button", { name: "주 메뉴" });
+  const menu = page.locator("#main-menu");
+  await button.focus();
+  await page.keyboard.press("Enter");
+  await expect(menu).toBeVisible();
+  const inMenu = () => page.evaluate(() => Boolean(document.activeElement?.closest("#main-menu")));
+  let stops = 0;
+  for (let i = 0; i < 20; i++) {
+    await page.keyboard.press("Tab");
+    if (!(await inMenu())) break;
+    stops++;
+  }
+  expect(stops).toBeGreaterThan(0);
+  expect(await menu.evaluate((m) => m.matches(":popover-open"))).toBe(false);
+  // Focus moved on to the page, not back to the menu button.
+  expect(
+    await page.evaluate(() => {
+      const active = document.activeElement;
+      return active !== document.body && !active?.matches('[popovertarget="main-menu"]');
+    }),
+  ).toBe(true);
+});
+
+test("the language switch keeps the query", async ({ page }) => {
+  await page.goto("/compare/?d=fedora,ubuntu");
+  await page.getByRole("button", { name: "주 메뉴" }).click();
+  await page.locator("#main-menu").getByRole("link", { name: "English" }).click();
+  await expect(page).toHaveURL(/\/en\/compare\/\?d=fedora,ubuntu$/);
 });
