@@ -1,9 +1,10 @@
 ---
 /**
  * Banner carousel after AdwCarousel + GNOME Software's featured carousel, as a
- * WAI-ARIA APG "basic" carousel (ADR-0014). Without JS it is a native
- * scroll-snap row; src/scripts/carousel.ts adds auto-rotation (8 s), the
- * rotation button, OSD arrows, dots and announcements.
+ * WAI-ARIA APG "basic" carousel without auto-rotation (ADR-0014, amended by
+ * ADR-0016): it moves only when the user asks. Without JS it is a native
+ * scroll-snap row; src/scripts/carousel.ts adds the OSD arrows, dots, arrow
+ * keys and announcements.
  *
  *   <Carousel id="popular" title="…" count={slides.length} locale={locale}>
  *     <p slot="caption">…</p>
@@ -15,13 +16,15 @@
  * frame, carries role="group" + aria-roledescription + aria-labelledby (its
  * visible name) and `data-name` (used in the status announcement). Slides
  * keep `--carousel-arrow-room` free at both sides for the overlaid arrows.
+ * The arrows go over the card only while the carousel is at least 44rem wide
+ * (a container query, like AppHeader's): below that a side-by-side slide
+ * would be squeezed between them, so they flank the dots instead.
  * Controls carry `data-js`: they keep their space before the script runs (no
- * layout shift) but stay hidden and unfocusable. Tab order: rotation button,
- * the caption's links, previous, next, then the current slide.
+ * layout shift) but stay hidden and unfocusable. Tab order: the caption's
+ * links, previous, next, then the current slide.
  */
 import { type Locale, useTranslations } from "~/i18n";
 import Button from "./Button.astro";
-import Icon from "./Icon.astro";
 
 interface Props {
   /** Base id; the visible heading gets `${id}-title`. */
@@ -46,25 +49,9 @@ const titleId = `${id}-title`;
   aria-roledescription={t("carousel.roledescription")}
   aria-labelledby={titleId}
 >
-  <div class="carousel-header">
-    {/* First in the tab order (APG); shown at the end of the header row. */}
-    <button
-      type="button"
-      class="adw-button flat circular image-button carousel-rotate playing"
-      data-rotate
-      data-js
-      data-stop={t("carousel.stop")}
-      data-start={t("carousel.start")}
-      aria-label={t("carousel.stop")}
-      title={t("carousel.stop")}
-    >
-      <Icon name="media-playback-pause" class="icon-pause" />
-      <Icon name="media-playback-start" class="icon-play" />
-    </button>
-    <div class="carousel-heading">
-      <h2 id={titleId}>{title}</h2>
-      <slot name="caption" />
-    </div>
+  <div class="carousel-heading">
+    <h2 id={titleId}>{title}</h2>
+    <slot name="caption" />
   </div>
   <div class="carousel-frame">
     {/* Before the slides in the tab order; placed over the card by grid areas. */}
@@ -88,16 +75,9 @@ const titleId = `${id}-title`;
 
 <style>
   .carousel {
-    --carousel-arrow-room: 72px; /* 12px inset + 44px button + 16px */
+    container: carousel / inline-size;
     display: grid;
     grid-template-columns: minmax(0, 1fr); /* the track's min-content must not widen the page */
-    gap: var(--space-2);
-  }
-
-  .carousel-header {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
     gap: var(--space-2);
   }
 
@@ -107,12 +87,9 @@ const titleId = `${id}-title`;
     min-inline-size: 0;
   }
 
-  .carousel-rotate {
-    order: 1;
-  }
-
   /* The arrows overlap the card in the same grid area (no absolute positioning). */
   .carousel-frame {
+    --carousel-arrow-room: 72px; /* 12px inset + 44px button + 16px */
     display: grid;
     grid-template-areas: "card" "dots";
     row-gap: var(--space-2);
@@ -177,10 +154,11 @@ const titleId = `${id}-title`;
     justify-self: end;
   }
 
-  /* Over the card the arrows sit on the slide's tint: the full-accent ring,
-     like the slide's own controls (80% drops below 3:1 there; PLAN C12). */
-  @media (width >= 700px) {
-    .carousel-frame > :global(.carousel-nav) {
+  /* Over the slide's tint every control in the frame gets the full-accent
+     ring, like the slide's own links (.accent-*); 80% drops below 3:1 there
+     (PLAN C12). */
+  @container carousel (width >= 44rem) {
+    .carousel-frame {
       --focus-ring-color: var(--accent-color);
     }
   }
@@ -202,10 +180,8 @@ const titleId = `${id}-title`;
     border-radius: 50%;
     background-color: currentColor;
     opacity: 0.55; /* libadwaita's 0.3 is 1.78:1; 0.55 is ≥ 3:1 (ADR-0009) */
-    scale: 0.75;
-    transition:
-      opacity var(--duration) var(--ease-out-quad),
-      scale var(--duration) var(--ease-out-quad);
+    scale: 0.75; /* the size changes at once; only the opacity fades */
+    transition: opacity var(--duration) var(--ease-out-quad);
   }
 
   .carousel-dots > span.current {
@@ -213,22 +189,10 @@ const titleId = `${id}-title`;
     scale: 1;
   }
 
-  .carousel-rotate :global(.icon-play),
-  .carousel-rotate:not(.playing) :global(.icon-pause) {
-    display: none;
-  }
-
-  .carousel-rotate:not(.playing) :global(.icon-play) {
-    display: block;
-  }
-
   /* Narrow: the arrows leave the card and flank the dots: [<] • • ● • • [>] */
-  @media (width < 700px) {
-    .carousel {
-      --carousel-arrow-room: var(--space-3);
-    }
-
+  @container carousel (width < 44rem) {
     .carousel-frame {
+      --carousel-arrow-room: var(--space-3);
       grid-template-areas: "card card card" "prev dots next";
       grid-template-columns: 44px minmax(0, 1fr) 44px;
     }

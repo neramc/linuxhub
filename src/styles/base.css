@@ -245,6 +245,16 @@
     font-weight: 700;
   }
 
+  /* A text link that stands alone (breadcrumb, sources, logo credits, the
+     download wizard's verify links): a --target-size target, 24px (WCAG
+     2.5.8) or 44px on touch screens. */
+  .target-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--target-size);
+    min-inline-size: var(--target-size);
+  }
+
   [hidden] {
     display: none !important;
   }

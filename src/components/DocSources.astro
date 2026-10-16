@@ -28,7 +28,7 @@ const [before, after] = splitAround(t("sources.reviewed"), "date");
     <div class="doc-sources-body">
       <p class="dim-label">{t("sources.note")}</p>
       <ul>
-        {sources.map((url) => <li><a href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
+        {sources.map((url) => <li><a class="target-link" href={url} rel="noopener external">{url.replace(/^https:\/\//, "")}</a></li>)}
       </ul>
     </div>
   </ExpanderRow>

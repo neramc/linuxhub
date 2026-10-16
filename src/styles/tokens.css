@@ -177,9 +177,10 @@
   /* ---- Layout ---- */
   /* Breakpoints (media queries cannot read custom properties, so use these
      literals in range syntax): layout (width < 600px) · (600px <= width < 1000px)
-     · (width >= 1000px); header only (width >= 768px) and (width >= 48em)
-     primary nav · (width >= 1100px) and (width >= 68.75em) search entry button
-     (em follows the browser's font size); touch targets (pointer: coarse). */
+     · (width >= 1000px); header only (width >= 768px) primary nav ·
+     (width >= 1100px) search entry button, each also behind a rem container
+     query on the header so larger text keeps them in the menu (HeaderBar);
+     touch targets (pointer: coarse). */
   --content-width: 1200px;
   --text-width: 760px;
   --prose-measure: var(--text-width); /* running text in .prose; en: 55ch, below */
@@ -191,6 +192,9 @@
   --space-grid: var(--space-3); /* card grid gap; 12px < 600px */
   --control-height: 36px; /* buttons, entries, combos; 44px on coarse pointers */
   --row-min-height: 50px; /* list rows; 56px on coarse pointers */
+  /* Text links that stand alone (.target-link in base.css): 24px (WCAG
+     2.5.8); 44px on coarse pointers. */
+  --target-size: 24px;
 
   /* ---- Type (libadwaita title-1…caption, scaled to a 16px web base) ---- */
   /* The font stacks (incl. Hangul system fallbacks) come from astro.config.mjs `fonts`.
@@ -244,6 +248,7 @@
   :root {
     --control-height: 44px;
     --row-min-height: 56px;
+    --target-size: 44px;
   }
 }
 

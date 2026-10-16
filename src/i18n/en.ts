@@ -93,8 +93,6 @@ export const en = {
     slide: "slide",
     previous: "Previous slide",
     next: "Next slide",
-    stop: "Stop automatic slide rotation",
-    start: "Start automatic slide rotation",
     status: "{index} / {total}: {name}",
   },
   catalog: {

@@ -3,7 +3,8 @@
  * Breadcrumb trail for sub-pages (SPEC §10): caption-size, dim links from the
  * top level down, separated by a go-next icon (hidden from assistive
  * technology), ending with the current page (aria-current, not a link).
- * Links are at least 24px tall (WCAG 2.5.8). Left out of the search index.
+ * Links are --target-size targets (24px, 44px on touch screens). Left out of
+ * the search index.
  *
  *   <Breadcrumb
  *     locale={locale}
@@ -31,7 +32,7 @@ const t = useTranslations(locale);
     {
       links.map((link) => (
         <li>
-          <a href={link.href}>{link.label}</a>
+          <a href={link.href} class="target-link">{link.label}</a>
           <Icon name="go-next" size={12} />
         </li>
       ))
@@ -61,9 +62,6 @@ const t = useTranslations(locale);
   }
 
   a {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: 24px;
     color: inherit;
   }
 </style>

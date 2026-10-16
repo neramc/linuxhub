@@ -92,8 +92,6 @@ export const ko: DictionaryShape = {
     slide: "슬라이드",
     previous: "이전 슬라이드",
     next: "다음 슬라이드",
-    stop: "자동 넘김 멈추기",
-    start: "자동 넘김 시작",
     status: "{index} / {total}: {name}",
   },
   catalog: {

@@ -82,6 +82,8 @@ const links = [
      moving the text: the padding is taken back by the margin. */
   @media (pointer: coarse) {
     .footer-links a {
+      justify-content: center;
+      min-inline-size: var(--target-size);
       padding-inline: var(--space-1);
       margin-inline: calc(-1 * var(--space-1));
     }

@@ -235,17 +235,19 @@ const themes = [
     }
   }
 
-  /* From 768px the header shows the primary destinations (the same query as
-     HeaderBar.astro: em follows the browser's font-size setting). */
-  @media (width >= 768px) and (width >= 48em) {
-    .menu-primary {
-      display: none;
-    }
+  /* When the header shows the primary destinations (the same queries as
+     HeaderBar.astro; the menu is inside the header's query container). */
+  @media (width >= 768px) {
+    @container headerbar (width >= 44rem) {
+      .menu-primary {
+        display: none;
+      }
 
-    .menu-primary + .menu-section {
-      margin-block-start: 0;
-      padding-block-start: 0;
-      border-block-start: 0;
+      .menu-primary + .menu-section {
+        margin-block-start: 0;
+        padding-block-start: 0;
+        border-block-start: 0;
+      }
     }
   }
 </style>

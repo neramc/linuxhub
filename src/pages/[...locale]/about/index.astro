@@ -172,7 +172,7 @@ const en = ko ? "en" : undefined;
                   distros.map((d) => (
                     <tr role="row">
                       <th scope="row" role="rowheader">
-                        <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
+                        <a class="target-link" href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
                       </th>
                       <td role="cell" class="license">
                         <span lang={en}>{d.data.logo.license}</span>
@@ -186,7 +186,7 @@ const en = ko ? "en" : undefined;
                         )}
                       </td>
                       <td role="cell" class="source">
-                        <a href={d.data.logo.source} rel="noopener external">
+                        <a class="target-link" href={d.data.logo.source} rel="noopener external">
                           {new URL(d.data.logo.source).hostname}
                         </a>
                       </td>

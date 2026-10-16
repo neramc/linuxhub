@@ -65,7 +65,7 @@ const [basisBefore, basisAfter] = splitAround(t("home.popular.basis"), "day");
       <p slot="caption" class="caption basis">
         <span class="dim-label">{basisBefore}<time datetime={day}>{dayText}</time>{basisAfter}</span>
         <span class="dim-label separator" aria-hidden="true">·</span>
-        <a href={`${localizePath("/about/", locale)}#popularity`}>{t("home.popular.about")}</a>
+        <a class="target-link" href={`${localizePath("/about/", locale)}#popularity`}>{t("home.popular.about")}</a>
       </p>
     )
   }
@@ -125,6 +125,7 @@ const [basisBefore, basisAfter] = splitAround(t("home.popular.basis"), "day");
   .basis {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     column-gap: var(--space-1);
   }
 

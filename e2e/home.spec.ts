@@ -3,7 +3,6 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
 const carousel = (page: Page) => page.locator("[data-carousel]");
-const rotate = (page: Page) => page.locator("[data-rotate]");
 const slides = (page: Page) => page.locator("[data-track] > *");
 
 /** Index of the current slide according to the dots (the script's state). */
@@ -42,22 +41,30 @@ test.describe("popular carousel", () => {
     await expect(page.locator('#popular a[href="/about/#popularity"]')).toBeVisible();
   });
 
-  test("keyboard focus enters at the rotation button and stops rotation", async ({ page }) => {
+  test("arrow keys on a focused slide link keep focus in the slide", async ({ page }) => {
     await ready(page);
-    await expect(rotate(page)).toHaveAttribute("aria-label", "자동 넘김 멈추기");
-    await page.locator("main").focus();
-    await page.keyboard.press("Tab");
-    await expect(rotate(page)).toBeFocused();
-    await expect(rotate(page)).toHaveAttribute("aria-label", "자동 넘김 시작");
-    await page.keyboard.press("Enter");
-    await expect(rotate(page)).toHaveAttribute("aria-label", "자동 넘김 멈추기");
+    const link = slides(page).first().locator("a").first();
+    await link.focus();
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowLeft");
+    // Past the smooth scroll and the 120 ms scroll settle: nothing moved under the link.
+    await page.waitForTimeout(800);
+    await expect(link).toBeFocused();
+    expect(await current(page)).toBe(0);
+    expect(await page.locator("[data-track]").evaluate((t) => t.scrollLeft)).toBeLessThan(2);
+    // On the arrows the keys still change the slide, and focus stays on the arrow.
+    const next = page.locator("[data-next]");
+    await next.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect.poll(() => current(page)).toBe(1);
+    await expect(next).toBeFocused();
   });
 
   test("only the current slide's links are reachable", async ({ page }) => {
     await ready(page);
     const inert = await slides(page).evaluateAll((els) => els.map((e) => (e as HTMLElement).inert));
     expect(inert).toEqual([false, true, true, true, true]);
-    await rotate(page).focus();
+    await page.locator("main").focus();
     const order: string[] = [];
     for (let i = 0; i < 6; i++) {
       await page.keyboard.press("Tab");
@@ -104,23 +111,20 @@ test.describe("popular carousel", () => {
     await expect(slides(page).nth(2)).not.toHaveAttribute("inert");
   });
 
-  test("advances on its own, but not while hovered", async ({ page }) => {
+  test("never advances on its own", async ({ page }) => {
     test.slow();
-    await ready(page);
-    await page.locator(".carousel-viewport").hover();
-    await page.waitForTimeout(9000);
-    expect(await current(page)).toBe(0);
-    await page.mouse.move(5, 5);
-    await expect.poll(() => current(page), { timeout: 10_000 }).toBe(1);
-  });
-
-  test("does not rotate with reduced motion", async ({ page }) => {
-    test.slow();
-    await page.emulateMedia({ reducedMotion: "reduce" });
-    await ready(page);
-    await expect(rotate(page)).toHaveAttribute("aria-label", "자동 넘김 시작");
-    await page.waitForTimeout(9000);
-    expect(await current(page)).toBe(0);
+    for (const reducedMotion of ["no-preference", "reduce"] as const) {
+      await page.emulateMedia({ reducedMotion });
+      await ready(page);
+      await page.mouse.move(5, 5); // the pointer off the carousel
+      await page.waitForTimeout(9000);
+      expect(await current(page), reducedMotion).toBe(0);
+      expect(
+        await page.locator("[data-track]").evaluate((t) => t.scrollLeft),
+        reducedMotion,
+      ).toBeLessThan(2);
+      await expect(page.locator("[data-status]"), reducedMotion).toBeEmpty();
+    }
   });
 
   test("controls take their space before JS (no layout shift)", async ({ browser }) => {
