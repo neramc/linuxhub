@@ -233,6 +233,7 @@ export const ko: DictionaryShape = {
       beyond: "더 나아가기",
     },
     chapters: "목차",
+    sections: "이 장의 내용",
     next: "다음 장",
     previous: "이전 장",
     related: "함께 보면 좋은 배포판",
@@ -347,6 +348,12 @@ export const ko: DictionaryShape = {
     title: "Linuxhub 소개",
     lead: "리눅스를 고르고, 내려받고, 설치하는 일을 돕는 빠르고 깔끔한 카탈로그입니다.",
     logos: "로고 출처 ({count})",
+    credits: {
+      distro: "배포판",
+      license: "라이선스 / 상표",
+      source: "출처",
+      trademark: "상표 정책",
+    },
   },
   notFound: {
     title: "페이지를 찾을 수 없습니다",

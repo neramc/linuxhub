@@ -10,15 +10,14 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"div"> & {
   href?: string | undefined;
-  padded?: boolean | undefined;
 };
 
-const { href, padded = true, class: className, ...rest } = Astro.props;
+const { href, class: className, ...rest } = Astro.props;
 const Tag = href ? "a" : "div";
 ---
 
 <Tag
-  class:list={["adw-card", { activatable: href, padded }, className]}
+  class:list={["adw-card", { activatable: href }, className]}
   {...(href ? { href } : {})}
   {...rest}
 >

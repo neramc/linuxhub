@@ -27,7 +27,6 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
 <Card
   href={localizePath(`/distros/${distro.id}/`, locale)}
   class={className ? `distro-card ${className}` : "distro-card"}
-  padded={false}
   {...rest}
 >
   <DistroLogo file={d.logo.file} name={d.name} size={64} narrowSize={48} eager={eager} />

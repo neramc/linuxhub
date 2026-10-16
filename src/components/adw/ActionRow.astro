@@ -4,7 +4,9 @@
  * any `prefix` slot content such as an app tile), the title (`title`, or a
  * rich `title` slot), an optional subtitle (`subtitle`, or a `subtitle` slot,
  * e.g. with a <time>), and a suffix (default slot). With `href` the whole row
- * is a link (activatable) and ends with a chevron or the external-link icon.
+ * is a link (activatable) and ends with a chevron or the external-link icon;
+ * a `rel="prev"` row points back instead: go-previous at its start, no
+ * chevron (a pager's previous row).
  *
  *   <ActionRow href={url} title={name}>
  *     <DistroLogo slot="prefix" file={file} name={name} size={36} />
@@ -27,6 +29,8 @@ interface Props {
   icon?: string | undefined;
   href?: string | undefined;
   external?: boolean | undefined;
+  /** Link types of an `href` row, e.g. "prev" / "next" in a pager. */
+  rel?: string | undefined;
   /** A fact row: dim subtitle label, title value (AdwActionRow `.property`). */
   property?: boolean | undefined;
   tone?: "error" | undefined;
@@ -39,20 +43,24 @@ const {
   icon,
   href,
   external = false,
+  rel,
   property = false,
   tone,
   ...rest
 } = Astro.props;
 const Tag = href ? "a" : "div";
+const linkRel = [rel, external && "noopener external"].filter(Boolean).join(" ") || undefined;
+const back = Boolean(href) && rel?.split(" ").includes("prev");
+const prefixIcon = icon ?? (back ? "go-previous" : undefined);
 const hasSubtitleSlot = Astro.slots.has("subtitle");
 ---
 
 <li class="adw-row-item" {...rest}>
   <Tag
     class:list={["adw-action-row", { activatable: href, property }, tone]}
-    {...(href ? { href, ...(external ? { rel: "noopener external", target: "_blank" } : {}) } : {})}
+    {...(href ? { href, rel: linkRel, ...(external ? { target: "_blank" } : {}) } : {})}
   >
-    {icon && <Icon name={icon} size={16} class="adw-row-prefix" />}
+    {prefixIcon && <Icon name={prefixIcon} size={16} class="adw-row-prefix" />}
     <slot name="prefix" />
     <span class="adw-row-text">
       <span class="adw-row-title">{title}<slot name="title" /></span>
@@ -67,7 +75,7 @@ const hasSubtitleSlot = Astro.slots.has("subtitle");
     </span>
     <span class="adw-row-suffix">
       <slot />
-      {href && <Icon name={external ? "external" : "go-next"} class="adw-row-chevron" />}
+      {href && !back && <Icon name={external ? "external" : "go-next"} class="adw-row-chevron" />}
     </span>
   </Tag>
 </li>

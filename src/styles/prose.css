@@ -74,7 +74,9 @@
   border-radius: var(--radius-card);
 }
 
-.prose table {
+/* Markdown tables. A component table (.adw-table, e.g. the About credits)
+   keeps its own look. */
+.prose table:not(.adw-table) {
   inline-size: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -91,7 +93,7 @@
    as its rows (fit-content) and never wider than the article. From 1000px
    every article column is wide enough. */
 @media (width < 1000px) {
-  .prose table {
+  .prose table:not(.adw-table) {
     display: block;
     inline-size: fit-content;
     max-inline-size: 100%;
@@ -99,20 +101,18 @@
   }
 }
 
-.prose th,
-.prose td {
+.prose table:not(.adw-table) :is(th, td) {
   padding: 10px 14px;
   text-align: start;
   vertical-align: top;
 }
 
-.prose thead th {
+.prose table:not(.adw-table) thead th {
   font-weight: 700;
   background: color-mix(in srgb, var(--card-shade-color) 60%, transparent);
 }
 
-.prose tbody tr + tr td,
-.prose thead + tbody tr td {
+.prose table:not(.adw-table) :is(tbody tr + tr td, thead + tbody tr td) {
   border-block-start: 1px solid var(--card-shade-color);
 }
 

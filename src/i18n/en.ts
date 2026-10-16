@@ -235,6 +235,7 @@ export const en = {
       beyond: "Going further",
     },
     chapters: "Chapters",
+    sections: "In this chapter",
     next: "Next",
     previous: "Previous",
     related: "Distributions to look at",
@@ -354,6 +355,12 @@ export const en = {
     title: "About Linuxhub",
     lead: "A fast, clean catalog that helps you choose, download and install Linux.",
     logos: "Logo credits ({count})",
+    credits: {
+      distro: "Distribution",
+      license: "License / trademark",
+      source: "Source",
+      trademark: "Trademark policy",
+    },
   },
   notFound: {
     title: "Page not found",

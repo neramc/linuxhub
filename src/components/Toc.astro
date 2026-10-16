@@ -1,7 +1,9 @@
 ---
 /**
  * "On this page" navigation from MDX headings: one flat navigation row
- * (`.adw-nav-row`) per h2, h3 rows indented under their h2.
+ * (`.adw-nav-row`) per h2, h3 rows indented under their h2. `nested` (inside
+ * another navigation, ChapterNav) renders no landmark of its own and no
+ * visible title: the list itself carries the name.
  */
 import type { MarkdownHeading } from "astro";
 
@@ -10,17 +12,19 @@ interface Props {
   title: string;
   /** Omit the visible title when a surrounding disclosure already shows it. */
   hideTitle?: boolean | undefined;
+  nested?: boolean | undefined;
 }
 
-const { headings, title, hideTitle = false } = Astro.props;
+const { headings, title, hideTitle = false, nested = false } = Astro.props;
 const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const Tag = nested ? "div" : "nav";
 ---
 
 {
   items.length > 0 && (
-    <nav class="toc" aria-label={title}>
-      {!hideTitle && <p class="toc-title caption-heading dim-label">{title}</p>}
-      <ul role="list">
+    <Tag class="toc" aria-label={nested ? undefined : title}>
+      {!hideTitle && !nested && <p class="toc-title caption-heading dim-label">{title}</p>}
+      <ul role="list" aria-label={nested ? title : undefined}>
         {items.map((h) => (
           <li>
             <a class:list={["adw-nav-row", { sub: h.depth === 3 }]} href={`#${h.slug}`}>
@@ -29,7 +33,7 @@ const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
           </li>
         ))}
       </ul>
-    </nav>
+    </Tag>
   )
 }
 

@@ -482,10 +482,6 @@ a.adw-badge:hover {
   text-decoration: none;
 }
 
-.adw-card.padded {
-  padding: var(--space-3);
-}
-
 .adw-card.activatable {
   transition:
     background-image var(--duration) var(--ease-out-quad),
@@ -598,12 +594,6 @@ details[open] > summary .adw-expander-arrow {
 .adw-status-icon {
   opacity: var(--dim-opacity);
   margin-block-end: var(--space-3);
-}
-
-.adw-status-title {
-  font-size: var(--text-title-1);
-  font-weight: var(--font-weight-title);
-  line-height: var(--line-height-title-1);
 }
 
 .adw-status-description {

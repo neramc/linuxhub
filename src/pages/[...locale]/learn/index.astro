@@ -1,7 +1,9 @@
 ---
 /**
- * Linux guide index: one boxed list per group (AdwPreferencesPage-like clamp).
- * Row = "N. title", a one-line description and the reading time.
+ * Linux guide index: one narrow column (AdwPreferencesPage-like clamp), the
+ * page header (title, lead, "Start reading"), then one boxed list per group
+ * with a section h2. Row = "N. title", a one-line description and the
+ * reading time.
  */
 import ActionRow from "~/components/adw/ActionRow.astro";
 import BoxedList from "~/components/adw/BoxedList.astro";
@@ -18,10 +20,19 @@ const first = chapters[0];
 ---
 
 <Base locale={locale} title={t("learn.title")} description={t("learn.lead")} image="/og/learn.png">
-  <div class="container page">
+  <div class="container page narrow">
     <header class="page-header">
       <h1>{t("learn.title")}</h1>
-      {first && <Button href={localizePath(`/learn/${first.slug}/`, locale)} variant="suggested" pill icon="contents">{t("learn.start")}</Button>}
+      <p class="lead">{t("learn.lead")}</p>
+      {
+        first && (
+          <div class="button-row">
+            <Button href={localizePath(`/learn/${first.slug}/`, locale)} variant="suggested" icon="dictionary">
+              {t("learn.start")}
+            </Button>
+          </div>
+        )
+      }
     </header>
 
     {
@@ -46,22 +57,6 @@ const first = chapters[0];
 </Base>
 
 <style>
-  .page {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
-    padding-block: var(--space-4) var(--space-6);
-    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
-  }
-
-  .page-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2) var(--space-3);
-  }
-
   /* One line of description per row (the chapter page and its meta
      description carry the full text). BoxedList does not take this page's
      scope, hence the page-unique global class. */

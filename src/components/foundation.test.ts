@@ -6,12 +6,16 @@ import AppTile from "./adw/AppTile.astro";
 import { nearestTileSize } from "./adw/app-tile";
 import Badge from "./adw/Badge.astro";
 import Banner from "./adw/Banner.astro";
+import BoxedList from "./adw/BoxedList.astro";
 import Chip from "./adw/Chip.astro";
 import ChoiceGroup from "./adw/ChoiceGroup.astro";
 import ComboRow from "./adw/ComboRow.astro";
 import ExpanderRow from "./adw/ExpanderRow.astro";
 import SearchEntry from "./adw/SearchEntry.astro";
+import StatusPage from "./adw/StatusPage.astro";
+import CompareTable from "./CompareTable.astro";
 import DistroLogo from "./DistroLogo.astro";
+import FamilyNode from "./FamilyNode.astro";
 import Breadcrumb from "./site/Breadcrumb.astro";
 import UseCaseChips from "./UseCaseChips.astro";
 
@@ -163,6 +167,43 @@ describe("ActionRow", () => {
     );
     expect(html).toMatch(/<span class="adw-row-title"><span role="alert">Failed\.<\/span><\/span>/);
     expect(html).toMatch(/<span class="adw-row-suffix">\s*<button>Retry<\/button>/);
+  });
+
+  it("points a rel=prev row back: go-previous before the text, no chevron", async () => {
+    const prev = await render(ActionRow, {
+      props: { href: "/learn/history/", rel: "prev", title: "History", subtitle: "Previous" },
+    });
+    expect(prev).toMatch(
+      /<a href="\/learn\/history\/" rel="prev" class="adw-action-row activatable">\s*<svg[^>]*class="adw-icon adw-row-prefix"/,
+    );
+    expect(prev).toContain('d="M12 2a1 1 0 0 0-1.707-.707l-6 6');
+    expect(prev).not.toContain("adw-row-chevron");
+    const next = await render(ActionRow, {
+      props: { href: "/learn/why-linux/", rel: "next", title: "Why Linux", subtitle: "Next" },
+    });
+    expect(next).not.toContain("adw-row-prefix");
+    expect(next).toContain('class="adw-icon adw-row-chevron"');
+  });
+});
+
+describe("BoxedList", () => {
+  it("names the group by a rich title slot in the heading of the given level", async () => {
+    const html = await render(BoxedList, {
+      props: { id: "month-2026-04", level: 2 },
+      slots: { title: '<time datetime="2026-04">2026년 4월</time>', default: "<li>row</li>" },
+    });
+    expect(html).toContain('<section class="adw-group" id="month-2026-04"');
+    expect(html).toContain('aria-labelledby="month-2026-04-title"');
+    expect(html).toMatch(
+      /<h2 class="adw-group-title" id="month-2026-04-title">\s*<time datetime="2026-04">2026년 4월<\/time>\s*<\/h2>/,
+    );
+    expect(html).toMatch(/<ul class="adw-boxed-list" role="list">\s*<li>row<\/li>/);
+  });
+
+  it("has no heading and no label without a title", async () => {
+    const html = await render(BoxedList, { slots: { default: "<li>row</li>" } });
+    expect(html).not.toContain("<h3");
+    expect(html).not.toContain("aria-labelledby");
   });
 });
 
@@ -395,5 +436,93 @@ describe("AppHeader", () => {
     ).toHaveLength(2);
     expect(html).not.toContain("·");
     expect(html).not.toContain("hero-actions");
+  });
+});
+
+describe("StatusPage", () => {
+  it("is the page's h1 under a 64px icon, with one sentence and the action", async () => {
+    const html = await render(StatusPage, {
+      props: { icon: "search", title: "Page not found", description: "It moved." },
+      slots: { default: '<a href="/">Home</a>' },
+    });
+    expect(html.match(/<h1[^>]*>Page not found<\/h1>/g)).toHaveLength(1);
+    expect(html).toMatch(/<svg[^>]*width="64"/);
+    expect(html).toMatch(/<p class="adw-status-description"[^>]*>It moved\.<\/p>/);
+    expect(html).toMatch(/<div class="adw-status-actions"[^>]*><a href="\/">Home<\/a><\/div>/);
+  });
+});
+
+describe("CompareTable", () => {
+  const column = (id: string, name: string) => ({
+    id,
+    name,
+    logo: `${id}.svg`,
+    href: `/distros/${id}/`,
+  });
+  const props = {
+    rows: [
+      { key: "family", label: "Family" },
+      { key: "desktops", label: "Desktops" },
+    ],
+    columns: [column("fedora", "Fedora Linux"), column("arch", "Arch Linux"), undefined],
+    cells: {
+      fedora: { family: "Fedora", desktops: ["GNOME", " and KDE Plasma"] as [string, string] },
+      arch: { family: "Arch", desktops: "—" },
+    },
+    templates: [column("arch", "Arch Linux")],
+  };
+
+  it("keeps the hooks compare.ts swaps: heads, unique cells named by their distro, templates", async () => {
+    const html = await render(CompareTable, { props });
+    expect(html).toMatch(/<div class="adw-table-frame compare-frame"[^>]*data-compare-table/);
+    expect(html.match(/data-head="\d"/g)).toEqual([
+      'data-head="0"',
+      'data-head="1"',
+      'data-head="2"',
+    ]);
+    const cells = html.match(/data-cell="[^"]+"/g) ?? [];
+    expect(cells).toHaveLength(6);
+    expect(new Set(cells).size).toBe(6);
+    expect(html).toMatch(
+      /data-cell="0:desktops" data-name="Fedora Linux"[^>]*><strong[^>]*>GNOME<\/strong> and KDE Plasma<\/td>/,
+    );
+    // A column with nothing chosen: an empty heading and empty, unnamed cells.
+    expect(html).toMatch(/<th scope="col" role="columnheader" data-head="2"[^>]*><\/th>/);
+    expect(html).toMatch(/<td role="cell" data-cell="2:family"(?! data-name)[^>]*><\/td>/);
+    expect(html.match(/<template data-head-template="arch"/g)).toHaveLength(1);
+    expect(html.match(/role="rowheader"/g)).toHaveLength(2);
+  });
+});
+
+describe("FamilyNode", () => {
+  type Node = Parameters<typeof FamilyNode>[0]["distro"];
+  const distro = (id: string, name: string, year: string) =>
+    ({
+      id,
+      data: { name, logo: { file: `${id}.svg` }, origin: { firstRelease: `${year}-01-01` } },
+    }) as unknown as Node;
+  const debian = distro("debian", "Debian", "1993");
+  const ubuntu = distro("ubuntu", "Ubuntu", "2004");
+  const mint = distro("linux-mint", "Linux Mint", "2006");
+
+  it("renders a boxed-list row whose tree of nav rows nests the descendants", async () => {
+    const html = await render(FamilyNode, {
+      props: {
+        distro: debian,
+        childrenOf: new Map([
+          ["debian", [ubuntu]],
+          ["ubuntu", [mint]],
+        ]),
+        locale: "en",
+      },
+    });
+    expect(html).toMatch(/^<li class="adw-row-item root"/);
+    expect(html.match(/<a class="adw-nav-row node"/g)).toHaveLength(3);
+    expect(html.match(/<li class="child"/g)).toHaveLength(2);
+    expect(html.match(/<ul class="children" role="list"/g)).toHaveLength(2);
+    expect(html).toMatch(/href="\/en\/distros\/ubuntu\/"/);
+    expect(html).toMatch(
+      />Linux Mint<\/span><span class="caption dim-label numeric"[^>]*>2006<\/span>/,
+    );
   });
 });

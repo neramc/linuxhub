@@ -1,17 +1,20 @@
 ---
 /**
- * Release news by month. Rows are grouped like the home page (one row per
- * distro and series; same-day flavors join their parent's row) and show only
- * the day, since the month is the heading. The RSS feed keeps one item per
- * version (src/pages/[...locale]/rss.xml.ts).
+ * Release news by month: one boxed list per month under a section h2 with
+ * the month (PLAN C3). Rows are grouped like the home page (one row per
+ * distro and series; same-day flavors join their parent's row as its
+ * subtitle) and end with the day only, since the month is the heading
+ * (PLAN C2). The RSS feed keeps one item per version
+ * (src/pages/[...locale]/rss.xml.ts).
  */
+import ActionRow from "~/components/adw/ActionRow.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
-import Icon from "~/components/adw/Icon.astro";
-import StatusPage from "~/components/adw/StatusPage.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros, getHistory, groupReleases, type ReleaseGroup } from "~/lib/catalog";
+import { formatDay, formatMonth } from "~/lib/format";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
@@ -22,83 +25,42 @@ for (const g of groups) {
   const key = g.date.slice(0, 7);
   byMonth.set(key, [...(byMonth.get(key) ?? []), g]);
 }
-const utc = (iso: string) => new Date(`${iso}T00:00:00Z`);
-const monthFormat = new Intl.DateTimeFormat(locale, {
-  year: "numeric",
-  month: "long",
-  timeZone: "UTC",
-});
-const dayFormat = new Intl.DateTimeFormat(locale, { day: "numeric", timeZone: "UTC" });
 const list = new Intl.ListFormat(locale, { style: "short", type: "unit" });
+const flavorList = new Intl.ListFormat(locale, { type: "conjunction" });
 ---
 
 <Base locale={locale} title={t("releases.title")} description={t("releases.lead")}>
-  <div class="container page">
+  <div class="container page narrow">
     <header class="page-header">
       <h1>{t("releases.title")}</h1>
-      <p class="dim-label">{t("releases.lead")}</p>
-      <div><Button href={localizePath("/rss.xml", locale)} icon="bookmark" pill>{t("releases.feed")}</Button></div>
+      <p class="lead">{t("releases.lead")}</p>
+      <div class="button-row">
+        <Button href={localizePath("/rss.xml", locale)} icon="bookmark">{t("releases.feed")}</Button>
+      </div>
     </header>
 
     {
       groups.length === 0 ? (
-        <StatusPage icon="update" title={t("releases.empty")} level={2} />
+        <p>{t("releases.empty")}</p>
       ) : (
         [...byMonth].map(([month, rows]) => (
-          <section class="month" aria-labelledby={`month-${month}`}>
-            <h2 id={`month-${month}`}>
-              <time datetime={month}>{monthFormat.format(utc(`${month}-01`))}</time>
-            </h2>
-            <ul class="adw-boxed-list" role="list">
-              {rows.map((g) => (
-                <li>
-                  <a class="adw-action-row activatable" href={localizePath(`/distros/${g.distro.id}/`, locale)}>
-                    <DistroLogo file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
-                    <span class="adw-row-text">
-                      <span class="adw-row-title">
-                        {g.distro.data.name} {list.format(g.versions)}
-                      </span>
-                      {g.flavors.length > 0 && (
-                        <span class="adw-row-subtitle">{g.flavors.map((f) => f.data.name).join(" · ")}</span>
-                      )}
-                    </span>
-                    <span class="adw-row-suffix">
-                      <time class="day dim-label" datetime={g.date}>
-                        {dayFormat.format(utc(g.date))}
-                      </time>
-                      <Icon name="go-next" class="adw-row-chevron" />
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <BoxedList id={`month-${month}`} level={2}>
+            <time slot="title" datetime={month}>{formatMonth(month, locale)}</time>
+            {rows.map((g) => (
+              <ActionRow
+                href={localizePath(`/distros/${g.distro.id}/`, locale)}
+                title={`${g.distro.data.name} ${list.format(g.versions)}`}
+                subtitle={
+                  g.flavors.length > 0 ? flavorList.format(g.flavors.map((f) => f.data.name)) : undefined
+                }
+              >
+                <DistroLogo slot="prefix" file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
+                <time class="dim-label" datetime={g.date}>{formatDay(g.date, locale)}</time>
+              </ActionRow>
+            ))}
+          </BoxedList>
         ))
       )
     }
   </div>
 </Base>
-
-<style>
-  .page {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
-    padding-block: var(--space-4) var(--space-6);
-    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
-  }
-
-  .page-header,
-  .month {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .month h2 {
-    font-size: var(--text-heading);
-  }
-
-  .day {
-    font-variant-numeric: tabular-nums;
-  }
-</style>

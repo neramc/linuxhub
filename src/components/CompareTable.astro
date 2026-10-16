@@ -1,0 +1,244 @@
+---
+/**
+ * The comparison table (SPEC §13, PLAN C5): one <table> of up to three distro
+ * columns, a real table from 768px and the same cells stacked per attribute
+ * below. Used by the compare page and the /design/ showcase.
+ *
+ *   <CompareTable rows={[{ key, label }]} columns={[col, col, undefined]}
+ *     cells={{ [id]: { [key]: "value" | ["emphasized", "rest"] } }} templates={cols} />
+ *
+ * Hooks for src/scripts/compare.ts: [data-compare-table] (the frame),
+ * [data-head="i"] (column heading), [data-cell="i:key"] with data-name (the
+ * column's distro, labelling the cell in the stacked layout), and one
+ * <template data-head-template="id"> per `templates` entry (the heading it
+ * swaps in). Explicit roles: the narrow layout changes the table's display,
+ * which would otherwise drop its table semantics in some browsers.
+ */
+import DistroLogo from "./DistroLogo.astro";
+import "~/styles/table.css";
+
+/** A plain value, or [emphasized, rest]: the default desktop, then the others. */
+export type CompareCell = string | [string, string];
+
+export interface CompareColumn {
+  id: string;
+  name: string;
+  logo: string;
+  href: string;
+}
+
+interface Props {
+  rows: readonly { key: string; label: string }[];
+  /** Three columns; `undefined` is a column with nothing chosen. */
+  columns: readonly (CompareColumn | undefined)[];
+  cells: Record<string, Record<string, CompareCell>>;
+  /** Column headings an island can swap in. */
+  templates?: readonly CompareColumn[] | undefined;
+}
+
+const { rows, columns, cells, templates = [] } = Astro.props;
+---
+
+<div class="adw-table-frame compare-frame" data-compare-table>
+  <table class="adw-table compare-table" role="table">
+    <thead role="rowgroup">
+      <tr role="row">
+        <td role="cell"></td>
+        {
+          columns.map((c, i) => (
+            <th scope="col" role="columnheader" data-head={i}>
+              {c && (
+                <a href={c.href} class="head-link">
+                  <DistroLogo file={c.logo} name={c.name} size={36} eager />
+                  <span>{c.name}</span>
+                </a>
+              )}
+            </th>
+          ))
+        }
+      </tr>
+    </thead>
+    <tbody role="rowgroup">
+      {
+        rows.map((row) => (
+          <tr role="row">
+            <th scope="row" role="rowheader">{row.label}</th>
+            {columns.map((c, i) => {
+              const value = c ? cells[c.id]?.[row.key] : "";
+              return (
+                <td role="cell" data-cell={`${i}:${row.key}`} data-name={c?.name}>
+                  {Array.isArray(value) ? (
+                    <>
+                      <strong>{value[0]}</strong>
+                      {value[1]}
+                    </>
+                  ) : (
+                    value
+                  )}
+                </td>
+              );
+            })}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+{
+  templates.map((c) => (
+    <template data-head-template={c.id}>
+      <a href={c.href} class="head-link">
+        <DistroLogo file={c.logo} name={c.name} size={36} />
+        <span>{c.name}</span>
+      </a>
+    </template>
+  ))
+}
+
+<style>
+  /* A distro column heading: its app tile and name, linking to its page;
+     a 16px heading (the table's body size, bold as its th). */
+  .head-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--control-height);
+    color: inherit;
+    line-height: var(--line-height-heading);
+    text-decoration: none;
+  }
+
+  /* Underlines the name (the tile is an image). */
+  .head-link:hover {
+    text-decoration: underline;
+  }
+
+  /*
+   * From 768px (SPEC §13): a real table. The attribute column is 140px and
+   * the three distro columns share the rest equally, so picking another
+   * distro never shifts a column (every heading is the same tile + name,
+   * so baseline alignment lines the tiles up, wrapped names too). The frame
+   * scrolls sideways only when enlarged text needs more than the 620px
+   * minimum; the attribute column then stays in view (sticky), in the card's
+   * color laid over the window's as the card itself is (the dark card color
+   * is translucent).
+   */
+  @media (width >= 768px) {
+    .compare-table {
+      table-layout: fixed;
+      min-inline-size: calc(140px + 3 * 10rem);
+    }
+
+    :is(thead td, tbody th) {
+      position: sticky;
+      inset-inline-start: 0;
+      inline-size: 140px;
+      background: linear-gradient(var(--card-bg-color), var(--card-bg-color)) var(--window-bg-color);
+    }
+
+    tbody th {
+      color: color-mix(in srgb, currentColor var(--dim-opacity), transparent);
+      font-size: var(--text-caption);
+      line-height: var(--line-height-caption);
+    }
+  }
+
+  /*
+   * Below 768px (SPEC §13, §18): the same table, stacked. The column
+   * headings stay one row of links (all three names in view); each
+   * attribute row becomes a group, its row header the title over a card with
+   * one line per chosen distro, labelled with the distro's name (data-name,
+   * kept current by src/scripts/compare.ts). A column with nothing chosen
+   * has empty cells, which drop out. The groups are the cards, so the frame
+   * gives up its box (and its forced-colors edge).
+   */
+  @media (width < 768px) {
+    .compare-frame {
+      display: contents;
+    }
+
+    /* Rows become grids (their cells grid items), the header group a block. */
+    thead {
+      display: block;
+    }
+
+    thead tr {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-block-end: var(--space-4);
+    }
+
+    thead :is(th, td) {
+      padding: 0;
+    }
+
+    /* The empty corner cell leaves the grid but not the table, so screen
+       readers still pair each column header with its cells. */
+    thead td {
+      position: absolute;
+    }
+
+    :is(th, tbody td):empty {
+      display: none;
+    }
+
+    /* Tile over name, so all three fit on one line. */
+    .head-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+
+    tbody {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    tbody tr {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      position: relative;
+      border: 0;
+    }
+
+    /* The group's card: positioned in the grid from the first line to the
+       last (a line past the end counts as the bottom edge), behind the
+       lines, which are positioned too and come later. Its transparent
+       border is the card's edge in forced colors (as adwaita.css draws it). */
+    tbody tr::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      grid-row: 2 / span 3;
+      border: 1px solid transparent;
+      border-radius: var(--radius-card);
+      background-color: var(--card-bg-color);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* The group title: a 16px heading, as the column headings. */
+    tbody th {
+      padding: 0 0 var(--space-2);
+      line-height: var(--line-height-heading);
+    }
+
+    /* A line (name caption + value) is taller than a row's 50/56px minimum. */
+    tbody td {
+      position: relative;
+      padding: 8px 14px;
+    }
+
+    td:not(:empty) ~ td:not(:empty) {
+      border-block-start: 1px solid var(--card-shade-color);
+    }
+
+    td::before {
+      content: attr(data-name);
+      display: block;
+      font-size: var(--text-caption);
+      line-height: var(--line-height-caption);
+      opacity: var(--dim-opacity);
+    }
+  }
+</style>

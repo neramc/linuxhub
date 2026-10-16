@@ -27,3 +27,22 @@ export function formatDate(iso: string | null, locale: string): string | null {
     timeZone: "UTC",
   }).format(new Date(`${iso}T00:00:00Z`));
 }
+
+/**
+ * The same date split for a list grouped by month (releases): the month for
+ * the group heading ("2026년 4월", "April 2026"; `yearMonth` is YYYY-MM) and
+ * the day alone for each row ("23일", "23"). Both read the date in UTC.
+ */
+export function formatMonth(yearMonth: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(new Date(`${yearMonth}-01T00:00:00Z`));
+}
+
+export function formatDay(iso: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, { day: "numeric", timeZone: "UTC" }).format(
+    new Date(`${iso}T00:00:00Z`),
+  );
+}

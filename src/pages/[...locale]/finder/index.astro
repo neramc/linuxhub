@@ -112,10 +112,10 @@ const why = {
 ---
 
 <Base locale={locale} title={t("finder.title")} description={t("finder.lead")}>
-  <div class="container page">
+  <div class="container page narrow">
     <header class="page-header">
       <h1>{t("finder.title")}</h1>
-      <p class="dim-label">{t("finder.lead")}</p>
+      <p class="lead">{t("finder.lead")}</p>
     </header>
 
     <form class="quiz" data-finder data-compare={localizePath("/compare/", locale)}>
@@ -130,16 +130,16 @@ const why = {
           />
         ))
       }
-      <div class="actions" data-js-only>
+      <div class="button-row" data-js-only>
         <Button type="submit" variant="suggested">{t("finder.submit")}</Button>
       </div>
       <noscript><p class="dim-label">{t("finder.noscript")} <a href={localizePath("/distros/", locale)}>{t("nav.distros")}</a></p></noscript>
     </form>
 
-    <section class="results" data-results hidden aria-labelledby="results-title">
+    <section class="section results" data-results hidden aria-labelledby="results-title">
       <h2 id="results-title" tabindex="-1">{t("finder.results")}</h2>
       <ol class="adw-boxed-list" role="list" data-result-list></ol>
-      <div class="actions">
+      <div class="button-row">
         <Button href="#" icon="compare" data-compare-link>{t("finder.compare")}</Button>
         <Button variant="flat" icon="refresh" data-restart>{t("finder.restart")}</Button>
       </div>
@@ -162,34 +162,10 @@ const why = {
 </script>
 
 <style>
-  .page {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-4);
-    padding-block: var(--space-4) var(--space-6);
-    max-inline-size: calc(var(--text-width) + 2 * var(--gutter));
-  }
-
-  .page-header {
-    display: grid;
-    gap: 6px;
-  }
-
+  /* The questions sit 24px apart; the page's sections, 48px (.page). */
   .quiz {
     display: grid;
     gap: var(--space-4);
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .results {
-    display: grid;
-    gap: var(--space-2);
-    scroll-margin-block-start: calc(var(--headerbar-height) + var(--space-3));
   }
 
   /* The matched answers (a second dim subtitle line under the tagline), the

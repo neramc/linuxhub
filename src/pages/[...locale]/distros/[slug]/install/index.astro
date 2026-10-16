@@ -2,8 +2,9 @@
 /**
  * A distro's install guide: breadcrumb, app header (64px tile) with two
  * actions (download the image, official install docs), then the guide with
- * its table of contents: a sidebar from 1000px, a closed disclosure above
- * the article below that.
+ * its table of contents in the documentation layout shared with the Linux
+ * guide (DocLayout): a sidebar from 1000px, a closed disclosure above the
+ * article below that.
  *
  * Distros without a written guide get a short, honest page instead (SPEC
  * §15, ADR-0016): one sentence and one action, the official install docs.
@@ -12,10 +13,9 @@
  */
 import { render } from "astro:content";
 import AppHeader from "~/components/AppHeader.astro";
-import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
-import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import CopyButtons from "~/components/CopyButtons.astro";
+import DocLayout from "~/components/DocLayout.astro";
 import DocSources from "~/components/DocSources.astro";
 import { mdxComponents } from "~/components/mdx";
 import Breadcrumb from "~/components/site/Breadcrumb.astro";
@@ -108,22 +108,14 @@ const jsonLd = doc
 
     {
       rendered ? (
-        <div class="doc-layout">
-          <div class="toc-narrow" data-pagefind-ignore>
-            <BoxedList>
-              <ExpanderRow title={t("install.onThisPage")}>
-                <Toc headings={rendered.headings} title={t("install.onThisPage")} hideTitle />
-              </ExpanderRow>
-            </BoxedList>
-          </div>
-          <aside class="doc-sidebar" data-pagefind-ignore>
-            <Toc headings={rendered.headings} title={t("install.onThisPage")} />
-          </aside>
+        <DocLayout title={t("install.onThisPage")}>
+          <Toc slot="narrow" headings={rendered.headings} title={t("install.onThisPage")} hideTitle />
+          <Toc slot="sidebar" headings={rendered.headings} title={t("install.onThisPage")} />
           <article class="prose">
             <rendered.Content components={mdxComponents} />
             <DocSources sources={doc?.data.sources ?? []} lastReviewed={doc?.data.lastReviewed ?? ""} locale={locale} />
           </article>
-        </div>
+        </DocLayout>
       ) : (
         <div class="stub">
           <p class="heading">{t("install.comingSoonTitle")}</p>
@@ -143,43 +135,6 @@ const jsonLd = doc
 </Base>
 
 <style>
-  /* Below 1000px the table of contents is a closed disclosure above the
-     article; from 1000px a sticky sidebar at the start of the row. */
-  .doc-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-4);
-  }
-
-  .toc-narrow {
-    max-inline-size: var(--text-width);
-  }
-
-  .doc-sidebar {
-    display: none;
-  }
-
-  @media (width >= 1000px) {
-    .doc-layout {
-      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-      column-gap: var(--space-5);
-      align-items: start;
-    }
-
-    .toc-narrow {
-      display: none;
-    }
-
-    .doc-sidebar {
-      display: block;
-      position: sticky;
-      inset-block-start: calc(var(--headerbar-height) + var(--space-3));
-      max-block-size: calc(100dvh - var(--headerbar-height) - var(--space-5));
-      overflow-y: auto;
-      overscroll-behavior: contain;
-    }
-  }
-
   /* A guide that is not written yet: one sentence, one action. */
   .stub {
     display: grid;

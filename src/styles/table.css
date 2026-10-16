@@ -1,0 +1,40 @@
+/*
+ * Data table (SPEC §13): the compare table and the About logo credits. A real
+ * <table> in the boxed-list look: body text, start-aligned cells, 1px row
+ * separators. Imported by CompareTable.astro and the About page only, so no
+ * other page carries it.
+ *
+ * On its own a table sits in .adw-table-frame, the card surface, which
+ * scrolls sideways when the table cannot get narrower (the page never does);
+ * inside a card (an expander row) it goes in flat, without the frame, so
+ * there is no card in a card. The frame's transparent border is the card's
+ * edge in forced colors (as adwaita.css draws it for the other cards);
+ * otherwise the card color fills it.
+ */
+.adw-table-frame {
+  overflow-x: auto;
+  border: 1px solid transparent;
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.adw-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+}
+
+.adw-table :is(th, td) {
+  padding: 10px 14px;
+  text-align: start;
+  vertical-align: baseline;
+  overflow-wrap: break-word;
+}
+
+/* Every table has a header row, so every body row has a row above it. */
+.adw-table tbody tr {
+  border-block-start: 1px solid var(--card-shade-color);
+}

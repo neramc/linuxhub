@@ -283,8 +283,12 @@
     gap: var(--space-2);
   }
 
+  /* The ch of the prose measure resolves at the lead's own 17px. One line
+     height everywhere, also inside .prose (About). */
   .lead {
+    max-inline-size: var(--prose-measure);
     font-size: var(--text-prose);
+    line-height: var(--line-height-body);
     opacity: var(--dim-opacity);
   }
 
@@ -330,7 +334,8 @@
     }
   }
 
-  /* One or two actions; on phones they share the row 50/50 at 44px. */
+  /* One or two actions; on phones they are 44px tall and two share the row
+     50/50 (a lone action keeps its width, so it does not pose as primary). */
   .button-row {
     display: flex;
     flex-wrap: wrap;
@@ -342,7 +347,7 @@
       --control-height: 44px;
     }
 
-    .button-row > * {
+    .button-row > :not(:only-child) {
       flex: 1 1 0;
     }
   }

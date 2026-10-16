@@ -1,6 +1,13 @@
 ---
+/**
+ * One node of the family tree, rendering its descendants recursively. A root
+ * node is a row of its family's boxed list, with the tree inset in it; every
+ * node is a navigation row (.adw-nav-row: a 24px tile without shadow, the
+ * name and the first-release year as a caption). Children hang off their
+ * parent's tile by 1px connectors (├ for a child with siblings below it,
+ * └ for the last one).
+ */
 import { type Locale, localizePath } from "~/i18n";
-/** One node of the family tree, rendering its descendants recursively. */
 import type { Distro } from "~/lib/catalog";
 import DistroLogo from "./DistroLogo.astro";
 
@@ -8,25 +15,91 @@ interface Props {
   distro: Distro;
   childrenOf: Map<string, Distro[]>;
   locale: Locale;
+  /** Below another node (set by the recursion). */
+  nested?: boolean | undefined;
 }
 
-const { distro, childrenOf, locale } = Astro.props;
+const { distro, childrenOf, locale, nested = false } = Astro.props;
 const kids = childrenOf.get(distro.id) ?? [];
 ---
 
-<li>
-  <a class="node" href={localizePath(`/distros/${distro.id}/`, locale)}>
+<li class:list={[nested ? "child" : "adw-row-item root"]}>
+  <a class="adw-nav-row node" href={localizePath(`/distros/${distro.id}/`, locale)}>
     <DistroLogo file={distro.data.logo.file} name={distro.data.name} size={24} />
     <span class="node-name">{distro.data.name}</span>
-    <span class="node-year caption dim-label">{distro.data.origin.firstRelease.slice(0, 4)}</span>
+    <span class="caption dim-label numeric">{distro.data.origin.firstRelease.slice(0, 4)}</span>
   </a>
   {
     kids.length > 0 && (
-      <ul role="list">
+      <ul class="children" role="list">
         {kids.map((k) => (
-          <Astro.self distro={k} childrenOf={childrenOf} locale={locale} />
+          <Astro.self distro={k} childrenOf={childrenOf} locale={locale} nested />
         ))}
       </ul>
     )
   }
 </li>
+
+<style>
+  /*
+   * The tree sits inset in its boxed-list row, like the rows of a sidebar.
+   * --tick is the middle of a one-line nav row (40px, 44px on touch
+   * screens): where a child's connector meets its tile.
+   */
+  .root {
+    --tick: 20px;
+
+    padding: 6px;
+  }
+
+  @media (pointer: coarse) {
+    .root {
+      --tick: 22px;
+    }
+  }
+
+  /* The tile stays at --tick (row padding 6px + 12px, half the tile) also
+     when a long name wraps to two lines (320px), beside the first line. */
+  .node .distro-logo {
+    align-self: flex-start;
+    margin-block-start: calc(var(--tick) - 18px);
+  }
+
+  /* A child's connector starts under the centre of its parent's tile (row
+     padding 12px + half the 24px tile). */
+  .children {
+    margin: 0;
+    padding: 0;
+    padding-inline-start: 24px;
+    list-style: none;
+  }
+
+  .child {
+    position: relative;
+    padding-inline-start: 12px;
+  }
+
+  .child::before,
+  .child:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    border-inline-start: 1px solid var(--border-color);
+  }
+
+  .child::before {
+    inset-block-start: 0;
+    block-size: var(--tick);
+    inline-size: 10px;
+    border-block-end: 1px solid var(--border-color);
+  }
+
+  .child:not(:last-child)::after {
+    inset-block: var(--tick) 0;
+  }
+
+  .node-name {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+</style>

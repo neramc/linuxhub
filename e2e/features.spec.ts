@@ -77,6 +77,43 @@ test("compare names unknown ids and says when no column is chosen", async ({ pag
   await expect(page).toHaveURL(/\/compare\/$/);
 });
 
+test("compare on a phone stacks each attribute per distro, with no sideways scroll", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/compare/?d=ubuntu,fedora,arch");
+  // All three distributions are named in view, each linking to its page.
+  for (const [i, name] of ["Ubuntu", "Fedora Linux", "Arch Linux"].entries()) {
+    const head = page.locator(`[data-head="${i}"] a`);
+    await expect(head).toHaveText(name);
+    await expect(head).toBeInViewport({ ratio: 1 });
+  }
+  // Every column's value is reachable by scrolling down only, labelled with its distro.
+  for (const [i, name] of ["Ubuntu", "Fedora Linux", "Arch Linux"].entries()) {
+    const cell = page.locator(`[data-cell="${i}:desktops"]`);
+    await cell.scrollIntoViewIfNeeded();
+    await expect(cell).toBeInViewport({ ratio: 1 });
+    await expect(cell).toHaveAttribute("data-name", name);
+  }
+  await expect(page.locator('[data-cell="0:desktops"] strong')).toHaveText("GNOME");
+  const overflow = await page.evaluate(() => {
+    const frame = document.querySelector<HTMLElement>("[data-compare-table]");
+    return {
+      page: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      frame: frame ? frame.scrollWidth - frame.clientWidth : -1,
+    };
+  });
+  expect(overflow).toEqual({ page: 0, frame: 0 });
+  // The stacked layout keeps the table semantics.
+  const table = page.getByRole("table");
+  await expect(table.getByRole("columnheader")).toHaveCount(3);
+  // The empty corner cell stays in the header row, so each column header
+  // still sits over its own cells (row header + three cells per row).
+  await expect(table.getByRole("row").first().getByRole("cell")).toHaveCount(1);
+  await expect(table.getByRole("rowheader", { name: "데스크톱" })).toBeVisible();
+  await expect(table.getByRole("row")).toHaveCount(14);
+});
+
 test("search dialog finds a distribution", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Control+k");

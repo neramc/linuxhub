@@ -1,7 +1,8 @@
 ---
 /**
  * Component showcase for design review (docs/plan.md §4). Built only in dev or
- * when LINUXHUB_SHOWCASE=1 — never part of the production site.
+ * when LINUXHUB_SHOWCASE=1 — never part of the production site. One h1 (the
+ * AppHeader); StatusPage is the 404 page's alone, so it is shown there.
  */
 import { getCollection } from "astro:content";
 import AppHeader from "~/components/AppHeader.astro";
@@ -11,22 +12,22 @@ import Banner from "~/components/adw/Banner.astro";
 import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
 import Callout from "~/components/adw/Callout.astro";
-import Card from "~/components/adw/Card.astro";
 import Chip from "~/components/adw/Chip.astro";
 import ChoiceGroup from "~/components/adw/ChoiceGroup.astro";
 import ComboRow from "~/components/adw/ComboRow.astro";
 import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import Kbd from "~/components/adw/Kbd.astro";
 import SearchEntry from "~/components/adw/SearchEntry.astro";
-import StatusPage from "~/components/adw/StatusPage.astro";
 import ViewSwitcher from "~/components/adw/ViewSwitcher.astro";
+import CompareTable from "~/components/CompareTable.astro";
+import CopyButtons from "~/components/CopyButtons.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import Breadcrumb from "~/components/site/Breadcrumb.astro";
-import { LOCALES, localeParam, localizePath, useTranslations } from "~/i18n";
+import { LOCALES, localeParam, localizePath, type MessageKey, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { formatDate } from "~/lib/catalog";
-import { DIFFICULTIES, INSTALLERS, SECURE_BOOT } from "~/lib/taxonomy";
+import { DESKTOPS, DIFFICULTIES, FAMILIES, INSTALLERS, SECURE_BOOT } from "~/lib/taxonomy";
 import "~/styles/prose.css";
 
 export function getStaticPaths() {
@@ -41,17 +42,38 @@ const distros = (await getCollection("distros"))
   .slice(0, 6);
 const sample = distros[0]?.data;
 const swatches = [
-  "accent-bg-color",
-  "accent-color",
-  "destructive-color",
-  "success-color",
-  "warning-color",
-  "window-bg-color",
-  "view-bg-color",
-  "card-bg-color",
-  "headerbar-bg-color",
-  "sidebar-bg-color",
+  ["accent-bg-color", "accent-color", "destructive-color", "success-color", "warning-color"],
+  ["window-bg-color", "view-bg-color", "card-bg-color", "headerbar-bg-color", "sidebar-bg-color"],
 ];
+
+// Three columns of the compare table, with sample rows.
+const listFormat = new Intl.ListFormat(locale, { type: "conjunction" });
+const trio = distros.slice(0, 3);
+const compareRows = (["family", "desktops", "packages"] as const).map((key) => ({
+  key,
+  label: t(`compare.rows.${key}` as MessageKey),
+}));
+const compareColumns = trio.map((d) => ({
+  id: d.id,
+  name: d.data.name,
+  logo: d.data.logo.file,
+  href: localizePath(`/distros/${d.id}/`, locale),
+}));
+const compareCells = Object.fromEntries(
+  trio.map((d) => {
+    const [first, ...rest] = listFormat.formatToParts(
+      d.data.desktops.map((k) => DESKTOPS[k][locale]),
+    );
+    return [
+      d.id,
+      {
+        family: FAMILIES[d.data.family][locale],
+        desktops: [first?.value ?? "", rest.map((p) => p.value).join("")] as [string, string],
+        packages: listFormat.format(d.data.packageManagers),
+      },
+    ];
+  }),
+);
 ---
 
 <Base locale={locale} title="Design system" noindex mono>
@@ -164,7 +186,6 @@ const swatches = [
 
     <section class="row">
       <SearchEntry locale={locale} name="q" label="배포판 검색" />
-      <p class="row"><span class="adw-spinner" aria-hidden="true"></span>가까운 미러를 찾는 중…</p>
     </section>
 
     <nav class="nav-rows" aria-label="Navigation rows">
@@ -175,9 +196,9 @@ const swatches = [
       </ul>
     </nav>
 
-    <section class="grid">
+    <div class="card-grid">
       {distros.map((d, i) => <DistroCard distro={d} locale={locale} eager={i < 3} />)}
-    </section>
+    </div>
 
     <section class="two">
       <BoxedList title="정보">
@@ -189,16 +210,12 @@ const swatches = [
       </BoxedList>
       <BoxedList title="다운로드">
         <ExpanderRow title="Workstation · x86_64" subtitle="2.3 GB · ISO">
-          <p class="caption mono">SHA256 3f1c…9ab2</p>
+          <p class="checksum">SHA256 3f1c…9ab2</p>
         </ExpanderRow>
         <ComboRow label="버전" name="version" options={[["26.04.1", "26.04.1 “Resolute Raccoon” (최신, LTS)"], ["25.10", "25.10 “Questing Quokka”"]]} selected="26.04.1" />
         <ComboRow label="미러" name="mirror" options={[["https://ftp.kaist.ac.kr/", "ftp.kaist.ac.kr · 약 8km"]]}>
           <span slot="subtitle">대한민국에서 가장 가까움</span>
         </ComboRow>
-        <ActionRow tone="error" icon="warning">
-          <span slot="title">미러 목록을 불러오지 못했습니다. 공식 기본 서버에서 받을 수 있습니다.</span>
-          <Button>다시 시도</Button>
-        </ActionRow>
         <ActionRow title="미러" subtitle="KAIST (대한민국) · 추천">
           <Button variant="suggested" icon="download" label="다운로드" />
         </ActionRow>
@@ -222,21 +239,49 @@ const swatches = [
       <Callout type="warning" title="주의">설치 중 디스크를 지우면 데이터가 모두 사라집니다.</Callout>
     </section>
 
+    {/* States inside the component (SPEC §14–16): loading, empty with its one
+        way out, and an error with what to do. */}
+    <BoxedList title="상태">
+      <ActionRow>
+        <span slot="prefix" class="adw-spinner" aria-hidden="true"></span>
+        <span slot="title">{t("download.loadingFiles")}</span>
+      </ActionRow>
+      <ActionRow>
+        <span slot="title">{t("catalog.emptyTitle")}</span>
+        <Button>{t("catalog.reset")}</Button>
+      </ActionRow>
+      <ActionRow tone="error" icon="warning">
+        <span slot="title">{t("download.mirrorsError")}</span>
+        <Button>{t("common.retry")}</Button>
+      </ActionRow>
+    </BoxedList>
+
+    {/* The compare page's table: a real table from 768px, one group per
+        attribute below (open this page at 390px for that layout). */}
+    <CompareTable rows={compareRows} columns={compareColumns} cells={compareCells} />
+
+    {/* Code block with its copy button; a copy is confirmed by the toast. */}
     <section class="prose">
       <p>체크섬 파일과 이미지를 같은 폴더에 두고 확인합니다.</p>
       <pre class="language-bash"><code class="language-bash">sha256sum -c SHA256SUMS --ignore-missing
 sudo dnf upgrade --refresh</code></pre>
     </section>
+    <CopyButtons locale={locale} />
 
-    <section class="swatches">
-      {swatches.map((s) => <Card class={`swatch swatch-${s}`}><span class="caption mono">--{s}</span></Card>)}
+    <section class="two">
+      {
+        swatches.map((group) => (
+          <BoxedList>
+            {group.map((s) => (
+              <ActionRow>
+                <span slot="prefix" class={`swatch swatch-${s}`}></span>
+                <code slot="title">--{s}</code>
+              </ActionRow>
+            ))}
+          </BoxedList>
+        ))
+      }
     </section>
-
-    <Card>
-      <StatusPage icon="search" title="검색 결과가 없습니다" description="다른 이름이나 데스크톱 환경으로 검색해 보세요." level={2}>
-        <Button pill>필터 초기화</Button>
-      </StatusPage>
-    </Card>
   </div>
 </Base>
 
@@ -260,40 +305,31 @@ sudo dnf upgrade --refresh</code></pre>
     gap: var(--space-2);
   }
 
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  }
-
   .two {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
     align-items: start;
-  }
-
-  .mono {
-    font-family: var(--font-mono);
   }
 
   .nav-rows {
     max-inline-size: var(--sidebar-width);
   }
 
-  .swatches {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  .swatch {
+    flex: none;
+    inline-size: 36px;
+    block-size: 36px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-button);
   }
 
-  :global(.swatch) {
-    block-size: 80px;
-    display: flex !important;
-    align-items: end;
-  }
-
-  :global(.swatch-accent-bg-color) { background: var(--accent-bg-color) !important; color: var(--accent-fg-color) !important; }
-  :global(.swatch-accent-color) { background: var(--accent-color) !important; color: var(--view-bg-color) !important; }
-  :global(.swatch-destructive-color) { background: var(--destructive-color) !important; color: var(--view-bg-color) !important; }
-  :global(.swatch-success-color) { background: var(--success-color) !important; color: var(--view-bg-color) !important; }
-  :global(.swatch-warning-color) { background: var(--warning-color) !important; color: var(--view-bg-color) !important; }
-  :global(.swatch-window-bg-color) { background: var(--window-bg-color) !important; }
-  :global(.swatch-view-bg-color) { background: var(--view-bg-color) !important; }
-  :global(.swatch-headerbar-bg-color) { background: var(--headerbar-bg-color) !important; }
-  :global(.swatch-sidebar-bg-color) { background: var(--sidebar-bg-color) !important; }
+  .swatch-accent-bg-color { background: var(--accent-bg-color); }
+  .swatch-accent-color { background: var(--accent-color); }
+  .swatch-destructive-color { background: var(--destructive-color); }
+  .swatch-success-color { background: var(--success-color); }
+  .swatch-warning-color { background: var(--warning-color); }
+  .swatch-window-bg-color { background: var(--window-bg-color); }
+  .swatch-view-bg-color { background: var(--view-bg-color); }
+  .swatch-card-bg-color { background: var(--card-bg-color); }
+  .swatch-headerbar-bg-color { background: var(--headerbar-bg-color); }
+  .swatch-sidebar-bg-color { background: var(--sidebar-bg-color); }
 </style>

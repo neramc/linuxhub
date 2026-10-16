@@ -2,13 +2,18 @@
 /**
  * About: how the site works, data sources, the "popular today" ranking
  * (#popularity, ADR-0013), privacy, the sync bot, and credits for every logo
- * (folded, #logos), font and icon (generated from the catalog).
+ * (folded, #logos), font and icon (generated from the catalog). The logo
+ * credits are one expander row; `#logos` sits inside its content, so the
+ * browser opens it for /about/#logos. On the Korean page the English license
+ * and credit strings carry lang="en".
  */
-import Icon from "~/components/adw/Icon.astro";
+import BoxedList from "~/components/adw/BoxedList.astro";
+import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import "~/styles/prose.css";
+import "~/styles/table.css";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
@@ -16,10 +21,12 @@ const t = useTranslations(locale);
 const distros = [...(await getDistros())].sort((a, b) => a.data.name.localeCompare(b.data.name));
 const ko = locale === "ko";
 const repo = "https://github.com/neramc/linuxhub";
+/** English text on the Korean page. */
+const en = ko ? "en" : undefined;
 ---
 
 <Base locale={locale} title={t("about.title")} description={t("about.lead")}>
-  <div class="container page">
+  <div class="container page narrow">
     <article class="prose">
       <h1>{t("about.title")}</h1>
       <p class="lead">{t("about.lead")}</p>
@@ -73,7 +80,7 @@ const repo = "https://github.com/neramc/linuxhub";
             <h2 id="bot">LinuxhubBot</h2>
             <p>
               자동 갱신은 <code>LinuxhubBot</code>이라는 이름으로 접속합니다. robots.txt와 Crawl-delay를 지키고, 같은
-              서버에는 최소 1초 간격으로 요청하며, ETag/If-Modified-Since로 바뀐 내용만 받습니다. 문제가 있으면
+              서버에는 최소 1초 간격으로 요청하며, ETag/If-Modified-Since로 바뀐 내용만 받습니다. 문제가 있으면{" "}
               <a href={`${repo}/issues`}>이슈</a>로 알려 주세요.
             </p>
             <h2>상표와 로고</h2>
@@ -110,7 +117,7 @@ const repo = "https://github.com/neramc/linuxhub";
             <h2 id="popularity">Popular today</h2>
             <p>
               The ranking at the top of the home page counts how many times people read each distribution’s English
-              Wikipedia article on the previous day (UTC). We check Wikimedia’s official
+              Wikipedia article on the previous day (UTC). We check Wikimedia’s official{" "}
               <a href="https://wikimedia.org/api/rest_v1/" rel="noopener external">Pageviews API</a> every 6 hours, so
               the ranking changes once a day, when the day’s totals are published. Pageview data is CC0 (public
               domain); which article counts for which distribution is an editorial choice.
@@ -148,52 +155,49 @@ const repo = "https://github.com/neramc/linuxhub";
         )
       }
 
-      <details class="logo-credits adw-expander-row">
-        <summary class="adw-action-row activatable">
-          <span class="adw-row-text">
-            <span class="adw-row-title">{t("about.logos", { count: distros.length })}</span>
-          </span>
-          <span class="adw-row-suffix"><Icon name="pan-down" class="adw-expander-arrow" /></span>
-        </summary>
-        <div class="adw-expander-content" id="logos">
-          <table>
-            <thead>
-              <tr>
-                <th>{ko ? "배포판" : "Distribution"}</th>
-                <th>{ko ? "라이선스 / 상표" : "License / trademark"}</th>
-                <th>{ko ? "출처" : "Source"}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                distros.map((d) => (
-                  <tr>
-                    <td>
-                      <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
-                    </td>
-                    <td>
-                      {d.data.logo.license}
-                      {d.data.logo.trademark && (
-                        <>
-                          {" · "}
-                          <a href={d.data.logo.trademark} rel="noopener external">
-                            {ko ? "상표 정책" : "Trademark policy"}
-                          </a>
-                        </>
-                      )}
-                    </td>
-                    <td>
-                      <a href={d.data.logo.source} rel="noopener external">
-                        {new URL(d.data.logo.source).hostname}
-                      </a>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </details>
+      <BoxedList>
+        <ExpanderRow class="logo-credits" flush title={t("about.logos", { count: distros.length })}>
+          {/* Explicit roles: phones restack the rows, which changes the table's display. */}
+          <div class="credits" id="logos">
+            <table class="adw-table" role="table">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th scope="col" role="columnheader">{t("about.credits.distro")}</th>
+                  <th scope="col" role="columnheader">{t("about.credits.license")}</th>
+                  <th scope="col" role="columnheader">{t("about.credits.source")}</th>
+                </tr>
+              </thead>
+              <tbody role="rowgroup">
+                {
+                  distros.map((d) => (
+                    <tr role="row">
+                      <th scope="row" role="rowheader">
+                        <a href={localizePath(`/distros/${d.id}/`, locale)}>{d.data.name}</a>
+                      </th>
+                      <td role="cell" class="license">
+                        <span lang={en}>{d.data.logo.license}</span>
+                        {d.data.logo.trademark && (
+                          <>
+                            {" · "}
+                            <a href={d.data.logo.trademark} rel="noopener external">
+                              {t("about.credits.trademark")}
+                            </a>
+                          </>
+                        )}
+                      </td>
+                      <td role="cell" class="source">
+                        <a href={d.data.logo.source} rel="noopener external">
+                          {new URL(d.data.logo.source).hostname}
+                        </a>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </ExpanderRow>
+      </BoxedList>
 
       <h2>{ko ? "사이트 로고, 글꼴, 아이콘" : "Site logo, fonts and icons"}</h2>
       <ul>
@@ -201,24 +205,27 @@ const repo = "https://github.com/neramc/linuxhub";
           {
             ko
               ? "사이트 로고: Tux — Larry Ewing(lewing@isc.tamu.edu)이 The GIMP로 그렸고, Simon Budig이 벡터로 옮겼으며, Garrett LeSage가 다듬었습니다(CC0). 출처를 밝히면 자유롭게 쓸 수 있습니다"
-              : "Site logo: Tux — drawn by Larry Ewing (lewing@isc.tamu.edu) with The GIMP, vectorized by Simon Budig and cleaned up by Garrett LeSage (CC0). Free to use with attribution"
+              : "Site logo: Tux — drawn by Larry Ewing (lewing@isc.tamu.edu) with The GIMP, vectorized by Simon Budig and cleaned up by Garrett LeSage (CC0). Free to use with attribution "
           }
           (<a href="https://commons.wikimedia.org/wiki/File:Tux.svg" rel="noopener external">Wikimedia Commons</a>,{" "}
           <a href="https://github.com/neramc/linuxhub/blob/main/src/assets/brand/README.md" rel="noopener external">{
             ko ? "저작권 고지" : "copyright notice"
           }</a>).
         </li>
-        <li>
-          Adwaita Sans · Adwaita Mono — GNOME Project, SIL Open Font License 1.1 (
-          <a href="https://gitlab.gnome.org/GNOME/adwaita-fonts" rel="noopener external">adwaita-fonts</a>)
+        <li lang={en}>
+          Adwaita Sans · Adwaita Mono — GNOME Project, SIL Open Font License 1.1
+          (<a href="https://gitlab.gnome.org/GNOME/adwaita-fonts" rel="noopener external">adwaita-fonts</a>)
         </li>
         <li>
-          {ko ? "아이콘" : "Icons"}: Adwaita icon theme & libadwaita — GNOME Project, CC BY-SA 3.0 / LGPL (
-          <a href="https://gitlab.gnome.org/GNOME/adwaita-icon-theme" rel="noopener external">adwaita-icon-theme</a>)
+          {ko ? "아이콘" : "Icons"}:{" "}
+          <span lang={en}>
+            Adwaita icon theme & libadwaita — GNOME Project, CC BY-SA 3.0 / LGPL
+            (<a href="https://gitlab.gnome.org/GNOME/adwaita-icon-theme" rel="noopener external">adwaita-icon-theme</a>)
+          </span>
         </li>
         <li>
-          {ko ? "국가 좌표" : "Country locations"}: Natural Earth (public domain) · IANA Time Zone Database (public
-          domain)
+          {ko ? "국가 좌표" : "Country locations"}:{" "}
+          <span lang={en}>Natural Earth (public domain) · IANA Time Zone Database (public domain)</span>
         </li>
       </ul>
 
@@ -231,87 +238,65 @@ const repo = "https://github.com/neramc/linuxhub";
 </Base>
 
 <style>
-  .page {
-    padding-block: var(--space-4) var(--space-6);
-  }
-
-  .lead {
-    font-size: 1.1875rem;
-    opacity: var(--dim-opacity);
-  }
-
-  /* A one-row boxed list folding the credits table (opens on /about/#logos).
-     Doubled selectors keep .prose's flow rules from leaking in. */
-  .logo-credits.logo-credits {
-    border-radius: var(--radius-card);
-    background-color: var(--card-bg-color);
-    color: var(--card-fg-color);
-    box-shadow: var(--shadow-card);
-    overflow: hidden;
-    font-size: var(--text-body);
-    line-height: 1.5;
-  }
-
-  .logo-credits > summary:focus-visible {
-    border-radius: var(--radius-card);
-  }
-
-  .logo-credits[open] > summary:focus-visible {
-    border-end-start-radius: 0;
-    border-end-end-radius: 0;
-  }
-
-  .logo-credits .adw-expander-content {
-    padding: 0;
+  /* The credits table sits flat in its expander row (the list is the card).
+     Should the columns not fit (enlarged text), the row scrolls sideways,
+     never the page. */
+  .credits {
     overflow-x: auto;
   }
 
-  /* The table sits flat inside the expander (the row already is the card). */
-  .logo-credits.logo-credits table {
-    display: table;
-    background: none;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  .logo-credits td:first-child {
+  /* Names and host names stay whole; the license text wraps, inside a long
+     word too when the row would otherwise get wider than the list (just
+     above 600px; the other columns take their full width first). */
+  .credits th[scope="row"],
+  .source {
     white-space: nowrap;
   }
 
-  /* Phones: one stacked block per distro instead of a sideways-scrolling table. */
-  @media (width < 640px) {
-    .logo-credits thead {
-      display: none;
-    }
+  .credits th[scope="row"] {
+    font-weight: 400;
+  }
 
-    .logo-credits.logo-credits :is(table, tbody, tr, td) {
+  .license {
+    overflow-wrap: anywhere;
+  }
+
+  /* Phones: one block per distribution (name, license, source) instead of a
+     sideways-scrolling table; the column headings stay for screen readers. */
+  @media (width < 600px) {
+    .credits :is(table, tbody, tr, th, td) {
       display: block;
     }
 
-    .logo-credits tr {
+    .credits thead {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .credits tr {
       padding-block: 10px;
     }
 
-    .logo-credits tr + tr {
-      border-block-start: 1px solid var(--card-shade-color);
+    .credits thead + tbody > tr:first-child {
+      border-block-start: 0;
     }
 
-    .logo-credits.logo-credits td {
+    .credits :is(th, td) {
       padding: 0 14px;
-      border: 0;
     }
 
-    .logo-credits td:first-child {
+    .credits th[scope="row"] {
       font-weight: 700;
     }
-  }
 
-  /* The high-contrast ring comes with --shadow-card; forced colors drop the
-     shadow, so a transparent border keeps the card's edge (SPEC §4). */
-  @media (forced-colors: active) {
-    .logo-credits.logo-credits {
-      border: 1px solid transparent;
+    .credits th[scope="row"],
+    .source {
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
   }
 </style>
