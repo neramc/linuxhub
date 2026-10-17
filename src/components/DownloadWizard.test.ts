@@ -112,6 +112,21 @@ describe("DownloadWizard", () => {
     expect(html).toMatch(/role="status"[^>]*>미러 목록을 불러오지 못했습니다\./);
   });
 
+  it("offers the mirror choice for every strategy with mirror data, the redirector first", async () => {
+    const withPath = structuredClone(releases);
+    const artifact = withPath.releases[0]?.editions[0]?.artifacts[0];
+    if (artifact) artifact.path = "/44/Example-44-x86_64.iso";
+    for (const strategy of ["redirector", "sourceforge", "mirrors"] as const) {
+      const html = await render(DownloadWizard, {
+        props: { ...props, strategy, hasMirrors: true, releases: withPath },
+      });
+      expect(html).toContain('data-mirrors="/data/mirrors/example.json"');
+      const official = strategy === "mirrors" ? "공식 서버" : "자동 — 가장 가까운 공식 서버";
+      expect(html).toContain(`<option value>${official}</option>`);
+      expect(html).toMatch(new RegExp(`<span data-mirror-label[^>]*>${official}</span>`));
+    }
+  });
+
   it("gives the island the default file's mirror path, so a mirror needs no release data", async () => {
     const withPath = structuredClone(releases);
     const artifact = withPath.releases[0]?.editions[0]?.artifacts[0];

@@ -3,8 +3,10 @@
  * Guided download (version → edition → architecture → file type → mirror).
  * The default choice is fully server-rendered, so the download button works
  * without JS. src/scripts/download.ts enhances it: other versions are fetched
- * on demand from /data/releases/<slug>.json and, for distros with an official
- * mirror list, the nearest mirror is suggested from /api/geo.
+ * on demand from /data/releases/<slug>.json and, for every distro with mirror
+ * data, the official mirrors are ranked from /api/geo: the nearest one is
+ * suggested, except where the official link is a redirector or SourceForge,
+ * which already picks a nearby server and stays the default (ADR-0004).
  *
  * The final button is the page's one suggested action (SPEC §7), labelled
  * with the file it gets ("ISO 받기 · 2.3 GB"). Without usable data the
@@ -78,7 +80,11 @@ const formats = choice
     ]
   : [];
 const size = choice ? formatBytes(choice.artifact.size, locale) : null;
-const mirrorMode = strategy === "mirrors" && hasMirrors && Boolean(choice?.artifact.path);
+// The same mirror choice for every distro with mirror data (docs/data-sources.md, "동등한 대우").
+const mirrorMode = hasMirrors && Boolean(choice?.artifact.path);
+/** The official link already sends visitors to a nearby server. */
+const auto = strategy === "redirector" || strategy === "sourceforge";
+const officialServer = auto ? t("download.auto") : t("download.origin");
 
 const labels = {
   latest: t("download.latest"),
@@ -94,6 +100,7 @@ const labels = {
   checksumMd5: t("download.checksumMd5"),
   checksumOther: t("download.checksumOther"),
   origin: t("download.origin"),
+  auto: t("download.auto"),
   recommended: t("download.recommended"),
   recommendedFor: t("download.recommendedFor", { place: "{place}" }),
   locating: t("download.locating"),
@@ -156,11 +163,11 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
           </ActionRow>
           {mirrorMode ? (
             <>
-              <ComboRow label={t("download.mirror")} name="mirror" options={[["", t("download.origin")]]} selectHidden>
+              <ComboRow label={t("download.mirror")} name="mirror" options={[["", officialServer]]} selectHidden>
                 <Fragment slot="subtitle">
                   <span class="mirror-status">
                     <span class="adw-spinner" aria-hidden="true" data-mirror-spinner hidden />
-                    <span data-mirror-label>{t("download.origin")}</span>
+                    <span data-mirror-label>{officialServer}</span>
                   </span>
                   <span class="mirror-note" data-geo-fallback hidden>{t("download.geoFallback")}</span>
                 </Fragment>
@@ -173,7 +180,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
           ) : (
             <ActionRow title={t("download.mirror")}>
               <span class="caption dim-label" data-mirror-label>
-                {strategy === "redirector" || strategy === "sourceforge" ? t("download.auto") : t("download.origin")}
+                {officialServer}
               </span>
             </ActionRow>
           )}

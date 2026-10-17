@@ -4,11 +4,14 @@
  * - Version/edition/arch/format selects cascade from the full release data,
  *   fetched from /data/releases/<slug>.json once the visitor points at or
  *   tabs into the wizard (or on the first change).
- * - For distros with an official mirror list, the nearest mirrors are ranked
- *   from /api/geo (Vercel edge geolocation) with a timezone fallback, and the
+ * - For every distro with mirror data, the official mirrors are ranked from
+ *   /api/geo (Vercel edge geolocation) with a timezone fallback, and the
  *   download link points at the chosen mirror + the file's relative path
  *   (the server's choice keeps its path in data-path, so this needs no
- *   release data). Without any location the official server stays chosen.
+ *   release data). The nearest mirror is chosen, except where the official
+ *   link is a redirector or SourceForge (it already picks a nearby server, so
+ *   it stays chosen, ADR-0004). Without any location the official server
+ *   stays chosen.
  * - The last choice per distro is remembered in localStorage.
  *
  * States (SPEC §14–16): the link never serves anything but the choice the
@@ -33,6 +36,8 @@ import {
 
 interface Labels extends VersionLabels, ChecksumLabels {
   origin: string;
+  /** The official link when it is a redirector: "자동으로 가까운 서버". */
+  auto: string;
   recommended: string;
   recommendedFor: string;
   locating: string;
@@ -384,6 +389,9 @@ function init(root: HTMLElement) {
   const spinner = $("[data-mirror-spinner]");
   const geoNote = $("[data-geo-fallback]");
   const mirrorError = $("[data-mirror-error]");
+  // A redirector (or SourceForge) already sends visitors to a nearby server.
+  const auto = root.dataset.strategy === "redirector" || root.dataset.strategy === "sourceforge";
+  const official = auto ? labels.auto : labels.origin;
   if (mirrorsUrl && mirrorSel && mirrorLabel) {
     const describe = (m: RankedMirror) => {
       const name = m.n ?? new URL(m.u).hostname;
@@ -406,7 +414,7 @@ function init(root: HTMLElement) {
         const mirrors = rankMirrors(payload, geo).slice(0, MAX_MIRRORS);
         // The official server first, then one group per country in ranking
         // order (mirrors without a country stand alone).
-        const items: HTMLElement[] = [option("", labels.origin)];
+        const items: HTMLElement[] = [option("", official)];
         const groups = new Map<string, HTMLOptGroupElement>();
         for (const m of mirrors) {
           const o = option(m.u, describe(m));
@@ -427,14 +435,15 @@ function init(root: HTMLElement) {
         const remembered =
           saved?.mirror && mirrors.some((m) => m.u === saved.mirror) ? saved.mirror : undefined;
         // The top-ranked official mirror (nearest with a location, otherwise
-        // the project's own quality order), as before the redesign.
-        const best = mirrors[0];
+        // the project's own quality order), as before the redesign; a
+        // redirector stays chosen unless the visitor picked a mirror before.
+        const best = auto ? undefined : mirrors[0];
         mirrorSel.value = remembered ?? best?.u ?? "";
         relink();
         mirrorSel.hidden = false;
         const place = country(geo.cc);
         mirrorLabel.textContent = !mirrorSel.value
-          ? labels.origin
+          ? official
           : best && place
             ? labels.recommendedFor.replace("{place}", place)
             : labels.recommended;
@@ -445,7 +454,7 @@ function init(root: HTMLElement) {
       } catch {
         // The link keeps the official server, and the label says so. After
         // [Try again] the row is already shown, so its status is said here.
-        mirrorLabel.textContent = labels.origin;
+        mirrorLabel.textContent = official;
         if (retried) say(mirrorError?.querySelector("[role=status]")?.textContent ?? "");
         if (mirrorError) mirrorError.hidden = false;
       } finally {

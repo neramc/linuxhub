@@ -4,6 +4,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   type HistoryEntry,
   historyFileSchema,
@@ -17,7 +18,7 @@ import {
   statusFileSchema,
 } from "../../src/lib/data-schemas";
 
-export const DATA_DIR = join(import.meta.dir, "..", "..", "src", "data");
+export const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "src", "data");
 export const releasesPath = (slug: string) => join(DATA_DIR, "releases", `${slug}.json`);
 export const mirrorsPath = (slug: string) => join(DATA_DIR, "mirrors", `${slug}.json`);
 export const HISTORY_PATH = join(DATA_DIR, "history.json");

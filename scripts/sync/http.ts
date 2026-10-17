@@ -8,10 +8,15 @@
  * - retries 429/5xx/network errors with exponential backoff (never 4xx),
  *   waiting at least as long as the server's Retry-After (capped at 60 s)
  * - revalidates with ETag / Last-Modified, keeping bodies in .cache/
+ * - can record every response of a source run as a fixture and replay it
+ *   without network (scripts/sync/sources.test.ts)
  */
+import { AsyncLocalStorage } from "node:async_hooks";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { gunzipSync, gzipSync } from "node:zlib";
 import robotsParser from "robots-parser";
 
 const SITE = process.env.SITE_URL ?? "https://github.com/neramc/linuxhub";
@@ -22,7 +27,9 @@ const TIMEOUT_MS = 30_000;
 const RETRIES = 2;
 const MAX_RETRY_AFTER_MS = 60_000;
 
-const CACHE_DIR = join(import.meta.dir, ".cache");
+// Node-compatible (no Bun globals): the fixture replay test runs under Vitest.
+const CACHE_DIR = join(dirname(fileURLToPath(import.meta.url)), ".cache");
+const sleep = (ms: number) => new Promise((done) => setTimeout(done, ms));
 const CACHE_INDEX = join(CACHE_DIR, "index.json");
 
 export class HttpError extends Error {
@@ -72,6 +79,80 @@ function writeCached(url: string, entry: CacheEntry) {
   writeFileSync(CACHE_INDEX, JSON.stringify(index));
 }
 
+/* ---------- fixtures (record / replay) ---------- */
+
+/**
+ * `record`: every response (and every refusal: HTTP 4xx, robots.txt) is also
+ * written to <dir>/<slug>/<hash>.json.gz, the slug being the source that is
+ * running (withFixtureScope). `replay`: responses come only from there and no
+ * request leaves the machine; a missing fixture is an error. Set from the
+ * SYNC_HTTP_RECORD / SYNC_HTTP_REPLAY environment variables (a directory) or
+ * with useFixtures().
+ */
+type FixtureMode = "off" | "record" | "replay";
+let fixtureMode: FixtureMode = process.env.SYNC_HTTP_REPLAY
+  ? "replay"
+  : process.env.SYNC_HTTP_RECORD
+    ? "record"
+    : "off";
+let fixtureDir = process.env.SYNC_HTTP_REPLAY ?? process.env.SYNC_HTTP_RECORD ?? "";
+const fixtureScope = new AsyncLocalStorage<string>();
+
+export function useFixtures(mode: FixtureMode, dir = "") {
+  fixtureMode = mode;
+  fixtureDir = dir;
+}
+
+/** Runs `fn` with its requests filed under `slug` when recording or replaying. */
+export function withFixtureScope<T>(slug: string, fn: () => Promise<T>): Promise<T> {
+  return fixtureScope.run(slug, fn);
+}
+
+interface Fixture {
+  method: string;
+  url: string;
+  finalUrl?: string;
+  status: number;
+  headers?: Record<string, string>;
+  body?: string;
+  /** robots.txt refused the URL. */
+  robots?: false;
+}
+
+const KEPT_HEADERS = ["content-type", "content-length", "last-modified", "etag"];
+
+function fixturePath(method: string, url: string): string {
+  const slug = fixtureScope.getStore() ?? "_shared";
+  const hash = createHash("sha256").update(`${method} ${url}`).digest("hex").slice(0, 24);
+  return join(fixtureDir, slug, `${hash}.json.gz`);
+}
+
+function saveFixture(fixture: Fixture) {
+  if (fixtureMode !== "record") return;
+  const path = fixturePath(fixture.method, fixture.url);
+  mkdirSync(join(path, ".."), { recursive: true });
+  writeFileSync(path, gzipSync(JSON.stringify(fixture), { level: 9 }));
+}
+
+function replayFixture(method: string, url: string): FetchResult {
+  const path = fixturePath(method, url);
+  if (!existsSync(path)) throw new HttpError(`no fixture for ${method} ${url} (${path})`, url);
+  const f = JSON.parse(gunzipSync(readFileSync(path)).toString("utf8")) as Fixture;
+  if (f.robots === false) {
+    stats.blocked++;
+    throw new RobotsDisallowed(`robots.txt disallows ${url}`, url);
+  }
+  if (f.status >= 400) throw new HttpError(`HTTP ${f.status} for ${url}`, url, f.status);
+  return {
+    url,
+    finalUrl: f.finalUrl ?? url,
+    status: f.status,
+    headers: new Headers(f.headers ?? {}),
+    body: f.body ?? "",
+    fromCache: false,
+  };
+}
+
 /* ---------- per-host pacing ---------- */
 
 const hostQueues = new Map<string, Promise<unknown>>();
@@ -85,7 +166,7 @@ function schedule<T>(host: string, task: () => Promise<T>): Promise<T> {
     .then(async () => {
       const wait =
         (hostLast.get(host) ?? 0) + (hostDelay.get(host) ?? MIN_INTERVAL_MS) - Date.now();
-      if (wait > 0) await Bun.sleep(wait);
+      if (wait > 0) await sleep(wait);
       try {
         return await task();
       } finally {
@@ -134,6 +215,8 @@ async function robotsFor(url: URL): Promise<Robots> {
 }
 
 export async function isAllowed(url: string): Promise<boolean> {
+  // Replays answer from the recorded refusals instead (request()).
+  if (fixtureMode === "replay") return true;
   const u = new URL(url);
   const robots = await robotsFor(u);
   return robots.isAllowed(url, UA_TOKEN) !== false;
@@ -149,6 +232,10 @@ export interface FetchOptions {
   headers?: Record<string, string>;
   /** Skip the ETag cache (for HEAD or tiny responses). */
   noCache?: boolean;
+  /** Retries after 429/5xx/network errors (default 2). */
+  retries?: number;
+  /** Per-attempt timeout (default 30 s). */
+  timeoutMs?: number;
 }
 
 export interface FetchResult {
@@ -174,11 +261,13 @@ export const httpStats = () => ({ ...stats });
 export async function request(url: string, options: FetchOptions = {}): Promise<FetchResult> {
   const u = new URL(url);
   if (u.protocol !== "https:") throw new HttpError("only https is allowed", url);
+  const method = options.method ?? "GET";
+  if (fixtureMode === "replay") return replayFixture(method, url);
   if (!(await isAllowed(url))) {
     stats.blocked++;
+    saveFixture({ method, url, status: 0, robots: false });
     throw new RobotsDisallowed(`robots.txt disallows ${url}`, url);
   }
-  const method = options.method ?? "GET";
   const cached = method === "GET" && !options.noCache ? readCached(url) : null;
   const headers: Record<string, string> = {
     "user-agent": USER_AGENT,
@@ -190,20 +279,21 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
 
   let lastError: unknown;
   let retryAfter = 0;
-  for (let attempt = 0; attempt <= RETRIES; attempt++) {
-    if (attempt > 0) await Bun.sleep(Math.max(2 ** attempt * 1000, retryAfter));
+  for (let attempt = 0; attempt <= (options.retries ?? RETRIES); attempt++) {
+    if (attempt > 0) await sleep(Math.max(2 ** attempt * 1000, retryAfter));
     try {
       const res = await schedule(u.host, () =>
         fetch(url, {
           method,
           headers,
           redirect: "follow",
-          signal: AbortSignal.timeout(TIMEOUT_MS),
+          signal: AbortSignal.timeout(options.timeoutMs ?? TIMEOUT_MS),
         }),
       );
       stats.requests++;
       if (res.status === 304 && cached) {
         stats.notModified++;
+        saveFixture({ method, url, finalUrl: res.url || url, status: 200, body: cached.body });
         return {
           url,
           finalUrl: res.url || url,
@@ -218,8 +308,24 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
         lastError = new HttpError(`HTTP ${res.status}`, url, res.status);
         continue;
       }
-      if (!res.ok) throw new HttpError(`HTTP ${res.status} for ${url}`, url, res.status);
+      if (!res.ok) {
+        saveFixture({ method, url, status: res.status });
+        throw new HttpError(`HTTP ${res.status} for ${url}`, url, res.status);
+      }
       const body = method === "HEAD" ? "" : await res.text();
+      saveFixture({
+        method,
+        url,
+        finalUrl: res.url || url,
+        status: res.status,
+        headers: Object.fromEntries(
+          KEPT_HEADERS.flatMap((h) => {
+            const v = res.headers.get(h);
+            return v === null ? [] : [[h, v]];
+          }),
+        ),
+        body,
+      });
       if (method === "GET" && !options.noCache) {
         writeCached(url, {
           etag: res.headers.get("etag") ?? undefined,

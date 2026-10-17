@@ -1,25 +1,44 @@
 /**
  * Data sync entry point:
- * `bun run sync [--only=a,b] [--kind=all|releases|mirrors|popularity[,…]] [--dry-run]`
+ * `bun run sync [--only=a,b] [--kind=all|releases|mirrors|popularity[,…]] [--dry-run] [--out=DIR]`
  *
  * Each distro source runs independently. A failing source never touches its
  * existing data; it is marked in src/data/status.json (failingSince) so the
  * site can flag stale data and the workflow can open an issue.
  *
+ * Every distro gets the same treatment after its source returns (docs/data-sources.md
+ * "동등한 대우"): missing artifact sizes are filled from the previous data or one
+ * HEAD on the official URL, and every mirror is checked over HTTPS against the
+ * newest release's file before it is kept.
+ *
+ * `--dry-run` writes nothing; `--out=DIR` writes the candidate files to
+ * DIR/releases and DIR/mirrors instead of src/data (no status or history),
+ * for reviewing a source. `SYNC_HTTP_RECORD=DIR` records the responses as
+ * fixtures per source (scripts/sync/http.ts).
+ *
  * `popularity` (ADR-0013) is not per-distro: it ignores --only, never touches
  * status.json, and keeps src/data/popularity.json when it fails.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 import type {
   HistoryEntry,
+  Mirror,
   MirrorsFile,
   ReleasesFile,
   StatusFile,
 } from "../../src/lib/data-schemas";
 import { mirrorsFileSchema, releasesFileSchema } from "../../src/lib/data-schemas";
 import { checkMirrors, checkReleases } from "./checks";
-import { httpStats } from "./http";
+import {
+  HttpError,
+  headSize,
+  httpStats,
+  RobotsDisallowed,
+  request,
+  withFixtureScope,
+} from "./http";
+import { mapLimit } from "./lib/mirrors";
 import { compareVersions } from "./lib/versions";
 import { syncPopularity } from "./popularity";
 import type { DistroSource, SyncContext } from "./source";
@@ -52,9 +71,12 @@ if (unknownKinds.length) {
   process.exit(2);
 }
 const kinds = new Set<Kind>(requested.includes("all") ? KINDS : (requested as Kind[]));
-const dryRun = args.get("dry-run") === "true";
+const outDir = args.get("out") ? resolve(args.get("out") as string) : null;
+const dryRun = args.get("dry-run") === "true" || outDir !== null;
 const today = new Date().toISOString().slice(0, 10);
 const HISTORY_LIMIT = 300;
+/** A source that takes longer than this fails (its data stays) instead of holding up the run. */
+const SOURCE_TIMEOUT_MS = 12 * 60_000;
 
 type Outcome = {
   slug: string;
@@ -133,12 +155,87 @@ function normalizeOrder(releases: ReleasesFile["releases"]): ReleasesFile["relea
   }));
 }
 
+type Artifact = ReleasesFile["releases"][number]["editions"][number]["artifacts"][number];
+const artifactsOf = (releases: ReleasesFile["releases"]): Artifact[] =>
+  releases.flatMap((r) => r.editions.flatMap((e) => e.artifacts));
+
+/**
+ * Same for every distro: an artifact without a published size keeps the size
+ * we already know for the same URL and checksum, else gets one HEAD on its
+ * official URL (robots-aware, paced). Unknown stays null.
+ */
+async function fillSizes(prev: ReleasesFile | undefined, releases: ReleasesFile["releases"]) {
+  const known = new Map<string, number>();
+  for (const a of artifactsOf(prev?.releases ?? []))
+    if (a.size && a.checksum) known.set(`${a.url} ${a.checksum.value}`, a.size);
+  const missing = artifactsOf(releases).filter((a) => a.size === null);
+  await mapLimit(missing, 4, async (a) => {
+    a.size = (a.checksum && known.get(`${a.url} ${a.checksum.value}`)) || (await headSize(a.url));
+  });
+}
+
+function candidatePath(kind: "releases" | "mirrors", slug: string) {
+  return join(outDir ?? "", kind, `${slug}.json`);
+}
+
+/** The releases file mirrors are checked against: this run's candidate under --out, else src/data. */
+function currentReleases(slug: string): ReleasesFile | undefined {
+  if (outDir && existsSync(candidatePath("releases", slug)))
+    return releasesFileSchema.parse(
+      JSON.parse(readFileSync(candidatePath("releases", slug), "utf8")),
+    );
+  return readReleases(slug);
+}
+
+/** Path (under a mirror root) of the newest non-pre-release's first mirrored file, x86_64 first. */
+function probePath(releases: ReleasesFile | undefined): string | null {
+  const stable = (releases?.releases ?? []).filter(
+    (r) => r.channel !== "beta" && r.channel !== "testing",
+  );
+  const newest = [...stable].sort((a, b) => compareVersions(b.version, a.version))[0];
+  return newest ? (artifactsOf([newest]).find((a) => a.path)?.path ?? null) : null;
+}
+
+/**
+ * Same for every distro: each listed mirror gets one HTTPS HEAD for the newest
+ * release's file. 2xx/3xx keeps it. 404/410 (it does not carry the release)
+ * and no HTTPS answer at all drop it. A mirror we may not check (robots.txt)
+ * or that refuses HEAD keeps its place on the official list's word.
+ */
+async function verifyMirrors(slug: string, mirrors: Mirror[], ctx: SyncContext) {
+  const path = probePath(currentReleases(slug));
+  if (!path) {
+    ctx.log("mirrors not checked: no release file with a mirror path");
+    return mirrors;
+  }
+  const verdicts = await mapLimit(mirrors, 16, async (m) => {
+    try {
+      const res = await request(`${m.url}${path}`, {
+        method: "HEAD",
+        noCache: true,
+        retries: 1,
+        timeoutMs: 15_000,
+      });
+      return res.status < 400;
+    } catch (error) {
+      if (error instanceof RobotsDisallowed) return true;
+      if (error instanceof HttpError && error.status)
+        return error.status !== 404 && error.status !== 410;
+      return false;
+    }
+  });
+  const kept = mirrors.filter((_, i) => verdicts[i]);
+  ctx.log(`mirrors: ${kept.length} of ${mirrors.length} answer for ${path}`);
+  return kept;
+}
+
 async function syncReleases(source: DistroSource, ctx: SyncContext) {
   if (!source.releases) return;
   try {
     const result = await source.releases(ctx);
     result.releases = normalizeOrder(result.releases);
     const prev = readReleases(source.slug);
+    await fillSizes(prev, result.releases);
     const draft: ReleasesFile = {
       slug: source.slug,
       sources: result.sources,
@@ -159,13 +256,19 @@ async function syncReleases(source: DistroSource, ctx: SyncContext) {
     if (regression) problems.push(regression);
     if (problems.length) throw new Error(problems.slice(0, 5).join("; "));
     markSuccess(source.slug, "releases");
+    if (outDir) writeCandidate("releases", next);
     if (sameContent(prev, next)) {
       outcomes.push({ slug: source.slug, kind: "releases", result: "unchanged" });
       return;
     }
     recordHistory(source.slug, prev, next);
     if (!dryRun) writeReleases(next);
-    outcomes.push({ slug: source.slug, kind: "releases", result: "changed" });
+    outcomes.push({
+      slug: source.slug,
+      kind: "releases",
+      result: "changed",
+      detail: describe(next),
+    });
   } catch (error) {
     markFailure(source.slug, "releases", error);
   }
@@ -175,7 +278,7 @@ async function syncMirrors(source: DistroSource, ctx: SyncContext) {
   if (!source.mirrors) return;
   try {
     const result = await source.mirrors(ctx);
-    const mirrors = [...result.mirrors].sort(
+    const mirrors = [...(await verifyMirrors(source.slug, result.mirrors, ctx))].sort(
       (a, b) => (a.country ?? "ZZ").localeCompare(b.country ?? "ZZ") || a.url.localeCompare(b.url),
     );
     const prev = readMirrors(source.slug);
@@ -199,15 +302,47 @@ async function syncMirrors(source: DistroSource, ctx: SyncContext) {
     const problems = checkMirrors(next);
     if (problems.length) throw new Error(problems.slice(0, 5).join("; "));
     markSuccess(source.slug, "mirrors");
+    if (outDir) writeCandidate("mirrors", next);
     if (sameContent(prev, next)) {
       outcomes.push({ slug: source.slug, kind: "mirrors", result: "unchanged" });
       return;
     }
     if (!dryRun) writeMirrors(next);
-    outcomes.push({ slug: source.slug, kind: "mirrors", result: "changed" });
+    outcomes.push({
+      slug: source.slug,
+      kind: "mirrors",
+      result: "changed",
+      detail: `${next.mirrors.length} mirrors`,
+    });
   } catch (error) {
     markFailure(source.slug, "mirrors", error);
   }
+}
+
+function writeCandidate(kind: "releases" | "mirrors", file: ReleasesFile | MirrorsFile) {
+  mkdirSync(join(outDir ?? "", kind), { recursive: true });
+  writeFileSync(candidatePath(kind, file.slug), `${JSON.stringify(file, null, 2)}\n`);
+}
+
+/** "24.04.3 lts: 4 editions, 9 files (9 checksums, 9 sizes)" per release, for the log. */
+function describe(file: ReleasesFile): string {
+  return file.releases
+    .map((r) => {
+      const files = artifactsOf([r]);
+      return `${r.version} ${r.channel}: ${r.editions.length} editions, ${files.length} files (${files.filter((a) => a.checksum).length} checksums, ${files.filter((a) => a.size).length} sizes)`;
+    })
+    .join("; ");
+}
+
+/** Rejects after `ms` so one stuck source cannot hold up the others. */
+function timeLimit<T>(work: Promise<T>, ms: number): Promise<T> {
+  let timer: Timer | undefined;
+  return Promise.race([
+    work,
+    new Promise<T>((_, reject) => {
+      timer = setTimeout(() => reject(new Error(`timed out after ${ms / 60_000} min`)), ms);
+    }),
+  ]).finally(() => clearTimeout(timer));
 }
 
 const selected = SOURCES.filter((s) => !only || only.includes(s.slug));
@@ -231,10 +366,18 @@ async function runPopularity() {
 const perDistro = kinds.has("releases") || kinds.has("mirrors");
 const started = Date.now();
 await Promise.all([
-  ...(perDistro ? selected : []).map(async (source) => {
+  ...(perDistro ? selected : []).map((source) => {
     const ctx: SyncContext = { today, log: (m) => console.log(`[${source.slug}] ${m}`) };
-    if (kinds.has("releases")) await syncReleases(source, ctx);
-    if (kinds.has("mirrors")) await syncMirrors(source, ctx);
+    return withFixtureScope(source.slug, async () => {
+      if (kinds.has("releases"))
+        await timeLimit(syncReleases(source, ctx), SOURCE_TIMEOUT_MS).catch((e) =>
+          markFailure(source.slug, "releases", e),
+        );
+      if (kinds.has("mirrors"))
+        await timeLimit(syncMirrors(source, ctx), SOURCE_TIMEOUT_MS).catch((e) =>
+          markFailure(source.slug, "mirrors", e),
+        );
+    });
   }),
   ...(kinds.has("popularity") ? [runPopularity()] : []),
 ]);
