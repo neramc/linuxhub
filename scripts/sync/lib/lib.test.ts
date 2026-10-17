@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { checksumType, parseChecksums } from "./checksums";
-import { compareVersions, isoDay, latest } from "./versions";
+import { originAsMirror } from "./mirrors";
+import { compareVersions, isoDay, latest, periodEnd } from "./versions";
 
 describe("parseChecksums", () => {
   it("reads GNU coreutils lines (text and binary mode)", () => {
@@ -53,5 +54,31 @@ describe("versions", () => {
     expect(isoDay("2025-10-28T12:00:00Z")).toBe("2025-10-28");
     expect(isoDay("nope")).toBeNull();
     expect(isoDay(undefined)).toBeNull();
+  });
+});
+
+describe("periodEnd", () => {
+  it("ends a month-only or year-only EOL on its last day, the same for every distro", () => {
+    expect(periodEnd("June 2029")).toBe("2029-06-30");
+    expect(periodEnd("Jun 2029")).toBe("2029-06-30");
+    expect(periodEnd("Sept 2030")).toBe("2030-09-30");
+    expect(periodEnd("2029-06")).toBe("2029-06-30");
+    expect(periodEnd("February 2028")).toBe("2028-02-29");
+    expect(periodEnd("2031")).toBe("2031-12-31");
+    expect(periodEnd("soon")).toBeNull();
+    expect(periodEnd("2029-13")).toBeNull();
+  });
+});
+
+describe("originAsMirror", () => {
+  it("gives a single official origin the same mirror shape as any list entry", () => {
+    expect(originAsMirror("https://os.example.org", "Example origin")).toEqual({
+      url: "https://os.example.org/",
+      country: null,
+      name: "Example origin",
+      lat: null,
+      lon: null,
+      score: null,
+    });
   });
 });
