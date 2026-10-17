@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -17,6 +17,14 @@
       "url": "https://mirror.sitsa.com.ar/ubuntu-releases/",
       "country": "AR",
       "name": "SiTSA Telecomunicaciones",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://releases.ubuntu.unc.edu.ar/",
+      "country": "AR",
+      "name": "Universidad Nacional de Córdoba",
       "lat": null,
       "lon": null,
       "score": null
@@ -198,6 +206,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.cpsc.ucalgary.ca/mirror/ubuntu.com/releases/",
+      "country": "CA",
+      "name": "University of Calgary",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.csclub.uwaterloo.ca/ubuntu-releases/",
       "country": "CA",
       "name": "University of Waterloo Computer Science Club",
@@ -334,17 +350,17 @@
       "score": null
     },
     {
-      "url": "https://mirrors.huaweicloud.com/repository/ubuntu-releases/",
+      "url": "https://mirrors.hit.edu.cn/ubuntu-releases/",
       "country": "CN",
-      "name": "HUAWEI CLOUD",
+      "name": "Harbin Institute of Technology",
       "lat": null,
       "lon": null,
       "score": null
     },
     {
-      "url": "https://mirrors.qlu.edu.cn/ubuntu-releases/",
+      "url": "https://mirrors.huaweicloud.com/repository/ubuntu-releases/",
       "country": "CN",
-      "name": "Qilu Univertity of Technology",
+      "name": "HUAWEI CLOUD",
       "lat": null,
       "lon": null,
       "score": null
@@ -361,6 +377,14 @@
       "url": "https://mirrors.xjtu.edu.cn/ubuntu-releases/",
       "country": "CN",
       "name": "Xi'an Jiaotong University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.zju.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Zhejiang University",
       "lat": null,
       "lon": null,
       "score": null
@@ -1030,6 +1054,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.rasanegar.com/ubuntu-cd/",
+      "country": "IR",
+      "name": "Rasanegar ",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirrors.opensource.is/ubuntu-releases/",
       "country": "IS",
       "name": "Opin Kerfi",
@@ -1353,14 +1385,6 @@
       "url": "https://ftp.snt.utwente.nl/pub/os/linux/ubuntu-releases/",
       "country": "NL",
       "name": "University of Twente, The Netherlands",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.lyrahosting.com/ubuntureleases/",
-      "country": "NL",
-      "name": "Lyra Hosting",
       "lat": null,
       "lon": null,
       "score": null
@@ -1694,6 +1718,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.freedif.org/ubuntu-releases/",
+      "country": "SG",
+      "name": "Freedif",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ftp.arnes.si/pub/mirrors/ubuntu-cdimage/",
       "country": "SI",
       "name": "Arnes",
@@ -1705,6 +1737,14 @@
       "url": "https://mirror.cmkl.ac.th/ubuntu-releases/",
       "country": "TH",
       "name": "CMKL University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kku.ac.th/ubuntu-releases/",
+      "country": "TH",
+      "name": "Khon Kaen University",
       "lat": null,
       "lon": null,
       "score": null
@@ -1785,6 +1825,30 @@
       "url": "https://free.nchc.org.tw/ubuntu-cd/",
       "country": "TW",
       "name": "NCHC, Taiwan",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
+      "country": "TW",
+      "name": "TaiChung City Education Network Center",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.ubuntu-tw.net/ubuntu-releases/",
+      "country": "TW",
+      "name": "Ubuntu-TW",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ossplanet.net/ubuntu-releases/",
+      "country": "TW",
+      "name": "OSSPlanet",
       "lat": null,
       "lon": null,
       "score": null
@@ -1897,6 +1961,14 @@
       "url": "https://forksystems.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.ussg.iu.edu/linux/ubuntu-releases/",
+      "country": "US",
+      "name": "ftp.ussg.iu.edu",
       "lat": null,
       "lon": null,
       "score": null
@@ -2017,6 +2089,14 @@
       "url": "https://mirror.nexcess.net/ubuntu-releases/",
       "country": "US",
       "name": "Nexcess",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pilotfiber.com/ubuntu-iso/",
+      "country": "US",
+      "name": "Pilot Fiber",
       "lat": null,
       "lon": null,
       "score": null
@@ -2289,6 +2369,14 @@
       "url": "https://repo.cure.edu.uy/ubuntu/distribuciones/",
       "country": "UY",
       "name": "UDELAR-CURE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repos.interior.edu.uy/releases/",
+      "country": "UY",
+      "name": "Universidad de la República",
       "lat": null,
       "lon": null,
       "score": null
