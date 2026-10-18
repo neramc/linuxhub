@@ -29,8 +29,8 @@
   },
   "debian": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/debian"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -49,14 +49,14 @@
   },
   "devuan": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/devuan"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "fedora": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/fedora"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "kali-linux": {
@@ -73,20 +73,20 @@
   },
   "kubuntu": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/ubuntu"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "linux-mint": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/linuxmint"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "lubuntu": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/ubuntu"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "mageia": {
@@ -137,8 +137,8 @@
   },
   "pop-os": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/pop-os"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "qubes-os": {
@@ -173,8 +173,8 @@
   },
   "ubuntu": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/ubuntu"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -183,8 +183,8 @@
   },
   "ubuntu-mate": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/ubuntu"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "vanilla-os": {
@@ -195,8 +195,8 @@
   },
   "xubuntu": {
     "releases": {
-      "failingSince": "2026-10-17",
-      "lastError": "robots.txt disallows https://endoflife.date/api/v1/products/ubuntu"
+      "failingSince": null,
+      "lastError": null
     }
   }
 }
