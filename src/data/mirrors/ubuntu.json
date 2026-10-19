@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-17",
+  "updated": "2026-10-19",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -201,14 +201,6 @@
       "url": "https://lesnet.mm.fcix.net/ubuntu-releases/",
       "country": "CA",
       "name": "Fremont Cabal Internet Exchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.cpsc.ucalgary.ca/mirror/ubuntu.com/releases/",
-      "country": "CA",
-      "name": "University of Calgary",
       "lat": null,
       "lon": null,
       "score": null
@@ -1486,14 +1478,6 @@
       "score": null
     },
     {
-      "url": "https://ftp.icm.edu.pl/pub/Linux/ubuntu-releases/",
-      "country": "PL",
-      "name": "ICM - Interdisciplinary Centre for Mathematical and Computational Modelling",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://ubuntu.man.lodz.pl/ubuntu-releases/",
       "country": "PL",
       "name": "Miejska Sieć Komputerowa LODMAN / Politechnika Łódzka UCI",
@@ -2193,6 +2177,14 @@
       "url": "https://mirrors.mit.edu/ubuntu-releases/",
       "country": "US",
       "name": "MIT SIPB",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.netmanageit.com/ubuntu-releases/",
+      "country": "US",
+      "name": "NetmanageIT",
       "lat": null,
       "lon": null,
       "score": null
