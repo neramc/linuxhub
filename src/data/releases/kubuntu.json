@@ -4,8 +4,41 @@
     "https://endoflife.date/ubuntu",
     "https://cdimage.ubuntu.com/kubuntu/releases/"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-19",
   "releases": [
+    {
+      "version": "26.10",
+      "channel": "stable",
+      "codename": "Stonking Stingray",
+      "releaseDate": "2026-10-15",
+      "eol": "2027-07-01",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kubuntu-26.10-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.10/release/kubuntu-26.10-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "8160b1d6266dfe1998d183b19713680263c09669f101e0e41cbcf11f50b6f785",
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.10/release/kubuntu-26.10-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "26.04.1",
       "channel": "lts",
@@ -67,39 +100,6 @@
               },
               "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04.5-desktop-amd64.iso.torrent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "version": "22.04.5",
-      "channel": "lts",
-      "codename": "Jammy Jellyfish",
-      "releaseDate": "2022-04-21",
-      "eol": "2027-06-01",
-      "notesUrl": null,
-      "editions": [
-        {
-          "id": "desktop",
-          "name": "Desktop",
-          "desktop": "kde",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "kubuntu-22.04.5-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/kubuntu-22.04.5-desktop-amd64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "a3e2c4b1bc190cebaa8083c0d23ea2555e223d86b885570474a423b6de818888",
-                "url": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/22.04/release/kubuntu-22.04.5-desktop-amd64.iso.torrent"
             }
           ]
         }

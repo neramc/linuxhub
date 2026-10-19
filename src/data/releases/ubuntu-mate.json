@@ -4,8 +4,41 @@
     "https://endoflife.date/ubuntu",
     "https://cdimage.ubuntu.com/ubuntu-mate/releases/"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-19",
   "releases": [
+    {
+      "version": "26.10",
+      "channel": "stable",
+      "codename": "Stonking Stingray",
+      "releaseDate": "2026-10-15",
+      "eol": "2027-07-01",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "ubuntu-mate-26.10-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu-mate/releases/26.10/release/ubuntu-mate-26.10-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "383a61f97daa07bcc4f0081c99e39c6cfd2d5d4ddaceaa27330c2144b128044e",
+                "url": "https://cdimage.ubuntu.com/ubuntu-mate/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/26.10/release/ubuntu-mate-26.10-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "24.04.5",
       "channel": "lts",
@@ -34,39 +67,6 @@
               },
               "signatureUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/24.04/release/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/24.04/release/ubuntu-mate-24.04.5-desktop-amd64.iso.torrent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "version": "22.04.5",
-      "channel": "lts",
-      "codename": "Jammy Jellyfish",
-      "releaseDate": "2022-04-21",
-      "eol": "2027-06-01",
-      "notesUrl": null,
-      "editions": [
-        {
-          "id": "desktop",
-          "name": "Desktop",
-          "desktop": "mate",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "ubuntu-mate-22.04.5-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/ubuntu-mate/releases/22.04/release/ubuntu-mate-22.04.5-desktop-amd64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "b382a3aebffc916cce71369e0c09719dd819b8b6ab308d4396ac31c1ada867c4",
-                "url": "https://cdimage.ubuntu.com/ubuntu-mate/releases/22.04/release/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/22.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/22.04/release/ubuntu-mate-22.04.5-desktop-amd64.iso.torrent"
             }
           ]
         }

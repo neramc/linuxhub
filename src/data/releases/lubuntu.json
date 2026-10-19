@@ -4,8 +4,41 @@
     "https://endoflife.date/ubuntu",
     "https://cdimage.ubuntu.com/lubuntu/releases/"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-19",
   "releases": [
+    {
+      "version": "26.10",
+      "channel": "stable",
+      "codename": "Stonking Stingray",
+      "releaseDate": "2026-10-15",
+      "eol": "2027-07-01",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "lubuntu-26.10-desktop-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/lubuntu/releases/26.10/release/lubuntu-26.10-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "fd71fb468451ff2a14914aeb344b530e7eb1d4f7c810f35d855ecbe68330b7eb",
+                "url": "https://cdimage.ubuntu.com/lubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/lubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/lubuntu/releases/26.10/release/lubuntu-26.10-desktop-amd64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "26.04.1",
       "channel": "lts",
@@ -67,39 +100,6 @@
               },
               "signatureUrl": "https://cdimage.ubuntu.com/lubuntu/releases/24.04/release/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.ubuntu.com/lubuntu/releases/24.04/release/lubuntu-24.04.5-desktop-amd64.iso.torrent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "version": "22.04.5",
-      "channel": "lts",
-      "codename": "Jammy Jellyfish",
-      "releaseDate": "2022-04-21",
-      "eol": "2027-06-01",
-      "notesUrl": null,
-      "editions": [
-        {
-          "id": "desktop",
-          "name": "Desktop",
-          "desktop": "lxqt",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "lubuntu-22.04.5-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/lubuntu-22.04.5-desktop-amd64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "8ebc2104d822205263d78cc1bee58d17f3e8d8de7aa8e2f249ac2093ec0dd4bc",
-                "url": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/lubuntu/releases/22.04/release/lubuntu-22.04.5-desktop-amd64.iso.torrent"
             }
           ]
         }

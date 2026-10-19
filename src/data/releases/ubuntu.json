@@ -4,8 +4,94 @@
     "https://endoflife.date/ubuntu",
     "https://releases.ubuntu.com/"
   ],
-  "updated": "2026-10-15",
+  "updated": "2026-10-19",
   "releases": [
+    {
+      "version": "26.10",
+      "channel": "stable",
+      "codename": "Stonking Stingray",
+      "releaseDate": "2026-10-15",
+      "eol": "2027-07-01",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "ubuntu-26.10-beta-desktop-amd64.iso",
+              "path": "26.10/ubuntu-26.10-beta-desktop-amd64.iso",
+              "url": "https://releases.ubuntu.com/26.10/ubuntu-26.10-beta-desktop-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "733569320adee426accac397f451c26dd0a8521cc09ea89d021072c40a2990fd",
+                "url": "https://releases.ubuntu.com/26.10/SHA256SUMS"
+              },
+              "signatureUrl": "https://releases.ubuntu.com/26.10/SHA256SUMS.gpg",
+              "torrentUrl": "https://releases.ubuntu.com/26.10/ubuntu-26.10-beta-desktop-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-26.10-desktop-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/releases/26.10/release/ubuntu-26.10-desktop-arm64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "9242a38c47eb53a5beb153c249d4843e4366f8955e9b972663e4ab7989311e9f",
+                "url": "https://cdimage.ubuntu.com/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/releases/26.10/release/ubuntu-26.10-desktop-arm64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "server",
+          "name": "Server",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "ubuntu-26.10-beta-live-server-amd64.iso",
+              "path": "26.10/ubuntu-26.10-beta-live-server-amd64.iso",
+              "url": "https://releases.ubuntu.com/26.10/ubuntu-26.10-beta-live-server-amd64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "f677abab44bc4e9b8645edee8b3082e07462f5e85bff1f4615bc8cad920fc40a",
+                "url": "https://releases.ubuntu.com/26.10/SHA256SUMS"
+              },
+              "signatureUrl": "https://releases.ubuntu.com/26.10/SHA256SUMS.gpg",
+              "torrentUrl": "https://releases.ubuntu.com/26.10/ubuntu-26.10-beta-live-server-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/releases/26.10/release/ubuntu-26.10-live-server-arm64.iso",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "45fec674fbce001b46447747a6d36964de3d2da2a5fbe2ece111b72dd769b4de",
+                "url": "https://cdimage.ubuntu.com/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/releases/26.10/release/ubuntu-26.10-live-server-arm64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "26.04.1",
       "channel": "lts",
@@ -173,77 +259,6 @@
               },
               "signatureUrl": "https://cdimage.ubuntu.com/releases/24.04/release/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.5-live-server-arm64.iso.torrent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "version": "22.04.5",
-      "channel": "lts",
-      "codename": "Jammy Jellyfish",
-      "releaseDate": "2022-04-21",
-      "eol": "2027-06-01",
-      "notesUrl": null,
-      "editions": [
-        {
-          "id": "desktop",
-          "name": "Desktop",
-          "desktop": "gnome",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "ubuntu-22.04.5-desktop-amd64.iso",
-              "path": "22.04/ubuntu-22.04.5-desktop-amd64.iso",
-              "url": "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-desktop-amd64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "bfd1cee02bc4f35db939e69b934ba49a39a378797ce9aee20f6e3e3e728fefbf",
-                "url": "https://releases.ubuntu.com/22.04/SHA256SUMS"
-              },
-              "signatureUrl": "https://releases.ubuntu.com/22.04/SHA256SUMS.gpg",
-              "torrentUrl": "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-desktop-amd64.iso.torrent"
-            }
-          ]
-        },
-        {
-          "id": "server",
-          "name": "Server",
-          "desktop": null,
-          "kind": "server",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "ubuntu-22.04.5-live-server-amd64.iso",
-              "path": "22.04/ubuntu-22.04.5-live-server-amd64.iso",
-              "url": "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "9bc6028870aef3f74f4e16b900008179e78b130e6b0b9a140635434a46aa98b0",
-                "url": "https://releases.ubuntu.com/22.04/SHA256SUMS"
-              },
-              "signatureUrl": "https://releases.ubuntu.com/22.04/SHA256SUMS.gpg",
-              "torrentUrl": "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso.torrent"
-            },
-            {
-              "arch": "aarch64",
-              "format": "iso",
-              "file": "ubuntu-22.04.5-live-server-arm64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.5-live-server-arm64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "eafec62cfe760c30cac43f446463e628fada468c2de2f14e0e2bc27295187505",
-                "url": "https://cdimage.ubuntu.com/releases/22.04/release/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.ubuntu.com/releases/22.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.5-live-server-arm64.iso.torrent"
             }
           ]
         }
