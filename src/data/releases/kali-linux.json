@@ -2,18 +2,18 @@
   "slug": "kali-linux",
   "sources": [
     "https://cdimage.kali.org/current/",
-    "https://cdimage.kali.org/kali-2026.2/",
+    "https://cdimage.kali.org/kali-2026.3/",
     "https://www.kali.org/rss.xml"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-20",
   "releases": [
     {
-      "version": "2026.2",
+      "version": "2026.3",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-06-29",
+      "releaseDate": null,
       "eol": null,
-      "notesUrl": "https://www.kali.org/blog/kali-linux-2026-2-release/",
+      "notesUrl": "https://www.kali.org/blog/kali-linux-2026-3-release/",
       "editions": [
         {
           "id": "installer",
@@ -24,32 +24,32 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "kali-linux-2026.2-installer-amd64.iso",
+              "file": "kali-linux-2026.3-installer-amd64.iso",
               "path": null,
-              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-amd64.iso",
-              "size": 4802531328,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-amd64.iso",
+              "size": 5047031808,
               "checksum": {
                 "type": "sha256",
-                "value": "6dbefacc95e3b556c19c48e8bae39b8b505e2d3a1aba0bfb7ab62b036c3d2ba3",
-                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+                "value": "db9cbed33edb45727d16911813c2434fcd1419585007884153be22a03b30ec2f",
+                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-amd64.iso.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "kali-linux-2026.2-installer-arm64.iso",
+              "file": "kali-linux-2026.3-installer-arm64.iso",
               "path": null,
-              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-arm64.iso",
-              "size": 3972624384,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-arm64.iso",
+              "size": 4051513344,
               "checksum": {
                 "type": "sha256",
-                "value": "b9a08050ee522fbee7cac703b1bc48178f79eb974c962d4ed9dc1ccfdfa77fb6",
-                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+                "value": "c4a7f9bf3a0ff07c8263fe9e9b0edba0cc3d9b408f1d8f06c066df0afce23072",
+                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-arm64.iso.torrent"
             }
           ]
         },
@@ -62,32 +62,32 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "kali-linux-2026.2-installer-netinst-amd64.iso",
+              "file": "kali-linux-2026.3-installer-netinst-amd64.iso",
               "path": null,
-              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-amd64.iso",
-              "size": 779091968,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-amd64.iso",
+              "size": 746586112,
               "checksum": {
                 "type": "sha256",
-                "value": "d32f929dacc48134a31461a09f2160d13ad1d26b820cee920446813ca979b39b",
-                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+                "value": "0dd3e70f2e0b092286b29355450bc79a034a13fb1d5b4bf83c297149115258cd",
+                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-amd64.iso.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "kali-linux-2026.2-installer-netinst-arm64.iso",
+              "file": "kali-linux-2026.3-installer-netinst-arm64.iso",
               "path": null,
-              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-arm64.iso",
-              "size": 748990464,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso",
+              "size": 603238400,
               "checksum": {
                 "type": "sha256",
-                "value": "8ca1bdd6a85f37e380eca84c780256b6e634fc768426396f51967ec3be006ed1",
-                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+                "value": "a986c7fe0f8e887a77e7ea9f868da88eae04e7ac780ae75e6b702f243b63bf8d",
+                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-netinst-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso.torrent"
             }
           ]
         },
@@ -100,17 +100,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "kali-linux-2026.2-installer-purple-amd64.iso",
+              "file": "kali-linux-2026.3-installer-purple-amd64.iso",
               "path": null,
-              "url": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-purple-amd64.iso",
-              "size": 4893106176,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso",
+              "size": 4971552768,
               "checksum": {
                 "type": "sha256",
-                "value": "bbde629937a9eabc110062989d49947fae7fd4c0fef19f590f990b1cb97a497c",
-                "url": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS"
+                "value": "9b2b39174d9ed447c36ee1d7dd09b6efc2453e99dec8d239b4f69b263b0d5ecb",
+                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.2/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.kali.org/kali-2026.2/kali-linux-2026.2-installer-purple-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso.torrent"
             }
           ]
         }
