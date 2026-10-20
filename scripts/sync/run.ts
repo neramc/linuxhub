@@ -162,15 +162,26 @@ const artifactsOf = (releases: ReleasesFile["releases"]): Artifact[] =>
 /**
  * Same for every distro: an artifact without a published size keeps the size
  * we already know for the same URL and checksum, else gets one HEAD on its
- * official URL (robots-aware, paced). Unknown stays null.
+ * official URL (robots-aware, paced), else one on the same file at up to
+ * three listed official mirrors (when the official host may not be asked,
+ * e.g. robots.txt). Unknown stays null.
  */
-async function fillSizes(prev: ReleasesFile | undefined, releases: ReleasesFile["releases"]) {
+async function fillSizes(
+  slug: string,
+  prev: ReleasesFile | undefined,
+  releases: ReleasesFile["releases"],
+) {
   const known = new Map<string, number>();
   for (const a of artifactsOf(prev?.releases ?? []))
     if (a.size && a.checksum) known.set(`${a.url} ${a.checksum.value}`, a.size);
+  const mirrors = (readMirrors(slug)?.mirrors ?? []).slice(0, 3);
   const missing = artifactsOf(releases).filter((a) => a.size === null);
   await mapLimit(missing, 4, async (a) => {
     a.size = (a.checksum && known.get(`${a.url} ${a.checksum.value}`)) || (await headSize(a.url));
+    for (const m of a.path ? mirrors : []) {
+      if (a.size) break;
+      a.size = await headSize(`${m.url}${a.path}`);
+    }
   });
 }
 
@@ -235,7 +246,7 @@ async function syncReleases(source: DistroSource, ctx: SyncContext) {
     const result = await source.releases(ctx);
     result.releases = normalizeOrder(result.releases);
     const prev = readReleases(source.slug);
-    await fillSizes(prev, result.releases);
+    await fillSizes(source.slug, prev, result.releases);
     const draft: ReleasesFile = {
       slug: source.slug,
       sources: result.sources,

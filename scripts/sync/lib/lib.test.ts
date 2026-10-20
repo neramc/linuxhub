@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { checksumType, parseChecksums } from "./checksums";
+import { parseMirrorlist, parseMirrorstats } from "./mirrorbits";
 import { originAsMirror } from "./mirrors";
+import { parseSourceforgeFolder, sourceforgeFolderUrl, sourceforgeRoot } from "./sourceforge";
 import { compareVersions, isoDay, latest, periodEnd } from "./versions";
 
 describe("parseChecksums", () => {
@@ -80,5 +82,80 @@ describe("originAsMirror", () => {
       lon: null,
       score: null,
     });
+  });
+});
+
+describe("mirrorbits", () => {
+  const file = "https://files.kde.org/neon/images/desk/user/current/neon-user-desk-current.iso";
+  const page = `<div>The file <b>/neon/images/desk/user/20261016-0658/neon-user-desk-20261016-0658.iso</b> has a size of 3.1 GB (3376414720 bytes) and was last modified on Fri, 16 Oct 2026 07:19:37 UTC.</div>
+<tr><td><a href="/neon/images/desk/user/20261016-0658/neon-user-desk-20261016-0658.iso.sha256">SHA256</a></td><td style="font-family: monospace;">B1F69005B3DF23BFA434F399CB4378EB80928411318600DAA778EE8F360637F2</td></tr>
+<tr>
+  <td style="text-align: right;">1.</td><td>&#34;Open Computing Facility</td><td style="text-align: right;"><a href="https://mirrors.ocf.berkeley.edu/kde-applicationdata/neon/images/desk/user/20261016-0658/neon-user-desk-20261016-0658.iso">https://mirrors.ocf.berkeley.edu/kde-applicationdata/</a></td><td>US</td>
+</tr>
+<tr style="color: grey;">
+  <td style="text-align: right;">22.</td><td>sakura-tokyo.mirrors.kde.org</td><td><a href="https://sakura-tokyo.mirrors.kde.org/kde/files/neon/images/desk/user/20261016-0658/neon-user-desk-20261016-0658.iso">https://sakura-tokyo.mirrors.kde.org/kde/files/</a></td><td>JP</td>
+</tr>
+<tr><td><a href="http://insecure.example.org/neon/images/desk/user/20261016-0658/neon-user-desk-20261016-0658.iso">x</a></td><td>DE</td></tr>`;
+
+  it("reads size, hashes and every HTTPS mirror root of the resolved file", () => {
+    expect(parseMirrorlist(page, file)).toEqual({
+      size: 3376414720,
+      sha256: "b1f69005b3df23bfa434f399cb4378eb80928411318600daa778ee8f360637f2",
+      sha1: null,
+      md5: null,
+      mirrors: [
+        { root: "https://mirrors.ocf.berkeley.edu/kde-applicationdata/", country: "US" },
+        { root: "https://sakura-tokyo.mirrors.kde.org/kde/files/", country: "JP" },
+      ],
+    });
+  });
+
+  it("reads coordinates and health from ?mirrorstats", () => {
+    const stats = parseMirrorstats(`var mirrors = { "rows" : [
+  { "lat" : 52.3891 , "lon" : 4.6563 , "id" : "mirrors.xtom.nl", "enabled": true ,
+    "URL" : "https:\\/\\/mirrors.xtom.nl\\/kde-application\\/", "httpUp" : false , "httpsUp" : true , },
+  ]}`);
+    expect(stats.get("https://mirrors.xtom.nl/kde-application/")).toEqual({
+      lat: 52.3891,
+      lon: 4.6563,
+      enabled: true,
+      httpsUp: true,
+    });
+  });
+});
+
+describe("sourceforge", () => {
+  it("reads entries, hashes and dates from a files page (no RSS: robots.txt disallows it)", () => {
+    const html = `<tr title="MX-25.3_Xfce_x64.iso" class="file "> <th><span class="name">MX-25.3_Xfce_x64.iso</span></th> <td headers="files_date_h" class="opt"><abbr title="2026-09-20 16:26:39 UTC">2026-09-20</abbr></td> <td headers="files_size_h" class="opt">2.9 GB</td></tr>
+<script>net.sf.files = {"MX-25.3_Xfce_x64.iso":{"name":"MX-25.3_Xfce_x64.iso","full_path":"Final/Xfce/MX-25.3_Xfce_x64.iso","type":"f","sha1":"1bb26e6f631c3eb33229ab293a985b3886efde76","md5":"bbd933a988ebcf69e2a46705864ccdab","sha256":"25B5CE20CAEEE1B0E50507291DF5AC8A8211B1B9999D8DD7416DA9B66ED9FBF9"},"Older":{"name":"Older","type":"d","sha256":""}};
+net.sf.staging_days = 3;</script>`;
+    expect(parseSourceforgeFolder(html, "Final/Xfce")).toEqual([
+      {
+        name: "MX-25.3_Xfce_x64.iso",
+        path: "Final/Xfce/MX-25.3_Xfce_x64.iso",
+        type: "file",
+        date: "2026-09-20",
+        sha256: "25b5ce20caeee1b0e50507291df5ac8a8211b1b9999d8dd7416da9b66ed9fbf9",
+        sha1: "1bb26e6f631c3eb33229ab293a985b3886efde76",
+        md5: "bbd933a988ebcf69e2a46705864ccdab",
+      },
+      {
+        name: "Older",
+        path: "Final/Xfce/Older/",
+        type: "folder",
+        date: null,
+        sha256: null,
+        sha1: null,
+        md5: null,
+      },
+    ]);
+    expect(sourceforgeRoot("mx-linux")).toBe("https://downloads.sourceforge.net/project/mx-linux/");
+    expect(sourceforgeFolderUrl("mx-linux", "/Final/Xfce/")).toBe(
+      "https://sourceforge.net/projects/mx-linux/files/Final/Xfce/",
+    );
+  });
+
+  it("refuses a page without the embedded file data", () => {
+    expect(() => parseSourceforgeFolder("<html></html>", "Final")).toThrow(/net\.sf\.files/);
   });
 });
