@@ -3,8 +3,16 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-10-19",
+  "updated": "2026-10-21",
   "mirrors": [
+    {
+      "url": "https://debian.xfree.com.ar/debian-cd/",
+      "country": "AR",
+      "name": "debian.xfree.com.ar",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
     {
       "url": "https://debian-mirror.behostings.net/debian-cd/",
       "country": "BE",
