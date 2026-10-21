@@ -174,7 +174,7 @@ async function fillSizes(
   const known = new Map<string, number>();
   for (const a of artifactsOf(prev?.releases ?? []))
     if (a.size && a.checksum) known.set(`${a.url} ${a.checksum.value}`, a.size);
-  const mirrors = (readMirrors(slug)?.mirrors ?? []).slice(0, 3);
+  const mirrors = (currentMirrors(slug)?.mirrors ?? []).slice(0, 3);
   const missing = artifactsOf(releases).filter((a) => a.size === null);
   await mapLimit(missing, 4, async (a) => {
     a.size = (a.checksum && known.get(`${a.url} ${a.checksum.value}`)) || (await headSize(a.url));
@@ -196,6 +196,30 @@ function currentReleases(slug: string): ReleasesFile | undefined {
       JSON.parse(readFileSync(candidatePath("releases", slug), "utf8")),
     );
   return readReleases(slug);
+}
+
+/** The mirror list sizes may be read from: this run's candidate under --out, else src/data. */
+function currentMirrors(slug: string): MirrorsFile | undefined {
+  if (outDir && existsSync(candidatePath("mirrors", slug)))
+    return mirrorsFileSchema.parse(
+      JSON.parse(readFileSync(candidatePath("mirrors", slug), "utf8")),
+    );
+  return readMirrors(slug);
+}
+
+/**
+ * A distro's first run syncs releases before any mirror list exists, so sizes
+ * that only a mirror can give stay null; once its mirror list is in, fill
+ * them the same way, so a first run is as complete as later ones.
+ */
+async function topUpSizes(slug: string) {
+  const file = currentReleases(slug);
+  if (!file || artifactsOf(file.releases).every((a) => a.size !== null || !a.path)) return;
+  const before = JSON.stringify(file);
+  await fillSizes(slug, undefined, file.releases);
+  if (JSON.stringify(file) === before) return;
+  if (outDir) writeCandidate("releases", file);
+  else if (!dryRun) writeReleases(file);
 }
 
 /** Path (under a mirror root) of the newest non-pre-release's first mirrored file, x86_64 first. */
@@ -388,6 +412,7 @@ await Promise.all([
         await timeLimit(syncMirrors(source, ctx), SOURCE_TIMEOUT_MS).catch((e) =>
           markFailure(source.slug, "mirrors", e),
         );
+      if (kinds.has("releases") && kinds.has("mirrors")) await topUpSizes(source.slug);
     });
   }),
   ...(kinds.has("popularity") ? [runPopularity()] : []),

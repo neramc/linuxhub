@@ -188,20 +188,25 @@ async function robotsFor(url: URL): Promise<Robots> {
   if (!pending) {
     pending = (async () => {
       const robotsUrl = `${origin}/robots.txt`;
-      let text = "";
-      try {
-        const res = await schedule(url.host, () =>
-          fetch(robotsUrl, {
-            headers: { "user-agent": USER_AGENT },
-            signal: AbortSignal.timeout(TIMEOUT_MS),
-            redirect: "follow",
-          }),
-        );
-        // 4xx (incl. 404): no restrictions. 5xx: be conservative and treat as disallow-all.
-        if (res.ok) text = await res.text();
-        else if (res.status >= 500) text = "User-agent: *\nDisallow: /";
-      } catch {
-        text = "User-agent: *\nDisallow: /";
+      // 4xx (incl. 404): no restrictions. A 5xx or no answer after the retries:
+      // be conservative and treat the host as disallow-all for this run.
+      let text = "User-agent: *\nDisallow: /";
+      for (let attempt = 0; attempt <= RETRIES; attempt++) {
+        if (attempt > 0) await sleep(2 ** attempt * 1000);
+        try {
+          const res = await schedule(url.host, () =>
+            fetch(robotsUrl, {
+              headers: { "user-agent": USER_AGENT },
+              signal: AbortSignal.timeout(TIMEOUT_MS),
+              redirect: "follow",
+            }),
+          );
+          if (res.status >= 500) continue;
+          text = res.ok ? await res.text() : "";
+          break;
+        } catch {
+          // A one-off network error must not close a host for the whole run: retry.
+        }
       }
       const robots = robotsParser(robotsUrl, text);
       const delay = robots.getCrawlDelay(UA_TOKEN);
