@@ -15,6 +15,11 @@
  *   public MirrorManager list (country, host, the mirror's HTTPS root for
  *   "Fedora Linux", i.e. its copy of pub/fedora/linux). admin.fedoraproject.org
  *   /mirrormanager is robots-disallowed and redirects here.
+ * - torrent.fedoraproject.org/torrents.json: Fedora's BitTorrent tracker index
+ *   (the pages under fedoraproject.org/torrents/ are built from it, and the
+ *   download pages link to them): one group per release (43, 44, 45_Beta)
+ *   with its .torrent files and the day the release was published. It supplies
+ *   torrentUrl, and the release date when Bodhi has none (Fedora 43, 45 Beta).
  *
  * Downloads use download.fedoraproject.org, Fedora's MirrorManager redirector
  * (the links on the download pages). Mirror paths are set only for images
@@ -28,12 +33,22 @@
  * robots.txt disallows all bots, so it is not fetched; checksum.url is its
  * address, built from the file-name pattern the pages use (verified against
  * the pages for 44 and 45 Beta). CHECKSUM files are clear-signed, so there is
- * no separate signature, and Fedora's torrent index is not machine-readable
- * (signatureUrl and torrentUrl are null).
+ * no separate signature (signatureUrl is null). A torrent is linked for every
+ * image the tracker index lists (ISOs of the desktop editions, spins and the
+ * Server DVD; the tracker has none for netinstall, raw.xz or qcow2 images):
+ * its name ("Fedora-Workstation-Live-x86_64-44.torrent") is matched to the
+ * image by the file name without architecture and compose number. Torrents
+ * are an optional extra: a name that cannot be read or is ambiguous, and a
+ * torrent without a listed image, are logged and left out; the tracker being
+ * unreachable or no longer a list of releases fails the sync like any other
+ * source.
  *
  * Releases: every supported stable line (Bodhi/endoflife EOL not past), plus
  * the numbered Beta while the download pages offer it (release 45 Beta;
- * Rawhide and "Testing Images" are development builds and left out).
+ * Rawhide and "Testing Images" are development builds and left out). Release
+ * dates: Bodhi's `released_on`, else the day the tracker published the
+ * release (equal to Bodhi's for 44 and to endoflife.date's for 43), else
+ * endoflife.date; the Beta has no other official date.
  *
  * Kept: ISO, raw.xz and qcow2 images of Workstation, KDE Plasma Desktop,
  * Server, Everything, the Atomic Desktops, all Spins, Labs, IoT and Cloud Base.
@@ -54,7 +69,7 @@ import type { Desktop } from "../../../src/lib/taxonomy";
 import { getJson } from "../http";
 import { endOfLife } from "../lib/endoflife";
 import { mirrorManagerMirrors } from "../lib/mirrormanager";
-import { compareVersions } from "../lib/versions";
+import { compareVersions, isoDay } from "../lib/versions";
 import { defineSource } from "../source";
 
 interface Entry {
@@ -74,11 +89,20 @@ interface BodhiRelease {
   eol: string | null;
 }
 
+/** One release in the tracker index: its .torrent files and the day it was published (epoch seconds). */
+interface TorrentGroup {
+  name: string;
+  releasedate: number;
+  torrents: { torrent: string }[];
+}
+
 const RELEASES_JSON = "https://fedoraproject.org/releases.json";
 const BODHI = "https://bodhi.fedoraproject.org/releases/?exclude_archived=true&rows_per_page=100";
 const MIRROR_LIST = "https://mirrormanager.fedoraproject.org/mirrors/Fedora";
 const PUB = "https://download.fedoraproject.org/pub/";
 const CHECKSUMS = "https://dl.fedoraproject.org/pub/";
+const TRACKER = "https://torrent.fedoraproject.org/torrents.json";
+const TORRENTS = "https://torrent.fedoraproject.org/torrents/";
 
 const ARCHES: Record<string, Artifact["arch"]> = {
   x86_64: "x86_64",
@@ -302,25 +326,75 @@ function artifact(e: Entry, format: Artifact["format"]): Artifact {
 
 const bodhiName = (version: string) => `F${version}`;
 
+const ARCH_TOKEN = /(?:^|[._-])(x86_64|aarch64|ppc64le|s390x)(?=$|[._-])/;
+
+/**
+ * Key shared by an image and its torrent: the file name without extension,
+ * architecture and compose number, lower-cased and stripped of separators,
+ * plus the architecture. "Fedora-Workstation-Live-44-1.7.x86_64.iso" and
+ * "Fedora-Workstation-Live-x86_64-44.torrent" both give
+ * "fedoraworkstationlive44/x86_64". Null when the name has no architecture.
+ */
+function imageKey(name: string): string | null {
+  const base = name.replace(/\.(?:iso|raw\.xz|qcow2|torrent)$/, "");
+  const arch = base.match(ARCH_TOKEN)?.[1];
+  if (!arch) return null;
+  const rest = base.replace(ARCH_TOKEN, "").replace(/-\d+\.\d+$/, "");
+  return `${rest.toLowerCase().replace(/[^a-z0-9]+/g, "")}/${arch}`;
+}
+
+/**
+ * Torrent file name per image key for one tracker group. Torrents are an
+ * optional extra, so a name that cannot be read, or that shares its key with
+ * another torrent (which image would it be?), is left out and reported in
+ * `skipped` instead of failing the sync; a wrong torrent is never linked.
+ */
+function torrentNames(group: TorrentGroup | undefined, skipped: string[]): Map<string, string> {
+  const out = new Map<string, string>();
+  const repeated = new Set<string>();
+  for (const { torrent } of group?.torrents ?? []) {
+    const key = /^[\w.-]+\.torrent$/.test(torrent) ? imageKey(torrent) : null;
+    if (!key) skipped.push(torrent);
+    else if (out.has(key)) repeated.add(key);
+    else out.set(key, torrent);
+  }
+  for (const key of repeated) {
+    skipped.push(out.get(key) as string);
+    out.delete(key);
+  }
+  return out;
+}
+
 export default defineSource({
   slug: "fedora",
-  hosts: ["download.fedoraproject.org", "dl.fedoraproject.org", "fedoraproject.org"],
+  hosts: ["download.fedoraproject.org", "dl.fedoraproject.org", "torrent.fedoraproject.org"],
   async releases(ctx) {
-    const [entries, bodhi, eol] = await Promise.all([
+    const [entries, bodhi, eol, tracker] = await Promise.all([
       getJson<Entry[]>(RELEASES_JSON),
       getJson<{ releases: BodhiRelease[] }>(BODHI),
       endOfLife("fedora"),
+      getJson<TorrentGroup[]>(TRACKER),
     ]);
     if (!Array.isArray(entries) || !entries.length) throw new Error("releases.json is empty");
+    if (
+      !Array.isArray(tracker) ||
+      !tracker.length ||
+      !tracker.every((g) => typeof g.name === "string" && Array.isArray(g.torrents))
+    )
+      throw new Error(`${TRACKER} no longer lists releases with their torrents`);
     const official = new Map(
       bodhi.releases.filter((r) => r.id_prefix === "FEDORA").map((r) => [r.name, r]),
     );
     const cycles = new Map(eol.cycles.map((c) => [c.name, c]));
+    const published = (group: string) => {
+      const seconds = tracker.find((g) => g.name === group)?.releasedate;
+      return typeof seconds === "number" ? isoDay(new Date(seconds * 1000)) : null;
+    };
     const dates = (version: string) => {
       const b = official.get(bodhiName(version));
       const c = cycles.get(version);
       return {
-        releaseDate: b?.released_on ?? c?.releaseDate ?? null,
+        releaseDate: b?.released_on ?? published(version) ?? c?.releaseDate ?? null,
         eol: b?.eol ?? c?.eol ?? null,
       };
     };
@@ -385,12 +459,38 @@ export default defineSource({
       if (unmapped.length)
         ctx.log(`Fedora ${version}: editions not mapped yet: ${unmapped.join(", ")}`);
 
+      // The tracker names its groups "44" and "45_Beta".
+      const group = isBeta ? `${number}_Beta` : number;
+      const skipped: string[] = [];
+      const listed = torrentNames(
+        tracker.find((g) => g.name === group),
+        skipped,
+      );
+      if (!listed.size) ctx.log(`Fedora ${version}: the tracker lists no usable torrents`);
+      if (skipped.length)
+        ctx.log(
+          `Fedora ${version}: torrents left out (unreadable or ambiguous): ${skipped.join(", ")}`,
+        );
+      const linked = new Set<string>();
+      for (const edition of editions)
+        for (const a of edition.artifacts) {
+          const key = imageKey(a.file);
+          const torrent = key ? listed.get(key) : undefined;
+          if (!key || !torrent) continue;
+          if (linked.has(key)) throw new Error(`Fedora ${version}: two images match ${torrent}`);
+          linked.add(key);
+          a.torrentUrl = `${TORRENTS}${torrent}`;
+        }
+      const orphans = [...listed].filter(([key]) => !linked.has(key)).map(([, name]) => name);
+      if (orphans.length)
+        ctx.log(`Fedora ${version}: torrents without a listed image: ${orphans.join(", ")}`);
+
       const { releaseDate, eol: end } = dates(number);
       return {
         version: isBeta ? `${number}-beta` : number,
         channel: isBeta ? ("beta" as const) : ("stable" as const),
         codename: null,
-        releaseDate: isBeta ? null : releaseDate,
+        releaseDate: isBeta ? published(group) : releaseDate,
         eol: isBeta ? null : end,
         notesUrl: isBeta
           ? null
@@ -398,7 +498,7 @@ export default defineSource({
         editions,
       };
     });
-    return { sources: [RELEASES_JSON, BODHI, eol.url], releases };
+    return { sources: [RELEASES_JSON, BODHI, TRACKER, eol.url], releases };
   },
 
   async mirrors() {
