@@ -3,16 +3,8 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "mirrors": [
-    {
-      "url": "https://debian.xfree.com.ar/debian-cd/",
-      "country": "AR",
-      "name": "debian.xfree.com.ar",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
     {
       "url": "https://debian-mirror.behostings.net/debian-cd/",
       "country": "BE",
@@ -73,14 +65,6 @@
       "url": "https://debian.netcologne.de/debian-cd/",
       "country": "DE",
       "name": "debian.netcologne.de",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://debian.uni-due.de/debian-cd/",
-      "country": "DE",
-      "name": "debian.uni-due.de",
       "lat": null,
       "lon": null,
       "score": null
@@ -273,6 +257,14 @@
       "url": "https://debian.snt.utwente.nl/debian-cd/",
       "country": "NL",
       "name": "debian.snt.utwente.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nepalicloud.com/debian-cd/",
+      "country": "NP",
+      "name": "mirrors.nepalicloud.com",
       "lat": null,
       "lon": null,
       "score": null
