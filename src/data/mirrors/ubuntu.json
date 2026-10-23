@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-19",
+  "updated": "2026-10-23",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -353,6 +353,14 @@
       "url": "https://mirrors.huaweicloud.com/repository/ubuntu-releases/",
       "country": "CN",
       "name": "HUAWEI CLOUD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.qlu.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Qilu Univertity of Technology",
       "lat": null,
       "lon": null,
       "score": null
@@ -766,14 +774,6 @@
       "score": null
     },
     {
-      "url": "https://ubuntu.univ-nantes.fr/ubuntu-cd/",
-      "country": "FR",
-      "name": "Université de Nantes",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://www-ftp.lip6.fr/pub/linux/distributions/Ubuntu/releases/",
       "country": "FR",
       "name": "LIP6/Sorbonne Université",
@@ -1049,6 +1049,14 @@
       "url": "https://mirror.rasanegar.com/ubuntu-cd/",
       "country": "IR",
       "name": "Rasanegar ",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.mobinhost.com/releases/",
+      "country": "IR",
+      "name": "Mobinhost",
       "lat": null,
       "lon": null,
       "score": null
@@ -1622,14 +1630,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.timeweb.ru/ubuntu-releases/",
-      "country": "RU",
-      "name": "TIMEWEB",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.truenetwork.ru/ubuntu-releases/",
       "country": "RU",
       "name": "Truenetwork",
@@ -1817,14 +1817,6 @@
       "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
       "country": "TW",
       "name": "TaiChung City Education Network Center",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ftp.ubuntu-tw.net/ubuntu-releases/",
-      "country": "TW",
-      "name": "Ubuntu-TW",
       "lat": null,
       "lon": null,
       "score": null
@@ -2105,14 +2097,6 @@
       "url": "https://mirror.techrich.hk/ubuntu/",
       "country": "US",
       "name": "Techrich",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.umd.edu/ubuntu-iso/",
-      "country": "US",
-      "name": "University of Maryland",
       "lat": null,
       "lon": null,
       "score": null
