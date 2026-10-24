@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1385,6 +1385,14 @@
       "url": "https://ftp.snt.utwente.nl/pub/os/linux/ubuntu-releases/",
       "country": "NL",
       "name": "University of Twente, The Netherlands",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lyrahosting.com/ubuntureleases/",
+      "country": "NL",
+      "name": "Lyra Hosting",
       "lat": null,
       "lon": null,
       "score": null
