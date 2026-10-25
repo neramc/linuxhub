@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1033,14 +1033,6 @@
       "url": "https://mirror.famaserver.com/cd-image/",
       "country": "IR",
       "name": "FamaServer",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.rasanegaar.com/ubuntu-cd/",
-      "country": "IR",
-      "name": "Rasanegar",
       "lat": null,
       "lon": null,
       "score": null
