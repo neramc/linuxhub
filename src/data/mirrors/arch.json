@@ -3,7 +3,7 @@
   "sources": [
     "https://archlinux.org/mirrors/status/json/"
   ],
-  "updated": "2026-10-25",
+  "updated": "2026-10-26",
   "mirrors": [
     {
       "url": "https://al.arch.niranjan.co/",
@@ -67,7 +67,7 @@
       "name": "au.arch.niranjan.co",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 4
     },
     {
       "url": "https://au.mirrors.cicku.me/archlinux/",
@@ -99,7 +99,7 @@
       "name": "syd.mirror.rackspace.com",
       "lat": null,
       "lon": null,
-      "score": 5
+      "score": 4
     },
     {
       "url": "https://mirror.ourhost.az/archlinux/",
@@ -108,6 +108,14 @@
       "lat": null,
       "lon": null,
       "score": 1
+    },
+    {
+      "url": "https://mirror.limda.net/archlinux/",
+      "country": "BD",
+      "name": "mirror.limda.net",
+      "lat": null,
+      "lon": null,
+      "score": 3
     },
     {
       "url": "https://mirror.xeonbd.com/archlinux/",
@@ -147,7 +155,7 @@
       "name": "archlinux.c3sl.ufpr.br",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
     },
     {
       "url": "https://br.mirrors.cicku.me/archlinux/",
@@ -155,7 +163,7 @@
       "name": "br.mirrors.cicku.me",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://mirror.ufscar.br/archlinux/",
@@ -195,7 +203,7 @@
       "name": "ca.mirrors.mk",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 4
     },
     {
       "url": "https://mirror.franscorack.com/archlinux/",
@@ -227,7 +235,7 @@
       "name": "mirror.xenyth.net",
       "lat": null,
       "lon": null,
-      "score": 4
+      "score": 3
     },
     {
       "url": "https://mirrors.pablonara.com/archlinux/",
@@ -235,7 +243,7 @@
       "name": "mirrors.pablonara.com",
       "lat": null,
       "lon": null,
-      "score": 4
+      "score": 5
     },
     {
       "url": "https://muug.ca/mirror/archlinux/",
@@ -251,7 +259,7 @@
       "name": "upstream-1.pablonara.com",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 4
     },
     {
       "url": "https://archlinux.lan.brgn.ch/archlinux/",
@@ -259,7 +267,7 @@
       "name": "archlinux.lan.brgn.ch",
       "lat": null,
       "lon": null,
-      "score": 4
+      "score": 5
     },
     {
       "url": "https://ch.mirrors.cicku.me/archlinux/",
@@ -318,12 +326,20 @@
       "score": 1
     },
     {
+      "url": "https://mirror.anquan.cl/archlinux/",
+      "country": "CL",
+      "name": "mirror.anquan.cl",
+      "lat": null,
+      "lon": null,
+      "score": 2
+    },
+    {
       "url": "https://mirror.hnd.cl/archlinux/",
       "country": "CL",
       "name": "mirror.hnd.cl",
       "lat": null,
       "lon": null,
-      "score": 6
+      "score": 7
     },
     {
       "url": "https://mirror.nyist.edu.cn/archlinux/",
@@ -342,14 +358,6 @@
       "score": 8
     },
     {
-      "url": "https://mirrors.hust.edu.cn/archlinux/",
-      "country": "CN",
-      "name": "mirrors.hust.edu.cn",
-      "lat": null,
-      "lon": null,
-      "score": 6
-    },
-    {
       "url": "https://mirrors.jlu.edu.cn/archlinux/",
       "country": "CN",
       "name": "mirrors.jlu.edu.cn",
@@ -366,6 +374,14 @@
       "score": 3
     },
     {
+      "url": "https://mirrors.qlu.edu.cn/archlinux/",
+      "country": "CN",
+      "name": "mirrors.qlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": 10
+    },
+    {
       "url": "https://mirrors.sjtug.sjtu.edu.cn/archlinux/",
       "country": "CN",
       "name": "mirrors.sjtug.sjtu.edu.cn",
@@ -374,12 +390,28 @@
       "score": 17
     },
     {
+      "url": "https://mirrors.ustc.edu.cn/archlinux/",
+      "country": "CN",
+      "name": "mirrors.ustc.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": 4
+    },
+    {
+      "url": "https://mirrors.wsyu.edu.cn/archlinux/",
+      "country": "CN",
+      "name": "mirrors.wsyu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": 4
+    },
+    {
       "url": "https://mirrors.xjtu.edu.cn/archlinux/",
       "country": "CN",
       "name": "mirrors.xjtu.edu.cn",
       "lat": null,
       "lon": null,
-      "score": 7
+      "score": 6
     },
     {
       "url": "https://mirrors.atlas.net.co/archlinux/",
@@ -398,12 +430,20 @@
       "score": 3
     },
     {
+      "url": "https://ftp.sh.cvut.cz/arch/",
+      "country": "CZ",
+      "name": "ftp.sh.cvut.cz",
+      "lat": null,
+      "lon": null,
+      "score": 2
+    },
+    {
       "url": "https://gluttony.sin.cvut.cz/arch/",
       "country": "CZ",
       "name": "gluttony.sin.cvut.cz",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 2
     },
     {
       "url": "https://arch.alhp.dev/",
@@ -435,7 +475,7 @@
       "name": "arch.owochle.app",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 15
     },
     {
       "url": "https://arch.phinau.de/",
@@ -459,7 +499,7 @@
       "name": "archlinux.richard-neumann.de",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://archlinux.roshak.xyz/",
@@ -526,14 +566,6 @@
       "score": 1
     },
     {
-      "url": "https://de.mirrors.mk/archlinux/",
-      "country": "DE",
-      "name": "de.mirrors.mk",
-      "lat": null,
-      "lon": null,
-      "score": 4
-    },
-    {
       "url": "https://files.hadiko.de/pub/dists/arch/",
       "country": "DE",
       "name": "files.hadiko.de",
@@ -548,14 +580,6 @@
       "lat": null,
       "lon": null,
       "score": 1
-    },
-    {
-      "url": "https://ftp.agdsn.de/pub/mirrors/archlinux/",
-      "country": "DE",
-      "name": "ftp.agdsn.de",
-      "lat": null,
-      "lon": null,
-      "score": 72
     },
     {
       "url": "https://ftp.fau.de/archlinux/",
@@ -587,7 +611,7 @@
       "name": "ftp.tu-chemnitz.de",
       "lat": null,
       "lon": null,
-      "score": 15
+      "score": 13
     },
     {
       "url": "https://mirror.23m.com/archlinux/",
@@ -643,7 +667,7 @@
       "name": "mirror.hugo-betrugo.de",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://mirror.informatik.tu-freiberg.de/arch/",
@@ -683,7 +707,7 @@
       "name": "mirror.metalgamer.eu",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://mirror.moson.org/arch/",
@@ -708,14 +732,6 @@
       "lat": null,
       "lon": null,
       "score": 1
-    },
-    {
-      "url": "https://mirror.selfnet.de/archlinux/",
-      "country": "DE",
-      "name": "mirror.selfnet.de",
-      "lat": null,
-      "lon": null,
-      "score": 72
     },
     {
       "url": "https://mirror.stephanie.is/archlinux/",
@@ -766,14 +782,6 @@
       "score": 2
     },
     {
-      "url": "https://mirrors.janbruckner.de/archlinux/",
-      "country": "DE",
-      "name": "mirrors.janbruckner.de",
-      "lat": null,
-      "lon": null,
-      "score": 4
-    },
-    {
       "url": "https://mirrors.niyawe.de/archlinux/",
       "country": "DE",
       "name": "mirrors.niyawe.de",
@@ -819,7 +827,7 @@
       "name": "mirror.it-privat.dk",
       "lat": null,
       "lon": null,
-      "score": 8
+      "score": 7
     },
     {
       "url": "https://mirrors.dotsrc.org/archlinux/",
@@ -835,7 +843,7 @@
       "name": "mirror.cspacehostings.com",
       "lat": null,
       "lon": null,
-      "score": 6
+      "score": 5
     },
     {
       "url": "https://mirrors.xtom.ee/archlinux/",
@@ -875,7 +883,7 @@
       "name": "mirror.raiolanetworks.com",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://arch.yhtez.xyz/",
@@ -899,7 +907,7 @@
       "name": "cdnmirror.com",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
     },
     {
       "url": "https://dornogal.falcao.org/archlinux/",
@@ -907,7 +915,7 @@
       "name": "dornogal.falcao.org",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://fi.arch.niranjan.co/",
@@ -915,7 +923,7 @@
       "name": "fi.arch.niranjan.co",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 6
     },
     {
       "url": "https://mirror.5i.fi/archlinux/",
@@ -924,6 +932,14 @@
       "lat": null,
       "lon": null,
       "score": 2
+    },
+    {
+      "url": "https://mirror.falcao.org/archlinux/",
+      "country": "FI",
+      "name": "mirror.falcao.org",
+      "lat": null,
+      "lon": null,
+      "score": 3
     },
     {
       "url": "https://mirror.srv.fail/archlinux/",
@@ -971,15 +987,7 @@
       "name": "archlinux.mirrors.ovh.net",
       "lat": null,
       "lon": null,
-      "score": 5
-    },
-    {
-      "url": "https://fr.mirror.shibe.party/archlinux/",
-      "country": "FR",
-      "name": "fr.mirror.shibe.party",
-      "lat": null,
-      "lon": null,
-      "score": 1
+      "score": 6
     },
     {
       "url": "https://fr.mirrors.cicku.me/archlinux/",
@@ -996,6 +1004,14 @@
       "lat": null,
       "lon": null,
       "score": 7
+    },
+    {
+      "url": "https://mirror.bakertelekom.fr/Arch/",
+      "country": "FR",
+      "name": "mirror.bakertelekom.fr",
+      "lat": null,
+      "lon": null,
+      "score": 2
     },
     {
       "url": "https://mirror.cosmiclinux.com/archlinux/",
@@ -1110,14 +1126,6 @@
       "score": 3
     },
     {
-      "url": "https://mirrors.jtremesay.org/archlinux/",
-      "country": "FR",
-      "name": "mirrors.jtremesay.org",
-      "lat": null,
-      "lon": null,
-      "score": 1
-    },
-    {
       "url": "https://prism.viarezo.fr/archlinux/",
       "country": "FR",
       "name": "prism.viarezo.fr",
@@ -1163,7 +1171,7 @@
       "name": "mirror.server.net",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://mirror.st2projects.com/archlinux/",
@@ -1171,7 +1179,7 @@
       "name": "mirror.st2projects.com",
       "lat": null,
       "lon": null,
-      "score": 5
+      "score": 3
     },
     {
       "url": "https://mirrors.melbourne.co.uk/archlinux/",
@@ -1227,7 +1235,7 @@
       "name": "arch-mirror.wtako.net",
       "lat": null,
       "lon": null,
-      "score": 38
+      "score": 35
     },
     {
       "url": "https://hk.mirrors.cicku.me/archlinux/",
@@ -1238,12 +1246,20 @@
       "score": 2
     },
     {
+      "url": "https://hkg.mirror.rackspace.com/archlinux/",
+      "country": "HK",
+      "name": "hkg.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": 3
+    },
+    {
       "url": "https://mirror-hk.koddos.net/archlinux/",
       "country": "HK",
       "name": "mirror-hk.koddos.net",
       "lat": null,
       "lon": null,
-      "score": 5
+      "score": 4
     },
     {
       "url": "https://mirror.xtom.com.hk/archlinux/",
@@ -1275,7 +1291,7 @@
       "name": "mirror.citrahost.com",
       "lat": null,
       "lon": null,
-      "score": 14
+      "score": 15
     },
     {
       "url": "https://archlinux.interhost.co.il/",
@@ -1283,7 +1299,7 @@
       "name": "archlinux.interhost.co.il",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://mirror.isoc.org.il/pub/archlinux/",
@@ -1307,7 +1323,7 @@
       "name": "in.arch.niranjan.co",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://in.mirrors.cicku.me/archlinux/",
@@ -1347,7 +1363,7 @@
       "name": "mirror.sahil.world",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://mirrors.nxtgen.com/archlinux-mirror/",
@@ -1363,15 +1379,7 @@
       "name": "mirror.famaserver.com",
       "lat": null,
       "lon": null,
-      "score": 2
-    },
-    {
-      "url": "https://is.mirror.flokinet.net/archlinux/",
-      "country": "IS",
-      "name": "is.mirror.flokinet.net",
-      "lat": null,
-      "lon": null,
-      "score": 72
+      "score": 1
     },
     {
       "url": "https://arch.mirror.hyperbit.it/",
@@ -1395,15 +1403,7 @@
       "name": "ftp.jaist.ac.jp",
       "lat": null,
       "lon": null,
-      "score": 5
-    },
-    {
-      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/linux/archlinux/",
-      "country": "JP",
-      "name": "ftp.yz.yamagata-u.ac.jp",
-      "lat": null,
-      "lon": null,
-      "score": 3
+      "score": 6
     },
     {
       "url": "https://jp.mirrors.cicku.me/archlinux/",
@@ -1414,12 +1414,20 @@
       "score": 2
     },
     {
+      "url": "https://mirror.aria-on-the-planet.es/archlinux/",
+      "country": "JP",
+      "name": "mirror.aria-on-the-planet.es",
+      "lat": null,
+      "lon": null,
+      "score": 2
+    },
+    {
       "url": "https://mirror.rain.ne.jp/archlinux/",
       "country": "JP",
       "name": "mirror.rain.ne.jp",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 4
     },
     {
       "url": "https://mirrors.cat.net/archlinux/",
@@ -1478,14 +1486,6 @@
       "score": 2
     },
     {
-      "url": "https://mirror.funami.tech/arch/",
-      "country": "KR",
-      "name": "mirror.funami.tech",
-      "lat": null,
-      "lon": null,
-      "score": 1
-    },
-    {
       "url": "https://mirror.hemino.net/archlinux/",
       "country": "KR",
       "name": "mirror.hemino.net",
@@ -1542,20 +1542,12 @@
       "score": 1
     },
     {
-      "url": "https://mirror.sinirlan.net/archlinux/",
-      "country": "LT",
-      "name": "mirror.sinirlan.net",
-      "lat": null,
-      "lon": null,
-      "score": 3
-    },
-    {
       "url": "https://mirror.lu.stratonexus.net/archlinux/",
       "country": "LU",
       "name": "mirror.lu.stratonexus.net",
       "lat": null,
       "lon": null,
-      "score": 4
+      "score": 3
     },
     {
       "url": "https://archlinux.koyanet.lv/archlinux/",
@@ -1563,7 +1555,7 @@
       "name": "archlinux.koyanet.lv",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 2
     },
     {
       "url": "https://ftp.linux.edu.lv/archlinux/",
@@ -1571,7 +1563,7 @@
       "name": "ftp.linux.edu.lv",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://mirror.abderraziq.com/archlinux/",
@@ -1611,7 +1603,7 @@
       "name": "mirror.mangohost.net",
       "lat": null,
       "lon": null,
-      "score": 4
+      "score": 3
     },
     {
       "url": "https://mirror.t-home.mk/archlinux/",
@@ -1619,7 +1611,7 @@
       "name": "mirror.t-home.mk",
       "lat": null,
       "lon": null,
-      "score": 5
+      "score": 4
     },
     {
       "url": "https://arch.jsc.mx/",
@@ -1651,7 +1643,7 @@
       "name": "archlinux.mirror.liteserver.nl",
       "lat": null,
       "lon": null,
-      "score": 8
+      "score": 7
     },
     {
       "url": "https://archlinux.mirror.wearetriple.com/",
@@ -1659,7 +1651,7 @@
       "name": "archlinux.mirror.wearetriple.com",
       "lat": null,
       "lon": null,
-      "score": 13
+      "score": 15
     },
     {
       "url": "https://mirror.ams1.nl.leaseweb.net/archlinux/",
@@ -1723,15 +1715,15 @@
       "name": "nl.arch.niranjan.co",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
-      "url": "https://nl.mirror.flokinet.net/archlinux/",
+      "url": "https://nl.mirror.cx/archlinux/",
       "country": "NL",
-      "name": "nl.mirror.flokinet.net",
+      "name": "nl.mirror.cx",
       "lat": null,
       "lon": null,
-      "score": 72
+      "score": 4
     },
     {
       "url": "https://nl.mirrors.cicku.me/archlinux/",
@@ -1758,14 +1750,6 @@
       "score": 4
     },
     {
-      "url": "https://mirror.archlinux.no/",
-      "country": "NO",
-      "name": "mirror.archlinux.no",
-      "lat": null,
-      "lon": null,
-      "score": 58
-    },
-    {
       "url": "https://mirror.neuf.no/archlinux/",
       "country": "NO",
       "name": "mirror.neuf.no",
@@ -1787,6 +1771,14 @@
       "name": "mirrors.nepalicloud.com",
       "lat": null,
       "lon": null,
+      "score": 4
+    },
+    {
+      "url": "https://archlinux.ourhome.kiwi/",
+      "country": "NZ",
+      "name": "archlinux.ourhome.kiwi",
+      "lat": null,
+      "lon": null,
       "score": 3
     },
     {
@@ -1795,7 +1787,7 @@
       "name": "mirror.2degrees.nz",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
     },
     {
       "url": "https://mirror.fsmg.org.nz/archlinux/",
@@ -1859,7 +1851,7 @@
       "name": "ftp.rnl.tecnico.ulisboa.pt",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://glua.ua.pt/pub/archlinux/",
@@ -1875,7 +1867,7 @@
       "name": "mirror.barata.pt",
       "lat": null,
       "lon": null,
-      "score": 13
+      "score": 14
     },
     {
       "url": "https://mirrors.chroot.ro/archlinux/",
@@ -1883,7 +1875,7 @@
       "name": "mirrors.chroot.ro",
       "lat": null,
       "lon": null,
-      "score": 15
+      "score": 16
     },
     {
       "url": "https://mirrors.hosterion.ro/archlinux/",
@@ -1891,7 +1883,7 @@
       "name": "mirrors.hosterion.ro",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
     },
     {
       "url": "https://mirrors.nxthost.com/archlinux/",
@@ -1918,25 +1910,17 @@
       "score": 1
     },
     {
-      "url": "https://ro.mirror.flokinet.net/archlinux/",
-      "country": "RO",
-      "name": "ro.mirror.flokinet.net",
-      "lat": null,
-      "lon": null,
-      "score": 72
-    },
-    {
       "url": "https://mirror1.sox.rs/archlinux/",
       "country": "RS",
       "name": "mirror1.sox.rs",
       "lat": null,
       "lon": null,
-      "score": 12
+      "score": 13
     },
     {
-      "url": "https://mirror.kamtv.ru/archlinux/",
+      "url": "https://mirror.cachy-arch.ru/archlinux/",
       "country": "RU",
-      "name": "mirror.kamtv.ru",
+      "name": "mirror.cachy-arch.ru",
       "lat": null,
       "lon": null,
       "score": 2
@@ -1947,7 +1931,7 @@
       "name": "mirror.kpfu.ru",
       "lat": null,
       "lon": null,
-      "score": 5
+      "score": 4
     },
     {
       "url": "https://mirror.nw-sys.ru/archlinux/",
@@ -2006,14 +1990,6 @@
       "score": 3
     },
     {
-      "url": "https://ftp.lysator.liu.se/pub/archlinux/",
-      "country": "SE",
-      "name": "ftp.lysator.liu.se",
-      "lat": null,
-      "lon": null,
-      "score": 2
-    },
-    {
       "url": "https://ftp.myrveln.se/pub/linux/archlinux/",
       "country": "SE",
       "name": "ftp.myrveln.se",
@@ -2043,7 +2019,7 @@
       "name": "mirror.braindrainlan.nu",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://mirror.osbeck.com/archlinux/",
@@ -2068,14 +2044,6 @@
       "lat": null,
       "lon": null,
       "score": 1
-    },
-    {
-      "url": "https://mirror.zyner.org/archlinux/",
-      "country": "SE",
-      "name": "mirror.zyner.org",
-      "lat": null,
-      "lon": null,
-      "score": 72
     },
     {
       "url": "https://umea.mirror.pkgbuild.com/",
@@ -2107,7 +2075,7 @@
       "name": "mirror.jingk.ai",
       "lat": null,
       "lon": null,
-      "score": 4
+      "score": 3
     },
     {
       "url": "https://mirror.sg.cdn-perfprod.com/archlinux/",
@@ -2195,7 +2163,7 @@
       "name": "mirror.kku.ac.th",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
     },
     {
       "url": "https://mirror.safiabidi.com/",
@@ -2203,7 +2171,7 @@
       "name": "mirror.safiabidi.com",
       "lat": null,
       "lon": null,
-      "score": 70
+      "score": 52
     },
     {
       "url": "https://mirror.alastyr.com/archlinux/",
@@ -2219,7 +2187,7 @@
       "name": "mirror.verinomi.com",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://tr.arch.niranjan.co/",
@@ -2227,7 +2195,7 @@
       "name": "tr.arch.niranjan.co",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 8
     },
     {
       "url": "https://mirror.archlinux.tw/ArchLinux/",
@@ -2259,7 +2227,15 @@
       "name": "tw.mirrors.cicku.me",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
+    },
+    {
+      "url": "https://archlinux.ip-connect.vn.ua/",
+      "country": "UA",
+      "name": "archlinux.ip-connect.vn.ua",
+      "lat": null,
+      "lon": null,
+      "score": 3
     },
     {
       "url": "https://distrohub.kyiv.ua/archlinux/",
@@ -2275,7 +2251,7 @@
       "name": "mirror.mirohost.net",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 2
     },
     {
       "url": "https://mirror.trapmaid.org/archlinux/",
@@ -2302,14 +2278,6 @@
       "score": 2
     },
     {
-      "url": "https://arch.goober.cloud/",
-      "country": "US",
-      "name": "arch.goober.cloud",
-      "lat": null,
-      "lon": null,
-      "score": 25
-    },
-    {
       "url": "https://arch.hu.fo/archlinux/",
       "country": "US",
       "name": "arch.hu.fo",
@@ -2323,7 +2291,7 @@
       "name": "arch.hugeblank.dev",
       "lat": null,
       "lon": null,
-      "score": 5
+      "score": 7
     },
     {
       "url": "https://arch.miningtcup.me/",
@@ -2403,7 +2371,7 @@
       "name": "iad.mirror.rackspace.com",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 10
     },
     {
       "url": "https://iad.mirrors.misaka.one/archlinux/",
@@ -2515,7 +2483,7 @@
       "name": "mirror.pilotfiber.com",
       "lat": null,
       "lon": null,
-      "score": 15
+      "score": 14
     },
     {
       "url": "https://mirror.sfo12.us.leaseweb.net/archlinux/",
@@ -2523,7 +2491,7 @@
       "name": "mirror.sfo12.us.leaseweb.net",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 4
     },
     {
       "url": "https://mirror.tzulo.com/archlinux/",
@@ -2598,14 +2566,6 @@
       "score": 1
     },
     {
-      "url": "https://mirror4.givebytes.net/archlinux/",
-      "country": "US",
-      "name": "mirror4.givebytes.net",
-      "lat": null,
-      "lon": null,
-      "score": 1
-    },
-    {
       "url": "https://mirrors.bloomu.edu/archlinux/",
       "country": "US",
       "name": "mirrors.bloomu.edu",
@@ -2651,7 +2611,7 @@
       "name": "mirrors.mit.edu",
       "lat": null,
       "lon": null,
-      "score": 3
+      "score": 4
     },
     {
       "url": "https://mirrors.ocf.berkeley.edu/archlinux/",
@@ -2675,7 +2635,7 @@
       "name": "mirrors.shr.cx",
       "lat": null,
       "lon": null,
-      "score": 14
+      "score": 13
     },
     {
       "url": "https://mirrors.xtom.com/archlinux/",
@@ -2691,7 +2651,7 @@
       "name": "nnenix.mm.fcix.net",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 3
     },
     {
       "url": "https://nocix.mm.fcix.net/archlinux/",
@@ -2726,6 +2686,14 @@
       "score": 2
     },
     {
+      "url": "https://repo.ialab.dsu.edu/archlinux/",
+      "country": "US",
+      "name": "repo.ialab.dsu.edu",
+      "lat": null,
+      "lon": null,
+      "score": 2
+    },
+    {
       "url": "https://southfront.mm.fcix.net/archlinux/",
       "country": "US",
       "name": "southfront.mm.fcix.net",
@@ -2739,7 +2707,7 @@
       "name": "us-mnz.soulharsh007.dev",
       "lat": null,
       "lon": null,
-      "score": 2
+      "score": 1
     },
     {
       "url": "https://us.mirrors.cicku.me/archlinux/",
@@ -2827,7 +2795,7 @@
       "name": "johannesburg.mirror.pkgbuild.com",
       "lat": null,
       "lon": null,
-      "score": 1
+      "score": 2
     },
     {
       "url": "https://za.mirrors.cicku.me/archlinux/",
