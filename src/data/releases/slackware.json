@@ -1,0 +1,61 @@
+{
+  "slug": "slackware",
+  "sources": [
+    "https://endoflife.date/slackware",
+    "https://mirrors.slackware.com/slackware/slackware-iso/",
+    "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/",
+    "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/",
+    "https://mirrors.slackware.com/slackware/slackware64-15.0/ANNOUNCE.15.0"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "15.0",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2022-02-02",
+      "eol": null,
+      "notesUrl": "https://mirrors.slackware.com/slackware/slackware64-15.0/RELEASE_NOTES",
+      "editions": [
+        {
+          "id": "install-dvd",
+          "name": "Install DVD",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "slackware64-15.0-install-dvd.iso",
+              "path": "slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso",
+              "url": "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso",
+              "size": 3780542464,
+              "checksum": {
+                "type": "sha256",
+                "value": "4b32d575097f2238fa9dc1cd753286493a4be95a3004e9b1e81748b4f1d0c5da",
+                "url": "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso.sha256"
+              },
+              "signatureUrl": "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "slackware-15.0-install-dvd.iso",
+              "path": "slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso",
+              "url": "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso",
+              "size": 3918200832,
+              "checksum": {
+                "type": "sha256",
+                "value": "f795ef602707bcd0c2e615e88b307f71a18039ee54c89a0109588500258991c2",
+                "url": "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso.sha256"
+              },
+              "signatureUrl": "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso.asc",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "slug": "pclinuxos",
+  "sources": [
+    "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "2026.10",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-10-06",
+      "eol": null,
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "kde",
+          "name": "KDE",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pclinuxos64-kde-2026.10.iso",
+              "path": "iso/pclinuxos64-kde-2026.10.iso",
+              "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-kde-2026.10.iso",
+              "size": 4301258752,
+              "checksum": {
+                "type": "md5",
+                "value": "0d35bf5dce47c3b3362227ecdc2eff0b",
+                "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-kde-2026.10.md5sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "kde-darkstar",
+          "name": "KDE Darkstar",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pclinuxos64-kde-darkstar-2026.10.iso",
+              "path": "iso/pclinuxos64-kde-darkstar-2026.10.iso",
+              "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-kde-darkstar-2026.10.iso",
+              "size": 3315597312,
+              "checksum": {
+                "type": "md5",
+                "value": "d9cb440284fe7d2db54be2d164f8038d",
+                "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-kde-darkstar-2026.10.md5sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE",
+          "desktop": "mate",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pclinuxos64-MATE-2026.10.iso",
+              "path": "iso/pclinuxos64-MATE-2026.10.iso",
+              "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-MATE-2026.10.iso",
+              "size": 3882876928,
+              "checksum": {
+                "type": "md5",
+                "value": "8c3dec0e5590c6d8bc71e179449d6f89",
+                "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-MATE-2026.10.md5sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pclinuxos64-XFCE-2026.10.iso",
+              "path": "iso/pclinuxos64-XFCE-2026.10.iso",
+              "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-XFCE-2026.10.iso",
+              "size": 3710910464,
+              "checksum": {
+                "type": "md5",
+                "value": "7b24fb80be431345476f27db25b9183b",
+                "url": "https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/pclinuxos64-XFCE-2026.10.md5sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

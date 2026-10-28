@@ -1,0 +1,457 @@
+{
+  "slug": "bazzite",
+  "sources": [
+    "https://bazzite.gg/",
+    "https://ghcr.io/v2/ublue-os/bazzite/manifests/stable"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "44.20261026",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-26",
+      "eol": null,
+      "notesUrl": "https://github.com/ublue-os/bazzite/releases/tag/44.20261026",
+      "editions": [
+        {
+          "id": "bazzite",
+          "name": "Desktop/Laptop, AMD/Intel GPU, KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-stable-live-amd64.iso",
+              "path": "bazzite-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-stable-live-amd64.iso",
+              "size": 8423129088,
+              "checksum": {
+                "type": "sha256",
+                "value": "82ff3b4080e66d53f5807bead4b443671c921f18fdef8b260415075578599356",
+                "url": "https://download.bazzite.gg/bazzite-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-gnome",
+          "name": "Desktop/Laptop, AMD/Intel GPU, GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-gnome-stable-live-amd64.iso",
+              "path": "bazzite-gnome-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-gnome-stable-live-amd64.iso",
+              "size": 7161833472,
+              "checksum": {
+                "type": "sha256",
+                "value": "bad88bd80f3e146bd213250869c67bc5971d8e35d8e4024543630a31cde5ff4a",
+                "url": "https://download.bazzite.gg/bazzite-gnome-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-gnome-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-nvidia-open",
+          "name": "Desktop/Laptop, Nvidia RTX, KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-nvidia-open-stable-live-amd64.iso",
+              "path": "bazzite-nvidia-open-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-nvidia-open-stable-live-amd64.iso",
+              "size": 9068650496,
+              "checksum": {
+                "type": "sha256",
+                "value": "776b76f3417723440ee1823d79ec02a2c22860df196d219024edb062ad00d8e6",
+                "url": "https://download.bazzite.gg/bazzite-nvidia-open-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-nvidia-open-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-gnome-nvidia-open",
+          "name": "Desktop/Laptop, Nvidia RTX, GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-gnome-nvidia-open-stable-live-amd64.iso",
+              "path": "bazzite-gnome-nvidia-open-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-live-amd64.iso",
+              "size": 7807199232,
+              "checksum": {
+                "type": "sha256",
+                "value": "fce51b68c7296632d62b465df4b5ec578573a3733399556c63504a794af75578",
+                "url": "https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-nvidia",
+          "name": "Desktop/Laptop, Nvidia GTX, KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-nvidia-stable-live-amd64.iso",
+              "path": "bazzite-nvidia-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-nvidia-stable-live-amd64.iso",
+              "size": 9123520512,
+              "checksum": {
+                "type": "sha256",
+                "value": "f39013c3d111d96aaa322ca24a20749762ac9f2d6b61c9c56f37f691d116d2f4",
+                "url": "https://download.bazzite.gg/bazzite-nvidia-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-nvidia-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-gnome-nvidia",
+          "name": "Desktop/Laptop, Nvidia GTX, GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-gnome-nvidia-stable-live-amd64.iso",
+              "path": "bazzite-gnome-nvidia-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-gnome-nvidia-stable-live-amd64.iso",
+              "size": 7862147072,
+              "checksum": {
+                "type": "sha256",
+                "value": "bf0718374766b57ca8c77822d64baaf1e6f4d1ff4fe559221ce71d9922949656",
+                "url": "https://download.bazzite.gg/bazzite-gnome-nvidia-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-gnome-nvidia-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck",
+          "name": "Handheld or HTPC, AMD/Intel GPU, KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-stable-live-amd64.iso",
+              "path": "bazzite-deck-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-stable-live-amd64.iso",
+              "size": 10111676416,
+              "checksum": {
+                "type": "sha256",
+                "value": "fe0b8fbcfeb13972f5bbd3e73f0331ed22d16ceb796a4d15aa41e493236fcfc3",
+                "url": "https://download.bazzite.gg/bazzite-deck-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-deck-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-gnome",
+          "name": "Handheld or HTPC, AMD/Intel GPU, GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-gnome-stable-live-amd64.iso",
+              "path": "bazzite-deck-gnome-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-gnome-stable-live-amd64.iso",
+              "size": 8853690368,
+              "checksum": {
+                "type": "sha256",
+                "value": "2c6430b4dfc40b9924cd93cd4bf51716baf43906edfba70a1c3f17f29337027f",
+                "url": "https://download.bazzite.gg/bazzite-deck-gnome-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-deck-gnome-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-nvidia",
+          "name": "HTPC, Nvidia, KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-nvidia-stable-live-amd64.iso",
+              "path": "bazzite-deck-nvidia-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-nvidia-stable-live-amd64.iso",
+              "size": 10757017600,
+              "checksum": {
+                "type": "sha256",
+                "value": "f035118c660b138b83250c9d5d39b03dae12fdd68a72d82d8e7e0f0bd272ed87",
+                "url": "https://download.bazzite.gg/bazzite-deck-nvidia-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-deck-nvidia-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-nvidia-gnome",
+          "name": "HTPC, Nvidia, GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-nvidia-gnome-stable-live-amd64.iso",
+              "path": "bazzite-deck-nvidia-gnome-stable-live-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-nvidia-gnome-stable-live-amd64.iso",
+              "size": 9499109376,
+              "checksum": {
+                "type": "sha256",
+                "value": "b8826343e643c2aaf9031629f168610e1ec7ae405dfbb7fdd8aca09b30b6e9d6",
+                "url": "https://download.bazzite.gg/bazzite-deck-nvidia-gnome-stable-live-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": "https://download.bazzite.gg/bazzite-deck-nvidia-gnome-stable-live-amd64.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-legacy",
+          "name": "Desktop/Laptop, AMD/Intel GPU, KDE Plasma (legacy installer)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-stable-amd64.iso",
+              "path": "bazzite-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-stable-amd64.iso",
+              "size": 7907770368,
+              "checksum": {
+                "type": "sha256",
+                "value": "9c8d06cd8e57f2274678edeb14b4b13a79b8117c70571a65199919a66305b5c7",
+                "url": "https://download.bazzite.gg/bazzite-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-gnome-legacy",
+          "name": "Desktop/Laptop, AMD/Intel GPU, GNOME (legacy installer)",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-gnome-stable-amd64.iso",
+              "path": "bazzite-gnome-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso",
+              "size": 7037911040,
+              "checksum": {
+                "type": "sha256",
+                "value": "aa41f6f1c796c0f583599c5e32745808405f3907008c681df63476738f184a64",
+                "url": "https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-nvidia-open-legacy",
+          "name": "Desktop/Laptop, Nvidia RTX, KDE Plasma (legacy installer)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-nvidia-open-stable-amd64.iso",
+              "path": "bazzite-nvidia-open-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-nvidia-open-stable-amd64.iso",
+              "size": 8079671296,
+              "checksum": {
+                "type": "sha256",
+                "value": "85e701c0f53189b0fa32797ffe8144202dcaa8db6c7692fd4677f615537b24b8",
+                "url": "https://download.bazzite.gg/bazzite-nvidia-open-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-nvidia-legacy",
+          "name": "Desktop/Laptop, Nvidia GTX, KDE Plasma (legacy installer)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-nvidia-stable-amd64.iso",
+              "path": "bazzite-nvidia-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-nvidia-stable-amd64.iso",
+              "size": 8233025536,
+              "checksum": {
+                "type": "sha256",
+                "value": "b05e0b23ec0917612b0be156f0b815439a40ad1634ed81fb225b7cea73c3b50e",
+                "url": "https://download.bazzite.gg/bazzite-nvidia-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-gnome-nvidia-legacy",
+          "name": "Desktop/Laptop, Nvidia GTX, GNOME (legacy installer)",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-gnome-nvidia-stable-amd64.iso",
+              "path": "bazzite-gnome-nvidia-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso",
+              "size": 7364149248,
+              "checksum": {
+                "type": "sha256",
+                "value": "0e35dcb3c0011d8d16a7d182b7291c5be63c4270ef8424facaddc1a1c0451b1c",
+                "url": "https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-legacy",
+          "name": "Handheld or HTPC, AMD/Intel GPU, KDE Plasma (legacy installer)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-stable-amd64.iso",
+              "path": "bazzite-deck-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-stable-amd64.iso",
+              "size": 9589096448,
+              "checksum": {
+                "type": "sha256",
+                "value": "f710fb32edb6b3ca319a07cd910d2fcaa9c5a088a3093a0d2508daf9dad660c2",
+                "url": "https://download.bazzite.gg/bazzite-deck-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-gnome-legacy",
+          "name": "Handheld or HTPC, AMD/Intel GPU, GNOME (legacy installer)",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-gnome-stable-amd64.iso",
+              "path": "bazzite-deck-gnome-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-gnome-stable-amd64.iso",
+              "size": 8743288832,
+              "checksum": {
+                "type": "sha256",
+                "value": "770d0b20c970845a5dd05d7372a3b95eac7b821d049976d8994937ce8ac939e2",
+                "url": "https://download.bazzite.gg/bazzite-deck-gnome-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-nvidia-legacy",
+          "name": "HTPC, Nvidia, KDE Plasma (legacy installer)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-nvidia-stable-amd64.iso",
+              "path": "bazzite-deck-nvidia-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-nvidia-stable-amd64.iso",
+              "size": 9761849344,
+              "checksum": {
+                "type": "sha256",
+                "value": "c5745f5c624fd5922f1ae6dee0d0ded8a4ad51f9abc8c4be624195188a43fc7c",
+                "url": "https://download.bazzite.gg/bazzite-deck-nvidia-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bazzite-deck-nvidia-gnome-legacy",
+          "name": "HTPC, Nvidia, GNOME (legacy installer)",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bazzite-deck-nvidia-gnome-stable-amd64.iso",
+              "path": "bazzite-deck-nvidia-gnome-stable-amd64.iso",
+              "url": "https://download.bazzite.gg/bazzite-deck-nvidia-gnome-stable-amd64.iso",
+              "size": 8916041728,
+              "checksum": {
+                "type": "sha256",
+                "value": "77df6d1bd0ad0b1b43024b927a65901b69834fc21810972035b4abac1611b4e4",
+                "url": "https://download.bazzite.gg/bazzite-deck-nvidia-gnome-stable-amd64.iso-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

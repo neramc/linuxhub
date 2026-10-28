@@ -1,0 +1,251 @@
+{
+  "slug": "kde-neon",
+  "sources": [
+    "https://neon.kde.org/download",
+    "https://files.kde.org/?mirrorstats",
+    "https://files.kde.org/neon/images/desk/user/20261025-1825/neon-user-desk-20261025-1825.iso?mirrorlist"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://mirrors.xtom.au/kde-application/",
+      "country": "AU",
+      "name": "mirrors.xtom.au",
+      "lat": -33.8715,
+      "lon": 151.2006,
+      "score": null
+    },
+    {
+      "url": "https://kde-applicationdata.c3sl.ufpr.br/",
+      "country": "BR",
+      "name": "kde-applicationdata.c3sl.ufpr.br",
+      "lat": -10,
+      "lon": -55,
+      "score": null
+    },
+    {
+      "url": "https://mirror.csclub.uwaterloo.ca/kde-applicationdata/",
+      "country": "CA",
+      "name": "mirror.csclub.uwaterloo.ca",
+      "lat": 60,
+      "lon": -95,
+      "score": null
+    },
+    {
+      "url": "https://mirror.gofoss.xyz/kde-appdata/",
+      "country": "CH",
+      "name": "mirror.gofoss.xyz",
+      "lat": 47.4044,
+      "lon": 8.4363,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.bfsu.edu.cn/kde-application/",
+      "country": "CN",
+      "name": "mirrors.bfsu.edu.cn",
+      "lat": 39.9288,
+      "lon": 116.3889,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/kde-applicationdata/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
+      "lat": 49.75,
+      "lon": 15.5,
+      "score": null
+    },
+    {
+      "url": "https://ftp.gwdg.de/pub/linux/kde/extrafiles/",
+      "country": "DE",
+      "name": "ftp.gwdg.de",
+      "lat": 53.0658,
+      "lon": 8.8353,
+      "score": null
+    },
+    {
+      "url": "https://mirror.faigner.de/kde/files/",
+      "country": "DE",
+      "name": "mirror.faigner.de",
+      "lat": 48.7667,
+      "lon": 9.1833,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.de/kde-application/",
+      "country": "DE",
+      "name": "mirrors.xtom.de",
+      "lat": 51.2184,
+      "lon": 6.7734,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/kde-applicationdata/",
+      "country": "DK",
+      "name": "mirrors.dotsrc.org",
+      "lat": 56,
+      "lon": 10,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.ee/kde-application/",
+      "country": "EE",
+      "name": "mirrors.xtom.ee",
+      "lat": 59,
+      "lon": 26,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ircam.fr/pub/kde-applicationdata/",
+      "country": "FR",
+      "name": "mirrors.ircam.fr",
+      "lat": 48.5738,
+      "lon": 2.5841,
+      "score": null
+    },
+    {
+      "url": "https://www-ftp.lip6.fr/pub/X11/kde-applicationdata/",
+      "country": "FR",
+      "name": "www-ftp.lip6.fr",
+      "lat": 43.3178,
+      "lon": 5.4125,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.hk/kde-application/",
+      "country": "HK",
+      "name": "mirrors.xtom.hk",
+      "lat": 22.1667,
+      "lon": 114.25,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.jp/kde-application/",
+      "country": "JP",
+      "name": "mirrors.xtom.jp",
+      "lat": 36,
+      "lon": 138,
+      "score": null
+    },
+    {
+      "url": "https://sakura-ishikari.mirrors.kde.org/kde/files/",
+      "country": "JP",
+      "name": "sakura-ishikari.mirrors.kde.org",
+      "lat": 38.2676,
+      "lon": 140.87,
+      "score": null
+    },
+    {
+      "url": "https://sakura-osaka.mirrors.kde.org/kde/files/",
+      "country": "JP",
+      "name": "sakura-osaka.mirrors.kde.org",
+      "lat": 35.6499,
+      "lon": 139.5191,
+      "score": null
+    },
+    {
+      "url": "https://sakura-tokyo.mirrors.kde.org/kde/files/",
+      "country": "JP",
+      "name": "sakura-tokyo.mirrors.kde.org",
+      "lat": 35.6836,
+      "lon": 139.7492,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.nl/kde-application/",
+      "country": "NL",
+      "name": "mirrors.xtom.nl",
+      "lat": 52.3891,
+      "lon": 4.6563,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/packages/kde-applicationdata/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
+      "lat": 52,
+      "lon": 20,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/kde.org/files/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": 62,
+      "lon": 15,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/KDE/files/",
+      "country": "SG",
+      "name": "mirror.freedif.org",
+      "lat": 1.2897,
+      "lon": 103.8501,
+      "score": null
+    },
+    {
+      "url": "https://kde.cs.nycu.edu.tw/files/",
+      "country": "TW",
+      "name": "kde.cs.nycu.edu.tw",
+      "lat": 24.8065,
+      "lon": 120.9706,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/kde-application/",
+      "country": "TW",
+      "name": "mirror.twds.com.tw",
+      "lat": 25.0759,
+      "lon": 121.5516,
+      "score": null
+    },
+    {
+      "url": "https://kde-applicationdata.mirrors.omnilance.com/",
+      "country": "UA",
+      "name": "kde-applicationdata.mirrors.omnilance.com",
+      "lat": 49,
+      "lon": 32,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fcix.net/kde-applicationdata/",
+      "country": "US",
+      "name": "mirror.fcix.net",
+      "lat": 37.751,
+      "lon": -97.822,
+      "score": null
+    },
+    {
+      "url": "https://mirror.math.princeton.edu/pub/kde/files/",
+      "country": "US",
+      "name": "mirror.math.princeton.edu",
+      "lat": 40.2187,
+      "lon": -74.7404,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ocf.berkeley.edu/kde-applicationdata/",
+      "country": "US",
+      "name": "mirrors.ocf.berkeley.edu",
+      "lat": 37.751,
+      "lon": -97.822,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.com/kde-application/",
+      "country": "US",
+      "name": "mirrors.xtom.com",
+      "lat": 37.751,
+      "lon": -97.822,
+      "score": null
+    },
+    {
+      "url": "https://mirror.as3741.net/mirror/files.kde.org/",
+      "country": "ZA",
+      "name": "mirror.as3741.net",
+      "lat": -29,
+      "lon": 24,
+      "score": null
+    }
+  ]
+}

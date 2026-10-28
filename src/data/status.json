@@ -3,12 +3,30 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "alpine-linux": {
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "antix": {
+    "releases": {
+      "failingSince": "2026-10-28",
+      "lastError": "robots.txt disallows https://antixlinux.com/download/"
+    },
+    "mirrors": {
+      "failingSince": "2026-10-28",
+      "lastError": "robots.txt disallows https://antixlinux.com/download/"
     }
   },
   "arch": {
@@ -21,8 +39,42 @@
       "lastError": null
     }
   },
+  "bazzite": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "bodhi-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "cachyos": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
   "centos-stream": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -51,10 +103,58 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "elementary-os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "endeavouros": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "fedora": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "garuda-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "gentoo": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -63,10 +163,18 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "kde-neon": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -75,16 +183,38 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "linux-lite": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "linux-mint": {
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "lubuntu": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -103,10 +233,28 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "mx-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "nixos": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -115,10 +263,28 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "openmandriva": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "opensuse": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -127,10 +293,38 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "parrot-os": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "pclinuxos": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "peppermint-os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -139,22 +333,88 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "puppy-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "q4os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "qubes-os": {
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "raspberry-pi-os": {
     "releases": {
-      "failingSince": "2026-10-03",
-      "lastError": "HTTP 403 for https://api.github.com/repos/RPi-Distro/pi-gen/tags?per_page=100"
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "rocky-linux": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "slackware": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "solus": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "sparkylinux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -163,10 +423,18 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "tuxedo-os": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }
@@ -185,16 +453,48 @@
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "vanilla-os": {
     "releases": {
       "failingSince": null,
       "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "void-linux": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
     }
   },
   "xubuntu": {
     "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
+      "failingSince": null,
+      "lastError": null
+    }
+  },
+  "zorin-os": {
+    "releases": {
+      "failingSince": null,
+      "lastError": null
+    },
+    "mirrors": {
       "failingSince": null,
       "lastError": null
     }

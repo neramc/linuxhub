@@ -1,0 +1,1269 @@
+{
+  "slug": "rocky-linux",
+  "sources": [
+    "https://rockylinux.org/download",
+    "https://docs.rockylinux.org/releases/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "10.2",
+      "channel": "stable",
+      "codename": "Red Quartz",
+      "releaseDate": "2026-05-29",
+      "eol": "2035-05-31",
+      "notesUrl": "https://docs.rockylinux.org/releases/release_notes/10_2/",
+      "editions": [
+        {
+          "id": "dvd",
+          "name": "DVD",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-10.2-x86_64-dvd1.iso",
+              "path": "10/isos/x86_64/Rocky-10.2-x86_64-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.2-x86_64-dvd1.iso",
+              "size": 10226171904,
+              "checksum": {
+                "type": "sha256",
+                "value": "16ca9c96cdb221ba6e1f68579f21bd69fd8da81c6a921d9068949796f91c8feb",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.2-x86_64-dvd1.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-10.2-aarch64-dvd1.iso",
+              "path": "10/isos/aarch64/Rocky-10.2-aarch64-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/Rocky-10.2-aarch64-dvd1.iso",
+              "size": 9659678720,
+              "checksum": {
+                "type": "sha256",
+                "value": "3b8253987604df1bc5e1c33c838ff3ee9ce4a8f02ed9e27e300ecff58c0c9588",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/Rocky-10.2-aarch64-dvd1.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "Rocky-10.2-riscv64-dvd1.iso",
+              "path": "10/isos/riscv64/Rocky-10.2-riscv64-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/Rocky-10.2-riscv64-dvd1.iso",
+              "size": 9010544640,
+              "checksum": {
+                "type": "sha256",
+                "value": "8b4710a427d1c8d17a787d9d59d0f19c384b92140a3d151d26ea030a6158ec50",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/Rocky-10.2-riscv64-dvd1.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "Rocky-10.2-ppc64le-dvd1.iso",
+              "path": "10/isos/ppc64le/Rocky-10.2-ppc64le-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/Rocky-10.2-ppc64le-dvd1.iso",
+              "size": 9003859968,
+              "checksum": {
+                "type": "sha256",
+                "value": "fe587686b74a3639402d909b4ff3da410d5f45839606b384860c030cdd97db2f",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/Rocky-10.2-ppc64le-dvd1.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "Rocky-10.2-s390x-dvd1.iso",
+              "path": "10/isos/s390x/Rocky-10.2-s390x-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/Rocky-10.2-s390x-dvd1.iso",
+              "size": 8273395712,
+              "checksum": {
+                "type": "sha256",
+                "value": "52e5cab95904d0cc15b4f4c7762d1e31251351d41d96fbb217cb3bb59da424ce",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/Rocky-10.2-s390x-dvd1.torrent"
+            }
+          ]
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal",
+          "desktop": null,
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-10.2-x86_64-minimal.iso",
+              "path": "10/isos/x86_64/Rocky-10.2-x86_64-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.2-x86_64-minimal.iso",
+              "size": 2072444928,
+              "checksum": {
+                "type": "sha256",
+                "value": "aac6ac3ce781b91a91ce78463405f66c611a5dca4b3840c79e5e01d97302f6c8",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.2-x86_64-minimal.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-10.2-aarch64-minimal.iso",
+              "path": "10/isos/aarch64/Rocky-10.2-aarch64-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/Rocky-10.2-aarch64-minimal.iso",
+              "size": 2397044736,
+              "checksum": {
+                "type": "sha256",
+                "value": "1d1c21199df32f6d17eedb4f713ee0d089b49294401a364b640fcf4ffab45f35",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/Rocky-10.2-aarch64-minimal.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "Rocky-10.2-ppc64le-minimal.iso",
+              "path": "10/isos/ppc64le/Rocky-10.2-ppc64le-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/Rocky-10.2-ppc64le-minimal.iso",
+              "size": 1641414656,
+              "checksum": {
+                "type": "sha256",
+                "value": "4fa402c32141d4f11f937932669eabeba0ee2d00c40ea91949f4abf959ef28a3",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/Rocky-10.2-ppc64le-minimal.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "Rocky-10.2-s390x-minimal.iso",
+              "path": "10/isos/s390x/Rocky-10.2-s390x-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/Rocky-10.2-s390x-minimal.iso",
+              "size": 1065484288,
+              "checksum": {
+                "type": "sha256",
+                "value": "23db96776c6662a146ebc6af26e8c9ace4ff1ec3b173cf16288b5142bcb290f5",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/Rocky-10.2-s390x-minimal.torrent"
+            }
+          ]
+        },
+        {
+          "id": "boot",
+          "name": "Boot",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-10.2-x86_64-boot.iso",
+              "path": "10/isos/x86_64/Rocky-10.2-x86_64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.2-x86_64-boot.iso",
+              "size": 1049538560,
+              "checksum": {
+                "type": "sha256",
+                "value": "bf3a75907948563d0c11f3d1b8546ee9216e18a3ea2dc0a67eb4c45452e210f9",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.2-x86_64-boot.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-10.2-aarch64-boot.iso",
+              "path": "10/isos/aarch64/Rocky-10.2-aarch64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/Rocky-10.2-aarch64-boot.iso",
+              "size": 1120931840,
+              "checksum": {
+                "type": "sha256",
+                "value": "33c2d3dfd5f947b3201478180b549bb2995bd9573c2776b384e5ec1dd47326c0",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/aarch64/Rocky-10.2-aarch64-boot.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "Rocky-10.2-riscv64-boot.iso",
+              "path": "10/isos/riscv64/Rocky-10.2-riscv64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/Rocky-10.2-riscv64-boot.iso",
+              "size": 1041690624,
+              "checksum": {
+                "type": "sha256",
+                "value": "5b0bed04197961440be649ccd9f87795c398dad8f36046444353fb8afb811ac4",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/riscv64/Rocky-10.2-riscv64-boot.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "Rocky-10.2-ppc64le-boot.iso",
+              "path": "10/isos/ppc64le/Rocky-10.2-ppc64le-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/Rocky-10.2-ppc64le-boot.iso",
+              "size": 1027223552,
+              "checksum": {
+                "type": "sha256",
+                "value": "2d30723555598a5f60d55d831c7b69065a1c5b310ecce38df4c13fb4f35db045",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/ppc64le/Rocky-10.2-ppc64le-boot.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "Rocky-10.2-s390x-boot.iso",
+              "path": "10/isos/s390x/Rocky-10.2-s390x-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/Rocky-10.2-s390x-boot.iso",
+              "size": 504782848,
+              "checksum": {
+                "type": "sha256",
+                "value": "40cfb90d9a33c5ebe32987f09d2f0f1b6558a80ab7a60f042914839ff3cb55f2",
+                "url": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/10/isos/s390x/Rocky-10.2-s390x-boot.torrent"
+            }
+          ]
+        },
+        {
+          "id": "workstation",
+          "name": "Live Workstation (GNOME)",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-10-Workstation-x86_64-latest.iso",
+              "path": "10/live/x86_64/Rocky-10-Workstation-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/Rocky-10-Workstation-x86_64-latest.iso",
+              "size": 1815683072,
+              "checksum": {
+                "type": "sha256",
+                "value": "9a8241ce991398841ab15a1af2e7d66d51a7c675cab639d9b4463e94ec8aa11a",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-10-Workstation-aarch64-latest.iso",
+              "path": "10/live/aarch64/Rocky-10-Workstation-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/Rocky-10-Workstation-aarch64-latest.iso",
+              "size": 1674151936,
+              "checksum": {
+                "type": "sha256",
+                "value": "79799fb4c0557843f7a7f6a54e16e229be5ce97ab9dc0dc72181a6ba54c1bf0c",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "workstation-lite",
+          "name": "Live Workstation Lite (GNOME)",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-10-Workstation-Lite-x86_64-latest.iso",
+              "path": "10/live/x86_64/Rocky-10-Workstation-Lite-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/Rocky-10-Workstation-Lite-x86_64-latest.iso",
+              "size": 1758703616,
+              "checksum": {
+                "type": "sha256",
+                "value": "1ce4e942695ca93e8c96ddd878305474f41cf229a5ee86fbc4a5f39091ac95e8",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-10-Workstation-Lite-aarch64-latest.iso",
+              "path": "10/live/aarch64/Rocky-10-Workstation-Lite-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/Rocky-10-Workstation-Lite-aarch64-latest.iso",
+              "size": 1629016064,
+              "checksum": {
+                "type": "sha256",
+                "value": "43eb8ec8032c032d7e568eaf85ea7bf25731fe6453770764c06c4fe6a769c841",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "Live KDE",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-10-KDE-x86_64-latest.iso",
+              "path": "10/live/x86_64/Rocky-10-KDE-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/Rocky-10-KDE-x86_64-latest.iso",
+              "size": 3470096384,
+              "checksum": {
+                "type": "sha256",
+                "value": "78f1208c4c836e51570fc0daccbebf8fa51bb7782de36cf64fb1f760fae16eea",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-10-KDE-aarch64-latest.iso",
+              "path": "10/live/aarch64/Rocky-10-KDE-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/Rocky-10-KDE-aarch64-latest.iso",
+              "size": 3314710528,
+              "checksum": {
+                "type": "sha256",
+                "value": "e6a0a8210bfe99e1a827a1a16d132b002c785c163db216827ac392a69800b1a9",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "generic-cloud",
+          "name": "Generic Cloud",
+          "desktop": null,
+          "kind": "cloud",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "qcow2",
+              "file": "Rocky-10-GenericCloud-Base.latest.x86_64.qcow2",
+              "path": "10/images/x86_64/Rocky-10-GenericCloud-Base.latest.x86_64.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/images/x86_64/Rocky-10-GenericCloud-Base.latest.x86_64.qcow2",
+              "size": 544997376,
+              "checksum": {
+                "type": "sha256",
+                "value": "9fc9e9ff16888bb68ac39b0392e25c9c92684d50c85f1cce6ab549363bbc4b48",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/images/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/images/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "qcow2",
+              "file": "Rocky-10-GenericCloud-Base.latest.aarch64.qcow2",
+              "path": "10/images/aarch64/Rocky-10-GenericCloud-Base.latest.aarch64.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/images/aarch64/Rocky-10-GenericCloud-Base.latest.aarch64.qcow2",
+              "size": 469368832,
+              "checksum": {
+                "type": "sha256",
+                "value": "457c8375e19496f43a25c4a6169fa11237536c53cef6f85a20ea3c5a751aa0f5",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/images/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/images/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "qcow2",
+              "file": "Rocky-10-GenericCloud-Base.latest.ppc64le.qcow2",
+              "path": "10/images/ppc64le/Rocky-10-GenericCloud-Base.latest.ppc64le.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/images/ppc64le/Rocky-10-GenericCloud-Base.latest.ppc64le.qcow2",
+              "size": 450691072,
+              "checksum": {
+                "type": "sha256",
+                "value": "06ab97a625392776028dde8ef5d663550ca6e6e162efc5993fd398f59477bd42",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/images/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/images/ppc64le/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "s390x",
+              "format": "qcow2",
+              "file": "Rocky-10-GenericCloud-Base.latest.s390x.qcow2",
+              "path": "10/images/s390x/Rocky-10-GenericCloud-Base.latest.s390x.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/images/s390x/Rocky-10-GenericCloud-Base.latest.s390x.qcow2",
+              "size": 407281152,
+              "checksum": {
+                "type": "sha256",
+                "value": "b76fb9f16340919ef1c3258e2aad36c32a1bb9ac4d360b09044dcb187fd9a928",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/images/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/images/s390x/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "raw.xz",
+              "file": "Rocky-10-SBC-RaspberryPi.latest.aarch64.raw.xz",
+              "path": "10/images/aarch64/Rocky-10-SBC-RaspberryPi.latest.aarch64.raw.xz",
+              "url": "https://dl.rockylinux.org/pub/rocky/10/images/aarch64/Rocky-10-SBC-RaspberryPi.latest.aarch64.raw.xz",
+              "size": 993789128,
+              "checksum": {
+                "type": "sha256",
+                "value": "d2b20199e4bf356e725690e5520ca559ee918187cab4bc6a57d757b7f92d1a70",
+                "url": "https://dl.rockylinux.org/pub/rocky/10/images/aarch64/Rocky-10-SBC-RaspberryPi.latest.aarch64.raw.xz.CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/images/aarch64/Rocky-10-SBC-RaspberryPi.latest.aarch64.raw.xz.CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "visionfive-2",
+          "name": "VisionFive 2",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "tar.xz",
+              "file": "Rocky-10-VisionFive2-latest.riscv64.tar.xz",
+              "path": null,
+              "url": "https://dl.rockylinux.org/vault/rocky/10.0/images/riscv64/Rocky-10-VisionFive2-latest.riscv64.tar.xz",
+              "size": 1278371212,
+              "checksum": {
+                "type": "sha256",
+                "value": "736773edb8b06054711934daabad7c001c15184cef70caecb76453ec84eb6a7d",
+                "url": "https://dl.rockylinux.org/vault/rocky/10.0/images/riscv64/Rocky-10-VisionFive2-latest.riscv64.tar.xz.CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "9.8",
+      "channel": "stable",
+      "codename": "Blue Onyx",
+      "releaseDate": "2026-05-28",
+      "eol": "2032-05-31",
+      "notesUrl": "https://docs.rockylinux.org/releases/release_notes/9_8/",
+      "editions": [
+        {
+          "id": "dvd",
+          "name": "DVD",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9.8-x86_64-dvd.iso",
+              "path": "9/isos/x86_64/Rocky-9.8-x86_64-dvd.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.8-x86_64-dvd.iso",
+              "size": 15194259456,
+              "checksum": {
+                "type": "sha256",
+                "value": "d2bcbb64c2d67511adf80d40cd9543391a33aea5860a355b1d26d7f55236d01f",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.8-x86_64-dvd.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9.8-aarch64-dvd.iso",
+              "path": "9/isos/aarch64/Rocky-9.8-aarch64-dvd.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.8-aarch64-dvd.iso",
+              "size": 13020102656,
+              "checksum": {
+                "type": "sha256",
+                "value": "9b53d1da14b70686b09a280974768a1adff1a4e4f10d35374b3d741ebbd6d541",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.8-aarch64-dvd.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "Rocky-9.8-ppc64le-dvd.iso",
+              "path": "9/isos/ppc64le/Rocky-9.8-ppc64le-dvd.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.8-ppc64le-dvd.iso",
+              "size": 12498567168,
+              "checksum": {
+                "type": "sha256",
+                "value": "6e9a4ba15e89f8bfc95c059e74675b53d20c18a97978720376f98e0aca227309",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.8-ppc64le-dvd.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "Rocky-9.8-s390x-dvd.iso",
+              "path": "9/isos/s390x/Rocky-9.8-s390x-dvd.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.8-s390x-dvd.iso",
+              "size": 11149967360,
+              "checksum": {
+                "type": "sha256",
+                "value": "083ce8a21e19cb89428209d62a33a2c59ea37d3cc31930c49433161edce8a37f",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.8-s390x-dvd.torrent"
+            }
+          ]
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal",
+          "desktop": null,
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9.8-x86_64-minimal.iso",
+              "path": "9/isos/x86_64/Rocky-9.8-x86_64-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.8-x86_64-minimal.iso",
+              "size": 2755067904,
+              "checksum": {
+                "type": "sha256",
+                "value": "d338032cd1cdd41c67139f2f71b4c832c8e4a21943106519db9c7137df7a63d4",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.8-x86_64-minimal.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9.8-aarch64-minimal.iso",
+              "path": "9/isos/aarch64/Rocky-9.8-aarch64-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.8-aarch64-minimal.iso",
+              "size": 2533556224,
+              "checksum": {
+                "type": "sha256",
+                "value": "2924b291feaebe083bc0d0553e472be0a38ed5c91b4841129ec80b0cecc10efd",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.8-aarch64-minimal.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "Rocky-9.8-ppc64le-minimal.iso",
+              "path": "9/isos/ppc64le/Rocky-9.8-ppc64le-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.8-ppc64le-minimal.iso",
+              "size": 2582970368,
+              "checksum": {
+                "type": "sha256",
+                "value": "c7f702437ee56c2e18f2a75a1a9122c46a572c89ea3226ce79bc4a2401890eda",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.8-ppc64le-minimal.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "Rocky-9.8-s390x-minimal.iso",
+              "path": "9/isos/s390x/Rocky-9.8-s390x-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.8-s390x-minimal.iso",
+              "size": 1608908800,
+              "checksum": {
+                "type": "sha256",
+                "value": "de76d0a72b27603198a490126868f4a532072c1bebb5dbc2f3d4fda9f58a962d",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.8-s390x-minimal.torrent"
+            }
+          ]
+        },
+        {
+          "id": "boot",
+          "name": "Boot",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9.8-x86_64-boot.iso",
+              "path": "9/isos/x86_64/Rocky-9.8-x86_64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.8-x86_64-boot.iso",
+              "size": 1480048640,
+              "checksum": {
+                "type": "sha256",
+                "value": "d6eeefdc8437c593d41a3150fcca4a734c55642ed472eecdda99720bb1370881",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.8-x86_64-boot.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9.8-aarch64-boot.iso",
+              "path": "9/isos/aarch64/Rocky-9.8-aarch64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.8-aarch64-boot.iso",
+              "size": 1422129152,
+              "checksum": {
+                "type": "sha256",
+                "value": "c40dd3accd0fb08a9848efcddfb29d0b6ba2a43e58a0d54b711e603c28fe9938",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.8-aarch64-boot.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "Rocky-9.8-ppc64le-boot.iso",
+              "path": "9/isos/ppc64le/Rocky-9.8-ppc64le-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.8-ppc64le-boot.iso",
+              "size": 1467269120,
+              "checksum": {
+                "type": "sha256",
+                "value": "bd0db737aeaede1817971cade75e72027dffe836ff983852ad940a6923775a70",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.8-ppc64le-boot.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "Rocky-9.8-s390x-boot.iso",
+              "path": "9/isos/s390x/Rocky-9.8-s390x-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.8-s390x-boot.iso",
+              "size": 538849280,
+              "checksum": {
+                "type": "sha256",
+                "value": "5a297eda4c7e7d852642fcb0b7c8ee7e5798af075b890238732a998881fc9c83",
+                "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.8-s390x-boot.torrent"
+            }
+          ]
+        },
+        {
+          "id": "workstation",
+          "name": "Live Workstation (GNOME)",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9-Workstation-x86_64-latest.iso",
+              "path": "9/live/x86_64/Rocky-9-Workstation-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/Rocky-9-Workstation-x86_64-latest.iso",
+              "size": 2653243392,
+              "checksum": {
+                "type": "sha256",
+                "value": "1a6d3d5fcfa855d0ded006ea24e112fd5ea3656b74da886ea97724df5772fe87",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9-Workstation-aarch64-latest.iso",
+              "path": "9/live/aarch64/Rocky-9-Workstation-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/Rocky-9-Workstation-aarch64-latest.iso",
+              "size": 2485059584,
+              "checksum": {
+                "type": "sha256",
+                "value": "a949b4b9da2a63796a350fa7c9d50a669ecfbdcd74f8e4ebbdde406a919fb4d7",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "workstation-lite",
+          "name": "Live Workstation Lite (GNOME)",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9-Workstation-Lite-x86_64-latest.iso",
+              "path": "9/live/x86_64/Rocky-9-Workstation-Lite-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/Rocky-9-Workstation-Lite-x86_64-latest.iso",
+              "size": 2585628672,
+              "checksum": {
+                "type": "sha256",
+                "value": "8ac6438376117162ccc509992cd02de93802a77dbc320f58a720735fac18fbbd",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9-Workstation-Lite-aarch64-latest.iso",
+              "path": "9/live/aarch64/Rocky-9-Workstation-Lite-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/Rocky-9-Workstation-Lite-aarch64-latest.iso",
+              "size": 2432471040,
+              "checksum": {
+                "type": "sha256",
+                "value": "8ba3616cfec7fbccde9508eaabfae2cdc1132e3cd5c7d4c540e7f09fbb1f0b1e",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "Live KDE",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9-KDE-x86_64-latest.iso",
+              "path": "9/live/x86_64/Rocky-9-KDE-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/Rocky-9-KDE-x86_64-latest.iso",
+              "size": 4167280640,
+              "checksum": {
+                "type": "sha256",
+                "value": "8a3ddc72b30a9b1c25f75300a40dfcffbfe972f26e48533e90717ebb978657d5",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9-KDE-aarch64-latest.iso",
+              "path": "9/live/aarch64/Rocky-9-KDE-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/Rocky-9-KDE-aarch64-latest.iso",
+              "size": 3998377984,
+              "checksum": {
+                "type": "sha256",
+                "value": "df78bc8de6d8612a880b6d3924d570c39511cc16ad5c322113c0841d81f4c934",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Live XFCE",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9-XFCE-x86_64-latest.iso",
+              "path": "9/live/x86_64/Rocky-9-XFCE-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/Rocky-9-XFCE-x86_64-latest.iso",
+              "size": 2421075968,
+              "checksum": {
+                "type": "sha256",
+                "value": "58bc457a6e0bd601549c0d93630379a271f3094be60bb5abb8a20141966d6ed0",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9-XFCE-aarch64-latest.iso",
+              "path": "9/live/aarch64/Rocky-9-XFCE-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/Rocky-9-XFCE-aarch64-latest.iso",
+              "size": 2269138944,
+              "checksum": {
+                "type": "sha256",
+                "value": "99f6bb9a27dd019a3d725ec68c499c4cebc82dbe0dd9590397e532bf55d24dd5",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "Live MATE",
+          "desktop": "mate",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9-MATE-x86_64-latest.iso",
+              "path": "9/live/x86_64/Rocky-9-MATE-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/Rocky-9-MATE-x86_64-latest.iso",
+              "size": 2912817152,
+              "checksum": {
+                "type": "sha256",
+                "value": "b2e6339915d0f89331a3f39e316daaa4beaf0f939308f26e77d6d9f3775a2b76",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9-MATE-aarch64-latest.iso",
+              "path": "9/live/aarch64/Rocky-9-MATE-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/Rocky-9-MATE-aarch64-latest.iso",
+              "size": 2756407296,
+              "checksum": {
+                "type": "sha256",
+                "value": "6559ca362b49eea760547f00df51c159f21f16a82162c9eba0cc1863b7b3e34b",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "cinnamon",
+          "name": "Live Cinnamon",
+          "desktop": "cinnamon",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-9-Cinnamon-x86_64-latest.iso",
+              "path": "9/live/x86_64/Rocky-9-Cinnamon-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/Rocky-9-Cinnamon-x86_64-latest.iso",
+              "size": 2850697216,
+              "checksum": {
+                "type": "sha256",
+                "value": "b473c5684265deb657463c9d022b28810bb0232ed13f3efc0690f8104d7b4f4e",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-9-Cinnamon-aarch64-latest.iso",
+              "path": "9/live/aarch64/Rocky-9-Cinnamon-aarch64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/Rocky-9-Cinnamon-aarch64-latest.iso",
+              "size": 2694819840,
+              "checksum": {
+                "type": "sha256",
+                "value": "3218cd201a4c6c17c2bbda8191214f8baca3333f61542df31bc3c08af2b8aebd",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/live/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "generic-cloud",
+          "name": "Generic Cloud",
+          "desktop": null,
+          "kind": "cloud",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "qcow2",
+              "file": "Rocky-9-GenericCloud-Base.latest.x86_64.qcow2",
+              "path": "9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2",
+              "size": 645988352,
+              "checksum": {
+                "type": "sha256",
+                "value": "92c206cc6f790c61583247eefe87890f8828420662c17cacf247cec78ab4eec8",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "qcow2",
+              "file": "Rocky-9-GenericCloud-Base.latest.aarch64.qcow2",
+              "path": "9/images/aarch64/Rocky-9-GenericCloud-Base.latest.aarch64.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-GenericCloud-Base.latest.aarch64.qcow2",
+              "size": 519831552,
+              "checksum": {
+                "type": "sha256",
+                "value": "24692a444f1f0b8bb95375c38c8b43f8099a115347623691be2c330b40c8a1fe",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/images/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/images/aarch64/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "qcow2",
+              "file": "Rocky-9-GenericCloud-Base.latest.ppc64le.qcow2",
+              "path": "9/images/ppc64le/Rocky-9-GenericCloud-Base.latest.ppc64le.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/images/ppc64le/Rocky-9-GenericCloud-Base.latest.ppc64le.qcow2",
+              "size": 524812288,
+              "checksum": {
+                "type": "sha256",
+                "value": "811376d2a8126b0ebbf649179da8e0075a619e6208d3e14932da7f9a782f83bc",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/images/ppc64le/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/images/ppc64le/CHECKSUM.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "s390x",
+              "format": "qcow2",
+              "file": "Rocky-9-GenericCloud-Base.latest.s390x.qcow2",
+              "path": "9/images/s390x/Rocky-9-GenericCloud-Base.latest.s390x.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/images/s390x/Rocky-9-GenericCloud-Base.latest.s390x.qcow2",
+              "size": 429202432,
+              "checksum": {
+                "type": "sha256",
+                "value": "8e09913671d234b9c745eeca67cf484b2aaa3e344fe65a372b545aa30b6442cf",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/images/s390x/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/images/s390x/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "raw.xz",
+              "file": "Rocky-9-SBC-RaspberryPi.latest.aarch64.raw.xz",
+              "path": "9/images/aarch64/Rocky-9-SBC-RaspberryPi.latest.aarch64.raw.xz",
+              "url": "https://dl.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-SBC-RaspberryPi.latest.aarch64.raw.xz",
+              "size": 983980188,
+              "checksum": {
+                "type": "sha256",
+                "value": "d05798b317d9d085f806742f30b0a4feea8161e6cbcb15681dceef059f470f1f",
+                "url": "https://dl.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-SBC-RaspberryPi.latest.aarch64.raw.xz.CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "8.10",
+      "channel": "stable",
+      "codename": "Green Obsidian",
+      "releaseDate": "2024-05-31",
+      "eol": "2029-05-31",
+      "notesUrl": "https://docs.rockylinux.org/releases/release_notes/8_10/",
+      "editions": [
+        {
+          "id": "dvd",
+          "name": "DVD",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8.10-x86_64-dvd1.iso",
+              "path": "8/isos/x86_64/Rocky-8.10-x86_64-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.10-x86_64-dvd1.iso",
+              "size": 16487612416,
+              "checksum": {
+                "type": "sha256",
+                "value": "260e253a09146c85b253d0cccf1e3fb05dc514b5cd5791f87132055a3094cb24",
+                "url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.10-x86_64-dvd1.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-8.10-aarch64-dvd1.iso",
+              "path": "8/isos/aarch64/Rocky-8.10-aarch64-dvd1.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/Rocky-8.10-aarch64-dvd1.iso",
+              "size": 13147439104,
+              "checksum": {
+                "type": "sha256",
+                "value": "4e3c2339f61510a293b631495571e72d1df852b1f2b765100defad193433467f",
+                "url": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/Rocky-8.10-aarch64-dvd1.torrent"
+            }
+          ]
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal",
+          "desktop": null,
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8.10-x86_64-minimal.iso",
+              "path": "8/isos/x86_64/Rocky-8.10-x86_64-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.10-x86_64-minimal.iso",
+              "size": 3368943616,
+              "checksum": {
+                "type": "sha256",
+                "value": "231d21db029e900b305d8e23ff7a61d06bb4e873cb170bd4a85f4e6dd896748f",
+                "url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.10-x86_64-minimal.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-8.10-aarch64-minimal.iso",
+              "path": "8/isos/aarch64/Rocky-8.10-aarch64-minimal.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/Rocky-8.10-aarch64-minimal.iso",
+              "size": 3017539584,
+              "checksum": {
+                "type": "sha256",
+                "value": "911a048c8b7b70eb671c3e6e161b02b47d182cd0b68c1ab97d16dc95a0d466d9",
+                "url": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/Rocky-8.10-aarch64-minimal.torrent"
+            }
+          ]
+        },
+        {
+          "id": "boot",
+          "name": "Boot",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8.10-x86_64-boot.iso",
+              "path": "8/isos/x86_64/Rocky-8.10-x86_64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.10-x86_64-boot.iso",
+              "size": 1442840576,
+              "checksum": {
+                "type": "sha256",
+                "value": "5987b4b0bdbb3189e91248353d45e0bf37f05747b0ba746664a2d1e8e7936ed7",
+                "url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.10-x86_64-boot.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Rocky-8.10-aarch64-boot.iso",
+              "path": "8/isos/aarch64/Rocky-8.10-aarch64-boot.iso",
+              "url": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/Rocky-8.10-aarch64-boot.iso",
+              "size": 1359646720,
+              "checksum": {
+                "type": "sha256",
+                "value": "ea439ff35f987d263ddbdebb55424b092eed516a73e44be1992a550237c6a36c",
+                "url": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/CHECKSUM.asc",
+              "torrentUrl": "https://download.rockylinux.org/pub/rocky/8/isos/aarch64/Rocky-8.10-aarch64-boot.torrent"
+            }
+          ]
+        },
+        {
+          "id": "workstation",
+          "name": "Live Workstation (GNOME)",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8-Workstation-x86_64-latest.iso",
+              "path": "8/live/x86_64/Rocky-8-Workstation-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/8/Live/x86_64/Rocky-8-Workstation-x86_64-latest.iso",
+              "size": 2077229056,
+              "checksum": {
+                "type": "sha256",
+                "value": "88822b399bf8c4ca747a90b59b016200c03c124dafa9d79fdcd3f557530f1322",
+                "url": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "workstation-lite",
+          "name": "Live Workstation Lite (GNOME)",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8-Workstation-Lite-x86_64-latest.iso",
+              "path": "8/live/x86_64/Rocky-8-Workstation-Lite-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/8/Live/x86_64/Rocky-8-Workstation-Lite-x86_64-latest.iso",
+              "size": 1933574144,
+              "checksum": {
+                "type": "sha256",
+                "value": "c651de355d21014ccfe1f784dcaf2ed938ce86fd1620c3c58d92559b5019d5dc",
+                "url": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Live XFCE",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8-XFCE-x86_64-latest.iso",
+              "path": "8/live/x86_64/Rocky-8-XFCE-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/8/Live/x86_64/Rocky-8-XFCE-x86_64-latest.iso",
+              "size": 1945108480,
+              "checksum": {
+                "type": "sha256",
+                "value": "d1667799235c26fe47dea0a40e4ae8f133595f63fa19ff6e40d4f10fbc238484",
+                "url": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "Live MATE",
+          "desktop": "mate",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Rocky-8-MATE-x86_64-latest.iso",
+              "path": "8/live/x86_64/Rocky-8-MATE-x86_64-latest.iso",
+              "url": "https://dl.rockylinux.org/pub/rocky/8/Live/x86_64/Rocky-8-MATE-x86_64-latest.iso",
+              "size": 2308964352,
+              "checksum": {
+                "type": "sha256",
+                "value": "ce2517cd4d5e1d60e9a24322d6fbd6f9f47ff8c0a72dc96a1bdea04f033cdfa4",
+                "url": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/8/live/x86_64/CHECKSUM.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "generic-cloud",
+          "name": "Generic Cloud",
+          "desktop": null,
+          "kind": "cloud",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "qcow2",
+              "file": "Rocky-8-GenericCloud-Base.latest.x86_64.qcow2",
+              "path": "8/images/x86_64/Rocky-8-GenericCloud-Base.latest.x86_64.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/8/images/x86_64/Rocky-8-GenericCloud-Base.latest.x86_64.qcow2",
+              "size": 2065760256,
+              "checksum": {
+                "type": "sha256",
+                "value": "e56066c58606191e96184de9a9183a3af33c59bcbd8740d8b10ca054a7a89c14",
+                "url": "https://dl.rockylinux.org/pub/rocky/8/images/x86_64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/8/images/x86_64/CHECKSUM.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "qcow2",
+              "file": "Rocky-8-GenericCloud-Base.latest.aarch64.qcow2",
+              "path": "8/images/aarch64/Rocky-8-GenericCloud-Base.latest.aarch64.qcow2",
+              "url": "https://dl.rockylinux.org/pub/rocky/8/images/aarch64/Rocky-8-GenericCloud-Base.latest.aarch64.qcow2",
+              "size": 1925644288,
+              "checksum": {
+                "type": "sha256",
+                "value": "946b5b9845aa5e3ed98f1bc6ee9873201712a2aef01b87731aed16857e0ca13f",
+                "url": "https://dl.rockylinux.org/pub/rocky/8.10/images/aarch64/CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/pub/rocky/8.10/images/aarch64/CHECKSUM.sig",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "raspberry-pi-os",
+  "sources": [
+    "https://github.com/RPi-Distro/pi-gen/tags",
+    "https://deb.debian.org/debian/dists/stable/Release"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "2026-10-06",
+      "channel": "stable",
+      "codename": "Trixie",
+      "releaseDate": "2026-10-06",
+      "eol": null,
+      "notesUrl": "https://downloads.raspberrypi.com/raspios_arm64/release_notes.txt",
+      "editions": []
+    }
+  ]
+}

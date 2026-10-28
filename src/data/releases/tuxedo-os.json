@@ -4,13 +4,13 @@
     "https://os.tuxedocomputers.com/",
     "https://os.tuxedocomputers.com/checksums/"
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-28",
   "releases": [
     {
-      "version": "2026.09.16",
+      "version": "2026.10.19",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-09-16",
+      "releaseDate": "2026-10-19",
       "eol": null,
       "notesUrl": null,
       "editions": [
@@ -23,17 +23,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "TUXEDO-OS-202609161651.iso",
-              "path": null,
-              "url": "https://os.tuxedocomputers.com/TUXEDO-OS-202609161651.iso",
-              "size": 5000638464,
+              "file": "TUXEDO-OS-202610191505.iso",
+              "path": "TUXEDO-OS-202610191505.iso",
+              "url": "https://os.tuxedocomputers.com/TUXEDO-OS-202610191505.iso",
+              "size": 5006731264,
               "checksum": {
                 "type": "sha256",
-                "value": "8239e847b958a676dd108df53529de63b16eda422e35599a2f079ea59d5f0520",
-                "url": "https://os.tuxedocomputers.com/checksums/TUXEDO-OS-202609161651.iso.sha256"
+                "value": "25d5db9daceea96d332fea826f166890615abfd5f93b943019330e911bd19f26",
+                "url": "https://os.tuxedocomputers.com/checksums/TUXEDO-OS-202610191505.iso.sha256"
               },
-              "signatureUrl": "https://os.tuxedocomputers.com/checksums/TUXEDO-OS-202609161651.iso.sha256.asc",
-              "torrentUrl": "https://os.tuxedocomputers.com/TUXEDO-OS-202609161651.iso.torrent"
+              "signatureUrl": "https://os.tuxedocomputers.com/checksums/TUXEDO-OS-202610191505.iso.sha256.asc",
+              "torrentUrl": "https://os.tuxedocomputers.com/TUXEDO-OS-202610191505.iso.torrent"
             }
           ]
         }

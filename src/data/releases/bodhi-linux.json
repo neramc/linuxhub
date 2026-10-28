@@ -1,0 +1,113 @@
+{
+  "slug": "bodhi-linux",
+  "sources": [
+    "https://www.bodhilinux.com/download/",
+    "https://www.bodhilinux.com/w/release-cycle/",
+    "https://sourceforge.net/projects/bodhilinux/files/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "7.0.0",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2023-08-21",
+      "eol": null,
+      "notesUrl": "https://www.bodhilinux.com/release/7-0-0/",
+      "editions": [
+        {
+          "id": "standard",
+          "name": "Standard",
+          "desktop": "moksha",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bodhi-7.0.0-64.iso",
+              "path": "7.0.0/bodhi-7.0.0-64.iso",
+              "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "0ddfc1d917b496fade58f141ef1b07ab798b41cc2d23c8e1b5ad9b288f27c538",
+                "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64.iso.sha256/download"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "hwe",
+          "name": "HWE",
+          "desktop": "moksha",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bodhi-7.0.0-64-hwe.iso",
+              "path": "7.0.0/bodhi-7.0.0-64-hwe.iso",
+              "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-hwe.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "55601a03d305159569b77e6a6008aedc59f5e81df1beb35f6224c0eae6efde70",
+                "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-hwe.iso.sha256/download"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-hwe.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "s76",
+          "name": "s76",
+          "desktop": "moksha",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bodhi-7.0.0-64-s76.iso",
+              "path": "7.0.0/bodhi-7.0.0-64-s76.iso",
+              "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-s76.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "105fc2642c2499f19eb424100289c720d5fb69aa6a9c8cd9d770d9a96445d894",
+                "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-s76.iso.sha256/download"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-s76.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "app-pack",
+          "name": "App Pack",
+          "desktop": "moksha",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "bodhi-7.0.0-64-apppack.iso",
+              "path": "7.0.0/bodhi-7.0.0-64-apppack.iso",
+              "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-apppack.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "86b0a00d340615acaabf71079b1dcc072942c8e5c7cacc73e59a70f796382a84",
+                "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-apppack.iso.sha256/download"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64-apppack.iso.torrent/download"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

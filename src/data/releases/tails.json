@@ -1,0 +1,59 @@
+{
+  "slug": "tails",
+  "sources": [
+    "https://tails.net/install/v2/Tails/amd64/stable/latest.json",
+    "https://tails.net/install/download/",
+    "https://tails.net/news/version_7.15.1/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "7.15.1",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-23",
+      "eol": null,
+      "notesUrl": "https://tails.net/news/version_7.15.1/",
+      "editions": [
+        {
+          "id": "tails",
+          "name": "Tails",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "img",
+              "file": "tails-amd64-7.15.1.img",
+              "path": "stable/tails-amd64-7.15.1/tails-amd64-7.15.1.img",
+              "url": "https://download.tails.net/tails/stable/tails-amd64-7.15.1/tails-amd64-7.15.1.img",
+              "size": 1889533952,
+              "checksum": {
+                "type": "sha256",
+                "value": "32eba91c65cd184206eb7c8e9b504277442cf17aae7816815a1d9401e9736761",
+                "url": "https://tails.net/install/v2/Tails/amd64/stable/latest.json"
+              },
+              "signatureUrl": "https://tails.net/torrents/files/tails-amd64-7.15.1.img.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "tails-amd64-7.15.1.iso",
+              "path": "stable/tails-amd64-7.15.1/tails-amd64-7.15.1.iso",
+              "url": "https://download.tails.net/tails/stable/tails-amd64-7.15.1/tails-amd64-7.15.1.iso",
+              "size": 1879707648,
+              "checksum": {
+                "type": "sha256",
+                "value": "f0e68387ebe327808c0a037886f804f7b2268ae8c66a677e3a6c6241d764e3c7",
+                "url": "https://tails.net/install/v2/Tails/amd64/stable/latest.json"
+              },
+              "signatureUrl": "https://tails.net/torrents/files/tails-amd64-7.15.1.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

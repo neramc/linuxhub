@@ -1,0 +1,76 @@
+{
+  "slug": "peppermint-os",
+  "sources": [
+    "https://peppermintos.com/trixie-base-downloads/",
+    "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "2026-07-09",
+      "channel": "stable",
+      "codename": "Devuan excalibur",
+      "releaseDate": "2026-07-09",
+      "eol": null,
+      "notesUrl": "https://sourceforge.net/p/peppermintos/pepwiki/BuildDate/",
+      "editions": [
+        {
+          "id": "flagship",
+          "name": "Flagship",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "peppermint_devuan-amd64.iso",
+              "path": "isos/XFCE/peppermint_devuan-amd64.iso",
+              "url": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/peppermint_devuan-amd64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "f7c8e0bf5a284f14f973093556eeb57a1a9e596f",
+                "url": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/peppermint_devuan-amd64.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "2026-03-04",
+      "channel": "stable",
+      "codename": "Debian trixie",
+      "releaseDate": "2026-03-04",
+      "eol": null,
+      "notesUrl": "https://sourceforge.net/p/peppermintos/pepwiki/BuildDate/",
+      "editions": [
+        {
+          "id": "flagship",
+          "name": "Flagship",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "PeppermintOS-Debian-64.iso",
+              "path": "isos/XFCE/PeppermintOS-Debian-64.iso",
+              "url": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/PeppermintOS-Debian-64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "4a0c4f72c66a5df8c3b4e39bef5a2046416e3a0a",
+                "url": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

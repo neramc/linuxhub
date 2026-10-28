@@ -1,18 +1,90 @@
 {
   "slug": "xubuntu",
   "sources": [
-    "https://endoflife.date/ubuntu",
+    "https://xubuntu.org/download/",
+    "https://ubuntu.com/project/docs/release-team/list-of-releases/",
     "https://cdimage.ubuntu.com/xubuntu/releases/"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-28",
   "releases": [
+    {
+      "version": "26.10",
+      "channel": "stable",
+      "codename": "Stonking Stingray",
+      "releaseDate": "2026-10-15",
+      "eol": "2027-07-15",
+      "notesUrl": "https://xubuntu.org/releasedocs/26.10/release-notes/",
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "xubuntu-26.10-desktop-amd64.iso",
+              "path": "xubuntu/releases/26.10/release/xubuntu-26.10-desktop-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/xubuntu-26.10-desktop-amd64.iso",
+              "size": 5282123776,
+              "checksum": {
+                "type": "sha256",
+                "value": "8f5662cf26f320a8a2cda807f16b4ba66449cf9846946a47fc2e9aa6d1a56690",
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/xubuntu-26.10-desktop-amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal",
+          "desktop": "xfce",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "xubuntu-26.10-minimal-amd64.iso",
+              "path": "xubuntu/releases/26.10/release/xubuntu-26.10-minimal-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/xubuntu-26.10-minimal-amd64.iso",
+              "size": 3314157568,
+              "checksum": {
+                "type": "sha256",
+                "value": "1d2225b3c24ced09c36fcff93221c2e284af0ba5f2b131212af06e57f7cc06ba",
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/xubuntu-26.10-minimal-amd64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "xubuntu-26.10-minimal-riscv64.iso",
+              "path": "xubuntu/releases/26.10/release/xubuntu-26.10-minimal-riscv64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/xubuntu-26.10-minimal-riscv64.iso",
+              "size": 3183869952,
+              "checksum": {
+                "type": "sha256",
+                "value": "8e43b78e7e3490c321971c0600e31b6c95c3a7f77b6ecc31d946c587a64cd252",
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.10/release/xubuntu-26.10-minimal-riscv64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "26.04.1",
       "channel": "lts",
       "codename": "Resolute Raccoon",
-      "releaseDate": "2026-04-23",
-      "eol": "2031-05-29",
-      "notesUrl": null,
+      "releaseDate": "2026-08-27",
+      "eol": "2029-04-26",
+      "notesUrl": "https://xubuntu.org/releasedocs/26.04/release-notes/",
       "editions": [
         {
           "id": "desktop",
@@ -24,16 +96,16 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "xubuntu-26.04.1-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/xubuntu-26.04.1-desktop-amd64.iso",
-              "size": null,
+              "path": "xubuntu/releases/26.04.1/release/xubuntu-26.04.1-desktop-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-desktop-amd64.iso",
+              "size": 5186390016,
               "checksum": {
                 "type": "sha256",
                 "value": "0cd5160f72ae6b7a26be7a29248b60cbd579b9e6aa8fbd274e95264da0ade43d",
-                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/xubuntu-26.04.1-desktop-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-desktop-amd64.iso.torrent"
             }
           ]
         },
@@ -47,16 +119,31 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "xubuntu-26.04.1-minimal-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/xubuntu-26.04.1-minimal-amd64.iso",
-              "size": null,
+              "path": "xubuntu/releases/26.04.1/release/xubuntu-26.04.1-minimal-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-minimal-amd64.iso",
+              "size": 3232614400,
               "checksum": {
                 "type": "sha256",
                 "value": "f057788b4597321fd13b8daa54fd4492de1b39a1c35372e7fa8d73f77dc109ff",
-                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/release/xubuntu-26.04.1-minimal-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-minimal-amd64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "xubuntu-26.04.1-minimal-riscv64.iso",
+              "path": "xubuntu/releases/26.04.1/release/xubuntu-26.04.1-minimal-riscv64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-minimal-riscv64.iso",
+              "size": 3102081024,
+              "checksum": {
+                "type": "sha256",
+                "value": "7a0222d39bbeb58afc388d5340dfa0246ceb274b2053212b660b699094beb12d",
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/26.04.1/release/xubuntu-26.04.1-minimal-riscv64.iso.torrent"
             }
           ]
         }
@@ -66,9 +153,9 @@
       "version": "24.04.5",
       "channel": "lts",
       "codename": "Noble Numbat",
-      "releaseDate": "2024-04-25",
-      "eol": "2029-05-31",
-      "notesUrl": null,
+      "releaseDate": "2026-09-10",
+      "eol": "2027-04-22",
+      "notesUrl": "https://xubuntu.org/releasedocs/24.04/release-notes/",
       "editions": [
         {
           "id": "desktop",
@@ -80,16 +167,16 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "xubuntu-24.04.5-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/xubuntu-24.04.5-desktop-amd64.iso",
-              "size": null,
+              "path": "xubuntu/releases/24.04.5/release/xubuntu-24.04.5-desktop-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/xubuntu-24.04.5-desktop-amd64.iso",
+              "size": 5211408384,
               "checksum": {
                 "type": "sha256",
                 "value": "4ed869ebf2b9f2f6118c1b60b9ed07576e8fe3d5cdfe10aae06869e669878b81",
-                "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/xubuntu-24.04.5-desktop-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/xubuntu-24.04.5-desktop-amd64.iso.torrent"
             }
           ]
         },
@@ -103,49 +190,16 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "xubuntu-24.04.5-minimal-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/xubuntu-24.04.5-minimal-amd64.iso",
-              "size": null,
+              "path": "xubuntu/releases/24.04.5/release/xubuntu-24.04.5-minimal-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/xubuntu-24.04.5-minimal-amd64.iso",
+              "size": 3193516032,
               "checksum": {
                 "type": "sha256",
                 "value": "9d47f975696ce496b8be882b6d7cc9079c1ea89fb625ac2c86caa63a4f180033",
-                "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04/release/xubuntu-24.04.5-minimal-amd64.iso.torrent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "version": "22.04.5",
-      "channel": "lts",
-      "codename": "Jammy Jellyfish",
-      "releaseDate": "2022-04-21",
-      "eol": "2027-06-01",
-      "notesUrl": null,
-      "editions": [
-        {
-          "id": "desktop",
-          "name": "Desktop",
-          "desktop": "xfce",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "xubuntu-22.04.5-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/xubuntu/releases/22.04/release/xubuntu-22.04.5-desktop-amd64.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "864e2cf7f23a9e76a8e56d9187af5654d0155bac449e9e3063c696ec1281346c",
-                "url": "https://cdimage.ubuntu.com/xubuntu/releases/22.04/release/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/22.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/22.04/release/xubuntu-22.04.5-desktop-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/xubuntu/releases/24.04.5/release/xubuntu-24.04.5-minimal-amd64.iso.torrent"
             }
           ]
         }

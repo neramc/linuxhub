@@ -1,0 +1,220 @@
+{
+  "slug": "mageia",
+  "sources": [
+    "https://www.mageia.org/en/downloads/alternative/",
+    "https://www.mageia.org/en/support/",
+    "https://endoflife.date/mageia",
+    "https://www.mageia.org/en/downloads/get/?q="
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "10",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-06-29",
+      "eol": "2028-03-31",
+      "notesUrl": "https://wiki.mageia.org/en/Mageia_10_Release_Notes",
+      "editions": [
+        {
+          "id": "classical",
+          "name": "Classical",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Mageia-10-x86_64.iso",
+              "path": "iso/10/Mageia-10-x86_64/Mageia-10-x86_64.iso",
+              "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-x86_64/Mageia-10-x86_64.iso",
+              "size": 5697957888,
+              "checksum": {
+                "type": "sha512",
+                "value": "e02d59303d284dd0ee05ce0b327cbed6d3270410803965078c2fa6961e23d9131775011b111a57476e60f3354321ef46c6c1e107db4db9b708634ed7a26fd270",
+                "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-x86_64/Mageia-10-x86_64.iso.sha512"
+              },
+              "signatureUrl": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-x86_64/Mageia-10-x86_64.iso.sha512.gpg",
+              "torrentUrl": "https://mirrors.kernel.org/mageia/iso/10/torrents/Mageia-10-x86_64.torrent"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "Mageia-10-i686.iso",
+              "path": "iso/10/Mageia-10-i686/Mageia-10-i686.iso",
+              "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-i686/Mageia-10-i686.iso",
+              "size": 4858396672,
+              "checksum": {
+                "type": "sha512",
+                "value": "c84279bbe954cfb31871da0c5a1c419b1f13f88c50f89db35ac0890dfeb73e13a3c8b02d62c37c0cfd125b1c26267a78acb38cac1bdce26bb1bf4de864d6b800",
+                "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-i686/Mageia-10-i686.iso.sha512"
+              },
+              "signatureUrl": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-i686/Mageia-10-i686.iso.sha512.gpg",
+              "torrentUrl": "https://mirrors.kernel.org/mageia/iso/10/torrents/Mageia-10-i686.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-gnome",
+          "name": "Live GNOME",
+          "desktop": "gnome",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Mageia-10-Live-GNOME-x86_64.iso",
+              "path": "iso/10/Mageia-10-Live-GNOME-x86_64/Mageia-10-Live-GNOME-x86_64.iso",
+              "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-GNOME-x86_64/Mageia-10-Live-GNOME-x86_64.iso",
+              "size": 4862210048,
+              "checksum": {
+                "type": "sha512",
+                "value": "01d991d5da928fc4700a3495c72e00f7378b5cf66732fad2c753a49295d32c921dffe8f894c48a7e5a62bef8391084bf511544d6b07e16bdd1e5471d9c640676",
+                "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-GNOME-x86_64/Mageia-10-Live-GNOME-x86_64.iso.sha512"
+              },
+              "signatureUrl": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-GNOME-x86_64/Mageia-10-Live-GNOME-x86_64.iso.sha512.gpg",
+              "torrentUrl": "https://mirrors.kernel.org/mageia/iso/10/torrents/Mageia-10-Live-GNOME-x86_64.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-plasma",
+          "name": "Live Plasma",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Mageia-10-Live-Plasma-x86_64.iso",
+              "path": "iso/10/Mageia-10-Live-Plasma-x86_64/Mageia-10-Live-Plasma-x86_64.iso",
+              "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Plasma-x86_64/Mageia-10-Live-Plasma-x86_64.iso",
+              "size": 5176072192,
+              "checksum": {
+                "type": "sha512",
+                "value": "096b7d33bd7aecd26a461cbbec1e5750b7570f22e5eca1529bdde04f612f02964dcd139261b25358aa6b50958ee91412dcd598109f150e53a4cf537d5d0eda6a",
+                "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Plasma-x86_64/Mageia-10-Live-Plasma-x86_64.iso.sha512"
+              },
+              "signatureUrl": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Plasma-x86_64/Mageia-10-Live-Plasma-x86_64.iso.sha512.gpg",
+              "torrentUrl": "https://mirrors.kernel.org/mageia/iso/10/torrents/Mageia-10-Live-Plasma-x86_64.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-xfce",
+          "name": "Live Xfce",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Mageia-10-Live-Xfce-x86_64.iso",
+              "path": "iso/10/Mageia-10-Live-Xfce-x86_64/Mageia-10-Live-Xfce-x86_64.iso",
+              "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Xfce-x86_64/Mageia-10-Live-Xfce-x86_64.iso",
+              "size": 4584060928,
+              "checksum": {
+                "type": "sha512",
+                "value": "11ffc1b21ca684fbd0ab42b6da69aee92c1fff65f89f317d9202d7d0f590aabd2b48e65ae6551f0e8009261e8152b3d797b47db07bbe0e865b3af58a10ca24d1",
+                "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Xfce-x86_64/Mageia-10-Live-Xfce-x86_64.iso.sha512"
+              },
+              "signatureUrl": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Xfce-x86_64/Mageia-10-Live-Xfce-x86_64.iso.sha512.gpg",
+              "torrentUrl": "https://mirrors.kernel.org/mageia/iso/10/torrents/Mageia-10-Live-Xfce-x86_64.torrent"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "Mageia-10-Live-Xfce-i686.iso",
+              "path": "iso/10/Mageia-10-Live-Xfce-i686/Mageia-10-Live-Xfce-i686.iso",
+              "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Xfce-i686/Mageia-10-Live-Xfce-i686.iso",
+              "size": 4018126848,
+              "checksum": {
+                "type": "sha512",
+                "value": "d7d2622ee8c89c57e1a3489f4a7f49676cb2bd07dfdb4f1b22755d6e2d180cf4cf9ce3dc07fa8ab4be344ea9b47f501b66c67f3b1e162cb11f868b51a656e774",
+                "url": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Xfce-i686/Mageia-10-Live-Xfce-i686.iso.sha512"
+              },
+              "signatureUrl": "https://mirrors.kernel.org/mageia/iso/10/Mageia-10-Live-Xfce-i686/Mageia-10-Live-Xfce-i686.iso.sha512.gpg",
+              "torrentUrl": "https://mirrors.kernel.org/mageia/iso/10/torrents/Mageia-10-Live-Xfce-i686.torrent"
+            }
+          ]
+        },
+        {
+          "id": "netinstall",
+          "name": "Network installer",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Mageia-10-netinstall-x86_64.iso",
+              "path": "distrib/10/x86_64/install/images/Mageia-10-netinstall-x86_64.iso",
+              "url": "https://mirrors.kernel.org/mageia/distrib/10/x86_64/install/images/Mageia-10-netinstall-x86_64.iso",
+              "size": 114294784,
+              "checksum": {
+                "type": "sha512",
+                "value": "9b49d92439bd527f342a510975cad6d4e40ccc9f1b1b32428ffebbfe451617e8876866a30d7df8e5b7ff0687d05895a59ee0c1334960e3f07a2b681a9d2f3015",
+                "url": "https://mirrors.kernel.org/mageia/distrib/10/x86_64/install/images/Mageia-10-netinstall-x86_64.iso.sha512"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "Mageia-10-netinstall-i686.iso",
+              "path": "distrib/10/i686/install/images/Mageia-10-netinstall-i686.iso",
+              "url": "https://mirrors.kernel.org/mageia/distrib/10/i686/install/images/Mageia-10-netinstall-i686.iso",
+              "size": 73400320,
+              "checksum": {
+                "type": "sha512",
+                "value": "8666ddcc64c9bb9f62f3b400be5037520f84cfa8ae684490fd1353d0001655fe82686630f2a764a910ec45c46eddca92c1fbca4171e6518e949b2b6ba6f7bf07",
+                "url": "https://mirrors.kernel.org/mageia/distrib/10/i686/install/images/Mageia-10-netinstall-i686.iso.sha512"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "netinstall-nonfree",
+          "name": "Network installer + nonfree firmware",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Mageia-10-netinstall-nonfree-x86_64.iso",
+              "path": "distrib/10/x86_64/install/images/Mageia-10-netinstall-nonfree-x86_64.iso",
+              "url": "https://mirrors.kernel.org/mageia/distrib/10/x86_64/install/images/Mageia-10-netinstall-nonfree-x86_64.iso",
+              "size": 184549376,
+              "checksum": {
+                "type": "sha512",
+                "value": "d502e5dd5b7817ceb5f94eac98d5d58a6fdd40eeeb301b0ec5193a51596bf2978300ad6368380a9c5625c8a619d0ad5497b5478afc249a0af27cbff3420cd3ab",
+                "url": "https://mirrors.kernel.org/mageia/distrib/10/x86_64/install/images/Mageia-10-netinstall-nonfree-x86_64.iso.sha512"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "Mageia-10-netinstall-nonfree-i686.iso",
+              "path": "distrib/10/i686/install/images/Mageia-10-netinstall-nonfree-i686.iso",
+              "url": "https://mirrors.kernel.org/mageia/distrib/10/i686/install/images/Mageia-10-netinstall-nonfree-i686.iso",
+              "size": 140509184,
+              "checksum": {
+                "type": "sha512",
+                "value": "929c433030d485c9babc0ec258acb505f8d9bafe4197bd5c8596dfd51070ddb3a31e811ed191dc6f19ebf1e10b6367a869b9ff37e0f7972258885b62b6102f95",
+                "url": "https://mirrors.kernel.org/mageia/distrib/10/i686/install/images/Mageia-10-netinstall-nonfree-i686.iso.sha512"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

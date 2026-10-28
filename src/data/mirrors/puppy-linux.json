@@ -1,0 +1,33 @@
+{
+  "slug": "puppy-linux",
+  "sources": [
+    "https://puppylinux-woof-ce.github.io/"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://ftp.nluug.nl/os/Linux/distr/puppylinux/",
+      "country": "NL",
+      "name": "NLUUG",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distro.ibiblio.org/puppylinux/",
+      "country": "US",
+      "name": "Ibiblio",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lug.umbc.edu/puppylinux/",
+      "country": "US",
+      "name": "UMBC/LUG",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

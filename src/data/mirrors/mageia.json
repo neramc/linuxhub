@@ -1,0 +1,261 @@
+{
+  "slug": "mageia",
+  "sources": [
+    "https://www.mageia.org/en/downloads/alternative/",
+    "https://www.mageia.org/en/support/",
+    "https://endoflife.date/mageia",
+    "https://mirrors.mageia.org/api/mageia.10.i686.list",
+    "https://mirrors.mageia.org/api/mageia.10.x86_64.list"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://mirror.aarnet.edu.au/pub/mageia/",
+      "country": "AU",
+      "name": "mirror.aarnet.edu.au",
+      "lat": -27.499,
+      "lon": 153.014,
+      "score": null
+    },
+    {
+      "url": "https://ftp.belnet.be/mirror/mageia/mageia/",
+      "country": "BE",
+      "name": "ftp.belnet.be",
+      "lat": 50.8471,
+      "lon": 4.35436,
+      "score": null
+    },
+    {
+      "url": "https://mageia.mirror-services.net/pub/",
+      "country": "BE",
+      "name": "mageia.mirror-services.net",
+      "lat": 50.8796,
+      "lon": 4.70093,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.neterra.net/mageia/",
+      "country": "BG",
+      "name": "mirrors.neterra.net",
+      "lat": 43,
+      "lon": 25,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.netix.net/mageia/",
+      "country": "BG",
+      "name": "mirrors.netix.net",
+      "lat": 43,
+      "lon": 25,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/mageia/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": 35,
+      "lon": 105,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fi.muni.cz/pub/linux/mageia/",
+      "country": "CZ",
+      "name": "ftp.fi.muni.cz",
+      "lat": 49.2104,
+      "lon": 16.5967,
+      "score": null
+    },
+    {
+      "url": "https://ftp-stud.hs-esslingen.de/pub/Mirrors/Mageia/",
+      "country": "DE",
+      "name": "ftp-stud.hs-esslingen.de",
+      "lat": 48.7449,
+      "lon": 9.32307,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fau.de/mageia/",
+      "country": "DE",
+      "name": "ftp.fau.de",
+      "lat": 49.5738,
+      "lon": 11.0271,
+      "score": null
+    },
+    {
+      "url": "https://ftp5.gwdg.de/pub/linux/mageia/",
+      "country": "DE",
+      "name": "ftp5.gwdg.de",
+      "lat": 51.5337,
+      "lon": 9.9341,
+      "score": null
+    },
+    {
+      "url": "https://mirror2.tuxinator.org/mageia/",
+      "country": "DE",
+      "name": "mirror2.tuxinator.org",
+      "lat": 50.447,
+      "lon": 12.331,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.cicku.me/mageia/",
+      "country": "DE",
+      "name": "mirrors.cicku.me",
+      "lat": 50.4789,
+      "lon": 12.3351,
+      "score": null
+    },
+    {
+      "url": "https://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/",
+      "country": "FR",
+      "name": "distrib-coffee.ipsl.jussieu.fr",
+      "lat": 48.8463,
+      "lon": 2.35593,
+      "score": null
+    },
+    {
+      "url": "https://fr2.rpmfind.net/linux/mageia/",
+      "country": "FR",
+      "name": "fr2.rpmfind.net",
+      "lat": 45.7815,
+      "lon": 4.87233,
+      "score": null
+    },
+    {
+      "url": "https://www.mirrorservice.org/sites/mageia.org/pub/mageia/",
+      "country": "GB",
+      "name": "www.mirrorservice.org",
+      "lat": 51.2987,
+      "lon": 1.07005,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nju.edu.cn/mageia/",
+      "country": "IN",
+      "name": "mirrors.nju.edu.cn",
+      "lat": 32.0558,
+      "lon": 118.779,
+      "score": null
+    },
+    {
+      "url": "https://mageia.mirror.garr.it/mageia/",
+      "country": "IT",
+      "name": "mageia.mirror.garr.it",
+      "lat": 41.899,
+      "lon": 12.512,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tsukuba.wide.ad.jp/Linux/mageia/",
+      "country": "JP",
+      "name": "ftp.tsukuba.wide.ad.jp",
+      "lat": 36.1046,
+      "lon": 140.102,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/Linux/mageia/",
+      "country": "JP",
+      "name": "ftp.yz.yamagata-u.ac.jp",
+      "lat": 37.9,
+      "lon": 140.1,
+      "score": null
+    },
+    {
+      "url": "https://ftp.nluug.nl/pub/os/Linux/distr/mageia/",
+      "country": "NL",
+      "name": "ftp.nluug.nl",
+      "lat": 52.5,
+      "lon": 5.75,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/sunsite/distributions/mageia/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
+      "lat": 52.21,
+      "lon": 20.98,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/mageia/",
+      "country": "RU",
+      "name": "mirror.yandex.ru",
+      "lat": 55.7514,
+      "lon": 37.621,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/mageia/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": 62,
+      "lon": 15,
+      "score": null
+    },
+    {
+      "url": "https://ftp.linux.org.tr/mageia/",
+      "country": "TR",
+      "name": "ftp.linux.org.tr",
+      "lat": 39,
+      "lon": 35,
+      "score": null
+    },
+    {
+      "url": "https://free.nchc.org.tw/mageia/",
+      "country": "TW",
+      "name": "free.nchc.org.tw",
+      "lat": 24.805,
+      "lon": 120.982,
+      "score": null
+    },
+    {
+      "url": "https://distrohub.kyiv.ua/mageia/",
+      "country": "UA",
+      "name": "distrohub.kyiv.ua",
+      "lat": 50.45,
+      "lon": 30.5233,
+      "score": null
+    },
+    {
+      "url": "https://mageia.ip-connect.info/",
+      "country": "UA",
+      "name": "mageia.ip-connect.info",
+      "lat": 49.2348,
+      "lon": 28.4293,
+      "score": null
+    },
+    {
+      "url": "https://mageia.ip-connect.vn.ua/",
+      "country": "UA",
+      "name": "mageia.ip-connect.vn.ua",
+      "lat": 49.2331,
+      "lon": 28.445,
+      "score": null
+    },
+    {
+      "url": "https://mirror.math.princeton.edu/pub/mageia/",
+      "country": "US",
+      "name": "mirror.math.princeton.edu",
+      "lat": 40.343,
+      "lon": -74.657,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.kernel.org/mageia/",
+      "country": "US",
+      "name": "mirrors.kernel.org",
+      "lat": 38,
+      "lon": -97,
+      "score": null
+    },
+    {
+      "url": "https://us.mirrors.cicku.me/mageia/",
+      "country": "US",
+      "name": "us.mirrors.cicku.me",
+      "lat": 45.4784,
+      "lon": -122.578,
+      "score": null
+    }
+  ]
+}

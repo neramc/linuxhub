@@ -1,0 +1,333 @@
+{
+  "slug": "puppy-linux",
+  "sources": [
+    "https://forum.puppylinux.com/puppy-linux-collection",
+    "https://sourceforge.net/projects/pb-gh-releases/files/BookwormPup32_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/NoblePup32_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/ResolutePup64_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/S15Pup32_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/S15Pup64_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup32Retro_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup64Retro_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup64Wayland_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/VoidPup32_release/",
+    "https://sourceforge.net/projects/pb-gh-releases/files/VoidPup64_release/",
+    "https://ftp.nluug.nl/os/Linux/distr/puppylinux/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "13",
+      "channel": "stable",
+      "codename": "Trixie",
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://forum.puppylinux.com/viewtopic.php?t=15828",
+      "editions": [
+        {
+          "id": "trixiepup64-wayland",
+          "name": "TrixiePup64 Wayland",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "TrixiePup64-Wayland-2606-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup64Wayland_release/TrixiePup64-Wayland-2606-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "73fedd9d075c8bb64d84aa2a378f5c6148d23f1b41936ff4ff50e6dddc9b4bd1",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup64Wayland_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "trixiepup64-retro",
+          "name": "TrixiePup64 Retro",
+          "desktop": "jwm",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "TrixiePup64-Retro-2509-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup64Retro_release/TrixiePup64-Retro-2509-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a36b5d6508758d96ea1ed0bf67a0825c12057140f3d4b27ea64370de08918f5a",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup64Retro_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "trixiepup32-retro",
+          "name": "TrixiePup32 Retro",
+          "desktop": "jwm",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "TrixiePup32-Retro-2508-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup32Retro_release/TrixiePup32-Retro-2508-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "fc65abe56195fa036abc0231112bb2877d5123c36a87b28f4ccb1820a8795d10",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/TrixiePup32Retro_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "12",
+      "channel": "stable",
+      "codename": "Bookworm",
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://forum.puppylinux.com/viewtopic.php?t=8690",
+      "editions": [
+        {
+          "id": "bookwormpup64",
+          "name": "BookwormPup64",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "BookwormPup64_10.0.12.iso",
+              "path": "puppy-bookwormpup/BookwormPup64/10.0.12/BookwormPup64_10.0.12.iso",
+              "url": "https://distro.ibiblio.org/puppylinux/puppy-bookwormpup/BookwormPup64/10.0.12/BookwormPup64_10.0.12.iso",
+              "size": 829423616,
+              "checksum": {
+                "type": "sha256",
+                "value": "ae65f6e6d70a96f48bdbb291c2426f8a2fd77a73692e149e81a5eecb6fe7509f",
+                "url": "https://distro.ibiblio.org/puppylinux/puppy-bookwormpup/BookwormPup64/10.0.12/BookwormPup64_10.0.12.iso-checksum.txt"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "bookwormpup32",
+          "name": "BookwormPup32",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "BookwormPup32-23.12-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/BookwormPup32_release/BookwormPup32-23.12-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "e9292e63711d71c0cd335c8ddb05996099bbecdf16484e265903b1fb2af65f03",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/BookwormPup32_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "26.04",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://forum.puppylinux.com/viewtopic.php?t=16978",
+      "editions": [
+        {
+          "id": "resolutepup64",
+          "name": "ResolutePup64",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "ResolutePup64-26.04-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/ResolutePup64_release/ResolutePup64-26.04-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "0a15b32a19a6fe1eccd3e132cfa791af925813b211a902f889c5b8e78a14f23a",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/ResolutePup64_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "24.04",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://forum.puppylinux.com/viewtopic.php?t=11371",
+      "editions": [
+        {
+          "id": "noblepup32",
+          "name": "NoblePup32",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "NoblePup32-24.04-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/NoblePup32_release/NoblePup32-24.04-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "669d1cda31a1c73c6c814b725fbdaccb3856fe4858eee4b535fc4f73fa1ee17c",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/NoblePup32_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "15.0",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://forum.puppylinux.com/viewtopic.php?t=7464",
+      "editions": [
+        {
+          "id": "s15pup64",
+          "name": "S15Pup64",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "S15Pup64-22.12-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/S15Pup64_release/S15Pup64-22.12-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "e2819a31a93e9ecf79108fdebf4a0c749b3ca8ac159dcc5672a6ac082683cdf4",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/S15Pup64_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "s15pup32",
+          "name": "S15Pup32",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "S15Pup32-22.12-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/S15Pup32_release/S15Pup32-22.12-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "c996754b28bb5c12d8e8a8ee07474ef43c5a73b268e36347441b7b15554e382f",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/S15Pup32_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "22.02",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-10-03",
+      "eol": null,
+      "notesUrl": "https://forum.puppylinux.com/viewtopic.php?t=5270",
+      "editions": [
+        {
+          "id": "voidpup64",
+          "name": "VoidPup64",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "VoidPup64-22.02-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/VoidPup64_release/VoidPup64-22.02-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "c2d15ad7e180d02e25cbcd6423118b8aab802b81514ee050bcdb5dea849ef020",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/VoidPup64_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "voidpup32",
+          "name": "VoidPup32",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "VoidPup32-22.02-261003.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/pb-gh-releases/files/VoidPup32_release/VoidPup32-22.02-261003.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "98207633c86a08d740a73d129146d0033daad84ed837d55a0f3ee4915fb7cc4e",
+                "url": "https://sourceforge.net/projects/pb-gh-releases/files/VoidPup32_release/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

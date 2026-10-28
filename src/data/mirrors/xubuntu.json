@@ -1,0 +1,25 @@
+{
+  "slug": "xubuntu",
+  "sources": [
+    "https://xubuntu.org/download/"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/",
+      "country": "CN",
+      "name": "Tsinghua University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cdimages.ubuntu.com/",
+      "country": "GB",
+      "name": "Canonical Ltd.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

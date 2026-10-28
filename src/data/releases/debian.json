@@ -1,18 +1,21 @@
 {
   "slug": "debian",
   "sources": [
-    "https://deb.debian.org/debian/dists/stable/Release",
-    "https://cdimage.debian.org/debian-cd/current/",
-    "https://cdimage.debian.org/debian-cd/current-live/",
-    "https://endoflife.date/debian"
+    "https://www.debian.org/releases/",
+    "https://www.debian.org/releases/trixie/",
+    "https://www.debian.org/releases/trixie/debian-installer/",
+    "https://www.debian.org/CD/live/",
+    "https://www.debian.org/distrib/",
+    "https://www.debian.org/releases/bookworm/",
+    "https://www.debian.org/releases/bookworm/debian-installer/"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-28",
   "releases": [
     {
       "version": "13.7",
       "channel": "stable",
       "codename": "Trixie",
-      "releaseDate": "2025-08-09",
+      "releaseDate": "2026-09-12",
       "eol": "2030-06-30",
       "notesUrl": "https://www.debian.org/releases/trixie/releasenotes",
       "editions": [
@@ -28,14 +31,14 @@
               "file": "debian-13.7.0-amd64-netinst.iso",
               "path": "13.7.0/amd64/iso-cd/debian-13.7.0-amd64-netinst.iso",
               "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.7.0-amd64-netinst.iso",
-              "size": null,
+              "size": 792723456,
               "checksum": {
-                "type": "sha256",
-                "value": "a7ef94ac2fb9a7fec454552abd629b7cc9d5155c886165a45649f5ce6167e355",
-                "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS"
+                "type": "sha512",
+                "value": "ef04d0276850d70e4aaec0b55003628660e9631b26e35215a70ab3c8c707294a4b12731bc73c75a932902f703a7c278310ca99df28d6b36fb06d5618d8d0f678",
+                "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS"
               },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS.sign",
-              "torrentUrl": null
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/debian-13.7.0-amd64-netinst.iso.torrent"
             },
             {
               "arch": "aarch64",
@@ -43,14 +46,172 @@
               "file": "debian-13.7.0-arm64-netinst.iso",
               "path": "13.7.0/arm64/iso-cd/debian-13.7.0-arm64-netinst.iso",
               "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-13.7.0-arm64-netinst.iso",
-              "size": null,
+              "size": 735358976,
               "checksum": {
-                "type": "sha256",
-                "value": "6e93fa1759bd9d4b0fc11e938987de6967ee7de5297dac1be27c3a75cc17024b",
-                "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA256SUMS"
+                "type": "sha512",
+                "value": "cff08e2f29c2846f0503fe57ad1085b5067f29acab444acdf7cdf5b10f2a11140a0e87828e4ffeb9828d188053690467ebe50151c142551d6053fc3288808b86",
+                "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA512SUMS"
               },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA256SUMS.sign",
-              "torrentUrl": null
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/arm64/bt-cd/debian-13.7.0-arm64-netinst.iso.torrent"
+            },
+            {
+              "arch": "armhf",
+              "format": "iso",
+              "file": "debian-13.7.0-armhf-netinst.iso",
+              "path": "13.7.0/armhf/iso-cd/debian-13.7.0-armhf-netinst.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-cd/debian-13.7.0-armhf-netinst.iso",
+              "size": 939831296,
+              "checksum": {
+                "type": "sha512",
+                "value": "3db55920a176bb90775cca1425d8dd8e28c637aec7d6aae644ff083d0140a3ebe99c8e0e8d6f6f5022b9c0df2c7a7e3708268f2d399a32edf551b26ad7952d9a",
+                "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/armhf/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/armhf/bt-cd/debian-13.7.0-armhf-netinst.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "debian-13.7.0-riscv64-netinst.iso",
+              "path": "13.7.0/riscv64/iso-cd/debian-13.7.0-riscv64-netinst.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-cd/debian-13.7.0-riscv64-netinst.iso",
+              "size": 614772736,
+              "checksum": {
+                "type": "sha512",
+                "value": "ca639aa0acdd64f6fbef578fd7a5aba064640ef03f180661d2ebbf13a709f13ca2128841e5d8626025cc9d998a52736f8b46470952d3e8e1bf9c73cd2f2b5fbd",
+                "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/riscv64/bt-cd/debian-13.7.0-riscv64-netinst.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "debian-13.7.0-ppc64el-netinst.iso",
+              "path": "13.7.0/ppc64el/iso-cd/debian-13.7.0-ppc64el-netinst.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-cd/debian-13.7.0-ppc64el-netinst.iso",
+              "size": 651841536,
+              "checksum": {
+                "type": "sha512",
+                "value": "c528d1b1d4fd138deeffc02f891878736be303d022dbf643b338ef02c099b1a57d46027dd3e9a89276057848295c8cd79539493dc257853f5cff660038b1c8da",
+                "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/ppc64el/bt-cd/debian-13.7.0-ppc64el-netinst.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "debian-13.7.0-s390x-netinst.iso",
+              "path": "13.7.0/s390x/iso-cd/debian-13.7.0-s390x-netinst.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-cd/debian-13.7.0-s390x-netinst.iso",
+              "size": 441804800,
+              "checksum": {
+                "type": "sha512",
+                "value": "76594fcfd3d0ce0e4c3d02689667f4384e2c9846b038b0a2c1a351a61995a3e74ba438368a9464b17be357cee253ee9294050395dcd325b4b5bc8577fcdd0333",
+                "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/s390x/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/s390x/bt-cd/debian-13.7.0-s390x-netinst.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "dvd-1",
+          "name": "DVD-1",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-13.7.0-amd64-DVD-1.iso",
+              "path": "13.7.0/amd64/iso-dvd/debian-13.7.0-amd64-DVD-1.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-13.7.0-amd64-DVD-1.iso",
+              "size": 3992977408,
+              "checksum": {
+                "type": "sha512",
+                "value": "305cc7a3f0d4e293ff979cc6c047d7fe46454853a0f170a0520acd8aab37c2f8839969c817afac2b4324ef5944e0038502b7fcca5dfcd48b5b77544ef1f14cee",
+                "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/debian-13.7.0-amd64-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "debian-13.7.0-arm64-DVD-1.iso",
+              "path": "13.7.0/arm64/iso-dvd/debian-13.7.0-arm64-DVD-1.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-dvd/debian-13.7.0-arm64-DVD-1.iso",
+              "size": 3993284608,
+              "checksum": {
+                "type": "sha512",
+                "value": "2a2160f9777959b21386edf30940e3d66879e1f1ea193580303538ad87b2b8e8642bc2cb81743d256f79a8b35517449f0a4e234b7de6074222d16813f7c284bd",
+                "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/arm64/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/arm64/bt-dvd/debian-13.7.0-arm64-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "armhf",
+              "format": "iso",
+              "file": "debian-13.7.0-armhf-DVD-1.iso",
+              "path": "13.7.0/armhf/iso-dvd/debian-13.7.0-armhf-DVD-1.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-dvd/debian-13.7.0-armhf-DVD-1.iso",
+              "size": 4624527360,
+              "checksum": {
+                "type": "sha512",
+                "value": "9dd32406d36210a0697433952dd044cd4d8b5de293531217613e8fc683169a98b344cb338cba7b290a17e773c6a99a5e783e5276830ad96999ba550f5a25a9d9",
+                "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/armhf/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/armhf/bt-dvd/debian-13.7.0-armhf-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "debian-13.7.0-riscv64-DVD-1.iso",
+              "path": "13.7.0/riscv64/iso-dvd/debian-13.7.0-riscv64-DVD-1.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-dvd/debian-13.7.0-riscv64-DVD-1.iso",
+              "size": 4691619840,
+              "checksum": {
+                "type": "sha512",
+                "value": "76c6fc4c3c2222ff51fccc15d21af6cf1536cb532c1496030057cee36f4c3ce751b7d76e7ddd39324028a0c395ac5b0b88328af1a2704460c9a4eea1392554cf",
+                "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/riscv64/bt-dvd/debian-13.7.0-riscv64-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "debian-13.7.0-ppc64el-DVD-1.iso",
+              "path": "13.7.0/ppc64el/iso-dvd/debian-13.7.0-ppc64el-DVD-1.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-dvd/debian-13.7.0-ppc64el-DVD-1.iso",
+              "size": 4684791808,
+              "checksum": {
+                "type": "sha512",
+                "value": "5c3f1aa7dbd09d72d9cf53de42fcae4deb20ab4a91aff5f7f602673569d534d0a478a0f3f99022df395bfadcf04877b99479bb3084c6e4cb6b59fc86c0b10231",
+                "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/ppc64el/bt-dvd/debian-13.7.0-ppc64el-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "debian-13.7.0-s390x-DVD-1.iso",
+              "path": "13.7.0/s390x/iso-dvd/debian-13.7.0-s390x-DVD-1.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-dvd/debian-13.7.0-s390x-DVD-1.iso",
+              "size": 4694108160,
+              "checksum": {
+                "type": "sha512",
+                "value": "32162588cfaf1e4565754a9341173cf08578592b35a8dd1c08815b570b9fbe17301be3684721a5290c4bc08b5c208b84ebd3e76b735867b0c52297c95933a1b7",
+                "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current/s390x/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current/s390x/bt-dvd/debian-13.7.0-s390x-DVD-1.iso.torrent"
             }
           ]
         },
@@ -66,37 +227,14 @@
               "file": "debian-live-13.7.0-amd64-gnome.iso",
               "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-gnome.iso",
               "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-gnome.iso",
-              "size": null,
+              "size": 3804708864,
               "checksum": {
-                "type": "sha256",
-                "value": "e94859a83b305cae5125dc9c6080ced040c59d099ea7381e7f300fd1dba87a17",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
+                "type": "sha512",
+                "value": "5c70c54db8742bb760a6dfbe2f3c208a550938edee22b858dfb2e09a09b87666f1454134f24df3a5a2f8ae6a7c81c9ab8a2500b1eae53927691ffd6e73997380",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
               },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "live-kde",
-          "name": "Live KDE Plasma",
-          "desktop": "kde",
-          "kind": "live",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "debian-live-13.7.0-amd64-kde.iso",
-              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-kde.iso",
-              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-kde.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "37dedc921f50325665c75829597126b3eeb70ff5cd8c511a7230ace09ae939be",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
-              "torrentUrl": null
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-gnome.iso.torrent"
             }
           ]
         },
@@ -112,14 +250,37 @@
               "file": "debian-live-13.7.0-amd64-xfce.iso",
               "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-xfce.iso",
               "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-xfce.iso",
-              "size": null,
+              "size": 3826974720,
               "checksum": {
-                "type": "sha256",
-                "value": "379fcf159fa72a2ed8e3b74f4047df6061bc65adf5217e3d194e41a26fdb85e4",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
+                "type": "sha512",
+                "value": "3fa03343a9868b2afee10adadd8f4ebf0031f222bef0858a3c9a0d9fd74325d17b999cdeba2c88d9a8d0856f3bb0ed0d8a240dfa02651fb15c93f97b3b2ef8e5",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
               },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
-              "torrentUrl": null
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-xfce.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-kde",
+          "name": "Live KDE",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-live-13.7.0-amd64-kde.iso",
+              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-kde.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-kde.iso",
+              "size": 4186112000,
+              "checksum": {
+                "type": "sha512",
+                "value": "079193350497fcbdc04271bf34d7ef26dfc3f21f27d1b6fc61933515fb868987fe313ff205ef98a7f82a5c63e18e259a0a957443d7cb417ebeb93ad961c43342",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-kde.iso.torrent"
             }
           ]
         },
@@ -135,60 +296,14 @@
               "file": "debian-live-13.7.0-amd64-cinnamon.iso",
               "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-cinnamon.iso",
               "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-cinnamon.iso",
-              "size": null,
+              "size": 4115103744,
               "checksum": {
-                "type": "sha256",
-                "value": "678b7c67ca3ab507a457fe1a0495e4030564177ea17387af1c743c969cdc8e6c",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
+                "type": "sha512",
+                "value": "4a85cdf7b7b9d693617ae5184b718a6c140a7efbe99fc495ec32b8b7a5ca83fbc910ddcb4f49219c48d27cdce4e40d40c0aed1c298d7f70ec238326455bef094",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
               },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "live-mate",
-          "name": "Live MATE",
-          "desktop": "mate",
-          "kind": "live",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "debian-live-13.7.0-amd64-mate.iso",
-              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-mate.iso",
-              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-mate.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "504f8a6e6eede8450c90a848bca52a04b2bf9e8859be6fc533435c33ce114bb9",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "live-lxqt",
-          "name": "Live LXQt",
-          "desktop": "lxqt",
-          "kind": "live",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "debian-live-13.7.0-amd64-lxqt.iso",
-              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-lxqt.iso",
-              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-lxqt.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "40413e0d337dd104a85441c657d13485e481dcc54227bd56696e6e33457219fb",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
-              },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
-              "torrentUrl": null
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-cinnamon.iso.torrent"
             }
           ]
         },
@@ -204,14 +319,568 @@
               "file": "debian-live-13.7.0-amd64-lxde.iso",
               "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-lxde.iso",
               "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-lxde.iso",
+              "size": 3800989696,
+              "checksum": {
+                "type": "sha512",
+                "value": "e52012e2d5770a700f5e8db71724ed4eefb3d072af25389997f492d12055bb5379637ae885ac6621162f9c246d4ade2f4d729fd79e2ff40729e94314065759e9",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-lxde.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-lxqt",
+          "name": "Live LXQt",
+          "desktop": "lxqt",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-live-13.7.0-amd64-lxqt.iso",
+              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-lxqt.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-lxqt.iso",
+              "size": 3994091520,
+              "checksum": {
+                "type": "sha512",
+                "value": "d001b888c4a64215b3f579f048d4a69d358ccf3f125a7c06abafd1c7d6decbb6078cf922f6c0b102a6d037874575844008ee9923ef3286296d84dfcdd24b9603",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-lxqt.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-mate",
+          "name": "Live MATE",
+          "desktop": "mate",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-live-13.7.0-amd64-mate.iso",
+              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-mate.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-mate.iso",
+              "size": 3964551168,
+              "checksum": {
+                "type": "sha512",
+                "value": "02f1103b53643916893ac429541cbfd266541ca46961122c8882bf95f38a82fc90f3aa1ae93071129466d5b54f972521617cb48e0633ed00e0c4753b10fd0615",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-mate.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-debian-junior",
+          "name": "Live Debian Junior",
+          "desktop": "icewm",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-live-13.7.0-amd64-debian-junior.iso",
+              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-debian-junior.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-debian-junior.iso",
+              "size": 4470165504,
+              "checksum": {
+                "type": "sha512",
+                "value": "8195da511e9e969b02bedc475bb598a7b4cb8f4d0d7ae9e6c456f9a2fcfcaf6b322a252f24c713b01d288d0614ae5b412e3ff39c3635ec95fed4704c05b4bec1",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-debian-junior.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-standard",
+          "name": "Live Standard",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-live-13.7.0-amd64-standard.iso",
+              "path": "13.7.0-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-standard.iso",
+              "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.7.0-amd64-standard.iso",
+              "size": 2020130816,
+              "checksum": {
+                "type": "sha512",
+                "value": "79549808584a5c3fd8e3bda584652c47a3145f79c06f157ee8f9a3ff98d92fd548d235617e84ddef884ae535f35855e44cff222882cd62fad1898e397e9b2240",
+                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-13.7.0-amd64-standard.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "cloud-generic",
+          "name": "Cloud generic (OpenStack)",
+          "desktop": null,
+          "kind": "cloud",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "qcow2",
+              "file": "debian-13-generic-amd64-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-amd64-20261026-2643.qcow2",
               "size": null,
               "checksum": {
-                "type": "sha256",
-                "value": "45c48b8782c958125728663b41b17fa7b9300eafd802c2f5f761c831d0b4d48b",
-                "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS"
+                "type": "sha512",
+                "value": "5bd891c6e62d01639f52a5587b72a4607421e445732214be787dba6043cf9797a6ff90bed982aada6a6c7e619f1f956d961c4fad76757171abd607920aac098a",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
               },
-              "signatureUrl": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/SHA256SUMS.sign",
+              "signatureUrl": null,
               "torrentUrl": null
+            },
+            {
+              "arch": "x86_64",
+              "format": "img",
+              "file": "debian-13-generic-amd64-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-amd64-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "7ddcbc835b6d946e2cbe578bdd2142ce12d979fed124a13986089ab9eee9fa1e4c66d6ffd35416b473a200c8757272bb065e9b764179ba92519fbe463451c27e",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "qcow2",
+              "file": "debian-13-generic-arm64-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-arm64-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "5fc0eba340b16651f1b4163f3249b0c8fb91acd2bc5898b609181ee47ac50a5bf3e24166ba8647279db05e883883e22e9308193ef4ad75293cb254b919e358d8",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "img",
+              "file": "debian-13-generic-arm64-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-arm64-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "58b265ee1286c7ad8a9c96dcde3dd2825c0b6e7e5dd26baea1c9ece7e46da6d6dee8a2d800a6c6eb882e53e87771168bc4786894a3d7e48fe608907ce61499d1",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "riscv64",
+              "format": "qcow2",
+              "file": "debian-13-generic-riscv64-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-riscv64-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "6782527bd4e6b783ab943092da1342a079fb9965cc13285a830db8f5c5925762e31daa8ecbc8b29d30a33f39c610e574e8307f8d51d3d54073d6858f71a6144c",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "riscv64",
+              "format": "img",
+              "file": "debian-13-generic-riscv64-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-riscv64-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "32f4c8d84c2b05e2d1f28d1fa3bb0f82a9c61869531a4fc8968703311e4c97fa69063b747409e8cc75f2a851fc6d6a2e2fd1364f72c281bba89f1e0334cd646b",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "qcow2",
+              "file": "debian-13-generic-ppc64el-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-ppc64el-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "15f949d8270d45acbfacc928e35292a5cfac311cd12e64ad08fd19d6df1fdb97cce4546aa2067d3cbec5577c87bf5a13cf5b3ebb9f0d119b611ff4ed5255fb82",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "img",
+              "file": "debian-13-generic-ppc64el-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-generic-ppc64el-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "4e95942fdf2a4f137acca7cfc2baa211aa0db40ca61f9833e3f079a792a47865bcab842bdd482ca746c6ec005f3041e387836b655157ea4939daa80490f58046",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "cloud-nocloud",
+          "name": "Cloud nocloud (local QEMU)",
+          "desktop": null,
+          "kind": "cloud",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "qcow2",
+              "file": "debian-13-nocloud-amd64-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-amd64-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "129471badafeff16e59f7e95cb0fcc91828d570ecc7803ca06a05160176e65e61dd5c770310531cd68e6863b8dd102d939519002943e0bc77a4a5fe6a724f8a9",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "x86_64",
+              "format": "img",
+              "file": "debian-13-nocloud-amd64-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-amd64-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "f76064d3964089e7a1645b69de587bf526591dd3e68f1effc95c93c79c0239a700823ae38ed3d57e3af4ac9c36a09a9a7b11e9197e872d5845b132977d8ca481",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "qcow2",
+              "file": "debian-13-nocloud-arm64-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-arm64-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "c495666882f152beef1597c10441368fc304735a0c71eeecbd006e555b1c828584b00203cb6e0a1281f76e52ec172e3bebfdfbe978935bf032e826bd5f1917ce",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "img",
+              "file": "debian-13-nocloud-arm64-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-arm64-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "f34fb447ceece3d6a5fff1110a9acd113748bfed16de9158f8ef1952d2c65acc98f58fedd4d765511d43933b8d7e32a7792c3a0721382b01a8bff322f1a3b591",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "riscv64",
+              "format": "qcow2",
+              "file": "debian-13-nocloud-riscv64-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-riscv64-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "145d2c0ee30cf35bd1ea978aae0995b56977321a28e1b39df41949f6b8654b2b3f34034aeb82769be1a0977171fc3c430a5ad815570d6e9c3ede914429876706",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "riscv64",
+              "format": "img",
+              "file": "debian-13-nocloud-riscv64-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-riscv64-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "3f54901bc7184580b6001ab0f7d386da46d6da152de9e69888090c8a7648e2ec26b38b1701133953a93b78f272fe2862ec367dcccfd77c9e8a2c0704031e1117",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "qcow2",
+              "file": "debian-13-nocloud-ppc64el-20261026-2643.qcow2",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-ppc64el-20261026-2643.qcow2",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "9714a0efee29eeb08f414fb08930eeef0c3d614de3f616e11781681db772ffb058e9189b92f202f14da964530e6d22f13ee798fdc0caa89df270837ca68e03ee",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "img",
+              "file": "debian-13-nocloud-ppc64el-20261026-2643.raw",
+              "path": null,
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/debian-13-nocloud-ppc64el-20261026-2643.raw",
+              "size": null,
+              "checksum": {
+                "type": "sha512",
+                "value": "98a24e1cf83c94502aeafa0ed3abb79820fbdaf78e3797b497ba78f8c7c49dc27b822b3b1245221f2a92e111a0575dfb3b27efc30a9ba022a8483342c32f2d0f",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261026-2643/SHA512SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "12.15",
+      "channel": "stable",
+      "codename": "Bookworm",
+      "releaseDate": "2026-07-11",
+      "eol": "2028-06-30",
+      "notesUrl": "https://www.debian.org/releases/bookworm/releasenotes",
+      "editions": [
+        {
+          "id": "netinst",
+          "name": "netinst",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-12.15.0-amd64-netinst.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/iso-cd/debian-12.15.0-amd64-netinst.iso",
+              "size": 709885952,
+              "checksum": {
+                "type": "sha512",
+                "value": "23257fab924026eea247fe5318ca904c0ac51c19d3f3d5123b6ca31d0ac65eaf5f9a87b206873a16d04239dc1a78a3608acaccc529ab4a0f55e856379ba161e7",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/bt-cd/debian-12.15.0-amd64-netinst.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "debian-12.15.0-arm64-netinst.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/iso-cd/debian-12.15.0-arm64-netinst.iso",
+              "size": 555003904,
+              "checksum": {
+                "type": "sha512",
+                "value": "324850e5b7f55ed60005cb1373667eac712bcc87461218c1eccdce7f71e26169e3357108d7437134bb51d45c0f79541e32329c72018a9498c873c8c2c2743711",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/bt-cd/debian-12.15.0-arm64-netinst.iso.torrent"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "debian-12.15.0-i386-netinst.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/iso-cd/debian-12.15.0-i386-netinst.iso",
+              "size": 687865856,
+              "checksum": {
+                "type": "sha512",
+                "value": "2a0adb0a7ffebde2e4615510cfc1e4edd0778ed691c72a8fe0ce2de7c38b7140e71bc2a5c3b54fcb11d8a571befe801981f20818fcdca9acd5b36b825a91c563",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/bt-cd/debian-12.15.0-i386-netinst.iso.torrent"
+            },
+            {
+              "arch": "armhf",
+              "format": "iso",
+              "file": "debian-12.15.0-armhf-netinst.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/iso-cd/debian-12.15.0-armhf-netinst.iso",
+              "size": 826585088,
+              "checksum": {
+                "type": "sha512",
+                "value": "ef411d0dd44360c78a1b1259acc268428f33425167e115c7843cfa80b4a761b062d78c54ec6569a043425b4234844140622112aeb3cd2767cb4da50d83605436",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/bt-cd/debian-12.15.0-armhf-netinst.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "debian-12.15.0-ppc64el-netinst.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/iso-cd/debian-12.15.0-ppc64el-netinst.iso",
+              "size": 450697216,
+              "checksum": {
+                "type": "sha512",
+                "value": "80f5ae303033f8a64d194fa83bcfcfd3aa5347b3411a18996dc72ae3d6d88e2513ff4bb90513e1074ebb21c0a9c355069400c6fa9c1ad9fad30337bf47718860",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/bt-cd/debian-12.15.0-ppc64el-netinst.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "debian-12.15.0-s390x-netinst.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/iso-cd/debian-12.15.0-s390x-netinst.iso",
+              "size": 324612096,
+              "checksum": {
+                "type": "sha512",
+                "value": "92f184f2a495f5cdda613b984c138c0ba4d79e67bae4c87b6c5002e45daf7e5e7358e9bda39059e6d93d1432e292d738926e45a25434de9603aa53c592c56880",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/iso-cd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/iso-cd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/bt-cd/debian-12.15.0-s390x-netinst.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "dvd-1",
+          "name": "DVD-1",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "debian-12.15.0-amd64-DVD-1.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/iso-dvd/debian-12.15.0-amd64-DVD-1.iso",
+              "size": 3989078016,
+              "checksum": {
+                "type": "sha512",
+                "value": "2db593b4118e246bcc281be21b4e50a6a1acba7783fef88f5659e921ea42cf33a00f9ecb2c15dc268ce05543c3ba73c5b7ac4eeeefdcdcd240691a88cc97ec88",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/amd64/bt-dvd/debian-12.15.0-amd64-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "debian-12.15.0-arm64-DVD-1.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/iso-dvd/debian-12.15.0-arm64-DVD-1.iso",
+              "size": 3993284608,
+              "checksum": {
+                "type": "sha512",
+                "value": "463fb93aebecaf9b184f1c2fcb387a253cc3163a5ecc1166241665de277f42a1e7c5ad107aac39450791db78f40a08defb18bbb418efa90b7dae3441ea73f004",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/arm64/bt-dvd/debian-12.15.0-arm64-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "debian-12.15.0-i386-DVD-1.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/iso-dvd/debian-12.15.0-i386-DVD-1.iso",
+              "size": 3992977408,
+              "checksum": {
+                "type": "sha512",
+                "value": "554030e6f32d1bb059275370d9eef94acdef7255b353a8d43ba433b735f5153ee8c7c4d72fb475ee17a905b4b69fbf3202dba1ac700851e0fdfa72e37387ce5e",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/i386/bt-dvd/debian-12.15.0-i386-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "armhf",
+              "format": "iso",
+              "file": "debian-12.15.0-armhf-DVD-1.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/iso-dvd/debian-12.15.0-armhf-DVD-1.iso",
+              "size": 4668395520,
+              "checksum": {
+                "type": "sha512",
+                "value": "2946c01c2973341a29babfb71baa131e474a99e058e116695eac442d0963af6113d067223d75e32ca2699ac97e859d3f1a4053de4a2bd74b38ba36dbcbcdb860",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/armhf/bt-dvd/debian-12.15.0-armhf-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "debian-12.15.0-ppc64el-DVD-1.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/iso-dvd/debian-12.15.0-ppc64el-DVD-1.iso",
+              "size": 4634468352,
+              "checksum": {
+                "type": "sha512",
+                "value": "0f654266276ab51c104874c8fe1c2d1909c7809e894075edfcb6f6c7df8eea25cedf0964d9b5d432cf53b253d0ffea64af9eb58d6518fea166f674ae8838c236",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/ppc64el/bt-dvd/debian-12.15.0-ppc64el-DVD-1.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "debian-12.15.0-s390x-DVD-1.iso",
+              "path": null,
+              "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/iso-dvd/debian-12.15.0-s390x-DVD-1.iso",
+              "size": 4691419136,
+              "checksum": {
+                "type": "sha512",
+                "value": "391d6fd808efb5b2075bf05523625ac187259b1df0afe3367b1f3e6c488058eb26b4daf406d5cc7f84e3a501894f1719baddf344d2dc5067a0d3627260102ffd",
+                "url": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/iso-dvd/SHA512SUMS"
+              },
+              "signatureUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/iso-dvd/SHA512SUMS.sign",
+              "torrentUrl": "https://cdimage.debian.org/cdimage/archive/12.15.0/s390x/bt-dvd/debian-12.15.0-s390x-DVD-1.iso.torrent"
             }
           ]
         }

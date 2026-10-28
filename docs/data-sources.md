@@ -72,36 +72,59 @@ Linuxhub의 버전, 파일, 체크섬, 미러 정보는 모두 각 프로젝트�
 
 <!-- sources:start -->
 
-| 배포판 | 다운로드 전략 | 동기화 모듈 | 릴리스 데이터 출처(호스트) | 현재 최신 | 미러 목록 |
-|---|---|---|---|---|---|
-| antiX | sourceforge | — | — | — | — |
-| Arch Linux | mirrors | ✓ | archlinux.org | 2026.10.01 | 363 (archlinux.org) |
-| CachyOS | redirector | — | — | — | — |
-| Debian | mirrors | ✓ | deb.debian.org, cdimage.debian.org, endoflife.date | 13.7 | 48 (mirror-master.debian.org) |
-| deepin | mirrors | — | — | — | — |
-| Devuan GNU+Linux | mirrors | — | — | — | — |
-| elementary OS | official-page | — | — | — | — |
-| EndeavourOS | mirrors | — | — | — | — |
-| Fedora Linux | redirector | ✓ | fedoraproject.org, endoflife.date | 45-beta | — |
-| Kali Linux | redirector | — | — | — | — |
-| KDE neon | redirector | — | — | — | — |
-| Kubuntu | mirrors | ✓ | endoflife.date, cdimage.ubuntu.com | 26.04.1 | — |
-| Linux Lite | mirrors | — | — | — | — |
-| Linux Mint | mirrors | ✓ | endoflife.date, pub.linuxmint.io | 22.3 | — |
-| Lubuntu | mirrors | ✓ | endoflife.date, cdimage.ubuntu.com | 26.04.1 | — |
-| Manjaro | redirector | — | — | — | — |
-| MX Linux | sourceforge | — | — | — | — |
-| ParrotOS | redirector | — | — | — | — |
-| Peppermint OS | sourceforge | — | — | — | — |
-| Pop!_OS | redirector | ✓ | api.pop-os.org, endoflife.date | 24.04 | — |
-| Q4OS | sourceforge | — | — | — | — |
-| Raspberry Pi OS | official-page | — | — | — | — |
-| TUXEDO OS | official-page | — | — | — | — |
-| Ubuntu | mirrors | ✓ | endoflife.date, releases.ubuntu.com | 26.04.1 | 298 (api.launchpad.net) |
-| Ubuntu MATE | mirrors | ✓ | endoflife.date, cdimage.ubuntu.com | 24.04.5 | — |
-| Xubuntu | mirrors | ✓ | endoflife.date, cdimage.ubuntu.com | 26.04.1 | — |
-| Zorin OS | redirector | — | — | — | — |
+| 배포판 | 다운로드 전략 | 동기화 모듈 | 릴리스 데이터 출처(호스트) | 현재 최신 | 미러 목록 | 위키백과 문서(인기 순위) |
+|---|---|---|---|---|---|---|
+| AlmaLinux | redirector | ✓ | almalinux.org, wiki.almalinux.org | 10.2 | 321 (mirrors.almalinux.org) | AlmaLinux |
+| Alpine Linux | redirector | ✓ | alpinelinux.org, dl-cdn.alpinelinux.org | 3.24.3 | 92 (mirrors.alpinelinux.org) | Alpine Linux |
+| antiX | sourceforge | ✓ | — | — | — | AntiX |
+| Arch Linux | mirrors | ✓ | archlinux.org, geo.mirror.pkgbuild.com | 2026.10.01 | 410 (archlinux.org) | Arch Linux |
+| Bazzite | redirector | ✓ | bazzite.gg, ghcr.io | 44.20261026 | 1 (bazzite.gg) | Bazzite (operating system) |
+| Bodhi Linux | sourceforge | ✓ | www.bodhilinux.com, sourceforge.net | 7.0.0 | 1 (sourceforge.net) | Bodhi Linux |
+| CachyOS | redirector | ✓ | cachyos.org, mirror.cachyos.org | 260809 | 27 (cachyos.org, raw.githubusercontent.com) | CachyOS |
+| CentOS Stream | redirector | ✓ | www.centos.org, endoflife.date | 10 | 80 (mirrormanager.fedoraproject.org) | CentOS Stream |
+| Debian | mirrors | ✓ | www.debian.org | 13.7 | 80 (mirror-master.debian.org) | Debian |
+| deepin | mirrors | ✓ | www.deepin.org, cdimage.deepin.com | 25.2.0 | 36 (www.deepin.org) | Deepin |
+| Devuan GNU+Linux | mirrors | ✓ | www.devuan.org, files.devuan.org, endoflife.date | 6.1.1 | 26 (www.devuan.org) | Devuan |
+| elementary OS | official-page | ✓ | elementary.io, blog.elementary.io | 8.1.1 | 1 (elementary.io) | Elementary OS |
+| EndeavourOS | mirrors | ✓ | endeavouros.com, mirror.alpix.eu | 2026.08.15 | 26 (endeavouros.com) | EndeavourOS |
+| Fedora Linux | redirector | ✓ | fedoraproject.org, bodhi.fedoraproject.org, torrent.fedoraproject.org, endoflife.date | 44 | 122 (mirrormanager.fedoraproject.org) | Fedora Linux |
+| Garuda Linux | redirector | ✓ | garudalinux.org, iso.builds.garudalinux.org, forum.garudalinux.org | 260819 | 1 (garudalinux.org) | Garuda Linux |
+| Gentoo Linux | mirrors | ✓ | www.gentoo.org | 20261025 | 129 (api.gentoo.org) | Gentoo Linux |
+| Kali Linux | redirector | ✓ | www.kali.org, kali.download | 2026.3 | 78 (www.kali.org, cdimage.kali.org) | Kali Linux |
+| KDE neon | redirector | ✓ | neon.kde.org, files.kde.org | 2026.10.25 | 30 (neon.kde.org, files.kde.org) | KDE neon |
+| Kubuntu | mirrors | ✓ | kubuntu.org, ubuntu.com, cdimage.ubuntu.com | 26.10 | 1 (kubuntu.org) | Kubuntu |
+| Linux Lite | mirrors | ✓ | www.linuxliteos.com, repo.linuxliteos.com | 8.0 | 9 (mirrors.linuxliteos.com) | Linux Lite |
+| Linux Mint | mirrors | ✓ | www.linuxmint.com, pub.linuxmint.io | 22.3 | 152 (www.linuxmint.com) | Linux Mint |
+| Lubuntu | mirrors | ✓ | cdimage.ubuntu.com, ubuntu.com, documentation.ubuntu.com | 26.10 | 1 (cdimage.ubuntu.com) | Lubuntu |
+| Mageia | mirrors | ✓ | www.mageia.org, endoflife.date | 10 | 31 (www.mageia.org, endoflife.date, mirrors.mageia.org) | Mageia |
+| Manjaro | redirector | ✓ | manjaro.org | 26.1.0 | 1 (manjaro.org) | Manjaro |
+| MX Linux | sourceforge | ✓ | sourceforge.net, rsync-mxlinux.org, endoflife.date, l2.mxrepo.com | 25.3 | 18 (rsync-mxlinux.org) | MX Linux |
+| NixOS | redirector | ✓ | nixos.org, channels.nixos.org, endoflife.date | 26.05 | 1 (nixos.org) | NixOS |
+| Nobara | redirector | ✓ | nobaraproject.org | 44 | 1 (nobaraproject.org) | Nobara (operating system) |
+| OpenMandriva Lx | redirector | ✓ | www.openmandriva.org, abf-downloads.openmandriva.org, mirror.openmandriva.org, wiki.openmandriva.org | 26.09 | 11 (www.openmandriva.org, mirror.openmandriva.org) | OpenMandriva Lx |
+| openSUSE | redirector | ✓ | get.opensuse.org, endoflife.date | 20261026 | 40 (mirrors.opensuse.org, get.opensuse.org, endoflife.date) | OpenSUSE |
+| Oracle Linux | redirector | ✓ | yum.oracle.com, linux.oracle.com, endoflife.date | 10.2 | 1 (yum.oracle.com) | Oracle Linux |
+| ParrotOS | redirector | ✓ | parrotsec.org | 7.4 | 38 (parrotsec.org) | Parrot OS |
+| PCLinuxOS | mirrors | ✓ | ftp.nluug.nl | 2026.10 | 8 (ftp.nluug.nl) | PCLinuxOS |
+| Peppermint OS | sourceforge | ✓ | peppermintos.com, sourceforge.net | 2026-07-09 | 1 (sourceforge.net) | Peppermint OS |
+| Pop!_OS | redirector | ✓ | system76.com, api.pop-os.org, endoflife.date | 24.04 | 1 (system76.com) | Pop!_OS |
+| Puppy Linux | mirrors | ✓ | forum.puppylinux.com, sourceforge.net, ftp.nluug.nl | 13 | 3 (puppylinux-woof-ce.github.io) | Puppy Linux |
+| Q4OS | sourceforge | ✓ | www.q4os.org, sourceforge.net | 6.10 | 2 (www.q4os.org) | Q4OS |
+| Qubes OS | mirrors | ✓ | doc.qubes-os.org, www.qubes-os.org, ftp.qubes-os.org | 4.3.2 | 26 (www.qubes-os.org) | Qubes OS |
+| Raspberry Pi OS | official-page | ✓ | github.com, deb.debian.org | 2026-10-06 | 1 (downloads.raspberrypi.com) | Raspberry Pi OS |
+| Rocky Linux | redirector | ✓ | rockylinux.org, docs.rockylinux.org | 10.2 | 146 (mirrors.rockylinux.org) | Rocky Linux |
+| Slackware | mirrors | ✓ | endoflife.date, mirrors.slackware.com | 15.0 | 24 (mirrors.slackware.com) | Slackware |
+| Solus | mirrors | ✓ | getsol.us | 4.9 | 1 (getsol.us) | Solus (operating system) |
+| SparkyLinux | sourceforge | ✓ | sparkylinux.org, repo.sparkylinux.org, wiki.sparkylinux.org, sourceforge.net | 8.4 | 1 (sourceforge.net) | SparkyLinux |
+| Tails | redirector | ✓ | tails.net | 7.15.1 | 20 (download.tails.net) | Tails (operating system) |
+| TUXEDO OS | mirrors | ✓ | os.tuxedocomputers.com | 2026.10.19 | 1 (os.tuxedocomputers.com) | — |
+| Ubuntu | mirrors | ✓ | ubuntu.com, releases.ubuntu.com, cdimage.ubuntu.com | 26.10 | 292 (api.launchpad.net) | Ubuntu |
+| Ubuntu MATE | mirrors | ✓ | ubuntu-mate.org, ubuntu.com, cdimage.ubuntu.com | 26.10 | 1 (ubuntu-mate.org) | Ubuntu MATE |
+| Vanilla OS | redirector | ✓ | info.vanillaos.org, vanillaos.org | 3 | 1 (info.vanillaos.org) | — |
+| Void Linux | mirrors | ✓ | voidlinux.org, repo-default.voidlinux.org | 20250202 | 31 (xmirror.voidlinux.org) | Void Linux |
+| Xubuntu | mirrors | ✓ | xubuntu.org, ubuntu.com, cdimage.ubuntu.com | 26.10 | 2 (xubuntu.org) | Xubuntu |
+| Zorin OS | mirrors | ✓ | help.zorin.com, zorin.com, mirrors.edge.kernel.org, blog.zorin.com | 18.1 | 38 (zorin.com) | Zorin OS |
 
-_2026-10-03 기준, `bun run sync:docs`로 생성._
+_2026-10-28 기준, `bun run sync:docs`로 생성._
 
 <!-- sources:end -->

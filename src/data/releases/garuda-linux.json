@@ -1,0 +1,274 @@
+{
+  "slug": "garuda-linux",
+  "sources": [
+    "https://garudalinux.org/editions",
+    "https://iso.builds.garudalinux.org/iso/latest/garuda/",
+    "https://forum.garudalinux.org/c/announcements/16.json"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "260819",
+      "channel": "rolling",
+      "codename": "Temeraire",
+      "releaseDate": "2026-08-19",
+      "eol": null,
+      "notesUrl": "https://forum.garudalinux.org/t/garuda-linux-temeraire-260819/48606",
+      "editions": [
+        {
+          "id": "mokka",
+          "name": "Mokka",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-mokka-linux-garuda-260819.iso",
+              "path": "garuda/mokka/260819/garuda-mokka-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/mokka/260819/garuda-mokka-linux-garuda-260819.iso?r2=1",
+              "size": 3640885248,
+              "checksum": {
+                "type": "sha256",
+                "value": "1cdfc50f5ffe87d1a294763270e802cb388a510b7fc3365c4a46fb3022e25923",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/mokka/260819/garuda-mokka-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/mokka/260819/garuda-mokka-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "dr460nized",
+          "name": "Dr460nized",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-dr460nized-linux-garuda-260819.iso",
+              "path": "garuda/dr460nized/260819/garuda-dr460nized-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/dr460nized/260819/garuda-dr460nized-linux-garuda-260819.iso?r2=1",
+              "size": 3559471104,
+              "checksum": {
+                "type": "sha256",
+                "value": "3dac6b04225fe9577ea0143a1c712e13316dff26985c2c4417f8c5e4af77f7f7",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/dr460nized/260819/garuda-dr460nized-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/dr460nized/260819/garuda-dr460nized-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "dr460nized-gaming",
+          "name": "Dr460nized Gaming",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-dr460nized-gaming-linux-garuda-260819.iso",
+              "path": "garuda/dr460nized-gaming/260819/garuda-dr460nized-gaming-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/dr460nized-gaming/260819/garuda-dr460nized-gaming-linux-garuda-260819.iso?r2=1",
+              "size": 4979345408,
+              "checksum": {
+                "type": "sha256",
+                "value": "d40fabba6edf25c17001ccd84e66c2f7a6449156e70b0c36431d6995a6caeb11",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/dr460nized-gaming/260819/garuda-dr460nized-gaming-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/dr460nized-gaming/260819/garuda-dr460nized-gaming-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "gnome",
+          "name": "GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-gnome-linux-garuda-260819.iso",
+              "path": "garuda/gnome/260819/garuda-gnome-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/gnome/260819/garuda-gnome-linux-garuda-260819.iso?r2=1",
+              "size": 3353329664,
+              "checksum": {
+                "type": "sha256",
+                "value": "3660d518955494589d1bbedf0832a3ad3372dcbc658bd605c947f033430d2521",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/gnome/260819/garuda-gnome-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/gnome/260819/garuda-gnome-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "cinnamon",
+          "name": "Cinnamon",
+          "desktop": "cinnamon",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-cinnamon-linux-garuda-260819.iso",
+              "path": "garuda/cinnamon/260819/garuda-cinnamon-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/cinnamon/260819/garuda-cinnamon-linux-garuda-260819.iso?r2=1",
+              "size": 3332143104,
+              "checksum": {
+                "type": "sha256",
+                "value": "41bc490bc1d7cdee8be49d16f0d1fa8ae7f449157da0ed38ab1637068ed21d47",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/cinnamon/260819/garuda-cinnamon-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/cinnamon/260819/garuda-cinnamon-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-xfce-linux-lts-260819.iso",
+              "path": "garuda/xfce/260819/garuda-xfce-linux-lts-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/xfce/260819/garuda-xfce-linux-lts-260819.iso?r2=1",
+              "size": 3160504320,
+              "checksum": {
+                "type": "sha256",
+                "value": "97003774eea38a11561120f43dd238023628d2c5d4f7447fa9f2c01dbd48f949",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/xfce/260819/garuda-xfce-linux-lts-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/xfce/260819/garuda-xfce-linux-lts-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "sway",
+          "name": "Sway",
+          "desktop": "sway",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-sway-linux-garuda-260819.iso",
+              "path": "garuda/sway/260819/garuda-sway-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/sway/260819/garuda-sway-linux-garuda-260819.iso?r2=1",
+              "size": 3291648000,
+              "checksum": {
+                "type": "sha256",
+                "value": "59e069c699b0b495f0bb0d7f9458d9552c0cd8e4c62e22111313e393adb4530d",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/sway/260819/garuda-sway-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/sway/260819/garuda-sway-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "i3",
+          "name": "i3",
+          "desktop": "i3",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-i3-linux-garuda-260819.iso",
+              "path": "garuda/i3/260819/garuda-i3-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/i3/260819/garuda-i3-linux-garuda-260819.iso?r2=1",
+              "size": 3222466560,
+              "checksum": {
+                "type": "sha256",
+                "value": "e02954e639fa14fbbd47f3a84690853163a62907df5b7e2498e592727bf15c5a",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/i3/260819/garuda-i3-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/i3/260819/garuda-i3-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "hyprland",
+          "name": "Hyprland",
+          "desktop": "hyprland",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-hyprland-linux-garuda-260819.iso",
+              "path": "garuda/hyprland/260819/garuda-hyprland-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/hyprland/260819/garuda-hyprland-linux-garuda-260819.iso?r2=1",
+              "size": 3326238720,
+              "checksum": {
+                "type": "sha256",
+                "value": "d5e18231e8e21ba55b4861d34c850c4d9facdf5d3411c3f8b1dda7afef819d42",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/hyprland/260819/garuda-hyprland-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/hyprland/260819/garuda-hyprland-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "kde-lite",
+          "name": "KDE Lite",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-kde-lite-linux-garuda-260819.iso",
+              "path": "garuda/kde-lite/260819/garuda-kde-lite-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/garuda/kde-lite/260819/garuda-kde-lite-linux-garuda-260819.iso?r2=1",
+              "size": 2273814528,
+              "checksum": {
+                "type": "sha256",
+                "value": "686b69d506bcfa105cd09b873e6e6e5b7b5b5a45a72c7ed974f4999d5e682764",
+                "url": "https://iso.builds.garudalinux.org/iso/garuda/kde-lite/260819/garuda-kde-lite-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://iso.builds.garudalinux.org/iso/garuda/kde-lite/260819/garuda-kde-lite-linux-garuda-260819.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "cosmic",
+          "name": "COSMIC",
+          "desktop": "cosmic",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "garuda-cosmic-linux-garuda-260819.iso",
+              "path": "community/cosmic/260819/garuda-cosmic-linux-garuda-260819.iso",
+              "url": "https://iso.builds.garudalinux.org/iso/community/cosmic/260819/garuda-cosmic-linux-garuda-260819.iso",
+              "size": 3329529856,
+              "checksum": {
+                "type": "sha256",
+                "value": "272664fe15432e6a1c891e7d8aa9a2f0885894109f13af45702ad6f20bd1b529",
+                "url": "https://iso.builds.garudalinux.org/iso/community/cosmic/260819/garuda-cosmic-linux-garuda-260819.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

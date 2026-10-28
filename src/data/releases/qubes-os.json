@@ -1,0 +1,44 @@
+{
+  "slug": "qubes-os",
+  "sources": [
+    "https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/supported-releases.html",
+    "https://www.qubes-os.org/downloads/",
+    "https://ftp.qubes-os.org/iso/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "4.3.2",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-10-02",
+      "eol": null,
+      "notesUrl": "https://doc.qubes-os.org/en/latest/developer/releases/4_3/release-notes.html",
+      "editions": [
+        {
+          "id": "installer",
+          "name": "Installation ISO",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Qubes-R4.3.2-x86_64.iso",
+              "path": "iso/Qubes-R4.3.2-x86_64.iso",
+              "url": "https://ftp.qubes-os.org/iso/Qubes-R4.3.2-x86_64.iso",
+              "size": 8459569152,
+              "checksum": {
+                "type": "sha512",
+                "value": "1d604388e1bb9cb004adc9b7375aeb22eaf3ae6d5b5a043444d4322c89cc2fac85cc0f65a402f9649870d84f83863a87857e2083658c5627bd9b0807cc17f81a",
+                "url": "https://ftp.qubes-os.org/iso/Qubes-R4.3.2-x86_64.iso.DIGESTS"
+              },
+              "signatureUrl": "https://ftp.qubes-os.org/iso/Qubes-R4.3.2-x86_64.iso.asc",
+              "torrentUrl": "https://ftp.qubes-os.org/iso/Qubes-R4.3.2-x86_64.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

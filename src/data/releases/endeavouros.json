@@ -1,0 +1,183 @@
+{
+  "slug": "endeavouros",
+  "sources": [
+    "https://endeavouros.com/download/",
+    "https://endeavouros.com/endeavouros-arm/",
+    "https://endeavouros.com/news/feed.xml",
+    "https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Titan-Nova-2026.08.15.iso.sha512sum"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "2026.08.15",
+      "channel": "rolling",
+      "codename": "Titan Nova",
+      "releaseDate": "2026-08-28",
+      "eol": null,
+      "notesUrl": "https://endeavouros.com/news/titan-nova-is-available/",
+      "editions": [
+        {
+          "id": "live",
+          "name": "Live ISO",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "EndeavourOS_Titan-Nova-2026.08.15.iso",
+              "path": "iso/EndeavourOS_Titan-Nova-2026.08.15.iso",
+              "url": "https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Titan-Nova-2026.08.15.iso",
+              "size": 3898638336,
+              "checksum": {
+                "type": "sha512",
+                "value": "3f83bd745e9d5d518bdf6fc9a24092fb5347da449a6e109c6572bf999097b8b548c4cf1848fdfb3c7c2823f558c3f5b51a127060d9c5b81b9ad89b4041bee7fa",
+                "url": "https://endeavouros.com/download/"
+              },
+              "signatureUrl": "https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Titan-Nova-2026.08.15.iso.sig",
+              "torrentUrl": "https://mirror.rznet.fr/endeavouros/iso/EndeavourOS_Titan-Nova-2026.08.15.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi-4b",
+          "name": "Raspberry Pi 4b",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "enosLinuxARM-rpi4-latest.img.xz",
+              "path": null,
+              "url": "https://github.com/endeavouros-arm/images/releases/download/rpi-4b-image/enosLinuxARM-rpi4-latest.img.xz",
+              "size": 1446324504,
+              "checksum": {
+                "type": "sha512",
+                "value": "8c832d80f7a9aa1cbf0833e40829806133d6e918d9544bafa1c36ec029f6bfce68de2efe3dff6c03d32f645afb744f5f66a23cbbec07ef13b88a38039903f60b",
+                "url": "https://github.com/endeavouros-arm/images/releases/download/rpi-4b-image/enosLinuxARM-rpi4-latest.img.xz.sha512sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi-5b",
+          "name": "Raspberry Pi 5b",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "enosLinuxARM-rpi5-latest.img.xz",
+              "path": null,
+              "url": "https://github.com/endeavouros-arm/images/releases/download/rpi-5b-image/enosLinuxARM-rpi5-latest.img.xz",
+              "size": 1125104188,
+              "checksum": {
+                "type": "sha512",
+                "value": "3cd6db1ac842c83e53aec4bf8772a878dad850334c8edc578af2af7cb06da4cf79d5f7d74887a68ee72573f9898e4637cc6e2538a7520b073400b5e44d7f6ac6",
+                "url": "https://github.com/endeavouros-arm/images/releases/download/rpi-5b-image/enosLinuxARM-rpi5-latest.img.xz.sha512sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "odroid-n2",
+          "name": "Odroid N2",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "enosLinuxARM-odroid-n2-latest.img.xz",
+              "path": null,
+              "url": "https://github.com/endeavouros-arm/images/releases/download/odroid-n2-image/enosLinuxARM-odroid-n2-latest.img.xz",
+              "size": 1476876864,
+              "checksum": {
+                "type": "sha512",
+                "value": "9c044ee21050ad5ff2e722ebb5f3a82d3240422513139032c01007b20046f6f96a406d3944d57550e8d79413e9c56276ce0303a480825da7a43a2bcb5c711569",
+                "url": "https://github.com/endeavouros-arm/images/releases/download/odroid-n2-image/enosLinuxARM-odroid-n2-latest.img.xz.sha512sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "pinebook-pro",
+          "name": "PineBook Pro",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "enosLinuxARM-pbp-latest.img.xz",
+              "path": null,
+              "url": "https://github.com/endeavouros-arm/images/releases/download/pinebook-pro-image/enosLinuxARM-pbp-latest.img.xz",
+              "size": 1478054528,
+              "checksum": {
+                "type": "sha512",
+                "value": "d3437b172f73c700292b2108b474dac2580cbb81b1e37a1ff0a0318b056b41a23ae165c4ca9edf28b1e4e79f108efe5d3f879449142202695578f34d5357527c",
+                "url": "https://github.com/endeavouros-arm/images/releases/download/pinebook-pro-image/enosLinuxARM-pbp-latest.img.xz.sha512sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "headless-server-raspberry-pi-4b-5b",
+          "name": "Headless server, Raspberry Pi 4b & 5b",
+          "desktop": "none",
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "enosLinuxARM-server-rpi-latest.img.xz",
+              "path": null,
+              "url": "https://github.com/endeavouros-arm/images/releases/download/server-rpi-image/enosLinuxARM-server-rpi-latest.img.xz",
+              "size": 804754472,
+              "checksum": {
+                "type": "sha512",
+                "value": "27f2108dd1aa0f8cfaf47cc4574439340ef2dda506fe528476ce72003f50e597fd8909016a76f2f12d6d66e6eebc0799eff3554365ca02ed48e6c7432a774bf4",
+                "url": "https://github.com/endeavouros-arm/images/releases/download/server-rpi-image/enosLinuxARM-server-rpi-latest.img.xz.sha512sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "headless-server-odroid-n2",
+          "name": "Headless server, Odroid N2",
+          "desktop": "none",
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "enosLinuxARM-server-odroid-n2-latest.img.xz",
+              "path": null,
+              "url": "https://github.com/endeavouros-arm/images/releases/download/server-odroid-n2-image/enosLinuxARM-server-odroid-n2-latest.img.xz",
+              "size": 836779052,
+              "checksum": {
+                "type": "sha512",
+                "value": "6a159fbb37c905cb71f977b6f9e477d7d27ff16bbafed19d935d8f578c16bdb365904a620e931ca49ab2acf43b4335250a41fd73edcc682fa67c9d914775f32e",
+                "url": "https://github.com/endeavouros-arm/images/releases/download/server-odroid-n2-image/enosLinuxARM-server-odroid-n2-latest.img.xz.sha512sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

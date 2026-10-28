@@ -1,0 +1,334 @@
+{
+  "slug": "oracle-linux",
+  "sources": [
+    "https://yum.oracle.com/oracle-linux-isos.html",
+    "https://linux.oracle.com/security/gpg/",
+    "https://endoflife.date/oracle-linux"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "10.2",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": null,
+      "eol": "2035-06-30",
+      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.2/",
+      "editions": [
+        {
+          "id": "full-iso",
+          "name": "Full ISO",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R10-U2-x86_64-dvd.iso",
+              "path": "OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-dvd.iso",
+              "size": 11304716288,
+              "checksum": {
+                "type": "sha256",
+                "value": "1ce70064f677e9af4ef6ff3bcd0d2de26e956236b36d2c857b533588aa06958b",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "OracleLinux-R10-U2-aarch64-dvd.iso",
+              "path": "OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-dvd.iso",
+              "size": 10541289472,
+              "checksum": {
+                "type": "sha256",
+                "value": "5b6c6512f2e3dc119679e29397ed42f041f7b7b349dc3c12b18c6f9dd36c3000",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-aarch64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "boot-iso",
+          "name": "Boot ISO",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R10-U2-x86_64-boot.iso",
+              "path": "OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot.iso",
+              "size": 1443205120,
+              "checksum": {
+                "type": "sha256",
+                "value": "b15149fe6691844cfb82c764d6e79f97f9856286ea648ee45809bc5a4fa79aee",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "uek-boot-iso",
+          "name": "UEK Boot ISO",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R10-U2-x86_64-boot-uek.iso",
+              "path": "OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot-uek.iso",
+              "size": 1406539776,
+              "checksum": {
+                "type": "sha256",
+                "value": "8277b1364021e7aea11a1e25930e1ca1784c24de5102fa2b20021a762f2b331a",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "OracleLinux-R10-U2-aarch64-boot-uek.iso",
+              "path": "OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-boot-uek.iso",
+              "size": 1548683264,
+              "checksum": {
+                "type": "sha256",
+                "value": "b1e62e4cab34b6aec9ac8f31ba364ab5f05c9e1e55c0e3c8867fe21cbafbaa9a",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-aarch64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "9.8",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2026-06-23",
+      "eol": "2032-06-30",
+      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/9/relnotes9.8/",
+      "editions": [
+        {
+          "id": "full-iso",
+          "name": "Full ISO",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R9-U8-x86_64-dvd.iso",
+              "path": "OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-dvd.iso",
+              "size": 16489906176,
+              "checksum": {
+                "type": "sha256",
+                "value": "91bb95cb8e4d1ad1c496c9a87efcba3bf9d5ec976474910e9950a3fa8576428b",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "OracleLinux-R9-U8-aarch64-dvd.iso",
+              "path": "OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-dvd.iso",
+              "size": 14188539904,
+              "checksum": {
+                "type": "sha256",
+                "value": "5b7ccf99953dc5001e4df3d0b01c0673397590f23e5cab313df03bd0fa223ba6",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-aarch64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "boot-iso",
+          "name": "Boot ISO",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R9-U8-x86_64-boot.iso",
+              "path": "OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot.iso",
+              "size": 1561657344,
+              "checksum": {
+                "type": "sha256",
+                "value": "fec471a2f0324e958d18a55e8704a61cd39a49f029448699664bd4e97496dd5f",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "uek-boot-iso",
+          "name": "UEK Boot ISO",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R9-U8-x86_64-boot-uek.iso",
+              "path": "OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot-uek.iso",
+              "size": 1534459904,
+              "checksum": {
+                "type": "sha256",
+                "value": "cc95730b408381762b225520de8916685be53133c708fad32cfe3b8519b4d190",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "OracleLinux-R9-U8-aarch64-boot-uek.iso",
+              "path": "OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-boot-uek.iso",
+              "size": 1676046336,
+              "checksum": {
+                "type": "sha256",
+                "value": "9460dcb6db3b07cbcacc3406013616442a69fad6040f57690543780cffeb5bd6",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-aarch64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "8.10",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2024-05-28",
+      "eol": "2029-07-31",
+      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/8/relnotes8.10/",
+      "editions": [
+        {
+          "id": "full-iso",
+          "name": "Full ISO",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R8-U10-x86_64-dvd.iso",
+              "path": "OL8/u10/x86_64/OracleLinux-R8-U10-x86_64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u10/x86_64/OracleLinux-R8-U10-x86_64-dvd.iso",
+              "size": 14156824576,
+              "checksum": {
+                "type": "sha256",
+                "value": "7676a80eeaafa16903eebb2abba147a3afe230b130cc066d56fdd6854d8da900",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U10-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "OracleLinux-R8-U10-aarch64-dvd.iso",
+              "path": "OL8/u10/aarch64/OracleLinux-R8-U10-aarch64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u10/aarch64/OracleLinux-R8-U10-aarch64-dvd.iso",
+              "size": 11456931840,
+              "checksum": {
+                "type": "sha256",
+                "value": "feff28528569308896f18f7da330a726cc94563fd8c7f26f64fe486961fb490e",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U10-Server-aarch64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "boot-iso",
+          "name": "Boot ISO",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R8-U10-x86_64-boot.iso",
+              "path": "OL8/u10/x86_64/OracleLinux-R8-U10-x86_64-boot.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u10/x86_64/OracleLinux-R8-U10-x86_64-boot.iso",
+              "size": 1086324736,
+              "checksum": {
+                "type": "sha256",
+                "value": "c7009ca2b28ddbedd6c09fc9141f933dec01a6ea73c503634786809746af1906",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U10-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "uek-boot-iso",
+          "name": "UEK Boot ISO",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OracleLinux-R8-U10-x86_64-boot-uek.iso",
+              "path": "OL8/u10/x86_64/OracleLinux-R8-U10-x86_64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u10/x86_64/OracleLinux-R8-U10-x86_64-boot-uek.iso",
+              "size": 1174405120,
+              "checksum": {
+                "type": "sha256",
+                "value": "a14ef5c626b6fba5fa0667068d3a9cabbb533d8a6ab45635078e6bd9d87d80d6",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U10-Server-x86_64.checksum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "OracleLinux-R8-U10-aarch64-boot-uek.iso",
+              "path": "OL8/u10/aarch64/OracleLinux-R8-U10-aarch64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u10/aarch64/OracleLinux-R8-U10-aarch64-boot-uek.iso",
+              "size": 1147449344,
+              "checksum": null,
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

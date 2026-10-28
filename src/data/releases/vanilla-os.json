@@ -1,0 +1,58 @@
+{
+  "slug": "vanilla-os",
+  "sources": [
+    "https://info.vanillaos.org/downloads.json",
+    "https://vanillaos.org/feed.xml"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "3",
+      "channel": "stable",
+      "codename": "Reunion",
+      "releaseDate": "2026-08-24",
+      "eol": null,
+      "notesUrl": "https://vanillaos.org/blog/article/2026-08-24/vanilla-os-3-reunion---stable-release",
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Vanilla OS",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Vanilla-OS-3-stable-amd64.20260828.iso",
+              "path": "Vanilla-OS-3-stable-amd64.20260828.iso",
+              "url": "https://download.vanillaos.org/Vanilla-OS-3-stable-amd64.20260828.iso",
+              "size": 2088960000,
+              "checksum": {
+                "type": "sha256",
+                "value": "6b2eafe65801c486d060184e8a0a1638628cd021d891f73280db434b5fdcb982",
+                "url": "https://download.vanillaos.org/Vanilla-OS-3-stable-amd64.20260828.sha256.txt"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Vanilla-OS-3-stable-arm64.20260828.iso",
+              "path": "Vanilla-OS-3-stable-arm64.20260828.iso",
+              "url": "https://download.vanillaos.org/Vanilla-OS-3-stable-arm64.20260828.iso",
+              "size": 1957388288,
+              "checksum": {
+                "type": "sha256",
+                "value": "6304d876e6082d0467026af5c9edf089a93f281cbd391375f1a0b187794050dc",
+                "url": "https://download.vanillaos.org/Vanilla-OS-3-stable-arm64.20260828.sha256.txt"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

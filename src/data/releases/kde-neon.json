@@ -2,15 +2,15 @@
   "slug": "kde-neon",
   "sources": [
     "https://neon.kde.org/download",
-    "https://files.kde.org/neon/images/desktop/user/"
+    "https://files.kde.org/neon/images/"
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-28",
   "releases": [
     {
-      "version": "2026.09.03",
+      "version": "2026.10.25",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-09-03",
+      "releaseDate": "2026-10-25",
       "eol": null,
       "notesUrl": null,
       "editions": [
@@ -23,63 +23,63 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "neon-user-desktop-20260903-0454.iso",
-              "path": null,
-              "url": "https://files.kde.org/neon/images/desktop/user/20260903-0454/neon-user-desktop-20260903-0454.iso",
-              "size": 3300917248,
+              "file": "neon-user-desk-20261025-1825.iso",
+              "path": "neon/images/desk/user/20261025-1825/neon-user-desk-20261025-1825.iso",
+              "url": "https://files.kde.org/neon/images/desk/user/20261025-1825/neon-user-desk-20261025-1825.iso",
+              "size": 3377463296,
               "checksum": {
                 "type": "sha256",
-                "value": "61918b726ce3bf7b8523fef89174e8d80a384f0e3def2a358c81e3315e512bc9",
-                "url": "https://files.kde.org/neon/images/desktop/user/20260903-0454/neon-user-desktop-20260903-0454.sha256sum"
+                "value": "0ed36989556a7a27bb88296c198f305d5629a294d38f5f1b704047265be31015",
+                "url": "https://files.kde.org/neon/images/desk/user/20261025-1825/neon-user-desk-20261025-1825.sha256sum"
               },
-              "signatureUrl": "https://files.kde.org/neon/images/desktop/user/20260903-0454/neon-user-desktop-20260903-0454.iso.sig",
-              "torrentUrl": "https://files.kde.org/neon/images/desktop/user/20260903-0454/neon-user-desktop-20260903-0454.iso.torrent"
+              "signatureUrl": "https://files.kde.org/neon/images/desk/user/20261025-1825/neon-user-desk-20261025-1825.iso.sig",
+              "torrentUrl": "https://files.kde.org/neon/images/desk/user/20261025-1825/neon-user-desk-20261025-1825.iso.torrent"
             }
           ]
         },
         {
           "id": "mobile",
-          "name": "Plasma Mobile",
+          "name": "Mobile",
           "desktop": "kde",
           "kind": "other",
           "artifacts": [
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "neon-user-mobile-20260705-0514.iso",
-              "path": null,
-              "url": "https://files.kde.org/neon/images/mobile/user/20260705-0514/neon-user-mobile-20260705-0514.iso",
-              "size": 3265265664,
+              "file": "neon-user-mobile-20261025-0728.iso",
+              "path": "neon/images/mobile/user/20261025-0728/neon-user-mobile-20261025-0728.iso",
+              "url": "https://files.kde.org/neon/images/mobile/user/20261025-0728/neon-user-mobile-20261025-0728.iso",
+              "size": 3469737984,
               "checksum": {
                 "type": "sha256",
-                "value": "a3088fb03ba4ec061eb0c69f8d203265040a980780a4b6fdabc3f1e1ab9319dd",
-                "url": "https://files.kde.org/neon/images/mobile/user/20260705-0514/neon-user-mobile-20260705-0514.sha256sum"
+                "value": "190df9aaa59d3c00492f8c2d53d9c9e98b314225cffe48b6b59061918f1a4d7a",
+                "url": "https://files.kde.org/neon/images/mobile/user/20261025-0728/neon-user-mobile-20261025-0728.sha256sum"
               },
-              "signatureUrl": "https://files.kde.org/neon/images/mobile/user/20260705-0514/neon-user-mobile-20260705-0514.iso.sig",
-              "torrentUrl": "https://files.kde.org/neon/images/mobile/user/20260705-0514/neon-user-mobile-20260705-0514.iso.torrent"
+              "signatureUrl": "https://files.kde.org/neon/images/mobile/user/20261025-0728/neon-user-mobile-20261025-0728.iso.sig",
+              "torrentUrl": "https://files.kde.org/neon/images/mobile/user/20261025-0728/neon-user-mobile-20261025-0728.iso.torrent"
             }
           ]
         },
         {
           "id": "bigscreen",
-          "name": "Plasma Bigscreen",
+          "name": "Bigscreen",
           "desktop": "kde",
           "kind": "other",
           "artifacts": [
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "neon-user-bigscreen-20260830-0624.iso",
-              "path": null,
-              "url": "https://files.kde.org/neon/images/bigscreen/user/20260830-0624/neon-user-bigscreen-20260830-0624.iso",
-              "size": 3189768192,
+              "file": "neon-user-big-20261025-0729.iso",
+              "path": "neon/images/big/user/20261025-0729/neon-user-big-20261025-0729.iso",
+              "url": "https://files.kde.org/neon/images/big/user/20261025-0729/neon-user-big-20261025-0729.iso",
+              "size": 3377463296,
               "checksum": {
                 "type": "sha256",
-                "value": "5d197fad537e759b85b56be6785fc8739a75fb3f51fa54ccf263d13832e601e5",
-                "url": "https://files.kde.org/neon/images/bigscreen/user/20260830-0624/neon-user-bigscreen-20260830-0624.sha256sum"
+                "value": "daee030d53364a34ff36016ed4a0f9aeeeb180c95462ac1cb09571023c3cf571",
+                "url": "https://files.kde.org/neon/images/big/user/20261025-0729/neon-user-big-20261025-0729.sha256sum"
               },
-              "signatureUrl": "https://files.kde.org/neon/images/bigscreen/user/20260830-0624/neon-user-bigscreen-20260830-0624.iso.sig",
-              "torrentUrl": "https://files.kde.org/neon/images/bigscreen/user/20260830-0624/neon-user-bigscreen-20260830-0624.iso.torrent"
+              "signatureUrl": "https://files.kde.org/neon/images/big/user/20261025-0729/neon-user-big-20261025-0729.iso.sig",
+              "torrentUrl": "https://files.kde.org/neon/images/big/user/20261025-0729/neon-user-big-20261025-0729.iso.torrent"
             }
           ]
         }

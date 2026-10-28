@@ -1,0 +1,742 @@
+{
+  "slug": "sparkylinux",
+  "sources": [
+    "https://sparkylinux.org/download/stable/",
+    "https://sparkylinux.org/download/rolling/",
+    "https://sparkylinux.org/download/oldstable/",
+    "https://repo.sparkylinux.org/",
+    "https://wiki.sparkylinux.org/doku.php/code_names",
+    "https://sourceforge.net/projects/sparkylinux/files/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "8.4",
+      "channel": "stable",
+      "codename": "The Seven Sisters",
+      "releaseDate": "2026-08-10",
+      "eol": null,
+      "notesUrl": "https://sparkylinux.org/sparky-8-4/",
+      "editions": [
+        {
+          "id": "lxqt",
+          "name": "LXQt",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-8.4-x86_64-lxqt.iso",
+              "path": "lxqt/sparkylinux-8.4-x86_64-lxqt.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-8.4-x86_64-lxqt.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "fdb19ae512fde268becb71571816045b15a3a91ea504bfb87d8b4bd2b81ee97e",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-8.4-x86_64-lxqt.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-8.4-x86_64-lxqt.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-x86_64-lxqt.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-8.4-x86_64-mate.iso",
+              "path": "mate/sparkylinux-8.4-x86_64-mate.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-8.4-x86_64-mate.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "72d82a26de15c786d9bdfdda7fd4b0ccfc11a3d34aa3e1e101575cc2a4adadae",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-8.4-x86_64-mate.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-8.4-x86_64-mate.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-x86_64-mate.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-8.4-x86_64-xfce.iso",
+              "path": "xfce/sparkylinux-8.4-x86_64-xfce.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-8.4-x86_64-xfce.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "7103af4d18741842202fca3cbe838855c51724d66563931c24522c0437796537",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-8.4-x86_64-xfce.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-8.4-x86_64-xfce.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-x86_64-xfce.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-8.4-x86_64-kde.iso",
+              "path": "kde/sparkylinux-8.4-x86_64-kde.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-8.4-x86_64-kde.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "020e2cd34a10e90bca94fdeb59fce4654ece32bdc5d43e9b545881437bcc5ace",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-8.4-x86_64-kde.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-8.4-x86_64-kde.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-x86_64-kde.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "minimalgui",
+          "name": "MinimalGUI (Openbox)",
+          "desktop": "openbox",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-8.4-x86_64-minimalgui.iso",
+              "path": "base/sparkylinux-8.4-x86_64-minimalgui.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-8.4-x86_64-minimalgui.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "82371f59555b7346d1bd36cbb8f6893db3efda6f7a19a62a302417a6e14097e6",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-8.4-x86_64-minimalgui.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-8.4-x86_64-minimalgui.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-x86_64-minimalgui.iso.torrent/download"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "sparkylinux-8.4-i686-pae-minimalgui.iso",
+              "path": "base/sparkylinux-8.4-i686-pae-minimalgui.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-8.4-i686-pae-minimalgui.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "fc622e79d03aa5f731d8458c679d354a5077ab669564b07cfa670ca1f1d85bea",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-8.4-i686-pae-minimalgui.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-8.4-i686-pae-minimalgui.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-i686-pae-minimalgui.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "minimalcli",
+          "name": "MinimalCLI",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-8.4-x86_64-minimalcli.iso",
+              "path": "cli/sparkylinux-8.4-x86_64-minimalcli.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-8.4-x86_64-minimalcli.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "121394e33522d6627a4b7790a91dd0a55635a443af93aea26e5f0ecc979bbf1e",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-8.4-x86_64-minimalcli.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-8.4-x86_64-minimalcli.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-x86_64-minimalcli.iso.torrent/download"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "sparkylinux-8.4-i686-pae-minimalcli.iso",
+              "path": "cli/sparkylinux-8.4-i686-pae-minimalcli.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-8.4-i686-pae-minimalcli.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "c71469488ce1119bb1724783c6ed081923212b28ca304f75da0e764875df7299",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-8.4-i686-pae-minimalcli.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-8.4-i686-pae-minimalcli.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-8.4-i686-pae-minimalcli.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "arm-openbox",
+          "name": "Openbox (ARM)",
+          "desktop": "openbox",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "image_2026-08-09-sparkylinux-8.4-arm64.zip",
+              "path": "arm64/image_2026-08-09-sparkylinux-8.4-arm64.zip",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/image_2026-08-09-sparkylinux-8.4-arm64.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "6bf0716e8bbfe375c8ef18d774545c869577545b14d6df8ce021faee308d632b",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/image_2026-08-09-sparkylinux-8.4-arm64.zip.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/arm64/image_2026-08-09-sparkylinux-8.4-arm64.zip.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/image_2026-08-09-sparkylinux-8.4-arm64.zip.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "arm-cli",
+          "name": "CLI (ARM)",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "image_2026-08-09-sparkylinux-8.4-arm64-cli.zip",
+              "path": "arm64/image_2026-08-09-sparkylinux-8.4-arm64-cli.zip",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/image_2026-08-09-sparkylinux-8.4-arm64-cli.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "b9dc99e07ff91abea00c7afec698e7fcb69b381634fa8d28fe11412dd1c63c07",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/image_2026-08-09-sparkylinux-8.4-arm64-cli.zip.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/arm64/image_2026-08-09-sparkylinux-8.4-arm64-cli.zip.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/image_2026-08-09-sparkylinux-8.4-arm64-cli.zip.torrent/download"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "7.8",
+      "channel": "stable",
+      "codename": "Orion Belt",
+      "releaseDate": "2025-07-15",
+      "eol": null,
+      "notesUrl": "https://sparkylinux.org/sparky-7-8/",
+      "editions": [
+        {
+          "id": "lxqt",
+          "name": "LXQt",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-7.8-x86_64-lxqt.iso",
+              "path": "lxqt/sparkylinux-7.8-x86_64-lxqt.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-7.8-x86_64-lxqt.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "4b83d4e97e5b09c75a4119a81778742d8044371a",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-7.8-x86_64-lxqt.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-7.8-x86_64-lxqt.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-7.8-x86_64-mate.iso",
+              "path": "mate/sparkylinux-7.8-x86_64-mate.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-7.8-x86_64-mate.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "117f759af1946462722c9372255950ce763a2b66",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-7.8-x86_64-mate.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-7.8-x86_64-mate.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-7.8-x86_64-xfce.iso",
+              "path": "xfce/sparkylinux-7.8-x86_64-xfce.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-7.8-x86_64-xfce.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "aeba11fd7ec5ade445c3cadee2d03e5396b5165e",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-7.8-x86_64-xfce.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-7.8-x86_64-xfce.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-7.8-x86_64-kde.iso",
+              "path": "kde/sparkylinux-7.8-x86_64-kde.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-7.8-x86_64-kde.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "602b45cf83a83a7b140fe5a1ddfbb64062ab6132",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-7.8-x86_64-kde.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-7.8-x86_64-kde.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "minimalgui",
+          "name": "MinimalGUI (Openbox)",
+          "desktop": "openbox",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-7.8-x86_64-minimalgui.iso",
+              "path": "base/sparkylinux-7.8-x86_64-minimalgui.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-7.8-x86_64-minimalgui.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "1add1040c2ec6688c187fae63ce93fc86707d614",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-7.8-x86_64-minimalgui.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-7.8-x86_64-minimalgui.iso.sig/download",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "sparkylinux-7.8-i686-minimalgui.iso",
+              "path": "base/sparkylinux-7.8-i686-minimalgui.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-7.8-i686-minimalgui.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "a61ca004012cd7b8144e368406a6dd40696da9e4",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-7.8-i686-minimalgui.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-7.8-i686-minimalgui.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "minimalcli",
+          "name": "MinimalCLI",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-7.8-x86_64-minimalcli.iso",
+              "path": "cli/sparkylinux-7.8-x86_64-minimalcli.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-7.8-x86_64-minimalcli.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "607763200b3e3c67bbabbb7512064ad0bd766738",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-7.8-x86_64-minimalcli.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-7.8-x86_64-minimalcli.iso.sig/download",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "sparkylinux-7.8-i686-minimalcli.iso",
+              "path": "cli/sparkylinux-7.8-i686-minimalcli.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-7.8-i686-minimalcli.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "67df54c12d2e978c968c6e870438cc88f3f8ca9e",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-7.8-i686-minimalcli.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-7.8-i686-minimalcli.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "arm-openbox",
+          "name": "Openbox (ARM)",
+          "desktop": "openbox",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "sparkylinux-7.7-arm64.zip",
+              "path": "arm64/sparkylinux-7.7-arm64.zip",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/sparkylinux-7.7-arm64.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "23c318e3e3e2061cf0553664c87ff9668e9d96a8",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/sparkylinux-7.7-arm64.zip.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/arm64/sparkylinux-7.7-arm64.zip.sig/download",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "zip",
+              "file": "sparkylinux-7.7-armhf.zip",
+              "path": "armhf/sparkylinux-7.7-armhf.zip",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/armhf/sparkylinux-7.7-armhf.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "3459d2a205b480f9a16cd3dc3d2c4f4798866e01",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/armhf/sparkylinux-7.7-armhf.zip.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/armhf/sparkylinux-7.7-armhf.zip.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "arm-cli",
+          "name": "CLI (ARM)",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "sparkylinux-7.7-arm64-cli.zip",
+              "path": "arm64/sparkylinux-7.7-arm64-cli.zip",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/sparkylinux-7.7-arm64-cli.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "770b76bcf7a45a052079d7cfbd86845b41e1cb5f",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/arm64/sparkylinux-7.7-arm64-cli.zip.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/arm64/sparkylinux-7.7-arm64-cli.zip.sig/download",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "zip",
+              "file": "sparkylinux-7.7-armhf-cli.zip",
+              "path": "armhf/sparkylinux-7.7-armhf-cli.zip",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/armhf/sparkylinux-7.7-armhf-cli.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "3f1286406e315444fd758fe4520001b6fe136cba",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/armhf/sparkylinux-7.7-armhf-cli.zip.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/armhf/sparkylinux-7.7-armhf-cli.zip.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "2026.09",
+      "channel": "rolling",
+      "codename": "Tiamat",
+      "releaseDate": "2026-09-23",
+      "eol": null,
+      "notesUrl": "https://sparkylinux.org/sparky-2026-09/",
+      "editions": [
+        {
+          "id": "lxqt",
+          "name": "LXQt",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-lxqt.iso",
+              "path": "lxqt/sparkylinux-2026.09-x86_64-lxqt.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-2026.09-x86_64-lxqt.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "5736e5f73a60df2c33e35856008dcf993fd5c5aeca120f737908ec3a8887bddf",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-2026.09-x86_64-lxqt.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/lxqt/sparkylinux-2026.09-x86_64-lxqt.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-lxqt.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "mate",
+          "name": "MATE",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-mate.iso",
+              "path": "mate/sparkylinux-2026.09-x86_64-mate.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-2026.09-x86_64-mate.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "145c0bc912fcd08c838984dd4d92cd68aa2e5276c200a2cc2b9fe8927c62dfb0",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-2026.09-x86_64-mate.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/mate/sparkylinux-2026.09-x86_64-mate.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-mate.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-xfce.iso",
+              "path": "xfce/sparkylinux-2026.09-x86_64-xfce.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-2026.09-x86_64-xfce.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "89b6a88c5ddeaf89ea60954c3766621e1aa464ce230dc0421928300a260b998a",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-2026.09-x86_64-xfce.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/xfce/sparkylinux-2026.09-x86_64-xfce.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-xfce.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "KDE Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-kde.iso",
+              "path": "kde/sparkylinux-2026.09-x86_64-kde.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-2026.09-x86_64-kde.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "e2d27e530763afa21caef59d55cf1613e747e2f2bc54f15f9e83ca3e03e6cbfb",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-2026.09-x86_64-kde.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/kde/sparkylinux-2026.09-x86_64-kde.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-kde.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "minimalgui",
+          "name": "MinimalGUI (Openbox)",
+          "desktop": "openbox",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-minimalgui.iso",
+              "path": "base/sparkylinux-2026.09-x86_64-minimalgui.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-2026.09-x86_64-minimalgui.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "28bd86a8ed35851abf8240479f29d11a31a5547b9c495bf3498a31f9ad3a26dc",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-2026.09-x86_64-minimalgui.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-2026.09-x86_64-minimalgui.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-minimalgui.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "minimalgui-labwc",
+          "name": "MinimalGUI (Labwc)",
+          "desktop": null,
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-minimalgui-labwc.iso",
+              "path": "base/sparkylinux-2026.09-x86_64-minimalgui-labwc.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-2026.09-x86_64-minimalgui-labwc.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "128aaab9583f852650c8368cba42e9250f2c91189cce64f768366b5ecc04e0fa",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-2026.09-x86_64-minimalgui-labwc.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/base/sparkylinux-2026.09-x86_64-minimalgui-labwc.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-minimalgui-labwc.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "minimalcli",
+          "name": "MinimalCLI",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.09-x86_64-minimalcli.iso",
+              "path": "cli/sparkylinux-2026.09-x86_64-minimalcli.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-2026.09-x86_64-minimalcli.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "b34156d79c43046ab52169d67571a6d2924baa50bc0fd9be97e84b596f49cd3b",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-2026.09-x86_64-minimalcli.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/cli/sparkylinux-2026.09-x86_64-minimalcli.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.09-x86_64-minimalcli.iso.torrent/download"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "2026.06",
+      "channel": "rolling",
+      "codename": "Tiamat",
+      "releaseDate": "2026-06-18",
+      "eol": null,
+      "notesUrl": "https://sparkylinux.org/sparky-2026-06/",
+      "editions": [
+        {
+          "id": "gameover",
+          "name": "GameOver",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.06-x86_64-gameover.iso",
+              "path": "gameover/sparkylinux-2026.06-x86_64-gameover.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/gameover/sparkylinux-2026.06-x86_64-gameover.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "3be9009c36d536938a33c3aaf86b8bde6ceb5dce",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/gameover/sparkylinux-2026.06-x86_64-gameover.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/gameover/sparkylinux-2026.06-x86_64-gameover.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.06-x86_64-gameover.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "multimedia",
+          "name": "Multimedia",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.06-x86_64-multimedia.iso",
+              "path": "multimedia/sparkylinux-2026.06-x86_64-multimedia.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/multimedia/sparkylinux-2026.06-x86_64-multimedia.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "6720a547458b354c5cdf9cf28396990d2f8c9095",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/multimedia/sparkylinux-2026.06-x86_64-multimedia.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/multimedia/sparkylinux-2026.06-x86_64-multimedia.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.06-x86_64-multimedia.iso.torrent/download"
+            }
+          ]
+        },
+        {
+          "id": "rescue",
+          "name": "Rescue",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "sparkylinux-2026.06-x86_64-rescue.iso",
+              "path": "rescue/sparkylinux-2026.06-x86_64-rescue.iso",
+              "url": "https://sourceforge.net/projects/sparkylinux/files/rescue/sparkylinux-2026.06-x86_64-rescue.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "bbf14dfa76d0476b06ac13995adc0c61e06b663b",
+                "url": "https://sourceforge.net/projects/sparkylinux/files/rescue/sparkylinux-2026.06-x86_64-rescue.iso.allsums.txt/download"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/sparkylinux/files/rescue/sparkylinux-2026.06-x86_64-rescue.iso.sig/download",
+              "torrentUrl": "https://sourceforge.net/projects/sparkylinux/files/torrents/sparkylinux-2026.06-x86_64-rescue.iso.torrent/download"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

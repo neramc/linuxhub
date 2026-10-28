@@ -1,18 +1,259 @@
 {
   "slug": "ubuntu",
   "sources": [
-    "https://endoflife.date/ubuntu",
-    "https://releases.ubuntu.com/"
+    "https://ubuntu.com/project/docs/release-team/list-of-releases/",
+    "https://releases.ubuntu.com/",
+    "https://cdimage.ubuntu.com/ubuntu/releases/",
+    "https://releases.ubuntu.com/streams/v1/com.ubuntu.releases:ubuntu.json",
+    "https://releases.ubuntu.com/streams/v1/com.ubuntu.releases:ubuntu-server.json"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-28",
   "releases": [
+    {
+      "version": "26.10",
+      "channel": "stable",
+      "codename": "Stonking Stingray",
+      "releaseDate": "2026-10-15",
+      "eol": "2027-07-31",
+      "notesUrl": "https://documentation.ubuntu.com/release-notes/26.10/",
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "ubuntu-26.10-desktop-amd64.iso",
+              "path": "26.10/ubuntu-26.10-desktop-amd64.iso",
+              "url": "https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso",
+              "size": 6615449600,
+              "checksum": {
+                "type": "sha256",
+                "value": "19efc38dde60055b192526bfbba075ac1da23992f1b006ddd41cbd30db0d9b0c",
+                "url": "https://releases.ubuntu.com/26.10/SHA256SUMS"
+              },
+              "signatureUrl": "https://releases.ubuntu.com/26.10/SHA256SUMS.gpg",
+              "torrentUrl": "https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-26.10-desktop-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-desktop-arm64.iso",
+              "size": 4601491456,
+              "checksum": {
+                "type": "sha256",
+                "value": "9242a38c47eb53a5beb153c249d4843e4366f8955e9b972663e4ab7989311e9f",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-desktop-arm64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "ubuntu-26.10-desktop-riscv64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-desktop-riscv64.iso",
+              "size": 4275437568,
+              "checksum": {
+                "type": "sha256",
+                "value": "8c5468de2a51c5e8972782bfa8dc9328ff30e658e461848b7abbbb78473d0f3a",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-desktop-riscv64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "server",
+          "name": "Server",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-amd64.iso",
+              "path": "26.10/ubuntu-26.10-live-server-amd64.iso",
+              "url": "https://releases.ubuntu.com/26.10/ubuntu-26.10-live-server-amd64.iso",
+              "size": 2897321984,
+              "checksum": {
+                "type": "sha256",
+                "value": "c8e9d797f718404bdb1e282f8466fe6f5f2e9f03c814bdf11b31326d45200929",
+                "url": "https://releases.ubuntu.com/26.10/SHA256SUMS"
+              },
+              "signatureUrl": "https://releases.ubuntu.com/26.10/SHA256SUMS.gpg",
+              "torrentUrl": "https://releases.ubuntu.com/26.10/ubuntu-26.10-live-server-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-arm64.iso",
+              "size": 3075813376,
+              "checksum": {
+                "type": "sha256",
+                "value": "45fec674fbce001b46447747a6d36964de3d2da2a5fbe2ece111b72dd769b4de",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-arm64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-riscv64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-riscv64.iso",
+              "size": 1744175104,
+              "checksum": {
+                "type": "sha256",
+                "value": "181e573016df4ee8b39efc4b91370f3062bab4edc24f36612cb0b3dcab6d03f8",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-riscv64.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-ppc64el.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-ppc64el.iso",
+              "size": 1699563520,
+              "checksum": {
+                "type": "sha256",
+                "value": "03591f291b1182b38af4fa8149023e060a1687e5241c317a729ad5d149f30dc7",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-ppc64el.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-s390x.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-s390x.iso",
+              "size": 754274304,
+              "checksum": {
+                "type": "sha256",
+                "value": "accd896f17d764727107fed9f8d5d78c51b8b6d79800f08002b754ecd53e0651",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-s390x.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "server-64k-page-size",
+          "name": "Server (64k page size)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-26.10-live-server-arm64+largemem.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-arm64+largemem.iso",
+              "size": 3087347712,
+              "checksum": {
+                "type": "sha256",
+                "value": "b94fb3b87dafb28ffc84dee4e3b045a7ba91173439e86eb0653c941c31c9e2fd",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-live-server-arm64+largemem.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "desktop-for-raspberry-pi",
+          "name": "Desktop for Raspberry Pi",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-26.10-preinstalled-desktop-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-preinstalled-desktop-arm64+raspi.img.xz",
+              "size": 3459588824,
+              "checksum": {
+                "type": "sha256",
+                "value": "629a6ba762d16e93f9ffe9becd9f8532c3811b7740e9101a0dd677a7129328ea",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-for-raspberry-pi",
+          "name": "Server for Raspberry Pi",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-26.10-preinstalled-server-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-preinstalled-server-arm64+raspi.img.xz",
+              "size": 1591546572,
+              "checksum": {
+                "type": "sha256",
+                "value": "52b6f58ce110bae34813729ddb54fe76333a1aa07ff5b032f47e41b7984c4b34",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image",
+          "name": "Server preinstalled image",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-26.10-preinstalled-server-riscv64.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/ubuntu-26.10-preinstalled-server-riscv64.img.xz",
+              "size": 1352689240,
+              "checksum": {
+                "type": "sha256",
+                "value": "ea14d57f67d6e3226acb38d93cf9811046a8699e4ed72aa3375343f31d7ea9c6",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.10/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "26.04.1",
       "channel": "lts",
       "codename": "Resolute Raccoon",
-      "releaseDate": "2026-04-23",
-      "eol": "2031-05-29",
-      "notesUrl": null,
+      "releaseDate": "2026-08-27",
+      "eol": "2031-05-31",
+      "notesUrl": "https://documentation.ubuntu.com/release-notes/26.04/1/",
       "editions": [
         {
           "id": "desktop",
@@ -26,7 +267,7 @@
               "file": "ubuntu-26.04.1-desktop-amd64.iso",
               "path": "26.04/ubuntu-26.04.1-desktop-amd64.iso",
               "url": "https://releases.ubuntu.com/26.04/ubuntu-26.04.1-desktop-amd64.iso",
-              "size": null,
+              "size": 6482409472,
               "checksum": {
                 "type": "sha256",
                 "value": "601e30fbf5d97759367c632e2c33630665039b7e2158fd068403da3ccf1bda1f",
@@ -40,15 +281,30 @@
               "format": "iso",
               "file": "ubuntu-26.04.1-desktop-arm64.iso",
               "path": null,
-              "url": "https://cdimage.ubuntu.com/releases/26.04/release/ubuntu-26.04.1-desktop-arm64.iso",
-              "size": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-desktop-arm64.iso",
+              "size": 4154798080,
               "checksum": {
                 "type": "sha256",
                 "value": "c54d196489d3c867975fb3bbb72ca52ec2e137456e305481f81096304e4d2517",
-                "url": "https://cdimage.ubuntu.com/releases/26.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/releases/26.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/releases/26.04/release/ubuntu-26.04.1-desktop-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-desktop-arm64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "ubuntu-26.04.1-desktop-riscv64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-desktop-riscv64.iso",
+              "size": 3840278528,
+              "checksum": {
+                "type": "sha256",
+                "value": "a7110f6c5e77e6f9d2dd1504a71c43d92c859fcee842bd0d51ca790e8afb5f21",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-desktop-riscv64.iso.torrent"
             }
           ]
         },
@@ -64,7 +320,7 @@
               "file": "ubuntu-26.04.1-live-server-amd64.iso",
               "path": "26.04/ubuntu-26.04.1-live-server-amd64.iso",
               "url": "https://releases.ubuntu.com/26.04/ubuntu-26.04.1-live-server-amd64.iso",
-              "size": null,
+              "size": 2927861760,
               "checksum": {
                 "type": "sha256",
                 "value": "cc8a95cde20f6ced61a322420de00f10cc3c90ced545daa46cb9c1a117f1d927",
@@ -78,27 +334,164 @@
               "format": "iso",
               "file": "ubuntu-26.04.1-live-server-arm64.iso",
               "path": null,
-              "url": "https://cdimage.ubuntu.com/releases/26.04/release/ubuntu-26.04.1-live-server-arm64.iso",
-              "size": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-arm64.iso",
+              "size": 3076861952,
               "checksum": {
                 "type": "sha256",
                 "value": "af78753c94b924c85c4964c670692a853f7c80299a4064e317edad95462e3168",
-                "url": "https://cdimage.ubuntu.com/releases/26.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/releases/26.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/releases/26.04/release/ubuntu-26.04.1-live-server-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-arm64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "ubuntu-26.04.1-live-server-riscv64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-riscv64.iso",
+              "size": 1690697728,
+              "checksum": {
+                "type": "sha256",
+                "value": "c44c0e9343a477e08943a140d21ac903ec891ece5c0a69f7424e198562f9f272",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-riscv64.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "ubuntu-26.04.1-live-server-ppc64el.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-ppc64el.iso",
+              "size": 1647902720,
+              "checksum": {
+                "type": "sha256",
+                "value": "3eb24626add663104f416bbdb3ca6ed37eabf8bb9a2308d4c9751d0976094826",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-ppc64el.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "ubuntu-26.04.1-live-server-s390x.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-s390x.iso",
+              "size": 775876608,
+              "checksum": {
+                "type": "sha256",
+                "value": "3756e8b969f67b59e85104cbabe5e1d86e02feb3835a90f6ea97ace86845b49a",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-s390x.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "server-64k-page-size",
+          "name": "Server (64k page size)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-26.04.1-live-server-arm64+largemem.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-arm64+largemem.iso",
+              "size": 3088396288,
+              "checksum": {
+                "type": "sha256",
+                "value": "2162508a288569897fd9035a6be206b16af9dee525ada692a43cecc9ae986797",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-live-server-arm64+largemem.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "desktop-for-raspberry-pi",
+          "name": "Desktop for Raspberry Pi",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-26.04.1-preinstalled-desktop-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-preinstalled-desktop-arm64+raspi.img.xz",
+              "size": 3078337648,
+              "checksum": {
+                "type": "sha256",
+                "value": "8216f54cc1df2fcf7de37530a7edccdd200abd7dcfbc5d4f0407df7513544d6a",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-for-raspberry-pi",
+          "name": "Server for Raspberry Pi",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-26.04.1-preinstalled-server-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-preinstalled-server-arm64+raspi.img.xz",
+              "size": 1528288776,
+              "checksum": {
+                "type": "sha256",
+                "value": "d59ef9c6e85b906995501f166d00726ab80b59be7b65cdeac0fa31b996053e13",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image",
+          "name": "Server preinstalled image",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-26.04.1-preinstalled-server-riscv64.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/ubuntu-26.04.1-preinstalled-server-riscv64.img.xz",
+              "size": 1278353776,
+              "checksum": {
+                "type": "sha256",
+                "value": "0fafe15634d3b66c3fcb4df17a5fde0b340d2d663af47e4fb5ffb59b9dddc94a",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": null
             }
           ]
         }
       ]
     },
     {
-      "version": "24.04.4",
+      "version": "24.04.5",
       "channel": "lts",
       "codename": "Noble Numbat",
-      "releaseDate": "2024-04-25",
-      "eol": "2029-05-31",
-      "notesUrl": null,
+      "releaseDate": "2026-09-10",
+      "eol": "2029-06-30",
+      "notesUrl": "https://documentation.ubuntu.com/release-notes/24.04/5/",
       "editions": [
         {
           "id": "desktop",
@@ -109,32 +502,32 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "ubuntu-24.04.4-desktop-amd64.iso",
-              "path": "24.04/ubuntu-24.04.4-desktop-amd64.iso",
-              "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04.4-desktop-amd64.iso",
-              "size": null,
+              "file": "ubuntu-24.04.5.1-desktop-amd64.iso",
+              "path": "24.04/ubuntu-24.04.5.1-desktop-amd64.iso",
+              "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04.5.1-desktop-amd64.iso",
+              "size": 6250332160,
               "checksum": {
                 "type": "sha256",
-                "value": "3a4c9877b483ab46d7c3fbe165a0db275e1ae3cfe56a5657e5a47c2f99a99d1e",
+                "value": "4da4a0c9035da8e68a59a838674f403f0a54472c78a83b4fb7f78d03588f85a7",
                 "url": "https://releases.ubuntu.com/24.04/SHA256SUMS"
               },
               "signatureUrl": "https://releases.ubuntu.com/24.04/SHA256SUMS.gpg",
-              "torrentUrl": "https://releases.ubuntu.com/24.04/ubuntu-24.04.4-desktop-amd64.iso.torrent"
+              "torrentUrl": "https://releases.ubuntu.com/24.04/ubuntu-24.04.5.1-desktop-amd64.iso.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
               "file": "ubuntu-24.04.5-desktop-arm64.iso",
               "path": null,
-              "url": "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.5-desktop-arm64.iso",
-              "size": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-desktop-arm64.iso",
+              "size": 3967463424,
               "checksum": {
                 "type": "sha256",
                 "value": "2be09ca883921bff6d8e6b0bfbafd13e32436553b7086f33bce3a4c5bad8bd14",
-                "url": "https://cdimage.ubuntu.com/releases/24.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/releases/24.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.5-desktop-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-desktop-arm64.iso.torrent"
             }
           ]
         },
@@ -150,7 +543,7 @@
               "file": "ubuntu-24.04.5-live-server-amd64.iso",
               "path": "24.04/ubuntu-24.04.5-live-server-amd64.iso",
               "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04.5-live-server-amd64.iso",
-              "size": null,
+              "size": 4080486400,
               "checksum": {
                 "type": "sha256",
                 "value": "97f3d7ffb032c3eb3b23d2c8be9cc76e60c2c1f2c0146ba5ba9fe01cafae0fd8",
@@ -164,15 +557,290 @@
               "format": "iso",
               "file": "ubuntu-24.04.5-live-server-arm64.iso",
               "path": null,
-              "url": "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.5-live-server-arm64.iso",
-              "size": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-arm64.iso",
+              "size": 3825512448,
               "checksum": {
                 "type": "sha256",
                 "value": "f12484464c7d4d73e2167e0a7dbda1e669f8fae9bcf778dc0944937034b320cb",
-                "url": "https://cdimage.ubuntu.com/releases/24.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/releases/24.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.5-live-server-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-arm64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "iso",
+              "file": "ubuntu-24.04.5-live-server-riscv64.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-riscv64.iso",
+              "size": 2654339072,
+              "checksum": {
+                "type": "sha256",
+                "value": "7e89eaea76c8acd2e0304cf0602ae5c5ec59d4c5d0a13ca3c30abe4d85b27385",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-riscv64.iso.torrent"
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "ubuntu-24.04.5-live-server-ppc64el.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-ppc64el.iso",
+              "size": 3164278784,
+              "checksum": {
+                "type": "sha256",
+                "value": "777c7951eaf26d44bfc13a1e57ac949ec6fd10106aa42ae733596f5d9faae9c7",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-ppc64el.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "ubuntu-24.04.5-live-server-s390x.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-s390x.iso",
+              "size": 1821728768,
+              "checksum": {
+                "type": "sha256",
+                "value": "852dcf76077c4bb0101de9464ea32372073d4bac9d28f994b1d1231871a8eb94",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-s390x.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "server-64k-page-size",
+          "name": "Server (64k page size)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-24.04.5-live-server-arm64+largemem.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-arm64+largemem.iso",
+              "size": 3849793536,
+              "checksum": {
+                "type": "sha256",
+                "value": "5e83b9fb8b644b8c1d1087210ace05263170d2c29f72a1513afb21626204db36",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-live-server-arm64+largemem.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "desktop-for-raspberry-pi",
+          "name": "Desktop for Raspberry Pi",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-desktop-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-desktop-arm64+raspi.img.xz",
+              "size": 3291661732,
+              "checksum": {
+                "type": "sha256",
+                "value": "f4a333eccfda8f1ae01a03da5ba6effb52fe32becc7dde27dc9a269200ac823a",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-for-raspberry-pi",
+          "name": "Server for Raspberry Pi",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-arm64+raspi.img.xz",
+              "size": 1368926404,
+              "checksum": {
+                "type": "sha256",
+                "value": "b23371a5c8d02f612c26e7c18cacb81c5a48f968c7c66a2645391320aa94351e",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image",
+          "name": "Server preinstalled image",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64.img.xz",
+              "size": 1258708816,
+              "checksum": {
+                "type": "sha256",
+                "value": "1cbd4b187f33356107daa637a5588d8f8a1744c7a012189e9c5e6d0b177825c4",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-icicle",
+          "name": "Server preinstalled image (Microchip Polarfire SoC FPGA Icicle Kit)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64+icicle.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64+icicle.img.xz",
+              "size": 1257499712,
+              "checksum": {
+                "type": "sha256",
+                "value": "910eaa7430a2dd0b502d32e6298e291ccc4fa5e2a19798bc9895eca9d35693ba",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-jh7110",
+          "name": "Server preinstalled image (StarFive JH7110 boards)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64+jh7110.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64+jh7110.img.xz",
+              "size": 1254728480,
+              "checksum": {
+                "type": "sha256",
+                "value": "f1e6ebe69948dabde72642b70b8f195f3844915288d78e0a600f8b5e3a5ffd6f",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-licheerv",
+          "name": "Server preinstalled image (Sipeed LicheeRV Dock)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64+licheerv.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64+licheerv.img.xz",
+              "size": 1109760184,
+              "checksum": {
+                "type": "sha256",
+                "value": "85067afbabcaf4d716ae8bd0c0050417265e539570db2743bbeb4af838738416",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-nezha",
+          "name": "Server preinstalled image (AllWinner Nezha)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64+nezha.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64+nezha.img.xz",
+              "size": 1107144224,
+              "checksum": {
+                "type": "sha256",
+                "value": "421ffb265135c1fc60b7be72b018e0204f9d75bc664177dcfa78fee769701a10",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-pic64gx",
+          "name": "Server preinstalled image (Microchip PIC64GX1000 Curiosity Kit)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64+pic64gx.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64+pic64gx.img.xz",
+              "size": 1251619508,
+              "checksum": {
+                "type": "sha256",
+                "value": "3d6adf06232f2989bec3eb7c8d3e194ef774e604ed0faec3bb64e611fd67d9d9",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-unmatched",
+          "name": "Server preinstalled image (SiFive Unmatched)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-24.04.5-preinstalled-server-riscv64+unmatched.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/ubuntu-24.04.5-preinstalled-server-riscv64+unmatched.img.xz",
+              "size": 1260431388,
+              "checksum": {
+                "type": "sha256",
+                "value": "81ea4a28c1d18a3c1cd9f75224ca17dc82cebac4cef9de4483c4faf781999e8d",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
             }
           ]
         }
@@ -182,9 +850,9 @@
       "version": "22.04.5",
       "channel": "lts",
       "codename": "Jammy Jellyfish",
-      "releaseDate": "2022-04-21",
-      "eol": "2027-06-01",
-      "notesUrl": null,
+      "releaseDate": "2024-09-12",
+      "eol": "2027-06-30",
+      "notesUrl": "https://discourse.ubuntu.com/t/jammy-jellyfish-release-notes/24668",
       "editions": [
         {
           "id": "desktop",
@@ -198,7 +866,7 @@
               "file": "ubuntu-22.04.5-desktop-amd64.iso",
               "path": "22.04/ubuntu-22.04.5-desktop-amd64.iso",
               "url": "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-desktop-amd64.iso",
-              "size": null,
+              "size": 4762707968,
               "checksum": {
                 "type": "sha256",
                 "value": "bfd1cee02bc4f35db939e69b934ba49a39a378797ce9aee20f6e3e3e728fefbf",
@@ -221,7 +889,7 @@
               "file": "ubuntu-22.04.5-live-server-amd64.iso",
               "path": "22.04/ubuntu-22.04.5-live-server-amd64.iso",
               "url": "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso",
-              "size": null,
+              "size": 2136926208,
               "checksum": {
                 "type": "sha256",
                 "value": "9bc6028870aef3f74f4e16b900008179e78b130e6b0b9a140635434a46aa98b0",
@@ -235,15 +903,259 @@
               "format": "iso",
               "file": "ubuntu-22.04.5-live-server-arm64.iso",
               "path": null,
-              "url": "https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.5-live-server-arm64.iso",
-              "size": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64.iso",
+              "size": 2061889536,
               "checksum": {
                 "type": "sha256",
                 "value": "eafec62cfe760c30cac43f446463e628fada468c2de2f14e0e2bc27295187505",
-                "url": "https://cdimage.ubuntu.com/releases/22.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/releases/22.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.5-live-server-arm64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64.iso.torrent"
+            },
+            {
+              "arch": "riscv64",
+              "format": "img.gz",
+              "file": "ubuntu-22.04.5-live-server-riscv64.img.gz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-riscv64.img.gz",
+              "size": 1676501370,
+              "checksum": {
+                "type": "sha256",
+                "value": "baf5c4b4e4c4c6d8c10a3ccd426c778801580eb1c9200e3cbfdad67b780f64c3",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            },
+            {
+              "arch": "ppc64le",
+              "format": "iso",
+              "file": "ubuntu-22.04.5-live-server-ppc64el.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-ppc64el.iso",
+              "size": 2158811136,
+              "checksum": {
+                "type": "sha256",
+                "value": "1f1006cbcbf2799e463469e3a4b0e76a848857c3f5394cd038d5a96c80899807",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-ppc64el.iso.torrent"
+            },
+            {
+              "arch": "s390x",
+              "format": "iso",
+              "file": "ubuntu-22.04.5-live-server-s390x.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-s390x.iso",
+              "size": 1269196800,
+              "checksum": {
+                "type": "sha256",
+                "value": "82f06df7b6aae5664ea26645568fa5d3f575dce8d81653096e734c7d6b634b3e",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-s390x.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "server-64k-page-size",
+          "name": "Server (64k page size)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "ubuntu-22.04.5-live-server-arm64+largemem.iso",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64+largemem.iso",
+              "size": 2086776832,
+              "checksum": {
+                "type": "sha256",
+                "value": "f38596c2573e3ad8036bfef2c0e3832458ec2e2b04d55f6276f3272b7b732bfa",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64+largemem.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "desktop-for-raspberry-pi",
+          "name": "Desktop for Raspberry Pi",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-desktop-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-desktop-arm64+raspi.img.xz",
+              "size": 2361375388,
+              "checksum": {
+                "type": "sha256",
+                "value": "74764944dd4a96bdddd30cf1ffc133ecbe5ebb1d1f2eaa34cd5f8fbb57211c86",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-for-raspberry-pi",
+          "name": "Server for Raspberry Pi",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-arm64+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-arm64+raspi.img.xz",
+              "size": 1038926560,
+              "checksum": {
+                "type": "sha256",
+                "value": "fd7687c5c9422a6c7ba4717c227bf6473fe4e0c954d5a9f664201dcecc63e822",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-armhf+raspi.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-armhf+raspi.img.xz",
+              "size": 997068648,
+              "checksum": {
+                "type": "sha256",
+                "value": "37002f7878411c1a9359b2734ab257459ac5785c7dfdd42ac4d8c1060ddd0a76",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-icicle",
+          "name": "Server preinstalled image (Microchip Polarfire SoC FPGA Icicle Kit)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-riscv64+icicle.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-riscv64+icicle.img.xz",
+              "size": 859566628,
+              "checksum": {
+                "type": "sha256",
+                "value": "95792688cb1ffa47368c42b6188dbcae40acb5b6f75d9be67f6b06f846f0ec62",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-licheerv",
+          "name": "Server preinstalled image (Sipeed LicheeRV Dock)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-riscv64+licheerv.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-riscv64+licheerv.img.xz",
+              "size": 757182988,
+              "checksum": {
+                "type": "sha256",
+                "value": "eee53cb8df81636bb25f53598c0f79b604d1caeb727108b23c1cedae6014ad4a",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-nezha",
+          "name": "Server preinstalled image (AllWinner Nezha)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-riscv64+nezha.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-riscv64+nezha.img.xz",
+              "size": 794384480,
+              "checksum": {
+                "type": "sha256",
+                "value": "f6eea55bf72d56721295ac6cdd1a9b47974cc3ca36ffd48535e75006060b1e8c",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-unmatched",
+          "name": "Server preinstalled image (SiFive Unmatched)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-riscv64+unmatched.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-riscv64+unmatched.img.xz",
+              "size": 856038872,
+              "checksum": {
+                "type": "sha256",
+                "value": "4281edf7bff64d7ac4f8bae5b1ded7b66937ec51dd62ddfdbc7851e5c8c68ecb",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server-preinstalled-image-visionfive",
+          "name": "Server preinstalled image (StarFive VisionFive)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "riscv64",
+              "format": "img.xz",
+              "file": "ubuntu-22.04.5-preinstalled-server-riscv64+visionfive.img.xz",
+              "path": null,
+              "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/ubuntu-22.04.5-preinstalled-server-riscv64+visionfive.img.xz",
+              "size": 848092388,
+              "checksum": {
+                "type": "sha256",
+                "value": "d83e1ff0109445aeb82eb37be60780d4dc5a8740f61e6b1c3e62edae5729c96e",
+                "url": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS"
+              },
+              "signatureUrl": "https://cdimage.ubuntu.com/ubuntu/releases/22.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": null
             }
           ]
         }
