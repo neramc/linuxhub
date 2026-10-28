@@ -34,6 +34,7 @@ import {
   HttpError,
   headSize,
   httpStats,
+  isAllowed,
   RobotsDisallowed,
   request,
   withFixtureScope,
@@ -170,8 +171,8 @@ const artifactsOf = (releases: ReleasesFile["releases"]): Artifact[] =>
  * Same for every distro: an artifact without a published size keeps the size
  * we already know for the same URL and checksum, else gets one HEAD on its
  * official URL (robots-aware, paced), else one on the same file at up to
- * three listed official mirrors (when the official host may not be asked,
- * e.g. robots.txt). Unknown stays null.
+ * five listed official mirrors that robots.txt lets us ask (when the
+ * official host may not be asked). Unknown stays null.
  */
 async function fillSizes(
   slug: string,
@@ -181,13 +182,19 @@ async function fillSizes(
   const known = new Map<string, number>();
   for (const a of artifactsOf(prev?.releases ?? []))
     if (a.size && a.checksum) known.set(`${a.url} ${a.checksum.value}`, a.size);
-  const mirrors = (currentMirrors(slug)?.mirrors ?? []).slice(0, 3);
+  const mirrors = currentMirrors(slug)?.mirrors ?? [];
   const missing = artifactsOf(releases).filter((a) => a.size === null);
   await mapLimit(missing, 4, async (a) => {
     a.size = (a.checksum && known.get(`${a.url} ${a.checksum.value}`)) || (await headSize(a.url));
+    // Up to five listed mirrors that robots.txt lets us ask (many official
+    // mirrors disallow bots; those are skipped without a request).
+    let asked = 0;
     for (const m of a.path ? mirrors : []) {
-      if (a.size) break;
-      a.size = await headSize(`${m.url}${a.path}`);
+      if (a.size || asked >= 5) break;
+      const url = `${m.url}${a.path}`;
+      if (!(await isAllowed(url))) continue;
+      asked++;
+      a.size = await headSize(url);
     }
   });
 }
