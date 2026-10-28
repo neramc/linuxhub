@@ -178,6 +178,56 @@ export function currentLines(rows: UbuntuRelease[], today: string): UbuntuReleas
     .sort((a, b) => compareVersions(b.line, a.line));
 }
 
+/* ---------- flavor support ---------- */
+
+/** Ubuntu project documentation: the official statement on how long flavors support a release. */
+export const FLAVOR_POLICY_URL = "https://ubuntu.com/project/docs/release-team/ubuntu-releases/";
+
+/**
+ * The number of years flavors support an LTS release, from the sentence
+ * "Flavors generally support their releases for 3 years in LTS versions
+ * (although there can be exceptions)" of the Ubuntu project documentation.
+ * Throws when the sentence is gone or reworded: the rule is then no longer
+ * the project's statement, and the sync keeps its last good data.
+ */
+export function parseFlavorLtsYears(html: string): number {
+  const years = textOf(html).match(
+    /Flavors generally support their releases for (\d+) years in LTS versions/,
+  )?.[1];
+  if (!years || Number(years) < 1)
+    throw new Error(`${FLAVOR_POLICY_URL}: the flavor support statement is gone`);
+  return Number(years);
+}
+
+export async function flavorLtsYears(): Promise<number> {
+  return parseFlavorLtsYears(await getText(FLAVOR_POLICY_URL, { accept: "text/html" }));
+}
+
+/**
+ * Last day of support of a flavor's release, for a flavor that publishes no
+ * date machine-readably: an LTS release is supported `ltsYears` years from the
+ * month it came out (the version number "YY.MM" names that month), anything
+ * else for as long as Ubuntu supports the interim release (nine months, the
+ * flavors being built from and updated through the Ubuntu archive).
+ */
+export function flavorSupportEnd(row: UbuntuRelease, ltsYears: number): string | null {
+  if (!row.lts) return row.eol;
+  const [year, month] = row.line.split(".").map(Number);
+  return year && month ? periodEnd(`${2000 + year + ltsYears}-${month}`) : null;
+}
+
+/**
+ * The version directories of a flavor's `releases/` listing that belong to
+ * `line`, newest first: "26.04.1/" and "26.04/" for "26.04". Code-name links
+ * ("resolute/") and other lines are not versions of it.
+ */
+export function lineVersions(names: string[], line: string): string[] {
+  return names
+    .flatMap((name) => name.match(/^(\d+\.\d+(?:\.\d+)*)\/$/)?.[1] ?? [])
+    .filter((version) => version.split(".").slice(0, 2).join(".") === line)
+    .sort((a, b) => compareVersions(b, a));
+}
+
 /* ---------- image names and directories ---------- */
 
 const ARCHES: Record<string, Artifact["arch"]> = {

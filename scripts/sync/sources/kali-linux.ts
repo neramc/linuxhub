@@ -6,15 +6,21 @@
  *     VM images (tree kali-<version>/), whose `?mirrorlist` pages give each
  *     direct image's exact size and SHA-256 and every mirror that carries it,
  *     and whose `README?mirrorstats` gives mirror coordinates and health;
- *   - kali.download, Kali's own CDN, for the ARM board, NetHunter Pro,
- *     NetHunter Generic and cloud images (trees arm-images/, nethunterpro-images/,
- *     nethunter-images/, cloud-images/); it publishes no sizes, so those stay
- *     null for run.ts to fill.
+ *   - kali.download, Kali's own CDN, for the ARM board, NetHunter Generic and
+ *     cloud images (trees arm-images/, nethunter-images/, cloud-images/); it
+ *     publishes no sizes, so those stay null for run.ts to fill. It also carries
+ *     the redirector's tree (base-images/, listed as a mirror root of its own).
  * Checksums come from the SHA256SUMS file next to each image (signed with
- * SHA256SUMS.gpg for the cdimage tree) and must equal the value printed on the
- * download page (and the redirector's own hash); a disagreement throws. The
- * release date comes from the official release history page (kali.org/releases),
- * with the blog feed as fallback.
+ * SHA256SUMS.gpg for the base tree) and must equal the value printed on the
+ * download page (and the redirector's own hash); a disagreement throws. The base
+ * tree's SHA256SUMS, listing and torrents are read from kali.download/base-images/
+ * (changed 2026-10-28): cdimage.kali.org now answers a request for any file with a
+ * redirect to a mirror chosen by the requester's location, and several of those
+ * mirrors forbid bots in robots.txt (the sync then failed on some runs), while the
+ * CDN serves the identical tree directly (same files, sizes and dates).
+ * `checksum.url` and `signatureUrl` therefore point there, `url` and the torrent
+ * link stay the redirector URLs the page links. The release date comes from the
+ * official release history page (kali.org/releases), with the blog feed as fallback.
  *
  * Version. The page offers exactly one point release (Kali is rolling and ships
  * a snapshot every quarter), so that is the only release. cdimage's current/
@@ -27,7 +33,8 @@
  * torrents: the .iso itself is not on any server. The page links the torrent,
  * so `url` and `torrentUrl` are that torrent, `file` names the image it
  * delivers (the checksum is that image's), `path` is null and the size is the
- * image length inside the torrent's first bytes (a Range request).
+ * image length inside the torrent's first bytes (a Range request, made on the
+ * kali.download copy of the torrent).
  *
  * Excluded for every distro alike: weekly builds (continuous builds), Docker
  * and LXC containers, WSL (Microsoft Store), Vagrant boxes and cloud
@@ -38,8 +45,17 @@
  * because the page publishes no architecture for them and the schema requires
  * one (a guess would be wrong for the 32-bit devices); the NetHunter Generic
  * ARM64 and ARMhf packages, which name their architecture, are included.
- * NetHunter Pro images other than the amd64 one name no architecture; they are
- * for the Pine64 PinePhone, PinePhone Pro and Qualcomm SDM845 phones (ARM64).
+ *
+ * NetHunter Pro (changed 2026-10-28). The download page still offers it, but since
+ * 2026.3 only as .tar.gz archives (ten: amd64, Pine64 PinePhone/PinePhone Pro/
+ * PineTab/PineTab2, Librem 5 and four Qualcomm SoCs), where 2026.2 had .img.xz and
+ * .tar.xz. FORMATS has no tar.gz (the same reason as the .7z VMs and the GCE
+ * .tar.gz of other distros), and a wrong label such as tar.xz would mislead, so
+ * those images are left out and the source no longer requires the tree. If the
+ * schema gains tar.gz, deleting the one `continue` in classify() lists them again;
+ * images in a supported format are still read (img.xz and tar.xz: the PC image
+ * names its architecture, the others are phones, ARM64). The core editions
+ * (installer, netinst, live, ARM boards, cloud, NetHunter Generic) stay required.
  */
 
 import type { Artifact, Edition, Mirror, Release } from "../../../src/lib/data-schemas";
@@ -61,6 +77,13 @@ const DOWNLOAD = "https://www.kali.org/get-kali/";
 const HISTORY = "https://www.kali.org/releases/";
 const FEED = "https://www.kali.org/rss.xml";
 const CDIMAGE = "https://cdimage.kali.org/";
+/**
+ * Kali's own CDN carries the same base-image tree as cdimage.kali.org (same files,
+ * sizes and dates). cdimage.kali.org answers a request for any file in it with a
+ * redirect to a mirror picked by the requester's location, and some of those mirrors
+ * disallow bots in robots.txt, so checksums, listings and torrents are read here.
+ */
+const BASE_TREE = "https://kali.download/base-images/";
 const MIRRORSTATS = `${CDIMAGE}README?mirrorstats`;
 
 type Arch = Artifact["arch"];
@@ -112,7 +135,7 @@ const REQUIRED_BASE: [edition: string, arch: Arch][] = [
 const BASE_URL =
   /^https:\/\/cdimage\.kali\.org\/kali-(?<version>\d{4}\.\d+)\/kali-linux-\k<version>-(?<type>installer(?:-netinst|-everything|-purple)?|live(?:-everything)?)-(?<arch>amd64|arm64)\.iso(?<torrent>\.torrent)?$/;
 const DEVICE_URL =
-  /^https:\/\/kali\.download\/(?<tree>arm-images|nethunterpro-images|cloud-images|nethunter-images)\/kali-(?<version>\d{4}\.\d+)\/(?<file>kali-(?:linux|nethunterpro|nethunter)-\k<version>-(?<stem>[a-z0-9.-]+?)\.(?<ext>img\.xz|tar\.xz|zip))$/;
+  /^https:\/\/kali\.download\/(?<tree>arm-images|nethunterpro-images|cloud-images|nethunter-images)\/kali-(?<version>\d{4}\.\d+)\/(?<file>kali-(?:linux|nethunterpro|nethunter)-\k<version>-(?<stem>[a-z0-9.-]+?)\.(?<ext>img\.xz|tar\.xz|tar\.gz|zip))$/;
 
 const FORMAT_OF: Record<string, Format> = { "img.xz": "img.xz", "tar.xz": "tar.xz", zip: "zip" };
 
@@ -234,7 +257,7 @@ function classify(cards: Card[]): { version: string; offered: Offered[] } {
       offered.push({
         kind: "base",
         version: base.version,
-        dir: `${CDIMAGE}kali-${base.version}/`,
+        dir: `${BASE_TREE}kali-${base.version}/`,
         file:
           card.url
             .split("/")
@@ -251,6 +274,8 @@ function classify(cards: Card[]): { version: string; offered: Offered[] } {
     }
     const device = card.url.match(DEVICE_URL)?.groups;
     if (device?.tree && device.version && device.file && device.stem && device.ext) {
+      // NetHunter Pro is a .tar.gz archive since 2026.3; FORMATS has no tar.gz (see the header).
+      if (device.tree === "nethunterpro-images" && device.ext === "tar.gz") continue;
       const format = FORMAT_OF[device.ext];
       const image = deviceImage(device.tree, device.stem, card.label);
       if (!image) continue; // per-device NetHunter (Android) package: see the header
@@ -284,7 +309,7 @@ async function offeredImages() {
   for (const [id, arch] of REQUIRED_BASE)
     if (!offered.some((o) => o.tree === "base" && o.edition.id === id && o.arch === arch))
       throw new Error(`Kali ${version} ${id} (${arch}) is no longer offered on the download page`);
-  for (const tree of ["arm-images", "nethunterpro-images", "cloud-images", "nethunter-images"])
+  for (const tree of ["arm-images", "cloud-images", "nethunter-images"])
     if (!offered.some((o) => o.tree === tree))
       throw new Error(`the Kali download page lists no ${tree} images`);
   const notes = html.match(
@@ -381,7 +406,7 @@ export default defineSource({
         throw new Error(`${torrent} is linked on the download page but not in ${image.dir}`);
 
       let size: number | null = null;
-      if (image.torrentOnly) size = await torrentLength(image.card.url, image.file);
+      if (image.torrentOnly) size = await torrentLength(`${image.dir}${served}`, image.file);
       else if (image.kind === "base") {
         const info = await mirrorbitsFile(image.card.url);
         if (info.sha256 && info.sha256 !== sha)

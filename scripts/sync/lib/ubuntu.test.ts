@@ -2,11 +2,14 @@ import { describe, expect, it } from "vitest";
 import {
   anchors,
   currentLines,
+  flavorSupportEnd,
   type ImageDir,
   imageArtifact,
   imagesMentioned,
+  lineVersions,
   newestBy,
   parseDate,
+  parseFlavorLtsYears,
   parseImageName,
   parseReleaseList,
 } from "./ubuntu";
@@ -127,6 +130,71 @@ describe("currentLines", () => {
       table([row(["Ubuntu 27.04", "Tenacious T-Rex", "", released("Apr 22, 2027"), "TBD", "TBD"])]),
     );
     expect(() => currentLines(broken, "2027-05-01")).toThrow(/no end of support for 27.04/);
+  });
+});
+
+const POLICY = `<h2 id="ubuntu-flavors">Ubuntu flavors</h2>
+<p>Flavors generally support their releases for 3 years in LTS versions (although
+there can be exceptions).</p>`;
+
+describe("parseFlavorLtsYears", () => {
+  it("reads the number of years from the flavor support sentence", () => {
+    expect(parseFlavorLtsYears(POLICY)).toBe(3);
+    expect(parseFlavorLtsYears(POLICY.replace("3 years", "2 years"))).toBe(2);
+  });
+
+  it("fails closed when the sentence is gone or reworded", () => {
+    expect(() => parseFlavorLtsYears("<p>Flavors are community projects.</p>")).toThrow(
+      /support statement is gone/,
+    );
+    expect(() => parseFlavorLtsYears(POLICY.replace("3 years", "three years"))).toThrow(
+      /support statement is gone/,
+    );
+    expect(() => parseFlavorLtsYears(POLICY.replace("3 years", "0 years"))).toThrow(
+      /support statement is gone/,
+    );
+  });
+});
+
+describe("flavorSupportEnd", () => {
+  const rows = parseReleaseList(HTML);
+  const end = (version: string, years = 3) => {
+    const found = rows.find((r) => r.version === version);
+    if (!found) throw new Error(version);
+    return flavorSupportEnd(found, years);
+  };
+
+  it("ends an LTS release the given number of years after its release month", () => {
+    expect(end("26.04.1")).toBe("2029-04-30");
+    expect(end("24.04.5")).toBe("2027-04-30");
+    expect(end("24.04.5", 5)).toBe("2029-04-30");
+  });
+
+  it("ends an interim release with Ubuntu's own end of standard support", () => {
+    expect(end("26.10")).toBe("2027-07-31");
+  });
+});
+
+describe("lineVersions", () => {
+  const names = [
+    "16.04/",
+    "24.04.1/",
+    "24.04.5/",
+    "24.04/",
+    "24.04.10/",
+    "26.04/",
+    "noble/",
+    "x.txt",
+  ];
+
+  it("lists a line's version directories, newest first", () => {
+    expect(lineVersions(names, "24.04")).toEqual(["24.04.10", "24.04.5", "24.04.1", "24.04"]);
+    expect(lineVersions(names, "26.04")).toEqual(["26.04"]);
+  });
+
+  it("ignores code-name links, other lines and files", () => {
+    expect(lineVersions(names, "22.04")).toEqual([]);
+    expect(lineVersions(["noble/", "24.04.5.iso"], "24.04")).toEqual([]);
   });
 });
 

@@ -12,12 +12,13 @@
  *   the directory's SHA256SUMS (signature = SHA256SUMS.gpg), .torrent from the
  *   autoindex. releases.ubuntu.com/streams/v1/ (simplestreams) publishes exact
  *   sizes for the amd64 ISOs; every other size is left to run.ts.
- * - Each flavor's own download page decides what is offered (file names named on
- *   it) and states how long each release is supported; the files, checksums and
- *   torrents come from cdimage.ubuntu.com/<flavor>/releases/<point>/release/.
- *   Flavors support an LTS for 3 years, so they offer fewer lines than Ubuntu.
- *   Kubuntu/Lubuntu/Ubuntu MATE say "until <month> <year>" (→ last day of the
- *   month); Xubuntu's release pages give the exact day.
+ * - Each flavor's own download page (Kubuntu, Xubuntu, Ubuntu MATE) decides what is
+ *   offered (file names named on it) and states how long each release is supported;
+ *   the files, checksums and torrents come from
+ *   cdimage.ubuntu.com/<flavor>/releases/<point>/release/. Flavors support an LTS for
+ *   3 years, so they offer fewer lines than Ubuntu. Kubuntu/Ubuntu MATE say "until
+ *   <month> <year>" (→ last day of the month); Xubuntu's release pages give the
+ *   exact day. Lubuntu is the exception, see below.
  *
  * Ubuntu: every supported line, each with its newest point release. Editions are
  * the install media of the download pages (Desktop, Server for every
@@ -39,6 +40,36 @@
  * accept terms before the download; the ISO itself is a public file in the
  * release tree, so it is listed.
  *
+ * Lubuntu (changed 2026-10-28). lubuntu.me/robots.txt is now "User-agent: * /
+ * Disallow: /", so nothing on lubuntu.me (download page, release announcements) is
+ * read any more. Lubuntu is rebuilt from what bots may read:
+ * - Lines and files: the Ubuntu release table says which Ubuntu lines exist;
+ *   cdimage.ubuntu.com/lubuntu/releases/ (Canonical's image host for the flavor)
+ *   says which of them Lubuntu published (`<version>/release/`; `beta/` is never
+ *   read, dailies and pre-releases are excluded as for every distro). Per line the
+ *   newest version directory with a `release/` wins, and the newest desktop ISO per
+ *   architecture of its SHA256SUMS (a file of another kind or variant, none today,
+ *   makes the source fail so that someone decides on an edition for it). The old
+ *   page offered exactly these desktop amd64 ISOs on 2026-10-20 (26.10, 26.04.1,
+ *   24.04.5), as does the tree.
+ * - End of support: the Ubuntu project documentation ("Ubuntu releases",
+ *   ubuntu.com/project/docs/release-team/ubuntu-releases/) states "Flavors
+ *   generally support their releases for 3 years in LTS versions (although there
+ *   can be exceptions)", read from the page on every run (the number comes from the
+ *   sentence; the source fails when it is gone). An LTS therefore ends the last day
+ *   of the month 3 years after its release month (the "YY.MM" of the version names
+ *   it): 26.04 → 2029-04-30, 24.04 → 2027-04-30. An interim release ends with
+ *   Ubuntu's own end of standard support (nine months, the release table):
+ *   26.10 → 2027-07-31. Deviation: this is the project-wide rule, not the date the
+ *   Lubuntu team announces (the statement allows exceptions); when the Lubuntu
+ *   page was last read (2026-10-20) it said July 2027 (26.10), April 2029 (26.04.1)
+ *   and April 2027 (24.04.5), the same dates.
+ * - Release notes: the "Lubuntu Release Notes" link in Ubuntu's own release notes
+ *   (documentation.ubuntu.com/release-notes/<line>/, "Official flavors"); a line
+ *   whose notes name none (26.10 today) links those Ubuntu release notes instead.
+ *   The links are stored for readers, nothing on lubuntu.me is fetched.
+ * - Release dates are Ubuntu's (same day), as for the other flavors.
+ *
  * Mirrors. Ubuntu: Launchpad's list of official "CD Image" mirrors (enabled,
  * status Official, HTTPS); they mirror releases.ubuntu.com, so only the amd64
  * images carry a mirror path. Flavors: images exist only on Canonical's
@@ -51,7 +82,10 @@
  * Fails closed (the sync then keeps its last good data) when the release table or
  * a flavor page changes shape, when a page offers a file the directory has no
  * checksum or listing for, when an offered flavor release has no end of support,
- * or when a supported Ubuntu line has no desktop or server amd64 image.
+ * or when a supported Ubuntu line has no desktop or server amd64 image. Lubuntu:
+ * when the flavor support sentence is gone, when no supported release is found in
+ * its tree, when a release directory has no image of its line or no desktop amd64
+ * ISO, or holds an image kind this source has no edition for.
  *
  * Scope notes:
  * - The pages link just the two newest Ubuntu releases for Raspberry Pi, ARM,
@@ -61,22 +95,29 @@
  *   riscv64 and Raspberry Pi images; 24.04: also the generic RISC-V image next to
  *   the per-board ones the RISC-V page lists).
  * - Release dates of the flavors' point releases are Ubuntu's (same day).
+ * - A supported Ubuntu line that Lubuntu has not published (no `release/` directory in
+ *   its tree) is not offered until it is.
  * - Xubuntu's "Minimal, RISC-V 64-bit (experimental)" torrent is on its page, so
  *   that ISO is listed.
  */
 
 import type { Artifact, Edition, Mirror, Release } from "../../../src/lib/data-schemas";
 import type { Desktop } from "../../../src/lib/taxonomy";
-import { getJson, getText } from "../http";
+import { getJson, getText, HttpError } from "../http";
+import { listDirectory } from "../lib/dirlist";
 import { countryCode, originAsMirror, withSlash } from "../lib/mirrors";
 import {
   anchors,
   CDIMAGE_HOST,
   currentLines,
+  FLAVOR_POLICY_URL,
+  flavorLtsYears,
+  flavorSupportEnd,
   type ImageDir,
   imageArtifact,
   imageDir,
   imagesMentioned,
+  lineVersions,
   newestBy,
   parseDate,
   parseImageName,
@@ -505,24 +546,107 @@ const xubuntu = flavorSource({
   },
 });
 
-const lubuntu = flavorSource({
-  slug: "lubuntu",
-  dir: "lubuntu",
-  page: "https://lubuntu.me/downloads/",
-  editions: {
-    desktop: { id: "desktop", name: "Desktop", desktop: "lxqt", kind: "desktop", order: 0 },
-  },
-  chunks: (html) => html.split(/<div class="gca-column/).slice(1),
-  async support(chunk) {
-    const until = chunk.match(new RegExp(`Supported until\\s+${MONTH_YEAR}`))?.[1];
+/* ---------- Lubuntu ---------- */
+
+const LUBUNTU_TREE = `${CDIMAGE_HOST}lubuntu/releases/`;
+const LUBUNTU_EDITIONS: Partial<Record<string, EditionDef>> = {
+  desktop: { id: "desktop", name: "Desktop", desktop: "lxqt", kind: "desktop", order: 0 },
+};
+
+/**
+ * Lubuntu's release notes: the link Ubuntu's own release notes give for the
+ * flavor (they list the official flavors' notes), else those release notes
+ * themselves. Null when Ubuntu has no release-notes page for the line.
+ */
+async function lubuntuNotes(line: string): Promise<{ page: string; notes: string } | null> {
+  const page = `https://documentation.ubuntu.com/release-notes/${line}/`;
+  try {
+    const html = await getText(page, { accept: "text/html" });
+    return { page, notes: linkTo(html, page, /^Lubuntu Release Notes$/) ?? page };
+  } catch (error) {
+    if (error instanceof HttpError && error.status === 404) return null;
+    throw error;
+  }
+}
+
+/**
+ * The newest published release directory of `line` in Lubuntu's tree and the
+ * install images it holds. A version directory without a `release/` yet (only
+ * `beta/`) is skipped: that point release is not out.
+ */
+async function lubuntuImages(line: string, names: string[]) {
+  for (const version of lineVersions(names, line)) {
+    const root = `lubuntu/releases/${version}/release/`;
+    let dir: ImageDir;
+    try {
+      dir = await imageDir(`${CDIMAGE_HOST}${root}`);
+    } catch (error) {
+      if (error instanceof HttpError && error.status === 404) continue;
+      throw error;
+    }
+    const images = [...dir.sums.keys()].flatMap((file) => {
+      const image = parseImageName(file, "lubuntu");
+      return image?.line === line ? [{ image }] : [];
+    });
+    if (!images.length) throw new Error(`${dir.url}SHA256SUMS has no Lubuntu ${line} image`);
     return {
-      eol: until ? periodEnd(until) : null,
-      notes: linkTo(chunk, "https://lubuntu.me/", /^the release announcement$/i),
+      dir,
+      root,
+      images: newestBy(images, ({ image }) => `${image.kind}/${image.arch}/${image.variant}`).map(
+        (found) => found.image,
+      ),
     };
-  },
-  async mirrors() {
-    return { sources: ["https://lubuntu.me/downloads/"], mirrors: [cdimageOrigin()] };
-  },
+  }
+  return null;
+}
+
+async function lubuntuReleases(ctx: SyncContext): Promise<ReleasesResult> {
+  const rows = await ubuntuReleaseList();
+  const ltsYears = await flavorLtsYears();
+  const names = await listDirectory(LUBUNTU_TREE);
+  const sources = [LUBUNTU_TREE, RELEASE_LIST_URL, FLAVOR_POLICY_URL];
+  const releases: Release[] = [];
+  for (const row of currentLines(rows, ctx.today)) {
+    const eol = flavorSupportEnd(row, ltsYears);
+    if (!eol) throw new Error(`Lubuntu ${row.line}: cannot work out the end of support`);
+    if (eol < ctx.today) continue;
+    const found = await lubuntuImages(row.line, names);
+    if (!found) continue; // Lubuntu has not published this Ubuntu release (yet)
+    const groups = new Map<string, { def: EditionDef; artifacts: Artifact[] }>();
+    for (const image of found.images) {
+      const def = image.variant === null ? LUBUNTU_EDITIONS[image.kind] : undefined;
+      if (!def)
+        throw new Error(`${found.dir.url} holds an image without an edition here: ${image.file}`);
+      const group = groups.get(def.id) ?? { def, artifacts: [] };
+      group.artifacts.push(imageArtifact(found.dir, image, `${found.root}${image.file}`));
+      groups.set(def.id, group);
+    }
+    if (!groups.get("desktop")?.artifacts.some((a) => a.arch === "x86_64"))
+      throw new Error(`Lubuntu ${row.line}: no x86_64 desktop image in ${found.dir.url}`);
+    const version =
+      found.images.map((i) => i.version).sort((a, b) => compareVersions(b, a))[0] ?? row.line;
+    const notes = await lubuntuNotes(row.line);
+    if (notes) sources.push(notes.page);
+    releases.push({
+      version,
+      channel: row.lts ? "lts" : "stable",
+      codename: row.codename,
+      releaseDate: rows.find((r) => r.version === version)?.date ?? null,
+      eol,
+      notesUrl: notes?.notes ?? null,
+      editions: toEditions(groups),
+    });
+  }
+  if (!releases.length) throw new Error(`${LUBUNTU_TREE}: no supported Lubuntu release found`);
+  return { sources, releases };
+}
+
+const lubuntu = defineSource({
+  slug: "lubuntu",
+  hosts: HOSTS,
+  releases: lubuntuReleases,
+  // Lubuntu names no mirror list: Canonical's cdimage server is the single origin.
+  mirrors: async () => ({ sources: [LUBUNTU_TREE], mirrors: [cdimageOrigin()] }),
 });
 
 const ubuntuMate = flavorSource({

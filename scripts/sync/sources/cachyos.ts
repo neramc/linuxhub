@@ -4,9 +4,11 @@
  * Official sources, and what each one is used for:
  * - cachyos.org/download/: what the project offers, one <astro-island> per
  *   edition (Desktop Edition, Handheld Edition) whose props carry the direct
- *   URL on the project's CDN (cdn77.cachyos.org/ISO/<dir>/<YYMMDD>/<file>),
- *   the torrent, and the magnet link whose web seeds (ws=) are the mirrors
- *   that carry that very file. Only what the page offers is listed: the ISO
+ *   URL, the torrent, and the magnet link whose web seeds (ws=) are the hosts
+ *   that carry that very file (the project's CDN, its own regional servers and
+ *   third-party mirrors). The file URL on the project's CDN
+ *   (cdn77.cachyos.org/ISO/<dir>/<YYMMDD>/<file>) is one of those web seeds and
+ *   is the canonical `url`. Only what the page offers is listed: the ISO
  *   origin also keeps cli/, kde/ and testing/ trees that the page does not
  *   offer (excluded for every distro alike).
  * - mirror.cachyos.org/ISO/<dir>/<YYMMDD>/: the origin of the checksum
@@ -35,6 +37,24 @@
  * null. The SourceForge copy that the page also links is not listed: its
  * redirector is closed to bots and CachyOS has its own mirror network.
  *
+ * Direct link (changed October 2026). The page's direct link used to be the CDN
+ * file; since the page of 2026-10-23 it is https://mirror.zyner.org/cachyos/ISO/…
+ * (both editions). That host is an official mirror, not the project's CDN: the
+ * project's own mirror list (cachyos-mirrorlist above) names it "Sweden Mirror much
+ * thanks to Zyner!", tier 1, code SE, root https://mirror.zyner.org/cachyos/, and the
+ * page lists it among the web seeds of both ISOs. So it is listed as a mirror (the
+ * root is the direct link's, which is also the mirror list's; the web seed entry
+ * writes it with another prefix, /mirror/cachyos/) but not made the canonical URL:
+ * `url` stays on the CDN, which the same page lists as a web seed, the wiki's
+ * download page uses for the signature, and which answers HEAD with the file (same
+ * length as the origin). `hosts` is unchanged because no artifact, checksum,
+ * signature or torrent URL points at a mirror, and the strategy stays `redirector`
+ * (the CDN picks the server; one third-party mirror would not be a CDN). The source
+ * fails when the page's layout changes or no longer lists the CDN as a web seed. A
+ * direct-link host that is not a listed web seed is not trusted: it changes nothing.
+ * mirror.zyner.org's robots.txt closes it to LinuxhubBot (or it does not answer), so
+ * run.ts cannot check its root and keeps it on the project's word.
+ *
  * Deviations: desktop is null for the Desktop Edition because no official page
  * says which desktop its live session runs (the installer offers 17+); the
  * Handheld Edition is KDE Plasma ("only KDE Plasma is supported", download
@@ -53,6 +73,8 @@ const SITE = "https://cachyos.org/";
 const PAGE = `${SITE}download/`;
 const BLOG = `${SITE}blog/`;
 const ORIGIN = "https://mirror.cachyos.org/ISO/";
+/** The project's CDN (CDN77), the canonical host of the ISOs. */
+const CDN_HOST = "cdn77.cachyos.org";
 const CHANGELOG = "https://wiki.cachyos.org/cachyos_basic/changelogs/gui_installer/";
 const MIRRORLIST =
   "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachyos-mirrorlist/cachyos-mirrorlist";
@@ -117,11 +139,14 @@ async function readPage(): Promise<Offered[]> {
     const direct = str("direct_url");
     const title = str("title");
     if (!direct || !title) continue;
+    // The direct link may sit on the CDN, the origin or a mirror (mirror.zyner.org
+    // since October 2026), so only its layout is fixed: <root>/ISO/<dir>/<date>/<file>.
     const m = direct.match(
-      /^https:\/\/cdn77\.cachyos\.org\/ISO\/([a-z0-9-]+)\/(\d{6})\/(cachyos-\1-linux-\2\.iso)$/,
+      /^(https:\/\/[^/]+\/(?:[a-z0-9._-]+\/)*?)ISO\/([a-z0-9-]+)\/(\d{6})\/(cachyos-\2-linux-\3\.iso)$/,
     );
-    if (!m?.[1] || !m[2] || !m[3]) throw new Error(`unexpected direct URL ${direct} on ${PAGE}`);
-    const [, dir, date, file] = m;
+    if (!m?.[1] || !m[2] || !m[3] || !m[4])
+      throw new Error(`unexpected direct URL ${direct} on ${PAGE}`);
+    const [, directRoot, dir, date, file] = m;
     const tail = `ISO/${dir}/${date}/${file}`;
     const seeds = [...(str("magnet_url") ?? "").matchAll(/[?&]ws=([^&]+)/g)].flatMap((w) => {
       const seed = decodeURIComponent(w[1] ?? "");
@@ -130,14 +155,22 @@ async function readPage(): Promise<Offered[]> {
         : [];
     });
     if (!seeds.length) throw new Error(`no web seeds for ${title} on ${PAGE}`);
+    // The file's canonical URL is on the project's own CDN, which the page lists as a web seed.
+    const cdn = seeds.find((root) => new URL(root).hostname === CDN_HOST);
+    if (!cdn) throw new Error(`${title} on ${PAGE} no longer lists ${CDN_HOST} as a web seed`);
+    // The direct link is used only for the layout of a mirror the page also lists as a web seed
+    // (its direct link is on mirror.zyner.org, whose seed entry has another prefix); a host the
+    // page does not list as carrying the file is not trusted and changes nothing.
+    const directHost = new URL(directRoot).hostname;
+    const roots = seeds.map((root) => (new URL(root).hostname === directHost ? directRoot : root));
     offered.push({
       title,
       dir,
       date,
       file,
-      url: direct,
+      url: `${cdn}${tail}`,
       torrent: str("torrent_url"),
-      seeds: [...new Set(seeds)],
+      seeds: [...new Set(roots)],
     });
   }
   if (!offered.length) throw new Error(`no editions on ${PAGE}`);
@@ -156,7 +189,7 @@ const slug = (s: string) =>
 
 export default defineSource({
   slug: "cachyos",
-  hosts: ["cdn77.cachyos.org", "mirror.cachyos.org", "torrents.soulharsh007-codewerkstatt.de"],
+  hosts: [CDN_HOST, "mirror.cachyos.org", "torrents.soulharsh007-codewerkstatt.de"],
   async releases(ctx) {
     const offered = await page(ctx);
 
