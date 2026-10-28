@@ -1,0 +1,639 @@
+{
+  "slug": "kali-linux",
+  "sources": [
+    "https://www.kali.org/get-kali/",
+    "https://cdimage.kali.org/README?mirrorstats",
+    "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-amd64.iso?mirrorlist",
+    "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-amd64.iso?mirrorlist",
+    "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-arm64.iso?mirrorlist",
+    "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso?mirrorlist",
+    "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso?mirrorlist"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://kali.itsec.am/kali-images/",
+      "country": "AM",
+      "name": "kali.itsec.am",
+      "lat": 40.25,
+      "lon": 45,
+      "score": null
+    },
+    {
+      "url": "https://gsl-syd.mm.fcix.net/kali-images/",
+      "country": "AU",
+      "name": "gsl-syd.mm.fcix.net",
+      "lat": -33.8978,
+      "lon": 151.1899,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ourhost.az/kali-images/",
+      "country": "AZ",
+      "name": "mirror.ourhost.az",
+      "lat": 40.3771,
+      "lon": 49.8875,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/kali-images/",
+      "country": "BG",
+      "name": "mirror.telepoint.bg",
+      "lat": 42.696,
+      "lon": 23.332,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.netix.net/kali-images/",
+      "country": "BG",
+      "name": "mirrors.netix.net",
+      "lat": 42.696,
+      "lon": 23.332,
+      "score": null
+    },
+    {
+      "url": "https://kali.mirror.rafal.ca/kali-images/",
+      "country": "CA",
+      "name": "kali.mirror.rafal.ca",
+      "lat": 43.2262,
+      "lon": -79.8621,
+      "score": null
+    },
+    {
+      "url": "https://mirror.quantum5.ca/kali-images/",
+      "country": "CA",
+      "name": "mirror.quantum5.ca",
+      "lat": 43.7154,
+      "lon": -79.3896,
+      "score": null
+    },
+    {
+      "url": "https://mirror.xenyth.net/kali-images/",
+      "country": "CA",
+      "name": "mirror.xenyth.net",
+      "lat": 43.709,
+      "lon": -79.4057,
+      "score": null
+    },
+    {
+      "url": "https://ipng.mm.fcix.net/kali-images/",
+      "country": "CH",
+      "name": "ipng.mm.fcix.net",
+      "lat": 47.425,
+      "lon": 8.6378,
+      "score": null
+    },
+    {
+      "url": "https://kalimirror.velden.media/kali-images/",
+      "country": "CH",
+      "name": "kalimirror.velden.media",
+      "lat": 47.5584,
+      "lon": 7.5914,
+      "score": null
+    },
+    {
+      "url": "https://mirror.init7.net/kali-images/",
+      "country": "CH",
+      "name": "mirror.init7.net",
+      "lat": 47.1685,
+      "lon": 8.5035,
+      "score": null
+    },
+    {
+      "url": "https://elmirror.cl/kali-images/",
+      "country": "CL",
+      "name": "elmirror.cl",
+      "lat": -33.439,
+      "lon": -70.6432,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nju.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirror.nju.edu.cn",
+      "lat": 34.7732,
+      "lon": 113.722,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirror.nyist.edu.cn",
+      "lat": 34.7732,
+      "lon": 113.722,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.qlu.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirrors.qlu.edu.cn",
+      "lat": 34.7732,
+      "lon": 113.722,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": 39.911,
+      "lon": 116.395,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ustc.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirrors.ustc.edu.cn",
+      "lat": 34.7732,
+      "lon": 113.722,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/linux/kali-images/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
+      "lat": 50.0848,
+      "lon": 14.4112,
+      "score": null
+    },
+    {
+      "url": "https://eu.mirror.ionos.com/linux/distributions/kali/kali-images/",
+      "country": "DE",
+      "name": "eu.mirror.ionos.com",
+      "lat": 51.2993,
+      "lon": 9.491,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/kali-images/",
+      "country": "DE",
+      "name": "ftp.halifax.rwth-aachen.de",
+      "lat": 50.7813,
+      "lon": 6.0822,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netcologne.de/kali-images/",
+      "country": "DE",
+      "name": "mirror.netcologne.de",
+      "lat": 50.9697,
+      "lon": 7.005,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nl.cdn-perfprod.com/kali-images/",
+      "country": "DE",
+      "name": "mirror.nl.cdn-perfprod.com",
+      "lat": 51.2993,
+      "lon": 9.491,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pyratelan.org/kali-images/",
+      "country": "DE",
+      "name": "mirror.pyratelan.org",
+      "lat": 50.4777,
+      "lon": 12.3649,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/kali-images/",
+      "country": "DK",
+      "name": "mirrors.dotsrc.org",
+      "lat": 55.7123,
+      "lon": 12.0564,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cedia.org.ec/kali-images/",
+      "country": "EC",
+      "name": "mirror.cedia.org.ec",
+      "lat": -2.8976,
+      "lon": -79.0045,
+      "score": null
+    },
+    {
+      "url": "https://mirror.es.cdn-perfprod.com/kali-images/",
+      "country": "ES",
+      "name": "mirror.es.cdn-perfprod.com",
+      "lat": 41.3476,
+      "lon": 2.0824,
+      "score": null
+    },
+    {
+      "url": "https://mirror.raiolanetworks.com/kali-images/",
+      "country": "ES",
+      "name": "mirror.raiolanetworks.com",
+      "lat": 40.5395,
+      "lon": -3.6456,
+      "score": null
+    },
+    {
+      "url": "https://archive-4.kali.org/kali-images/",
+      "country": "FR",
+      "name": "archive-4.kali.org",
+      "lat": 48.8582,
+      "lon": 2.3387,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fr.cdn-perfprod.com/kali-images/",
+      "country": "FR",
+      "name": "mirror.fr.cdn-perfprod.com",
+      "lat": 48.8582,
+      "lon": 2.3387,
+      "score": null
+    },
+    {
+      "url": "https://ask4.mm.fcix.net/kali-images/",
+      "country": "GB",
+      "name": "ask4.mm.fcix.net",
+      "lat": 53.3861,
+      "lon": -1.4065,
+      "score": null
+    },
+    {
+      "url": "https://ftp.hands.com/kali-images/",
+      "country": "GB",
+      "name": "ftp.hands.com",
+      "lat": 51.4964,
+      "lon": -0.1224,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vinehost.net/kali-images/",
+      "country": "GB",
+      "name": "mirror.vinehost.net",
+      "lat": 51.5081,
+      "lon": -0.1278,
+      "score": null
+    },
+    {
+      "url": "https://ftp.cc.uoc.gr/mirrors/linux/kali/kali-images/",
+      "country": "GR",
+      "name": "ftp.cc.uoc.gr",
+      "lat": 37.9667,
+      "lon": 23.7167,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.esto.network/kali-images/",
+      "country": "IN",
+      "name": "mirrors.esto.network",
+      "lat": 21.9974,
+      "lon": 79.0011,
+      "score": null
+    },
+    {
+      "url": "https://kali.mirror.garr.it/kali-images/",
+      "country": "IT",
+      "name": "kali.mirror.garr.it",
+      "lat": 43.1479,
+      "lon": 12.1097,
+      "score": null
+    },
+    {
+      "url": "https://ftp.jaist.ac.jp/pub/Linux/kali-images/",
+      "country": "JP",
+      "name": "ftp.jaist.ac.jp",
+      "lat": 36.4193,
+      "lon": 136.4861,
+      "score": null
+    },
+    {
+      "url": "https://ftp.riken.jp/Linux/kali-images/",
+      "country": "JP",
+      "name": "ftp.riken.jp",
+      "lat": 35.5056,
+      "lon": 139.6817,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/linux/kali-images/",
+      "country": "JP",
+      "name": "ftp.yz.yamagata-u.ac.jp",
+      "lat": 35.69,
+      "lon": 139.69,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hashy0917.net/kali-images/",
+      "country": "JP",
+      "name": "mirror.hashy0917.net",
+      "lat": 35.69,
+      "lon": 139.69,
+      "score": null
+    },
+    {
+      "url": "https://mirror.keiminem.com/kali-images/",
+      "country": "KR",
+      "name": "mirror.keiminem.com",
+      "lat": 36.1135,
+      "lon": 128.343,
+      "score": null
+    },
+    {
+      "url": "https://mirror.siwoo.org/kali-images/",
+      "country": "KR",
+      "name": "mirror.siwoo.org",
+      "lat": 35.2119,
+      "lon": 126.8545,
+      "score": null
+    },
+    {
+      "url": "https://mirror.techlabs.co.kr/kali-images/",
+      "country": "KR",
+      "name": "mirror.techlabs.co.kr",
+      "lat": 37.0847,
+      "lon": 127.0525,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wane.kr/kali-images/",
+      "country": "KR",
+      "name": "mirror.wane.kr",
+      "lat": 35.2133,
+      "lon": 127.4715,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wonchan.net/kali-images/",
+      "country": "KR",
+      "name": "mirror.wonchan.net",
+      "lat": 35.4345,
+      "lon": 126.6994,
+      "score": null
+    },
+    {
+      "url": "https://mirror2.keiminem.com/kali-images/",
+      "country": "KR",
+      "name": "mirror2.keiminem.com",
+      "lat": 37.5112,
+      "lon": 126.9741,
+      "score": null
+    },
+    {
+      "url": "https://mirror5.krfoss.org/kali-images/",
+      "country": "KR",
+      "name": "mirror5.krfoss.org",
+      "lat": 37.2911,
+      "lon": 127.0089,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lagoon.nc/kali-images/",
+      "country": "NC",
+      "name": "mirror.lagoon.nc",
+      "lat": -21.5,
+      "lon": 165.5,
+      "score": null
+    },
+    {
+      "url": "https://ftp.nluug.nl/os/Linux/distr/kali-images/",
+      "country": "NL",
+      "name": "ftp.nluug.nl",
+      "lat": 52.3824,
+      "lon": 4.8995,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hacker.nl/kali-images/",
+      "country": "NL",
+      "name": "mirror.hacker.nl",
+      "lat": 52.3716,
+      "lon": 4.8883,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netone.nl/kali-images/",
+      "country": "NL",
+      "name": "mirror.netone.nl",
+      "lat": 52.3824,
+      "lon": 4.8995,
+      "score": null
+    },
+    {
+      "url": "https://hlzmel.fsmg.org.nz/kali-images/",
+      "country": "NZ",
+      "name": "hlzmel.fsmg.org.nz",
+      "lat": -42.0009,
+      "lon": 173.998,
+      "score": null
+    },
+    {
+      "url": "https://mirror.2degrees.nz/kali-images/",
+      "country": "NZ",
+      "name": "mirror.2degrees.nz",
+      "lat": -42.0009,
+      "lon": 173.998,
+      "score": null
+    },
+    {
+      "url": "https://wlglam.fsmg.org.nz/kali-images/",
+      "country": "NZ",
+      "name": "wlglam.fsmg.org.nz",
+      "lat": -42.0009,
+      "lon": 173.998,
+      "score": null
+    },
+    {
+      "url": "https://mirror.randhost.com/kali-images/",
+      "country": "PT",
+      "name": "mirror.randhost.com",
+      "lat": 38.7294,
+      "lon": -9.1538,
+      "score": null
+    },
+    {
+      "url": "https://mirror1.sox.rs/kali/kali-images/",
+      "country": "RS",
+      "name": "mirror1.sox.rs",
+      "lat": 44.8165,
+      "lon": 20.4479,
+      "score": null
+    },
+    {
+      "url": "https://mirror.truenetwork.ru/kali-images/",
+      "country": "RU",
+      "name": "mirror.truenetwork.ru",
+      "lat": 53.7575,
+      "lon": 87.136,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/kali.org/kali-images/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": 57.7065,
+      "lon": 11.967,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/kali-images/",
+      "country": "SG",
+      "name": "mirror.freedif.org",
+      "lat": 1.3787,
+      "lon": 103.9465,
+      "score": null
+    },
+    {
+      "url": "https://mirror.sg.gs/kali-images/",
+      "country": "SG",
+      "name": "mirror.sg.gs",
+      "lat": 1.2872,
+      "lon": 103.8507,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kku.ac.th/kali-images/",
+      "country": "TH",
+      "name": "mirror.kku.ac.th",
+      "lat": 13.7442,
+      "lon": 100.4608,
+      "score": null
+    },
+    {
+      "url": "https://free.nchc.org.tw/kali-images/",
+      "country": "TW",
+      "name": "free.nchc.org.tw",
+      "lat": 24,
+      "lon": 121,
+      "score": null
+    },
+    {
+      "url": "https://kali.cs.nycu.edu.tw/kali-images/",
+      "country": "TW",
+      "name": "kali.cs.nycu.edu.tw",
+      "lat": 24.8065,
+      "lon": 120.9706,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/kali-images/",
+      "country": "TW",
+      "name": "mirror.twds.com.tw",
+      "lat": 25.0759,
+      "lon": 121.5516,
+      "score": null
+    },
+    {
+      "url": "https://ftp2.osuosl.org/pub/kali-images/",
+      "country": "US",
+      "name": "ftp2.osuosl.org",
+      "lat": 44.5632,
+      "lon": -123.28,
+      "score": null
+    },
+    {
+      "url": "https://kali.darklab.sh/kali-images/",
+      "country": "US",
+      "name": "kali.darklab.sh",
+      "lat": 33.4413,
+      "lon": -112.0421,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fcix.net/kali-images/",
+      "country": "US",
+      "name": "mirror.fcix.net",
+      "lat": 37.5217,
+      "lon": -121.9249,
+      "score": null
+    },
+    {
+      "url": "https://mirror.us.cdn-perfprod.com/kali-images/",
+      "country": "US",
+      "name": "mirror.us.cdn-perfprod.com",
+      "lat": 42.8864,
+      "lon": -78.8784,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ocf.berkeley.edu/kali-images/",
+      "country": "US",
+      "name": "mirrors.ocf.berkeley.edu",
+      "lat": 37.8657,
+      "lon": -122.2571,
+      "score": null
+    },
+    {
+      "url": "https://nocix.mm.fcix.net/kali-images/",
+      "country": "US",
+      "name": "nocix.mm.fcix.net",
+      "lat": 37.751,
+      "lon": -97.822,
+      "score": null
+    },
+    {
+      "url": "https://ohioix.mm.fcix.net/kali-images/",
+      "country": "US",
+      "name": "ohioix.mm.fcix.net",
+      "lat": 37.751,
+      "lon": -97.822,
+      "score": null
+    },
+    {
+      "url": "https://southfront.mm.fcix.net/kali-images/",
+      "country": "US",
+      "name": "southfront.mm.fcix.net",
+      "lat": 41.5356,
+      "lon": -90.616,
+      "score": null
+    },
+    {
+      "url": "https://us.mirror.ionos.com/linux/distributions/kali/kali-images/",
+      "country": "US",
+      "name": "us.mirror.ionos.com",
+      "lat": 37.751,
+      "lon": -97.822,
+      "score": null
+    },
+    {
+      "url": "https://volico.mm.fcix.net/kali-images/",
+      "country": "US",
+      "name": "volico.mm.fcix.net",
+      "lat": 26.2822,
+      "lon": -80.1156,
+      "score": null
+    },
+    {
+      "url": "https://ziply.mm.fcix.net/kali-images/",
+      "country": "US",
+      "name": "ziply.mm.fcix.net",
+      "lat": 47.8948,
+      "lon": -122.2031,
+      "score": null
+    },
+    {
+      "url": "https://mirror.africloud.com/kali-images/",
+      "country": "ZA",
+      "name": "mirror.africloud.com",
+      "lat": -26.2309,
+      "lon": 28.0583,
+      "score": null
+    },
+    {
+      "url": "https://kali.download/base-images/",
+      "country": null,
+      "name": "kali.download",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://kali.koyanet.lv/kali-images/",
+      "country": null,
+      "name": "kali.koyanet.lv",
+      "lat": 56.9473,
+      "lon": 24.0979,
+      "score": null
+    },
+    {
+      "url": "https://mirror.krfoss.org/kali-images/",
+      "country": null,
+      "name": "mirror.krfoss.org",
+      "lat": 37.5112,
+      "lon": 126.9741,
+      "score": null
+    }
+  ]
+}

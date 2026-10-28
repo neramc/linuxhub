@@ -1,0 +1,98 @@
+{
+  "slug": "nixos",
+  "sources": [
+    "https://nixos.org/download/",
+    "https://nixos.org/manual/nixos/stable/release-notes",
+    "https://channels.nixos.org/",
+    "https://endoflife.date/nixos"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "26.05",
+      "channel": "stable",
+      "codename": "Yarara",
+      "releaseDate": "2026-05-30",
+      "eol": "2026-12-31",
+      "notesUrl": "https://nixos.org/manual/nixos/stable/release-notes#sec-release-26.05",
+      "editions": [
+        {
+          "id": "graphical",
+          "name": "Graphical ISO",
+          "desktop": null,
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "nixos-graphical-26.05.12707.718f670e8453-x86_64-linux.iso",
+              "path": "nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-graphical-26.05.12707.718f670e8453-x86_64-linux.iso",
+              "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-graphical-26.05.12707.718f670e8453-x86_64-linux.iso",
+              "size": 3888513024,
+              "checksum": {
+                "type": "sha256",
+                "value": "a0f4f454e90e042173896b0a57bb733a5306bf235cefacb925df913f462c540a",
+                "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-graphical-26.05.12707.718f670e8453-x86_64-linux.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "nixos-graphical-26.05.12707.718f670e8453-aarch64-linux.iso",
+              "path": "nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-graphical-26.05.12707.718f670e8453-aarch64-linux.iso",
+              "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-graphical-26.05.12707.718f670e8453-aarch64-linux.iso",
+              "size": 3924527104,
+              "checksum": {
+                "type": "sha256",
+                "value": "80c8600bce4bb227de941e61aee2cfc9f35932fa7343bae0b070e2e0e837bf41",
+                "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-graphical-26.05.12707.718f670e8453-aarch64-linux.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal ISO",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "nixos-minimal-26.05.12707.718f670e8453-x86_64-linux.iso",
+              "path": "nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-minimal-26.05.12707.718f670e8453-x86_64-linux.iso",
+              "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-minimal-26.05.12707.718f670e8453-x86_64-linux.iso",
+              "size": 1744830464,
+              "checksum": {
+                "type": "sha256",
+                "value": "12f093ce7bf7e9747c67730ee3cc7b22713912382e8d3d6f27ef6b19afd8c800",
+                "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-minimal-26.05.12707.718f670e8453-x86_64-linux.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "nixos-minimal-26.05.12707.718f670e8453-aarch64-linux.iso",
+              "path": "nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-minimal-26.05.12707.718f670e8453-aarch64-linux.iso",
+              "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-minimal-26.05.12707.718f670e8453-aarch64-linux.iso",
+              "size": 1821014016,
+              "checksum": {
+                "type": "sha256",
+                "value": "8203bbfbdab0c3ed148dead9fed855a41b21f2c87e74d3a21413bd565b04bdfe",
+                "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.12707.718f670e8453/nixos-minimal-26.05.12707.718f670e8453-aarch64-linux.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

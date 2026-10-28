@@ -1,5 +1,6 @@
 /** Helpers for building official mirror lists. */
 import countries from "../../../src/data/geo/countries.json";
+import type { Mirror } from "../../../src/lib/data-schemas";
 import { request } from "../http";
 
 const CODES = Object.keys(countries as Record<string, unknown>);
@@ -66,7 +67,21 @@ export function countryCode(value: string | null | undefined): string | null {
 
 export const withSlash = (url: string) => (url.endsWith("/") ? url : `${url}/`);
 
-/** True when `url` answers over HTTPS (HEAD, robots-aware). Used to keep only HTTPS mirrors. */
+/**
+ * The mirrors-file entry for a project that serves its images from one
+ * official origin or CDN root only (docs/data-sources.md, "동등한 대우"):
+ * every such distro gets the same shape. `root + artifact.path` must be the
+ * file. Country only when the official source states it.
+ */
+export function originAsMirror(root: string, name: string, country: string | null = null): Mirror {
+  return { url: withSlash(root), country, name, lat: null, lon: null, score: null };
+}
+
+/**
+ * True when `url` answers over HTTPS (HEAD, robots-aware). Not for filtering
+ * mirror lists: run.ts checks every listed mirror the same way (and keeps the
+ * ones robots.txt will not let it check), so sources return the official list.
+ */
 export async function httpsReachable(url: string): Promise<boolean> {
   try {
     const res = await request(url, { method: "HEAD", noCache: true });

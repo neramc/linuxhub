@@ -1,10 +1,11 @@
 {
   "slug": "deepin",
   "sources": [
+    "https://www.deepin.org/en/download/",
     "https://cdimage.deepin.com/releases/",
     "https://www.deepin.org/en/wp-json/wp/v2/posts"
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-28",
   "releases": [
     {
       "version": "25.2.0",
@@ -33,7 +34,7 @@
                 "url": "https://cdimage.deepin.com/releases/25.2.0/amd64/SHA256SUMS"
               },
               "signatureUrl": null,
-              "torrentUrl": null
+              "torrentUrl": "https://storage.deepin.org/static/v25/deepin-desktop-community-25.2.0-amd64.iso.torrent"
             },
             {
               "arch": "aarch64",
@@ -48,7 +49,7 @@
                 "url": "https://cdimage.deepin.com/releases/25.2.0/arm64/SHA256SUMS"
               },
               "signatureUrl": null,
-              "torrentUrl": null
+              "torrentUrl": "https://storage.deepin.org/static/v25/deepin-desktop-community-25.2.0-arm64.iso.torrent"
             },
             {
               "arch": "riscv64",
@@ -61,6 +62,54 @@
                 "type": "sha256",
                 "value": "ea5266d13a640eabc3b4cb7b893097a6416c5d457ae10bbd6bde0fc94e3ebe4a",
                 "url": "https://cdimage.deepin.com/releases/25.2.0/riscv64/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://storage.deepin.org/static/v25/deepin-desktop-community-25.2.0-riscv64.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "23.1",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": "2025-04-16",
+      "eol": null,
+      "notesUrl": "https://www.deepin.org/en/deepin-23-1-release/",
+      "editions": [
+        {
+          "id": "desktop",
+          "name": "Desktop",
+          "desktop": "dde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "deepin-desktop-community-23.1-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.deepin.com/releases/23.1/amd64/deepin-desktop-community-23.1-amd64.iso",
+              "size": 5546303488,
+              "checksum": {
+                "type": "sha256",
+                "value": "9289035fe9fbf0d0c5894b412bcfe86ef79807f061f5ea41a6c93c1d455dceec",
+                "url": "https://cdimage.deepin.com/releases/23.1/amd64/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "deepin-desktop-community-23.1-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.deepin.com/releases/23.1/arm64/deepin-desktop-community-23.1-arm64.iso",
+              "size": 3632185344,
+              "checksum": {
+                "type": "sha256",
+                "value": "447729097f675321f884aab9a66cdf33f611f63c4336927457f060183f0eadfd",
+                "url": "https://cdimage.deepin.com/releases/23.1/arm64/SHA256SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null

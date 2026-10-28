@@ -1,0 +1,231 @@
+{
+  "slug": "q4os",
+  "sources": [
+    "https://www.q4os.org/downloads1.html",
+    "https://www.q4os.org/downloads3.html",
+    "https://www.q4os.org/blog.html",
+    "https://sourceforge.net/projects/q4os/files/stable/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "6.10",
+      "channel": "lts",
+      "codename": "Andromeda",
+      "releaseDate": "2026-10-08",
+      "eol": "2030-08-31",
+      "notesUrl": "https://www.q4os.org/blog.html#news261008",
+      "editions": [
+        {
+          "id": "plasma-live",
+          "name": "Plasma live",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "q4os-6.10-x64.r2.iso",
+              "path": "stable/q4os-6.10-x64.r2.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.10-x64.r2.iso/download",
+              "size": 1851392000,
+              "checksum": {
+                "type": "sha256",
+                "value": "1df141eaa342bbfd0092791a60f1ae9cf5230e8ebb472f87fcb463203e3eb95d",
+                "url": "https://sourceforge.net/projects/q4os/files/stable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "trinity-live",
+          "name": "Trinity live",
+          "desktop": "trinity",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "q4os-6.10-x64-tde.r2.iso",
+              "path": "stable/q4os-6.10-x64-tde.r2.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.10-x64-tde.r2.iso/download",
+              "size": 1478656000,
+              "checksum": {
+                "type": "sha256",
+                "value": "12db3725ab50a349e9d5afdb95dc4995e957418de9ef09f46414b64e5ee3424b",
+                "url": "https://sourceforge.net/projects/q4os/files/stable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "trinity-install-cd",
+          "name": "Trinity install-cd",
+          "desktop": "trinity",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "q4os-6.10-x64-instcd.r1.iso",
+              "path": "stable/q4os-6.10-x64-instcd.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.10-x64-instcd.r1.iso/download",
+              "size": 1097564160,
+              "checksum": {
+                "type": "sha256",
+                "value": "9d7457fb20660e5df3cccbb2a20675574e62c5fd99f32be068e8df7a7291f9aa",
+                "url": "https://sourceforge.net/projects/q4os/files/stable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "winsetup",
+          "name": "WinSetup (Windows installer)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "zip",
+              "file": "q4os-winsetup-6.10-r1.zip",
+              "path": null,
+              "url": "https://q4os.sourceforge.io/download/q4os-winsetup-6.10-r1.zip",
+              "size": null,
+              "checksum": {
+                "type": "md5",
+                "value": "1e037d3db88dfdbd36fcc4b156614ac3",
+                "url": "https://www.q4os.org/downloads1.html"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "5.10",
+      "channel": "lts",
+      "codename": "Aquarius",
+      "releaseDate": "2026-08-31",
+      "eol": "2028-06-30",
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "plasma-live",
+          "name": "Plasma live",
+          "desktop": "kde",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "q4os-5.10-x64.r1.iso",
+              "path": "oldstable/q4os-5.10-x64.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/oldstable/q4os-5.10-x64.r1.iso/download",
+              "size": 1582940160,
+              "checksum": {
+                "type": "sha256",
+                "value": "52a4fd2bd0edb3640b5f05523b80e13ffd1ad5948972e1d1220903315ed10b69",
+                "url": "https://sourceforge.net/projects/q4os/files/oldstable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "trinity-live",
+          "name": "Trinity live",
+          "desktop": "trinity",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "q4os-5.10-x64-tde.r1.iso",
+              "path": "oldstable/q4os-5.10-x64-tde.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/oldstable/q4os-5.10-x64-tde.r1.iso/download",
+              "size": 1149714432,
+              "checksum": {
+                "type": "sha256",
+                "value": "ea90b03e5537ce58d3486aa394104072b6a4b8556ed5b3a59f74323fce9671f6",
+                "url": "https://sourceforge.net/projects/q4os/files/oldstable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "trinity-install-cd",
+          "name": "Trinity install-cd",
+          "desktop": "trinity",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "q4os-5.10-x64-instcd.r1.iso",
+              "path": "oldstable/q4os-5.10-x64-instcd.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/oldstable/q4os-5.10-x64-instcd.r1.iso/download",
+              "size": 910163968,
+              "checksum": {
+                "type": "sha256",
+                "value": "365808cfa5851c76474e908adc39d2db57375bd74e2251d909c21fedd04671aa",
+                "url": "https://sourceforge.net/projects/q4os/files/oldstable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "q4os-5.10-i386-instcd.r1.iso",
+              "path": "stable/q4os-5.10-i386-instcd.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-5.10-i386-instcd.r1.iso/download",
+              "size": 737148928,
+              "checksum": {
+                "type": "sha256",
+                "value": "1255876729eca79c67d3ab3406ce747b7e73d9e32ea78a931f4cbe46c8c53b7a",
+                "url": "https://sourceforge.net/projects/q4os/files/stable/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "winsetup",
+          "name": "WinSetup (Windows installer)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "zip",
+              "file": "q4os-winsetup-5.8-r3.zip",
+              "path": null,
+              "url": "https://q4os.sourceforge.io/download/q4os-winsetup-5.8-r3.zip",
+              "size": null,
+              "checksum": {
+                "type": "md5",
+                "value": "6248250d80ab9bd765e43f1e8e10882c",
+                "url": "https://www.q4os.org/downloads3.html"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

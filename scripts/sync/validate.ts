@@ -58,6 +58,31 @@ each("mirrors", (slug, data) => {
   for (const p of checkMirrors(parsed.data)) errors.push(`mirrors/${slug}: ${p}`);
 });
 
+// Same treatment for every distro (docs/data-sources.md, "동등한 대우"): each catalog
+// distro has a sync source with releases() and mirrors(). A data file that does not
+// exist yet is only a warning: the next run writes it, or status.json and the
+// sync-failure issue say why it cannot.
+const warnings: string[] = [];
+const status = existsSync(STATUS_PATH)
+  ? (statusFileSchema.safeParse(JSON.parse(readFileSync(STATUS_PATH, "utf8"))).data ?? {})
+  : {};
+for (const slug of [...catalog].sort()) {
+  const source = bySlug.get(slug);
+  if (!source) {
+    errors.push(`${slug}: no sync source (scripts/sync/sources/${slug}.ts)`);
+    continue;
+  }
+  for (const kind of ["releases", "mirrors"] as const) {
+    if (typeof source[kind] !== "function") errors.push(`${slug}: sync source has no ${kind}()`);
+    else if (!existsSync(join(DATA_DIR, kind, `${slug}.json`)))
+      warnings.push(
+        status[slug]?.[kind]?.failingSince
+          ? `${slug}: no ${kind} data yet, failing since ${status[slug]?.[kind]?.failingSince}`
+          : `${slug}: no ${kind} data yet (bun run sync -- --only=${slug} --kind=${kind})`,
+      );
+  }
+}
+
 for (const [path, schema] of [
   [HISTORY_PATH, historyFileSchema],
   [STATUS_PATH, statusFileSchema],
@@ -93,6 +118,7 @@ if (existsSync(POPULARITY_PATH)) {
   }
 }
 
+if (warnings.length) console.warn(`${warnings.join("\n")}\n`);
 if (errors.length) {
   console.error(errors.join("\n"));
   console.error(`\n✗ ${errors.length} problem(s) in src/data`);

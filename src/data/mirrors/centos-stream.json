@@ -1,0 +1,649 @@
+{
+  "slug": "centos-stream",
+  "sources": [
+    "https://mirrormanager.fedoraproject.org/mirrors/CentOS?page_size=500&page_number=1"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://mirrors.teamcloud.am/centos-stream/",
+      "country": "AM",
+      "name": "mirrors.teamcloud.am",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://centos.anexia.at/centos-stream/",
+      "country": "AT",
+      "name": "centos.anexia.at",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.alwyzon.net/centos-stream/",
+      "country": "AT",
+      "name": "mirror.alwyzon.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://syd.mirror.rackspace.com/centos-stream/",
+      "country": "AU",
+      "name": "syd.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ourhost.az/centos-stream/",
+      "country": "AZ",
+      "name": "mirror.ourhost.az",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.unix-solutions.be/centosstream/",
+      "country": "BE",
+      "name": "mirror.unix-solutions.be",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.centos.behostings.net/centos9/",
+      "country": "BE",
+      "name": "mirrors.centos.behostings.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/centos-stream/",
+      "country": "BG",
+      "name": "mirror.telepoint.bg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://br.mirrors.cicku.me/centos/",
+      "country": "BR",
+      "name": "br.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.byfly.by/pub/centos-stream/",
+      "country": "BY",
+      "name": "ftp.byfly.by",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ca.mirrors.cicku.me/centos/",
+      "country": "CA",
+      "name": "ca.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cpsc.ucalgary.ca/mirror/centos-stream/",
+      "country": "CA",
+      "name": "mirror.cpsc.ucalgary.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dst.ca/centos-stream/",
+      "country": "CA",
+      "name": "mirror.dst.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://linuxsoft.cern.ch/centos-stream/",
+      "country": "CH",
+      "name": "linuxsoft.cern.ch",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/centos-stream/",
+      "country": "CN",
+      "name": "mirror.nyist.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.bfsu.edu.cn/centos-stream/",
+      "country": "CN",
+      "name": "mirrors.bfsu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.qlu.edu.cn/centos-stream/",
+      "country": "CN",
+      "name": "mirrors.qlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/centos-stream/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/linux/centos-stream/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://de.mirrors.cicku.me/centos/",
+      "country": "DE",
+      "name": "de.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dogado.de/centos-stream/",
+      "country": "DE",
+      "name": "mirror.dogado.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.imt-systems.com/centos-stream/",
+      "country": "DE",
+      "name": "mirror.imt-systems.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netzwerge.de/centos-stream/",
+      "country": "DE",
+      "name": "mirror.netzwerge.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.plusline.net/centos-stream/",
+      "country": "DE",
+      "name": "mirror.plusline.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rabisu.com/mirrors/centos-stream/",
+      "country": "DE",
+      "name": "mirror.rabisu.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.scaleuptech.com/centos-stream/",
+      "country": "DE",
+      "name": "mirror.scaleuptech.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror1.hs-esslingen.de/pub/Mirrors/centos-stream/",
+      "country": "DE",
+      "name": "mirror1.hs-esslingen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.de/centos-stream/",
+      "country": "DE",
+      "name": "mirrors.xtom.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.group.one/centos-stream/",
+      "country": "DK",
+      "name": "mirror.group.one",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netsite.dk/centos-stream/",
+      "country": "DK",
+      "name": "mirror.netsite.dk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.ee/centos-stream/",
+      "country": "EE",
+      "name": "mirrors.xtom.ee",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fr2.rpmfind.net/linux/centos-stream/",
+      "country": "FR",
+      "name": "fr2.rpmfind.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.in2p3.fr/pub/linux/centos-stream/",
+      "country": "FR",
+      "name": "mirror.in2p3.fr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://centos-stream.mirrorservice.org/",
+      "country": "GB",
+      "name": "centos-stream.mirrorservice.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://hkg.mirror.rackspace.com/centos-stream/",
+      "country": "HK",
+      "name": "hkg.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.biznetgio.com/centos-stream/",
+      "country": "ID",
+      "name": "mirror.biznetgio.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://centos.is/centos-stream/",
+      "country": "IS",
+      "name": "centos.is",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://centos.mirror.garr.it/centos-stream/",
+      "country": "IT",
+      "name": "centos.mirror.garr.it",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://it1.mirror.vhosting-it.com/centos-stream-all/",
+      "country": "IT",
+      "name": "it1.mirror.vhosting-it.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://it2.mirror.vhosting-it.com/centos-stream-all/",
+      "country": "IT",
+      "name": "it2.mirror.vhosting-it.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.iij.ad.jp/pub/linux/centos-stream/",
+      "country": "JP",
+      "name": "ftp.iij.ad.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.udx.icscoe.jp/Linux/CentOS-stream/",
+      "country": "JP",
+      "name": "ftp.udx.icscoe.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/linux/centos-stream/",
+      "country": "JP",
+      "name": "ftp.yz.yamagata-u.ac.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hoster.kz/centos-stream/",
+      "country": "KZ",
+      "name": "mirror.hoster.kz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ps.kz/centos-stream/",
+      "country": "KZ",
+      "name": "mirror.ps.kz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://centos-stream.koyanet.lv/centos-stream/",
+      "country": "LV",
+      "name": "centos-stream.koyanet.lv",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.veesp.com/centos-stream/",
+      "country": "LV",
+      "name": "mirror.veesp.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ihost.md/centos-stream/",
+      "country": "MD",
+      "name": "mirror.ihost.md",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo2.shinjiru.com/centos-stream/",
+      "country": "MY",
+      "name": "repo2.shinjiru.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.i3d.net/pub/centos-stream/",
+      "country": "NL",
+      "name": "mirror.i3d.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netone.nl/centos/",
+      "country": "NL",
+      "name": "mirror.netone.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rtin.bz/centos/",
+      "country": "NL",
+      "name": "mirror.rtin.bz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.transip.net/centos-stream/",
+      "country": "NL",
+      "name": "mirror.transip.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nl.mirrors.cicku.me/centos/",
+      "country": "NL",
+      "name": "nl.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fjordos.com/centos-stream/",
+      "country": "NO",
+      "name": "mirror.fjordos.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.chroot.ro/centos-stream/",
+      "country": "RO",
+      "name": "mirrors.chroot.ro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hosterion.ro/centos-stream/",
+      "country": "RO",
+      "name": "mirrors.hosterion.ro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nxthost.com/centos-stream/",
+      "country": "RO",
+      "name": "mirrors.nxthost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.nsc.ru/pub/centos-9/",
+      "country": "RU",
+      "name": "ftp.nsc.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sa.mirrors.cicku.me/centos/",
+      "country": "SA",
+      "name": "sa.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/CentOS/",
+      "country": "SG",
+      "name": "mirror.freedif.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sg.mirrors.cicku.me/centos/",
+      "country": "SG",
+      "name": "sg.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kku.ac.th/centos-stream/",
+      "country": "TH",
+      "name": "mirror.kku.ac.th",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/centos-stream/",
+      "country": "TW",
+      "name": "mirror.twds.com.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://centos-stream.ip-connect.info/",
+      "country": "UA",
+      "name": "centos-stream.ip-connect.info",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distrohub.kyiv.ua/centos-stream/",
+      "country": "UA",
+      "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://dfw.mirror.rackspace.com/centos-stream/",
+      "country": "US",
+      "name": "dfw.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp-osl.osuosl.org/pub/centos-stream/",
+      "country": "US",
+      "name": "ftp-osl.osuosl.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftpmirror.your.org/pub/CentOS-Stream-All/",
+      "country": "US",
+      "name": "ftpmirror.your.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://iad.mirror.rackspace.com/centos-stream/",
+      "country": "US",
+      "name": "iad.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://linux-mirrors.fnal.gov/linux/centos-stream/",
+      "country": "US",
+      "name": "linux-mirrors.fnal.gov",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.servaxnet.com/centos-stream/",
+      "country": "US",
+      "name": "mirror.servaxnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.shastacoe.net/centos-stream/",
+      "country": "US",
+      "name": "mirror.shastacoe.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.tzulo.com/centos-stream/",
+      "country": "US",
+      "name": "mirror.tzulo.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.iu13.net/centos-stream/",
+      "country": "US",
+      "name": "mirrors.iu13.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.lug.mtu.edu/centos-stream/",
+      "country": "US",
+      "name": "mirrors.lug.mtu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.mit.edu/centos-stream/",
+      "country": "US",
+      "name": "mirrors.mit.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ord.mirror.rackspace.com/centos-stream/",
+      "country": "US",
+      "name": "ord.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://us.mirrors.cicku.me/centos/",
+      "country": "US",
+      "name": "us.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.navercorp.com/centos-stream/",
+      "country": null,
+      "name": "mirror.navercorp.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

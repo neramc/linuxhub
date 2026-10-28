@@ -1,0 +1,78 @@
+{
+  "slug": "cachyos",
+  "sources": [
+    "https://cachyos.org/download/",
+    "https://cachyos.org/blog/",
+    "https://mirror.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sha256",
+    "https://mirror.cachyos.org/ISO/handheld/260628/cachyos-handheld-linux-260628.iso.sha256"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "260809",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-08-09",
+      "eol": null,
+      "notesUrl": "https://cachyos.org/blog/2608-august-release",
+      "editions": [
+        {
+          "id": "desktop-edition",
+          "name": "Desktop Edition",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "cachyos-desktop-linux-260809.iso",
+              "path": "ISO/desktop/260809/cachyos-desktop-linux-260809.iso",
+              "url": "https://cdn77.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso",
+              "size": 3188850688,
+              "checksum": {
+                "type": "sha256",
+                "value": "959f6577f45e25ee9fd8c220fd221b08e4ea79412c7315c0f922dd6d86d5e33c",
+                "url": "https://mirror.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sha256"
+              },
+              "signatureUrl": "https://mirror.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sig",
+              "torrentUrl": "https://torrents.soulharsh007-codewerkstatt.de/processed//cachyos-desktop-linux-260809.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "260628",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-06-28",
+      "eol": null,
+      "notesUrl": "https://cachyos.org/blog/2606-june-release",
+      "editions": [
+        {
+          "id": "handheld-edition",
+          "name": "Handheld Edition",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "cachyos-handheld-linux-260628.iso",
+              "path": "ISO/handheld/260628/cachyos-handheld-linux-260628.iso",
+              "url": "https://cdn77.cachyos.org/ISO/handheld/260628/cachyos-handheld-linux-260628.iso",
+              "size": 2664595456,
+              "checksum": {
+                "type": "sha256",
+                "value": "0567c61f21622e5b4b482a874c41076beeb9bd8c00f046fa40e5c8cfbe34d15f",
+                "url": "https://mirror.cachyos.org/ISO/handheld/260628/cachyos-handheld-linux-260628.iso.sha256"
+              },
+              "signatureUrl": "https://mirror.cachyos.org/ISO/handheld/260628/cachyos-handheld-linux-260628.iso.sig",
+              "torrentUrl": "https://torrents.soulharsh007-codewerkstatt.de/processed//cachyos-handheld-linux-260628.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

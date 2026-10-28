@@ -241,8 +241,12 @@ test("RSS keeps one item per version", async ({ request }) => {
     version: string;
   }[];
   const titles = [...xml.matchAll(/<item>\s*<title>([^<]*)<\/title>/g)].map((m) => m[1]);
-  // Flavors and point releases stay separate items (only the pages group them).
-  const kubuntu = history.filter((h) => h.slug === "kubuntu").length;
+  // The feed carries the 50 newest entries; in it, flavors and point releases stay
+  // separate items (only the pages group them).
+  const newest = history.slice(0, 50);
+  expect(titles.length).toBe(newest.length);
+  const kubuntu = newest.filter((h) => h.slug === "kubuntu").length;
+  expect(kubuntu).toBeGreaterThan(0);
   expect(titles.filter((t) => t?.startsWith("Kubuntu ")).length).toBe(kubuntu);
 });
 
@@ -260,6 +264,8 @@ test("404 has one home button and an English link", async ({ page }) => {
   expect(res?.status()).toBe(404);
   await expect(page.getByRole("link", { name: "홈으로" })).toHaveAttribute("href", "/");
   await expect(page.locator('a[href="/en/"][hreflang="en"]').last()).toBeVisible();
+  // There is no /en/404/: the menu's language row goes to the English home.
+  await expect(page.locator("a[data-lang-switch]")).toHaveAttribute("href", "/en/");
 });
 
 for (const path of [

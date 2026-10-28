@@ -1,0 +1,57 @@
+name: SparkyLinux
+order: 50
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [xfce, lxqt, mate, kde, openbox]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: calamares
+useCases: [lightweight, desktop, tinkerer]
+difficulty: intermediate
+architectures: [x86_64, i686, aarch64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2012
+requirements:
+  ramGB: 1
+  diskGB: 10
+  note:
+    ko: 공식 위키의 최소 사양 기준입니다. 기본 설치 프로그램(Calamares)은 RAM 1GB가 필요하고, 그보다 적으면 Advanced Installer(텍스트 모드)를 쓰라고 안내합니다. 홈 에디션은 디스크 10GB, GameOver와 Multimedia는 20GB입니다.
+    en: Based on the official wiki's minimums. The default Calamares installer needs 1 GB of RAM; below that the project points to its Advanced (text-mode) installer. The home editions want 10 GB of disk, GameOver and Multimedia 20 GB.
+links:
+  home: https://sparkylinux.org/
+  download: https://sparkylinux.org/download/
+  docs: https://wiki.sparkylinux.org/
+  installGuide: https://wiki.sparkylinux.org/doku.php/calamares
+  forum: https://forum.sparkylinux.org/
+  releaseNotes: https://sparkylinux.org/category/news/
+  source: https://github.com/sparkylinux
+tagline:
+  ko: 안정판과 세미 롤링판을 함께 내는 Debian 기반 경량 배포판
+  en: A lightweight Debian-based distro with both stable and semi-rolling lines
+aliases: [스파키 리눅스, 스파키, 스파키리눅스, sparky, sparky linux]
+logo:
+  file: sparkylinux.png
+  source: https://sparkylinux.org/images/sparky-logo7.webp
+  license: Free for non-commercial use per the official artwork page (the emblem alone, published as WebP only; converted to PNG, trimmed and resized, colors unchanged); SparkyLinux trademark
+  trademark: https://sparkylinux.org/term-of-use/
+download:
+  strategy: sourceforge
+sources:
+  - https://sparkylinux.org/about/
+  - https://sparkylinux.org/download/
+  - https://sparkylinux.org/download/stable/
+  - https://sparkylinux.org/download/rolling/
+  - https://sparkylinux.org/sparky-8-4/
+  - https://sparkylinux.org/sparky-7-0-orion-belt/
+  - https://sparkylinux.org/sparkylinux-2-0-eris/
+  - https://sparkylinux.org/team/
+  - https://sparkylinux.org/artwork/
+  - https://sparkylinux.org/term-of-use/
+  - https://wiki.sparkylinux.org/doku.php/minimum_system_requirements
+  - https://wiki.sparkylinux.org/doku.php/calamares
+lastReviewed: 2026-10-17

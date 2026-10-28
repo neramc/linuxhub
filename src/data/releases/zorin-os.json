@@ -1,0 +1,172 @@
+{
+  "slug": "zorin-os",
+  "sources": [
+    "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/",
+    "https://zorin.com/os/download/",
+    "https://mirrors.edge.kernel.org/zorinos-isos/",
+    "https://blog.zorin.com/sitemap.xml",
+    "https://blog.zorin.com/2026/04/15/zorin-os-18.1-is-released/",
+    "https://blog.zorin.com/2025/03/26/zorin-os-17.3-is-here/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "18.1",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2026-04-15",
+      "eol": "2029-06-30",
+      "notesUrl": "https://blog.zorin.com/2026/04/15/zorin-os-18.1-is-released/",
+      "editions": [
+        {
+          "id": "core",
+          "name": "Core",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Zorin-OS-18.1-Core-64-bit.iso",
+              "path": "18/Zorin-OS-18.1-Core-64-bit.iso",
+              "url": "https://mirrors.edge.kernel.org/zorinos-isos/18/Zorin-OS-18.1-Core-64-bit.iso",
+              "size": 3909091328,
+              "checksum": {
+                "type": "sha256",
+                "value": "44649b97bd307fc4c8529205d098ebbf98575a1e1ba2ee7d7005b697af1721d5",
+                "url": "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/#correct-sha256-checksums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "education",
+          "name": "Education",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Zorin-OS-18.1-Education-64-bit.iso",
+              "path": "18/Zorin-OS-18.1-Education-64-bit.iso",
+              "url": "https://mirrors.edge.kernel.org/zorinos-isos/18/Zorin-OS-18.1-Education-64-bit.iso",
+              "size": 8059355136,
+              "checksum": {
+                "type": "sha256",
+                "value": "f24b83bc1bf4f90618fb56e817fe3c1e67328e68720a8350131080db38bf9437",
+                "url": "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/#correct-sha256-checksums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "lite",
+          "name": "Lite",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Zorin-OS-18.1-Lite-64-bit.iso",
+              "path": "18/Zorin-OS-18.1-Lite-64-bit.iso",
+              "url": "https://mirrors.edge.kernel.org/zorinos-isos/18/Zorin-OS-18.1-Lite-64-bit.iso",
+              "size": 3981279232,
+              "checksum": {
+                "type": "sha256",
+                "value": "b29ff7674cabb3d0698bdd0b39c1dbfc9def15f84d4a396de1ace1454c1e7a6d",
+                "url": "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/#correct-sha256-checksums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "17.3",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2025-03-26",
+      "eol": "2027-06-30",
+      "notesUrl": "https://blog.zorin.com/2025/03/26/zorin-os-17.3-is-here/",
+      "editions": [
+        {
+          "id": "core",
+          "name": "Core",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Zorin-OS-17.3-Core-64-bit-r2.iso",
+              "path": "17/Zorin-OS-17.3-Core-64-bit-r2.iso",
+              "url": "https://mirrors.edge.kernel.org/zorinos-isos/17/Zorin-OS-17.3-Core-64-bit-r2.iso",
+              "size": 3771187200,
+              "checksum": {
+                "type": "sha256",
+                "value": "c1510d1e16ec50c884faeb4e32326ba8d2e38d2cf22698b649168011d00220f6",
+                "url": "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/#correct-sha256-checksums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "education",
+          "name": "Education",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Zorin-OS-17.3-Education-64-bit-r2.iso",
+              "path": "17/Zorin-OS-17.3-Education-64-bit-r2.iso",
+              "url": "https://mirrors.edge.kernel.org/zorinos-isos/17/Zorin-OS-17.3-Education-64-bit-r2.iso",
+              "size": 7865303040,
+              "checksum": {
+                "type": "sha256",
+                "value": "34ead2b43b9b18c61549a70e370be9788bbba688b936a1af454db59899953ef3",
+                "url": "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/#correct-sha256-checksums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "lite",
+          "name": "Lite",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Zorin-OS-17.3-Lite-64-bit-r2.iso",
+              "path": "17/Zorin-OS-17.3-Lite-64-bit-r2.iso",
+              "url": "https://mirrors.edge.kernel.org/zorinos-isos/17/Zorin-OS-17.3-Lite-64-bit-r2.iso",
+              "size": 3905273856,
+              "checksum": {
+                "type": "sha256",
+                "value": "6d3ed727c5295ca29eda578177ce918267ea775b70a80d5812fd97f614a76cb8",
+                "url": "https://help.zorin.com/docs/getting-started/check-the-integrity-of-your-copy-of-zorin-os/#correct-sha256-checksums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

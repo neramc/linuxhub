@@ -1,11 +1,14 @@
 {
   "slug": "kali-linux",
   "sources": [
-    "https://cdimage.kali.org/current/",
-    "https://cdimage.kali.org/kali-2026.3/",
-    "https://www.kali.org/rss.xml"
+    "https://www.kali.org/get-kali/",
+    "https://www.kali.org/releases/",
+    "https://kali.download/base-images/kali-2026.3/",
+    "https://kali.download/arm-images/kali-2026.3/",
+    "https://kali.download/nethunter-images/kali-2026.3/",
+    "https://kali.download/cloud-images/kali-2026.3/"
   ],
-  "updated": "2026-10-26",
+  "updated": "2026-10-28",
   "releases": [
     {
       "version": "2026.3",
@@ -25,30 +28,30 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "kali-linux-2026.3-installer-amd64.iso",
-              "path": null,
+              "path": "kali-2026.3/kali-linux-2026.3-installer-amd64.iso",
               "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-amd64.iso",
               "size": 5047031808,
               "checksum": {
                 "type": "sha256",
                 "value": "db9cbed33edb45727d16911813c2434fcd1419585007884153be22a03b30ec2f",
-                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-amd64.iso.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
               "file": "kali-linux-2026.3-installer-arm64.iso",
-              "path": null,
+              "path": "kali-2026.3/kali-linux-2026.3-installer-arm64.iso",
               "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-arm64.iso",
               "size": 4051513344,
               "checksum": {
                 "type": "sha256",
                 "value": "c4a7f9bf3a0ff07c8263fe9e9b0edba0cc3d9b408f1d8f06c066df0afce23072",
-                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-arm64.iso.torrent"
             }
           ]
@@ -63,31 +66,54 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "kali-linux-2026.3-installer-netinst-amd64.iso",
-              "path": null,
+              "path": "kali-2026.3/kali-linux-2026.3-installer-netinst-amd64.iso",
               "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-amd64.iso",
               "size": 746586112,
               "checksum": {
                 "type": "sha256",
                 "value": "0dd3e70f2e0b092286b29355450bc79a034a13fb1d5b4bf83c297149115258cd",
-                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-amd64.iso.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
               "file": "kali-linux-2026.3-installer-netinst-arm64.iso",
-              "path": null,
+              "path": "kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso",
               "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso",
               "size": 603238400,
               "checksum": {
                 "type": "sha256",
                 "value": "a986c7fe0f8e887a77e7ea9f868da88eae04e7ac780ae75e6b702f243b63bf8d",
-                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "installer-everything",
+          "name": "Installer (Everything)",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kali-linux-2026.3-installer-everything-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-everything-amd64.iso.torrent",
+              "size": 14825484288,
+              "checksum": {
+                "type": "sha256",
+                "value": "21c449d46873dd74d644c32d7752230475f39315084f1ee7e8e38f375a4724a1",
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-everything-amd64.iso.torrent"
             }
           ]
         },
@@ -101,16 +127,352 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "kali-linux-2026.3-installer-purple-amd64.iso",
-              "path": null,
+              "path": "kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso",
               "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso",
               "size": 4971552768,
               "checksum": {
                 "type": "sha256",
                 "value": "9b2b39174d9ed447c36ee1d7dd09b6efc2453e99dec8d239b4f69b263b0d5ecb",
-                "url": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS"
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.kali.org/kali-2026.3/SHA256SUMS.gpg",
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
               "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live",
+          "name": "Live",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kali-linux-2026.3-live-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-live-amd64.iso.torrent",
+              "size": 5938610176,
+              "checksum": {
+                "type": "sha256",
+                "value": "93a40ef53936719119824c3f0f0742ab50a045e2e082b95e382cf9f2f1f8acbb",
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-live-amd64.iso.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "kali-linux-2026.3-live-arm64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-live-arm64.iso.torrent",
+              "size": 4450045952,
+              "checksum": {
+                "type": "sha256",
+                "value": "4206885a661ed8a55d6bea660506f5d67c1f84e6ece52d8079e338993b20813f",
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-live-arm64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "live-everything",
+          "name": "Live (Everything)",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "kali-linux-2026.3-live-everything-amd64.iso",
+              "path": null,
+              "url": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-live-everything-amd64.iso.torrent",
+              "size": 16845643776,
+              "checksum": {
+                "type": "sha256",
+                "value": "2bb56c92380945ce3e7c2b2706886bb323d1f7123028839dc818e0a83afb8ddf",
+                "url": "https://kali.download/base-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": "https://kali.download/base-images/kali-2026.3/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-live-everything-amd64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi-armhf",
+          "name": "Raspberry Pi 2, 3, 4 and 400 (32-bit)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-raspberry-pi-armhf.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-armhf.img.xz",
+              "size": 3203291756,
+              "checksum": {
+                "type": "sha256",
+                "value": "07142c515a9181666ecf64dab628bd72483cd3293fa111eec66782c0e8e97983",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-armhf.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi-arm64",
+          "name": "Raspberry Pi 3, 4, 400, 5 and 500 (64-bit)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-raspberry-pi-arm64.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-arm64.img.xz",
+              "size": 3342255496,
+              "checksum": {
+                "type": "sha256",
+                "value": "85906ae2758c9cc969553579161ff80bbac1130701b24bc375e6100b73ee4843",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-arm64.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi-zero-2-w-armhf",
+          "name": "Raspberry Pi Zero 2 W",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-raspberry-pi-zero-2-w-armhf.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-zero-2-w-armhf.img.xz",
+              "size": 3156299928,
+              "checksum": {
+                "type": "sha256",
+                "value": "eaaf8a156b2e477ce81ca5d4dbc95cd21ab043727b0b7b6b6f27345a7bfec3d8",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-zero-2-w-armhf.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi-zero-2-w-pitail-armhf",
+          "name": "Raspberry Pi Zero 2 W (Pi-Tail)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-raspberry-pi-zero-2-w-pitail-armhf.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-zero-2-w-pitail-armhf.img.xz",
+              "size": 3181967648,
+              "checksum": {
+                "type": "sha256",
+                "value": "a6b38bf35edeed1e134dfa8858d1ff8ad4419ba1b5b4cc0b47c2528f21ae0989",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-raspberry-pi-zero-2-w-pitail-armhf.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "pinebook-arm64",
+          "name": "Pinebook",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-pinebook-arm64.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-pinebook-arm64.img.xz",
+              "size": 3344188648,
+              "checksum": {
+                "type": "sha256",
+                "value": "91e30d21cd812129119e230de63ccb78bdeaae0eba2eb375be699a6c3e728249",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-pinebook-arm64.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "pinebook-pro-arm64",
+          "name": "Pinebook Pro",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-pinebook-pro-arm64.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-pinebook-pro-arm64.img.xz",
+              "size": 3417980756,
+              "checksum": {
+                "type": "sha256",
+                "value": "d5768d00e5df1c22bafa747b535826a83ab8e6458d2bd511f165096fe79b36a3",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-pinebook-pro-arm64.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "gateworks-newport-arm64",
+          "name": "Gateworks Newport",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "kali-linux-2026.3-gateworks-newport-arm64.img.xz",
+              "path": null,
+              "url": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-gateworks-newport-arm64.img.xz",
+              "size": 3579130300,
+              "checksum": {
+                "type": "sha256",
+                "value": "85abdf33d39d34b2705027709c1be3fda38b3440215da5f5e9ba968625f42004",
+                "url": "https://kali.download/arm-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/arm-images/kali-2026.3/kali-linux-2026.3-gateworks-newport-arm64.img.xz.torrent"
+            }
+          ]
+        },
+        {
+          "id": "nethunter-generic-full",
+          "name": "NetHunter Generic (Full)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "kali-nethunter-2026.3-generic-arm64-full.zip",
+              "path": null,
+              "url": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-arm64-full.zip",
+              "size": 2035365099,
+              "checksum": {
+                "type": "sha256",
+                "value": "838642d47250fbc70520fea6ad7937af2ab074db86708193c50a5679b7743814",
+                "url": "https://kali.download/nethunter-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-arm64-full.zip.torrent"
+            },
+            {
+              "arch": "armhf",
+              "format": "zip",
+              "file": "kali-nethunter-2026.3-generic-armhf-full.zip",
+              "path": null,
+              "url": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-armhf-full.zip",
+              "size": 1905626459,
+              "checksum": {
+                "type": "sha256",
+                "value": "d2a5d965e4ed4733d189923ff8a98651a101f067af5ce4f548a4e5e57a55c298",
+                "url": "https://kali.download/nethunter-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-armhf-full.zip.torrent"
+            }
+          ]
+        },
+        {
+          "id": "nethunter-generic-minimal",
+          "name": "NetHunter Generic (Minimal)",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "kali-nethunter-2026.3-generic-arm64-minimal.zip",
+              "path": null,
+              "url": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-arm64-minimal.zip",
+              "size": 323359325,
+              "checksum": {
+                "type": "sha256",
+                "value": "7d4b037ea4ce2857df58da9b98ab126f6782afd3239f5317fd43298e1eda1cb8",
+                "url": "https://kali.download/nethunter-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-arm64-minimal.zip.torrent"
+            },
+            {
+              "arch": "armhf",
+              "format": "zip",
+              "file": "kali-nethunter-2026.3-generic-armhf-minimal.zip",
+              "path": null,
+              "url": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-armhf-minimal.zip",
+              "size": 318100057,
+              "checksum": {
+                "type": "sha256",
+                "value": "3afe04988e08c94605cf1cf08209388fa74c033473dc9250b0992f99dcb8ae98",
+                "url": "https://kali.download/nethunter-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/nethunter-images/kali-2026.3/kali-nethunter-2026.3-generic-armhf-minimal.zip.torrent"
+            }
+          ]
+        },
+        {
+          "id": "cloud-genericcloud",
+          "name": "Generic Cloud Image",
+          "desktop": null,
+          "kind": "cloud",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "tar.xz",
+              "file": "kali-linux-2026.3-cloud-genericcloud-amd64.tar.xz",
+              "path": null,
+              "url": "https://kali.download/cloud-images/kali-2026.3/kali-linux-2026.3-cloud-genericcloud-amd64.tar.xz",
+              "size": 252325828,
+              "checksum": {
+                "type": "sha256",
+                "value": "087a9c43b6082b0a6aae666debe26c9edf6e3960a90952fc94720e755d628e58",
+                "url": "https://kali.download/cloud-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/cloud-images/kali-2026.3/kali-linux-2026.3-cloud-genericcloud-amd64.tar.xz.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "tar.xz",
+              "file": "kali-linux-2026.3-cloud-genericcloud-arm64.tar.xz",
+              "path": null,
+              "url": "https://kali.download/cloud-images/kali-2026.3/kali-linux-2026.3-cloud-genericcloud-arm64.tar.xz",
+              "size": 227998904,
+              "checksum": {
+                "type": "sha256",
+                "value": "99710b573bf64fb6d995fac564923c1d24881cad6a2002ea9c88f4fb48cf78af",
+                "url": "https://kali.download/cloud-images/kali-2026.3/SHA256SUMS"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://kali.download/cloud-images/kali-2026.3/kali-linux-2026.3-cloud-genericcloud-arm64.tar.xz.torrent"
             }
           ]
         }

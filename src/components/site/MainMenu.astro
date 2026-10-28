@@ -27,6 +27,8 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const basePath = stripLocale(Astro.url.pathname);
+// The 404 page exists once (Vercel serves it for every locale): switch to the other home.
+const switchPath = /^\/404\/?$/.test(basePath) ? "/" : basePath;
 const primary = primaryNav(locale, Astro.url.pathname);
 const secondary = secondaryNav(locale, Astro.url.pathname);
 const other = LOCALES.find((l) => l !== locale) ?? locale;
@@ -82,7 +84,7 @@ const themes = [
   <div class="menu-section">
     <a
       class="adw-nav-row"
-      href={localizePath(basePath, other)}
+      href={localizePath(switchPath, other)}
       hreflang={LOCALE_META[other].htmlLang}
       lang={LOCALE_META[other].htmlLang}
       data-lang-switch

@@ -1,0 +1,985 @@
+{
+  "slug": "fedora",
+  "sources": [
+    "https://mirrormanager.fedoraproject.org/mirrors/Fedora/44/x86_64?page_size=500&page_number=1"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://at.mirrors.cicku.me/fedora/linux/",
+      "country": "AT",
+      "name": "at.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ufdroht.net/fedora/fedora/linux/",
+      "country": "AT",
+      "name": "mirror.ufdroht.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gsl-syd.mm.fcix.net/fedora/linux/",
+      "country": "AU",
+      "name": "gsl-syd.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lchs.mm.fcix.net/fedora/linux/",
+      "country": "AU",
+      "name": "lchs.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.aarnet.edu.au/pub/fedora/linux/",
+      "country": "AU",
+      "name": "mirror.aarnet.edu.au",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://syd.mirror.rackspace.com/fedora/",
+      "country": "AU",
+      "name": "syd.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ourhost.az/fedora/linux/",
+      "country": "AZ",
+      "name": "mirror.ourhost.az",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.ipacct.com/fedora/linux/",
+      "country": "BG",
+      "name": "fedora.ipacct.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.neterra.net/fedora/",
+      "country": "BG",
+      "name": "mirrors.neterra.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.netix.net/fedora/",
+      "country": "BG",
+      "name": "mirrors.netix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://br.mirrors.cicku.me/fedora/linux/",
+      "country": "BR",
+      "name": "br.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ca.mirrors.cicku.me/fedora/linux/",
+      "country": "CA",
+      "name": "ca.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lesnet.mm.fcix.net/fedora/linux/",
+      "country": "CA",
+      "name": "lesnet.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/",
+      "country": "CA",
+      "name": "mirror.cpsc.ucalgary.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.csclub.uwaterloo.ca/fedora/linux/",
+      "country": "CA",
+      "name": "mirror.csclub.uwaterloo.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dst.ca/fedora-linux/fedora/linux/",
+      "country": "CA",
+      "name": "mirror.dst.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://yxeix.mm.fcix.net/fedora/linux/",
+      "country": "CA",
+      "name": "yxeix.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ipng.mm.fcix.net/fedora/linux/",
+      "country": "CH",
+      "name": "ipng.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://linuxsoft.cern.ch/fedora/",
+      "country": "CH",
+      "name": "linuxsoft.cern.ch",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.init7.net/fedora/fedora/linux/",
+      "country": "CH",
+      "name": "mirror.init7.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirror.nyist.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.bfsu.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirrors.bfsu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.huaweicloud.com/repository/fedora/",
+      "country": "CN",
+      "name": "mirrors.huaweicloud.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.jlu.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirrors.jlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.qlu.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirrors.qlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/linux/fedora/linux/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.slu.cz/fedora/linux/",
+      "country": "CZ",
+      "name": "mirror.slu.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://de.mirrors.cicku.me/fedora/linux/",
+      "country": "DE",
+      "name": "de.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp-stud.hs-esslingen.de/pub/fedora/linux/",
+      "country": "DE",
+      "name": "ftp-stud.hs-esslingen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fau.de/fedora/linux/",
+      "country": "DE",
+      "name": "ftp.fau.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.uni-stuttgart.de/fedora/",
+      "country": "DE",
+      "name": "ftp.uni-stuttgart.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.23m.com/fedora/linux/",
+      "country": "DE",
+      "name": "mirror.23m.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dogado.de/fedora/linux/",
+      "country": "DE",
+      "name": "mirror.dogado.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.imt-systems.com/fedora/linux/",
+      "country": "DE",
+      "name": "mirror.imt-systems.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netzwerge.de/fedora/linux/",
+      "country": "DE",
+      "name": "mirror.netzwerge.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.plusline.net/fedora/linux/",
+      "country": "DE",
+      "name": "mirror.plusline.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.n-ix.net/fedora/linux/",
+      "country": "DE",
+      "name": "mirrors.n-ix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.de/fedora/",
+      "country": "DE",
+      "name": "mirrors.xtom.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.group.one/fedora/linux/",
+      "country": "DK",
+      "name": "mirror.group.one",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netsite.dk/fedora/linux/",
+      "country": "DK",
+      "name": "mirror.netsite.dk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cedia.org.ec/fedora/linux/",
+      "country": "EC",
+      "name": "mirror.cedia.org.ec",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.xtom.ee/fedora/",
+      "country": "EE",
+      "name": "mirrors.xtom.ee",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.raiolanetworks.com/fedora/",
+      "country": "ES",
+      "name": "mirror.raiolanetworks.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fr.mirrors.cicku.me/fedora/linux/",
+      "country": "FR",
+      "name": "fr.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fr2.rpmfind.net/linux/fedora/linux/",
+      "country": "FR",
+      "name": "fr2.rpmfind.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.in2p3.fr/pub/fedora/linux/",
+      "country": "FR",
+      "name": "mirror.in2p3.fr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ask4.mm.fcix.net/fedora/linux/",
+      "country": "GB",
+      "name": "ask4.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://b4sh.mm.fcix.net/fedora/linux/",
+      "country": "GB",
+      "name": "b4sh.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://divergentnetworks.mm.fcix.net/fedora/linux/",
+      "country": "GB",
+      "name": "divergentnetworks.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.mirrorservice.org/fedora/linux/",
+      "country": "GB",
+      "name": "fedora.mirrorservice.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gb.mirrors.cicku.me/fedora/linux/",
+      "country": "GB",
+      "name": "gb.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cov.ukservers.com/fedora/fedora/linux/",
+      "country": "GB",
+      "name": "mirror.cov.ukservers.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://hkg.mirror.rackspace.com/fedora/",
+      "country": "HK",
+      "name": "hkg.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://www.fedora.is/fedora/",
+      "country": "IS",
+      "name": "www.fedora.is",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.mirror.garr.it/fedora/linux/",
+      "country": "IT",
+      "name": "fedora.mirror.garr.it",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/linux/fedora-projects/fedora/linux/",
+      "country": "JP",
+      "name": "ftp.yz.yamagata-u.ac.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror5.krfoss.org/fedora/",
+      "country": "KR",
+      "name": "mirror5.krfoss.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hoster.kz/fedora/fedora/linux/",
+      "country": "KZ",
+      "name": "mirror.hoster.kz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vpsnet.com/fedora/linux/",
+      "country": "LT",
+      "name": "mirror.vpsnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ipserverone.com/fedora/fedora/linux/",
+      "country": "MY",
+      "name": "mirrors.ipserverone.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://eu.edge.kernel.org/fedora/",
+      "country": "NL",
+      "name": "eu.edge.kernel.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.mirror.liteserver.nl/linux/",
+      "country": "NL",
+      "name": "fedora.mirror.liteserver.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.mirror.wearetriple.com/linux/",
+      "country": "NL",
+      "name": "fedora.mirror.wearetriple.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.i3d.net/pub/fedora/linux/",
+      "country": "NL",
+      "name": "mirror.i3d.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hostiserver.com/fedora/fedora/linux/",
+      "country": "NL",
+      "name": "mirrors.hostiserver.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nl.mirrors.cicku.me/fedora/linux/",
+      "country": "NL",
+      "name": "nl.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nxthost.com/fedora/",
+      "country": "RO",
+      "name": "mirrors.nxthost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/fedora/linux/",
+      "country": "RU",
+      "name": "mirror.yandex.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/fedora/linux/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bahnhof.net/pub/fedora/linux/",
+      "country": "SE",
+      "name": "mirror.bahnhof.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.zyner.org/fedora/enchilada/linux/",
+      "country": "SE",
+      "name": "mirror.zyner.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/fedora/fedora/linux/",
+      "country": "SG",
+      "name": "mirror.freedif.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sg.mirrors.cicku.me/fedora/linux/",
+      "country": "SG",
+      "name": "sg.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/fedora/fedora/linux/",
+      "country": "TW",
+      "name": "mirror.twds.com.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distrohub.kyiv.ua/fedora/fedora/linux/",
+      "country": "UA",
+      "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.ip-connect.info/linux/",
+      "country": "UA",
+      "name": "fedora.ip-connect.info",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.ip-connect.vn.ua/linux/",
+      "country": "UA",
+      "name": "fedora.ip-connect.vn.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://abqix.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "abqix.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cfhcable.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "cfhcable.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://codingflyboy.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "codingflyboy.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cofractal-ewr.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "cofractal-ewr.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://cofractal-sea.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "cofractal-sea.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://coresite-atl.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "coresite-atl.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://coresite.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "coresite.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://dfw.mirror.rackspace.com/fedora/",
+      "country": "US",
+      "name": "dfw.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fdix-ind.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "fdix-ind.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora-mirror-atl.gigsouth.com/pub/fedora/linux/",
+      "country": "US",
+      "name": "fedora-mirror-atl.gigsouth.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.mirror.constant.com/fedora/linux/",
+      "country": "US",
+      "name": "fedora.mirror.constant.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://forksystems.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "forksystems.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp-osl.osuosl.org/pub/fedora/linux/",
+      "country": "US",
+      "name": "ftp-osl.osuosl.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gigsouth.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "gigsouth.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://iad.mirror.rackspace.com/fedora/",
+      "country": "US",
+      "name": "iad.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://insect.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "insect.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://irltoolkit.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "irltoolkit.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ix-denver.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "ix-denver.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://lolhost.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "lolhost.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.siue.edu/fedora/",
+      "country": "US",
+      "name": "mirror.cs.siue.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "mirror.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lstn.net/fedora/",
+      "country": "US",
+      "name": "mirror.lstn.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.servaxnet.com/fedora/linux/",
+      "country": "US",
+      "name": "mirror.servaxnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.web-ster.com/fedora/",
+      "country": "US",
+      "name": "mirror.web-ster.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.lug.mtu.edu/fedora/linux/",
+      "country": "US",
+      "name": "mirrors.lug.mtu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.mit.edu/fedora/linux/",
+      "country": "US",
+      "name": "mirrors.mit.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nnenix.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "nnenix.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nocix.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "nocix.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nullroute.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "nullroute.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ohioix.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "ohioix.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ord.mirror.rackspace.com/fedora/",
+      "country": "US",
+      "name": "ord.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://paducahix.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "paducahix.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pubmirror1.math.uh.edu/fedora-buffet/fedora/linux/",
+      "country": "US",
+      "name": "pubmirror1.math.uh.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pubmirror2.math.uh.edu/fedora-buffet/fedora/linux/",
+      "country": "US",
+      "name": "pubmirror2.math.uh.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.ialab.dsu.edu/fedora/",
+      "country": "US",
+      "name": "repo.ialab.dsu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ryamer.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "ryamer.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sjc.mirror.rackspace.com/fedora/",
+      "country": "US",
+      "name": "sjc.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://solidrock.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "solidrock.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://southfront.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "southfront.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://us.mirrors.cicku.me/fedora/linux/",
+      "country": "US",
+      "name": "us.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://veronanetworks.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "veronanetworks.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://volico.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "volico.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ziply.mm.fcix.net/fedora/linux/",
+      "country": "US",
+      "name": "ziply.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.as3741.net/linux/",
+      "country": "ZA",
+      "name": "fedora.as3741.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

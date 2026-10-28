@@ -16,6 +16,11 @@ const site =
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:4321");
+// A Vercel build without either would publish localhost canonicals and sitemap URLs.
+if (process.env.VERCEL && site.startsWith("http://localhost"))
+  throw new Error(
+    "No site URL on Vercel: set SITE_URL or expose system environment variables (VERCEL_PROJECT_PRODUCTION_URL)",
+  );
 
 /**
  * Install guides that are not written yet are short noindex pages (ADR-0016)

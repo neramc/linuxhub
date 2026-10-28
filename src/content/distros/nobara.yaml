@@ -1,0 +1,52 @@
+name: Nobara
+order: 15
+family: fedora
+basedOn: fedora
+status: active
+releaseModel: semi-rolling
+desktops: [kde, gnome]
+packageManagers: [dnf, rpm, flatpak, snap]
+initSystem: systemd
+installer: calamares
+useCases: [gaming, creative, desktop]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2022
+requirements:
+  ramGB: 4
+  diskGB: 40
+  note:
+    ko: Nobara 사이트와 위키에 최소 사양이 없어 보수적으로 잡은 추정값입니다. RAM은 Fedora Workstation의 권장 사양(4GB)을 따랐고, 디스크는 ISO가 7~9GB로 크고 패키지가 많은 점을 고려해 Fedora 권장(20GB)의 두 배로 잡았습니다. 설치 USB는 8GB 이상이 필요합니다.
+    en: Nobara's site and wiki list no minimum specs, so these are conservative estimates. RAM follows Fedora Workstation's recommendation (4 GB), and disk is twice Fedora's recommended 20 GB because the images are large (7 to 9 GB) and carry more packages. The install USB must be at least 8 GB.
+links:
+  home: https://nobaraproject.org/
+  download: https://nobaraproject.org/download.html
+  docs: https://wiki.nobaraproject.org/
+  installGuide: https://wiki.nobaraproject.org/en/new-user-guide-general-guidelines
+  source: https://github.com/Nobara-Project/rpm-sources
+tagline:
+  ko: 게임과 영상 제작에 맞춰 설정을 미리 갖춘 Fedora 기반 배포판
+  en: A Fedora-based desktop with gaming and content-creation setup done in advance
+aliases: [노바라, 노바라 리눅스, nobara linux, nobara project, nobara os]
+logo:
+  file: nobara.png
+  source: https://nobaraproject.org/img/nobara-icon.png
+  license: No license or trademark policy is stated for the logo on the project's site; Nobara logo (official PNG, the project publishes no SVG), used unmodified (trimmed and resized only) to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://nobaraproject.org/
+  - https://nobaraproject.org/download.html
+  - https://nobaraproject.org/img/nobara-icon.png
+  - https://wiki.nobaraproject.org/
+  - https://wiki.nobaraproject.org/FAQ/FAQ
+  - https://wiki.nobaraproject.org/en/new-user-guide-general-guidelines
+  - https://wiki.nobaraproject.org/general-usage/troubleshooting/upgrade-nobara
+  - https://wiki.nobaraproject.org/modifications/packages
+  - https://docs.fedoraproject.org/en-US/fedora/latest/release-notes/hardware_overview/
+  - https://raw.githubusercontent.com/Nobara-Project/rpm-sources/main/README.md
+lastReviewed: 2026-10-28

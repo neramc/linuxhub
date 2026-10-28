@@ -1,0 +1,52 @@
+name: Garuda Linux
+order: 20
+family: arch
+basedOn: arch
+status: active
+releaseModel: rolling
+desktops: [kde, gnome, xfce, cinnamon, hyprland, sway, i3, cosmic]
+packageManagers: [pacman, octopi]
+initSystem: systemd
+installer: calamares
+useCases: [gaming, desktop]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: partial
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2020-03
+requirements:
+  ramGB: 8
+  diskGB: 40
+  note:
+    ko: KDE Plasma 기반 Dr460nized 에디션의 공식 권장 사양입니다(최소 4GB RAM·30GB). 창 관리자 에디션은 이보다 낮아도 됩니다.
+    en: Official recommendation for the KDE Plasma-based Dr460nized edition (4 GB RAM and 30 GB minimum). Window-manager editions need less.
+links:
+  home: https://garudalinux.org/
+  download: https://garudalinux.org/editions
+  docs: https://wiki.garudalinux.org/
+  installGuide: https://wiki.garudalinux.org/en/installation-instructions
+  forum: https://forum.garudalinux.org/
+  releaseNotes: https://forum.garudalinux.org/c/announcements/16
+  source: https://gitlab.com/garuda-linux
+tagline:
+  ko: Btrfs 스냅숏을 기본으로 설정하고 게이밍 에디션도 내는 Arch 기반 배포판
+  en: An Arch-based distro that sets up Btrfs snapshots by default and offers a gaming edition
+aliases: [가루다, 가루다 리눅스, garuda, garuda dr460nized, dr460nized]
+logo:
+  file: garuda-linux.svg
+  source: https://gitlab.com/garuda-linux/themes-and-settings/artwork/garuda-icons/-/blob/master/usr/share/pixmaps/garudalinux-logo.svg
+  license: GPL-3.0-or-later (garuda-icons repository); Garuda Linux logo, used to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://garudalinux.org/editions
+  - https://garudalinux.org/assets/i18n/en.json
+  - https://wiki.garudalinux.org/en/system-requirements
+  - https://wiki.garudalinux.org/en/installation-instructions
+  - https://wiki.garudalinux.org/en/garuda-in-comparison
+  - https://wiki.garudalinux.org/en/secureboot
+  - https://forum.garudalinux.org/t/anniversary/18299
+  - https://gitlab.com/garuda-linux/themes-and-settings/artwork/garuda-icons
+lastReviewed: 2026-10-17

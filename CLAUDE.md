@@ -136,6 +136,7 @@ bun run lint      # Biome (bun run format to autofix)
 bun run check     # astro check + scripts typecheck
 bun run test      # vitest
 bun run build     # astro build (+ pagefind, sitemap, vercel output)
+bun run check:links  # every internal link and #fragment of the build
 bun run test:e2e  # Playwright + axe against the production build (UI changes)
 ```
 

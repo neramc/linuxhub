@@ -1,0 +1,403 @@
+{
+  "slug": "openmandriva",
+  "sources": [
+    "https://www.openmandriva.org/release-picking",
+    "https://www.openmandriva.org/info-rock",
+    "https://www.openmandriva.org/info-rome",
+    "https://www.openmandriva.org/en/news/",
+    "https://abf-downloads.openmandriva.org/release_current/",
+    "https://mirror.openmandriva.org/downloads",
+    "https://wiki.openmandriva.org/en/distribution/releases"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "26.09",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2026-10-01",
+      "eol": null,
+      "notesUrl": "https://www.openmandriva.org/en/news/article/2026-10-01-openmandriva-rome-26-09/",
+      "editions": [
+        {
+          "id": "plasma-6-x11",
+          "name": "Plasma 6, X11",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OpenMandrivaLx.rolling-snapshot.20260927.4767-plasma6x11.x86_64.iso",
+              "path": "release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4767-plasma6x11.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4767-plasma6x11.x86_64.iso",
+              "size": 3814817792,
+              "checksum": {
+                "type": "sha256",
+                "value": "a784094d8f45000627157bb082e5e797616c71efc6f1cc46c8ad8ca84f31ac16",
+                "url": "https://abf-downloads.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4767-plasma6x11.x86_64.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-wayland",
+          "name": "Plasma 6, Wayland",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OpenMandrivaLx.rolling-snapshot.20260927.4765-plasma6wayland.x86_64.iso",
+              "path": "release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4765-plasma6wayland.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4765-plasma6wayland.x86_64.iso",
+              "size": 3805884416,
+              "checksum": {
+                "type": "sha256",
+                "value": "da25d092140288983a823e54666ae9649ea1306fb447d8d8302f000a00d9eb2a",
+                "url": "https://abf-downloads.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4765-plasma6wayland.x86_64.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-x11-znver1",
+          "name": "Plasma 6, X11 (znver1)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OpenMandrivaLx.rolling-snapshot.20260928.4768-plasma6x11.znver1.iso",
+              "path": "release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260928.4768-plasma6x11.znver1.iso",
+              "url": "https://mirror.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260928.4768-plasma6x11.znver1.iso",
+              "size": 3876571136,
+              "checksum": {
+                "type": "sha256",
+                "value": "bd667d4e0378996ae42d5220ae859e97c500c126456f4093c77e53562511ebd2",
+                "url": "https://abf-downloads.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260928.4768-plasma6x11.znver1.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-wayland-znver1",
+          "name": "Plasma 6, Wayland (znver1)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OpenMandrivaLx.rolling-snapshot.20260927.4760-plasma6wayland.znver1.iso",
+              "path": "release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4760-plasma6wayland.znver1.iso",
+              "url": "https://mirror.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4760-plasma6wayland.znver1.iso",
+              "size": 3867725824,
+              "checksum": {
+                "type": "sha256",
+                "value": "f917d48ee5853ac954411a75c45534a4db00f9e1e98b3e5fbe607509ac593aff",
+                "url": "https://abf-downloads.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-snapshot.20260927.4760-plasma6wayland.znver1.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "gnome",
+          "name": "GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "OpenMandrivaLx.rolling-rome-gnome3.x86_64.iso",
+              "path": "release_current/ROME/OpenMandrivaLx.rolling-rome-gnome3.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-rome-gnome3.x86_64.iso",
+              "size": 3596099584,
+              "checksum": {
+                "type": "sha256",
+                "value": "628653750654d5bd4a20c83a0d1090a2063281e1dd80ed5f46b1de60d48a6d62",
+                "url": "https://abf-downloads.openmandriva.org/release_current/ROME/OpenMandrivaLx.rolling-rome-gnome3.x86_64.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "6.0",
+      "channel": "stable",
+      "codename": "Vanadium",
+      "releaseDate": "2025-04-22",
+      "eol": null,
+      "notesUrl": "https://www.openmandriva.org/en/news/article/openmandriva-lx-6-0-rock-the-spring-release/",
+      "editions": [
+        {
+          "id": "plasma-6-x11",
+          "name": "Plasma 6, X11",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-plasma6-x11.x86_64.iso",
+              "path": "release_current/6.0/openmandriva-6.0-plasma6-x11.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-plasma6-x11.x86_64.iso",
+              "size": 3227226112,
+              "checksum": {
+                "type": "sha256",
+                "value": "05acf723de074768512af81a8280a79ecfa8b0979a611700d8fb3cd3f7a1388c",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-wayland",
+          "name": "Plasma 6, Wayland",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-plasma6-wayland.x86_64.iso",
+              "path": "release_current/6.0/openmandriva-6.0-plasma6-wayland.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-plasma6-wayland.x86_64.iso",
+              "size": 3228639232,
+              "checksum": {
+                "type": "sha256",
+                "value": "4aff0e3727b739be46ff92a3afb1dcd75186437328f6d5e3fd8350b6e8ee02a4",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-x11-znver1",
+          "name": "Plasma 6, X11 (znver1)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-plasma6-x11.znver1.iso",
+              "path": "release_current/6.0/openmandriva-6.0-plasma6-x11.znver1.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-plasma6-x11.znver1.iso",
+              "size": 3331975168,
+              "checksum": {
+                "type": "sha256",
+                "value": "d1333a858606864adf251b601d083e4e1037517adbb0ccfb54bb542717b818b4",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-wayland-znver1",
+          "name": "Plasma 6, Wayland (znver1)",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-plasma6-wayland.znver1.iso",
+              "path": "release_current/6.0/openmandriva-6.0-plasma6-wayland.znver1.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-plasma6-wayland.znver1.iso",
+              "size": 3333396480,
+              "checksum": {
+                "type": "sha256",
+                "value": "5abe87473c535df37c13c1155d38f20f90432433ca27d2c26e586b71bfc60fff",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-slim-x11",
+          "name": "Plasma 6 Slim, X11",
+          "desktop": "kde",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-plasma6.x11-slim.x86_64.iso",
+              "path": "release_current/6.0/openmandriva-6.0-plasma6.x11-slim.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-plasma6.x11-slim.x86_64.iso",
+              "size": 2382290944,
+              "checksum": {
+                "type": "sha256",
+                "value": "463b66879aee7f64fdbb06252061165fde9445833ceb5abfee7a01e4b05d6f34",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "plasma-6-slim-x11-znver1",
+          "name": "Plasma 6 Slim, X11 (znver1)",
+          "desktop": "kde",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-plasma6-x11-slim.znver1.iso",
+              "path": "release_current/6.0/openmandriva-6.0-plasma6-x11-slim.znver1.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-plasma6-x11-slim.znver1.iso",
+              "size": 2442680320,
+              "checksum": {
+                "type": "sha256",
+                "value": "c763c2f6d51c827d9981825ff85750c18e2f7a8f8f9d575247b950cf8af2c3c1",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "lxqt",
+          "name": "LXQt",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-lxqt.x86_64.iso",
+              "path": "release_current/6.0/openmandriva-6.0-lxqt.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-lxqt.x86_64.iso",
+              "size": 2291165184,
+              "checksum": {
+                "type": "sha256",
+                "value": "c52de79f5ef6a950ab353c0a57efc2a861e6359f808268448096fd7015f219a4",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "lxqt-znver1",
+          "name": "LXQt (znver1)",
+          "desktop": "lxqt",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-lxqt.znver1.iso",
+              "path": "release_current/6.0/openmandriva-6.0-lxqt.znver1.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/openmandriva-6.0-lxqt.znver1.iso",
+              "size": 2338406400,
+              "checksum": {
+                "type": "sha256",
+                "value": "8bd72fc3cdf7a94fa1442da9c8210df76b5e9d6f9eece2a36f87f5895a83c267",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "gnome",
+          "name": "GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-gnome.x86_64.iso",
+              "path": "release_current/6.0/extra-spins/openmandriva-6.0-gnome.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/extra-spins/openmandriva-6.0-gnome.x86_64.iso",
+              "size": 3161606144,
+              "checksum": {
+                "type": "sha256",
+                "value": "2c561d8c1249536c32c5323398d5867d1276e6a01168209ee833592620a8caf0",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-xfce.x86_64.iso",
+              "path": "release_current/6.0/extra-spins/openmandriva-6.0-xfce.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/extra-spins/openmandriva-6.0-xfce.x86_64.iso",
+              "size": 2485813248,
+              "checksum": {
+                "type": "sha256",
+                "value": "89edc9f984fd51773a6bf8b81d4054d2f6aa28271e7c8f0a724400c0ba74268a",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "cosmic",
+          "name": "COSMIC",
+          "desktop": "cosmic",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "openmandriva-6.0-cosmic.x86_64.iso",
+              "path": "release_current/6.0/extra-spins/openmandriva-6.0-cosmic.x86_64.iso",
+              "url": "https://mirror.openmandriva.org/release_current/6.0/extra-spins/openmandriva-6.0-cosmic.x86_64.iso",
+              "size": 3022845952,
+              "checksum": {
+                "type": "sha256",
+                "value": "263a0ff32e569a9c3223ecd14896626ce6b2d4f02b5e61094df029a096240371",
+                "url": "https://abf-downloads.openmandriva.org/release_current/6.0/sha256sums"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

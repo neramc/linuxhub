@@ -1,52 +1,115 @@
 [
   {
+    "slug": "bazzite",
+    "version": "44.20261026",
+    "channel": "stable",
+    "date": "2026-10-26",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "kali-linux",
     "version": "2026.3",
     "channel": "rolling",
-    "date": "2026-10-20",
-    "detected": "2026-10-20"
+    "date": "2026-10-26",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "kde-neon",
+    "version": "2026.10.25",
+    "channel": "rolling",
+    "date": "2026-10-25",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "tails",
+    "version": "7.15.1",
+    "channel": "stable",
+    "date": "2026-10-23",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "alpine-linux",
+    "version": "3.24.3",
+    "channel": "stable",
+    "date": "2026-10-21",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "alpine-linux",
+    "version": "3.23.7",
+    "channel": "stable",
+    "date": "2026-10-21",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "alpine-linux",
+    "version": "3.22.7",
+    "channel": "stable",
+    "date": "2026-10-21",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "alpine-linux",
+    "version": "3.21.9",
+    "channel": "stable",
+    "date": "2026-10-21",
+    "detected": "2026-10-28"
   },
   {
     "slug": "tuxedo-os",
     "version": "2026.10.19",
     "channel": "rolling",
     "date": "2026-10-19",
-    "detected": "2026-10-19"
+    "detected": "2026-10-28"
   },
   {
     "slug": "kubuntu",
     "version": "26.10",
     "channel": "stable",
     "date": "2026-10-15",
-    "detected": "2026-10-19"
+    "detected": "2026-10-28"
   },
   {
     "slug": "lubuntu",
     "version": "26.10",
     "channel": "stable",
     "date": "2026-10-15",
-    "detected": "2026-10-19"
+    "detected": "2026-10-28"
   },
   {
     "slug": "ubuntu",
     "version": "26.10",
     "channel": "stable",
     "date": "2026-10-15",
-    "detected": "2026-10-19"
+    "detected": "2026-10-28"
   },
   {
     "slug": "ubuntu-mate",
     "version": "26.10",
     "channel": "stable",
     "date": "2026-10-15",
-    "detected": "2026-10-19"
+    "detected": "2026-10-28"
   },
   {
     "slug": "xubuntu",
     "version": "26.10",
     "channel": "stable",
     "date": "2026-10-15",
-    "detected": "2026-10-19"
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "q4os",
+    "version": "6.10",
+    "channel": "lts",
+    "date": "2026-10-08",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "raspberry-pi-os",
+    "version": "2026-10-06",
+    "channel": "stable",
+    "date": "2026-10-06",
+    "detected": "2026-10-28"
   },
   {
     "slug": "parrot-os",
@@ -56,11 +119,60 @@
     "detected": "2026-10-04"
   },
   {
+    "slug": "puppy-linux",
+    "version": "26.04",
+    "channel": "stable",
+    "date": "2026-10-03",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "puppy-linux",
+    "version": "24.04",
+    "channel": "stable",
+    "date": "2026-10-03",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "puppy-linux",
+    "version": "15.0",
+    "channel": "stable",
+    "date": "2026-10-03",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "puppy-linux",
+    "version": "13",
+    "channel": "stable",
+    "date": "2026-10-03",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "puppy-linux",
+    "version": "12",
+    "channel": "stable",
+    "date": "2026-10-03",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "qubes-os",
+    "version": "4.3.2",
+    "channel": "stable",
+    "date": "2026-10-02",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "tails",
     "version": "7.14",
     "channel": "stable",
     "date": "2026-09-30",
     "detected": "2026-10-03"
+  },
+  {
+    "slug": "mx-linux",
+    "version": "25.3",
+    "channel": "stable",
+    "date": "2026-09-20",
+    "detected": "2026-10-28"
   },
   {
     "slug": "alpine-linux",
@@ -84,11 +196,39 @@
     "detected": "2026-10-03"
   },
   {
+    "slug": "q4os",
+    "version": "5.10",
+    "channel": "lts",
+    "date": "2026-08-31",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "vanilla-os",
     "version": "3",
     "channel": "stable",
     "date": "2026-08-24",
     "detected": "2026-10-04"
+  },
+  {
+    "slug": "sparkylinux",
+    "version": "8.4",
+    "channel": "stable",
+    "date": "2026-08-10",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "debian",
+    "version": "12.15",
+    "channel": "stable",
+    "date": "2026-07-11",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "peppermint-os",
+    "version": "2026-07-09",
+    "channel": "stable",
+    "date": "2026-07-09",
+    "detected": "2026-10-28"
   },
   {
     "slug": "deepin",
@@ -98,11 +238,60 @@
     "detected": "2026-10-04"
   },
   {
+    "slug": "mageia",
+    "version": "10",
+    "channel": "stable",
+    "date": "2026-06-29",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "oracle-linux",
+    "version": "9.8",
+    "channel": "stable",
+    "date": "2026-06-23",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "linux-lite",
+    "version": "8.0",
+    "channel": "lts",
+    "date": "2026-06-01",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "nixos",
     "version": "26.05",
     "channel": "stable",
     "date": "2026-05-30",
     "detected": "2026-10-03"
+  },
+  {
+    "slug": "rocky-linux",
+    "version": "10.2",
+    "channel": "stable",
+    "date": "2026-05-29",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "rocky-linux",
+    "version": "9.8",
+    "channel": "stable",
+    "date": "2026-05-28",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "almalinux",
+    "version": "10.2",
+    "channel": "stable",
+    "date": "2026-05-26",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "almalinux",
+    "version": "9.8",
+    "channel": "stable",
+    "date": "2026-05-26",
+    "detected": "2026-10-28"
   },
   {
     "slug": "fedora",
@@ -175,6 +364,34 @@
     "detected": "2026-10-03"
   },
   {
+    "slug": "zorin-os",
+    "version": "18.1",
+    "channel": "lts",
+    "date": "2026-04-15",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "peppermint-os",
+    "version": "2026-03-04",
+    "channel": "stable",
+    "date": "2026-03-04",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "elementary-os",
+    "version": "8.1.1",
+    "channel": "stable",
+    "date": "2026-02-27",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "linux-lite",
+    "version": "7.8",
+    "channel": "lts",
+    "date": "2026-02-01",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "linux-mint",
     "version": "22.3",
     "channel": "lts",
@@ -196,6 +413,13 @@
     "detected": "2026-10-03"
   },
   {
+    "slug": "linux-mint",
+    "version": "LMDE 7",
+    "channel": "lts",
+    "date": "2025-10-14",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "opensuse",
     "version": "16.0",
     "channel": "stable",
@@ -208,6 +432,76 @@
     "channel": "stable",
     "date": "2025-08-09",
     "detected": "2026-10-03"
+  },
+  {
+    "slug": "sparkylinux",
+    "version": "7.8",
+    "channel": "stable",
+    "date": "2025-07-15",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "manjaro",
+    "version": "25.0.3",
+    "channel": "rolling",
+    "date": "2025-06-09",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "openmandriva",
+    "version": "6.0",
+    "channel": "stable",
+    "date": "2025-04-22",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "deepin",
+    "version": "23.1",
+    "channel": "stable",
+    "date": "2025-04-16",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "mx-linux",
+    "version": "23.6",
+    "channel": "stable",
+    "date": "2025-04-14",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "zorin-os",
+    "version": "17.3",
+    "channel": "lts",
+    "date": "2025-03-26",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "centos-stream",
+    "version": "10",
+    "channel": "stable",
+    "date": "2024-12-12",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "rocky-linux",
+    "version": "8.10",
+    "channel": "stable",
+    "date": "2024-05-31",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "almalinux",
+    "version": "8.10",
+    "channel": "stable",
+    "date": "2024-05-28",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "oracle-linux",
+    "version": "8.10",
+    "channel": "stable",
+    "date": "2024-05-28",
+    "detected": "2026-10-28"
   },
   {
     "slug": "kubuntu",
@@ -294,6 +588,20 @@
     "detected": "2026-10-03"
   },
   {
+    "slug": "linux-lite",
+    "version": "6.6",
+    "channel": "lts",
+    "date": "2023-09-04",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "bodhi-linux",
+    "version": "7.0.0",
+    "channel": "stable",
+    "date": "2023-08-21",
+    "detected": "2026-10-28"
+  },
+  {
     "slug": "pop-os",
     "version": "22.04",
     "channel": "lts",
@@ -334,6 +642,20 @@
     "channel": "lts",
     "date": "2022-04-21",
     "detected": "2026-10-03"
+  },
+  {
+    "slug": "slackware",
+    "version": "15.0",
+    "channel": "stable",
+    "date": "2022-02-02",
+    "detected": "2026-10-28"
+  },
+  {
+    "slug": "centos-stream",
+    "version": "9",
+    "channel": "stable",
+    "date": "2021-09-15",
+    "detected": "2026-10-28"
   },
   {
     "slug": "kubuntu",

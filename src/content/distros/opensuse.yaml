@@ -1,0 +1,56 @@
+name: openSUSE
+order: 12
+family: suse
+basedOn: null
+upstream: SUSE Linux Enterprise (Leap)
+status: active
+releaseModel: rolling
+desktops: [kde, gnome, xfce]
+packageManagers: [zypper, rpm, flatpak]
+initSystem: systemd
+installer: agama
+useCases: [desktop, developer, server, gaming]
+difficulty: intermediate
+architectures: [x86_64, aarch64, ppc64le, s390x, i686]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: DE
+  firstRelease: 2005
+requirements:
+  ramGB: 4
+  diskGB: 40
+  note:
+    ko: 공식 Leap 16.0 다운로드 페이지는 2GHz 듀얼코어 CPU, RAM 2GB(작업량만큼 추가), 여유 디스크 40GB 이상을 안내합니다. 공식 Start-Up 안내(Leap 15.6)는 RAM 4GB 이상을 강하게 권하고, Btrfs 스냅숏을 쓰면 루트 40GB를 권합니다. Leap 16은 x86-64-v2 이상 CPU가 필요합니다.
+    en: The Leap 16.0 download page lists a 2 GHz dual-core CPU, 2 GB RAM (plus memory for your workload) and over 40 GB of free disk. The Leap 15.6 Start-Up guide strongly recommends 4 GB or more RAM, and 40 GB for the root partition with Btrfs snapshots. Leap 16 needs an x86-64-v2 or newer CPU.
+links:
+  home: https://www.opensuse.org/
+  download: https://get.opensuse.org/
+  docs: https://doc.opensuse.org/
+  installGuide: https://agama-project.github.io/docs/overview
+  forum: https://forums.opensuse.org/
+  releaseNotes: https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/16.0/html/release-notes-leap-160/
+  source: https://build.opensuse.org/
+tagline:
+  ko: 롤링 릴리스 Tumbleweed와 SUSE 기반 정기 릴리스 Leap을 함께 내는 커뮤니티 배포판
+  en: A community distro with rolling Tumbleweed and the SUSE-based fixed-release Leap
+aliases: [오픈수세, 오픈수세 리눅스, 수세, suse, 텀블위드, tumbleweed, leap, opensuse leap, opensuse tumbleweed]
+logo:
+  file: opensuse.svg
+  source: https://static.opensuse.org/favicon.svg
+  license: CC BY-SA 3.0 (openSUSE artwork default); openSUSE logo trademark, used to identify the project
+  trademark: https://en.opensuse.org/openSUSE:Trademark_guidelines
+download:
+  strategy: redirector
+sources:
+  - https://get.opensuse.org/
+  - https://get.opensuse.org/desktop/
+  - https://get.opensuse.org/tumbleweed/
+  - https://get.opensuse.org/leap/16.0/
+  - https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/16.0/release-notes-leap-160.txt
+  - https://doc.opensuse.org/documentation/leap/startup/html/book-startup/art-opensuse-installquick.html
+  - https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-uefi.html
+  - https://agama-project.github.io/docs/overview
+  - https://news.opensuse.org/2025/07/09/celebrating-20-yrs-of-os/
+  - https://raw.githubusercontent.com/openSUSE/artwork/master/README.md
+lastReviewed: 2026-10-17

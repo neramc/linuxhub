@@ -1,0 +1,1177 @@
+{
+  "slug": "rocky-linux",
+  "sources": [
+    "https://mirrors.rockylinux.org/mirrormanager/mirrors"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://at.mirrors.cicku.me/rocky/",
+      "country": "AT",
+      "name": "at.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rockylinux.anexia.at/",
+      "country": "AT",
+      "name": "rockylinux.anexia.at",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.swin.edu.au/rocky/",
+      "country": "AU",
+      "name": "ftp.swin.edu.au",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-australia-southeast1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "AU",
+      "name": "rocky-linux-australia-southeast1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-australia-southeast2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "AU",
+      "name": "rocky-linux-australia-southeast2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ourhost.az/rockylinux/",
+      "country": "AZ",
+      "name": "mirror.ourhost.az",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yer.az/rocky-linux/",
+      "country": "AZ",
+      "name": "mirror.yer.az",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "BE",
+      "name": "rocky-linux-europe-west1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/rocky-linux/",
+      "country": "BG",
+      "name": "mirror.telepoint.bg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.neterra.net/rocky/",
+      "country": "BG",
+      "name": "mirrors.neterra.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rockylinux.uni-sofia.bg/rocky-linux/",
+      "country": "BG",
+      "name": "rockylinux.uni-sofia.bg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://br.mirrors.cicku.me/rocky/",
+      "country": "BR",
+      "name": "br.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.uepg.br/rocky-linux/",
+      "country": "BR",
+      "name": "mirror.uepg.br",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-southamerica-east1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "BR",
+      "name": "rocky-linux-southamerica-east1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ca.mirrors.cicku.me/rocky/",
+      "country": "CA",
+      "name": "ca.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cpsc.ucalgary.ca/mirror/rocky-linux/",
+      "country": "CA",
+      "name": "mirror.cpsc.ucalgary.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dst.ca/rocky/",
+      "country": "CA",
+      "name": "mirror.dst.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.reenigne.net/rocky/",
+      "country": "CA",
+      "name": "mirror.reenigne.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-northamerica-northeast1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "CA",
+      "name": "rocky-linux-northamerica-northeast1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-northamerica-northeast2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "CA",
+      "name": "rocky-linux-northamerica-northeast2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.puzzle.ch/rockylinux/",
+      "country": "CH",
+      "name": "mirror.puzzle.ch",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west6.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "CH",
+      "name": "rocky-linux-europe-west6.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hnd.cl/rockylinux/",
+      "country": "CL",
+      "name": "mirror.hnd.cl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-southamerica-west1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "CL",
+      "name": "rocky-linux-southamerica-west1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nju.edu.cn/rocky/",
+      "country": "CN",
+      "name": "mirror.nju.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/rocky/",
+      "country": "CN",
+      "name": "mirror.nyist.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.qlu.edu.cn/rocky/",
+      "country": "CN",
+      "name": "mirrors.qlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.sh.cvut.cz/rocky/",
+      "country": "CZ",
+      "name": "ftp.sh.cvut.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.it4i.cz/rocky/",
+      "country": "CZ",
+      "name": "mirror.it4i.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/linux/rockylinux/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.slu.cz/rocky/",
+      "country": "CZ",
+      "name": "mirror.slu.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.agdsn.de/rocky-linux/",
+      "country": "DE",
+      "name": "ftp.agdsn.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fau.de/rockylinux/",
+      "country": "DE",
+      "name": "ftp.fau.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/rockylinux/",
+      "country": "DE",
+      "name": "ftp.halifax.rwth-aachen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netzwerge.de/rocky-linux/",
+      "country": "DE",
+      "name": "mirror.netzwerge.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.plusline.net/rockylinux/",
+      "country": "DE",
+      "name": "mirror.plusline.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rabisu.com/mirrors/rockylinux/",
+      "country": "DE",
+      "name": "mirror.rabisu.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.stadtwerke-soest.de/rocky/",
+      "country": "DE",
+      "name": "mirror.stadtwerke-soest.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vsm.sh/rocky/",
+      "country": "DE",
+      "name": "mirror.vsm.sh",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west3.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "DE",
+      "name": "rocky-linux-europe-west3.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netsite.dk/rockylinux/",
+      "country": "DK",
+      "name": "mirror.netsite.dk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hostarts.dz/rockylinux/",
+      "country": "DZ",
+      "name": "mirror.hostarts.dz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.raiolanetworks.com/rocky-linux/",
+      "country": "ES",
+      "name": "mirror.raiolanetworks.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-southwest1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "ES",
+      "name": "rocky-linux-europe-southwest1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.eu.ossplanet.net/rockylinux/",
+      "country": "FI",
+      "name": "mirror.eu.ossplanet.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-north1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "FI",
+      "name": "rocky-linux-europe-north1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fr.mirrors.cicku.me/rocky/",
+      "country": "FR",
+      "name": "fr.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west9.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "FR",
+      "name": "rocky-linux-europe-west9.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.reloumirrors.net/",
+      "country": "FR",
+      "name": "rocky.reloumirrors.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gb.mirrors.cicku.me/rocky/",
+      "country": "GB",
+      "name": "gb.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.melbourne.co.uk/rocky/",
+      "country": "GB",
+      "name": "mirrors.melbourne.co.uk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "GB",
+      "name": "rocky-linux-europe-west2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rockylinux.mirrorservice.org/pub/rocky/",
+      "country": "GB",
+      "name": "rockylinux.mirrorservice.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fosszone.csd.auth.gr/rockylinux/",
+      "country": "GR",
+      "name": "fosszone.csd.auth.gr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.cc.uoc.gr/mirrors/linux/rockylinux/",
+      "country": "GR",
+      "name": "ftp.cc.uoc.gr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-east2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "HK",
+      "name": "rocky-linux-asia-east2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nevacloud.com/rockylinux/",
+      "country": "ID",
+      "name": "mirror.nevacloud.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-southeast2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "ID",
+      "name": "rocky-linux-asia-southeast2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.isoc.org.il/pub/rocky/",
+      "country": "IL",
+      "name": "mirror.isoc.org.il",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-me-west1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "IL",
+      "name": "rocky-linux-me-west1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://in.mirrors.cicku.me/rocky/",
+      "country": "IN",
+      "name": "in.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.esto.network/rocky-linux/",
+      "country": "IN",
+      "name": "mirrors.esto.network/rocky-linux",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-south1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "IN",
+      "name": "rocky-linux-asia-south1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-south2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "IN",
+      "name": "rocky-linux-asia-south2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://it2.mirror.vhosting-it.com/rockylinux/",
+      "country": "IT",
+      "name": "it2.mirror.vhosting-it.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west8.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "IT",
+      "name": "rocky-linux-europe-west8.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.iij.ad.jp/pub/linux/rocky/",
+      "country": "JP",
+      "name": "ftp.iij.ad.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.jaist.ac.jp/pub/Linux/rocky/",
+      "country": "JP",
+      "name": "ftp.jaist.ac.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/Linux/rocky-linux/",
+      "country": "JP",
+      "name": "ftp.yz.yamagata-u.ac.jp",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hashy0917.net/rocky/",
+      "country": "JP",
+      "name": "mirror.hashy0917.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-northeast1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "JP",
+      "name": "rocky-linux-asia-northeast1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-northeast2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "JP",
+      "name": "rocky-linux-asia-northeast2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.kaist.ac.kr/pub/rocky/",
+      "country": "KR",
+      "name": "ftp.kaist.ac.kr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.krfoss.org/rocky/",
+      "country": "KR",
+      "name": "mirror.krfoss.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pangkin.com/rocky/",
+      "country": "KR",
+      "name": "mirror.pangkin.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wonchan.net/rocky-linux/",
+      "country": "KR",
+      "name": "mirror.wonchan.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror5.krfoss.org/rocky/",
+      "country": "KR",
+      "name": "mirror5.krfoss.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-northeast3.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "KR",
+      "name": "rocky-linux-asia-northeast3.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ps.kz/rocky/",
+      "country": "KZ",
+      "name": "mirror.ps.kz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux.koyanet.lv/rocky-linux/",
+      "country": "LV",
+      "name": "rocky-linux.koyanet.lv",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.marwan.ma/rocky/",
+      "country": "MA",
+      "name": "mirror.marwan.ma",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ipserverone.com/rocky/",
+      "country": "MY",
+      "name": "mirrors.ipserverone.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.mirror.thegigabit.com/",
+      "country": "MY",
+      "name": "rocky.mirror.thegigabit.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.tech.africa/rocky/",
+      "country": "NG",
+      "name": "mirror.tech.africa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.nluug.nl/pub/os/Linux/distr/rocky/",
+      "country": "NL",
+      "name": "ftp.nluug.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hostiserver.com/rocky/",
+      "country": "NL",
+      "name": "mirrors.hostiserver.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-west4.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "NL",
+      "name": "rocky-linux-europe-west4.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rockylinux.hi.no/",
+      "country": "NO",
+      "name": "rockylinux.hi.no",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.2degrees.nz/rocky/",
+      "country": "NZ",
+      "name": "mirror.2degrees.nz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-europe-central2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "PL",
+      "name": "rocky-linux-europe-central2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.idhosting.pl/",
+      "country": "PL",
+      "name": "rocky.idhosting.pl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.task.gda.pl/",
+      "country": "PL",
+      "name": "rocky.task.gda.pl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.upr.edu/rocky/",
+      "country": "PR",
+      "name": "mirrors.upr.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.randhost.com/rocky/",
+      "country": "PT",
+      "name": "mirror.randhost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nxthost.com/rocky/",
+      "country": "RO",
+      "name": "mirrors.nxthost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.pidginhost.com/rocky-linux/",
+      "country": "RO",
+      "name": "mirrors.pidginhost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/rockylinux/",
+      "country": "RU",
+      "name": "mirror.yandex.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ru.mirrors.cicku.me/rocky/",
+      "country": "RU",
+      "name": "ru.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.maeen.sa/rocky-mirror/",
+      "country": "SA",
+      "name": "mirror.maeen.sa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sa.mirrors.cicku.me/rocky/",
+      "country": "SA",
+      "name": "sa.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/rockylinux.org/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.admax.se/rocky/",
+      "country": "SE",
+      "name": "mirror.admax.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bahnhof.net/pub/rockylinux/",
+      "country": "SE",
+      "name": "mirror.bahnhof.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nsc.liu.se/rockylinux/",
+      "country": "SE",
+      "name": "mirror.nsc.liu.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.zyner.org/rockylinux/",
+      "country": "SE",
+      "name": "mirror.zyner.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-southeast1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "SG",
+      "name": "rocky-linux-asia-southeast1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.alastyr.com/rocky-linux/",
+      "country": "TR",
+      "name": "mirror.alastyr.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cloudbt.com/rocky/",
+      "country": "TR",
+      "name": "mirror.cloudbt.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.verinomi.com/rocky/",
+      "country": "TR",
+      "name": "mirror.verinomi.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://tr.mirrors.cicku.me/rocky/",
+      "country": "TR",
+      "name": "tr.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/rockylinux/",
+      "country": "TW",
+      "name": "mirror.twds.com.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-asia-east1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "TW",
+      "name": "rocky-linux-asia-east1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distrohub.kyiv.ua/rockylinux/",
+      "country": "UA",
+      "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rockylinux.netforce.hosting/rocky/",
+      "country": "UA",
+      "name": "rockylinux.netforce.hosting",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ash.mirrors.clouvider.net/rocky/",
+      "country": "US",
+      "name": "ash.mirrors.clouvider.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distro.ibiblio.org/rocky/",
+      "country": "US",
+      "name": "distro.ibiblio.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://dl.rockylinux.org/pub/rocky/",
+      "country": "US",
+      "name": "dl.rockylinux.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://iad.mirror.rackspace.com/rocky/",
+      "country": "US",
+      "name": "iad.mirror.rackspace.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.chpc.utah.edu/pub/rocky/",
+      "country": "US",
+      "name": "mirror.chpc.utah.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cogentco.com/pub/linux/rocky/",
+      "country": "US",
+      "name": "mirror.cogentco.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.vt.edu/pub/rocky/",
+      "country": "US",
+      "name": "mirror.cs.vt.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rnet.missouri.edu/rocky/",
+      "country": "US",
+      "name": "mirror.rnet.missouri.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.servaxnet.com/rocky-linux/",
+      "country": "US",
+      "name": "mirror.servaxnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.spicernetworks.net/rocky/",
+      "country": "US",
+      "name": "mirror.spicernetworks.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.tzulo.com/rocky/",
+      "country": "US",
+      "name": "mirror.tzulo.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.web-ster.com/rocky/",
+      "country": "US",
+      "name": "https://mirror.web-ster.com/rocky/",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.gigenet.com/rocky/",
+      "country": "US",
+      "name": "mirrors.gigenet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.iu13.net/rocky/",
+      "country": "US",
+      "name": "mirrors.iu13.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.rit.edu/rocky/",
+      "country": "US",
+      "name": "mirrors.rit.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.vcea.wsu.edu/rocky/",
+      "country": "US",
+      "name": "mirrors.vcea.wsu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nyc.mirrors.clouvider.net/rocky/",
+      "country": "US",
+      "name": "nyc.mirrors.clouvider.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pit.mirror.jurassicinnovations.com/rocky/",
+      "country": "US",
+      "name": "pit.mirror.jurassicinnovations.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-central1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-central1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-east1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-east1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-east4.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-east4.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-east5.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-east5.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-south1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-south1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-west1.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-west1.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-west2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-west2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-west3.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-west3.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky-linux-us-west4.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
+      "country": "US",
+      "name": "rocky-linux-us-west4.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.deadbatteries.work/",
+      "country": "US",
+      "name": "rocky.deadbatteries.work",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.mirror.shastacoe.net/rocky/",
+      "country": "US",
+      "name": "rocky.mirror.shastacoe.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://us.mirrors.cicku.me/rocky/",
+      "country": "US",
+      "name": "us.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dc.uz/rocky/",
+      "country": "UZ",
+      "name": "mirror.dc.uz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.africloud.com/rocky/",
+      "country": "ZA",
+      "name": "mirror.africloud.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

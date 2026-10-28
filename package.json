@@ -18,6 +18,7 @@
     "format": "biome check --write .",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "check:links": "bun scripts/check-links.ts",
     "sync": "bun scripts/sync/run.ts",
     "sync:validate": "bun scripts/sync/validate.ts",
     "sync:docs": "bun scripts/sync/docs.ts"

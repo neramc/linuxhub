@@ -1,0 +1,292 @@
+{
+  "slug": "mx-linux",
+  "sources": [
+    "https://sourceforge.net/projects/mx-linux/files/Final/",
+    "https://rsync-mxlinux.org/",
+    "https://endoflife.date/mxlinux",
+    "https://l2.mxrepo.com/torrents/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "25.3",
+      "channel": "stable",
+      "codename": "Infinity",
+      "releaseDate": "2026-09-20",
+      "eol": "2030-06-30",
+      "notesUrl": "https://mxlinux.org/blog/mx-25-infinity-isos-now-available/",
+      "editions": [
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-25.3_Xfce_x64.iso",
+              "path": "MX/Final/Xfce/MX-25.3_Xfce_x64.iso",
+              "url": "https://sourceforge.net/projects/mx-linux/files/Final/Xfce/MX-25.3_Xfce_x64.iso/download",
+              "size": 2927624192,
+              "checksum": {
+                "type": "sha256",
+                "value": "25b5ce20caeee1b0e50507291df5ac8a8211b1b9999d8dd7416da9b66ed9fbf9",
+                "url": "https://rsync-mxlinux.org/MX/Final/Xfce/MX-25.3_Xfce_x64.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/MX/Final/Xfce/MX-25.3_Xfce_x64.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/MX-25.3_Xfce_x64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce-ahs",
+          "name": "Xfce AHS",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-25.3_Xfce_ahs_x64.iso",
+              "path": "MX/Final/Xfce/MX-25.3_Xfce_ahs_x64.iso",
+              "url": "https://sourceforge.net/projects/mx-linux/files/Final/Xfce/MX-25.3_Xfce_ahs_x64.iso/download",
+              "size": 3188719616,
+              "checksum": {
+                "type": "sha256",
+                "value": "475bcbd9c3f38acffc7909da52803f4d5b57fc39bc8205ddf97264f0f10523ed",
+                "url": "https://rsync-mxlinux.org/MX/Final/Xfce/MX-25.3_Xfce_ahs_x64.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/MX/Final/Xfce/MX-25.3_Xfce_ahs_x64.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/MX-25.3_Xfce_ahs_x64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "KDE",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-25.3_KDE_x64.iso",
+              "path": "MX/Final/KDE/MX-25.3_KDE_x64.iso",
+              "url": "https://sourceforge.net/projects/mx-linux/files/Final/KDE/MX-25.3_KDE_x64.iso/download",
+              "size": 3646947328,
+              "checksum": {
+                "type": "sha256",
+                "value": "03cb49ebe8b1af0d630a622bddfc4d8cbefd256755663a49c1214933610ccc2a",
+                "url": "https://rsync-mxlinux.org/MX/Final/KDE/MX-25.3_KDE_x64.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/MX/Final/KDE/MX-25.3_KDE_x64.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/MX-25.3_KDE_x64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "fluxbox",
+          "name": "Fluxbox",
+          "desktop": "fluxbox",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-25.3_fluxbox_x64.iso",
+              "path": "MX/Final/Fluxbox/MX-25.3_fluxbox_x64.iso",
+              "url": "https://sourceforge.net/projects/mx-linux/files/Final/Fluxbox/MX-25.3_fluxbox_x64.iso/download",
+              "size": 2302672896,
+              "checksum": {
+                "type": "sha256",
+                "value": "01f24095bc417fbf0edcaa0d0d8ef18bb75f5dfa53c525cc71adab4b8d41f51a",
+                "url": "https://rsync-mxlinux.org/MX/Final/Fluxbox/MX-25.3_fluxbox_x64.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/MX/Final/Fluxbox/MX-25.3_fluxbox_x64.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/MX-25.3_fluxbox_x64.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi respin",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "mx25.3_rpi_respin_arm64.zip",
+              "path": "MX/Final/Xfce/mx25.3_rpi_respin_arm64.zip",
+              "url": "https://sourceforge.net/projects/mx-linux/files/Final/Xfce/mx25.3_rpi_respin_arm64.zip/download",
+              "size": 2639253868,
+              "checksum": {
+                "type": "sha256",
+                "value": "13c49311507b63562e2960e6aaba031c99339a8838b4411b0944baf7e6e1f893",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Final/Xfce/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://l2.mxrepo.com/torrents/mx25.3_rpi_respin_arm64.zip.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "23.6",
+      "channel": "stable",
+      "codename": "Libretto",
+      "releaseDate": "2025-04-14",
+      "eol": "2028-06-10",
+      "notesUrl": "https://mxlinux.org/blog/mx-23-libretto-now-available/",
+      "editions": [
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-23.6_x64.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/MX-23.6_x64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "8c19585477482674ed3d010e3fb86a6e24932329",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/MX-23.6_x64.iso.sig/download",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "MX-23.6_386.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/MX-23.6_386.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "ad66851a1b92fedbfac0151d3adc09bbcb822b32",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/MX-23.6_386.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce-ahs",
+          "name": "Xfce AHS",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-23.6_ahs_x64.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/MX-23.6_ahs_x64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "0bbb031955aeb7a5debc0acbbea8d72bc4de8823",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/MX-23.6_ahs_x64.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "KDE",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-23.6.1_KDE_x64.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/KDE/MX-23.6.1_KDE_x64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "a1f0c8b4a379a0713cd9eb46ca38ad6f9100d57c",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/KDE/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/KDE/MX-23.6.1_KDE_x64.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "fluxbox",
+          "name": "Fluxbox",
+          "desktop": "fluxbox",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "MX-23.6_fluxbox_x64.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Fluxbox/MX-23.6_fluxbox_x64.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "d128af5cf0f9bcade5757a055de049726557ca28",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Fluxbox/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Fluxbox/MX-23.6_fluxbox_x64.iso.sig/download",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "MX-23.6_fluxbox_386.iso",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Fluxbox/MX-23.6_fluxbox_386.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "7e4dea2d8a000e5aa3639abf92b090805056b78a",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Fluxbox/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Fluxbox/MX-23.6_fluxbox_386.iso.sig/download",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi respin",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "zip",
+              "file": "mx23.6_rpi_respin_arm64.zip",
+              "path": null,
+              "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/mx23.6_rpi_respin_arm64.zip/download",
+              "size": null,
+              "checksum": {
+                "type": "sha1",
+                "value": "879a01f08116cf886c97f66bdadc92d5813c1b97",
+                "url": "https://sourceforge.net/projects/mx-linux/files/Old/MX-23.6/Xfce/"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

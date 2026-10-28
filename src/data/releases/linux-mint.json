@@ -1,16 +1,18 @@
 {
   "slug": "linux-mint",
   "sources": [
-    "https://endoflife.date/linuxmint",
-    "https://pub.linuxmint.io/stable/"
+    "https://www.linuxmint.com/download_all.php",
+    "https://www.linuxmint.com/download.php",
+    "https://www.linuxmint.com/hwe.php",
+    "https://pub.linuxmint.io/"
   ],
-  "updated": "2026-10-03",
+  "updated": "2026-10-28",
   "releases": [
     {
       "version": "22.3",
       "channel": "lts",
       "codename": "Zena",
-      "releaseDate": "2026-01-11",
+      "releaseDate": "2026-01-13",
       "eol": "2029-04-30",
       "notesUrl": "https://linuxmint.com/rel_zena.php",
       "editions": [
@@ -26,37 +28,14 @@
               "file": "linuxmint-22.3-cinnamon-64bit.iso",
               "path": "stable/22.3/linuxmint-22.3-cinnamon-64bit.iso",
               "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-cinnamon-64bit.iso",
-              "size": null,
+              "size": 3091660800,
               "checksum": {
                 "type": "sha256",
                 "value": "a081ab202cfda17f6924128dbd2de8b63518ac0531bcfe3f1a1b88097c459bd4",
                 "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
               },
               "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "xfce",
-          "name": "Xfce Edition",
-          "desktop": "xfce",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "linuxmint-22.3-xfce-64bit.iso",
-              "path": "stable/22.3/linuxmint-22.3-xfce-64bit.iso",
-              "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-xfce-64bit.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "45a835b5dddaf40e84d776549e0b19b3fbd49673b6cc6434ebddbfcd217df776",
-                "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
-              },
-              "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
-              "torrentUrl": null
+              "torrentUrl": "https://www.linuxmint.com/torrents/linuxmint-22.3-cinnamon-64bit.iso.torrent"
             }
           ]
         },
@@ -72,13 +51,174 @@
               "file": "linuxmint-22.3-mate-64bit.iso",
               "path": "stable/22.3/linuxmint-22.3-mate-64bit.iso",
               "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-mate-64bit.iso",
-              "size": null,
+              "size": 3134275584,
               "checksum": {
                 "type": "sha256",
                 "value": "7609294da613b75eea89bb918292125e9f06418a368136fb190466e15bf8c373",
                 "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
               },
               "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
+              "torrentUrl": "https://www.linuxmint.com/torrents/linuxmint-22.3-mate-64bit.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce Edition",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-xfce-64bit.iso",
+              "path": "stable/22.3/linuxmint-22.3-xfce-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/22.3/linuxmint-22.3-xfce-64bit.iso",
+              "size": 3033710592,
+              "checksum": {
+                "type": "sha256",
+                "value": "45a835b5dddaf40e84d776549e0b19b3fbd49673b6cc6434ebddbfcd217df776",
+                "url": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/22.3/sha256sum.txt.gpg",
+              "torrentUrl": "https://www.linuxmint.com/torrents/linuxmint-22.3-xfce-64bit.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "cinnamon-hwe-7-0",
+          "name": "Cinnamon Edition (HWE kernel 7.0)",
+          "desktop": "cinnamon",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-cinnamon-64bit-hwe-7.0.iso",
+              "path": "hwe/linuxmint-22.3-cinnamon-64bit-hwe-7.0.iso",
+              "url": "https://pub.linuxmint.io/hwe/linuxmint-22.3-cinnamon-64bit-hwe-7.0.iso",
+              "size": 3238002688,
+              "checksum": {
+                "type": "sha256",
+                "value": "ab1a9ea53bb3627a1519407438fd23aebead2d4dbd075550a6a8a74bcf5339a4",
+                "url": "https://pub.linuxmint.io/hwe/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/hwe/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate-hwe-7-0",
+          "name": "MATE Edition (HWE kernel 7.0)",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-mate-64bit-hwe-7.0.iso",
+              "path": "hwe/linuxmint-22.3-mate-64bit-hwe-7.0.iso",
+              "url": "https://pub.linuxmint.io/hwe/linuxmint-22.3-mate-64bit-hwe-7.0.iso",
+              "size": 3278700544,
+              "checksum": {
+                "type": "sha256",
+                "value": "74bb1b7b27dceb32a9b56d6f4fc656ff3b3ff6672d9d008c7c9abd5dee50bcba",
+                "url": "https://pub.linuxmint.io/hwe/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/hwe/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce-hwe-7-0",
+          "name": "Xfce Edition (HWE kernel 7.0)",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-xfce-64bit-hwe-7.0.iso",
+              "path": "hwe/linuxmint-22.3-xfce-64bit-hwe-7.0.iso",
+              "url": "https://pub.linuxmint.io/hwe/linuxmint-22.3-xfce-64bit-hwe-7.0.iso",
+              "size": 3181445120,
+              "checksum": {
+                "type": "sha256",
+                "value": "17475774172776978f24677a847a62d7595c5bee34cb1f96ee3e26eedeca33c8",
+                "url": "https://pub.linuxmint.io/hwe/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/hwe/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "cinnamon-hwe-6-17",
+          "name": "Cinnamon Edition (HWE kernel 6.17)",
+          "desktop": "cinnamon",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-cinnamon-64bit-hwe-6.17.iso",
+              "path": "hwe/linuxmint-22.3-cinnamon-64bit-hwe-6.17.iso",
+              "url": "https://pub.linuxmint.io/hwe/linuxmint-22.3-cinnamon-64bit-hwe-6.17.iso",
+              "size": 3208642560,
+              "checksum": {
+                "type": "sha256",
+                "value": "f59b4787d9629a7eeb561e6b41ca7038662de0a8654b386200f48880dd4c21ed",
+                "url": "https://pub.linuxmint.io/hwe/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/hwe/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "mate-hwe-6-17",
+          "name": "MATE Edition (HWE kernel 6.17)",
+          "desktop": "mate",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-mate-64bit-hwe-6.17.iso",
+              "path": "hwe/linuxmint-22.3-mate-64bit-hwe-6.17.iso",
+              "url": "https://pub.linuxmint.io/hwe/linuxmint-22.3-mate-64bit-hwe-6.17.iso",
+              "size": 3248422912,
+              "checksum": {
+                "type": "sha256",
+                "value": "5c03b39315a6c2f0ee3ff0c940eab967bc62d30e52855247dcec9fbe12b60207",
+                "url": "https://pub.linuxmint.io/hwe/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/hwe/sha256sum.txt.gpg",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce-hwe-6-17",
+          "name": "Xfce Edition (HWE kernel 6.17)",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-22.3-xfce-64bit-hwe-6.17.iso",
+              "path": "hwe/linuxmint-22.3-xfce-64bit-hwe-6.17.iso",
+              "url": "https://pub.linuxmint.io/hwe/linuxmint-22.3-xfce-64bit-hwe-6.17.iso",
+              "size": 3151036416,
+              "checksum": {
+                "type": "sha256",
+                "value": "8c8eb200642bca2f34b7f22e812e4ac3d97483b06b188355cdff8ff98f03f550",
+                "url": "https://pub.linuxmint.io/hwe/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/hwe/sha256sum.txt.gpg",
               "torrentUrl": null
             }
           ]
@@ -105,37 +245,14 @@
               "file": "linuxmint-21.3-cinnamon-64bit.iso",
               "path": "stable/21.3/linuxmint-21.3-cinnamon-64bit.iso",
               "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-cinnamon-64bit.iso",
-              "size": null,
+              "size": 3067232256,
               "checksum": {
                 "type": "sha256",
                 "value": "5aa24abbc616807ab754a6a3b586f24460b0c213b6cacb0bf8b9a80b65013ecc",
                 "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
               },
               "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "xfce",
-          "name": "Xfce Edition",
-          "desktop": "xfce",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "linuxmint-21.3-xfce-64bit.iso",
-              "path": "stable/21.3/linuxmint-21.3-xfce-64bit.iso",
-              "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-xfce-64bit.iso",
-              "size": null,
-              "checksum": {
-                "type": "sha256",
-                "value": "b284afcc298cc6f5da6ab4d483318c453b2074485974b71b16fdfc7256527cb1",
-                "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
-              },
-              "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
-              "torrentUrl": null
+              "torrentUrl": "https://www.linuxmint.com/torrents/linuxmint-21.3-cinnamon-64bit.iso.torrent"
             }
           ]
         },
@@ -151,14 +268,70 @@
               "file": "linuxmint-21.3-mate-64bit.iso",
               "path": "stable/21.3/linuxmint-21.3-mate-64bit.iso",
               "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-mate-64bit.iso",
-              "size": null,
+              "size": 3117514752,
               "checksum": {
                 "type": "sha256",
                 "value": "c7b0c703476fcf7cfcfc66974b60984f35479fe1f2f054b00bc3c4cb97f37687",
                 "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
               },
               "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
-              "torrentUrl": null
+              "torrentUrl": "https://www.linuxmint.com/torrents/linuxmint-21.3-mate-64bit.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce Edition",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linuxmint-21.3-xfce-64bit.iso",
+              "path": "stable/21.3/linuxmint-21.3-xfce-64bit.iso",
+              "url": "https://pub.linuxmint.io/stable/21.3/linuxmint-21.3-xfce-64bit.iso",
+              "size": 3033710592,
+              "checksum": {
+                "type": "sha256",
+                "value": "b284afcc298cc6f5da6ab4d483318c453b2074485974b71b16fdfc7256527cb1",
+                "url": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/stable/21.3/sha256sum.txt.gpg",
+              "torrentUrl": "https://www.linuxmint.com/torrents/linuxmint-21.3-xfce-64bit.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "LMDE 7",
+      "channel": "lts",
+      "codename": "Gigi",
+      "releaseDate": "2025-10-14",
+      "eol": null,
+      "notesUrl": "https://linuxmint.com/rel_gigi.php",
+      "editions": [
+        {
+          "id": "cinnamon",
+          "name": "Cinnamon Edition",
+          "desktop": "cinnamon",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "lmde-7-cinnamon-64bit.iso",
+              "path": "debian/lmde-7-cinnamon-64bit.iso",
+              "url": "https://pub.linuxmint.io/debian/lmde-7-cinnamon-64bit.iso",
+              "size": 2960867328,
+              "checksum": {
+                "type": "sha256",
+                "value": "520b9de3e06871d69292f0e82a5979b62088ad83fdf4dce1d19100118a7033e4",
+                "url": "https://pub.linuxmint.io/debian/sha256sum.txt"
+              },
+              "signatureUrl": "https://pub.linuxmint.io/debian/sha256sum.txt.gpg",
+              "torrentUrl": "https://www.linuxmint.com/torrents/lmde-7-cinnamon-64bit.iso.torrent"
             }
           ]
         }

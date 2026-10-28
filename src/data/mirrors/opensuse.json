@@ -1,0 +1,331 @@
+{
+  "slug": "opensuse",
+  "sources": [
+    "https://mirrors.opensuse.org/",
+    "https://get.opensuse.org/api/v0/distributions.json",
+    "https://endoflife.date/opensuse"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://mirror.firstyear.id.au/",
+      "country": "AU",
+      "name": "mirror.firstyear.id.au",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.ipacct.com/opensuse/",
+      "country": "BG",
+      "name": "opensuse.ipacct.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.c3sl.ufpr.br/",
+      "country": "BR",
+      "name": "opensuse.c3sl.ufpr.br",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pkg.adfinis-on-exoscale.ch/opensuse/",
+      "country": "CH",
+      "name": "pkg.adfinis-on-exoscale.ch",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pkg.adfinis.com/opensuse/",
+      "country": "CH",
+      "name": "pkg.adfinis.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.bfsu.edu.cn/opensuse/",
+      "country": "CN",
+      "name": "mirrors.bfsu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/opensuse/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.sh.cvut.cz/opensuse/",
+      "country": "CZ",
+      "name": "ftp.sh.cvut.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/linux/opensuse/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.gwdg.de/pub/opensuse/",
+      "country": "DE",
+      "name": "ftp.gwdg.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/opensuse/",
+      "country": "DE",
+      "name": "ftp.halifax.rwth-aachen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.rz.uni-wuerzburg.de/linux/opensuse/",
+      "country": "DE",
+      "name": "ftp.rz.uni-wuerzburg.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tu-chemnitz.de/pub/linux/opensuse/",
+      "country": "DE",
+      "name": "ftp.tu-chemnitz.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.uni-erlangen.de/opensuse/",
+      "country": "DE",
+      "name": "ftp.uni-erlangen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dogado.de/opensuse/",
+      "country": "DE",
+      "name": "mirror.dogado.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror1.hs-esslingen.de/pub/Mirrors/ftp.opensuse.org/",
+      "country": "DE",
+      "name": "mirror1.hs-esslingen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.schlundtech.de/",
+      "country": "DE",
+      "name": "opensuse.schlundtech.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/opensuse/",
+      "country": "DK",
+      "name": "mirrors.dotsrc.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.funet.fi/pub/mirrors/ftp.opensuse.com/pub/opensuse/",
+      "country": "FI",
+      "name": "ftp.funet.fi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.aardsoft.fi/opensuse/",
+      "country": "FI",
+      "name": "mirror.aardsoft.fi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fr2.rpmfind.net/linux/opensuse/",
+      "country": "FR",
+      "name": "fr2.rpmfind.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://download.opensuse.id/",
+      "country": "ID",
+      "name": "download.opensuse.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.mirror.garr.it/mirrors/opensuse/",
+      "country": "IT",
+      "name": "opensuse.mirror.garr.it",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.mirror.liquidtelecom.com/",
+      "country": "KE",
+      "name": "opensuse.mirror.liquidtelecom.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.koyanet.lv/",
+      "country": "LV",
+      "name": "opensuse.koyanet.lv",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ihost.md/opensuse/",
+      "country": "MD",
+      "name": "mirror.ihost.md",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nl.leaseweb.net/opensuse/",
+      "country": "NL",
+      "name": "mirror.nl.leaseweb.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opensuse.mirror.liteserver.nl/",
+      "country": "NL",
+      "name": "opensuse.mirror.liteserver.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.rnl.tecnico.ulisboa.pt/pub/opensuse/",
+      "country": "PT",
+      "name": "ftp.rnl.tecnico.ulisboa.pt",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nxthost.com/opensuse/",
+      "country": "RO",
+      "name": "mirrors.nxthost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.tspu.ru/opensuse/",
+      "country": "RU",
+      "name": "mirror.tspu.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.acc.umu.se/mirror/opensuse.org/",
+      "country": "SE",
+      "name": "ftp.acc.umu.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/opensuse.org/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://tux.rainside.sk/opensuse/",
+      "country": "SK",
+      "name": "tux.rainside.sk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.verinomi.com/opensuse/",
+      "country": "TR",
+      "name": "mirror.verinomi.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://free.nchc.org.tw/opensuse/",
+      "country": "TW",
+      "name": "free.nchc.org.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mai.co.ua/opensuse/",
+      "country": "UA",
+      "name": "mirror.mai.co.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fcix.net/opensuse/",
+      "country": "US",
+      "name": "mirror.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://slc-mirror.opensuse.org/",
+      "country": "US",
+      "name": "slc-mirror.opensuse.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dc.uz/opensuse/",
+      "country": "UZ",
+      "name": "mirror.dc.uz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

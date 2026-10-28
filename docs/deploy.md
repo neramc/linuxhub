@@ -19,6 +19,7 @@
    - Root Directory는 저장소 루트로 둡니다.
 2. **환경 변수**(Production, Preview)
    - `SITE_URL`: 사이트의 정식 주소(예: `https://linuxhub.example`). canonical, hreflang, sitemap, OG 이미지 URL에 쓰입니다. 비워 두면 Vercel이 주는 프로덕션 도메인(`VERCEL_PROJECT_PRODUCTION_URL`)을 씁니다.
+   - 둘 다 없으면 Vercel 빌드가 실패합니다. 이 경우 Settings → Environment Variables에서 **Automatically expose System Environment Variables**가 켜져 있는지 확인합니다. canonical이 `localhost`로 배포되지 않게 하려는 장치입니다.
 3. **도메인**: Project → Settings → Domains에서 연결합니다. 연결한 뒤 `SITE_URL`도 그 주소로 바꿉니다.
 4. **GitHub 저장소 설정**
    - **Settings → Actions → General → Workflow permissions**를 **Read and write**로 바꿉니다. 동기화 워크플로가 데이터를 커밋하고 이슈를 열려면 필요합니다.
@@ -36,15 +37,18 @@ bun install
 bun run lint && bun run check && bun run test
 bun run sync:validate && bun scripts/validate-catalog.ts
 bun run build
+bun run check:links     # 빌드한 모든 페이지의 내부 링크와 #조각을 확인합니다
 bun run test:e2e        # dist/를 serve.ts로 띄워 Playwright와 axe를 실행합니다
 ```
+
+CI(`.github/workflows/ci.yml`)는 PR과 `main` 푸시마다 위 순서를 실행하고, Lighthouse 예산도 확인합니다. e2e와 Lighthouse는 `scripts/serve.ts`로 띄운 빌드를 대상으로 합니다. 이 서버는 `.vercel/output/config.json`의 페이지별 CSP를 그대로 보내고, `/api/geo/`에는 위치 헤더가 없는 요청에 실제 함수가 주는 응답(위치 없음)을 돌려줍니다.
 
 ## 배포 후 스모크 테스트
 
 ```bash
 SITE=https://<도메인>
 curl -sI $SITE/ | grep -i -E "content-security-policy|strict-transport|x-frame"
-curl -s $SITE/api/geo                      # {"cc":"KR","lat":…,"lon":…}, Cache-Control: private, no-store
+curl -s $SITE/api/geo/                     # {"cc":"KR","lat":…,"lon":…}, Cache-Control: private, no-store
 curl -sI $SITE/distros/fedora/ | head -1   # 200
 curl -s $SITE/sitemap-index.xml | head -3
 curl -s $SITE/rss.xml | head -5

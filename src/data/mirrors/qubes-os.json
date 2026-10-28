@@ -1,0 +1,217 @@
+{
+  "slug": "qubes-os",
+  "sources": [
+    "https://www.qubes-os.org/downloads/"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://qubes-mirror.igniterefereeing.com.au/",
+      "country": "AU",
+      "name": "Ignite Refereeing",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.aliyun.com/qubes/",
+      "country": "CN",
+      "name": "Alibaba Cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nju.edu.cn/qubes/",
+      "country": "CN",
+      "name": "eScience Center, Nanjing University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/qubesos/",
+      "country": "CN",
+      "name": "Tsinghua University TUNA Association",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.library.ucy.ac.cy/linux/qubes/",
+      "country": "CY",
+      "name": "University of Cyprus, Library",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.as20647.net/qubes/",
+      "country": "DE",
+      "name": "Internet Provider Berlin (mirror.as20647.net)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.diyarciftci.xyz/qubes/",
+      "country": "DE",
+      "name": "Diyar Ciftci",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ipb.de/qubes/",
+      "country": "DE",
+      "name": "Internet Provider Berlin",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/qubes/",
+      "country": "DK",
+      "name": "dotsrc.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ukfast.co.uk/sites/qubes-os.org/",
+      "country": "GB",
+      "name": "UKFast",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.cc.uoc.gr/mirrors/linux/qubes/",
+      "country": "GR",
+      "name": "University of Crete Computer Center",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://quantum-mirror.hu/mirrors/pub/qubes/",
+      "country": "HU",
+      "name": "Quantum Mirror",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://is.mirror.flokinet.net/",
+      "country": "IS",
+      "name": "FlokiNET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hosthink.net/qubes/",
+      "country": "MD",
+      "name": "Hosthink Dedicated Servers",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vulnseeker.org/pub/qubes/",
+      "country": "NL",
+      "name": "Vuln Seeker",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nl.mirror.flokinet.net/",
+      "country": "NL",
+      "name": "FlokiNET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://polish-mirror.evolution-host.com/qubes/",
+      "country": "PL",
+      "name": "Evolution Host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.rnl.tecnico.ulisboa.pt/pub/qubesos/",
+      "country": "PT",
+      "name": "Instituto Superior Técnico, Universidade de Lisboa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ro.mirror.flokinet.net/",
+      "country": "RO",
+      "name": "FlokiNET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/qubes-os.org/",
+      "country": "SE",
+      "name": "Academic Computer Club in Umeå",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.gigenet.com/qubes/",
+      "country": "US",
+      "name": "GigeNET",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://plug-mirror.rcac.purdue.edu/qubes/",
+      "country": "US",
+      "name": "Purdue Linux Users Group",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.africloud.com/qubeos/",
+      "country": "ZA",
+      "name": "Africloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.qubes-os.org/",
+      "country": null,
+      "name": "The Qubes OS Project",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.randhost.com/qubes/",
+      "country": null,
+      "name": "Randhost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.edge.kernel.org/qubes/",
+      "country": null,
+      "name": "The Linux Kernel Archives",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

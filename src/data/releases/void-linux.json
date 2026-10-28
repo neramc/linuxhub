@@ -1,0 +1,674 @@
+{
+  "slug": "void-linux",
+  "sources": [
+    "https://voidlinux.org/download/",
+    "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt",
+    "https://repo-default.voidlinux.org/live/20250202/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "20250202",
+      "channel": "rolling",
+      "codename": null,
+      "releaseDate": "2025-02-02",
+      "eol": null,
+      "notesUrl": "https://voidlinux.org/news/",
+      "editions": [
+        {
+          "id": "base",
+          "name": "Base (glibc)",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "void-live-x86_64-20250202-base.iso",
+              "path": "live/20250202/void-live-x86_64-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-x86_64-20250202-base.iso",
+              "size": 1078804480,
+              "checksum": {
+                "type": "sha256",
+                "value": "0f7439f500740f62dd18972cae448cec7d8a85032c7eb8f1bf946100d9a92161",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-aarch64-20250202-base.iso",
+              "path": "live/20250202/void-live-aarch64-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-aarch64-20250202-base.iso",
+              "size": 1168177152,
+              "checksum": {
+                "type": "sha256",
+                "value": "29516e4c7085a49c2e288aafe143d402a6bcda7271f711f1559ad0c1b9cc1a79",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "void-live-i686-20250202-base.iso",
+              "path": "live/20250202/void-live-i686-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-i686-20250202-base.iso",
+              "size": 1021313024,
+              "checksum": {
+                "type": "sha256",
+                "value": "84ad6814c2eeae9f1ce9fe1b9ce26e54c61415594a5a04837c57c21db5017987",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce (glibc)",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "void-live-x86_64-20250202-xfce.iso",
+              "path": "live/20250202/void-live-x86_64-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-x86_64-20250202-xfce.iso",
+              "size": 1446789120,
+              "checksum": {
+                "type": "sha256",
+                "value": "40ff378e6cbc74680b30eb0af0003af0abc750b2589f18d4733f9f30bcc79d5b",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-aarch64-20250202-xfce.iso",
+              "path": "live/20250202/void-live-aarch64-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-aarch64-20250202-xfce.iso",
+              "size": 1498923008,
+              "checksum": {
+                "type": "sha256",
+                "value": "b301790f4f2ad1a21c79683ab5f63313df899576b2b40f0e6e229e104c4254fa",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "void-live-i686-20250202-xfce.iso",
+              "path": "live/20250202/void-live-i686-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-i686-20250202-xfce.iso",
+              "size": 1396899840,
+              "checksum": {
+                "type": "sha256",
+                "value": "81d1fc7f5c5f4a05db7e4ad613a5986a2b47c04d81f25bfcd35566d5fc5ee156",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "base-musl",
+          "name": "Base (musl)",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "void-live-x86_64-musl-20250202-base.iso",
+              "path": "live/20250202/void-live-x86_64-musl-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-x86_64-musl-20250202-base.iso",
+              "size": 1063256064,
+              "checksum": {
+                "type": "sha256",
+                "value": "0c46bf13a7a019c1fec0b2969201aecf09ff9a7646ef749e04ea63ead0c86404",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-aarch64-musl-20250202-base.iso",
+              "path": "live/20250202/void-live-aarch64-musl-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-aarch64-musl-20250202-base.iso",
+              "size": 1154801664,
+              "checksum": {
+                "type": "sha256",
+                "value": "b985fafb13fe49586314b77763925b8a46d701f0974523ae6c118bd33c14eea3",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "xfce-musl",
+          "name": "Xfce (musl)",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "void-live-x86_64-musl-20250202-xfce.iso",
+              "path": "live/20250202/void-live-x86_64-musl-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-x86_64-musl-20250202-xfce.iso",
+              "size": 1430159360,
+              "checksum": {
+                "type": "sha256",
+                "value": "eaf73fabc4256af9f048dd440ae3b707776aebf601d282d2d66a26c50f2bc802",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-aarch64-musl-20250202-xfce.iso",
+              "path": "live/20250202/void-live-aarch64-musl-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-aarch64-musl-20250202-xfce.iso",
+              "size": 1486196736,
+              "checksum": {
+                "type": "sha256",
+                "value": "a40556aa54416ef5f31ecd0666ec64e6634620a9473e540e6b3d276237ad8634",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "asahi-base",
+          "name": "Apple Silicon Base (glibc)",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-asahi-20250202-base.iso",
+              "path": "live/20250202/void-live-asahi-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-asahi-20250202-base.iso",
+              "size": 826583040,
+              "checksum": {
+                "type": "sha256",
+                "value": "6e8163cda1fc1284dd00b4a865f585d792bb5a6a6595851b6d05440791daeb18",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "asahi-xfce",
+          "name": "Apple Silicon Xfce (glibc)",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-asahi-20250202-xfce.iso",
+              "path": "live/20250202/void-live-asahi-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-asahi-20250202-xfce.iso",
+              "size": 1151176704,
+              "checksum": {
+                "type": "sha256",
+                "value": "6c25a3850008548023472159156d2ecd34c40062b6cb15a9da559aea96871761",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "asahi-base-musl",
+          "name": "Apple Silicon Base (musl)",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-asahi-musl-20250202-base.iso",
+              "path": "live/20250202/void-live-asahi-musl-20250202-base.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-asahi-musl-20250202-base.iso",
+              "size": 813559808,
+              "checksum": {
+                "type": "sha256",
+                "value": "0aab11ff24b53a35a470fd4b60ba923d88304877418f1a2f4d83fa30e26d5839",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "asahi-xfce-musl",
+          "name": "Apple Silicon Xfce (musl)",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "void-live-asahi-musl-20250202-xfce.iso",
+              "path": "live/20250202/void-live-asahi-musl-20250202-xfce.iso",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-live-asahi-musl-20250202-xfce.iso",
+              "size": 1138345984,
+              "checksum": {
+                "type": "sha256",
+                "value": "f857afca22b341c5ed7c9be305c260db2e4e7bf12b64f05a3840712784776604",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rootfs",
+          "name": "Rootfs tarball (glibc)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "tar.xz",
+              "file": "void-x86_64-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-x86_64-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-x86_64-ROOTFS-20250202.tar.xz",
+              "size": 48895416,
+              "checksum": {
+                "type": "sha256",
+                "value": "3f48e6673ac5907a897d913c97eb96edbfb230162731b4016562c51b3b8f1876",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "tar.xz",
+              "file": "void-aarch64-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-aarch64-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-aarch64-ROOTFS-20250202.tar.xz",
+              "size": 45789416,
+              "checksum": {
+                "type": "sha256",
+                "value": "01a30f17ae06d4d5b322cd579ca971bc479e02cc284ec1e5a4255bea6bac3ce6",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "tar.xz",
+              "file": "void-i686-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-i686-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-i686-ROOTFS-20250202.tar.xz",
+              "size": 49167188,
+              "checksum": {
+                "type": "sha256",
+                "value": "58f473aa61776f080e0c2c3d4e6066c812dc8052603ddfa09bf20462d3e11950",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-armv7l-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-armv7l-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-armv7l-ROOTFS-20250202.tar.xz",
+              "size": 44010108,
+              "checksum": {
+                "type": "sha256",
+                "value": "1b8911b43c0dc35ad56c158e06a277ccf0cabe94dcdde4d5a05771a48a621edc",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rootfs-musl",
+          "name": "Rootfs tarball (musl)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "tar.xz",
+              "file": "void-x86_64-musl-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-x86_64-musl-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-x86_64-musl-ROOTFS-20250202.tar.xz",
+              "size": 36464456,
+              "checksum": {
+                "type": "sha256",
+                "value": "27b2945ea7e2ca2a6ab123ce6f284b255adea2182820da25483d700ffe16e7c2",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "tar.xz",
+              "file": "void-aarch64-musl-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-aarch64-musl-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-aarch64-musl-ROOTFS-20250202.tar.xz",
+              "size": 35854920,
+              "checksum": {
+                "type": "sha256",
+                "value": "8f66e05401a953d151b3e82d132437840e0b24a51edff27f13202c9010dfa27d",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-armv7l-musl-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-armv7l-musl-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-armv7l-musl-ROOTFS-20250202.tar.xz",
+              "size": 32876892,
+              "checksum": {
+                "type": "sha256",
+                "value": "fb55f4d3406d61ddd935a42e327dea9800bc80ba78b7095e11b5ca42c20daa4f",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rootfs-armv6l",
+          "name": "Rootfs tarball (glibc, ARMv6)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-armv6l-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-armv6l-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-armv6l-ROOTFS-20250202.tar.xz",
+              "size": 44065192,
+              "checksum": {
+                "type": "sha256",
+                "value": "cf460cb29c040e55287fe7378b9fb5875d8b13db0c1eba73a15fb937132449ed",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rootfs-armv6l-musl",
+          "name": "Rootfs tarball (musl, ARMv6)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-armv6l-musl-ROOTFS-20250202.tar.xz",
+              "path": "live/20250202/void-armv6l-musl-ROOTFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-armv6l-musl-ROOTFS-20250202.tar.xz",
+              "size": 32898280,
+              "checksum": {
+                "type": "sha256",
+                "value": "5dcda3cbcb9f1e9b22b9293eafc59ba517aa614d75327452ad09a338d618614a",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rpi",
+          "name": "Raspberry Pi (glibc)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "void-rpi-aarch64-20250202.img.xz",
+              "path": "live/20250202/void-rpi-aarch64-20250202.img.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-aarch64-20250202.img.xz",
+              "size": 116848040,
+              "checksum": {
+                "type": "sha256",
+                "value": "62784c05d5a4495f8a93bed3bdb9030307e57df55ac1c72c43a1955a7c509669",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "tar.xz",
+              "file": "void-rpi-aarch64-PLATFORMFS-20250202.tar.xz",
+              "path": "live/20250202/void-rpi-aarch64-PLATFORMFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-aarch64-PLATFORMFS-20250202.tar.xz",
+              "size": 116200656,
+              "checksum": {
+                "type": "sha256",
+                "value": "5ae7978e23603bb46171e20d7eff71253b25727acf7a91e1eae9fa97030c69c4",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "void-rpi-armv7l-20250202.img.xz",
+              "path": "live/20250202/void-rpi-armv7l-20250202.img.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv7l-20250202.img.xz",
+              "size": 372670524,
+              "checksum": {
+                "type": "sha256",
+                "value": "98c0a92d90f599a1a775e9166578a321a39c33f45b376f52e4fef459dcf1d9f6",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-rpi-armv7l-PLATFORMFS-20250202.tar.xz",
+              "path": "live/20250202/void-rpi-armv7l-PLATFORMFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv7l-PLATFORMFS-20250202.tar.xz",
+              "size": 371857396,
+              "checksum": {
+                "type": "sha256",
+                "value": "297bcdddaef46002786aeee9f2f3ce63d534504352e2587c929be9dfba941449",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rpi-musl",
+          "name": "Raspberry Pi (musl)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "img.xz",
+              "file": "void-rpi-aarch64-musl-20250202.img.xz",
+              "path": "live/20250202/void-rpi-aarch64-musl-20250202.img.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-aarch64-musl-20250202.img.xz",
+              "size": 106876432,
+              "checksum": {
+                "type": "sha256",
+                "value": "07725f2db3c64636f0c2fd6212f8c8b3756a2f08f02887f6edb014e01138e23d",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "tar.xz",
+              "file": "void-rpi-aarch64-musl-PLATFORMFS-20250202.tar.xz",
+              "path": "live/20250202/void-rpi-aarch64-musl-PLATFORMFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-aarch64-musl-PLATFORMFS-20250202.tar.xz",
+              "size": 106018716,
+              "checksum": {
+                "type": "sha256",
+                "value": "553537f29e12422f77d5fa834c4f20ed8db0d658cedaa7a50f0aa44d912a9b61",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "void-rpi-armv7l-musl-20250202.img.xz",
+              "path": "live/20250202/void-rpi-armv7l-musl-20250202.img.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv7l-musl-20250202.img.xz",
+              "size": 361669752,
+              "checksum": {
+                "type": "sha256",
+                "value": "909ec2b07df013d18fe2bce53475a1f855527e4309646fd769c5b192030df12a",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-rpi-armv7l-musl-PLATFORMFS-20250202.tar.xz",
+              "path": "live/20250202/void-rpi-armv7l-musl-PLATFORMFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv7l-musl-PLATFORMFS-20250202.tar.xz",
+              "size": 361191288,
+              "checksum": {
+                "type": "sha256",
+                "value": "2efdf7e4172eb528e6d74d9f48a1c19f2b4427ac94f61931597d80c76875f0da",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rpi-armv6l",
+          "name": "Raspberry Pi (glibc, ARMv6)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "void-rpi-armv6l-20250202.img.xz",
+              "path": "live/20250202/void-rpi-armv6l-20250202.img.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv6l-20250202.img.xz",
+              "size": 372600384,
+              "checksum": {
+                "type": "sha256",
+                "value": "eb6f69f4b2f3397ad0a67776d9e3cd852718858c9cdbc4fef9c033790452b195",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-rpi-armv6l-PLATFORMFS-20250202.tar.xz",
+              "path": "live/20250202/void-rpi-armv6l-PLATFORMFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv6l-PLATFORMFS-20250202.tar.xz",
+              "size": 372055692,
+              "checksum": {
+                "type": "sha256",
+                "value": "3b59d16c4648a99f5caca06889da4bdf0de385f7f532fe8f3a5658dc6c8c628b",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "rpi-armv6l-musl",
+          "name": "Raspberry Pi (musl, ARMv6)",
+          "desktop": "none",
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "armhf",
+              "format": "img.xz",
+              "file": "void-rpi-armv6l-musl-20250202.img.xz",
+              "path": "live/20250202/void-rpi-armv6l-musl-20250202.img.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv6l-musl-20250202.img.xz",
+              "size": 362254756,
+              "checksum": {
+                "type": "sha256",
+                "value": "88ef3df5c5d0ed17a5484aa882fa02dcaa910ef0b587b177b2a9ddb15acfd2ed",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "armhf",
+              "format": "tar.xz",
+              "file": "void-rpi-armv6l-musl-PLATFORMFS-20250202.tar.xz",
+              "path": "live/20250202/void-rpi-armv6l-musl-PLATFORMFS-20250202.tar.xz",
+              "url": "https://repo-default.voidlinux.org/live/20250202/void-rpi-armv6l-musl-PLATFORMFS-20250202.tar.xz",
+              "size": 361238188,
+              "checksum": {
+                "type": "sha256",
+                "value": "bda95ad0bf855c60b44afb9f49412852f65694b4581f7a3e474960b48d064aca",
+                "url": "https://repo-default.voidlinux.org/live/20250202/sha256sum.txt"
+              },
+              "signatureUrl": "https://repo-default.voidlinux.org/live/20250202/sha256sum.sig",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

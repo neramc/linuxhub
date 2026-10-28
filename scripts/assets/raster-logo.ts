@@ -16,6 +16,7 @@ const out = `src/assets/logos/${slug}.png`;
 const info = await sharp(input)
   .trim({ threshold: 0 })
   .resize(256, 256, { fit: "inside", withoutEnlargement: true })
-  .png({ compressionLevel: 9, effort: 10 })
+  // No `effort`: in sharp it switches on palette quantizing, which changes colors.
+  .png({ compressionLevel: 9, palette: false })
   .toFile(out);
 console.log(`${out}: ${info.width}×${info.height}, ${info.size} bytes`);

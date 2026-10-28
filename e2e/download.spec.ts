@@ -17,7 +17,7 @@ test("changing the edition updates file, link and checksum", async ({ page }) =>
 });
 
 test("mirror list distros suggest the nearest official mirror", async ({ page }) => {
-  await page.route("**/api/geo", (route) =>
+  await page.route("**/api/geo/", (route) =>
     route.fulfill({
       json: { cc: "KR", lat: 37.57, lon: 126.98 },
       headers: { "cache-control": "no-store" },
@@ -99,7 +99,7 @@ test("when other versions fail to load, the wizard keeps what it serves and can 
 test("when the mirror list fails, the wizard names the official server and can try again", async ({
   page,
 }) => {
-  await page.route("**/api/geo", (route) =>
+  await page.route("**/api/geo/", (route) =>
     route.fulfill({
       json: { cc: "KR", lat: 37.57, lon: 126.98 },
       headers: { "cache-control": "no-store" },
@@ -131,7 +131,7 @@ test("when the mirror list fails, the wizard names the official server and can t
 });
 
 test("the mirror suggestion does not depend on the release data", async ({ page }) => {
-  await page.route("**/api/geo", (route) =>
+  await page.route("**/api/geo/", (route) =>
     route.fulfill({
       json: { cc: "KR", lat: 37.57, lon: 126.98 },
       headers: { "cache-control": "no-store" },
@@ -159,7 +159,7 @@ test.describe("without any location", () => {
   test.use({ timezoneId: "UTC" });
 
   test("the top-ranked official mirror is still suggested", async ({ page }) => {
-    await page.route("**/api/geo", (route) =>
+    await page.route("**/api/geo/", (route) =>
       route.fulfill({
         json: { cc: null, lat: null, lon: null },
         headers: { "cache-control": "no-store" },

@@ -1,0 +1,50 @@
+name: antiX
+order: 27
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [icewm, fluxbox, jwm]
+packageManagers: [apt, dpkg]
+initSystem: runit / sysVinit / dinit / s6
+installer: antix-installer
+useCases: [lightweight, tinkerer, desktop]
+difficulty: intermediate
+architectures: [x86_64, i686]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2007-07-09
+requirements:
+  ramGB: 0.5
+  diskGB: 10
+  note:
+    ko: 공식 FAQ 기준입니다. RAM은 512MB가 권장 최소(antiX-full은 1GB 이상 권장, core는 스왑을 잡으면 256MB에서도 동작)이고, 디스크는 antiX-full이 10GB, core가 2GB입니다. About 페이지는 설치에 7GB를 안내하지만 최신 FAQ의 값을 따랐습니다.
+    en: Based on the official FAQ. 512 MB of RAM is the recommended bare minimum (1 GB or more is preferred for antiX-full; core runs on 256 MB with swap), and disk needs are 10 GB for antiX-full and 2 GB for core. The About page still says 7 GB for an install; the newer FAQ figure is used here.
+links:
+  home: https://antixlinux.com/
+  download: https://antixlinux.com/download/
+  docs: https://robin-antix.codeberg.page/antiX-FAQ/antiX26/
+  forum: https://www.antixforum.com/
+  releaseNotes: https://antixlinux.com/blog/
+  source: https://gitlab.com/antiX-Linux
+tagline:
+  ko: systemd 없이 가벼운 창 관리자를 쓰는, 구형 PC에도 맞는 Debian 기반 배포판
+  en: A systemd-free Debian-based distro with light window managers, suited to old PCs
+aliases: [안티엑스, 앤티엑스, antix linux, antix-linux]
+logo:
+  file: antix.png
+  source: https://antixlinux.com/wp-content/uploads/2017/03/logo_antiX.png
+  license: No license or trademark policy is stated on the antiX site; the official logo is published only as this PNG (the site's own logo file, copied unmodified), used to identify the project
+download:
+  strategy: sourceforge
+sources:
+  - https://antixlinux.com/about/
+  - https://antixlinux.com/download/
+  - https://antixlinux.com/blog/
+  - https://robin-antix.codeberg.page/antiX-FAQ/antiX26/
+  - https://antixlinux.com/forum-archive/favourite-version-of-antix-t6930.html
+  - https://antixlinux.com/forum-archive/history-of-antix-t2412.html
+  - https://gitlab.com/antiX-Linux
+lastReviewed: 2026-10-17

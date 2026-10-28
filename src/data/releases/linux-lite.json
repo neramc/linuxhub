@@ -1,0 +1,110 @@
+{
+  "slug": "linux-lite",
+  "sources": [
+    "https://www.linuxliteos.com/download.php",
+    "https://repo.linuxliteos.com/linuxlite/isos/",
+    "https://www.linuxliteos.com/forums/forumdisplay.php?fid=11"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "8.0",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2026-06-01",
+      "eol": "2031-06-30",
+      "notesUrl": "https://www.linuxliteos.com/forums/showthread.php?tid=9866",
+      "editions": [
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linux-lite-8.0-64bit.iso",
+              "path": "8.0/linux-lite-8.0-64bit.iso",
+              "url": "https://repo.linuxliteos.com/linuxlite/isos/8.0/linux-lite-8.0-64bit.iso",
+              "size": 2533359616,
+              "checksum": {
+                "type": "sha256",
+                "value": "7cfc63baf597156a0a5ecac87e860aff3967279694b19fa67fb410a34802857e",
+                "url": "https://repo.linuxliteos.com/linuxlite/isos/8.0/linux-lite-8.0-64bit.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://repo.linuxliteos.com/linuxlite/isos/8.0/linux-lite-8.0-64bit.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "7.8",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2026-02-01",
+      "eol": "2029-06-30",
+      "notesUrl": "https://www.linuxliteos.com/forums/showthread.php?tid=9811",
+      "editions": [
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linux-lite-7.8-64bit.iso",
+              "path": "7.8/linux-lite-7.8-64bit.iso",
+              "url": "https://repo.linuxliteos.com/linuxlite/isos/7.8/linux-lite-7.8-64bit.iso",
+              "size": 2981529600,
+              "checksum": {
+                "type": "sha256",
+                "value": "b3f1da648c4f5275c311bdb6a33bced758c78fed78a38dcfc693d6b0d099864d",
+                "url": "https://repo.linuxliteos.com/linuxlite/isos/7.8/linux-lite-7.8-64bit.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://repo.linuxliteos.com/linuxlite/isos/7.8/linux-lite-7.8-64bit.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "6.6",
+      "channel": "lts",
+      "codename": null,
+      "releaseDate": "2023-09-04",
+      "eol": "2027-06-30",
+      "notesUrl": "https://www.linuxliteos.com/forums/showthread.php?tid=8914",
+      "editions": [
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "linux-lite-6.6-64bit.iso",
+              "path": "6.6/linux-lite-6.6-64bit.iso",
+              "url": "https://repo.linuxliteos.com/linuxlite/isos/6.6/linux-lite-6.6-64bit.iso",
+              "size": 2535077888,
+              "checksum": {
+                "type": "sha256",
+                "value": "732b5561783c7203e3b919a4c55508a4256c13785b80e2e47019d817b89e9543",
+                "url": "https://repo.linuxliteos.com/linuxlite/isos/6.6/linux-lite-6.6-64bit.iso.sha256"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://repo.linuxliteos.com/linuxlite/isos/6.6/linux-lite-6.6-64bit.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

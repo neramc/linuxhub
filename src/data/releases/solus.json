@@ -1,0 +1,112 @@
+{
+  "slug": "solus",
+  "sources": [
+    "https://getsol.us/download/",
+    "https://getsol.us/2026/04/solus-4-9-released/"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "4.9",
+      "channel": "rolling",
+      "codename": "Serenity",
+      "releaseDate": "2026-04-18",
+      "eol": null,
+      "notesUrl": "https://getsol.us/2026/04/solus-4-9-released/",
+      "editions": [
+        {
+          "id": "budgie",
+          "name": "Budgie",
+          "desktop": "budgie",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Solus-Budgie-Release-2026-04-18.iso",
+              "path": "2026-04-18/Solus-Budgie-Release-2026-04-18.iso",
+              "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-Budgie-Release-2026-04-18.iso",
+              "size": 4338690048,
+              "checksum": {
+                "type": "sha256",
+                "value": "b99324e51d20d029f35932770a7d0f43dad64dc9bca11ec34a6b83cea603b579",
+                "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-Budgie-Release-2026-04-18.iso.sha256sum"
+              },
+              "signatureUrl": "https://downloads.getsol.us/isos/2026-04-18/Solus-Budgie-Release-2026-04-18.iso.sha256sum.sign",
+              "torrentUrl": "https://downloads.getsol.us/torrents/Solus-Budgie-Release-2026-04-18.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "gnome",
+          "name": "GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Solus-GNOME-Release-2026-04-18.iso",
+              "path": "2026-04-18/Solus-GNOME-Release-2026-04-18.iso",
+              "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-GNOME-Release-2026-04-18.iso",
+              "size": 4173447168,
+              "checksum": {
+                "type": "sha256",
+                "value": "059c6718b461775efb67e21d19d3dc13fcead0b43691e9787e704fbfbe61841c",
+                "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-GNOME-Release-2026-04-18.iso.sha256sum"
+              },
+              "signatureUrl": "https://downloads.getsol.us/isos/2026-04-18/Solus-GNOME-Release-2026-04-18.iso.sha256sum.sign",
+              "torrentUrl": "https://downloads.getsol.us/torrents/Solus-GNOME-Release-2026-04-18.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Solus-Plasma-Release-2026-04-18.iso",
+              "path": "2026-04-18/Solus-Plasma-Release-2026-04-18.iso",
+              "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-Plasma-Release-2026-04-18.iso",
+              "size": 4056121344,
+              "checksum": {
+                "type": "sha256",
+                "value": "446975fead7202c3e6d748b1833a62b79fedef26c7a96ca76a848bcc5551ed63",
+                "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-Plasma-Release-2026-04-18.iso.sha256sum"
+              },
+              "signatureUrl": "https://downloads.getsol.us/isos/2026-04-18/Solus-Plasma-Release-2026-04-18.iso.sha256sum.sign",
+              "torrentUrl": "https://downloads.getsol.us/torrents/Solus-Plasma-Release-2026-04-18.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "xfce",
+          "name": "Xfce",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Solus-Xfce-Release-2026-04-18.iso",
+              "path": "2026-04-18/Solus-Xfce-Release-2026-04-18.iso",
+              "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-Xfce-Release-2026-04-18.iso",
+              "size": 3804708864,
+              "checksum": {
+                "type": "sha256",
+                "value": "a3085fa5c0171420e46e1554191fffe66e50dbea70c37e9d6cc4ec79fb557895",
+                "url": "https://downloads.getsol.us/isos/2026-04-18/Solus-Xfce-Release-2026-04-18.iso.sha256sum"
+              },
+              "signatureUrl": "https://downloads.getsol.us/isos/2026-04-18/Solus-Xfce-Release-2026-04-18.iso.sha256sum.sign",
+              "torrentUrl": "https://downloads.getsol.us/torrents/Solus-Xfce-Release-2026-04-18.iso.torrent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

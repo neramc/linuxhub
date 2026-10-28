@@ -1,0 +1,745 @@
+{
+  "slug": "alpine-linux",
+  "sources": [
+    "https://mirrors.alpinelinux.org/mirrors.json"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://mirror.alwyzon.net/alpine/",
+      "country": "AT",
+      "name": "Alwyzon",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kumi.systems/alpine/",
+      "country": "AT",
+      "name": "Kumi Systems",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ourhost.az/alpine/",
+      "country": "AZ",
+      "name": "OUR Host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/alpine/",
+      "country": "BG",
+      "name": "mirror.telepoint.bg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.neterra.net/alpine/",
+      "country": "BG",
+      "name": "Neterra",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.uepg.br/alpine/",
+      "country": "BR",
+      "name": "Universidade Estadual de Ponta Grossa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.csclub.uwaterloo.ca/alpine/",
+      "country": "CA",
+      "name": "mirror.csclub.uwaterloo.ca",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dst.ca/alpine/",
+      "country": "CA",
+      "name": "Digital Shape",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.quantum5.ca/alpine/",
+      "country": "CA",
+      "name": "Quantum5",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.reenigne.net/alpine/",
+      "country": "CA",
+      "name": "Reenigne",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.sajattack.xyz/alpine/",
+      "country": "CA",
+      "name": "mirror.sajattack.xyz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.ethz.ch/alpine/",
+      "country": "CH",
+      "name": "alpine.ethz.ch",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ungleich.ch/mirror/packages/alpine/",
+      "country": "CH",
+      "name": "mirror.ungleich.ch",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pkg.adfinis-on-exoscale.ch/alpine/",
+      "country": "CH",
+      "name": "Adfinis on Exoscale",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pkg.adfinis.com/alpine/",
+      "country": "CH",
+      "name": "Adfinis",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lzu.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirror.lzu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirror.nyist.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.aliyun.com/alpine/",
+      "country": "CN",
+      "name": "Alibaba Cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hust.edu.cn/alpine/",
+      "country": "CN",
+      "name": "Hust",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nju.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirrors.nju.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.sdu.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirrors.sdu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.sjtug.sjtu.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirrors.sjtug.sjtu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ustc.edu.cn/alpine/",
+      "country": "CN",
+      "name": "mirrors.ustc.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fel.cvut.cz/alpine/",
+      "country": "CZ",
+      "name": "FEE CTU in Prague",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://eu.mirror.ionos.com/linux/distributions/alpine/",
+      "country": "DE",
+      "name": "IONOS Mirror (EU)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/alpine/",
+      "country": "DE",
+      "name": "ftp.halifax.rwth-aachen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/alpine/",
+      "country": "DK",
+      "name": "dotsrc at Aalborg University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.elhacker.net/",
+      "country": "ES",
+      "name": "mirror.elhacker.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.raiolanetworks.com/alpine/",
+      "country": "ES",
+      "name": "mirror.raiolanetworks.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpinemirror.truescape.fi/",
+      "country": "FI",
+      "name": "alpinemirror.truescape.fi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.5i.fi/alpine/",
+      "country": "FI",
+      "name": "mirror.5i.fi",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpinelinux.mirrors.ovh.net/",
+      "country": "FR",
+      "name": "OVHcloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp2.crifo.org/alpine/",
+      "country": "FR",
+      "name": "Crifo",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ircam.fr/pub/alpine/",
+      "country": "FR",
+      "name": "mirrors.ircam.fr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vinehost.net/alpine/",
+      "country": "GB",
+      "name": "Vinehost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.c48.uk/alpine/",
+      "country": "GB",
+      "name": "repo.c48.uk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.techrich.hk/alpine/",
+      "country": "HK",
+      "name": "mirror.techrich.hk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.xtom.com.hk/alpine/",
+      "country": "HK",
+      "name": "mirror.xtom.com.hk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mobinhost.com/alpine/",
+      "country": "IR",
+      "name": "Mobinhost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.pardisco.co/alpine/",
+      "country": "IR",
+      "name": "Pardisco",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.iut.ac.ir/repo/alpine/",
+      "country": "IR",
+      "name": "Isfahan University of Technology Linux Repository",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpinelinux.mirror.garr.it/",
+      "country": "IT",
+      "name": "Consortium GARR",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ap.edge.kernel.org/alpine/",
+      "country": "JP",
+      "name": "ap.edge.kernel.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.udx.icscoe.jp/Linux/alpine/",
+      "country": "JP",
+      "name": "ICSCoE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.yz.yamagata-u.ac.jp/pub/linux/alpine/",
+      "country": "JP",
+      "name": "Yamagata University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.sabay.com.kh/alpine/",
+      "country": "KH",
+      "name": "Sabay",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.krfoss.org/alpine/",
+      "country": "KR",
+      "name": "ROKFOSS Project",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.techlabs.co.kr/alpine/",
+      "country": "KR",
+      "name": "mirror.techlabs.co.kr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ps.kz/alpine/",
+      "country": "KZ",
+      "name": "PS Internet Company",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.koyanet.lv/",
+      "country": "LV",
+      "name": "koyanet.lv",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.marwan.ma/alpine/",
+      "country": "MA",
+      "name": "mirror.marwan.ma",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://qontinuum.space/mirror/alpinelinux/",
+      "country": "MC",
+      "name": "qontinuum.space",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ihost.md/alpine/",
+      "country": "MD",
+      "name": "iHost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mangohost.net/alpine/",
+      "country": "MD",
+      "name": "mangohost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lagoon.nc/alpine/",
+      "country": "NC",
+      "name": "Lagoon",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.mirror.wearetriple.com/",
+      "country": "NL",
+      "name": "Triple",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://eu.edge.kernel.org/alpine/",
+      "country": "NL",
+      "name": "eu.edge.kernel.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.nluug.nl/pub/os/Linux/distr/alpine/",
+      "country": "NL",
+      "name": "ftp.nluug.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.2degrees.nz/alpine/",
+      "country": "NZ",
+      "name": "2degrees.nz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.sakamoto.pl/alpine/",
+      "country": "PL",
+      "name": "sakamoto",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/distributions/alpine/",
+      "country": "PL",
+      "name": "ICM",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hosterion.ro/alpinelinux/",
+      "country": "RO",
+      "name": "Hosterion",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hostico.ro/alpinelinux/",
+      "country": "RO",
+      "name": "Hostico",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/mirrors/alpine/",
+      "country": "RU",
+      "name": "mirror.yandex.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.maeen.sa/alpine/",
+      "country": "SA",
+      "name": "Maeen Network",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.ludd.ltu.se/mirrors/alpine/",
+      "country": "SE",
+      "name": "LUDD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lysator.liu.se/pub/alpine/",
+      "country": "SE",
+      "name": "Lysator ACS",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.accum.se/mirror/alpinelinux.org/",
+      "country": "SE",
+      "name": "mirror.accum.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.bahnhof.net/pub/alpinelinux/",
+      "country": "SE",
+      "name": "Bahnhof",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.zyner.org/alpine/",
+      "country": "SE",
+      "name": "mirror.zyner.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/alpine/",
+      "country": "SG",
+      "name": "Freedif Open Source Mirror",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.jingk.ai/alpine/",
+      "country": "SG",
+      "name": "mirror.jingk.ai",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.tux.si/alpine/",
+      "country": "SI",
+      "name": "mirror.tux.si",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://tux.rainside.sk/alpine/",
+      "country": "SK",
+      "name": "Rainside",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kku.ac.th/alpine/",
+      "country": "TH",
+      "name": "Khon Kaen University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.verinomi.com/alpine/",
+      "country": "TR",
+      "name": "mirror.verinomi.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.ccns.ncku.edu.tw/alpine/",
+      "country": "TW",
+      "name": "ccns",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.cs.nycu.edu.tw/",
+      "country": "TW",
+      "name": "NYCU CSIT",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.twds.com.tw/alpine/",
+      "country": "TW",
+      "name": "TWDS",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://distrohub.kyiv.ua/alpine/",
+      "country": "UA",
+      "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/",
+      "country": "US",
+      "name": "dl-cdn.alpinelinux.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.odu.edu/alpine/",
+      "country": "US",
+      "name": "mirrors.cs.odu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.math.princeton.edu/pub/alpinelinux/",
+      "country": "US",
+      "name": "mirror.math.princeton.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pilotfiber.com/alpinelinux/",
+      "country": "US",
+      "name": "Pilot",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.edge.kernel.org/alpine/",
+      "country": "US",
+      "name": "na.edge.kernel.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.itwrx.org/alpine/",
+      "country": "US",
+      "name": "mirrors.itwrx.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ocf.berkeley.edu/alpine/",
+      "country": "US",
+      "name": "Open Compute Facility",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://plug-mirror.rcac.purdue.edu/alpine/",
+      "country": "US",
+      "name": "plug-mirror.rcac.purdue.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://us.mirror.ionos.com/linux/distributions/alpine/",
+      "country": "US",
+      "name": "IONOS Mirror (US)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://us.mirrors.cicku.me/alpine/",
+      "country": "US",
+      "name": "mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://alpine.mirror.net.za/",
+      "country": "ZA",
+      "name": "South African Mirror Project",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

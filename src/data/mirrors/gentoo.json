@@ -1,0 +1,1041 @@
+{
+  "slug": "gentoo",
+  "sources": [
+    "https://api.gentoo.org/mirrors/distfiles.xml"
+  ],
+  "updated": "2026-10-28",
+  "mirrors": [
+    {
+      "url": "https://gentoo.zero.com.ar/gentoo/",
+      "country": "AR",
+      "name": "www.zero.com.ar",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://at.mirrors.cicku.me/gentoo/",
+      "country": "AT",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.kumi.systems/gentoo/",
+      "country": "AT",
+      "name": "Kumi Systems e.U.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://au.mirrors.cicku.me/gentoo/",
+      "country": "AU",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://metis.au.ext.planetunix.net/pub/gentoo/",
+      "country": "AU",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.aarnet.edu.au/pub/gentoo/",
+      "country": "AU",
+      "name": "AARnet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.belnet.be/pub/rsync.gentoo.org/gentoo/",
+      "country": "BE",
+      "name": "Belnet",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.mirror-services.net/gentoo-distfiles/",
+      "country": "BE",
+      "name": "BOINC Team Belgium (boinc.teambelgium.net)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/gentoo/",
+      "country": "BG",
+      "name": "Telepoint Ltd",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://phoebe.bg.ext.planetunix.net/pub/gentoo/",
+      "country": "BG",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://br.mirrors.cicku.me/gentoo/",
+      "country": "BR",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.c3sl.ufpr.br/",
+      "country": "BR",
+      "name": "C3SL, Federal University of Paraná",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://umbriel.br.ext.planetunix.net/pub/gentoo/",
+      "country": "BR",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ca.mirrors.cicku.me/gentoo/",
+      "country": "CA",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://elara.ca.ext.planetunix.net/pub/gentoo/",
+      "country": "CA",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.iro.umontreal.ca/gentoo/",
+      "country": "CA",
+      "name": "Diro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.csclub.uwaterloo.ca/gentoo-distfiles/",
+      "country": "CA",
+      "name": "University of Waterloo",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.reenigne.net/gentoo/",
+      "country": "CA",
+      "name": "Reenigne",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ch.mirrors.cicku.me/gentoo/",
+      "country": "CH",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.init7.net/gentoo/",
+      "country": "CH",
+      "name": "Init7",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pkg.adfinis-on-exoscale.ch/gentoo/",
+      "country": "CH",
+      "name": "Adfinis & Exoscale",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lzu.edu.cn/gentoo/",
+      "country": "CN",
+      "name": "Lanzhou University Open Source Society",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.163.com/gentoo/",
+      "country": "CN",
+      "name": "Netease.com, Inc.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.aliyun.com/gentoo/",
+      "country": "CN",
+      "name": "Alibaba Cloud Computing",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nju.edu.cn/gentoo/",
+      "country": "CN",
+      "name": "eScience Center, Nanjing University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/gentoo/",
+      "country": "CN",
+      "name": "Tsinghua University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ustc.edu.cn/gentoo/",
+      "country": "CN",
+      "name": "University of Science and Technology of China",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.zju.edu.cn/gentoo/",
+      "country": "CN",
+      "name": "Zhejiang University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mimas.co.ext.planetunix.net/pub/gentoo/",
+      "country": "CO",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gluttony.sin.cvut.cz/gentoo/",
+      "country": "CZ",
+      "name": "Sincoolka Mirror - Club Sincoolka, Czech Technical University in Prague",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dkm.cz/gentoo/",
+      "country": "CZ",
+      "name": "UPC Česká republika, a.s.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.it4i.cz/gentoo/",
+      "country": "CZ",
+      "name": "IT4Innovations / Technical University of Ostrava",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vpsfree.cz/gentoo/",
+      "country": "CZ",
+      "name": "vpsFree.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://de.mirrors.cicku.me/gentoo/",
+      "country": "DE",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp-stud.hs-esslingen.de/pub/Mirrors/gentoo/",
+      "country": "DE",
+      "name": "University of Applied Sciences, Esslingen",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.agdsn.de/gentoo/",
+      "country": "DE",
+      "name": "Dresden University of Technology/AG DSN",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.fau.de/gentoo/",
+      "country": "DE",
+      "name": "Uni Erlangen-Nürnberg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.gwdg.de/pub/linux/gentoo/",
+      "country": "DE",
+      "name": "Gesellschaft für wissenschaftliche Datenverarbeitung Göttingen",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.halifax.rwth-aachen.de/gentoo/",
+      "country": "DE",
+      "name": "RWTH Aachen University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.spline.inf.fu-berlin.de/mirrors/gentoo/",
+      "country": "DE",
+      "name": "Freie Universität Berlin - Spline",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tu-ilmenau.de/mirror/gentoo/",
+      "country": "DE",
+      "name": "TU Ilmenau",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.uni-hannover.de/gentoo/",
+      "country": "DE",
+      "name": "Leibniz Universität Hannover",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.uni-stuttgart.de/gentoo-distfiles/",
+      "country": "DE",
+      "name": "Universität Stuttgart",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://linux.rz.ruhr-uni-bochum.de/download/gentoo-mirror/",
+      "country": "DE",
+      "name": "Ruhr-Universität Bochum",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.diyarciftci.xyz/gentoo/",
+      "country": "DE",
+      "name": "Diyar Ciftci",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.dogado.de/gentoo/",
+      "country": "DE",
+      "name": "dogado GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.eu.oneandone.net/linux/distributions/gentoo/gentoo/",
+      "country": "DE",
+      "name": "1&1 Internet SE",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netcologne.de/gentoo/",
+      "country": "DE",
+      "name": "Netcologne",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.netzwerge.de/gentoo/",
+      "country": "DE",
+      "name": "Netzwerge GmbH",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://oberon.de.ext.planetunix.net/pub/gentoo/",
+      "country": "DE",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.dotsrc.org/gentoo/",
+      "country": "DK",
+      "name": "dotsrc.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://es.mirrors.cicku.me/gentoo/",
+      "country": "ES",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.javier.eu.org/gentoo-distfiles/",
+      "country": "ES",
+      "name": "Javier García",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.raiolanetworks.com/gentoo/",
+      "country": "ES",
+      "name": "Raiola Networks (raiolanetworks.com)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.ifca.es/gentoo-distfiles/",
+      "country": "ES",
+      "name": "Institute of Physics of Cantabria (CSIC-UC)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fr.mirrors.cicku.me/gentoo/",
+      "country": "FR",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ibcp.fr/pub/gentoo/",
+      "country": "FR",
+      "name": "CNRS IBCP",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ircam.fr/pub/gentoo-distfiles/",
+      "country": "FR",
+      "name": "Ircam",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.soeasyto.com/distfiles.gentoo.org/",
+      "country": "FR",
+      "name": "soeasyto.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nereid.fr.ext.planetunix.net/pub/gentoo/",
+      "country": "FR",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://callisto.gb.ext.planetunix.net/pub/gentoo/",
+      "country": "GB",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gb.mirrors.cicku.me/gentoo/",
+      "country": "GB",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.gethosted.online/gentoo/",
+      "country": "GB",
+      "name": "Get Hosted online",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://www.mirrorservice.org/sites/distfiles.gentoo.org/",
+      "country": "GB",
+      "name": "The UK Mirror Service",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://hippocamp.cn.ext.planetunix.net/pub/gentoo/",
+      "country": "HK",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://hk.mirrors.cicku.me/gentoo/",
+      "country": "HK",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rackspace.com/gentoo/",
+      "country": "HK",
+      "name": "Rackspace Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.jss.hu/",
+      "country": "HU",
+      "name": "JSS & Hayer",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://tethys.il.ext.planetunix.net/pub/gentoo/",
+      "country": "IL",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ariel.in.ext.planetunix.net/pub/gentoo/",
+      "country": "IN",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.mirrors.ovh.net/gentoo-distfiles/",
+      "country": "IN",
+      "name": "OVHcloud (Anycast: Mumbai)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://in.mirrors.cicku.me/gentoo/",
+      "country": "IN",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.nxtgen.com/gentoo-mirror/gentoo-source/",
+      "country": "IN",
+      "name": "NxtGen",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://belinda.it.ext.planetunix.net/pub/gentoo/",
+      "country": "IT",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.mirror.garr.it/",
+      "country": "IT",
+      "name": "GARR",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://it.mirrors.cicku.me/gentoo/",
+      "country": "IT",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.iij.ad.jp/pub/linux/gentoo/",
+      "country": "JP",
+      "name": "Internet Initiative Japan",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.jaist.ac.jp/pub/Linux/Gentoo/",
+      "country": "JP",
+      "name": "JAIST",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.riken.jp/Linux/gentoo/",
+      "country": "JP",
+      "name": "RIKEN",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://jp.mirrors.cicku.me/gentoo/",
+      "country": "JP",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://kale.jp.ext.planetunix.net/pub/gentoo/",
+      "country": "JP",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hashy0917.net/gentoo/",
+      "country": "JP",
+      "name": "hashy10G",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.jing.rocks/gentoo/",
+      "country": "JP",
+      "name": "Jing Luo",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lanet.kr/pub/gentoo/",
+      "country": "KR",
+      "name": "lanet.kr",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://kr.mirrors.cicku.me/gentoo/",
+      "country": "KR",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.keiminem.com/gentoo/",
+      "country": "KR",
+      "name": "Keiverse",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror2.keiminem.com/gentoo/",
+      "country": "KR",
+      "name": "Keiverse 2",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ps.kz/gentoo/pub/",
+      "country": "KZ",
+      "name": "PS Internet Company LLC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rhea.kz.ext.planetunix.net/pub/gentoo/",
+      "country": "KZ",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hosthink.net/gentoo/",
+      "country": "MD",
+      "name": "Hosthink Dedicated Servers",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://triton.mx.ext.planetunix.net/pub/gentoo/",
+      "country": "MX",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.snt.utwente.nl/pub/os/linux/gentoo/",
+      "country": "NL",
+      "name": "Universiteit Twente",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.leaseweb.com/gentoo/",
+      "country": "NL",
+      "name": "LeaseWeb (Anycast: Amsterdam)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lyrahosting.com/gentoo/",
+      "country": "NL",
+      "name": "Lyrahosting.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.vulnseeker.org/pub/gentoo/",
+      "country": "NL",
+      "name": "Vuln Seeker",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.evoluso.com/gentoo/",
+      "country": "NL",
+      "name": "evoluso.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.hostiserver.com/gentoo/",
+      "country": "NL",
+      "name": "IT Services Company s.r.o.",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://nl.mirrors.cicku.me/gentoo/",
+      "country": "NL",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.alldaydev.com/gentoo/",
+      "country": "PL",
+      "name": "All-Day Developer Marcin Wawrzków",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.rnl.tecnico.ulisboa.pt/pub/gentoo/gentoo-distfiles/",
+      "country": "PT",
+      "name": "RNL - Técnico Lisboa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://prospero.qa.ext.planetunix.net/pub/gentoo/",
+      "country": "QA",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror1.sox.rs/gentoo/",
+      "country": "RS",
+      "name": "Serbian Open eXchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo-mirror.alexxy.name/",
+      "country": "RU",
+      "name": "Alexxy.name",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/gentoo-distfiles/",
+      "country": "RU",
+      "name": "Yandex.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ru.mirrors.cicku.me/gentoo/",
+      "country": "RU",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sa.mirrors.cicku.me/gentoo/",
+      "country": "SA",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lysator.liu.se/gentoo/",
+      "country": "SE",
+      "name": "Linköping University - Lysator",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tnonline.net/gentoo/gentoo-distfiles/",
+      "country": "SE",
+      "name": "tnonline.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://enceladus.sg.ext.planetunix.net/pub/gentoo/",
+      "country": "SG",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freedif.org/gentoo/",
+      "country": "SG",
+      "name": "Freedif",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://sg.mirrors.cicku.me/gentoo/",
+      "country": "SG",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wheel.sk/gentoo/",
+      "country": "SK",
+      "name": "Wheel.sk",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.linux.org.tr/gentoo/",
+      "country": "TR",
+      "name": "Turkish Linux Users Group - Linux Kullanicilari Dernegi (LKD)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://tw.mirrors.cicku.me/gentoo/",
+      "country": "TW",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://himalia.ua.ext.planetunix.net/pub/gentoo/",
+      "country": "UA",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.osuosl.org/",
+      "country": "US",
+      "name": "OSU Open Source Lab (Corvallis; New York; Chicago)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.planetunix.net/pub/gentoo/",
+      "country": "US",
+      "name": "PlanetUnix Networks (Anycast: Global)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.servaxnet.com/gentoo/",
+      "country": "US",
+      "name": "ServaxNet, LLC",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.umd.edu/gentoo/",
+      "country": "US",
+      "name": "University of Maryland",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.kernel.org/gentoo/",
+      "country": "US",
+      "name": "kernel.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.mit.edu/gentoo-distfiles/",
+      "country": "US",
+      "name": "Massachusetts Institute of Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.rit.edu/gentoo/",
+      "country": "US",
+      "name": "Rochester Institute of Technology",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://us.mirrors.cicku.me/gentoo/",
+      "country": "US",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.meowsmp.net/gentoo/",
+      "country": "VN",
+      "name": "MeowIce",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.dimensiondata.com/",
+      "country": "ZA",
+      "name": "Dimension Data",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://gentoo.uls.co.za/",
+      "country": "ZA",
+      "name": "Ultimate Linux Solutions",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ufs.ac.za/gentoo/",
+      "country": "ZA",
+      "name": "University of the Free State",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://setebos.za.ext.planetunix.net/pub/gentoo/",
+      "country": "ZA",
+      "name": "PlanetUnix Networks",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://za.mirrors.cicku.me/gentoo/",
+      "country": "ZA",
+      "name": "CICKU",
+      "lat": null,
+      "lon": null,
+      "score": null
+    }
+  ]
+}

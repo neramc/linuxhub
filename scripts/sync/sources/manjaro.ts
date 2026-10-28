@@ -1,137 +1,303 @@
 /**
- * Manjaro: the official download page (manjaro.org/products/download/x86/)
- * embeds Manjaro's ISO index (the iso-info file-info.json; its GitLab raw
- * URL is closed to bots by robots.txt) in its Nuxt payload. The index lists
- * each official edition's image, minimal image, checksum file, PGP signature
- * and torrent on download.manjaro.org (Manjaro's CDN). The digest comes from
- * the official checksum file next to each image; sizes from a HEAD request.
+ * Manjaro.
+ *
+ * Official sources, and what each one is used for:
+ * - manjaro.org/products/download/x86/ and /arm/: the official download
+ *   pages. Both are prerendered Nuxt pages whose /_payload.json (named by the
+ *   page's data-src) carries Manjaro's ISO index (iso-info file-info.json; the
+ *   GitLab raw URL of that file is closed to bots by robots.txt). The index
+ *   lists, per image, the file, torrent, checksum file and signature the page
+ *   links. The x86 page defines the x86_64 editions (Official: KDE Plasma,
+ *   Xfce, GNOME; Community: Cinnamon, i3; each with its minimal image), the
+ *   ARM page the aarch64 images (17 boards with GNOME, KDE Plasma, MATE,
+ *   Minimal, Sway and Xfce; Pinephone and Pinephone Pro with Phosh and Plasma
+ *   Mobile).
+ * - download.manjaro.org (Manjaro's CDN, the origin of every ISO) and
+ *   github.com/manjaro-arm, github.com/manjaro-pinephone (the project's
+ *   release assets for the ARM images): the files and, next to each, the
+ *   checksum file the page links (.sha256 or .sha512 for ISOs, .sha1 or .sha256
+ *   for ARM images), the .sig signature and the .torrent when the index lists
+ *   them. A checksum file that does not name its image throws.
+ *
+ * The page decides what is offered (as for every distro): releases follow the
+ * versions in the file names the page links. Today that is 26.1.0 for the
+ * official ISOs, 25.0.3 for the community ISOs, 23.02 for the ARM boards and
+ * Beta 32 / Beta 14 for the phones; a newer ISO build that sits on the CDN
+ * but is not linked yet (26.1.2) is picked up once the page links it. Each
+ * version string is its own release (rolling for the numbered ones; channel
+ * `beta` for the phone images, which the project itself labels Beta 32 and
+ * Beta 14). Deviation from the usual "at most two rolling snapshots": the
+ * page offers four different image sets at four versions, and each is listed
+ * with the version its files carry rather than relabelled.
+ *
+ * Exclusions, for the same reasons as everywhere: Sway WM on the x86 page is
+ * only a link to a community project's own site (manjaro-sway.download), no
+ * image of the index; the "Sway" ARM image is included. Package-repository
+ * mirrors (repo.manjaro.org) do not carry ISOs, so the only mirror is the CDN.
+ *
+ * Sizes are not published (run.ts HEADs each file); the release date of the
+ * ISOs is the YYMMDD in the file name, and the ARM and phone images have no
+ * published date (GitHub's release API is closed to the sync), so it is null.
+ * Edition ids are the files' own names (ISO: edition key, "-minimal" for the
+ * minimal image; ARM: the file name between "Manjaro-ARM-" and the version).
  */
 
 import type { Artifact, Edition, Release } from "../../../src/lib/data-schemas";
-import type { Desktop } from "../../../src/lib/taxonomy";
-import { getText, headSize } from "../http";
+import { DESKTOPS, type Desktop } from "../../../src/lib/taxonomy";
+import { getText } from "../http";
 import { checksumType, parseChecksums } from "../lib/checksums";
+import { mapLimit, originAsMirror } from "../lib/mirrors";
 import { compareVersions } from "../lib/versions";
 import { defineSource } from "../source";
 
-const PAGE = "https://manjaro.org/products/download/x86/";
+const X86_PAGE = "https://manjaro.org/products/download/x86/";
+const ARM_PAGE = "https://manjaro.org/products/download/arm/";
+const CDN = "https://download.manjaro.org/";
+const NOTES = "https://forum.manjaro.org/c/announcements/11";
+const HOSTS = ["download.manjaro.org", "github.com"];
 
 interface Image {
   image?: string;
   torrent?: string;
   checksum?: string;
   signature?: string;
+  /** Set instead of `image` when the entry only links a community project's own site. */
+  custom?: string;
 }
 
 type Entry = Image & { minimal?: Image };
-type FileInfo = { official?: Record<string, Entry> };
+interface FileInfo {
+  official?: Record<string, Entry>;
+  community?: Record<string, Entry>;
+  arm?: Record<string, Record<string, Entry>>;
+}
 
 /**
- * The page's Nuxt payload (/_payload.json, named by the page's data-src) is a
+ * A page's Nuxt payload (/_payload.json, named by the page's data-src) is a
  * flat array; the ISO index is one of its strings, stored as raw JSON text.
  */
-async function fileInfo(): Promise<FileInfo> {
-  const html = await getText(PAGE, { accept: "text/html" });
+async function fileInfo(page: string, section: keyof FileInfo): Promise<FileInfo> {
+  const html = await getText(page, { accept: "text/html" });
   const src = html.match(/id="__NUXT_DATA__"[^>]*data-src="([^"]+)"/)?.[1] ?? "_payload.json";
-  const payloadUrl = new URL(src.replace(/&amp;/g, "&"), PAGE).href;
+  const payloadUrl = new URL(src.replace(/&amp;/g, "&"), page).href;
   const payload: unknown = JSON.parse(await getText(payloadUrl, { accept: "application/json" }));
   for (const item of Array.isArray(payload) ? payload : []) {
     if (typeof item !== "string" || !item.trimStart().startsWith("{")) continue;
     try {
       const parsed = JSON.parse(item) as FileInfo;
-      if (parsed.official && typeof parsed.official === "object") return parsed;
+      if (parsed[section] && typeof parsed[section] === "object") return parsed;
     } catch {
       /* not the index */
     }
   }
-  throw new Error(`no ISO index in ${payloadUrl}`);
+  throw new Error(`no "${section}" ISO index in ${payloadUrl}`);
 }
 
-/** Official editions (file-info.json "official" keys), in display order. */
-const EDITIONS: { key: string; id: string; name: string; desktop: Desktop }[] = [
-  { key: "plasma", id: "kde", name: "KDE Plasma", desktop: "kde" },
-  { key: "xfce", id: "xfce", name: "Xfce", desktop: "xfce" },
-  { key: "gnome", id: "gnome", name: "GNOME", desktop: "gnome" },
-];
+interface EditionDef {
+  id: string;
+  name: string;
+  desktop: Desktop | null;
+}
 
-const HOST = "download.manjaro.org";
-const onHost = (url: string | undefined): url is string =>
-  Boolean(url && /^https:\/\//.test(url) && new URL(url).hostname === HOST);
+/** x86 editions by index key; an unknown key still gets a plain entry. */
+const X86: Record<string, EditionDef> = {
+  plasma: { id: "kde", name: "KDE Plasma", desktop: "kde" },
+  xfce: { id: "xfce", name: "Xfce", desktop: "xfce" },
+  gnome: { id: "gnome", name: "GNOME", desktop: "gnome" },
+  cinnamon: { id: "cinnamon", name: "Cinnamon", desktop: "cinnamon" },
+  i3: { id: "i3", name: "i3", desktop: "i3" },
+};
 
-/** "manjaro-kde-26.1.1-260825-linux71.iso" → { version: "26.1.1", date: "2026-08-25" }. */
-function parseName(file: string): { version: string; date: string } | null {
+/** ARM desktops by index key. */
+const ARM: Record<string, { name: string; desktop: Desktop | null; kind: Edition["kind"] }> = {
+  gnome: { name: "GNOME", desktop: "gnome", kind: "desktop" },
+  plasma: { name: "KDE Plasma", desktop: "kde", kind: "desktop" },
+  mate: { name: "MATE", desktop: "mate", kind: "desktop" },
+  minimal: { name: "Minimal", desktop: "none", kind: "minimal" },
+  sway: { name: "Sway", desktop: "sway", kind: "desktop" },
+  xfce: { name: "Xfce", desktop: "xfce", kind: "desktop" },
+  phosh: { name: "Phosh", desktop: null, kind: "other" },
+  "plasma-mobile": { name: "Plasma Mobile", desktop: "kde", kind: "other" },
+};
+
+const fileOf = (url: string) => decodeURIComponent(new URL(url).pathname.split("/").pop() ?? url);
+
+function officialUrl(url: string | undefined, what: string): string {
+  if (!url) throw new Error(`the index has no ${what}`);
+  const u = new URL(url);
+  if (u.protocol !== "https:" || !HOSTS.includes(u.hostname))
+    throw new Error(`${what} ${url} is not on an official Manjaro host`);
+  return url;
+}
+
+/** What a release is made of while the index is read. */
+interface Item {
+  version: string;
+  channel: Release["channel"];
+  date: string | null;
+  notesUrl: string | null;
+  edition: Edition;
+}
+
+/** Reads one linked image: its checksum file names it; signature and torrent are optional. */
+async function artifact(
+  img: Image,
+  arch: Artifact["arch"],
+  format: Artifact["format"],
+  path: string | null,
+): Promise<Artifact> {
+  const url = officialUrl(img.image, "image link");
+  const file = fileOf(url);
+  const sumUrl = officialUrl(img.checksum, `checksum link for ${file}`);
+  const hash = parseChecksums(await getText(sumUrl)).get(file);
+  if (!hash) throw new Error(`${sumUrl} does not list ${file}`);
+  return {
+    arch,
+    format,
+    file,
+    path,
+    url,
+    size: null,
+    checksum: { type: checksumType(hash), value: hash, url: sumUrl },
+    signatureUrl: img.signature ? officialUrl(img.signature, `signature link for ${file}`) : null,
+    torrentUrl: img.torrent ? officialUrl(img.torrent, `torrent link for ${file}`) : null,
+  };
+}
+
+/** "manjaro-kde-26.1.0-minimal-260812-linux71.iso" → { version: "26.1.0", date: "2026-08-12" }. */
+function parseIso(file: string): { version: string; date: string } {
   const m = file.match(
     /^manjaro-[a-z0-9]+-(\d+\.\d+(?:\.\d+)?)-(?:minimal-)?(\d{2})(\d{2})(\d{2})-/,
   );
-  return m ? { version: m[1] as string, date: `20${m[2]}-${m[3]}-${m[4]}` } : null;
+  if (!m) throw new Error(`unexpected Manjaro ISO name ${file}`);
+  return { version: m[1] as string, date: `20${m[2]}-${m[3]}-${m[4]}` };
 }
 
-async function artifact(img: Image): Promise<Artifact | null> {
-  if (!onHost(img.image) || !onHost(img.checksum)) return null;
-  const file = img.image.split("/").pop() ?? img.image;
-  const hash = parseChecksums(await getText(img.checksum)).get(file);
-  if (!hash) return null;
+/** The ISOs of one section of the x86 page (official or community) with their minimal images. */
+async function isoItems(section: Record<string, Entry>): Promise<Item[]> {
+  const jobs: { def: EditionDef; img: Image; minimal: boolean }[] = [];
+  for (const [key, entry] of Object.entries(section)) {
+    const def = X86[key] ?? {
+      id: key,
+      name: key,
+      desktop: key in DESKTOPS ? (key as Desktop) : null,
+    };
+    // Sway WM links a community project's own site instead of an image.
+    if (!entry.image && entry.custom) continue;
+    jobs.push({ def, img: entry, minimal: false });
+    if (entry.minimal) jobs.push({ def, img: entry.minimal, minimal: true });
+  }
+  return mapLimit(jobs, 4, async ({ def, img, minimal }): Promise<Item> => {
+    const url = officialUrl(img.image, `image link of ${def.name}`);
+    const parsed = parseIso(fileOf(url));
+    const a = await artifact(img, "x86_64", "iso", new URL(url).pathname.slice(1));
+    return {
+      ...parsed,
+      channel: "rolling",
+      notesUrl: NOTES,
+      edition: {
+        id: minimal ? `${def.id}-minimal` : def.id,
+        name: minimal ? `${def.name} (minimal)` : def.name,
+        desktop: def.desktop,
+        kind: minimal ? "minimal" : "desktop",
+        artifacts: [a],
+      },
+    };
+  });
+}
+
+/** "Manjaro-ARM-xfce-rpi4-23.02.img.xz" → version "23.02" (rolling); "…-pinephone-beta32.img.xz" → "beta32" (beta). */
+function parseArm(file: string): { id: string; version: string; channel: Release["channel"] } {
+  const m = file.match(/^Manjaro-ARM-(.+)-(\d{2}\.\d{2}|beta\d+)\.img\.xz$/);
+  if (!m) throw new Error(`unexpected Manjaro ARM image name ${file}`);
+  const version = m[2] as string;
   return {
-    arch: "x86_64",
-    format: "iso",
-    file,
-    path: null,
-    url: img.image,
-    size: await headSize(img.image),
-    checksum: { type: checksumType(hash), value: hash, url: img.checksum },
-    signatureUrl: onHost(img.signature) ? img.signature : null,
-    torrentUrl: onHost(img.torrent) ? img.torrent : null,
+    id: (m[1] as string).toLowerCase(),
+    version,
+    channel: version.startsWith("beta") ? "beta" : "rolling",
   };
+}
+
+/** The ARM page's boards: one edition per board and desktop (a board's images differ only by desktop). */
+async function armItems(boards: Record<string, Record<string, Entry>>): Promise<Item[]> {
+  const jobs = Object.entries(boards).flatMap(([board, desktops]) =>
+    Object.entries(desktops).map(([key, img]) => ({ board, key, img })),
+  );
+  return mapLimit(jobs, 4, async ({ board, key, img }): Promise<Item> => {
+    const url = officialUrl(img.image, `image link of ${board} ${key}`);
+    const parsed = parseArm(fileOf(url));
+    const def = ARM[key] ?? { name: key, desktop: null, kind: "other" as const };
+    // The release page of a GitHub release asset: …/<org>/<repo>/releases/download/<tag>/<file>.
+    const tag = url.match(/^(https:\/\/github\.com\/[^/]+\/[^/]+)\/releases\/download\/([^/]+)\//);
+    return {
+      version: parsed.version,
+      channel: parsed.channel,
+      date: null,
+      notesUrl: tag ? `${tag[1]}/releases/tag/${tag[2]}` : null,
+      edition: {
+        id: parsed.id,
+        name: `${board} (${def.name})`,
+        desktop: def.desktop,
+        kind: def.kind,
+        artifacts: [await artifact(img, "aarch64", "img.xz", null)],
+      },
+    };
+  });
+}
+
+/** One release per version string; the date is the earliest the files give, the notes link only when one page covers them all. */
+function releasesOf(items: Item[]): Release[] {
+  const groups = new Map<string, Item[]>();
+  for (const item of items) {
+    const key = `${item.channel}:${item.version}`;
+    groups.set(key, [...(groups.get(key) ?? []), item]);
+  }
+  const releases = [...groups.values()].map((group): Release => {
+    const first = group[0] as Item;
+    const dates = group.flatMap((i) => i.date ?? []).sort();
+    const notes = new Set(group.map((i) => i.notesUrl));
+    return {
+      version: first.version,
+      channel: first.channel,
+      codename: null,
+      releaseDate: dates[0] ?? null,
+      eol: null,
+      notesUrl: notes.size === 1 ? (first.notesUrl ?? null) : null,
+      editions: group.map((i) => i.edition),
+    };
+  });
+  // Numbered rolling images first, newest version first; betas last.
+  return releases.sort(
+    (a, b) =>
+      Number(a.channel === "beta") - Number(b.channel === "beta") ||
+      compareVersions(b.version, a.version),
+  );
 }
 
 export default defineSource({
   slug: "manjaro",
-  hosts: [HOST],
+  hosts: HOSTS,
   async releases() {
-    const info = await fileInfo();
-    const official = info.official ?? {};
-    const editions: Edition[] = [];
-    const seen: { version: string; date: string }[] = [];
+    const x86 = await fileInfo(X86_PAGE, "official");
+    const arm = await fileInfo(ARM_PAGE, "arm");
+    const official = x86.official ?? {};
+    for (const key of ["plasma", "xfce", "gnome"])
+      if (!official[key]?.image) throw new Error(`the x86 page no longer offers ${key}`);
+    const boards = arm.arm ?? {};
+    if (!Object.keys(boards).length) throw new Error("the ARM page offers no boards");
 
-    for (const def of EDITIONS) {
-      const entry = official[def.key];
-      if (!entry) continue;
-      for (const [img, minimal] of [
-        [entry, false],
-        [entry.minimal, true],
-      ] as const) {
-        if (!img) continue;
-        const a = await artifact(img);
-        if (!a) continue;
-        const parsed = parseName(a.file);
-        if (parsed) seen.push(parsed);
-        editions.push({
-          id: minimal ? `${def.id}-minimal` : def.id,
-          name: minimal ? `${def.name} (minimal)` : def.name,
-          desktop: def.desktop,
-          kind: minimal ? "minimal" : "desktop",
-          artifacts: [a],
-        });
-      }
-    }
-    // The newest ISO version among the official editions names the release.
-    const newest = seen.sort((a, b) => compareVersions(b.version, a.version))[0];
-    if (!newest || !editions.length)
-      throw new Error("no official Manjaro images in the download index");
-    const releases: Release[] = [
-      {
-        version: newest.version,
-        channel: "rolling",
-        codename: null,
-        releaseDate: seen
-          .filter((s) => s.version === newest.version)
-          .map((s) => s.date)
-          .sort()[0] as string,
-        eol: null,
-        notesUrl: "https://forum.manjaro.org/c/announcements/11",
-        editions,
-      },
+    const items = [
+      ...(await isoItems(official)),
+      ...(await isoItems(x86.community ?? {})),
+      ...(await armItems(boards)),
     ];
-    return { sources: [PAGE], releases };
+    return { sources: [X86_PAGE, ARM_PAGE], releases: releasesOf(items) };
+  },
+  async mirrors() {
+    // ISOs are served only by Manjaro's CDN; repo.manjaro.org lists package mirrors.
+    return {
+      sources: [X86_PAGE],
+      mirrors: [originAsMirror(CDN, "download.manjaro.org")],
+    };
   },
 });

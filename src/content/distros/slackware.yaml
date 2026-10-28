@@ -1,0 +1,61 @@
+name: Slackware
+order: 32
+family: slackware
+basedOn: null
+status: active
+releaseModel: fixed
+desktops: [kde, xfce]
+packageManagers: [pkgtools, slackpkg]
+initSystem: SysVinit
+installer: slackware
+useCases: [tinkerer, server]
+difficulty: advanced
+architectures: [x86_64, i686, armhf]
+secureBoot: "no"
+immutable: false
+origin:
+  country: US
+  firstRelease: 1993
+requirements:
+  ramGB: 1
+  diskGB: 20
+  note:
+    ko: Slackware 15.0 설치 안내(Slackware-HOWTO)의 요구 사양입니다(RAM 1GB 이상, 20GB 이상의 파티션). 전체 설치에는 16GB 가까이 들어갑니다. 64비트판은 x86_64 CPU가, 32비트판은 i586 이상의 CPU가 필요합니다.
+    en: Official requirements from the Slackware 15.0 install guide (Slackware-HOWTO), which asks for 1 GB of RAM or more and a partition of at least 20 GB, since a full install takes almost 16 GB. The 64-bit edition needs an x86_64 CPU and the 32-bit edition runs on i586 or better.
+links:
+  home: https://docs.slackware.com/slackware:slackware
+  download: https://mirrors.slackware.com/slackware/slackware-iso/
+  docs: https://docs.slackware.com/
+  installGuide: https://mirrors.slackware.com/slackware/slackware64-15.0/Slackware-HOWTO
+  forum: https://www.linuxquestions.org/questions/slackware-14/
+  releaseNotes: https://mirrors.slackware.com/slackware/slackware64-15.0/RELEASE_NOTES
+  source: https://mirrors.slackware.com/slackware/slackware64-15.0/source/
+tagline:
+  ko: 1993년부터 유닉스다운 구조와 텍스트 설정 파일 방식을 지켜 온 배포판
+  en: A distro that has kept a Unix-like design and plain-text configuration files since 1993
+aliases: [슬랙웨어, 슬랙웨어 리눅스, 슬랙, slackware linux, slack]
+logo:
+  file: slackware.svg
+  source: https://commons.wikimedia.org/wiki/File:Slackware_logo_from_the_official_Slackware_site.svg
+  license: Public domain per Wikimedia Commons (simple shapes and text; Commons copy of Slackware_web_logo.svg from the official Slackware site, by Patrick Volkerding); Slackware is a registered trademark of Patrick Volkerding and Slackware Linux, Inc.
+  trademark: https://mirrors.slackware.com/slackware/slackware64-15.0/COPYRIGHT.TXT
+download:
+  strategy: mirrors
+sources:
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/README.TXT
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/ANNOUNCE.15.0
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/RELEASE_NOTES
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/Slackware-HOWTO
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/README_UEFI.TXT
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/PACKAGES.TXT
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/COPYRIGHT.TXT
+  - https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/
+  - https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso.mirrorlist
+  - https://mirrors.slackware.com/slackware/
+  - https://docs.slackware.com/slackware:slackware
+  - https://docs.slackware.com/slackware:philosophy
+  - https://docs.slackware.com/slackware:install
+  - https://docs.slackware.com/slackware:faq
+  - https://arm.slackware.com/releases/
+  - https://commons.wikimedia.org/wiki/File:Slackware_logo_from_the_official_Slackware_site.svg
+lastReviewed: 2026-10-17

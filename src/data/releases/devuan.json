@@ -1,10 +1,12 @@
 {
   "slug": "devuan",
   "sources": [
+    "https://www.devuan.org/os/releases",
     "https://files.devuan.org/",
+    "https://www.devuan.org/get-devuan",
     "https://endoflife.date/devuan"
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-28",
   "releases": [
     {
       "version": "6.1.1",
@@ -24,7 +26,7 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "devuan_excalibur_6.1.1_amd64_desktop-live.iso",
-              "path": null,
+              "path": "devuan_excalibur/desktop-live/devuan_excalibur_6.1.1_amd64_desktop-live.iso",
               "url": "https://files.devuan.org/devuan_excalibur/desktop-live/devuan_excalibur_6.1.1_amd64_desktop-live.iso",
               "size": 1801322496,
               "checksum": {
@@ -47,7 +49,7 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "devuan_excalibur_6.1.1_amd64_netinstall.iso",
-              "path": null,
+              "path": "devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_netinstall.iso",
               "url": "https://files.devuan.org/devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_netinstall.iso",
               "size": 622985216,
               "checksum": {
@@ -70,7 +72,7 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "devuan_excalibur_6.1.1_amd64_server.iso",
-              "path": null,
+              "path": "devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_server.iso",
               "url": "https://files.devuan.org/devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_server.iso",
               "size": 659685376,
               "checksum": {
@@ -86,14 +88,14 @@
         {
           "id": "desktop",
           "name": "Desktop DVD",
-          "desktop": "xfce",
+          "desktop": null,
           "kind": "desktop",
           "artifacts": [
             {
               "arch": "x86_64",
               "format": "iso",
               "file": "devuan_excalibur_6.1.1_amd64_desktop.iso",
-              "path": null,
+              "path": "devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_desktop.iso",
               "url": "https://files.devuan.org/devuan_excalibur/installer-iso/devuan_excalibur_6.1.1_amd64_desktop.iso",
               "size": 4630773760,
               "checksum": {
@@ -116,7 +118,7 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "devuan_excalibur_6.1.1_amd64_minimal-live.iso",
-              "path": null,
+              "path": "devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso",
               "url": "https://files.devuan.org/devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso",
               "size": 919601152,
               "checksum": {
@@ -125,6 +127,206 @@
                 "url": "https://files.devuan.org/devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso.sha256"
               },
               "signatureUrl": "https://files.devuan.org/devuan_excalibur/minimal-live/devuan_excalibur_6.1.1_amd64_minimal-live.iso.sha256.asc",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "5.0.1",
+      "channel": "stable",
+      "codename": "Daedalus",
+      "releaseDate": null,
+      "eol": "2028-06-10",
+      "notesUrl": "https://files.devuan.org/devuan_daedalus/Release_notes.txt",
+      "editions": [
+        {
+          "id": "desktop-live",
+          "name": "Desktop Live",
+          "desktop": "xfce",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.0_amd64_desktop-live.iso",
+              "path": "devuan_daedalus/desktop-live/devuan_daedalus_5.0.0_amd64_desktop-live.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/desktop-live/devuan_daedalus_5.0.0_amd64_desktop-live.iso",
+              "size": 1455341568,
+              "checksum": {
+                "type": "sha256",
+                "value": "87b9fec4d1e0cc9872c0f3fead82bfe03dc38af1f564ea43a1f7386414c2bdf8",
+                "url": "https://files.devuan.org/devuan_daedalus/desktop-live/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/desktop-live/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.0_i386_desktop-live.iso",
+              "path": "devuan_daedalus/desktop-live/devuan_daedalus_5.0.0_i386_desktop-live.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/desktop-live/devuan_daedalus_5.0.0_i386_desktop-live.iso",
+              "size": 1385709568,
+              "checksum": {
+                "type": "sha256",
+                "value": "a8d354cbf8bc7137dad4734d508a2f3dcfe9d87132f01d4ae14955b6e770d86a",
+                "url": "https://files.devuan.org/devuan_daedalus/desktop-live/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/desktop-live/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "netinstall",
+          "name": "Netinstall",
+          "desktop": null,
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.1_amd64_netinstall.iso",
+              "path": "devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_amd64_netinstall.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_amd64_netinstall.iso",
+              "size": 501022720,
+              "checksum": {
+                "type": "sha256",
+                "value": "722af7905595d9a1417f48f783d43dd40fe7da7a2e1d7998a8ea47df2d26941b",
+                "url": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.1_i386_netinstall.iso",
+              "path": "devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_i386_netinstall.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_i386_netinstall.iso",
+              "size": 506265600,
+              "checksum": {
+                "type": "sha256",
+                "value": "448b586e25be1e43f4ac683a51da252ba813e7fafd0279ced79628c9432f41e1",
+                "url": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "server",
+          "name": "Server (CD1)",
+          "desktop": null,
+          "kind": "server",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.1_amd64_server.iso",
+              "path": "devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_amd64_server.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_amd64_server.iso",
+              "size": 796721152,
+              "checksum": {
+                "type": "sha256",
+                "value": "02dc860945089b2f09d2c8811455fb39d61a1e1d8672ff494979c49608782c14",
+                "url": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.1_i386_server.iso",
+              "path": "devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_i386_server.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_i386_server.iso",
+              "size": 816644096,
+              "checksum": {
+                "type": "sha256",
+                "value": "3ecec6e65c688b0b19db96380230c218d02b03b1f62d9b1b34257ad1e57f70ff",
+                "url": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "desktop",
+          "name": "Desktop DVD",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.1_amd64_desktop.iso",
+              "path": "devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_amd64_desktop.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_amd64_desktop.iso",
+              "size": 4015849472,
+              "checksum": {
+                "type": "sha256",
+                "value": "c5e2999faa707dcd914363646f5a34f13d0b80f22cc77c4718a0963363856ac1",
+                "url": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.1_i386_desktop.iso",
+              "path": "devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_i386_desktop.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/installer-iso/devuan_daedalus_5.0.1_i386_desktop.iso",
+              "size": 3925671936,
+              "checksum": {
+                "type": "sha256",
+                "value": "2bf34d6938afaa3d085a2ee7795cf7e5e1aadc865390eb71e6c5f31e0bdad5bb",
+                "url": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/installer-iso/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "minimal-live",
+          "name": "Minimal Live",
+          "desktop": "none",
+          "kind": "live",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.0_amd64_minimal-live.iso",
+              "path": "devuan_daedalus/minimal-live/devuan_daedalus_5.0.0_amd64_minimal-live.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/minimal-live/devuan_daedalus_5.0.0_amd64_minimal-live.iso",
+              "size": 836763648,
+              "checksum": {
+                "type": "sha256",
+                "value": "1f1fc3431af3b8c2d9243b8f7c0961d9cb0f7594a50ecf4854ec3e04d000b3d4",
+                "url": "https://files.devuan.org/devuan_daedalus/minimal-live/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/minimal-live/SHA256SUMS.txt.asc",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "devuan_daedalus_5.0.0_i386_minimal-live.iso",
+              "path": "devuan_daedalus/minimal-live/devuan_daedalus_5.0.0_i386_minimal-live.iso",
+              "url": "https://files.devuan.org/devuan_daedalus/minimal-live/devuan_daedalus_5.0.0_i386_minimal-live.iso",
+              "size": 751828992,
+              "checksum": {
+                "type": "sha256",
+                "value": "5edc569b07e6a276293995bc1828b0be5a2c4f95d8e00bfb4e8fdb70c8d81f4b",
+                "url": "https://files.devuan.org/devuan_daedalus/minimal-live/SHA256SUMS.txt"
+              },
+              "signatureUrl": "https://files.devuan.org/devuan_daedalus/minimal-live/SHA256SUMS.txt.asc",
               "torrentUrl": null
             }
           ]

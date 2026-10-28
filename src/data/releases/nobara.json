@@ -1,0 +1,134 @@
+{
+  "slug": "nobara",
+  "sources": [
+    "https://nobaraproject.org/download.html"
+  ],
+  "updated": "2026-10-28",
+  "releases": [
+    {
+      "version": "44",
+      "channel": "stable",
+      "codename": null,
+      "releaseDate": null,
+      "eol": null,
+      "notesUrl": null,
+      "editions": [
+        {
+          "id": "official",
+          "name": "Official",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Nobara-44-Official-2026-10-13.iso",
+              "path": "Nobara-44-Official-2026-10-13.iso",
+              "url": "https://nobara-images.nobaraproject.org/Nobara-44-Official-2026-10-13.iso",
+              "size": 7629307904,
+              "checksum": {
+                "type": "sha256",
+                "value": "1eedf22cbfdd245b0ad08120b9bf4123910eff42ca9fede054542f99356ea995",
+                "url": "https://nobara-images.nobaraproject.org/Nobara-44-Official-2026-10-13.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "gnome",
+          "name": "GNOME",
+          "desktop": "gnome",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Nobara-44-GNOME-2026-10-13.iso",
+              "path": "Nobara-44-GNOME-2026-10-13.iso",
+              "url": "https://nobara-images.nobaraproject.org/Nobara-44-GNOME-2026-10-13.iso",
+              "size": 7004375040,
+              "checksum": {
+                "type": "sha256",
+                "value": "47087299d03ecedd67fd3fc6d69803118991caeb26faace9f39429f14ffdb2fd",
+                "url": "https://nobara-images.nobaraproject.org/Nobara-44-GNOME-2026-10-13.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "kde",
+          "name": "KDE",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Nobara-44-KDE-2026-10-13.iso",
+              "path": "Nobara-44-KDE-2026-10-13.iso",
+              "url": "https://nobara-images.nobaraproject.org/Nobara-44-KDE-2026-10-13.iso",
+              "size": 7594487808,
+              "checksum": {
+                "type": "sha256",
+                "value": "9f5f7c126f71d2c79fa410cd14a72f103e9575ee94688d43926195c5d1e6e36b",
+                "url": "https://nobara-images.nobaraproject.org/Nobara-44-KDE-2026-10-13.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "steam-htpc",
+          "name": "Steam-HTPC",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Nobara-44-Steam-HTPC-2026-10-13.iso",
+              "path": "Nobara-44-Steam-HTPC-2026-10-13.iso",
+              "url": "https://nobara-images.nobaraproject.org/Nobara-44-Steam-HTPC-2026-10-13.iso",
+              "size": 9229953024,
+              "checksum": {
+                "type": "sha256",
+                "value": "6934483b52558fc3c09604f2f44b110ec7309ac3217fe20a22918ab5500ae872",
+                "url": "https://nobara-images.nobaraproject.org/Nobara-44-Steam-HTPC-2026-10-13.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "steam-handheld",
+          "name": "Steam-Handheld",
+          "desktop": "kde",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Nobara-44-Steam-Handheld-2026-10-13.iso",
+              "path": "Nobara-44-Steam-Handheld-2026-10-13.iso",
+              "url": "https://nobara-images.nobaraproject.org/Nobara-44-Steam-Handheld-2026-10-13.iso",
+              "size": 9296685056,
+              "checksum": {
+                "type": "sha256",
+                "value": "ed6e55d1fe959b9342b3f3afa561648073b8e221c44afcfe43112319cc34550f",
+                "url": "https://nobara-images.nobaraproject.org/Nobara-44-Steam-Handheld-2026-10-13.iso.sha256sum"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

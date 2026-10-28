@@ -1,8 +1,9 @@
 /**
  * Minimal static server for the production build in dist/ (local preview and
  * Playwright). `astro preview` is unavailable once the site has an on-demand
- * route with @astrojs/vercel. /api/geo is not served here: the download
- * wizard falls back to the browser's time zone, and e2e tests mock it.
+ * route with @astrojs/vercel. /api/geo/ answers like the Vercel function does
+ * for a request without Vercel's location headers (no location), so the
+ * download wizard falls back to the browser's time zone; e2e tests mock it.
  *
  * Usage: bun scripts/serve.ts [--port=4322] [--root=<dir>] [--config=<config.json>]
  * --root/--config serve a copied build (e.g. a snapshot of dist/client and
@@ -56,10 +57,18 @@ function resolve(pathname: string): string | null {
   return null;
 }
 
+const TEXT = /\.(?:html|css|js|mjs|json|svg|xml|txt)$/;
+
 Bun.serve({
   port,
-  fetch(req) {
+  async fetch(req) {
     const url = new URL(req.url);
+    if (url.pathname === "/api/geo") return Response.redirect("/api/geo/", 308);
+    if (url.pathname === "/api/geo/")
+      return Response.json(
+        { cc: null, lat: null, lon: null },
+        { headers: { "cache-control": "private, no-store" } },
+      );
     // Mirror Vercel's trailingSlash: "always" for page paths.
     if (
       !url.pathname.endsWith("/") &&
@@ -69,8 +78,19 @@ Bun.serve({
       return Response.redirect(`${url.pathname}/${url.search}`, 308);
     }
     const file = resolve(url.pathname);
-    if (file)
-      return new Response(Bun.file(file), { headers: routeHeaders.get(url.pathname) ?? {} });
+    if (file) {
+      const headers = new Headers(routeHeaders.get(url.pathname) ?? {});
+      // Vercel compresses text responses; so does this server, or Lighthouse would
+      // measure pages several times heavier than visitors get.
+      if (TEXT.test(file) && req.headers.get("accept-encoding")?.includes("gzip")) {
+        const body = Bun.file(file);
+        headers.set("content-type", body.type);
+        headers.set("content-encoding", "gzip");
+        headers.set("vary", "accept-encoding");
+        return new Response(Bun.gzipSync(await body.bytes()), { headers });
+      }
+      return new Response(Bun.file(file), { headers });
+    }
     const notFound = join(root, "404.html");
     return new Response(existsSync(notFound) ? Bun.file(notFound) : "Not found", {
       status: 404,

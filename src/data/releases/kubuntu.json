@@ -1,18 +1,19 @@
 {
   "slug": "kubuntu",
   "sources": [
-    "https://endoflife.date/ubuntu",
+    "https://kubuntu.org/download/",
+    "https://ubuntu.com/project/docs/release-team/list-of-releases/",
     "https://cdimage.ubuntu.com/kubuntu/releases/"
   ],
-  "updated": "2026-10-19",
+  "updated": "2026-10-28",
   "releases": [
     {
       "version": "26.10",
       "channel": "stable",
       "codename": "Stonking Stingray",
       "releaseDate": "2026-10-15",
-      "eol": "2027-07-01",
-      "notesUrl": null,
+      "eol": "2027-07-31",
+      "notesUrl": "https://kubuntu.org/news/kubuntu-26-10-release-notes/",
       "editions": [
         {
           "id": "desktop",
@@ -24,9 +25,9 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "kubuntu-26.10-desktop-amd64.iso",
-              "path": null,
+              "path": "kubuntu/releases/26.10/release/kubuntu-26.10-desktop-amd64.iso",
               "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.10/release/kubuntu-26.10-desktop-amd64.iso",
-              "size": null,
+              "size": 5141966848,
               "checksum": {
                 "type": "sha256",
                 "value": "8160b1d6266dfe1998d183b19713680263c09669f101e0e41cbcf11f50b6f785",
@@ -43,9 +44,9 @@
       "version": "26.04.1",
       "channel": "lts",
       "codename": "Resolute Raccoon",
-      "releaseDate": "2026-04-23",
-      "eol": "2031-05-29",
-      "notesUrl": null,
+      "releaseDate": "2026-08-27",
+      "eol": "2029-04-30",
+      "notesUrl": "https://kubuntu.org/news/kubuntu-26-04-release-notes/",
       "editions": [
         {
           "id": "desktop",
@@ -57,16 +58,16 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "kubuntu-26.04.1-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/kubuntu-26.04.1-desktop-amd64.iso",
-              "size": null,
+              "path": "kubuntu/releases/26.04.1/release/kubuntu-26.04.1-desktop-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/kubuntu-26.04.1-desktop-amd64.iso",
+              "size": 5072990208,
               "checksum": {
                 "type": "sha256",
                 "value": "831e4d4bb85098339ba43d3502cd6619b27e76daf37246a084cd68a6413090b8",
-                "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/release/kubuntu-26.04.1-desktop-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/kubuntu-26.04.1-desktop-amd64.iso.torrent"
             }
           ]
         }
@@ -76,9 +77,9 @@
       "version": "24.04.5",
       "channel": "lts",
       "codename": "Noble Numbat",
-      "releaseDate": "2024-04-25",
-      "eol": "2029-05-31",
-      "notesUrl": null,
+      "releaseDate": "2026-09-10",
+      "eol": "2027-04-30",
+      "notesUrl": "https://kubuntu.org/news/kubuntu-24-04-lts-noble-numbat-released/",
       "editions": [
         {
           "id": "desktop",
@@ -90,16 +91,16 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "kubuntu-24.04.5-desktop-amd64.iso",
-              "path": null,
-              "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04.5-desktop-amd64.iso",
-              "size": null,
+              "path": "kubuntu/releases/24.04.5/release/kubuntu-24.04.5-desktop-amd64.iso",
+              "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04.5/release/kubuntu-24.04.5-desktop-amd64.iso",
+              "size": 5457694720,
               "checksum": {
                 "type": "sha256",
                 "value": "ae59e59c54337bcd8f8e60825b4a3f58797121ae0e89855524ffc92b8075c1d6",
-                "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/SHA256SUMS"
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04.5/release/SHA256SUMS"
               },
-              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/SHA256SUMS.gpg",
-              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04.5-desktop-amd64.iso.torrent"
+              "signatureUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04.5/release/SHA256SUMS.gpg",
+              "torrentUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04.5/release/kubuntu-24.04.5-desktop-amd64.iso.torrent"
             }
           ]
         }

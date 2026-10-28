@@ -1,0 +1,56 @@
+name: Qubes OS
+order: 40
+family: independent
+basedOn: null
+upstream: Xen + Fedora (dom0)
+status: active
+releaseModel: fixed
+desktops: [xfce, kde, i3]
+packageManagers: [dnf, rpm, apt]
+initSystem: systemd
+installer: qubes-installer
+useCases: [privacy, desktop]
+difficulty: advanced
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2012-09-03
+requirements:
+  ramGB: 6
+  diskGB: 32
+  note:
+    ko: 공식 최소 사양입니다(RAM 6GB, 여유 공간 32GB, VT-x/EPT와 VT-d 또는 AMD-V/RVI와 AMD-Vi가 있는 64비트 CPU). 권장 사양은 RAM 16GB, 여유 공간 128GB이고 SSD를 강력히 권장합니다.
+    en: Official minimum (6 GB of RAM, 32 GB free space, a 64-bit CPU with Intel VT-x/EPT and VT-d, or AMD-V/RVI and AMD-Vi). Recommended is 16 GB of RAM and 128 GB of free space, with a fast SSD strongly advised.
+links:
+  home: https://www.qubes-os.org/
+  download: https://www.qubes-os.org/downloads/
+  docs: https://doc.qubes-os.org/en/latest/index.html
+  installGuide: https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/installation-guide.html
+  forum: https://forum.qubes-os.org/
+  releaseNotes: https://doc.qubes-os.org/en/latest/developer/releases/notes.html
+  source: https://github.com/QubesOS
+tagline:
+  ko: Xen 가상화로 작업마다 격리된 가상 머신을 나눠 쓰는 보안 중심 데스크톱 배포판
+  en: A security-focused desktop OS that splits your work into isolated Xen virtual machines
+aliases: [큐브스, 큐브스 OS, 큐브즈, qubes, qubesos]
+logo:
+  file: qubes-os.svg
+  source: https://www.qubes-os.org/attachment/icons/qubes-logo-home.svg
+  license: CC BY-SA 4.0 (official Qubes visual style guide); Qubes OS name and logo, used to identify the project
+download:
+  strategy: mirrors
+sources:
+  - https://www.qubes-os.org/downloads/
+  - https://doc.qubes-os.org/en/latest/introduction/intro.html
+  - https://doc.qubes-os.org/en/latest/introduction/faq.html
+  - https://doc.qubes-os.org/en/latest/user/hardware/system-requirements.html
+  - https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/installation-guide.html
+  - https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/supported-releases.html
+  - https://doc.qubes-os.org/en/latest/user/advanced-topics/kde.html
+  - https://doc.qubes-os.org/en/latest/user/advanced-topics/i3.html
+  - https://doc.qubes-os.org/en/latest/user/advanced-topics/how-to-install-software-in-dom0.html
+  - https://doc.qubes-os.org/en/latest/developer/building/qubes-builder-v2.html
+  - https://www.qubes-os.org/doc/visual-style-guide/
+lastReviewed: 2026-10-17

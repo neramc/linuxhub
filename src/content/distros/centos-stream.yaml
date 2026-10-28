@@ -1,0 +1,56 @@
+name: CentOS Stream
+order: 41
+family: rhel
+basedOn: fedora
+status: active
+releaseModel: semi-rolling
+desktops: [gnome]
+packageManagers: [dnf, rpm, flatpak]
+initSystem: systemd
+installer: anaconda
+useCases: [server, enterprise, developer]
+difficulty: intermediate
+architectures: [x86_64, aarch64, ppc64le, s390x]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2019-09-24
+requirements:
+  ramGB: 1.5
+  diskGB: 10
+  note:
+    ko: RHEL 10 설치 문서의 최소 사양입니다. CentOS 사이트가 이 문서를 CentOS Stream에도 대부분 적용된다고 안내합니다(로컬 미디어 설치 RAM 1.5GiB, 디스크 10GiB). 권장 사양은 공개되어 있지 않습니다. CentOS Stream 10의 x86_64는 x86-64-v3 CPU가 필요합니다.
+    en: Minimum from the RHEL 10 installation guide, which the CentOS site says mostly applies to CentOS Stream too (local media install, 1.5 GiB RAM, 10 GiB disk). No recommended figures are published. On x86_64, CentOS Stream 10 needs an x86-64-v3 CPU.
+links:
+  home: https://www.centos.org/
+  download: https://www.centos.org/download/
+  docs: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10
+  installGuide: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/interactively_installing_rhel_from_installation_media/index
+  forum: https://discussion.fedoraproject.org/c/neighbors/centos/
+  releaseNotes: https://www.centos.org/centos10/
+  source: https://gitlab.com/redhat/centos-stream
+tagline:
+  ko: RHEL 다음 마이너 버전이 먼저 다듬어지는, Fedora와 RHEL 사이의 배포판
+  en: The branch where upcoming RHEL minor releases take shape, between Fedora and RHEL
+aliases: [센토스, 센토스 스트림, 센트OS, 센트OS 스트림, centos, cent os]
+logo:
+  file: centos-stream.svg
+  source: https://www.centos.org/assets/img/centos-symbol.svg
+  license: CentOS Marks are trademarks of Red Hat, Inc.; official symbol as linked from www.centos.org, used unmodified (losslessly optimized with SVGO only) to identify the project
+  trademark: https://www.centos.org/legal/trademarks/
+download:
+  strategy: redirector
+sources:
+  - https://www.centos.org/
+  - https://www.centos.org/download/
+  - https://www.centos.org/about/
+  - https://www.centos.org/centos-stream/
+  - https://www.centos.org/centos10/
+  - https://blog.centos.org/2019/09/centos-8-and-centos-stream-released/
+  - https://www.centos.org/legal/trademarks/
+  - https://www.centos.org/assets/img/centos-symbol.svg
+  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10
+  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/interactively_installing_rhel_from_installation_media/index
+  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/interactively_installing_rhel_from_installation_media/system-requirements-and-supported-architectures
+lastReviewed: 2026-10-17

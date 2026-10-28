@@ -1,0 +1,56 @@
+name: Alpine Linux
+order: 30
+family: independent
+basedOn: null
+status: active
+releaseModel: fixed
+desktops: [none]
+packageManagers: [apk]
+initSystem: OpenRC
+installer: alpine-setup
+useCases: [server, lightweight, tinkerer]
+difficulty: advanced
+architectures: [x86_64, aarch64, i686, armhf, ppc64le, s390x, riscv64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2005
+requirements:
+  ramGB: 0.5
+  diskGB: 0.13
+  note:
+    ko: 디스크는 공식 소개 페이지의 값입니다(최소 설치에 약 130MB). 확인한 공식 페이지에 RAM 최소 사양이 없어 RAM은 표준 이미지 기준의 보수적인 추정값이며, RAM에서 실행되는 extended 이미지(ISO가 1GB를 넘음)에는 더 필요합니다. 패키지를 더하면 더 필요합니다.
+    en: Disk is the figure on the official About page (about 130 MB for a minimal install). The official pages checked give no RAM minimum, so RAM is a conservative estimate for the standard image; the extended image, whose ISO is over 1 GB, runs from RAM and needs more. Adding packages needs more.
+links:
+  home: https://alpinelinux.org/
+  download: https://alpinelinux.org/downloads/
+  docs: https://docs.alpinelinux.org/user-handbook/0.1a/index.html
+  installGuide: https://docs.alpinelinux.org/user-handbook/0.1a/Installing/medium.html
+  forum: https://alpinelinux.org/community/
+  releaseNotes: https://alpinelinux.org/posts/
+  source: https://gitlab.alpinelinux.org/alpine/aports
+tagline:
+  ko: musl libc와 BusyBox로 만든 작고 보안에 신경 쓴 경량 배포판
+  en: A small, security-oriented distro built on musl libc and BusyBox
+aliases: [알파인, 알파인 리눅스, 알파인리눅스, alpine, alpinelinux]
+logo:
+  file: alpine-linux.svg
+  source: https://alpinelinux.org/alpinelinux-logo.svg
+  license: Official Alpine Linux logo (hexagon mark with wordmark), the one alpinelinux.org shows in its header, used unmodified to identify the project. The site names no logo license or trademark policy; its footer reads "Copyright 2026 Alpine Linux Development Team all rights reserved"
+download:
+  strategy: redirector
+sources:
+  - https://alpinelinux.org/
+  - https://alpinelinux.org/about/
+  - https://alpinelinux.org/downloads/
+  - https://alpinelinux.org/releases/
+  - https://alpinelinux.org/posts/
+  - https://alpinelinux.org/posts/Alpine-3.24.0-released.html
+  - https://alpinelinux.org/community/
+  - https://docs.alpinelinux.org/user-handbook/0.1a/index.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Installing/medium.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Installing/setup_alpine.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html
+  - https://alpinelinux.org/alpinelinux-logo.svg
+lastReviewed: 2026-10-28
