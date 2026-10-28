@@ -1,8 +1,9 @@
 /**
  * Minimal static server for the production build in dist/ (local preview and
  * Playwright). `astro preview` is unavailable once the site has an on-demand
- * route with @astrojs/vercel. /api/geo is not served here: the download
- * wizard falls back to the browser's time zone, and e2e tests mock it.
+ * route with @astrojs/vercel. /api/geo/ answers like the Vercel function does
+ * for a request without Vercel's location headers (no location), so the
+ * download wizard falls back to the browser's time zone; e2e tests mock it.
  *
  * Usage: bun scripts/serve.ts [--port=4322] [--root=<dir>] [--config=<config.json>]
  * --root/--config serve a copied build (e.g. a snapshot of dist/client and
@@ -60,6 +61,12 @@ Bun.serve({
   port,
   fetch(req) {
     const url = new URL(req.url);
+    if (url.pathname === "/api/geo") return Response.redirect("/api/geo/", 308);
+    if (url.pathname === "/api/geo/")
+      return Response.json(
+        { cc: null, lat: null, lon: null },
+        { headers: { "cache-control": "private, no-store" } },
+      );
     // Mirror Vercel's trailingSlash: "always" for page paths.
     if (
       !url.pathname.endsWith("/") &&

@@ -1,14 +1,15 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist/client",
+      "startServerCommand": "bun scripts/serve.ts --port=4329",
+      "startServerReadyPattern": "Serving dist/",
       "url": [
-        "http://localhost/",
-        "http://localhost/distros/",
-        "http://localhost/distros/fedora/",
-        "http://localhost/distros/fedora/install/",
-        "http://localhost/learn/",
-        "http://localhost/en/"
+        "http://localhost:4329/",
+        "http://localhost:4329/distros/",
+        "http://localhost:4329/distros/fedora/",
+        "http://localhost:4329/distros/fedora/install/",
+        "http://localhost:4329/learn/",
+        "http://localhost:4329/en/"
       ],
       "numberOfRuns": 1,
       "settings": { "chromeFlags": "--no-sandbox --headless=new" }

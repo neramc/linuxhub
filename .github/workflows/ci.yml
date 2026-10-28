@@ -28,10 +28,16 @@ jobs:
       - run: bun scripts/validate-catalog.ts
       - run: bun run test
       - run: bun run build
+      - run: bun run check:links
+      # The per-page CSP headers live in .vercel/output/config.json; scripts/serve.ts
+      # sends them, so e2e and Lighthouse run under the production CSP.
       - uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist
+          path: |
+            dist
+            .vercel/output/config.json
+          include-hidden-files: true
           retention-days: 3
 
   e2e:
@@ -47,7 +53,7 @@ jobs:
       - uses: actions/download-artifact@v5
         with:
           name: dist
-          path: dist
+          path: .
       - run: bunx playwright install --with-deps chromium
       - run: bun run test:e2e
 
@@ -56,12 +62,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      # Lighthouse runs against scripts/serve.ts (production headers, /api/geo/ stand-in).
+      - uses: oven-sh/setup-bun@v2
       - uses: actions/setup-node@v5
         with:
           node-version: 22
       - uses: actions/download-artifact@v5
         with:
           name: dist
-          path: dist
+          path: .
       - name: Lighthouse budgets (performance ≥ 95, a11y/best practices/SEO = 100)
         run: npx --yes @lhci/cli@0.15.x autorun
