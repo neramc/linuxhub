@@ -151,7 +151,15 @@ function recordHistory(slug: string, prev: ReleasesFile | undefined, next: Relea
         history.some((h) => h.slug === slug && h.channel === "rolling" && h.date.startsWith(month))
       )
         continue;
-    } else if (!prev && !r.releaseDate) continue;
+    }
+    // Without an official date the entry is dated today, which is only true of a release
+    // newer than everything its channel listed before, not of an older line that a source
+    // lists for the first time (nor of anything on a first import).
+    if (!r.releaseDate) {
+      const before = prev?.releases.filter((p) => p.channel === r.channel) ?? [];
+      if (!before.length || before.some((p) => compareVersions(r.version, p.version) <= 0))
+        continue;
+    }
     if (history.some((h) => h.slug === slug && h.version === r.version && h.channel === r.channel))
       continue;
     history.push({

@@ -31,7 +31,9 @@ const rows = catalog.map((d) => {
   const source = SOURCES.find((s) => s.slug === d.slug);
   const releases = json(join(root, "src/data/releases", `${d.slug}.json`));
   const mirrors = json(join(root, "src/data/mirrors", `${d.slug}.json`));
-  const latest = releases?.releases?.[0]?.version ?? "—";
+  const all: { version: string; channel: string }[] = releases?.releases ?? [];
+  // The newest release users are offered first: a beta only when nothing else is listed.
+  const latest = (all.find((r) => r.channel !== "beta") ?? all[0])?.version ?? "—";
   const article = WIKIPEDIA_ARTICLES[d.slug];
   return `| ${d.name} | ${d.download?.strategy ?? "—"} | ${source ? "✓" : "—"} | ${hostList(releases?.sources) || "—"} | ${latest} | ${mirrors ? `${mirrors.mirrors.length} (${hostList(mirrors.sources)})` : "—"} | ${article ?? "—"} |`;
 });
