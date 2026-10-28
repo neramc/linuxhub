@@ -159,3 +159,42 @@ net.sf.staging_days = 3;</script>`;
     expect(() => parseSourceforgeFolder("<html></html>", "Final")).toThrow(/net\.sf\.files/);
   });
 });
+
+describe("http redirects", () => {
+  it("follows a redirect only to an HTTPS URL that robots.txt allows", async () => {
+    const { request, RedirectRefused, RobotsDisallowed, useFixtures } = await import("../http");
+    const calls: string[] = [];
+    const real = globalThis.fetch;
+    globalThis.fetch = (async (input: string | URL) => {
+      const url = String(input);
+      calls.push(url);
+      if (url.endsWith("/robots.txt"))
+        return new Response(url.includes("blocked.example") ? "User-agent: *\nDisallow: /" : "", {
+          status: 200,
+        });
+      const to: Record<string, string> = {
+        "https://a.example/ok": "https://b.example/file",
+        "https://a.example/plain": "http://b.example/file",
+        "https://a.example/blocked": "https://blocked.example/file",
+      };
+      return to[url]
+        ? new Response(null, { status: 302, headers: { location: to[url] as string } })
+        : new Response("body", { status: 200 });
+    }) as typeof fetch;
+    try {
+      useFixtures("off");
+      const ok = await request("https://a.example/ok", { noCache: true, retries: 0 });
+      expect(ok.finalUrl).toBe("https://b.example/file");
+      await expect(
+        request("https://a.example/plain", { noCache: true, retries: 0 }),
+      ).rejects.toBeInstanceOf(RedirectRefused);
+      await expect(
+        request("https://a.example/blocked", { noCache: true, retries: 0 }),
+      ).rejects.toBeInstanceOf(RobotsDisallowed);
+      expect(calls).not.toContain("https://blocked.example/file");
+      expect(calls).not.toContain("http://b.example/file");
+    } finally {
+      globalThis.fetch = real;
+    }
+  });
+});

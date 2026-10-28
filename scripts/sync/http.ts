@@ -2,7 +2,8 @@
  * Polite HTTP client for the data sync (docs/data-sources.md, CLAUDE.md rule 6):
  * - identifies itself with a descriptive User-Agent and contact URL
  * - checks robots.txt before every request (cached per host) and refuses
- *   disallowed URLs
+ *   disallowed URLs, including every redirect target (redirects are
+ *   followed by hand: HTTPS only, robots-checked, paced per host)
  * - serializes requests per host with at least 1 s between them, or the
  *   host's Crawl-delay when larger
  * - retries 429/5xx/network errors with exponential backoff (never 4xx),
@@ -43,6 +44,11 @@ export class HttpError extends Error {
 }
 
 export class RobotsDisallowed extends HttpError {}
+
+/** A redirect we will not follow (not HTTPS, or too many hops). */
+export class RedirectRefused extends HttpError {}
+
+const MAX_REDIRECTS = 10;
 
 type CacheEntry = { etag?: string; lastModified?: string; body: string };
 let cacheIndex: Record<string, Omit<CacheEntry, "body">> | null = null;
@@ -115,8 +121,10 @@ interface Fixture {
   status: number;
   headers?: Record<string, string>;
   body?: string;
-  /** robots.txt refused the URL. */
+  /** robots.txt refused the URL (or one of its redirect targets). */
   robots?: false;
+  /** A redirect was refused (RedirectRefused). */
+  refused?: string;
 }
 
 const KEPT_HEADERS = ["content-type", "content-length", "last-modified", "etag"];
@@ -142,6 +150,7 @@ function replayFixture(method: string, url: string): FetchResult {
     stats.blocked++;
     throw new RobotsDisallowed(`robots.txt disallows ${url}`, url);
   }
+  if (f.refused) throw new RedirectRefused(f.refused, url);
   if (f.status >= 400) throw new HttpError(`HTTP ${f.status} for ${url}`, url, f.status);
   return {
     url,
@@ -261,6 +270,48 @@ function retryAfterMs(value: string | null): number | null {
 }
 
 const stats = { requests: 0, notModified: 0, blocked: 0 };
+
+const REDIRECTS = new Set([301, 302, 303, 307, 308]);
+
+/**
+ * Fetches `url`, following redirects by hand so every hop is HTTPS, allowed
+ * by its host's robots.txt and paced like any other request. Credentials
+ * and revalidation headers are not carried to another host.
+ */
+async function fetchPolitely(
+  url: string,
+  init: { method: string; headers: Record<string, string>; timeoutMs: number },
+): Promise<{ res: Response; finalUrl: string }> {
+  let current = url;
+  let headers = init.headers;
+  for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+    const target = current;
+    const res = await schedule(new URL(target).host, () =>
+      fetch(target, {
+        method: init.method,
+        headers,
+        redirect: "manual",
+        signal: AbortSignal.timeout(init.timeoutMs),
+      }),
+    );
+    const location = REDIRECTS.has(res.status) ? res.headers.get("location") : null;
+    if (!location) return { res, finalUrl: target };
+    await res.body?.cancel();
+    const next = new URL(location, target);
+    if (next.protocol !== "https:")
+      throw new RedirectRefused(`redirect to a non-HTTPS URL (${next.href})`, url);
+    if (!(await isAllowed(next.href))) {
+      stats.blocked++;
+      throw new RobotsDisallowed(`robots.txt disallows the redirect target ${next.href}`, url);
+    }
+    if (next.host !== new URL(target).host) {
+      const { authorization: _a, "if-none-match": _e, "if-modified-since": _m, ...rest } = headers;
+      headers = rest;
+    }
+    current = next.href;
+  }
+  throw new RedirectRefused(`more than ${MAX_REDIRECTS} redirects`, url);
+}
 export const httpStats = () => ({ ...stats });
 
 export async function request(url: string, options: FetchOptions = {}): Promise<FetchResult> {
@@ -287,21 +338,18 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
   for (let attempt = 0; attempt <= (options.retries ?? RETRIES); attempt++) {
     if (attempt > 0) await sleep(Math.max(2 ** attempt * 1000, retryAfter));
     try {
-      const res = await schedule(u.host, () =>
-        fetch(url, {
-          method,
-          headers,
-          redirect: "follow",
-          signal: AbortSignal.timeout(options.timeoutMs ?? TIMEOUT_MS),
-        }),
-      );
+      const { res, finalUrl } = await fetchPolitely(url, {
+        method,
+        headers,
+        timeoutMs: options.timeoutMs ?? TIMEOUT_MS,
+      });
       stats.requests++;
       if (res.status === 304 && cached) {
         stats.notModified++;
-        saveFixture({ method, url, finalUrl: res.url || url, status: 200, body: cached.body });
+        saveFixture({ method, url, finalUrl, status: 200, body: cached.body });
         return {
           url,
-          finalUrl: res.url || url,
+          finalUrl,
           status: 200,
           headers: res.headers,
           body: cached.body,
@@ -321,7 +369,7 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
       saveFixture({
         method,
         url,
-        finalUrl: res.url || url,
+        finalUrl,
         status: res.status,
         headers: Object.fromEntries(
           KEPT_HEADERS.flatMap((h) => {
@@ -340,13 +388,21 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
       }
       return {
         url,
-        finalUrl: res.url || url,
+        finalUrl,
         status: res.status,
         headers: res.headers,
         body,
         fromCache: false,
       };
     } catch (error) {
+      if (error instanceof RobotsDisallowed) {
+        saveFixture({ method, url, status: 0, robots: false });
+        throw error;
+      }
+      if (error instanceof RedirectRefused) {
+        saveFixture({ method, url, status: 0, refused: error.message });
+        throw error;
+      }
       if (error instanceof HttpError && error.status && error.status < 500 && error.status !== 429)
         throw error;
       lastError = error;
