@@ -135,8 +135,21 @@ function fixturePath(method: string, url: string): string {
   return join(fixtureDir, slug, `${hash}.json.gz`);
 }
 
+/**
+ * Pages that greet the visitor ("Your IP address is …") would put the
+ * recording machine's address in the repository: replace it. No source
+ * reads it.
+ */
+export function redactVisitorIp(body: string): string {
+  return body.replace(
+    /(IP address(?: is)?:?\s*(?:<[a-z]+>)?)(?:(?:\d{1,3}\.){3}\d{1,3}|[0-9a-f]*:[0-9a-f:]{2,})/gi,
+    "$10.0.0.0",
+  );
+}
+
 function saveFixture(fixture: Fixture) {
   if (fixtureMode !== "record") return;
+  if (fixture.body) fixture.body = redactVisitorIp(fixture.body);
   const path = fixturePath(fixture.method, fixture.url);
   mkdirSync(join(path, ".."), { recursive: true });
   writeFileSync(path, gzipSync(JSON.stringify(fixture), { level: 9 }));
