@@ -68,6 +68,8 @@ export function rankMirrors(payload: MirrorPayload, geo: GeoPoint): RankedMirror
       Number(b.sameCountry) - Number(a.sameCountry) ||
       (a.km ?? Number.POSITIVE_INFINITY) - (b.km ?? Number.POSITIVE_INFINITY) ||
       (a.s ?? Number.POSITIVE_INFINITY) - (b.s ?? Number.POSITIVE_INFINITY) ||
-      a.u.localeCompare(b.u),
+      // Plain code-point order: localeCompare would set up an ICU collator on
+      // the page's main thread, and mirror URLs are ASCII.
+      (a.u < b.u ? -1 : a.u > b.u ? 1 : 0),
   );
 }

@@ -1,9 +1,10 @@
 /**
  * Minimal static server for the production build in dist/ (local preview and
  * Playwright). `astro preview` is unavailable once the site has an on-demand
- * route with @astrojs/vercel. /api/geo/ answers like the Vercel function does
- * for a request without Vercel's location headers (no location), so the
- * download wizard falls back to the browser's time zone; e2e tests mock it.
+ * route with @astrojs/vercel. /api/geo/ stands in for the Vercel function with
+ * a visitor in Seoul (the site's main audience; the function serves from icn1),
+ * so the preview and Lighthouse take the path nearly every visitor takes.
+ * e2e tests mock it, including its failure (the time-zone fallback).
  *
  * Usage: bun scripts/serve.ts [--port=4322] [--root=<dir>] [--config=<config.json>]
  * --root/--config serve a copied build (e.g. a snapshot of dist/client and
@@ -66,7 +67,7 @@ Bun.serve({
     if (url.pathname === "/api/geo") return Response.redirect("/api/geo/", 308);
     if (url.pathname === "/api/geo/")
       return Response.json(
-        { cc: null, lat: null, lon: null },
+        { cc: "KR", lat: 37.57, lon: 126.98 },
         { headers: { "cache-control": "private, no-store" } },
       );
     // Mirror Vercel's trailingSlash: "always" for page paths.
