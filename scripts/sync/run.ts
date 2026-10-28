@@ -124,8 +124,15 @@ function recordHistory(slug: string, prev: ReleasesFile | undefined, next: Relea
   for (const r of next.releases) {
     if (known.has(`${r.channel}:${r.version}`)) continue;
     if (r.channel === "rolling") {
-      // Rolling snapshots (e.g. monthly ISOs) are only news after the first import.
+      // Rolling snapshots (e.g. monthly ISOs) are only news after the first import,
+      // and at most once a month per distro: a daily snapshot (Tumbleweed, Gentoo)
+      // must not push every other distro out of the shared history.
       if (!prev) continue;
+      const month = (r.releaseDate ?? today).slice(0, 7);
+      if (
+        history.some((h) => h.slug === slug && h.channel === "rolling" && h.date.startsWith(month))
+      )
+        continue;
     } else if (!prev && !r.releaseDate) continue;
     if (history.some((h) => h.slug === slug && h.version === r.version && h.channel === r.channel))
       continue;
