@@ -168,14 +168,10 @@ function init(root: HTMLElement) {
     if (live) live.textContent = text.trim();
   };
 
-  const regionNames = (() => {
-    try {
-      return new Intl.DisplayNames([locale], { type: "region" });
-    } catch {
-      return null;
-    }
-  })();
-  const country = (cc: string | null) => (cc ? (regionNames?.of(cc) ?? cc) : "");
+  // Names of the mirror list's countries, rendered by the server: Intl.DisplayNames
+  // here would load the region data on the main thread (a long task on slow phones).
+  const countryNames = JSON.parse(root.dataset.countries ?? "{}") as Record<string, string>;
+  const country = (cc: string | null) => (cc ? (countryNames[cc] ?? cc) : "");
 
   let releases: Release[] | null = null;
   let loading: Promise<Release[]> | null = null;
@@ -441,7 +437,8 @@ function init(root: HTMLElement) {
         mirrorSel.value = remembered ?? best?.u ?? "";
         relink();
         mirrorSel.hidden = false;
-        const place = country(geo.cc);
+        // Named only when the mirror list has the visitor's country.
+        const place = geo.cc ? countryNames[geo.cc] : undefined;
         mirrorLabel.textContent = !mirrorSel.value
           ? official
           : best && place

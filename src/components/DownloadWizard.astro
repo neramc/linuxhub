@@ -55,15 +55,24 @@ interface Props {
   strategy: DownloadStrategy;
   officialDownload: string;
   releases: ReleasesFile | undefined;
-  hasMirrors: boolean;
+  /** The countries of the official mirror list (ISO codes); null without mirror data. */
+  mirrorCountries: string[] | null;
   /** This site's install guide, when it is written (its #verify and #usb sections exist). */
   guide: string | undefined;
   /** The project's own installation docs: the next step when there is no guide here. */
   officialGuide: string;
 }
 
-const { slug, locale, strategy, officialDownload, releases, hasMirrors, guide, officialGuide } =
-  Astro.props;
+const {
+  slug,
+  locale,
+  strategy,
+  officialDownload,
+  releases,
+  mirrorCountries,
+  guide,
+  officialGuide,
+} = Astro.props;
 const t = useTranslations(locale);
 const release = featuredRelease(releases);
 const choice = defaultArtifact(release);
@@ -81,7 +90,13 @@ const formats = choice
   : [];
 const size = choice ? formatBytes(choice.artifact.size, locale) : null;
 // The same mirror choice for every distro with mirror data (docs/data-sources.md, "동등한 대우").
-const mirrorMode = hasMirrors && Boolean(choice?.artifact.path);
+const mirrorMode = Boolean(mirrorCountries && choice?.artifact.path);
+// Country names for the mirror groups, named here: Intl.DisplayNames in the
+// browser loads the region data on the main thread (a long task on slow phones).
+const regions = new Intl.DisplayNames([locale], { type: "region" });
+const countryNames = Object.fromEntries(
+  [...new Set(mirrorCountries ?? [])].sort().map((cc) => [cc, regions.of(cc) ?? cc]),
+);
 /** The official link already sends visitors to a nearby server. */
 const auto = strategy === "redirector" || strategy === "sourceforge";
 const officialServer = auto ? t("download.auto") : t("download.origin");
@@ -125,6 +140,7 @@ const archLabels = Object.fromEntries(Object.entries(arches_).map(([k, v]) => [k
         data-strategy={strategy}
         data-mirrors={mirrorMode ? `/data/mirrors/${slug}.json` : undefined}
         data-path={mirrorMode ? choice.artifact.path : undefined}
+        data-countries={mirrorMode ? JSON.stringify(countryNames) : undefined}
         data-releases-url={`/data/releases/${slug}.json`}
         data-labels={JSON.stringify(labels)}
         data-arches={JSON.stringify(archLabels)}
