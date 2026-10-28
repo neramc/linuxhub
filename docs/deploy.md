@@ -44,7 +44,7 @@ bun run test:e2e        # dist/를 serve.ts로 띄워 Playwright와 axe를 실�
 ```bash
 SITE=https://<도메인>
 curl -sI $SITE/ | grep -i -E "content-security-policy|strict-transport|x-frame"
-curl -s $SITE/api/geo                      # {"cc":"KR","lat":…,"lon":…}, Cache-Control: private, no-store
+curl -s $SITE/api/geo/                     # {"cc":"KR","lat":…,"lon":…}, Cache-Control: private, no-store
 curl -sI $SITE/distros/fedora/ | head -1   # 200
 curl -s $SITE/sitemap-index.xml | head -3
 curl -s $SITE/rss.xml | head -5

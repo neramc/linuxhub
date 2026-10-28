@@ -85,7 +85,7 @@ async function getJson<T>(url: string, ms = 8000, init?: RequestInit): Promise<T
 /** The visitor's location; `tz` when it comes from the browser's time zone. */
 async function locate(): Promise<GeoPoint & { tz?: true }> {
   try {
-    const geo = await getJson<GeoPoint>("/api/geo", 3000, { cache: "no-store" });
+    const geo = await getJson<GeoPoint>("/api/geo/", 3000, { cache: "no-store" });
     if (geo.cc || geo.lat !== null) return geo;
   } catch {
     /* offline, blocked, slow, or a non-Vercel preview */

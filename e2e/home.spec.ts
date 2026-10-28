@@ -264,6 +264,8 @@ test("404 has one home button and an English link", async ({ page }) => {
   expect(res?.status()).toBe(404);
   await expect(page.getByRole("link", { name: "홈으로" })).toHaveAttribute("href", "/");
   await expect(page.locator('a[href="/en/"][hreflang="en"]').last()).toBeVisible();
+  // There is no /en/404/: the menu's language row goes to the English home.
+  await expect(page.locator("a[data-lang-switch]")).toHaveAttribute("href", "/en/");
 });
 
 for (const path of [
