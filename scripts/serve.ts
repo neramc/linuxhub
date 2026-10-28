@@ -57,9 +57,11 @@ function resolve(pathname: string): string | null {
   return null;
 }
 
+const TEXT = /\.(?:html|css|js|mjs|json|svg|xml|txt)$/;
+
 Bun.serve({
   port,
-  fetch(req) {
+  async fetch(req) {
     const url = new URL(req.url);
     if (url.pathname === "/api/geo") return Response.redirect("/api/geo/", 308);
     if (url.pathname === "/api/geo/")
@@ -76,8 +78,19 @@ Bun.serve({
       return Response.redirect(`${url.pathname}/${url.search}`, 308);
     }
     const file = resolve(url.pathname);
-    if (file)
-      return new Response(Bun.file(file), { headers: routeHeaders.get(url.pathname) ?? {} });
+    if (file) {
+      const headers = new Headers(routeHeaders.get(url.pathname) ?? {});
+      // Vercel compresses text responses; so does this server, or Lighthouse would
+      // measure pages several times heavier than visitors get.
+      if (TEXT.test(file) && req.headers.get("accept-encoding")?.includes("gzip")) {
+        const body = Bun.file(file);
+        headers.set("content-type", body.type);
+        headers.set("content-encoding", "gzip");
+        headers.set("vary", "accept-encoding");
+        return new Response(Bun.gzipSync(await body.bytes()), { headers });
+      }
+      return new Response(Bun.file(file), { headers });
+    }
     const notFound = join(root, "404.html");
     return new Response(existsSync(notFound) ? Bun.file(notFound) : "Not found", {
       status: 404,
