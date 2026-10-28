@@ -9,7 +9,7 @@
  * Every distro gets the same treatment after its source returns (docs/data-sources.md
  * "동등한 대우"): missing artifact sizes are filled from the previous data or one
  * HEAD on the official URL, and every mirror is checked over HTTPS against the
- * newest release's file before it is kept (a listed mirror that gives no answer
+ * newest release's file before it is kept (a listed mirror that fails the check
  * keeps its place for a few days, so one bad connection changes no data).
  *
  * `--dry-run` writes nothing; `--out=DIR` writes the candidate files to
@@ -89,17 +89,17 @@ type Outcome = {
 
 const status: StatusFile = readStatus();
 
-/** A listed mirror that gives no answer stays this many days (mirrors are checked daily). */
-const SILENT_GRACE_DAYS = 3;
+/** A listed mirror that fails its check stays this many days (mirrors are checked daily). */
+const MIRROR_GRACE_DAYS = 3;
 /**
- * The first day each listed mirror gave no answer, per distro. It lives in the
- * HTTP cache directory, which the workflow restores between runs, so it is not
- * data: losing it only restarts the grace period.
+ * The first day of each listed mirror's current run of failed checks, per
+ * distro. It lives in the HTTP cache directory, which the workflow restores
+ * between runs, so it is not data: losing it only restarts the grace period.
  */
-const SILENCE_FILE = join(import.meta.dir, ".cache", "mirror-silence.json");
-const silence: Record<string, Record<string, string>> = (() => {
+const FAILING_FILE = join(import.meta.dir, ".cache", "mirror-failing.json");
+const failingMirrors: Record<string, Record<string, string>> = (() => {
   try {
-    return existsSync(SILENCE_FILE) ? JSON.parse(readFileSync(SILENCE_FILE, "utf8")) : {};
+    return existsSync(FAILING_FILE) ? JSON.parse(readFileSync(FAILING_FILE, "utf8")) : {};
   } catch {
     return {};
   }
@@ -274,7 +274,7 @@ async function verifyMirrors(slug: string, mirrors: Mirror[], ctx: SyncContext) 
     ctx.log("mirrors not checked: no release file with a mirror path");
     return mirrors;
   }
-  const verdicts = await mapLimit(mirrors, 16, async (m): Promise<"ok" | "gone" | "silent"> => {
+  const passed = await mapLimit(mirrors, 16, async (m) => {
     try {
       const res = await request(`${m.url}${path}`, {
         method: "HEAD",
@@ -282,33 +282,34 @@ async function verifyMirrors(slug: string, mirrors: Mirror[], ctx: SyncContext) 
         retries: 1,
         timeoutMs: 15_000,
       });
-      return res.status < 400 ? "ok" : "gone";
+      return res.status < 400;
     } catch (error) {
-      if (error instanceof RobotsDisallowed) return "ok";
+      if (error instanceof RobotsDisallowed) return true;
       if (error instanceof HttpError && error.status)
-        return error.status === 404 || error.status === 410 ? "gone" : "ok";
-      return "silent";
+        return error.status !== 404 && error.status !== 410;
+      return false;
     }
   });
-  // No answer at all (network error, timeout): a mirror the data already lists keeps its
-  // place until it has been silent for SILENT_GRACE_DAYS, so one bad connection does not
-  // change the data; a mirror that is not listed yet must answer before it is added.
+  // A failed check (404/410, or no answer at all) drops a mirror only once it has failed
+  // every check for MIRROR_GRACE_DAYS, so one bad connection, a redirector landing on a
+  // stale server, or mirrors still copying a new release do not change the data. A mirror
+  // that is not listed yet must pass a check before it is added.
   const listed = new Set(readMirrors(slug)?.mirrors.map((m) => m.url));
   const since: Record<string, string> = {};
   const kept = mirrors.filter((m, i) => {
-    if (verdicts[i] !== "silent") return verdicts[i] === "ok";
-    since[m.url] = silence[slug]?.[m.url] ?? today;
+    if (passed[i]) return true;
+    const first = failingMirrors[slug]?.[m.url] ?? today;
+    since[m.url] = first;
     return (
-      listed.has(m.url) &&
-      Date.parse(today) - Date.parse(since[m.url] ?? today) < SILENT_GRACE_DAYS * 86_400_000
+      listed.has(m.url) && Date.parse(today) - Date.parse(first) < MIRROR_GRACE_DAYS * 86_400_000
     );
   });
-  if (Object.keys(since).length) silence[slug] = since;
-  else delete silence[slug];
-  const answered = verdicts.filter((v) => v === "ok").length;
-  const held = kept.length - answered;
+  if (Object.keys(since).length) failingMirrors[slug] = since;
+  else delete failingMirrors[slug];
+  const ok = passed.filter(Boolean).length;
+  const held = kept.length - ok;
   ctx.log(
-    `mirrors: ${answered} of ${mirrors.length} answer for ${path}${held ? ` (${held} silent, kept)` : ""}`,
+    `mirrors: ${ok} of ${mirrors.length} pass for ${path}${held ? ` (${held} failing, kept for now)` : ""}`,
   );
   return kept;
 }
@@ -480,7 +481,7 @@ if (!dryRun && perDistro) {
   writeHistory(history);
   writeStatus(status);
   mkdirSync(join(import.meta.dir, ".cache"), { recursive: true });
-  writeFileSync(SILENCE_FILE, `${JSON.stringify(silence, null, 2)}\n`);
+  writeFileSync(FAILING_FILE, `${JSON.stringify(failingMirrors, null, 2)}\n`);
 }
 
 const failed = outcomes.filter((o) => o.result === "failed");
