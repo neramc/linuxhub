@@ -241,8 +241,12 @@ test("RSS keeps one item per version", async ({ request }) => {
     version: string;
   }[];
   const titles = [...xml.matchAll(/<item>\s*<title>([^<]*)<\/title>/g)].map((m) => m[1]);
-  // Flavors and point releases stay separate items (only the pages group them).
-  const kubuntu = history.filter((h) => h.slug === "kubuntu").length;
+  // The feed carries the 50 newest entries; in it, flavors and point releases stay
+  // separate items (only the pages group them).
+  const newest = history.slice(0, 50);
+  expect(titles.length).toBe(newest.length);
+  const kubuntu = newest.filter((h) => h.slug === "kubuntu").length;
+  expect(kubuntu).toBeGreaterThan(0);
   expect(titles.filter((t) => t?.startsWith("Kubuntu ")).length).toBe(kubuntu);
 });
 
