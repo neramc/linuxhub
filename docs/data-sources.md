@@ -41,6 +41,9 @@ Linuxhub의 버전, 파일, 체크섬, 미러 정보는 모두 각 프로젝트�
   - 크기가 없는 파일은 이전 데이터에서 채우고, 없으면 공식 URL에 HEAD를 한 번 보냅니다.
   - 모든 미러에 최신 릴리스 파일로 HTTPS HEAD를 보냅니다. 404·410이 오거나 HTTPS로 응답하지 않으면 뺍니다.
   - robots.txt가 확인을 막거나 HEAD를 거부하는 미러는 공식 목록을 믿고 남깁니다.
+- **검사:**
+  - `bun run sync:validate`는 카탈로그의 모든 배포판에 `releases()`와 `mirrors()`를 갖춘 소스 모듈이 있는지 봅니다.
+  - `scripts/sync/sources.test.ts`는 모든 소스를 기록해 둔 공식 응답(`scripts/sync/fixtures/`, `bun scripts/sync/record.ts`)으로 네트워크 없이 다시 실행해, 같은 결과가 나오는지 확인합니다.
 - **다운로드 화면:**
   - 미러 데이터가 있는 모든 배포판에서 미러를 고를 수 있습니다.
   - 공식 링크가 리다이렉터나 SourceForge면 그 링크가 기본으로 선택되고, 아니면 가장 가까운 미러를 추천합니다(ADR-0004).
