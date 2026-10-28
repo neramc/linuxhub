@@ -1,0 +1,55 @@
+name: Solus
+order: 28
+family: independent
+basedOn: null
+status: active
+releaseModel: rolling
+desktops: [budgie, gnome, kde, xfce]
+packageManagers: [eopkg, flatpak]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, beginner]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: partial
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2015-12-27
+requirements:
+  ramGB: 8
+  diskGB: 25
+  note:
+    ko: 공식 권장 사양입니다(최소 4GB RAM·10GB, x86-64-v2 쿼드코어 CPU 권장). Secure Boot를 켠 채 설치하려면 부팅 때 Solus 인증서를 한 번 등록해야 합니다.
+    en: Official recommended specs (4 GB RAM and 10 GB minimum; an x86-64-v2 quad-core CPU is recommended). Installing with Secure Boot on needs a one-time enrollment of the Solus certificate at boot.
+links:
+  home: https://getsol.us/
+  download: https://getsol.us/download/
+  docs: https://help.getsol.us/
+  installGuide: https://help.getsol.us/docs/user/quick-start/installation/
+  forum: https://discuss.getsol.us/
+  releaseNotes: https://getsol.us/blog/
+  source: https://github.com/getsolus
+tagline:
+  ko: 개인용 PC를 위해 매주 검증한 업데이트를 내는 독립 배포판
+  en: An independent desktop distro with tested, weekly rolling updates
+aliases: [솔루스, solus project, evolve os]
+logo:
+  file: solus.svg
+  source: https://getsol.us/imgs/Solus.svg
+  license: Solus Project mark from the official branding page (it asks that the marks are not stretched, skewed, rotated, flipped or otherwise altered); used unmodified to identify the project
+  trademark: https://getsol.us/branding/
+download:
+  strategy: mirrors
+sources:
+  - https://getsol.us/
+  - https://getsol.us/download/
+  - https://getsol.us/branding/
+  - https://getsol.us/2015/12/27/solus-1-0-released/
+  - https://getsol.us/2026/04/solus-4-9-released/
+  - https://help.getsol.us/docs/user/quick-start/installation/
+  - https://help.getsol.us/docs/user/quick-start/installation/system-requirements/
+  - https://help.getsol.us/docs/user/quick-start/installation/secure-boot/
+  - https://help.getsol.us/docs/user/package-management/basics/
+  - https://help.getsol.us/docs/user/software/third-party/
+lastReviewed: 2026-10-17

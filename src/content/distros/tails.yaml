@@ -1,0 +1,59 @@
+name: Tails
+order: 39
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [gnome]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: tails-usb
+useCases: [privacy]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2009-06
+requirements:
+  ramGB: 3
+  diskGB: 8
+  note:
+    ko: 공식 요구 사양입니다(RAM 3GB 이상, 8GB 이상 USB 메모리, 64비트 x86 PC). 디스크에 설치하지 않고 USB로 부팅합니다.
+    en: Official requirements (3 GB of RAM, a USB stick of 8 GB or more, a 64-bit x86 PC). It boots from the USB stick and is not installed to the disk.
+links:
+  home: https://tails.net/
+  download: https://tails.net/install/download/
+  docs: https://tails.net/doc/
+  installGuide: https://tails.net/install/
+  forum: https://forum.torproject.org/c/support/tails/33
+  releaseNotes: https://tails.net/news/
+  source: https://gitlab.tails.net/tails/tails
+tagline:
+  ko: 모든 인터넷 연결을 Tor로 보내고 컴퓨터에 흔적을 남기지 않는 USB 부팅 배포판
+  en: A USB-boot system that sends every connection through Tor and leaves no trace on the computer
+aliases: [테일즈, 테일스, tails os]
+logo:
+  file: tails.svg
+  source: https://tails.net/contribute/how/promote/logo/tails-logo-drawing.svg
+  license: GPL-3.0+ (official Tails logo page); the Tails word and logo marks are Tor Marks under The Tor Project's trademark policy
+  trademark: https://www.torproject.org/about/trademark/
+download:
+  strategy: redirector
+sources:
+  - https://tails.net/about/
+  - https://tails.net/doc/about/requirements/
+  - https://tails.net/doc/about/features/
+  - https://tails.net/doc/about/license/
+  - https://tails.net/install/
+  - https://tails.net/install/download/
+  - https://tails.net/contribute/design/
+  - https://tails.net/contribute/design/mirrors/
+  - https://tails.net/contribute/git/
+  - https://tails.net/news/test_4.5-rc1/
+  - https://tails.net/news/version_0.2/
+  - https://tails.net/support/
+  - https://tails.net/support/known_issues/
+  - https://tails.net/contribute/how/promote/logo/
+lastReviewed: 2026-10-17

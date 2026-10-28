@@ -1,0 +1,56 @@
+name: Bodhi Linux
+order: 49
+family: ubuntu
+basedOn: ubuntu
+status: active
+releaseModel: lts
+desktops: [moksha]
+packageManagers: [apt, dpkg]
+initSystem: systemd
+installer: other
+useCases: [lightweight, tinkerer, desktop]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2011
+requirements:
+  ramGB: 1
+  diskGB: 10
+  note:
+    ko: 공식 위키의 권장 사양은 64비트 1GHz CPU, 768MB RAM, 10GB 디스크이고 최소 사양은 512MB RAM, 5GB입니다. 설치 프로그램은 RAM 1GB 이상에서 가장 원활하다고 안내해 RAM은 1GB로 적었습니다.
+    en: The official wiki recommends a 64-bit 1 GHz CPU, 768 MB of RAM and 10 GB of disk, with a minimum of 512 MB and 5 GB. The installer is said to run best with 1 GB or more, so RAM is listed as 1 GB.
+links:
+  home: https://www.bodhilinux.com/
+  download: https://www.bodhilinux.com/download/
+  docs: https://www.bodhilinux.com/w/wiki/
+  installGuide: https://www.bodhilinux.com/w/installation-instructions/
+  forum: https://bodhilinux.boards.net/
+  releaseNotes: https://www.bodhilinux.com/release/7-0-0/
+  source: https://github.com/BodhiDev
+tagline:
+  ko: Moksha 데스크톱을 쓰는 Ubuntu LTS 기반 경량 배포판
+  en: A lightweight distro on Ubuntu LTS, built around the Moksha desktop
+aliases: [보디 리눅스, 보디, 보드히, bodhi, moksha, 모크샤]
+logo:
+  file: bodhi-linux.png
+  source: https://www.bodhilinux.com/trial/wp-content/uploads/2020/12/LeafLogo_512x512-3.png
+  license: No license or trademark policy is stated on the Bodhi Linux site; the official leaf logo is published only as this 512 px PNG (trimmed and resized only), used to identify the project
+download:
+  strategy: sourceforge
+sources:
+  - https://www.bodhilinux.com/
+  - https://www.bodhilinux.com/download/
+  - https://www.bodhilinux.com/w/what-is-bodhi-linux/
+  - https://www.bodhilinux.com/w/system-requirements/
+  - https://www.bodhilinux.com/w/selecting-the-correct-iso-image/
+  - https://www.bodhilinux.com/w/installation-instructions/
+  - https://www.bodhilinux.com/w/release-cycle/
+  - https://www.bodhilinux.com/w/release-roadmap/
+  - https://www.bodhilinux.com/2023/08/21/introducing-bodhi-linux-7-0-a-landmark-release/
+  - https://www.bodhilinux.com/release/7-0-0/
+  - https://www.bodhilinux.com/2018/08/22/bodhi-linux-5-0-0-released/
+  - https://www.bodhilinux.com/2025/03/12/the-road-ahead-bodhi-linuxs-future-and-behind-the-scenes-development/
+lastReviewed: 2026-10-17

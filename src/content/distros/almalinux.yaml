@@ -1,0 +1,63 @@
+name: AlmaLinux
+order: 18
+family: rhel
+basedOn: null
+upstream: Red Hat Enterprise Linux
+status: active
+releaseModel: lts
+desktops: [gnome, kde, xfce, mate]
+packageManagers: [dnf, rpm]
+initSystem: systemd
+installer: anaconda
+useCases: [server, enterprise, developer]
+difficulty: intermediate
+architectures: [x86_64, aarch64, ppc64le, s390x]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2021-03-30
+requirements:
+  ramGB: 1.5
+  diskGB: 20
+  note:
+    ko: 공식 설치 안내 기준입니다(RAM 최소 1.5GB, 디스크 최소 10GB·권장 20GB). 권장 RAM은 공개되어 있지 않습니다.
+    en: From the official installation guide (minimum 1.5 GB RAM; disk 10 GB minimum, 20 GB recommended). No recommended RAM figure is published.
+links:
+  home: https://almalinux.org/
+  download: https://almalinux.org/get-almalinux/
+  docs: https://wiki.almalinux.org/
+  installGuide: https://wiki.almalinux.org/documentation/installation-guide.html
+  forum: https://forums.almalinux.org/
+  releaseNotes: https://wiki.almalinux.org/release-notes/
+  source: https://git.almalinux.org/
+tagline:
+  ko: 비영리 재단이 운영하는, RHEL과 호환되는 엔터프라이즈 배포판
+  en: An enterprise distro run by a non-profit foundation that stays compatible with RHEL
+aliases: [알마리눅스, 알마 리눅스, 알마, alma, alma linux, almalinux os]
+logo:
+  file: almalinux.svg
+  source: https://almalinux.org/branding/AlmaLinux%20Icon.svg
+  license: AlmaLinux OS marks are owned by the Linux Foundation and sublicensed to the AlmaLinux OS Foundation; official icon from the brand assets page, used unmodified (SVGO-optimized; the empty Adobe Illustrator extension wrapper removed, shapes and colors untouched) to identify the project
+  trademark: https://almalinux.org/p/the-almalinux-os-trademark-usage-policy/
+  accent: blue
+download:
+  strategy: redirector
+sources:
+  - https://almalinux.org/
+  - https://almalinux.org/get-almalinux/
+  - https://wiki.almalinux.org/documentation/installation-guide.html
+  - https://wiki.almalinux.org/release-notes/
+  - https://wiki.almalinux.org/FAQ.html
+  - https://wiki.almalinux.org/LiveMedia.html
+  - https://wiki.almalinux.org/Comparison.html
+  - https://wiki.almalinux.org/documentation/secure-boot-2023-certificates.html
+  - https://wiki.almalinux.org/documentation/after-installation-guide.html
+  - https://mirrors.almalinux.org/
+  - https://almalinux.org/foundation/
+  - https://almalinux.org/security/
+  - https://mirrors.almalinux.org/isos/x86_64/10.2.html
+  - https://almalinux.org/branding/
+  - https://almalinux.org/branding/AlmaLinux%20Icon.svg
+  - https://almalinux.org/p/the-almalinux-os-trademark-usage-policy/
+lastReviewed: 2026-10-17

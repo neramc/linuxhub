@@ -1,0 +1,65 @@
+name: Rocky Linux
+order: 19
+family: rhel
+basedOn: null
+upstream: Red Hat Enterprise Linux
+status: active
+releaseModel: lts
+desktops: [gnome, kde, xfce, mate, cinnamon]
+packageManagers: [dnf, rpm, flatpak]
+initSystem: systemd
+installer: anaconda
+useCases: [server, enterprise, developer]
+difficulty: intermediate
+architectures: [x86_64, aarch64, ppc64le, s390x, riscv64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2021-06-21
+requirements:
+  ramGB: 4
+  diskGB: 20
+  note:
+    ko: "Rocky Linux 10 공식 문서 기준입니다(권장: GUI 설치 시 RAM 4GB 이상, 디스크 20GB 이상이며 GUI 사용 시 40GB 이상. 최소: 텍스트 모드 설치 RAM 2GB, 디스크 10GB). x86_64는 x86-64-v3(Haswell급) 이상 CPU가 필요합니다."
+    en: "From the Rocky Linux 10 documentation (recommended: 4 GB+ RAM for GUI installs and 20 GB+ disk, 40 GB+ with a GUI; minimum: 2 GB RAM for a text-mode install and 10 GB disk). On x86_64 the CPU must support x86-64-v3 (Haswell class or newer)."
+links:
+  home: https://rockylinux.org/
+  download: https://rockylinux.org/download
+  docs: https://docs.rockylinux.org/
+  installGuide: https://docs.rockylinux.org/guides/installation/
+  forum: https://forums.rockylinux.org/
+  releaseNotes: https://docs.rockylinux.org/releases/
+  source: https://git.rockylinux.org/
+tagline:
+  ko: RHEL과 버그까지 호환되도록 만드는 커뮤니티 엔터프라이즈 배포판
+  en: A community enterprise distro that aims for bug-for-bug compatibility with RHEL
+aliases: [록키 리눅스, 로키 리눅스, 록키, 로키, rocky, rockylinux]
+logo:
+  file: rocky-linux.svg
+  source: https://rockylinux.org/images/logo.svg
+  license: Rocky Linux is a registered trademark of the Rocky Enterprise Software Foundation; official logo (mark and wordmark) as published on rockylinux.org, used unmodified (SVGO-optimized only; shapes and colors untouched) to identify the project. The foundation's guidelines require written permission for most other uses
+  trademark: https://rockylinux.org/legal/trademarks
+download:
+  strategy: redirector
+sources:
+  - https://rockylinux.org/
+  - https://rockylinux.org/download
+  - https://rockylinux.org/about
+  - https://www.resf.org/about
+  - https://docs.rockylinux.org/guides/minimum_hardware_requirements/
+  - https://docs.rockylinux.org/guides/installation/
+  - https://docs.rockylinux.org/releases/
+  - https://docs.rockylinux.org/releases/release_notes/10_0/
+  - https://docs.rockylinux.org/releases/release_notes/8_5/
+  - https://rockylinux.org/news/rocky-linux-8-3-rc1-release
+  - https://rockylinux.org/news/rocky-linux-8-4-ga-release
+  - https://docs.rockylinux.org/desktop/gnome/flatpak/
+  - https://download.rockylinux.org/pub/rocky/10/isos/
+  - https://download.rockylinux.org/pub/rocky/10/live/x86_64/
+  - https://download.rockylinux.org/pub/rocky/9/live/x86_64/
+  - https://download.rockylinux.org/pub/rocky/8/live/x86_64/
+  - https://docs.rockylinux.org/teams/web_design/branding/
+  - https://rockylinux.org/legal/trademarks
+  - https://rockylinux.org/images/logo.svg
+lastReviewed: 2026-10-17

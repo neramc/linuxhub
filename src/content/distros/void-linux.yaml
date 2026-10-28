@@ -1,0 +1,51 @@
+name: Void Linux
+order: 29
+family: independent
+basedOn: null
+status: active
+releaseModel: rolling
+desktops: [none, xfce]
+packageManagers: [xbps]
+initSystem: runit
+installer: void-installer
+useCases: [tinkerer, lightweight, developer]
+difficulty: advanced
+architectures: [x86_64, aarch64, i686, armhf]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2008
+requirements:
+  ramGB: 0.52
+  diskGB: 0.7
+  note:
+    ko: 공식 핸드북이 권장하는 최소 사양(x86_64 glibc 기준 RAM 520MB, 저장 공간 700MB)입니다. Xfce 이미지와 데스크톱 사용에는 더 많은 자원이 필요합니다.
+    en: The minimum recommended by the official handbook (520 MB of RAM and 700 MB of storage for x86_64 glibc). The Xfce image and desktop use need more.
+links:
+  home: https://voidlinux.org/
+  download: https://voidlinux.org/download/
+  docs: https://docs.voidlinux.org/
+  installGuide: https://docs.voidlinux.org/installation/index.html
+  releaseNotes: https://voidlinux.org/news/
+  source: https://github.com/void-linux
+tagline:
+  ko: runit과 XBPS를 쓰는 독자 개발 롤링 배포판
+  en: An independent rolling distro built from scratch, with runit and XBPS
+aliases: [보이드, 보이드 리눅스, void, voidlinux, void musl]
+logo:
+  file: void-linux.svg
+  source: https://repo-default.voidlinux.org/logos/void.svg
+  license: No license or trademark policy for the logo is stated on voidlinux.org or in the handbook; the official file from the project's logos directory, used unmodified to identify the project
+download:
+  strategy: mirrors
+sources:
+  - https://voidlinux.org/
+  - https://voidlinux.org/download/
+  - https://docs.voidlinux.org/about/index.html
+  - https://docs.voidlinux.org/about/history.html
+  - https://docs.voidlinux.org/installation/index.html
+  - https://docs.voidlinux.org/installation/live-images/guide.html
+  - https://xmirror.voidlinux.org/
+  - https://repo-default.voidlinux.org/logos/
+lastReviewed: 2026-10-17

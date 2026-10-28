@@ -1,0 +1,63 @@
+name: OpenMandriva Lx
+order: 44
+family: mandriva
+basedOn: null
+upstream: Mandriva Linux
+status: active
+releaseModel: rolling
+desktops: [kde, gnome, xfce, lxqt, cosmic]
+packageManagers: [dnf, rpm, zypper, flatpak]
+initSystem: systemd
+installer: calamares
+useCases: [desktop, developer, server]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: FR
+  firstRelease: 2013-11-22
+requirements:
+  ramGB: 2
+  diskGB: 20
+  note:
+    ko: ROME과 Rock 6.0 릴리스 노트의 요구 사양입니다(RAM 2GB 이상, 디스크 최소 10GB이며 Plasma 전체 설치에는 20GB 권장, OpenGL 2.0 이상을 지원하는 3D 그래픽). 위키의 요구 사양 문서는 64비트 CPU가 필요하고 RAM 8GB 정도면 쾌적하다고 안내합니다.
+    en: From the ROME and Rock 6.0 release notes (at least 2 GB of RAM and 10 GB of disk, with 20 GB recommended for a full Plasma install, and a 3D card with OpenGL 2.0 or newer). The wiki requirements page asks for a 64-bit CPU and calls about 8 GB of RAM comfortable.
+links:
+  home: https://www.openmandriva.org/
+  download: https://www.openmandriva.org/downloads/
+  docs: https://wiki.openmandriva.org/
+  installGuide: https://wiki.openmandriva.org/en/distribution/install
+  forum: https://forum.openmandriva.org/
+  releaseNotes: https://wiki.openmandriva.org/en/distribution/releases/current
+  source: https://github.com/OpenMandrivaAssociation
+tagline:
+  ko: Mandriva Linux의 직계 후손으로, 롤링 ROME과 안정판 Rock을 함께 내는 독립 커뮤니티 배포판
+  en: An independent community distro descended from Mandriva Linux, with rolling ROME and stable Rock editions
+aliases: [오픈만드리바, 오픈만드리바 리눅스, openmandriva lx, omlx, openmandriva rome, openmandriva rock]
+logo:
+  file: openmandriva.svg
+  source: https://mirror.openmandriva.org/localjs/favicon.svg
+  license: No license or trademark policy is stated for the logo on the official OpenMandriva sites; OpenMandriva logo, used to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://www.openmandriva.org/
+  - https://www.openmandriva.org/downloads/
+  - https://www.openmandriva.org/release-picking/
+  - https://www.openmandriva.org/info-rock/
+  - https://www.openmandriva.org/info-rome/
+  - https://www.openmandriva.org/info-spins/
+  - https://www.openmandriva.org/info-server/
+  - https://www.openmandriva.org/en/doc/association/About/
+  - https://mirror.openmandriva.org/downloads
+  - https://wiki.openmandriva.org/en/distribution
+  - https://wiki.openmandriva.org/en/distribution/install
+  - https://wiki.openmandriva.org/en/distribution/install/requirements
+  - https://wiki.openmandriva.org/en/distribution/releases
+  - https://wiki.openmandriva.org/en/distribution/releases/omlx60/notes
+  - https://wiki.openmandriva.org/en/distribution/releases/omlx60/new
+  - https://wiki.openmandriva.org/en/distribution/releases/rome/notes
+  - https://wiki.openmandriva.org/en/distribution/guides/software-management
+  - https://raw.githubusercontent.com/OpenMandrivaAssociation/distribution/master/README.md
+lastReviewed: 2026-10-17

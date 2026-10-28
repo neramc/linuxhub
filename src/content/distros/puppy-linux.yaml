@@ -1,0 +1,63 @@
+name: Puppy Linux
+order: 51
+family: independent
+basedOn: null
+upstream: Debian / Ubuntu / Slackware / Void Linux
+status: active
+releaseModel: fixed
+desktops: [jwm]
+packageManagers: [ppm, apt, xbps]
+initSystem: Puppy rc.sysinit (BusyBox-style init)
+installer: puppy-installer
+useCases: [lightweight, desktop]
+difficulty: intermediate
+architectures: [x86_64, i686]
+secureBoot: "no"
+immutable: false
+origin:
+  country: INT
+  firstRelease: 2003
+requirements:
+  ramGB: 2
+  diskGB: 2
+  note:
+    ko: 공식 안내의 최소 사양입니다. 최신 Puppy는 64비트 CPU와 RAM 2GB가 필요합니다(요구 사양 안내에는 64비트판 RAM 1GB, 32비트판은 펜티엄 4급 CPU와 RAM 512MB로 적혀 있습니다). 저장 공간은 설치에 1GB, 프로그램을 더하면 2GB 이상입니다.
+    en: Official minimums. Newer Puppy releases need a 64-bit CPU and 2 GB of RAM (the system-requirements guide lists 1 GB for 64-bit editions and a Pentium 4 with 512 MB for 32-bit ones). Storage is 1 GB for an install and 2 GB or more once you add software.
+links:
+  home: https://puppylinux-woof-ce.github.io/
+  download: https://forum.puppylinux.com/puppy-linux-collection
+  docs: https://wikka.puppylinux.com/HomePage
+  installGuide: https://forum.puppylinux.com/viewtopic.php?t=17376
+  forum: https://forum.puppylinux.com/
+  releaseNotes: https://forum.puppylinux.com/viewforum.php?f=114
+  source: https://github.com/puppylinux-woof-CE/woof-CE
+tagline:
+  ko: USB나 RAM에서 바로 실행하고 바뀐 내용은 저장 파일에 남기는 소형 배포판 모음
+  en: A family of small distros that run from a USB stick or RAM and keep your changes in a save file
+aliases: [퍼피 리눅스, 퍼피, 파피 리눅스, puppy, puppylinux, puppy os]
+logo:
+  file: puppy-linux.svg
+  source: https://oldforum.puppylinux.com/download/file.php?id=24604
+  license: Puppy Linux site content is CC0 (page presenting the logo); logo created by rastapax, vector drawing by afgs (puppy_logo.svg in 3logos.zip on the official Puppy forum); Puppy Linux name and logo, used to identify the project
+download:
+  strategy: mirrors
+sources:
+  - https://puppylinux-woof-ce.github.io/
+  - https://puppylinux-woof-ce.github.io/history.html
+  - https://puppylinux-woof-ce.github.io/download.html
+  - https://forum.puppylinux.com/puppy-linux-collection
+  - https://forum.puppylinux.com/viewtopic.php?t=5127
+  - https://forum.puppylinux.com/viewtopic.php?t=5192
+  - https://forum.puppylinux.com/viewtopic.php?t=5314
+  - https://forum.puppylinux.com/viewtopic.php?t=17376
+  - https://forum.puppylinux.com/
+  - https://forum.puppylinux.com/viewforum.php?f=114
+  - https://wikka.puppylinux.com/HomePage
+  - https://distro.ibiblio.org/puppylinux/puppy-trixie/TrixiePup64/trixiepup64.html
+  - https://distro.ibiblio.org/puppylinux/puppy-resolute/ResolutePup64/resolutepup64-releasenotes.html
+  - https://wikka.puppylinux.com/VerificationCommands
+  - https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/README.md
+  - https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/woof-code/rootfs-skeleton/etc/inittab
+  - https://puppylinux-woof-ce.github.io/site-map.html
+  - https://oldforum.puppylinux.com/viewtopic.php?p=374278
+lastReviewed: 2026-10-17

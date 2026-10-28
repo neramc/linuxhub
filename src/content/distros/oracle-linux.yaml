@@ -1,0 +1,65 @@
+name: Oracle Linux
+order: 42
+family: rhel
+basedOn: null
+upstream: Red Hat Enterprise Linux
+status: active
+releaseModel: lts
+desktops: [gnome]
+packageManagers: [dnf, rpm]
+initSystem: systemd
+installer: anaconda
+useCases: [server, enterprise, developer]
+difficulty: intermediate
+architectures: [x86_64, aarch64]
+secureBoot: "yes"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2006
+requirements:
+  ramGB: 3
+  diskGB: 20
+  note:
+    ko: Oracle Linux 10 설치 가이드 기준입니다(논리 CPU 1개당 RAM 1.5GB이고 CPU는 최소 2개이므로 3GB, 디스크 최소 10GB·권장 20GB). x86_64는 x86-64-v3 CPU가 필요합니다.
+    en: From the Oracle Linux 10 installation guide (1.5 GB RAM per logical CPU with at least 2 CPUs, so 3 GB; disk 10 GB minimum, 20 GB recommended). On x86_64 the CPU must support x86-64-v3.
+links:
+  home: https://www.oracle.com/linux/
+  download: https://yum.oracle.com/oracle-linux-isos.html
+  docs: https://docs.oracle.com/en/operating-systems/oracle-linux/
+  installGuide: https://docs.oracle.com/en/operating-systems/oracle-linux/10/install/
+  releaseNotes: https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.2/
+  source: https://oss.oracle.com/ol10/
+tagline:
+  ko: RHEL 호환 커널과 자체 UEK 커널을 함께 제공하는 Oracle의 배포판
+  en: Oracle's distro, offering its own UEK kernel alongside a RHEL-compatible one
+aliases: [오라클 리눅스, 오라클, oracle, ol, oel, oracle enterprise linux]
+logo:
+  file: oracle-linux.png
+  source: https://www.oracle.com/yum.oracle.com/a/yum/img/penguin-updated.png
+  license: Oracle Linux mascot image from the official download page (it carries the Oracle wordmark); Oracle trademark and copyright, used unmodified (trimmed and resized only) to identify the product. Oracle requires written authorization to use the Oracle logo itself
+  trademark: https://www.oracle.com/legal/trademarks/
+download:
+  strategy: redirector
+sources:
+  - https://yum.oracle.com/oracle-linux-isos.html
+  - https://www.oracle.com/linux/
+  - https://www.oracle.com/a/ocom/docs/elsp-lifetime-069338.pdf
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/install/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.2/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/ol10.0-ShippedKernels.html
+  - https://oss.oracle.com/ol10/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/install/install-SystemRequirements.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/ol10-AvailableArchitectures.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/ol-Compatibility.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/secure-boot/
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/secure-boot/sboot-OverviewofSecureBoot.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/accessibility/accessibility-SelectingaDesktopVersion.html
+  - https://yum.oracle.com/repo/OracleLinux/OL10/appstream/x86_64/index.html
+  - https://www.oracle.com/legal/trademarks/
+  - https://www.oracle.com/legal/logos/
+  - https://www.oracle.com/yum.oracle.com/a/yum/img/penguin-updated.png
+lastReviewed: 2026-10-17

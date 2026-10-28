@@ -1,0 +1,53 @@
+name: Vanilla OS
+order: 36
+family: debian
+basedOn: debian
+status: active
+releaseModel: fixed
+desktops: [gnome]
+packageManagers: [flatpak, apx, vso, abroot]
+initSystem: systemd
+installer: vanilla-installer
+useCases: [desktop, developer, beginner]
+difficulty: beginner
+architectures: [x86_64, aarch64]
+secureBoot: partial
+immutable: true
+origin:
+  country: INT
+  firstRelease: 2022-12-29
+requirements:
+  ramGB: 8
+  diskGB: 50
+  note:
+    ko: 공식 설치 문서의 기준입니다(RAM 최소 4GB·권장 8GB). ABRoot의 A/B 시스템 파티션 때문에 디스크는 50GB 이상이 필요합니다. NVIDIA 드라이버나 커널 모듈을 쓰려면 Secure Boot를 꺼야 합니다.
+    en: From the official installation guide (4 GB of RAM minimum, 8 GB recommended). The disk needs at least 50 GB because ABRoot keeps A/B system partitions. Secure Boot has to be turned off if you need NVIDIA drivers or other kernel modules.
+links:
+  home: https://vanillaos.org/
+  download: https://vanillaos.org/download
+  docs: https://docs.vanillaos.org/
+  installGuide: https://docs.vanillaos.org/handbook/en/installation
+  releaseNotes: https://vanillaos.org/blog
+  source: https://github.com/Vanilla-OS
+tagline:
+  ko: 시스템을 이미지로 통째로 바꾸는 Debian 기반 불변 배포판
+  en: An immutable Debian-based distro that updates the whole system as one image
+aliases: [바닐라 OS, 바닐라, vanillaos, vanilla os reunion]
+logo:
+  file: vanilla-os.svg
+  source: https://vanillaos.org/assets/images/brand/vanillaos-logo-icon.svg
+  license: Brand asset from the official brand page; the website's assets are owned by fabricators.ltd and the Vanilla OS Contributors Team and no logo license or trademark policy is stated; used unmodified to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://vanillaos.org/blog/article/2026-08-24/vanilla-os-3-reunion---stable-release
+  - https://vanillaos.org/blog/article/2022-12-29/vanilla-os-2210-kinetic-is-out
+  - https://vanillaos.org/blog/article/2023-01-31/point-vs-rolling-release-and-the-modern-solutions
+  - https://docs.vanillaos.org/handbook/en/installation
+  - https://docs.vanillaos.org/handbook/en/install-and-manage-applications
+  - https://vanillaos.org/nerd-info
+  - https://vanillaos.org/components-lifecycle
+  - https://vanillaos.org/team
+  - https://vanillaos.org/brand
+  - https://vanillaos.org/download/reunion/stable
+lastReviewed: 2026-10-17

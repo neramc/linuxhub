@@ -1,0 +1,59 @@
+name: NixOS
+order: 21
+family: independent
+basedOn: null
+status: active
+releaseModel: fixed
+desktops: [gnome, kde, xfce, mate, pantheon, i3, none]
+packageManagers: [nix]
+initSystem: systemd
+installer: nixos-installer
+useCases: [developer, tinkerer, server]
+difficulty: advanced
+architectures: [x86_64, aarch64]
+secureBoot: partial
+immutable: false
+origin:
+  country: NL
+  firstRelease: 2013
+requirements:
+  ramGB: 0.75
+  diskGB: 10
+  note:
+    ko: 공식 설명서가 VirtualBox 가상 머신 예시에서 안내하는 값입니다(메모리 768MB 이상, 디스크 10GB 이상). 실제 PC에 그래픽 설치 이미지와 데스크톱 환경을 쓰려면 이보다 여유가 필요할 수 있습니다.
+    en: Figures from the official manual's VirtualBox guest example (768 MB of memory or more, 10 GB of disk or more). A graphical installer and a desktop on real hardware may need more headroom.
+links:
+  home: https://nixos.org/
+  download: https://nixos.org/download/
+  docs: https://nixos.org/manual/nixos/stable/
+  installGuide: https://nixos.org/manual/nixos/stable/#sec-installation
+  forum: https://discourse.nixos.org/
+  releaseNotes: https://nixos.org/manual/nixos/stable/release-notes
+  source: https://github.com/NixOS/nixpkgs
+tagline:
+  ko: 선언형 설정 파일 하나로 시스템 전체를 기술하는 Nix 기반 배포판
+  en: A distro built on Nix, where one declarative configuration describes the whole system
+aliases: [닉스OS, 닉스 OS, 닉스, nix os, nix, nixos linux]
+logo:
+  file: nixos.svg
+  source: https://brand.nixos.org/logos/nixos-logomark-default-gradient-recommended.svg
+  license: Official NixOS logomark from brand.nixos.org (default gradient, recommended variant), used unmodified to identify the project. Neither the branding page nor the Branding Guide names a license for the logo files; the guide sets the usage rules (no cropping, distorting or recoloring), and nixos.org content is CC-BY-SA-4.0 per its footer
+  trademark: https://nixos.org/branding/
+download:
+  strategy: redirector
+sources:
+  - https://nixos.org/
+  - https://nixos.org/download/
+  - https://nixos.org/manual/nixos/stable/
+  - https://nixos.org/manual/nixos/stable/release-notes
+  - https://nixos.org/governance/
+  - https://nixos.org/community/
+  - https://nixos.org/branding/
+  - https://brand.nixos.org/documents/nixos-branding-guide.pdf
+  - https://brand.nixos.org/logos/nixos-logomark-default-gradient-recommended.svg
+  - https://wiki.nixos.org/wiki/NixOS
+  - https://wiki.nixos.org/wiki/NixOS_Installation_Guide
+  - https://wiki.nixos.org/wiki/Secure_Boot
+  - https://wiki.nixos.org/wiki/FAQ
+  - https://nixos.org/blog/announcements/2013/nixos-1310/
+lastReviewed: 2026-10-28

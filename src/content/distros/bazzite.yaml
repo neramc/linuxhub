@@ -1,0 +1,59 @@
+name: Bazzite
+order: 14
+family: fedora
+basedOn: fedora
+status: active
+releaseModel: fixed
+desktops: [kde, gnome]
+packageManagers: [flatpak, homebrew, rpm-ostree, distrobox]
+initSystem: systemd
+installer: bootc-image
+useCases: [gaming, desktop]
+difficulty: beginner
+architectures: [x86_64]
+secureBoot: partial
+immutable: true
+origin:
+  country: INT
+  firstRelease: 2023-08-20
+requirements:
+  ramGB: 8
+  diskGB: 50
+  note:
+    ko: 공식 하드웨어 문서의 최소 사양입니다(RAM 8GB, 내장 SSD 여유 공간 50GB이며 120GB를 권장). UEFI와 GPT 디스크가 필요하고 Vulkan 1.3 이상을 지원하는 GPU를 권장합니다.
+    en: Official minimum from the hardware guide (8 GB RAM and 50 GB free on an internal SSD, with 120 GB recommended). It needs UEFI and a GPT disk, and a Vulkan 1.3 GPU is expected.
+links:
+  home: https://bazzite.gg/
+  download: https://bazzite.gg/#image-picker
+  docs: https://docs.bazzite.gg/
+  installGuide: https://docs.bazzite.gg/General/Installation_Guide/install-guide/
+  forum: https://universal-blue.discourse.group/c/bazzite/5
+  releaseNotes: https://universal-blue.discourse.group/tag/bazzite-news
+  source: https://github.com/ublue-os/bazzite
+tagline:
+  ko: Fedora Atomic을 바탕으로 게임용 설정을 미리 갖춰 둔 이미지 기반 배포판
+  en: An image-based distro on Fedora Atomic Desktops, set up for gaming from the start
+aliases: [바자이트, 배자이트, bazzite os, bazzite deck, bazzite-deck]
+logo:
+  file: bazzite.svg
+  source: https://bazzite.gg/content/uploads/2024/02/icon.svg
+  license: No separate logo license or trademark policy is published; the project README credits amelia.svg for creating the logo and branding (the repository code is Apache-2.0). Bazzite mark, used unmodified to identify the project
+download:
+  strategy: redirector
+sources:
+  - https://bazzite.gg/
+  - https://docs.bazzite.gg/
+  - https://docs.bazzite.gg/General/FAQ/
+  - https://docs.bazzite.gg/General/Fedora_Atomic_Comparison/
+  - https://docs.bazzite.gg/General/terms/
+  - https://docs.bazzite.gg/Gaming/Hardware_compatibility_for_gaming/
+  - https://docs.bazzite.gg/General/Installation_Guide/install-guide/
+  - https://docs.bazzite.gg/General/Installation_Guide/secure_boot/
+  - https://docs.bazzite.gg/General/Installation_Guide/troubleshoot_guide/
+  - https://download.bazzite.gg/bazzite-stable-live-amd64.iso-CHECKSUM
+  - https://raw.githubusercontent.com/ublue-os/bazzite/main/LICENSE
+  - https://raw.githubusercontent.com/ublue-os/bazzite/main/README.md
+  - https://universal-blue.discourse.group/tag/bazzite-news
+  - https://universal-blue.discourse.group/t/bazzite-1-0-announcement/49
+  - https://bazzite.gg/content/uploads/2024/02/icon.svg
+lastReviewed: 2026-10-28

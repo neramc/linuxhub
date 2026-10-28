@@ -1,0 +1,47 @@
+name: PCLinuxOS
+order: 45
+family: mandriva
+basedOn: null
+upstream: Mandriva Linux
+status: active
+releaseModel: rolling
+desktops: [kde, xfce, mate]
+packageManagers: [dnf, apt, rpm]
+initSystem: SysVinit
+installer: drakx
+useCases: [desktop]
+difficulty: intermediate
+architectures: [x86_64]
+secureBoot: "no"
+immutable: false
+origin:
+  country: US
+  firstRelease: 2003
+requirements:
+  ramGB: 2
+  diskGB: 20
+  note:
+    ko: 공식 사양 문서를 확인하지 못해 ISO 크기(KDE판 약 4GB)를 기준으로 보수적으로 잡은 값입니다. 정확한 최소 사양은 공식 사이트와 포럼에서 확인하세요.
+    en: The official requirements page could not be read, so these are conservative figures based on the ISO size (about 4 GB for the KDE edition). Check the official site and forum for exact minimums.
+links:
+  home: https://www.pclinuxos.com/
+  download: https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/
+  forum: https://www.pclinuxos.com/forum/index.php
+tagline:
+  ko: Mandriva 계열에서 갈라져 나와 롤링 방식으로 업데이트하는 커뮤니티 배포판
+  en: A community distro that branched off the Mandriva line and updates as a rolling release
+aliases: [피씨리눅스오에스, 피씨엘오에스, pclos, pcl os, pclinuxos linux]
+logo:
+  file: pclinuxos.png
+  source: https://distro.ibiblio.org/pclinuxos/wallpapers/name-logo.png
+  license: No license or trademark policy is stated in the project's artwork directory (author Texstar); PCLinuxOS logo, used to identify the project
+download:
+  strategy: mirrors
+sources:
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/dnf-pkg-mgr-multilingual.pdf
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/apt/pclinuxos/64bit/RPMS.x86_64/
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/apt/pclinuxos/64bit/RPMS.x86_64/pclinuxos-release-2026-1pclos2026.x86_64.rpm
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/apt/pclinuxos/64bit/RPMS.x86_64/getpclinuxos-3.2-7pclos2026.noarch.rpm
+  - https://distro.ibiblio.org/pclinuxos/wallpapers/
+lastReviewed: 2026-10-17

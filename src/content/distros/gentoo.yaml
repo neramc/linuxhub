@@ -1,0 +1,60 @@
+name: Gentoo Linux
+order: 31
+family: gentoo
+basedOn: null
+status: active
+releaseModel: rolling
+desktops: [kde, gnome, none]
+packageManagers: [portage]
+initSystem: OpenRC / systemd
+installer: gentoo-handbook
+useCases: [tinkerer, developer, server]
+difficulty: advanced
+architectures: [x86_64, aarch64, i686, armhf, ppc64le, s390x, riscv64]
+secureBoot: partial
+immutable: false
+origin:
+  country: US
+  firstRelease: 1999
+requirements:
+  ramGB: 2
+  diskGB: 40
+  note:
+    ko: 공식 핸드북의 값입니다(루트 파티션 40GB 이상 권장, 최소 설치 CD는 RAM 140MB 이상, LiveGUI는 RAM 2GB 이상이어야 부팅). 소스에서 빌드하므로 사양이 낮으면 설치 시간이 길어집니다.
+    en: Figures from the official Handbook (at least 40 GB recommended for the root partition; the minimal installation CD needs 140 MB of RAM and the LiveGUI 2 GB to boot). Gentoo builds from source, so lower-end hardware simply takes longer to install.
+links:
+  home: https://www.gentoo.org/
+  download: https://www.gentoo.org/downloads/
+  docs: https://wiki.gentoo.org/wiki/Main_Page
+  installGuide: https://wiki.gentoo.org/wiki/Handbook:AMD64
+  forum: https://forums.gentoo.org/
+  releaseNotes: https://www.gentoo.org/news/
+  source: https://www.gentoo.org/get-involved/get-code/
+tagline:
+  ko: Portage로 소스에서 직접 빌드해 시스템을 맞춰 쓰는 롤링 배포판
+  en: A rolling distro where Portage builds software from source to fit your system
+aliases: [젠투, 젠투 리눅스, 겐투, gentoo, portage]
+logo:
+  file: gentoo.svg
+  source: https://wiki.gentoo.org/images/6/6b/Gentoo-logo.svg
+  license: CC-BY-SA-2.5 (vector version of the Gentoo "g" logo by Lennart Andre Rolland, per the Gentoo wiki); Gentoo is a trademark of the Gentoo Foundation, Inc. and of Förderverein Gentoo e.V.
+  trademark: https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html
+download:
+  strategy: mirrors
+sources:
+  - https://www.gentoo.org/
+  - https://www.gentoo.org/get-started/about/
+  - https://www.gentoo.org/downloads/
+  - https://www.gentoo.org/downloads/amd64/
+  - https://www.gentoo.org/downloads/mirrors/
+  - https://www.gentoo.org/inside-gentoo/foundation/
+  - https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html
+  - https://wiki.gentoo.org/wiki/Handbook:AMD64
+  - https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/About
+  - https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Media
+  - https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base
+  - https://wiki.gentoo.org/wiki/FAQ
+  - https://wiki.gentoo.org/wiki/Secure_Boot
+  - https://wiki.gentoo.org/wiki/Project:Artwork/Artwork
+  - https://wiki.gentoo.org/wiki/File:Gentoo-logo.svg
+lastReviewed: 2026-10-28

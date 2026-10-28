@@ -1,0 +1,63 @@
+name: Mageia
+order: 43
+family: mandriva
+basedOn: null
+upstream: Mandriva Linux
+status: active
+releaseModel: fixed
+desktops: [kde, gnome, xfce, mate, lxqt, cinnamon]
+packageManagers: [urpmi, dnf, rpm, flatpak]
+initSystem: systemd
+installer: drakx
+useCases: [desktop, developer, server]
+difficulty: intermediate
+architectures: [x86_64, i686]
+secureBoot: "no"
+immutable: false
+origin:
+  country: FR
+  firstRelease: 2011-06
+requirements:
+  ramGB: 2
+  diskGB: 20
+  note:
+    ko: 공식 지원 안내의 사양입니다(RAM 최소 512MB·권장 2GB, GNOME과 Plasma는 최소 2GB, Xfce 같은 가벼운 데스크톱은 최소 1GB. 디스크는 최소 설치 5GB, 일반 구성 20GB).
+    en: From the official support page (RAM 512 MB minimum and 2 GB recommended; GNOME and Plasma need at least 2 GB, light desktops such as Xfce 1 GB. Disk 5 GB for a minimal install, 20 GB for a casual setup).
+links:
+  home: https://www.mageia.org/
+  download: https://www.mageia.org/en/downloads/
+  docs: https://www.mageia.org/en/doc/
+  installGuide: https://doc.mageia.org/installer/10/en/content/index.html
+  forum: https://forums.mageia.org/en/
+  releaseNotes: https://wiki.mageia.org/en/Mageia_10_Release_Notes
+  source: https://gitweb.mageia.org/
+tagline:
+  ko: Mandriva에서 갈라져 나온, 자체 제어판(MCC)을 갖춘 커뮤니티 배포판
+  en: A community distro forked from Mandriva, with its own Control Center (MCC)
+aliases: [마게이아, 마게이아 리눅스, mageia linux, mga]
+logo:
+  file: mageia.svg
+  source: https://www.mageia.org/g/media/logo/mageia-2013.svg
+  license: No license stated for the logo on the official media page (its CC BY-SA notice covers only the CD/DVD covers); Mageia logo, used to identify the project
+  trademark: https://www.mageia.org/en/about/license/
+download:
+  strategy: mirrors
+sources:
+  - https://www.mageia.org/en/about/
+  - https://www.mageia.org/en/about/license/
+  - https://www.mageia.org/en/about/media/
+  - https://www.mageia.org/en/10/
+  - https://www.mageia.org/en/downloads/
+  - https://www.mageia.org/en/downloads/alternative/
+  - https://www.mageia.org/en/downloads/get/?q=Mageia-10-Live-Plasma-x86_64.iso
+  - https://www.mageia.org/en/support/
+  - https://www.mageia.org/en/doc/
+  - https://blog.mageia.org/en/2026/06/30/the-power-of-10/
+  - https://blog.mageia.org/en/2026/09/25/end-of-support-for-mageia-9/
+  - https://doc.mageia.org/installer/10/en/content/index.html
+  - https://doc.mageia.org/installer/10/en/content/setupBootloader.html
+  - https://doc.mageia.org/mcc/10/en/content/software-management.html
+  - https://doc.mageia.org/mcc/10/en/content/mcc-boot.html
+  - https://mirrors.mageia.org/api/mageia.10.x86_64.list
+  - https://ftp.nluug.nl/os/Linux/distr/mageia/distrib/10/x86_64/media/core/release/
+lastReviewed: 2026-10-17
