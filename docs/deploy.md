@@ -41,7 +41,7 @@ bun run check:links     # 빌드한 모든 페이지의 내부 링크와 #조각
 bun run test:e2e        # dist/를 serve.ts로 띄워 Playwright와 axe를 실행합니다
 ```
 
-CI(`.github/workflows/ci.yml`)는 PR과 `main` 푸시마다 위 순서를 실행하고, Lighthouse 예산도 확인합니다. e2e와 Lighthouse는 `scripts/serve.ts`로 띄운 빌드를 대상으로 합니다. 이 서버는 `.vercel/output/config.json`의 페이지별 CSP를 그대로 보내고, `/api/geo/`에는 서울의 방문자를 대신하는 위치를 돌려줍니다. 거의 모든 방문자가 지나는 경로를 측정하기 위해서입니다. 위치를 알 수 없을 때의 시간대 대체 경로는 e2e가 따로 확인합니다.
+CI(`.github/workflows/ci.yml`)는 PR과 `main` 푸시마다 위 순서를 실행하고, Lighthouse 예산도 확인합니다. e2e와 Lighthouse는 `scripts/serve.ts`로 띄운 빌드를 대상으로 합니다. 이 서버는 `.vercel/output/config.json`의 페이지별 CSP를 그대로 보내고, `/api/geo/`에는 서울의 방문자를 대신하는 위치를 돌려줍니다. 거의 모든 방문자가 지나는 경로를 측정하기 위해서입니다. 위치를 알 수 없을 때의 시간대 대체 경로는 e2e가 따로 확인합니다. Lighthouse 작업은 측정 전에 한글 시스템 글꼴(Noto Sans CJK)을 설치합니다. 방문자 기기에는 한글 글꼴이 늘 있지만 러너에는 없어서, 설치하지 않으면 한글 페이지의 레이아웃 비용이 실제보다 몇 배로 측정되기 때문입니다.
 
 ## 배포 후 스모크 테스트
 
