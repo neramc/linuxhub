@@ -7,7 +7,7 @@
     "https://mirrors.mageia.org/api/mageia.10.i686.list",
     "https://mirrors.mageia.org/api/mageia.10.x86_64.list"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/pub/mageia/",
@@ -146,14 +146,6 @@
       "score": null
     },
     {
-      "url": "https://ftp.tsukuba.wide.ad.jp/Linux/mageia/",
-      "country": "JP",
-      "name": "ftp.tsukuba.wide.ad.jp",
-      "lat": 36.1046,
-      "lon": 140.102,
-      "score": null
-    },
-    {
       "url": "https://ftp.yz.yamagata-u.ac.jp/pub/Linux/mageia/",
       "country": "JP",
       "name": "ftp.yz.yamagata-u.ac.jp",
@@ -255,6 +247,14 @@
       "name": "us.mirrors.cicku.me",
       "lat": 45.4784,
       "lon": -122.578,
+      "score": null
+    },
+    {
+      "url": "https://ftp.tsukuba.wide.ad.jp/Linux/mageia/",
+      "country": null,
+      "name": "ftp.tsukuba.wide.ad.jp",
+      "lat": null,
+      "lon": null,
       "score": null
     }
   ]

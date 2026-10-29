@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1174,6 +1174,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.krfoss.org/ubuntu-releases/",
+      "country": "KR",
+      "name": "ROKFOSS PROJECT - CD",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.mahiro.kr/ubuntu-releases/",
       "country": "KR",
       "name": "Mahiro Network",
@@ -1449,6 +1457,14 @@
       "url": "https://mirror.fsmg.org.nz/ubuntu-releases/",
       "country": "NZ",
       "name": "Free Software Mirror Group (FSMG)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/ubuntu-releases/",
+      "country": "PL",
+      "name": "ICM - Interdisciplinary Centre for Mathematical and Computational Modelling",
       "lat": null,
       "lon": null,
       "score": null
@@ -1777,14 +1793,6 @@
       "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
       "country": "TW",
       "name": "TaiChung City Education Network Center",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.ossplanet.net/ubuntu-releases/",
-      "country": "TW",
-      "name": "OSSPlanet",
       "lat": null,
       "lon": null,
       "score": null

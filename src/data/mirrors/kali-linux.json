@@ -9,7 +9,7 @@
     "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso?mirrorlist",
     "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso?mirrorlist"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "mirrors": [
     {
       "url": "https://kali.itsec.am/kali-images/",
@@ -364,6 +364,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.zzunipark.com/kali-images/",
+      "country": "KR",
+      "name": "mirror.zzunipark.com",
+      "lat": 37.5112,
+      "lon": 126.9741,
+      "score": null
+    },
+    {
       "url": "https://mirror2.keiminem.com/kali-images/",
       "country": "KR",
       "name": "mirror2.keiminem.com",
@@ -524,14 +532,6 @@
       "score": null
     },
     {
-      "url": "https://kali.darklab.sh/kali-images/",
-      "country": "US",
-      "name": "kali.darklab.sh",
-      "lat": 33.4413,
-      "lon": -112.0421,
-      "score": null
-    },
-    {
       "url": "https://mirror.fcix.net/kali-images/",
       "country": "US",
       "name": "mirror.fcix.net",
@@ -593,14 +593,6 @@
       "name": "volico.mm.fcix.net",
       "lat": 26.2822,
       "lon": -80.1156,
-      "score": null
-    },
-    {
-      "url": "https://ziply.mm.fcix.net/kali-images/",
-      "country": "US",
-      "name": "ziply.mm.fcix.net",
-      "lat": 47.8948,
-      "lon": -122.2031,
       "score": null
     },
     {

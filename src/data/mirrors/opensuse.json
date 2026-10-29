@@ -5,8 +5,16 @@
     "https://get.opensuse.org/api/v0/distributions.json",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "mirrors": [
+    {
+      "url": "https://mirror.aarnet.edu.au/pub/opensuse/opensuse/",
+      "country": "AU",
+      "name": "mirror.aarnet.edu.au",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
     {
       "url": "https://mirror.firstyear.id.au/",
       "country": "AU",
@@ -51,14 +59,6 @@
       "url": "https://mirrors.bfsu.edu.cn/opensuse/",
       "country": "CN",
       "name": "mirrors.bfsu.edu.cn",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirrors.tuna.tsinghua.edu.cn/opensuse/",
-      "country": "CN",
-      "name": "mirrors.tuna.tsinghua.edu.cn",
       "lat": null,
       "lon": null,
       "score": null
@@ -176,14 +176,6 @@
       "score": null
     },
     {
-      "url": "https://download.opensuse.id/",
-      "country": "ID",
-      "name": "download.opensuse.id",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://opensuse.mirror.garr.it/mirrors/opensuse/",
       "country": "IT",
       "name": "opensuse.mirror.garr.it",
@@ -227,6 +219,14 @@
       "url": "https://opensuse.mirror.liteserver.nl/",
       "country": "NL",
       "name": "opensuse.mirror.liteserver.nl",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/opensuse/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
       "lat": null,
       "lon": null,
       "score": null
@@ -299,14 +299,6 @@
       "url": "https://mirror.mai.co.ua/opensuse/",
       "country": "UA",
       "name": "mirror.mai.co.ua",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.fcix.net/opensuse/",
-      "country": "US",
-      "name": "mirror.fcix.net",
       "lat": null,
       "lon": null,
       "score": null

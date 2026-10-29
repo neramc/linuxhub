@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.almalinux.org/"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "mirrors": [
     {
       "url": "https://alma.mirror.nyuad.nyu.edu/",
@@ -310,6 +310,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.hep.gg/almalinux/",
+      "country": "CA",
+      "name": "mirror.hep.gg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.mtl2.ca.leaseweb.net/almalinux/",
       "country": "CA",
       "name": "mirror.mtl2.ca.leaseweb.net",
@@ -321,14 +329,6 @@
       "url": "https://mirror.rcg.sfu.ca/AlmaLinux/",
       "country": "CA",
       "name": "mirror.rcg.sfu.ca",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.reenigne.net/almalinux/",
-      "country": "CA",
-      "name": "mirror.reenigne.net",
       "lat": null,
       "lon": null,
       "score": null
@@ -457,6 +457,14 @@
       "url": "https://mirrors.tencent.com/almalinux/",
       "country": "CN",
       "name": "mirrors.tencent.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.zju.edu.cn/almalinux/",
+      "country": "CN",
+      "name": "mirrors.zju.edu.cn",
       "lat": null,
       "lon": null,
       "score": null
@@ -678,6 +686,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.hostarts.dz/almalinux/",
+      "country": "DZ",
+      "name": "mirror.hostarts.dz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.cedia.org.ec/almalinux/",
       "country": "EC",
       "name": "mirror.cedia.org.ec",
@@ -785,6 +801,14 @@
       "url": "https://fr2.rpmfind.net/linux/almalinux/",
       "country": "FR",
       "name": "fr2.rpmfind.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.in2p3.fr/pub/linux/almalinux/",
+      "country": "FR",
+      "name": "mirror.in2p3.fr",
       "lat": null,
       "lon": null,
       "score": null
@@ -902,6 +926,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.citrahost.com/almalinux/",
+      "country": "ID",
+      "name": "mirror.citrahost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.dewabiz.com/almalinux/",
       "country": "ID",
       "name": "mirror.dewabiz.com",
@@ -969,14 +1001,6 @@
       "url": "https://blr.aws.repo.almalinux.org/almalinux/",
       "country": "IN",
       "name": "blr.aws.repo.almalinux.org",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.bharatdatacenter.com/almalinux/",
-      "country": "IN",
-      "name": "mirror.bharatdatacenter.com",
       "lat": null,
       "lon": null,
       "score": null
@@ -1598,6 +1622,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.chroot.ro/almalinux/",
+      "country": "RO",
+      "name": "mirrors.chroot.ro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirrors.hostico.ro/almalinux/",
       "country": "RO",
       "name": "mirrors.hostico.ro",
@@ -1630,9 +1662,9 @@
       "score": null
     },
     {
-      "url": "https://mirror.docker.ru/almalinux/",
-      "country": "RU",
-      "name": "mirror.docker.ru",
+      "url": "https://mirror1.sox.rs/almalinux/",
+      "country": "RS",
+      "name": "mirror1.sox.rs",
       "lat": null,
       "lon": null,
       "score": null
@@ -1774,14 +1806,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.ekiphost.com/almalinux/",
-      "country": "TR",
-      "name": "mirror.ekiphost.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.ixirhost.com/almalinux/",
       "country": "TR",
       "name": "mirror.ixirhost.com",
@@ -1833,14 +1857,6 @@
       "url": "https://mirror.aptus.co.tz/pub/almalinux/",
       "country": "TZ",
       "name": "mirror.aptus.co.tz",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://almalinux-mirror.freehost.com.ua/",
-      "country": "UA",
-      "name": "almalinux-mirror.freehost.com.ua",
       "lat": null,
       "lon": null,
       "score": null
@@ -2049,6 +2065,14 @@
       "url": "https://linux-mirrors.fnal.gov/linux/almalinux/",
       "country": "US",
       "name": "linux-mirrors.fnal.gov",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.01link.hk/almalinux/",
+      "country": "US",
+      "name": "mirror.01link.hk",
       "lat": null,
       "lon": null,
       "score": null
@@ -2481,14 +2505,6 @@
       "url": "https://volico.mm.fcix.net/almalinux/",
       "country": "US",
       "name": "volico.mm.fcix.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ziply.mm.fcix.net/almalinux/",
-      "country": "US",
-      "name": "ziply.mm.fcix.net",
       "lat": null,
       "lon": null,
       "score": null
