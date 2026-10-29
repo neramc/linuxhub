@@ -216,10 +216,48 @@ test("home lists recommended distros not in the carousel and grouped new release
     "href",
     "/distros/",
   );
-  await expect(page.getByRole("link", { name: /리눅스가 처음이라면/ })).toHaveAttribute(
+  // Newcomers: the guide, the finder, first chapters and compare.
+  const start = page.locator('section[aria-labelledby="start-title"]');
+  await expect(start.getByRole("link", { name: "리눅스 가이드" })).toHaveAttribute(
     "href",
     "/learn/",
   );
+  await expect(start.getByRole("link", { name: /배포판 추천/ })).toHaveAttribute(
+    "href",
+    "/finder/",
+  );
+  await expect(start.getByRole("link", { name: /비교/ })).toHaveAttribute("href", "/compare/");
+  // The largest families, each to the catalog filtered on it, with its count.
+  const families = page.locator('section[aria-labelledby="families-title"] a.adw-action-row');
+  await expect(families).toHaveCount(5);
+  for (const row of await families.all()) {
+    expect(await row.getAttribute("href")).toMatch(/^\/distros\/\?family=[a-z]+$/);
+    await expect(row).toContainText(/\d+개/);
+  }
+});
+
+test("home lists releases whose support ends within about six months, soonest first", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const rows = page.locator('section[aria-labelledby="ending-title"] a.adw-action-row');
+  const count = await rows.count();
+  test.skip(count === 0, "no supported release ends within six months of this build");
+  expect(count).toBeLessThanOrEqual(5);
+  const dates = await rows
+    .locator("time")
+    .evaluateAll((els) => els.map((e) => e.getAttribute("datetime") ?? ""));
+  expect(dates).toHaveLength(count);
+  expect(dates).toEqual([...dates].sort());
+  const today = new Date().toISOString().slice(0, 10);
+  for (const date of dates) {
+    expect(date >= today).toBe(true);
+    expect((Date.parse(date) - Date.parse(today)) / 86_400_000).toBeLessThanOrEqual(183);
+  }
+  // Each row leads to that distro's download panel, for the newer version.
+  for (const href of await rows.evaluateAll((els) => els.map((e) => e.getAttribute("href")))) {
+    expect(href).toMatch(/^\/distros\/[a-z0-9-]+\/#download$/);
+  }
 });
 
 test("releases page groups same-day flavors and shows the day only", async ({ page }) => {

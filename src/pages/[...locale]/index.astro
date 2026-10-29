@@ -1,8 +1,11 @@
 ---
 /**
  * Home (ADR-0014): the "popular today" carousel first, then use-case chips,
- * recommended distros (not repeating the carousel), new releases (one row per
- * distro, flavors grouped) and a link into the Linux guide.
+ * recommended distros (not repeating the carousel), then four lists, side by
+ * side from about 900px: new releases (one row per distro, flavors grouped)
+ * and support ending soon (from the synced end-of-life dates), a start for
+ * newcomers (the finder, first guide chapters, compare) and the largest
+ * families with their real counts.
  */
 import ActionRow from "~/components/adw/ActionRow.astro";
 import BoxedList from "~/components/adw/BoxedList.astro";
@@ -11,16 +14,20 @@ import DistroCard from "~/components/DistroCard.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import PopularCarousel from "~/components/PopularCarousel.astro";
 import UseCaseChips from "~/components/UseCaseChips.astro";
-import { localePaths, localizePath, useTranslations } from "~/i18n";
+import { localePaths, localizePath, splitAround, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import {
+  endingSupport,
   formatDate,
   getDistros,
   getHistory,
+  getReleases,
   getTodaysDistros,
   groupReleases,
   latestReleaseGroups,
 } from "~/lib/catalog";
+import { getChapters } from "~/lib/learn";
+import { FAMILIES, keysOf } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
@@ -32,6 +39,28 @@ const featured = distros
   .filter((d) => d.data.status === "active" && !inCarousel.has(d.id))
   .slice(0, 6);
 const recent = latestReleaseGroups(groupReleases(getHistory(), distros), 5);
+// The build day stands in for today (the site is rebuilt when data changes).
+const releaseFiles = new Map(
+  await Promise.all(distros.map(async (d) => [d.id, await getReleases(d.id)] as const)),
+);
+const ending = endingSupport(distros, releaseFiles, new Date().toISOString().slice(0, 10), 5);
+const [endingBefore, endingAfter] = splitAround(t("home.endingRow"), "date");
+/** Guide chapters a newcomer reads first, in this order. */
+const START_CHAPTERS = ["what-is-linux", "distributions"];
+const chapters = await getChapters(locale);
+const startChapters = START_CHAPTERS.flatMap((slug) => chapters.filter((c) => c.slug === slug));
+const active = distros.filter((d) => d.data.status === "active");
+const families = keysOf(FAMILIES)
+  .map((id) => ({ id, members: active.filter((d) => d.data.family === id) }))
+  .filter((f) => f.members.length > 0)
+  .sort((a, b) => b.members.length - a.members.length)
+  .slice(0, 5);
+const familyNames = (members: typeof active) => {
+  const names = members.slice(0, 3).map((d) => d.data.name);
+  return members.length > 3
+    ? t("home.familyMembers", { names: names.join(", "), count: members.length - 3 })
+    : flavorList.format(names);
+};
 const list = new Intl.ListFormat(locale, { style: "short", type: "unit" });
 const flavorList = new Intl.ListFormat(locale, { type: "conjunction" });
 const jsonLd = [
@@ -63,32 +92,127 @@ const jsonLd = [
       </ul>
     </section>
 
-    {
-      recent.length > 0 && (
-        <BoxedList id="recent" title={t("home.recent")} level={2}>
-          <Button slot="suffix" href={localizePath("/releases/", locale)} variant="flat" iconEnd="go-next">
-            {t("home.allReleases")}
-          </Button>
-          {recent.map((g) => (
-            <ActionRow
-              href={localizePath(`/distros/${g.distro.id}/`, locale)}
-              title={`${g.distro.data.name} ${list.format(g.versions)}`}
-            >
-              <DistroLogo slot="prefix" file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
-              <Fragment slot="subtitle">
-                {g.flavors.length > 0 && `${flavorList.format(g.flavors.map((f) => f.data.name))} · `}
-                <time datetime={g.date}>{formatDate(g.date, locale)}</time>
-              </Fragment>
-            </ActionRow>
-          ))}
-        </BoxedList>
-      )
-    }
+    <div class="home-lists">
+      {
+        recent.length > 0 && (
+          <BoxedList id="recent" title={t("home.recent")} level={2}>
+            <Button slot="suffix" href={localizePath("/releases/", locale)} variant="flat" iconEnd="go-next">
+              {t("home.allReleases")}
+            </Button>
+            {recent.map((g) => (
+              <ActionRow
+                href={localizePath(`/distros/${g.distro.id}/`, locale)}
+                title={`${g.distro.data.name} ${list.format(g.versions)}`}
+              >
+                <DistroLogo slot="prefix" file={g.distro.data.logo.file} name={g.distro.data.name} size={36} />
+                <Fragment slot="subtitle">
+                  {g.flavors.length > 0 && `${flavorList.format(g.flavors.map((f) => f.data.name))} · `}
+                  <time datetime={g.date}>{formatDate(g.date, locale)}</time>
+                </Fragment>
+              </ActionRow>
+            ))}
+          </BoxedList>
+        )
+      }
 
-    <BoxedList>
-      <ActionRow href={localizePath("/learn/", locale)} title={t("home.newToLinux")} icon="dictionary">
-        <span class="dim-label">{t("nav.learn")}</span>
-      </ActionRow>
-    </BoxedList>
+      {
+        ending.length > 0 && (
+          <BoxedList id="ending" title={t("home.ending")} level={2}>
+            {ending.map((e) => (
+              <ActionRow
+                href={`${localizePath(`/distros/${e.distro.id}/`, locale)}#download`}
+                title={`${e.distro.data.name} ${e.series}`}
+              >
+                <DistroLogo slot="prefix" file={e.distro.data.logo.file} name={e.distro.data.name} size={36} />
+                <Fragment slot="subtitle">
+                  {e.flavors.length > 0 && `${flavorList.format(e.flavors.map((f) => f.data.name))} · `}
+                  {endingBefore}
+                  <time datetime={e.eol}>{formatDate(e.eol, locale)}</time>
+                  {endingAfter}
+                  {e.latest && ` · ${t("home.popular.latest", { version: e.latest })}`}
+                </Fragment>
+              </ActionRow>
+            ))}
+          </BoxedList>
+        )
+      }
+
+      <BoxedList id="start" title={t("home.newToLinux")} level={2}>
+        <Button slot="suffix" href={localizePath("/learn/", locale)} variant="flat" iconEnd="go-next">
+          {t("nav.learn")}
+        </Button>
+        <ActionRow
+          href={localizePath("/finder/", locale)}
+          icon="lightbulb"
+          title={t("nav.finder")}
+          subtitle={t("home.finderHint")}
+        />
+        {
+          startChapters.map((c) => (
+            <ActionRow
+              href={localizePath(`/learn/${c.slug}/`, locale)}
+              icon={c.data.icon}
+              title={c.data.navTitle}
+              subtitle={c.data.description}
+            />
+          ))
+        }
+        <ActionRow
+          href={localizePath("/compare/", locale)}
+          icon="compare"
+          title={t("nav.compare")}
+          subtitle={t("home.compareHint")}
+        />
+      </BoxedList>
+
+      <BoxedList id="families" title={t("home.families")} level={2}>
+        <Button slot="suffix" href={localizePath("/family/", locale)} variant="flat" iconEnd="go-next">
+          {t("home.familyTree")}
+        </Button>
+        {
+          families.map((f) => (
+            <ActionRow
+              href={`${localizePath("/distros/", locale)}?family=${f.id}`}
+              title={FAMILIES[f.id][locale]}
+              subtitle={familyNames(f.members)}
+            >
+              <span class="dim-label numeric">{t("home.familyCount", { count: f.members.length })}</span>
+            </ActionRow>
+          ))
+        }
+      </BoxedList>
+    </div>
   </div>
 </Base>
+
+<style>
+  /* Two lists side by side when both fit at 440px or more; one column below.
+     Rows keep the list's start, so a shorter list never stretches. */
+  .home-lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+    gap: var(--space-section) var(--space-5);
+    align-items: start;
+  }
+
+  /* Every heading row is as tall as a button, so a list whose heading has a
+     flat button and one without start on the same line side by side. On
+     phones the lists sit below the slider and the recommended cards: the
+     browser skips their layout and paint until they come near the viewport,
+     which keeps the first frame as cheap as before these lists (median of 15
+     loads at 4× CPU and 412px: 460ms of main-thread work, 449ms without the
+     lists, 498ms without this rule). `auto` remembers each list's height
+     once it has been shown. Its paint containment clips at the section's
+     edges, so the section takes room for the card shadow (up to 10px) on
+     the sides and below, and gives it back with negative margins. */
+  .home-lists > :global(.adw-group) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 420px;
+    padding: 0 var(--space-2) var(--space-2);
+    margin: 0 calc(-1 * var(--space-2)) calc(-1 * var(--space-2));
+  }
+
+  .home-lists > :global(.adw-group) > :global(.adw-group-header) {
+    min-block-size: var(--control-height);
+  }
+</style>
