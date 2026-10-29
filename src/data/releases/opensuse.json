@@ -7,13 +7,13 @@
     "https://get.opensuse.org/leap/16.1/",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "releases": [
     {
-      "version": "20261026",
+      "version": "20261027",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-10-26",
+      "releaseDate": "2026-10-27",
       "eol": null,
       "notesUrl": "https://doc.opensuse.org/release-notes/x86_64/openSUSE/Tumbleweed/",
       "editions": [
@@ -26,13 +26,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-DVD-x86_64-Snapshot20261026-Media.iso",
+              "file": "openSUSE-Tumbleweed-DVD-x86_64-Snapshot20261027-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso",
-              "size": 4697620480,
+              "size": 4695523328,
               "checksum": {
                 "type": "sha256",
-                "value": "b9422cb5640b4bd1a124c769749f1024f608149ef2747228bcbcce98bf9f97c6",
+                "value": "acbe9d69f1962d5fa5b11c40790edaaa859926d6e7c644e5fae55e6992ae44db",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256.asc",
@@ -109,13 +109,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-x86_64-Snapshot20261026-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-x86_64-Snapshot20261027-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso",
               "size": 418381824,
               "checksum": {
                 "type": "sha256",
-                "value": "66d51f826debd5938a245417b4f676a21000cb4ce0c6b1b35b5bc01e57867f7a",
+                "value": "670e45e311dced310b7cd62b2bbb7e430b3c933f0ad396cf8312d5d52d329e06",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso.sha256.asc",
@@ -195,10 +195,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2",
-              "size": 305659904,
+              "size": 306118656,
               "checksum": {
                 "type": "sha256",
-                "value": "f4463f06c824da89fb0ec08dd72c650b3020ae7fba4e8bc4fdec6beb58965b0d",
+                "value": "11f41890bd18b02e63c4554a3ce96c28306cd6fc80889215cf1ca89bccbecb4c",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256.asc",
@@ -233,10 +233,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2",
-              "size": 290521088,
+              "size": 290586624,
               "checksum": {
                 "type": "sha256",
-                "value": "b4cce78ca5fe54f225e30282b9e80a79999c9073534b7e92b41a4b8625eebb4f",
+                "value": "f4fc2e5b9489630c0fcce3047178ce6c15e48262cc7204f9c8a2a90e1ffbd77f",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2.sha256.asc",
@@ -256,10 +256,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2",
-              "size": 316864512,
+              "size": 316926464,
               "checksum": {
                 "type": "sha256",
-                "value": "374f925fc386a0fb3c30e3fbb8e083ade6441034bd37e1776123733d7266a4d9",
+                "value": "6a86e0e53d11d5e42f2daf1668addff32a7bd19e23b59fb6f4180b1f9fb15935",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2.sha256.asc",
@@ -291,13 +291,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-GNOME-Live-x86_64-Snapshot20261026-Media.iso",
+              "file": "openSUSE-Tumbleweed-GNOME-Live-x86_64-Snapshot20261027-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso",
-              "size": 1287215104,
+              "size": 1287870464,
               "checksum": {
                 "type": "sha256",
-                "value": "6aa5ff1f3d89f4ff6f0fe7f73dfeabb6b89e6cbc424f19660e2f64b509693df4",
+                "value": "9e0ecfc39e144f058487152302805119e14b538bad019864820cdc5438fe63a9",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso.sha256.asc",
@@ -329,13 +329,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20261026-Media.iso",
+              "file": "openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20261027-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
-              "size": 1282697216,
+              "size": 1282709504,
               "checksum": {
                 "type": "sha256",
-                "value": "56640fd96688b852a07df9ea5f1fbe45fb2b6b67a77ce749fedade42f9d773e3",
+                "value": "c481b39f023bf9e0669b7f26b0081d99b5366e8baef1367d6c2b046ab5535337",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256.asc",
@@ -367,13 +367,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-XFCE-Live-x86_64-Snapshot20261026-Media.iso",
+              "file": "openSUSE-Tumbleweed-XFCE-Live-x86_64-Snapshot20261027-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso",
-              "size": 1246558208,
+              "size": 1244200960,
               "checksum": {
                 "type": "sha256",
-                "value": "45ad1d2d7aa9612ecaaa3d6c8a9dd0d691ff8fbda38b1ea6fcde0a84b356ecda",
+                "value": "d2df714c5d617f2d41a01a86e87b91ddb57feefb25273e7b79bbdc43cca04850",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso.sha256.asc",
@@ -405,13 +405,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-Rescue-CD-x86_64-Snapshot20261026-Media.iso",
+              "file": "openSUSE-Tumbleweed-Rescue-CD-x86_64-Snapshot20261027-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso",
-              "size": 891484160,
+              "size": 890923008,
               "checksum": {
                 "type": "sha256",
-                "value": "a192ce9b4ce5045e3d691455a3c46369d138d8ff5ec41417a77c74faee17dbd7",
+                "value": "32d4186a444ef72ba7b276fb89b1d95723123f50e7c958d84ad8228b1e0246ff",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso.sha256.asc",
@@ -446,10 +446,10 @@
               "file": "Tumbleweed-OEM.x86_64-GNOME.iso",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-GNOME.iso",
-              "size": 3221389312,
+              "size": 3222122496,
               "checksum": {
                 "type": "sha256",
-                "value": "755e049d4bb4e5e1b2051972fdb3c5f935cb3bf3c553af0f7e287ccdc4ba8f72",
+                "value": "a00c6daf5f3fb6f60dba0e6ad55defb9b8c10c9e00295b271d03be745d41ce27",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-GNOME.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-GNOME.iso.sha256.asc",
@@ -469,10 +469,10 @@
               "file": "Tumbleweed-OEM.x86_64-GNOME.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-GNOME.raw.xz",
-              "size": 2491766536,
+              "size": 2490346536,
               "checksum": {
                 "type": "sha256",
-                "value": "bdb8dcec7f161dc5e5129fdf449fb396a2af7225811254439a252b79dd13ba62",
+                "value": "bd701e4929b6bc0747779cfacd4f2e51043190c93c8512780a033ae46407d96e",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-GNOME.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-GNOME.raw.xz.sha256.asc",
@@ -492,10 +492,10 @@
               "file": "Tumbleweed-OEM.x86_64-KDE.iso",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-KDE.iso",
-              "size": 3390877696,
+              "size": 3390093312,
               "checksum": {
                 "type": "sha256",
-                "value": "f1d53ab805745826be8ce9bc5a64c167f50d122d94e7bbddfe177c98b64a87d3",
+                "value": "b0f4528cde0dad05b05434d7f07de93df059b90b701f14ecbbba8de6cb8e9049",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-KDE.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-KDE.iso.sha256.asc",
@@ -515,10 +515,10 @@
               "file": "Tumbleweed-OEM.x86_64-KDE.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-KDE.raw.xz",
-              "size": 2657915188,
+              "size": 2659357420,
               "checksum": {
                 "type": "sha256",
-                "value": "4a3e9b5ab689a62bc3a9000bfb96c093097f9ef4b4e7e3623b9256cbe9ada943",
+                "value": "8bc05c9e3b4b5db2be801ba84635142d09ea434b16de5717fa5cc4e1308d294f",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-KDE.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-KDE.raw.xz.sha256.asc",
