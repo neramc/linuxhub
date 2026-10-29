@@ -203,6 +203,8 @@ function schedule<T>(host: string, task: () => Promise<T>): Promise<T> {
 
 type Robots = ReturnType<typeof robotsParser>;
 const robotsCache = new Map<string, Promise<Robots>>();
+/** Origins whose robots.txt gave no usable answer this run (closed to the sync). */
+const robotsUnreadable = new Set<string>();
 
 async function robotsFor(url: URL): Promise<Robots> {
   const origin = url.origin;
@@ -212,7 +214,7 @@ async function robotsFor(url: URL): Promise<Robots> {
       const robotsUrl = `${origin}/robots.txt`;
       // 4xx (incl. 404): no restrictions. A 5xx or no answer after the retries:
       // be conservative and treat the host as disallow-all for this run.
-      let text = "User-agent: *\nDisallow: /";
+      let text: string | null = null;
       for (let attempt = 0; attempt <= RETRIES; attempt++) {
         if (attempt > 0) await sleep(2 ** attempt * 1000);
         try {
@@ -230,7 +232,8 @@ async function robotsFor(url: URL): Promise<Robots> {
           // A one-off network error must not close a host for the whole run: retry.
         }
       }
-      const robots = robotsParser(robotsUrl, text);
+      if (text === null) robotsUnreadable.add(origin);
+      const robots = robotsParser(robotsUrl, text ?? "User-agent: *\nDisallow: /");
       const delay = robots.getCrawlDelay(UA_TOKEN);
       if (delay && delay * 1000 > MIN_INTERVAL_MS)
         hostDelay.set(url.host, Math.min(delay, 30) * 1000);
@@ -241,10 +244,34 @@ async function robotsFor(url: URL): Promise<Robots> {
   return pending;
 }
 
+/**
+ * Rules a host publishes that some networks hide: github.com disallows
+ * "/*\/download" for every bot, which covers release assets, but a proxy can
+ * answer robots.txt for github.com itself (a 403 there reads as "no rules").
+ * Applying the rule here keeps the sync's requests, and its results, the same
+ * on every network.
+ */
+const PUBLISHED_DISALLOW: { host: string; path: RegExp }[] = [
+  { host: "github.com", path: /^\/[^/]+\/[^/]+\/releases\/download\// },
+];
+
+/**
+ * Why a URL is closed, for logs and the failing-sources issue: a robots.txt
+ * that says so, or one that could not be read (a server error or no answer
+ * after the retries closes the host for the run).
+ */
+function refusal(url: string, what = ""): string {
+  const { origin } = new URL(url);
+  return robotsUnreadable.has(origin)
+    ? `robots.txt of ${origin} could not be read (server error or no answer), so the host is closed for this run: ${what}${url}`
+    : `robots.txt disallows ${what}${url}`;
+}
+
 export async function isAllowed(url: string): Promise<boolean> {
   // Replays answer from the recorded refusals instead (request()).
   if (fixtureMode === "replay") return true;
   const u = new URL(url);
+  if (PUBLISHED_DISALLOW.some((r) => u.host === r.host && r.path.test(u.pathname))) return false;
   const robots = await robotsFor(u);
   return robots.isAllowed(url, UA_TOKEN) !== false;
 }
@@ -315,7 +342,7 @@ async function fetchPolitely(
       throw new RedirectRefused(`redirect to a non-HTTPS URL (${next.href})`, url);
     if (!(await isAllowed(next.href))) {
       stats.blocked++;
-      throw new RobotsDisallowed(`robots.txt disallows the redirect target ${next.href}`, url);
+      throw new RobotsDisallowed(refusal(next.href, "the redirect target "), url);
     }
     if (next.host !== new URL(target).host) {
       const { authorization: _a, "if-none-match": _e, "if-modified-since": _m, ...rest } = headers;
@@ -335,7 +362,7 @@ export async function request(url: string, options: FetchOptions = {}): Promise<
   if (!(await isAllowed(url))) {
     stats.blocked++;
     saveFixture({ method, url, status: 0, robots: false });
-    throw new RobotsDisallowed(`robots.txt disallows ${url}`, url);
+    throw new RobotsDisallowed(refusal(url), url);
   }
   const cached = method === "GET" && !options.noCache ? readCached(url) : null;
   const headers: Record<string, string> = {

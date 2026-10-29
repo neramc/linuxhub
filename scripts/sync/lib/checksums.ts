@@ -1,3 +1,5 @@
+import { getText, RobotsDisallowed } from "../http";
+
 /**
  * Parses checksum files as published by distributions:
  *   GNU coreutils:  "<hash>  <file>" or "<hash> *<file>"
@@ -39,4 +41,23 @@ export function checksumType(hex: string): "md5" | "sha1" | "sha256" | "sha512" 
     default:
       return "sha256";
   }
+}
+
+/**
+ * The digest of `file` in the official checksum file at `url`, or null when
+ * robots.txt closes that file to the sync (GitHub release assets, for one):
+ * the checksum is then not shown, like any checksum the sync may not read.
+ * A readable file that does not list `file` still throws (fail closed).
+ */
+export async function readChecksum(url: string, file: string): Promise<string | null> {
+  let text: string;
+  try {
+    text = await getText(url);
+  } catch (error) {
+    if (error instanceof RobotsDisallowed) return null;
+    throw error;
+  }
+  const hash = parseChecksums(text).get(file);
+  if (!hash) throw new Error(`${url} does not list ${file}`);
+  return hash;
 }

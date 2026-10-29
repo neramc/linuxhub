@@ -14,7 +14,10 @@
  * - endeavouros.com/endeavouros-arm/ ("EndeavourOS ARM" in the main menu, same
  *   site): the project's aarch64 images, six .img.xz files on the project's
  *   GitHub releases (github.com/endeavouros-arm/images), each with a
- *   .sha512sum release asset. They are listed as editions of the newest ISO
+ *   .sha512sum release asset. github.com's robots.txt disallows release
+ *   downloads for every bot ("/*\/download"), so those checksum files are not
+ *   read and the ARM images have no checksum (the images stay linked; the same
+ *   treatment as every checksum robots.txt closes). They are listed as editions of the newest ISO
  *   release: they are rebuilt in place under "-latest" names and have no
  *   version of their own. The page does not print the architecture; all the
  *   listed devices (Raspberry Pi 4b/5b, Odroid N2, PineBook Pro) are 64-bit
@@ -40,7 +43,7 @@
 
 import type { Artifact, Edition, Mirror, Release } from "../../../src/lib/data-schemas";
 import { getText } from "../http";
-import { checksumType, parseChecksums } from "../lib/checksums";
+import { checksumType, parseChecksums, readChecksum } from "../lib/checksums";
 import { countryCode } from "../lib/mirrors";
 import { isoDay } from "../lib/versions";
 import type { SyncContext } from "../source";
@@ -216,8 +219,8 @@ const slug = (label: string) =>
 async function armEditions(): Promise<Edition[]> {
   const editions: Edition[] = [];
   for (const image of await readArm()) {
-    const hash = parseChecksums(await getText(image.sumUrl)).get(image.file);
-    if (!hash) throw new Error(`${image.sumUrl} does not list ${image.file}`);
+    // On GitHub release assets, which robots.txt closes: null (see the header).
+    const hash = await readChecksum(image.sumUrl, image.file);
     editions.push({
       id: slug(image.label),
       name: image.label,
@@ -231,7 +234,7 @@ async function armEditions(): Promise<Edition[]> {
           path: null,
           url: image.url,
           size: null,
-          checksum: { type: checksumType(hash), value: hash, url: image.sumUrl },
+          checksum: hash ? { type: checksumType(hash), value: hash, url: image.sumUrl } : null,
           signatureUrl: null,
           torrentUrl: null,
         },
