@@ -55,24 +55,16 @@ interface Props {
   strategy: DownloadStrategy;
   officialDownload: string;
   releases: ReleasesFile | undefined;
-  /** The countries of the official mirror list (ISO codes); null without mirror data. */
-  mirrorCountries: string[] | null;
+  /** The official mirror list (only each mirror's country is needed here); null without mirror data. */
+  mirrors: { country: string | null }[] | null;
   /** This site's install guide, when it is written (its #verify and #usb sections exist). */
   guide: string | undefined;
   /** The project's own installation docs: the next step when there is no guide here. */
   officialGuide: string;
 }
 
-const {
-  slug,
-  locale,
-  strategy,
-  officialDownload,
-  releases,
-  mirrorCountries,
-  guide,
-  officialGuide,
-} = Astro.props;
+const { slug, locale, strategy, officialDownload, releases, mirrors, guide, officialGuide } =
+  Astro.props;
 const t = useTranslations(locale);
 const release = featuredRelease(releases);
 const choice = defaultArtifact(release);
@@ -89,13 +81,17 @@ const formats = choice
     ]
   : [];
 const size = choice ? formatBytes(choice.artifact.size, locale) : null;
-// The same mirror choice for every distro with mirror data (docs/data-sources.md, "동등한 대우").
-const mirrorMode = Boolean(mirrorCountries && choice?.artifact.path);
+// The same mirror choice for every distro whose official list has servers to choose
+// from (docs/data-sources.md, "동등한 대우"). One server is the project's own origin
+// or CDN, which the official link already uses: a menu would offer nothing.
+const mirrorMode = Boolean(mirrors && mirrors.length > 1 && choice?.artifact.path);
 // Country names for the mirror groups, named here: Intl.DisplayNames in the
 // browser loads the region data on the main thread (a long task on slow phones).
 const regions = new Intl.DisplayNames([locale], { type: "region" });
 const countryNames = Object.fromEntries(
-  [...new Set(mirrorCountries ?? [])].sort().map((cc) => [cc, regions.of(cc) ?? cc]),
+  [...new Set(mirrors?.flatMap((m) => m.country ?? []))]
+    .sort()
+    .map((cc) => [cc, regions.of(cc) ?? cc]),
 );
 /** The official link already sends visitors to a nearby server. */
 const auto = strategy === "redirector" || strategy === "sourceforge";

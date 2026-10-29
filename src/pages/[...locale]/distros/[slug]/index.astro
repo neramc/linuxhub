@@ -138,7 +138,7 @@ const jsonLd = [
             strategy={d.download.strategy}
             officialDownload={d.links.download}
             releases={releases}
-            mirrorCountries={getMirrors(slug)?.mirrors.flatMap((m) => m.country ?? []) ?? null}
+            mirrors={getMirrors(slug)?.mirrors ?? null}
             guide={guide}
             officialGuide={officialGuide}
           />
