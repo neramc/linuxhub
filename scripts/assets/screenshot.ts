@@ -141,14 +141,25 @@ async function find(slug: string, article: string | null): Promise<Found | strin
   };
 }
 
+/** Thumbnail widths Wikimedia serves to clients like this one (mediawiki.org/wiki/Common_thumbnail_sizes). */
+const STANDARD_WIDTHS = [960, 1280];
+
 /**
- * The original file; it is resized here. (Commons renders thumbnails on
- * demand and answers bots asking for an uncached size with 429.) The image
- * host also answers bursts with 429: on one, it waits as long as Retry-After
- * asks but at least 30 s, four times at most.
+ * The image at a standard thumbnail width: the image host turns away bots
+ * that fetch originals or other widths ("use thumbnail images in sizes listed
+ * on https://w.wiki/GHai"). The widest standard width not above MAX_WIDTH and
+ * below the original's; the original itself only when it is narrower than
+ * all of them. On a 429 it waits as long as Retry-After asks but at least 30 s, four
+ * times at most.
  */
 async function download(found: Found): Promise<Buffer> {
-  let url = found.file;
+  // Strictly narrower than the original: no thumbnail is rendered at or above its width.
+  const width = STANDARD_WIDTHS.filter((w) => w <= MAX_WIDTH && w < found.width).at(-1);
+  const [, dir, name] = found.file.match(/\/commons\/(\w\/\w\w)\/([^/]+)$/) ?? [];
+  let url =
+    width && dir && name
+      ? `https://upload.wikimedia.org/wikipedia/commons/thumb/${dir}/${name}/${width}px-${name}`
+      : found.file;
   for (let attempt = 0; attempt < 8; attempt++) {
     if (!(await isAllowed(url))) throw new RobotsDisallowed(`robots.txt disallows ${url}`, url);
     const res = await fetch(url, {
