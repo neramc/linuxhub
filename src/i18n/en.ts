@@ -175,6 +175,11 @@ export const en = {
     dataUpdated: "Updated {date} · checked against official sources every 6 hours",
     reviewed: "Facts reviewed {date}",
   },
+  screenshot: {
+    by: "Screenshot: {author}",
+    commons: "Wikimedia Commons",
+    source: "Source",
+  },
   sources: {
     title: "Official sources ({count})",
     reviewed: "Last reviewed {date}",

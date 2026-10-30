@@ -9,6 +9,8 @@
  * (facts, links) from 1000px; without one the page is a single narrow column
  * (download, facts, links, similar distros), so neither column leaves an
  * empty band. Both share one DOM order, which is the reading order.
+ * The overview ends with the distro's screenshot (lazy, below the fold:
+ * ADR-0018) and the overview's official sources.
  */
 import { render } from "astro:content";
 import AppHeader from "~/components/AppHeader.astro";
@@ -19,7 +21,10 @@ import Button from "~/components/adw/Button.astro";
 import DistroFacts from "~/components/DistroFacts.astro";
 import DistroLinks from "~/components/DistroLinks.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
+import DistroScreenshot from "~/components/DistroScreenshot.astro";
+import DocSources from "~/components/DocSources.astro";
 import DownloadWizard from "~/components/DownloadWizard.astro";
+import { mdxComponents } from "~/components/mdx";
 import Breadcrumb from "~/components/site/Breadcrumb.astro";
 import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
@@ -121,12 +126,14 @@ const jsonLd = [
     <div class:list={["detail", { layout: Boolean(Overview) }]}>
       <div class="main">
         {
-          Overview && (
-            <section class="section" aria-labelledby="overview-title">
+          Overview && overview && (
+            <section class="section overview" aria-labelledby="overview-title">
               <h2 id="overview-title">{t("distro.overview")}</h2>
               <div class="prose">
-                <Overview />
+                <Overview components={mdxComponents} />
               </div>
+              {d.screenshot && <DistroScreenshot shot={d.screenshot} locale={locale} />}
+              <DocSources sources={overview.data.sources} lastReviewed={overview.data.lastReviewed} locale={locale} />
             </section>
           )
         }
@@ -168,6 +175,13 @@ const jsonLd = [
 </Base>
 
 <style>
+  /* The heading sits on its text (.section gap); the screenshot and the
+     sources get a little more room after it. */
+  .overview > :global(.adw-screenshot),
+  .overview > :global(.doc-sources-group) {
+    margin-block-start: var(--space-2);
+  }
+
   /* One column: the download, the facts and links, then similar distros. */
   .detail,
   .main,

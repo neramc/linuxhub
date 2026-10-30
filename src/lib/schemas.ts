@@ -101,6 +101,27 @@ export const distroSchema = z.object({
      */
     accent: z.enum(ACCENTS).optional(),
   }),
+  /**
+   * One desktop screenshot (ADR-0018): free-licensed, credited under the
+   * image. File made with `bun scripts/assets/screenshot.ts`; the alt text and
+   * caption are written by hand from the image itself.
+   */
+  screenshot: z
+    .object({
+      /** File name in src/assets/screenshots/. */
+      file: z.string().regex(/^[a-z0-9-]+\.(webp|png|jpg)$/),
+      /** The file's description page, which states its author and license. */
+      source: url,
+      author: z.string().min(1),
+      /** As the source states it, e.g. "GPL", "CC BY-SA 4.0". */
+      license: z.string().min(1),
+      licenseUrl: url.optional(),
+      /** What the image shows, for people who cannot see it. */
+      alt: localized,
+      /** Visible caption: the version and desktop shown. */
+      caption: localized,
+    })
+    .optional(),
   download: z.object({
     strategy: z.enum(keysOf(DOWNLOAD_STRATEGIES)),
   }),

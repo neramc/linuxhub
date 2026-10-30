@@ -173,6 +173,11 @@ export const ko: DictionaryShape = {
     dataUpdated: "{date} 업데이트 · 6시간마다 공식 소스에서 확인",
     reviewed: "정보 검토 {date}",
   },
+  screenshot: {
+    by: "스크린샷: {author}",
+    commons: "위키미디어 공용",
+    source: "원본",
+  },
   sources: {
     title: "공식 출처 ({count})",
     reviewed: "마지막 검토 {date}",

@@ -2,16 +2,18 @@
  * Validates src/content/distros/*.yaml against the catalog schema without a
  * full Astro sync, plus cross-entry rules the schema cannot express:
  * unique `order`, `basedOn` pointing at an existing slug, logo file present,
- * and a sane logo (SVG, or a small PNG per ADR-0012).
+ * a sane logo (SVG, or a small PNG per ADR-0012) and screenshot (ADR-0018).
  * Usage: bun scripts/validate-catalog.ts [slug ...]
  */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import sharp from "sharp";
 import { parse } from "yaml";
 import { distroSchema } from "../src/lib/schemas";
 
 const DIR = "src/content/distros";
 const LOGOS = "src/assets/logos";
+const SCREENSHOTS = "src/assets/screenshots";
 const only = new Set(process.argv.slice(2));
 const files = readdirSync(DIR).filter((f) => f.endsWith(".yaml"));
 const slugs = new Set(files.map((f) => f.replace(/\.yaml$/, "")));
@@ -56,6 +58,21 @@ for (const file of files) {
       if (/<script|on\w+=|href="https?:/i.test(svg))
         errors.push("logo has scripts or external refs");
       if (svg.length > 60_000) errors.push(`logo is large (${svg.length} bytes)`);
+    }
+    if (d.screenshot) {
+      const shotPath = join(SCREENSHOTS, d.screenshot.file);
+      if (!existsSync(shotPath)) errors.push(`screenshot ${shotPath} missing`);
+      else {
+        const { width = 0, height = 0 } = await sharp(shotPath).metadata();
+        if (width < 800 || width > 1280)
+          errors.push(
+            `screenshot is ${width}px wide; use 800–1280 (bun scripts/assets/screenshot.ts)`,
+          );
+        if (width / height < 1.2 || width / height > 2.4)
+          errors.push(`screenshot is ${width}×${height}; a desktop screenshot is landscape`);
+        const bytes = readFileSync(shotPath).length;
+        if (bytes > 300_000) errors.push(`screenshot is large (${bytes} bytes)`);
+      }
     }
   }
   if (only.size && !only.has(slug)) continue;
