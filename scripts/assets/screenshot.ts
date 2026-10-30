@@ -149,8 +149,8 @@ const STANDARD_WIDTHS = [960, 1280];
  * that fetch originals or other widths ("use thumbnail images in sizes listed
  * on https://w.wiki/GHai"). The widest standard width not above MAX_WIDTH and
  * below the original's; the original itself only when it is narrower than
- * all of them. On a 429 it waits as long as Retry-After asks but at least 30 s, four
- * times at most.
+ * all of them. On a 429 it waits as long as Retry-After asks but at least 60 s,
+ * five times at most.
  */
 async function download(found: Found): Promise<Buffer> {
   // Strictly narrower than the original: no thumbnail is rendered at or above its width.
@@ -172,8 +172,8 @@ async function download(found: Found): Promise<Buffer> {
       url = new URL(location, url).href;
       continue;
     }
-    if (res.status === 429 && attempt < 4) {
-      const wait = Math.min(Math.max(Number(res.headers.get("retry-after")) || 0, 30), 120);
+    if (res.status === 429 && attempt < 5) {
+      const wait = Math.min(Math.max(Number(res.headers.get("retry-after")) || 0, 60), 180);
       await new Promise((done) => setTimeout(done, wait * 1000));
       continue;
     }
@@ -202,7 +202,7 @@ for (const [slug, article] of Object.entries(WIKIPEDIA_ARTICLES)) {
     const out = `src/assets/screenshots/${slug}.webp`;
     // Kept unless picked again by hand (--file) or named on the command line.
     if (write && (!existsSync(out) || picked.has(slug) || only.includes(slug))) {
-      await new Promise((done) => setTimeout(done, 15_000)); // one image every 15 s or more
+      await new Promise((done) => setTimeout(done, 45_000)); // one image every 45 s or more
       const info = await sharp(await download(found))
         .resize({ width: MAX_WIDTH, withoutEnlargement: true })
         .webp({ quality: 85, effort: 6 })
