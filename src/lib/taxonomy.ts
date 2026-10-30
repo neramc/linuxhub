@@ -35,6 +35,7 @@ export const DESKTOPS = {
   mate: { ko: "MATE", en: "MATE" },
   lxqt: { ko: "LXQt", en: "LXQt" },
   lxde: { ko: "LXDE", en: "LXDE" },
+  rpd: { ko: "Raspberry Pi Desktop", en: "Raspberry Pi Desktop" },
   budgie: { ko: "Budgie", en: "Budgie" },
   pantheon: { ko: "Pantheon", en: "Pantheon" },
   cosmic: { ko: "COSMIC", en: "COSMIC" },

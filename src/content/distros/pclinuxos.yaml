@@ -6,7 +6,7 @@ upstream: Mandriva Linux
 status: active
 releaseModel: rolling
 desktops: [kde, xfce, mate]
-packageManagers: [dnf, apt, rpm]
+packageManagers: [dnf, rpm]
 initSystem: SysVinit
 installer: drakx
 useCases: [desktop]

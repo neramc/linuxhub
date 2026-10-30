@@ -4,7 +4,7 @@ family: debian
 basedOn: debian
 status: active
 releaseModel: fixed
-desktops: [lxde]
+desktops: [rpd]
 packageManagers: [apt, dpkg]
 initSystem: systemd
 installer: raspberry-pi-imager
