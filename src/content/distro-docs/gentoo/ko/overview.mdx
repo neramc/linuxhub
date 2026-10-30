@@ -1,0 +1,41 @@
+---
+title: Gentoo Linux 소개
+description: Portage로 소프트웨어를 소스에서 빌드해 시스템을 맞춰 쓰는 롤링 배포판 Gentoo Linux의 특징과 어울리는 사용자, 알아 둘 점.
+sources:
+  - https://www.gentoo.org/get-started/about/
+  - https://www.gentoo.org/downloads/
+  - https://www.gentoo.org/downloads/amd64/
+  - https://www.gentoo.org/news/2023/12/29/Gentoo-binary.html
+  - https://www.gentoo.org/inside-gentoo/foundation/
+  - https://wiki.gentoo.org/wiki/FAQ
+  - https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/About
+  - https://wiki.gentoo.org/wiki/Secure_Boot
+lastReviewed: 2026-10-29
+---
+
+Gentoo Linux는 패키지 관리자 Portage로 소프트웨어를 소스에서 빌드해, 시스템을 쓰임새에 맞게 짜 맞추는 배포판입니다. 개발자와 사용자 커뮤니티가 함께 만들고, 해마다 선출되는 7명의 위원회가 프로젝트 전체의 방향을 정합니다. 버전이라는 개념이 없는 롤링 릴리스라, 꾸준히 업데이트하는 시스템은 다시 설치할 일이 없습니다.
+
+### 특징
+
+- **Portage와 USE 플래그.** `emerge`로 패키지를 설치하면 Portage가 소스를 받아 사용자 설정대로 빌드합니다. USE 플래그로 패키지의 선택 기능을 시스템 전체나 패키지별로 켜고 끌 수 있고, 컴파일러 옵션도 `make.conf`에서 정합니다. 프로필은 서버나 데스크톱 같은 용도에 맞는 기본값을 줍니다.
+- **바이너리 패키지도 함께.** 소스 빌드와 바이너리 설치를 자유롭게 섞어 쓸 수 있습니다. 2023년 말부터는 공식 바이너리 패키지를 내려받을 수 있고, amd64와 arm64에서는 KDE Plasma, GNOME, LibreOffice 같은 큰 패키지까지 들어 있습니다. 패키지에는 서명이 붙습니다.
+- **기반부터 고르는 시스템.** init 시스템은 Gentoo의 OpenRC와 systemd를 모두 정식 지원합니다. 설치는 stage라는 최소 시스템 묶음에서 시작하는데, 기본·데스크톱 프로필용 외에 hardened, SELinux, musl, LLVM 기반 같은 stage도 있습니다.
+- **testing과 stable.** 새 패키지는 testing 브랜치에 먼저 들어가고, 믿을 만하다고 확인되면 stable로 옮겨집니다. 목표 기간은 대체로 30일 이내입니다. 롤링이지만 기본값은 stable입니다.
+- **폭넓은 아키텍처.** 일반 PC와 ARM은 물론 PowerPC, RISC-V, 메인프레임(s390) 같은 아키텍처용 설치 파일도 공식으로 냅니다.
+
+### 이런 분께 맞습니다
+
+- 시스템에 들어갈 구성 요소와 기능을 하나하나 직접 고르고 싶은 사람
+- 컴파일 옵션과 의존성을 세밀하게 다뤄야 하는 개발자와 고급 사용자
+- 흔하지 않은 아키텍처나 서버, 임베디드 기기처럼 특수한 환경을 다루는 사람
+
+### 알아 둘 점
+
+- 자동 설치 프로그램이 없습니다. 최소 설치 CD로 부팅한 뒤 Gentoo Handbook을 따라 디스크 준비부터 커널, 부트로더까지 열 단계로 직접 설치합니다. 설치 전에 KDE Plasma 데스크톱으로 바로 부팅되는 LiveGUI 이미지로 먼저 써 볼 수 있습니다.
+- 소스 빌드는 시간이 걸리고, 사양이 낮은 PC에서는 더 오래 걸립니다. 공식 바이너리 패키지는 어느 x86-64 CPU에서나 돌도록 일반 옵션으로 빌드되어 있어, CPU에 맞춘 최적화를 원하면 직접 빌드해야 합니다.
+- 설치와 업데이트 모두 안정적인 인터넷 연결이 필요합니다. 보안을 위해, 그리고 업데이트가 복잡해지지 않도록 매일이나 며칠에 한 번씩 자주 업데이트하는 것이 좋습니다.
+- Secure Boot를 켠 채 쓰려면 펌웨어에 직접 키를 등록하거나 shim을 쓰도록 따로 설정해야 합니다.
+
+### 간단한 역사
+
+Gentoo는 1999년 초 Enoch Linux라는 이름으로 시작했습니다. `emerge`, `ebuild`처럼 도구 이름이 e로 시작하는 것도 이 이름에서 비롯됐습니다. 지금 이름은 젠투펭귄에서 따왔습니다.

@@ -1,0 +1,50 @@
+---
+title: About ParrotOS
+description: What sets ParrotOS, the Debian-based distribution for security work, privacy and development, apart, its editions, who it suits and what to know first.
+sources:
+  - https://parrotsec.org/docs/
+  - https://parrotsec.org/how-it-works/
+  - https://parrotsec.org/download/
+  - https://parrotsec.org/docs/configuration/desktop-environments/
+  - https://parrotsec.org/docs/configuration/parrot-software-management/
+  - https://parrotsec.org/docs/configuration/upgrade-from-lorykeet/
+  - https://parrotsec.org/docs/configuration/parrot-optimized-builds/
+  - https://parrotsec.org/docs/tools/anonsurf/
+  - https://parrotsec.org/docs/installation/raspberrypi/
+  - https://parrotsec.org/docs/installation/dualboot-with-windows/
+lastReviewed: 2026-10-29
+---
+
+ParrotOS is a Debian-based distribution designed around security work, privacy and software development. Its founder, Lorenzo Faletra, still leads development, and the project is governed by Parrot Security CIC, a community interest company registered in the UK. The base is Debian stable, while security tools and other urgent updates are imported by the Parrot team as they come, a semi-rolling model. The current version is Parrot <Latest slug="parrot-os" />.
+
+### Highlights
+
+- **From test to report on one system.** Unlike pentest distributions that carry only security tools, Parrot also ships everyday apps for writing and development. The stated goal is that a single laptop running Parrot is enough to run an assessment from start to finished report.
+- **Sandboxing and hardening.** AppArmor profiles and tools such as Firejail come preconfigured. You cannot log in to the whole desktop as root, and apps like browsers and document readers are not started with elevated privileges, though root terminals are always available.
+- **Services and automount off by default.** Preinstalled network services stay off until you start them, and automatic mounting is disabled so disks can be acquired safely for forensics.
+- **Updates you can see.** The weekly update reminder shows the full `apt` output instead of hiding it behind a progress bar, and `parrot-upgrade` is the recommended way to update the whole system, since it handles dependencies safely.
+- **AnonSurf.** Parrot's own tool routes supported TCP connections and DNS lookups through Tor. It is not a VPN: arbitrary UDP traffic does not go through Tor.
+
+### Editions and variants
+
+- **Security** is meant for penetration testing and red team work and includes the `parrot-tools-full` metapackage with the complete toolset.
+- **Home** is for daily use, privacy and development and leaves the security tools out; you can add just the ones you need for a lighter test setup.
+- **HTB** is tailored to Hack The Box and CTF players, with popular tools and workflows set up in advance.
+- All three use KDE Plasma by default. There are also Tuned builds recompiled for newer CPU instruction sets such as x86-64-v3, Raspberry Pi images, and builds for virtual machines, Docker and WSL.
+
+### Who it suits
+
+- Security professionals who want testing tools and everyday work apps in one system
+- Students practicing with Hack The Box or CTFs
+- Developers who want a hardened Debian-based desktop (the Home edition)
+
+### Good to know
+
+- The official guide for installing alongside Windows says to disable Secure Boot and CSM in the UEFI settings first.
+- Adding or changing repositories beyond the official ones is neither needed nor recommended.
+- For a major version change, such as moving from Parrot 6 "Lorykeet" to Parrot 7 "Echo" on Debian 13, the team recommends a fresh install. An in-place upgrade with `parrot-upgrade` is possible, but back up first, since configuration files may be overwritten.
+- Disabled automount does not protect against an accidental manual mount; a hardware write blocker is still recommended for forensic work.
+
+### A short history
+
+Parrot grew out of Frozenbox, a community forum run by the same founder, and was first released publicly on 10 April 2013. The project is headquartered in Palermo, Italy.

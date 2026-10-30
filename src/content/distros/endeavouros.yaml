@@ -38,6 +38,18 @@ logo:
   file: endeavouros.svg
   source: https://endeavouros.com/favicon.svg
   license: GPL-3.0 (endeavouros-team/Branding); EndeavourOS mark, used to identify the project
+screenshot:
+  file: endeavouros.webp
+  source: https://commons.wikimedia.org/wiki/File:EndeavourOS_Titan_2026.03.06.png
+  author: Bryan Poerwoatmodjo, Fernando Omiechuk Frozi, Johannes Kamprad, Manuel, et al
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: 보랏빛 밤하늘과 불빛이 깔린 도시 위로 'ENDEAVOUROS TITAN' 글자가 들어간 배경 화면의 KDE Plasma 데스크톱. 왼쪽에는 Dolphin, 시스템 설정, Firefox가 즐겨찾기로 보이는 애플리케이션 메뉴가 열려 있고, 오른쪽 위 Konsole 터미널에는 EndeavourOS와 KDE Plasma 6.6.2를 보여 주는 fastfetch 결과가 있으며, 화면 아래에 작업 표시줄이 있습니다.
+    en: A KDE Plasma desktop with a wallpaper of a purple night sky over city lights, lettered 'ENDEAVOUROS TITAN'. The application menu is open on the left with Dolphin, System Settings and Firefox as favourites, a Konsole terminal at top right shows fastfetch output naming EndeavourOS and KDE Plasma 6.6.2, and a panel runs along the bottom.
+  caption:
+    ko: EndeavourOS Titan의 KDE Plasma 6.6 데스크톱
+    en: EndeavourOS Titan with the KDE Plasma 6.6 desktop
 download:
   strategy: mirrors
 sources:

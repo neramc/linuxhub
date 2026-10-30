@@ -1,0 +1,44 @@
+---
+title: About Tails
+description: What sets Tails, the Debian-based system you start from a USB stick that sends every connection through Tor and leaves no trace, apart, who it suits and what to know first.
+sources:
+  - https://tails.net/about/
+  - https://tails.net/doc/about/features/
+  - https://tails.net/doc/about/requirements/
+  - https://tails.net/doc/about/warnings/index.en.html
+  - https://tails.net/doc/upgrade/index.en.html
+  - https://tails.net/doc/persistent_storage/index.en.html
+  - https://tails.net/support/faq/index.en.html
+  - https://tails.net/support/known_issues/secure_boot_certificates/index.en.html
+  - https://tails.net/contribute/design/
+  - https://tails.net/news/version_0.2/
+lastReviewed: 2026-10-29
+---
+
+Tails is a portable operating system: you shut the computer down and start it from a Tails USB stick instead of Windows, macOS or Linux. It is based on Debian and made by the Tor Project. Everything it does online goes through Tor, and it leaves no trace on the computer once you shut it down. New versions come out about every two weeks; the current one is Tails <Latest slug="tails" />.
+
+### Highlights
+
+- **A clean start every time.** Tails never writes to the hard disk and runs only from memory. Most of that memory is erased at shutdown or when the stick is pulled out, so the sites you visited and the files you opened leave nothing behind.
+- **Tor for everything.** Apps that try to reach the Internet without Tor are blocked automatically. Where connecting to Tor is blocked or risky, bridges can hide that you use Tor at all.
+- **Keep only what you choose.** An optional, encrypted Persistent Storage on the USB stick can hold documents, bookmarks, email and extra software. Everything else is gone at the next start. The storage is encrypted but not hidden: whoever holds the stick can tell it is there.
+- **Apps set up to prevent mistakes.** The GNOME desktop comes with Tor Browser, Thunderbird with built-in OpenPGP, the GNOME Secrets password manager, OnionShare for sharing files and Metadata Cleaner, all with safe defaults.
+- **Upgrades in place.** After you connect to Tor, Tails Upgrader checks for a new version, downloads only the changes through Tor and verifies them cryptographically. Your Persistent Storage is kept.
+
+### Who it suits
+
+- Journalists and activists who need to work without revealing who they are, or around surveillance and censorship
+- Anyone who has to use someone else's computer or a public one safely for a while
+- People handling sensitive documents in an environment kept fully apart from their everyday system
+
+### Good to know
+
+- Installing Tails permanently to a hard disk is not supported, and neither are sticks made with tools like Ventoy or UNetbootin. You need a USB stick of at least 8 GB.
+- It runs only on 64-bit x86 PCs: not on Macs with Apple chips or on the Raspberry Pi, and NVIDIA or AMD Radeon graphics often do not work.
+- Upgrading the system yourself with `apt` can break it; following Tails Upgrader is all you need. Tails does not currently work with VPNs.
+- It is safe, but not magic. Websites can tell you are using Tor and may block you or ask for a CAPTCHA, and the project recommends restarting Tails between unrelated activities so they cannot be linked.
+- Secure Boot is supported. On computers that still have the Microsoft certificates issued in 2011, update the regular Windows or Linux system first, or a future Tails upgrade may stop starting there.
+
+### A short history
+
+Tails counts an earlier live system, Incognito, as its ancestor. Version 0.2 was published in June 2009 under the name Amnesia, and today Tails is developed by the Tor Project.

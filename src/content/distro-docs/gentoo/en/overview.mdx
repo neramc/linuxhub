@@ -1,0 +1,41 @@
+---
+title: About Gentoo Linux
+description: What sets Gentoo Linux, the rolling distribution that builds software from source with Portage, apart, who it suits and what to know first.
+sources:
+  - https://www.gentoo.org/get-started/about/
+  - https://www.gentoo.org/downloads/
+  - https://www.gentoo.org/downloads/amd64/
+  - https://www.gentoo.org/news/2023/12/29/Gentoo-binary.html
+  - https://www.gentoo.org/inside-gentoo/foundation/
+  - https://wiki.gentoo.org/wiki/FAQ
+  - https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/About
+  - https://wiki.gentoo.org/wiki/Secure_Boot
+lastReviewed: 2026-10-29
+---
+
+Gentoo Linux is a distribution you shape to your own needs: its package manager, Portage, builds software from source the way you configure it. A community of developers and users makes it, and a seven-member council elected every year sets the direction for the project as a whole. There are no versions at all. Gentoo is a rolling release, and a system that is updated regularly should never need reinstalling.
+
+### Highlights
+
+- **Portage and USE flags.** When you install a package with `emerge`, Portage fetches the source and builds it to your settings. USE flags switch a package’s optional features on or off, system-wide or per package, and compiler options are set in `make.conf`. Profiles supply sensible defaults for a use case such as a desktop.
+- **Binary packages too.** Source builds and binary installs can be mixed freely. Since late 2023 Gentoo has offered official binary packages for download; on amd64 and arm64 they go as far as KDE Plasma, GNOME and LibreOffice. The packages are signed.
+- **You choose the foundations.** Both Gentoo’s own OpenRC and systemd are fully supported init systems. Every install starts from a stage, a minimal set of Gentoo binaries, and besides the default and desktop-profile stages there are hardened, SELinux, musl and LLVM-based ones.
+- **Testing and stable.** New packages enter the testing branch first and move to stable once they have proved reliable, generally within 30 days. Rolling as it is, Gentoo runs the stable branch by default.
+- **Wide hardware reach.** Beyond ordinary PCs and ARM, official release files cover architectures such as PowerPC, RISC-V and IBM mainframes (s390).
+
+### Who it suits
+
+- People who want to pick every component and feature that goes into their system
+- Developers and advanced users who need fine control over build options and dependencies
+- Anyone working with less common architectures or special-purpose setups such as servers and embedded devices
+
+### Good to know
+
+- There is no automated installer. You boot the minimal installation CD and follow the Gentoo Handbook through ten steps, from preparing the disks to installing the kernel and bootloader. The LiveGUI image, which boots straight into a KDE Plasma desktop, lets you look around first.
+- Building from source takes time, and longer on slower hardware. The official binary packages use generic build options so they run on any x86-64 CPU; for CPU-specific optimization you still compile yourself.
+- Installation and updates both need a stable internet connection. Update often, daily or every few days, for security and to keep updates from becoming complicated.
+- Running with Secure Boot enabled takes extra setup: either enroll your own keys in the firmware or boot through shim.
+
+### A short history
+
+Gentoo began in early 1999 under the name Enoch Linux, which is why so many of its tools, such as `emerge` and `ebuild`, start with an “e”. The current name comes from the gentoo penguin.

@@ -37,6 +37,18 @@ logo:
   file: antix.png
   source: https://antixlinux.com/wp-content/uploads/2017/03/logo_antiX.png
   license: No license or trademark policy is stated on the antiX site; the official logo is published only as this PNG (the site's own logo file, copied unmodified), used to identify the project
+screenshot:
+  file: antix.webp
+  source: https://commons.wikimedia.org/wiki/File:AntiX_23.1_Full.SysV_default_desktop_-_English.png
+  author: AntiX Devs
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: antiX 23.1의 IceWM 데스크톱. 화면 가운데 금빛 antiX 글자가 들어간 바탕에, 왼쪽 위로 파일 관리자·FAQ·설치 프로그램 아이콘이 있고, 오른쪽 위의 Conky 위젯이 시각과 CPU·메모리·디스크 사용량을 보여 줍니다. 화면 아래에 작업 표시줄이 있습니다.
+    en: "The IceWM desktop of antiX 23.1: a wallpaper with gold antiX lettering, File Manager, FAQ and Installer icons at the top left, a Conky widget with the time and CPU, memory and disk use at the top right, and the task bar along the bottom."
+  caption:
+    ko: antiX 23.1의 기본 데스크톱(zzz-IceWM)
+    en: antiX 23.1 with its default desktop (zzz-IceWM)
 download:
   strategy: sourceforge
 sources:

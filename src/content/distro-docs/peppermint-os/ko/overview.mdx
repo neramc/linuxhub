@@ -1,0 +1,47 @@
+---
+title: Peppermint OS 소개
+description: 꼭 필요한 것만 담고 나머지는 직접 고르게 하는 Debian·Devuan 기반 Xfce 배포판 Peppermint OS의 특징과 변형, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://peppermintos.com/
+  - https://peppermintos.com/about/
+  - https://peppermintos.com/trixie-base-downloads/
+  - https://peppermint_os.codeberg.page/html/
+  - https://peppermintos.com/2010/05/come-and-get-it/
+  - https://peppermintos.com/2025/10/peppermint-os-trixie-base-released/
+  - https://peppermintos.com/2026/03/where-are-we-for-2026-in-peppermintos-world/
+  - https://peppermintos.com/2026/06/peppermintos-devuan-release-excalibur/
+  - https://peppermintos.com/2026/09/testing-updated-pepdebian-build-and-shift-to-xlibre/
+  - https://peppermintos.com/2026/10/pepvoid-update-and-continued-testing/
+lastReviewed: 2026-10-29
+---
+
+Peppermint OS는 Debian 안정판과 Devuan을 바탕으로 커뮤니티가 만드는 Xfce 배포판입니다. 시스템을 돌리는 데 필요한 패키지만 넣고, 그 위에 무엇을 설치할지는 사용자에게 맡깁니다. 버전 번호를 따로 붙이지 않고 기반 배포판의 업데이트를 그대로 받으며, ISO는 수시로 다시 빌드해 빌드 날짜로 구분합니다.
+
+### 특징
+
+- **거의 빈 상태로 시작합니다.** 기본 설치에는 웹 브라우저, 오피스, 미디어 플레이어, 방화벽도 들어 있지 않습니다. 사람마다 쓰는 앱이 다르다는 생각에서 나온 구성이라, 지우지 않아도 되는 깔끔한 시스템을 만들기 좋습니다.
+- **고르는 일을 돕는 도구.** 환영 화면의 Suggested에서는 커뮤니티 투표로 정한 추천 패키지와 Debian 저장소에 있는 웹 브라우저를 골라 설치합니다. 웹사이트를 독립된 창의 앱처럼 띄우는 Kumo, 업데이트와 캐시 정리, SSD 트림을 한 번에 하는 xDaily(명령어판과 GUI판) 같은 자체 도구도 있습니다.
+- **다시 설치하지 않는 시스템.** 업데이트와 포인트 릴리스는 Debian과 Devuan에서 그대로 들어오고, 자체 도구의 개선도 새 ISO 없이 기존 설치로 전달됩니다. 한 번 설치한 뒤 오래 쓰는 것을 목표로 합니다.
+- **APT 중심.** 앱은 Debian·Devuan 저장소에서 APT로 설치하며, 저장소에 없는 앱이 필요할 때만 Flatpak, Snap, AppImage 같은 외부 출처를 직접 켜서 씁니다.
+
+### 에디션과 변형
+
+- **Debian 기반 Flagship**이 대표판으로, systemd를 씁니다.
+- **Devuan 기반판**은 같은 데스크톱과 도구를 담되 systemd 없이 동작하며, 설치할 때 SysVinit, OpenRC, runit 가운데 init 시스템을 고릅니다. systemd에 의존하는 일부 앱은 빠집니다.
+- **PepVoid**는 롤링 릴리스인 Void Linux를 바탕으로 한 새 판으로, 지금은 시험판만 나와 있습니다.
+
+### 이런 분께 맞습니다
+
+- 필요한 앱만 골라 군더더기 없는 데스크톱을 꾸리고 싶은 사람
+- systemd 없이 Debian 계열을 쓰고 싶은 사람
+- 한 번 설치한 시스템을 재설치 없이 오래 쓰려는 사람
+
+### 알아 둘 점
+
+- 설치 직후에는 브라우저조차 없으므로 환영 화면에서 먼저 브라우저를 고르는 것이 첫 작업입니다. 처음 Linux를 쓰는 사람에게는 손이 조금 더 갑니다.
+- 데스크톱은 X11 세션만 쓰며 Wayland로 옮길 계획은 당분간 없습니다. 앞으로 나올 ISO부터는 디스플레이 서버가 Xorg에서 XLibre로 바뀝니다.
+- 지금 나오는 이미지는 64비트판뿐이고, 32비트판을 계속 낼지는 정하지 않았습니다.
+
+### 간단한 역사
+
+Peppermint OS의 첫 버전 Peppermint OS One은 2010년 5월에 나왔습니다. 오랫동안 한 사람 중심으로 꾸려지다가 지금은 커뮤니티와 개발팀이 함께 만드는 방식으로 바뀌었고, 2022년 2월 릴리스부터 버전 번호 없이 Debian과 Devuan을 따라가고 있습니다.

@@ -1,0 +1,55 @@
+---
+title: Kali Linux 소개
+description: OffSec이 만드는 침투 테스트·보안 감사용 Debian 기반 배포판 Kali Linux의 특징과 이미지 종류, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.kali.org/docs/introduction/what-is-kali-linux/
+  - https://www.kali.org/docs/introduction/should-i-use-kali-linux/
+  - https://www.kali.org/docs/introduction/what-image-to-download/
+  - https://www.kali.org/docs/introduction/default-credentials/
+  - https://www.kali.org/docs/introduction/kali-linux-history/
+  - https://www.kali.org/docs/introduction/press-release/
+  - https://www.kali.org/docs/general-use/kali-branches/
+  - https://www.kali.org/docs/general-use/metapackages/
+  - https://www.kali.org/docs/general-use/updating-kali/
+  - https://www.kali.org/docs/installation/hard-disk-install/
+  - https://www.kali.org/docs/nethunter/
+  - https://www.kali.org/get-kali/
+  - https://www.kali.org/releases/
+  - https://www.kali.org/blog/kali-linux-2023-1-release/
+lastReviewed: 2026-10-29
+---
+
+Kali Linux는 침투 테스트와 보안 감사를 위해 만든 Debian 기반 배포판으로, 보안 교육 기업 OffSec이 개발을 이끕니다. 롤링 릴리스라서 패키지는 준비되는 대로 바로 들어오고, 설치 이미지는 대략 분기마다 새로 만들어 연도와 그해의 순번으로 이름을 붙입니다. 가장 최근 이미지는 Kali <Latest slug="kali-linux" />입니다.
+
+### 특징
+
+- **메타패키지로 고르는 도구 묶음.** 포렌식, 리버스 엔지니어링, 무선, 웹 공격 등 수백 가지 도구를 메타패키지로 묶어 둡니다. 설치할 때는 기본 묶음(`kali-linux-default`)이 선택되어 있고, 나중에 `kali-tweaks`나 `apt`로 필요한 묶음을 더하는 방식입니다.
+- **조용한 기본 설정.** 어떤 패키지를 설치해도 네트워크 서비스가 저절로 켜지지 않도록 systemd 훅으로 막아 두었고, Bluetooth도 기본으로 꺼져 있습니다. 2020.1부터는 root 대신 일반 사용자 계정으로 씁니다.
+- **무선 주입 패치 커널.** 무선 점검에 쓰도록 무선 패킷 주입 패치를 넣은 커널을 씁니다.
+- **좁고 믿을 수 있는 저장소.** 패키지를 올릴 수 있는 사람은 작은 핵심 팀뿐이고, 모든 패키지는 만든 개발자와 저장소가 각각 GPG로 서명합니다.
+- **Debian testing을 따라가는 롤링.** 기본 저장소 `kali-rolling`은 Debian testing에 Kali 패키지를 얹어 설치 가능 여부를 확인한 뒤 내보냅니다. 업데이트를 분기 릴리스 단위로만 받고 싶다면 `kali-last-snapshot`을 씁니다.
+
+### 에디션과 변형
+
+- **PC용 이미지**는 오프라인으로 설치할 수 있는 Installer, 설치하면서 패키지를 내려받는 NetInstaller, 설치 없이 USB로 바로 띄우는 Live가 있습니다. 거의 모든 도구를 미리 담은 Everything 판은 토렌트로만 받습니다.
+- **VMware·VirtualBox·Hyper-V·QEMU용 가상 머신 이미지**, Raspberry Pi 같은 싱글 보드 컴퓨터와 Apple Silicon용 ARM 이미지, 클라우드·컨테이너·WSL용 판도 있습니다.
+- **Kali NetHunter**는 Android 기기에서 Kali를 돌리는 모바일 플랫폼입니다.
+- **Kali Purple**은 방어 보안(블루·퍼플 팀)을 위한 판으로, 2023.1에서 기술 미리보기로 처음 나왔습니다.
+
+### 이런 분께 맞습니다
+
+- 침투 테스트와 보안 감사를 업무로 하는 사람
+- 침투 테스트 자격증을 준비하며 실습 환경이 필요한 사람
+- 네트워크가 없는 현장에서도 도구 전체를 갖춰 두어야 하는 사람
+
+### 알아 둘 점
+
+- 프로젝트 스스로 Linux가 처음이거나 일반 데스크톱을 찾는 사람에게는 권하지 않습니다. PPA와 `apt-add-repository`는 지원하지 않고, 검증하지 않은 저장소를 더하면 시스템이 깨지기 쉽습니다.
+- 허가 없이 남의 네트워크에 보안 도구를 쓰면 법적인 책임을 질 수 있습니다.
+- Kali 커널은 서명되어 있지 않아 설치 전에 UEFI에서 Secure Boot를 꺼야 합니다.
+- 롤링이므로 며칠이나 몇 주마다 `sudo apt update`와 `sudo apt full-upgrade`로 업데이트합니다. 다만 점검 작업 도중에는 업데이트하지 말라고 권합니다.
+- Live 부팅과 가상 머신·ARM 이미지의 기본 계정은 `kali`, 비밀번호도 `kali`입니다.
+
+### 간단한 역사
+
+Kali는 Whoppix와 WHAX를 거쳐 Slackware, 이후 Ubuntu 기반이던 BackTrack의 뒤를 잇습니다. 2013년 3월 13일 Debian 7 기반의 첫 Kali Linux가 나왔고, 2016년 1월부터 Debian testing을 바탕으로 한 롤링 배포판이 되었습니다.

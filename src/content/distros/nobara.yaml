@@ -36,6 +36,17 @@ logo:
   file: nobara.png
   source: https://nobaraproject.org/img/nobara-icon.png
   license: No license or trademark policy is stated for the logo on the project's site; Nobara logo (official PNG, the project publishes no SVG), used unmodified (trimmed and resized only) to identify the project
+screenshot:
+  file: nobara.webp
+  source: https://commons.wikimedia.org/wiki/File:Desktop_Nobara.png
+  author: Nobara Project
+  license: GPL / GPLv3
+  alt:
+    ko: 보라와 파랑 삼각형 무늬 배경 위에 어두운 테마의 GNOME 파일 관리자가 열려 홈 폴더의 Documents, Downloads, Music 같은 파란 폴더를 보여 줍니다. 바탕 화면 왼쪽 위에는 Home과 Trash 아이콘이 있고, 화면 아래쪽 패널에는 Nobara 메뉴 버튼과 설정, 소프트웨어, 파일, Firefox 아이콘, 오른쪽 끝에 시스템 아이콘과 시계가 있습니다.
+    en: A dark-themed GNOME file manager showing blue home folders such as Documents, Downloads and Music, over a purple and blue triangle-pattern wallpaper. Home and Trash icons sit at the top left of the desktop, and a bottom panel holds the Nobara menu button, Settings, Software, Files and Firefox, with system icons and the clock at the right.
+  caption:
+    ko: 아래쪽 패널을 둔 Nobara의 GNOME 데스크톱(예전 버전 화면)
+    en: Nobara's GNOME desktop with a bottom panel (an older release)
 download:
   strategy: redirector
 sources:

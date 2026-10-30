@@ -38,6 +38,18 @@ logo:
   source: https://ubuntu-mate.org/images/brands/ubuntu-mate.svg
   license: CC BY-SA 4.0 (ubuntu-mate.org graphics); Ubuntu is a trademark of Canonical Ltd.
   trademark: https://canonical.com/legal/intellectual-property-policy
+screenshot:
+  file: ubuntu-mate.webp
+  source: https://commons.wikimedia.org/wiki/File:Ubuntu_MATE_25.10_default_desktop_-_English.png
+  author: The Ubuntu MATE Team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Ubuntu MATE의 MATE 데스크톱. 초록색 다각형 무늬 바탕 가운데에 흰 Ubuntu MATE 로고가 있고, 왼쪽 위에 홈 폴더와 설치 아이콘이, 화면 위와 아래에 패널이 있습니다.
+    en: "The MATE desktop of Ubuntu MATE: a white Ubuntu MATE logo in the middle of a green polygon wallpaper, home folder and installer icons at the top left, and panels at the top and bottom."
+  caption:
+    ko: Ubuntu MATE의 기본 MATE 데스크톱(25.10 화면)
+    en: Ubuntu MATE with its default MATE desktop (25.10)
 download:
   strategy: mirrors
 sources:

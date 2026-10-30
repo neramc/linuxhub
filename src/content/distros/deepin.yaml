@@ -38,6 +38,18 @@ logo:
   file: deepin.svg
   source: https://github.com/linuxdeepin/dtkwidget
   license: LGPL-3.0-or-later (dtkwidget repository); deepin trademark of Wuhan Deepin Technology Co., Ltd.
+screenshot:
+  file: deepin.webp
+  source: https://commons.wikimedia.org/wiki/File:Deepin_23.webp
+  author: Deepin Co.
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: 물결 모양의 짙은 파란색 배경 화면 위로 왼쪽 아래에 반투명한 런처 메뉴가 열려 있고, 그 안에 Package Installer, Welcome, File Manager, Music, Movie, Screen Capture, Album, Text Editor, Mail 같은 앱 목록과 검색창이 있습니다. 왼쪽 위에는 deepin forum 아이콘이, 화면 아래쪽에는 가운데에 앱 아이콘이 모인 DDE 작업 표시줄과 오른쪽의 트레이와 시계가 있습니다.
+    en: A translucent launcher menu is open at bottom left over a dark blue wallpaper with flowing curves, listing apps such as Package Installer, Welcome, File Manager, Music, Movie, Screen Capture, Album, Text Editor and Mail under a search box. A deepin forum icon sits at top left, and the DDE taskbar along the bottom has app icons in the middle and the tray and clock on the right.
+  caption:
+    ko: deepin의 DDE 데스크톱과 런처(2022년 화면)
+    en: deepin’s DDE desktop with the launcher open (a 2022 screenshot)
 download:
   strategy: mirrors
 sources:

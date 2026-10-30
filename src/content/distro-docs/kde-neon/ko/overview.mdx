@@ -1,0 +1,44 @@
+---
+title: KDE neon 소개
+description: Ubuntu LTS 위에 최신 KDE 소프트웨어를 바로 담는 KDE neon의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://neon.kde.org/
+  - https://neon.kde.org/faq
+  - https://neon.kde.org/download
+  - https://blog.neon.kde.org/2024/10/10/kde-neon-rebased-on-ubuntu-24-04-lts/
+  - https://blog.neon.kde.org/2024/04/29/kde-neon-post-plasma-6-updates-review/
+  - https://blog.neon.kde.org/2020/08/10/kde-neon-rebased-on-20-04/
+  - https://dot.kde.org/2016/06/08/kde-neon-user-edition-56-available-now/
+lastReviewed: 2026-10-29
+---
+
+KDE neon은 KDE 커뮤니티가 직접 만드는 배포판으로, 가장 최근의 Ubuntu LTS를 바탕으로 Plasma와 KDE 앱을 새 버전이 나오는 대로 바로 담습니다. Ubuntu 기반은 그대로 두고 KDE 소프트웨어만 계속 갱신하는 반(半)롤링 방식이라, 번호가 붙은 릴리스 없이 설치 이미지를 수시로 새로 만듭니다.
+
+### 특징
+
+- **KDE가 만든 모습 그대로.** KDE 소프트웨어에 배포판 고유의 패치를 넣거나 기본 설정을 바꾸지 않습니다. Plasma와 KDE Frameworks, KDE 앱, 그리고 이를 받치는 Qt가 Ubuntu보다 새 버전으로 들어옵니다.
+- **KDE 쪽만 롤링.** Ubuntu 기반 시스템은 롤링하지 않고, KDE 소프트웨어가 더 새 라이브러리를 요구할 때만 해당 패키지를 올립니다.
+- **앱은 Discover에서 snap과 Flatpak으로.** 기본 저장소의 일반 앱은 최대 2년 묵은 버전일 수 있어서, Discover는 snap과 Flatpak 앱만 보여 주도록 설정되어 있습니다.
+- **2년마다 기반 교체.** 새 Ubuntu LTS가 나오면 2년 주기로 그 위에 다시 만들고, 설치된 시스템에는 업그레이드 알림이 뜹니다. FAQ 기준으로 지금 기반은 Ubuntu 24.04 LTS입니다.
+
+### 에디션과 변형
+
+- **User Edition**은 정식 출시된 KDE 소프트웨어를 담고, 자동 품질 검사를 거쳐 배포합니다. 평소에 쓰기 위한 판입니다.
+- **Testing Edition**은 버그 수정 브랜치에서, **Unstable Edition**은 새 기능 브랜치에서 매일 빌드한 출시 전 소프트웨어를 담습니다. Unstable에는 품질 검사가 없습니다. **Developer Edition**은 Unstable에 개발 라이브러리를 더한 판입니다.
+- User, Testing, Unstable 에디션에는 Desktop 외에 Mobile과 Bigscreen 이미지도 있고, distrobox로 쓰는 컨테이너 이미지도 매일 만들어집니다.
+
+### 이런 분께 맞습니다
+
+- 새 Plasma와 KDE 앱을 나오자마자 쓰고 싶은 KDE 애호가
+- 출시 전 KDE 소프트웨어를 시험하고 버그를 알리려는 테스터와 개발자
+
+### 알아 둘 점
+
+- 안정성이 최우선인 업무용 컴퓨터에는 맞지 않을 수 있다고 프로젝트 스스로 밝힙니다. User Edition도 KDE 소프트웨어만 집중해 다듬을 뿐 시스템 전체를 검토하지는 않으며, 2024년 Plasma 6 전환 때는 업데이트로 일부 시스템이 망가지기도 했습니다.
+- 업데이트는 Discover의 업데이트 알림이나 `sudo apt full-upgrade`로 합니다. `apt upgrade`는 일부 패키지를 빠뜨릴 수 있어 막혀 있습니다.
+- 지원하는 NVIDIA 드라이버는 오픈소스 Nouveau뿐입니다. 독점 드라이버는 `ubuntu-drivers`로 설치할 수 있지만 문제가 생기면 스스로 해결해야 합니다.
+- Plasma 밖의 데스크톱은 지원하지 않고, Kubuntu와 함께 설치할 수도 없습니다. 미러는 http로만 제공되므로 내려받은 ISO는 GPG 서명으로 확인합니다.
+
+### 간단한 역사
+
+프로젝트 발표 넉 달 뒤인 2016년 6월 8일, Plasma 5.6을 담은 첫 User Edition이 나왔습니다. 2020년 Ubuntu 20.04로 기반을 옮기면서 모든 설치 이미지가 Calamares 설치 프로그램을 쓰게 되었습니다.

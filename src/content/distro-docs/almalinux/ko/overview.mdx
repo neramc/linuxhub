@@ -1,0 +1,48 @@
+---
+title: AlmaLinux 소개
+description: 비영리 재단이 운영하는 RHEL 호환 엔터프라이즈 배포판 AlmaLinux OS의 특징과 설치 이미지, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://almalinux.org/
+  - https://almalinux.org/foundation/
+  - https://wiki.almalinux.org/FAQ.html
+  - https://wiki.almalinux.org/Comparison.html
+  - https://wiki.almalinux.org/release-notes/10.0.html
+  - https://wiki.almalinux.org/LiveMedia.html
+  - https://wiki.almalinux.org/development/almalinux-os-kitten-10.html
+  - https://wiki.almalinux.org/documentation/nvidia.html
+  - https://wiki.almalinux.org/elevate/
+lastReviewed: 2026-10-29
+---
+
+AlmaLinux OS는 CentOS Linux 안정판이 끝나면서 생긴 빈자리를 채우려고 만든 엔터프라이즈 배포판으로, 비영리 단체인 AlmaLinux OS Foundation이 소유하고 운영합니다. Red Hat Enterprise Linux(RHEL)와 바이너리 호환을 목표로 하는 고정 릴리스이며, 지금 최신 버전은 AlmaLinux <Latest slug="almalinux" />(코드명 <Latest slug="almalinux" field="codename" />)입니다.
+
+### 특징
+
+- **RHEL과 ABI 호환.** RHEL에서 돌아가는 애플리케이션과 커널 모듈은 AlmaLinux에서도 그대로 돌아가야 하고, 그렇지 않으면 버그로 다룹니다. RHEL의 새 마이너 버전이 나오면 보통 며칠 안에 같은 버전이 나옵니다.
+- **메이저 버전마다 10년.** 각 메이저 버전은 10년 동안 보안 업데이트와 버그 수정을 받습니다. 마이너 버전은 다음 마이너 버전이 나오면 끝나므로 같은 메이저 버전 안에서 계속 업데이트하면 됩니다. 최신 버전의 지원 종료일은 <Latest slug="almalinux" field="eol" />입니다.
+- **RHEL과 다른 부분.** AlmaLinux 10은 RHEL 10이 올린 CPU 기준(x86-64-v3)을 따르면서도 오래된 CPU를 위한 x86-64-v2 빌드를 따로 냅니다. RHEL에서 빠진 일부 오래된 RAID·네트워크 카드 지원을 되살렸고 SPICE도 켜 두었습니다.
+- **커뮤니티가 정하는 운영.** 재단 이사회는 회원이 뽑고 회의록이 공개됩니다. 한 회사가 투표권 있는 이사 자리를 둘 이상 차지할 수 없도록 정관에 정해 두었습니다.
+
+### 에디션과 변형
+
+- **설치 ISO**는 거의 모든 패키지를 담은 DVD, 오프라인 설치용 Minimal, 인터넷으로 패키지를 받는 Boot 세 가지입니다.
+- **Live Media**는 설치하지 않고 써 보거나 복구할 때 씁니다. AlmaLinux 10은 GNOME과 KDE, 8과 9는 여기에 GNOME Mini, MATE, Xfce가 더 있습니다.
+- 클라우드, 컨테이너, WSL, Raspberry Pi용 공식 이미지도 있습니다.
+- **AlmaLinux OS Kitten**은 CentOS Stream 10 코드를 바탕으로 한 AlmaLinux 10의 바로 위 단계입니다. 새 수정과 기능이 여기에 먼저 들어옵니다.
+
+### 이런 분께 맞습니다
+
+- CentOS Linux를 대신할 무료 RHEL 호환 서버가 필요한 관리자
+- RHEL을 대상으로 만든 소프트웨어를 라이선스 비용 없이 돌리거나 시험하려는 팀
+- RHEL 10이 지원하지 않는 오래된 x86 서버에서 최신 엔터프라이즈 리눅스를 쓰고 싶은 사람
+
+### 알아 둘 점
+
+- RHEL에 없는 패키지는 기본 저장소에 넣지 않습니다. 더 필요한 소프트웨어는 EPEL 저장소에서 찾습니다.
+- 유료 기술 지원은 재단이 아니라 TuxCare, Cybertrust Japan 같은 외부 업체가 제공합니다.
+- 메이저 버전을 올릴 때는 ELevate 프로젝트로 한 번에 한 단계씩 제자리 업그레이드할 수 있습니다.
+- x86-64-v2 빌드에서는 RHEL 10용 외부 패키지가 모두 v3를 기준으로 하므로 그대로 쓰기 어렵고, 공식 NVIDIA 드라이버 패키지도 없습니다.
+
+### 간단한 역사
+
+2021년 3월 첫 버전인 AlmaLinux 8.3이 나왔고, 같은 달 재단이 세워졌습니다. 2023년 7월에는 RHEL을 그대로 다시 빌드한다는 목표를 RHEL과의 ABI 호환으로 바꿨습니다. Alma는 스페인어 같은 라틴계 언어에서 "영혼"을 뜻합니다.

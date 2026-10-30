@@ -39,6 +39,18 @@ logo:
   source: https://www.debian.org/logos/
   license: LGPL-3.0+ / CC BY-SA 3.0 (Debian Open Use Logo); Debian trademark of SPI
   trademark: https://www.debian.org/trademark
+screenshot:
+  file: debian.webp
+  source: https://commons.wikimedia.org/wiki/File:Debian_13_(Trixie)_screenshot_-_using_GNOME_desktop.png
+  author: The Debian Project
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: GNOME 활동 개요 화면입니다. 왼쪽 창의 터미널에는 fastfetch가 Debian 13 시스템 정보를 보여 주고, 오른쪽 창의 Firefox에는 debian.org 첫 페이지가 열려 있습니다. 위에는 검색 창, 아래에는 앱 아이콘이 놓인 대시가 있습니다.
+    en: The GNOME Activities overview. A terminal on the left shows fastfetch output for a Debian 13 system, and Firefox on the right has the debian.org home page open. A search field sits at the top and the dash with app icons at the bottom.
+  caption:
+    ko: GNOME 48을 쓰는 Debian 13(trixie)
+    en: Debian 13 (trixie) running GNOME 48
 download:
   strategy: mirrors
 sources:

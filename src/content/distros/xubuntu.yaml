@@ -39,6 +39,18 @@ logo:
   source: https://raw.githubusercontent.com/Xubuntu/xubuntu-marketing/master/logo/icon.svg
   license: Xubuntu is a trademark of Canonical Ltd.; official icon used unmodified to identify the project (no license stated in the source repository)
   trademark: https://canonical.com/legal/intellectual-property-policy
+screenshot:
+  file: xubuntu.webp
+  source: https://commons.wikimedia.org/wiki/File:Xubuntu_26.04_LTS_default_desktop_-_English.png
+  author: The Xubuntu Team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Xubuntu 26.04 LTS의 Xfce 데스크톱. 해 질 녘 호숫가의 나무와 바위 언덕 실루엣이 바탕에 깔려 있고, 왼쪽 위에 홈, 휴지통, 설치 아이콘이, 화면 위에 얇은 패널이 있습니다.
+    en: "The Xfce desktop of Xubuntu 26.04 LTS: silhouettes of a tree and rocky hills by a lake at dusk, Home, Trash and installer icons at the top left, and a thin panel along the top."
+  caption:
+    ko: Xubuntu 26.04 LTS의 기본 Xfce 데스크톱
+    en: Xubuntu 26.04 LTS with its default Xfce desktop
 download:
   strategy: mirrors
 sources:

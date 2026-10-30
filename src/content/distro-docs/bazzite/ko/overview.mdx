@@ -1,0 +1,49 @@
+---
+title: Bazzite 소개
+description: Fedora Atomic 데스크톱을 바탕으로 게임용 설정을 미리 갖춘 이미지 기반 배포판 Bazzite의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://bazzite.gg/
+  - https://docs.bazzite.gg/General/FAQ/
+  - https://docs.bazzite.gg/General/Fedora_Atomic_Comparison/
+  - https://docs.bazzite.gg/Gaming/Hardware_compatibility_for_gaming/
+  - https://docs.bazzite.gg/General/Installation_Guide/secure_boot/
+  - https://docs.bazzite.gg/Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/
+  - https://raw.githubusercontent.com/ublue-os/bazzite/main/README.md
+  - https://universal-blue.discourse.group/t/bazzite-1-0-announcement/49
+lastReviewed: 2026-10-29
+---
+
+Bazzite는 Universal Blue 프로젝트가 만드는 게임용 배포판입니다. Fedora Atomic 데스크톱(KDE Plasma판은 Kinoite, GNOME판은 Silverblue)을 고쳐 만든 이미지라 Fedora의 릴리스 주기를 따르고, 시스템을 하나의 이미지로 통째로 업데이트합니다. 지금 stable 채널의 최신 이미지는 <Latest slug="bazzite" />입니다.
+
+### 특징
+
+- **설치 직후 바로 게임.** Steam과 Lutris가 처음부터 들어 있고 HDR과 VRR을 기본으로 지원합니다. 코덱과 하드웨어 영상 가속, 여러 게임 컨트롤러 드라이버도 갖춰 두어 Fedora Atomic에서 따로 해야 할 설정이 크게 줄어듭니다.
+- **잘못된 업데이트는 되돌리기.** 업데이트 뒤에도 이전 이미지가 남아 있어 부팅 메뉴에서 고를 수 있습니다. 최근 90일 안의 빌드로 옮겨 가거나 잘 되던 버전을 고정해 둘 수도 있습니다.
+- **앱은 시스템과 따로.** 데스크톱 앱은 Bazaar 앱 스토어로 Flathub에서 받고, 명령줄 도구는 Homebrew로, 다른 배포판의 패키지는 Distrobox 컨테이너로 설치합니다. Firefox도 Flatpak으로 제공합니다.
+- **자주 쓰는 설정은 도구로.** Bazzite Portal과 `ujust` 스크립트에 흔한 설정과 문제 해결 작업이 모여 있고, Bazzite Updater로는 컨트롤러만으로 업데이트와 되돌리기를 할 수 있습니다.
+
+### 에디션과 변형
+
+- **데스크톱 에디션**은 PC와 노트북용입니다. Steam 게임 모드가 없고, 업데이트를 백그라운드에서 받아 재시작할 때 적용합니다.
+- **Bazzite-Deck**은 휴대용 게임기와 거실 PC(HTPC)용입니다. SteamOS처럼 Steam 게임 모드로 바로 부팅하고, 업데이트는 게임 모드에서 직접 실행합니다.
+- **Bazzite-DX**는 개발용 이미지로, ISO 없이 설치된 Bazzite에서 리베이스해서 씁니다.
+- 에디션마다 KDE Plasma판과 GNOME판, NVIDIA용 이미지가 따로 있습니다. 공식 사이트의 이미지 선택기가 하드웨어에 맞는 것을 골라 줍니다.
+
+### 이런 분께 맞습니다
+
+- Windows에서 넘어와 별다른 설정 없이 PC 게임을 하고 싶은 사람
+- Steam Deck, ROG Ally, Legion Go 같은 휴대용 게임기에서 SteamOS와 비슷한 환경을 더 새로운 패키지로 쓰고 싶은 사람
+- TV에 연결한 PC를 컨트롤러로 다루는 콘솔처럼 쓰고 싶은 사람
+
+### 알아 둘 점
+
+- UEFI와 GPT 디스크가 필요하며 CSM(레거시 BIOS) 부팅은 지원하지 않습니다.
+- Secure Boot를 켠 채로 쓰려면 Universal Blue의 키를 등록해야 합니다. 설치 직후 나오는 화면이나 `ujust enroll-secure-boot-key`로 등록하며, 등록하지 않으면 부팅되지 않습니다.
+- 커널과 그래픽 드라이버 버전은 이미지에 묶여 있어 직접 바꿀 수 없습니다. NVIDIA는 Kepler(GTX 700 대부분) 이전 세대를 지원하지 않습니다.
+- 설치 뒤 KDE Plasma와 GNOME을 서로 바꾸는 것은 권장하지 않으므로, 데스크톱을 바꾸려면 백업 후 다시 설치합니다.
+- 게임용 보조 드라이브는 Btrfs나 Ext4여야 하며 NTFS와 exFAT은 지원하지 않습니다.
+- 게임이 주목적이 아니라면 같은 프로젝트의 Aurora(KDE Plasma)나 Bluefin(GNOME)이 더 맞습니다.
+
+### 간단한 역사
+
+2023년 11월, 192일 동안의 개발 끝에 Fedora 38을 바탕으로 한 Bazzite 1.0이 발표되었습니다. 이름은 광물 이름을 쓰던 Fedora Atomic 데스크톱의 관례를 따른 것으로, 바자이트는 푸른빛을 띠는 광물입니다.

@@ -1,0 +1,36 @@
+---
+title: Linux Lite 소개
+description: Ubuntu LTS 위에 Xfce를 얹은 가벼운 배포판 Linux Lite의 특징과 어울리는 사용자, 알아 둘 점.
+sources:
+  - https://www.linuxliteos.com/
+  - https://www.linuxliteos.com/download.php
+  - https://www.linuxliteos.com/forums/showthread.php?tid=9866
+  - https://wiki.linuxliteos.com/en/home
+lastReviewed: 2026-10-29
+---
+
+Linux Lite는 Ubuntu LTS를 바탕으로 가벼운 Xfce 데스크톱을 쓰는 커뮤니티 배포판입니다. 처음 Linux를 쓰는 사람과 오래된 컴퓨터를 함께 겨냥합니다. Ubuntu LTS 하나를 바탕으로 한 시리즈 안에서 포인트 릴리스가 이어지는 고정 릴리스 방식이고, 지금 최신 버전은 Linux Lite <Latest slug="linux-lite" />입니다.
+
+### 특징
+
+- **달력에 맞춘 시리즈.** 시리즈는 6월의 x.0으로 시작해 대체로 11월, 4월, 9월, 이듬해 2월에 x.2부터 x.8까지 이어집니다. 로드맵이 미리 공개되어 있고, 시리즈 8은 2031년 6월까지 지원할 계획입니다.
+- **직접 만든 Lite 도구.** 시리즈 8에서 자체 앱 대부분을 Python과 GTK4로 새로 만들었습니다. 인기 앱 100여 개를 모은 Lite Software가 Synaptic을 대신하고, Lite Driver Manager는 그래픽 카드에 맞는 드라이버를 클릭 한 번으로 설치합니다. Lite Game Center는 Steam, Lutris, Proton, Wine을 한꺼번에 갖춰 줍니다.
+- **데스크톱에 맞춘 자체 커널.** Ubuntu 커널 소스에 반응성을 높이는 패치(BORE 스케줄러 등)를 더한 자체 커널이 기본입니다. 입력 지연을 더 줄인 게임용 커널도 나중에 따로 설치할 수 있고, Lite Kernel Manager에서 관리합니다.
+- **바로 쓰는 기본 구성.** Firefox, Thunderbird, LibreOffice, VLC, GIMP, 백업 도구 Timeshift가 처음부터 들어 있어 설치 직후 웹, 메일, 문서, 미디어 작업을 할 수 있습니다. Firefox와 Thunderbird는 프로젝트가 직접 패키지를 제공해 PPA가 필요 없습니다.
+
+### 이런 분께 맞습니다
+
+- Linux를 처음 써 보는 사람
+- 오래된 PC를 단순한 데스크톱으로 다시 쓰고 싶은 사람
+- 정해진 일정에 따라 예측 가능하게 업데이트하고 싶은 사람
+- 게임 도구를 손쉽게 갖추고 싶은 사람
+
+### 알아 둘 점
+
+- Secure Boot를 지원하지 않으므로 설치 전에 펌웨어 설정에서 꺼야 합니다.
+- 시리즈 8부터 설치 프로그램이 Ubiquity에서 Calamares로 바뀌었습니다. 설치할 때 인터넷 연결이 없어도 되고, BTRFS와 XFS 파일 시스템도 고를 수 있습니다.
+- 같은 시리즈 안에서는 업데이트를 설치한 뒤 Lite Upgrade로 올립니다. 시리즈를 바꿀 때는 `sudo apt install lite-series-upgrade`로 받은 Lite Series Upgrade를 쓰며, 30분에서 2시간쯤 걸립니다. 그 전에 Clonezilla나 Timeshift로 시스템 전체를 백업하라고 권합니다.
+
+### 간단한 역사
+
+Linux Lite는 2012년에 시작되었습니다. 주요 시리즈에는 Beryl(2.0), Citrine(3.0), Diamond(4.0), Fluorite(6.0)처럼 광물 이름을 붙여 왔고, Ubuntu 26.04 LTS를 바탕으로 한 시리즈 8의 이름은 Hematite입니다.

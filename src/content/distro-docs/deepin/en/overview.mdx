@@ -1,0 +1,40 @@
+---
+title: About deepin
+description: What sets deepin, the Chinese distribution with its own DDE desktop, an immutable core and the Linyaps app format, apart, who it suits and what to know first.
+sources:
+  - https://www.deepin.org/en/aboutus/
+  - https://www.deepin.org/en/deepin-25-release/
+  - https://www.deepin.org/en/deepin-25-2-release/
+  - https://www.deepin.org/en/deepin-25-installation/
+  - https://www.deepin.org/en/deepin-23-is-officially-released/
+  - https://www.deepin.org/en/deepin-os-v23-alpha-2-released/
+lastReviewed: 2026-10-29
+---
+
+deepin is a desktop distribution made by Wuhan Deepin Technology in China together with the deepin community. Its focus is a good-looking desktop that is easy to pick up, delivered as numbered fixed releases; the current one is deepin <Latest slug="deepin" />. It started out on Debian, but since deepin 23 it maintains more than 8,000 core packages in its own repository and describes itself as China’s first desktop OS “root community”.
+
+### Highlights
+
+- **Its own DDE desktop.** deepin builds the Qt-based deepin Desktop Environment and Control Center along with its own apps, such as the App Store, Screenshot, Music and Movie. deepin 25 rebuilt the Control Center and Notification Center in QML and added a preview of Treeland, its own window compositor.
+- **An immutable core called Solid.** Core system directories are mounted read-only and updates are applied atomically. If an update fails or the system will not boot, it rolls back to the last working state on its own, and snapshot backups and restores take seconds. Packages are still updated with `apt`.
+- **Linyaps apps.** deepin’s own package format keeps applications apart from the system to avoid dependency clashes, and it also runs on other distributions such as Debian, Ubuntu, Arch and Fedora. From the App Store you can also set up a Debian, Ubuntu, Arch or Fedora environment through Distrobox.
+- **AI built into the system.** UOS AI connects to large language models such as DeepSeek and ChatGPT to help with writing, translation and changing settings, and uses local models for natural-language search that even finds text inside images.
+
+### Who it suits
+
+- Windows users looking for a polished desktop
+- People who want a system that can roll back a bad update but still prefer plain `apt`
+- Users who need a Chinese-language setup and Chinese apps, or who work with hardware built on Chinese ARM or LoongArch chips
+
+### Good to know
+
+- The recommended hardware is on the high side: with less than 8 GB of RAM or a 64 GB SSD, the project warns that installation may fail or the system may lag badly.
+- Turn off Secure Boot in the firmware before installing. Left on, it can stop the USB stick from booting and break out-of-tree kernel drivers and hibernation.
+- There is no direct upgrade from deepin 20 or 23 to 25. Back up `/home` and do a clean install.
+- System directories are write-protected by default. If you need to change `/usr` or similar, turn the protection off with `sudo deepin-immutable-writable enable` or in the Control Center’s developer options.
+- The ARM64 images target chips mainly sold in China, such as Phytium and Kunpeng, and the RISC-V image is a technology preview not meant for daily use.
+- On newer NVIDIA cards the installer may show a black screen. The project suggests unticking the option to include proprietary drivers and installing them after setup.
+
+### A short history
+
+deepin traces back to Hiweed Linux in 2004, the first localized Debian-based distribution in China. It was renamed deepin in 2008, and in 2011 business investment let it build a company team devoted to the desktop distribution.

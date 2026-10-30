@@ -37,6 +37,18 @@ logo:
   file: pop-os.svg
   source: https://raw.githubusercontent.com/pop-os/default-settings/master/usr/share/icons/pop-os-branding/round-logos/64/distributor-logo.svg
   license: GPL-3.0-or-later (pop-default-settings); Pop!_OS mark of System76, used to identify the project
+screenshot:
+  file: pop-os.webp
+  source: https://commons.wikimedia.org/wiki/File:Pop!_OS_24.04_LTS_default_desktop_-_English.png
+  author: System76
+  license: GPLv3
+  licenseUrl: https://www.gnu.org/licenses/gpl-3.0.html
+  alt:
+    ko: Pop!_OS 24.04 LTS의 COSMIC 데스크톱. 오리온 성운 사진이 바탕에 깔려 있고, 화면 위에 작업 공간·애플리케이션 버튼과 날짜, 상태 아이콘이 있는 패널이, 아래 가운데에 앱 아이콘이 늘어선 독이 있습니다.
+    en: "The COSMIC desktop of Pop!_OS 24.04 LTS: a photo of the Orion Nebula, a top panel with Workspaces and Applications buttons, the date and status icons, and a dock of app icons at the bottom center."
+  caption:
+    ko: Pop!_OS 24.04 LTS의 기본 COSMIC 데스크톱
+    en: Pop!_OS 24.04 LTS with its default COSMIC desktop
 download:
   strategy: redirector
 sources:

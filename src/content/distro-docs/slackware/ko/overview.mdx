@@ -1,0 +1,48 @@
+---
+title: Slackware 소개
+description: 1993년부터 유닉스다운 구조와 단순함을 지켜 온 독립 배포판 Slackware의 특징과 판, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://docs.slackware.com/slackware:slackware
+  - https://docs.slackware.com/slackware:philosophy
+  - https://docs.slackware.com/slackware:faq
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/ANNOUNCE.15.0
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/RELEASE_NOTES
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/README_UEFI.TXT
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/ChangeLog.txt
+  - https://mirrors.slackware.com/slackware/slackware64-current/ChangeLog.txt
+  - https://arm.slackware.com/releases/
+lastReviewed: 2026-10-29
+---
+
+Slackware는 Patrick Volkerding이 1993년부터 만들어 온 독립 배포판으로, 처음부터 "가장 유닉스다운 리눅스"를 목표로 삼았습니다. 주요 결정은 Volkerding이 내리고, 핵심 팀과 기여자들이 함께 개발합니다. 정해진 일정 없이 준비가 끝났을 때 내놓는 고정 릴리스 방식이며, 지금 최신 버전은 <Latest slug="slackware" field="releaseDate" />에 나온 Slackware <Latest slug="slackware" />입니다.
+
+### 특징
+
+- **텍스트 파일로 하는 설정.** 그래픽 설정 도구 대신, 주석이 잘 달린 설정 파일을 편집기로 직접 고치거나 간단한 ncurses 스크립트를 씁니다. 편리함보다 단순함을 택한다는 것이 프로젝트의 원칙입니다.
+- **손대지 않은 업스트림.** 원래 개발자가 내놓은 소프트웨어에 패치를 거의 하지 않고 그대로 담습니다.
+- **의존성을 따지지 않는 패키지 도구.** 패키지는 압축한 tar 묶음이고, `installpkg`, `upgradepkg`, `removepkg` 같은 pkgtools 스크립트로 다룹니다. 미러에서 업데이트를 받을 때는 `slackpkg`를 씁니다. 의존성을 자동으로 풀지 않기 때문에, 배포판 전체를 설치하는 것을 권장합니다.
+- **긴 보안 지원.** 안정판은 나온 뒤 여러 해 동안 보안 업데이트를 받으며, 이 업데이트는 릴리스 트리의 `patches` 디렉터리에 올라옵니다. 기능 업데이트는 하지 않습니다.
+- **소스와 빌드 스크립트 공개.** 모든 패키지의 소스와 빌드 스크립트가 함께 배포되고, 운영체제 전체를 소스에서 다시 빌드하는 스크립트도 들어 있습니다.
+
+### 에디션과 변형
+
+- **Slackware64**(64비트)와 **32비트 Slackware**가 같은 릴리스로 나옵니다. 64비트 CPU라면 64비트판을 권장합니다.
+- **Slackware ARM / AArch64**는 ARM용 공식 이식판으로, x86판과 함께 또는 조금 뒤에 릴리스됩니다.
+- **slackware-current**는 다음 안정판을 준비하는 개발 트리입니다. 업데이트가 잦고 시스템을 흔들 수 있어, 쓰는 사람은 사실상 베타 테스터가 됩니다.
+
+### 이런 분께 맞습니다
+
+- 설정 파일을 직접 읽고 고치며 리눅스가 어떻게 동작하는지 배우고 싶은 사람
+- 업스트림에 가까운 소프트웨어와 오래 바뀌지 않는 시스템을 원하는 서버·데스크톱 사용자
+- 소프트웨어를 직접 빌드하고 패키지로 만드는 데 익숙한 사용자
+
+### 알아 둘 점
+
+- Secure Boot가 켜져 있으면 동작하지 않습니다. UEFI 설치는 64비트판에서만 지원되며, 설치 전에 펌웨어 설정에서 Secure Boot를 꺼야 합니다.
+- 공식 배포판에 없는 소프트웨어는 커뮤니티의 SlackBuilds.org 빌드 스크립트로 직접 빌드하는 경우가 많습니다. 이때 필요한 의존성은 사용자가 챙겨야 합니다.
+- 안정판 사이가 몇 년씩 걸리기도 합니다. 최신 소프트웨어가 필요하면 -current를 따라가야 하는데, 그만큼 문제를 직접 해결할 각오가 필요합니다.
+- 다음 안정판으로 올릴 때는 새 릴리스에 들어 있는 `UPGRADE.TXT`와 `CHANGES_AND_HINTS.TXT`의 안내를 따릅니다.
+
+### 간단한 역사
+
+Slackware의 첫 베타는 1993년 4월에 나왔습니다. 공동 창립자로 여겨지는 오랜 친구 Brett Person의 권유로 Volkerding이 이 배포판을 FTP에 올린 것이 시작이었습니다.

@@ -1,0 +1,55 @@
+---
+title: About Kali Linux
+description: What sets Kali Linux, OffSec's Debian-based distribution for penetration testing and security auditing, apart, its image types, who it suits and what to know first.
+sources:
+  - https://www.kali.org/docs/introduction/what-is-kali-linux/
+  - https://www.kali.org/docs/introduction/should-i-use-kali-linux/
+  - https://www.kali.org/docs/introduction/what-image-to-download/
+  - https://www.kali.org/docs/introduction/default-credentials/
+  - https://www.kali.org/docs/introduction/kali-linux-history/
+  - https://www.kali.org/docs/introduction/press-release/
+  - https://www.kali.org/docs/general-use/kali-branches/
+  - https://www.kali.org/docs/general-use/metapackages/
+  - https://www.kali.org/docs/general-use/updating-kali/
+  - https://www.kali.org/docs/installation/hard-disk-install/
+  - https://www.kali.org/docs/nethunter/
+  - https://www.kali.org/get-kali/
+  - https://www.kali.org/releases/
+  - https://www.kali.org/blog/kali-linux-2023-1-release/
+lastReviewed: 2026-10-29
+---
+
+Kali Linux is a Debian-based distribution built for penetration testing and security auditing, with development led by the security training company OffSec. It is a rolling release: packages ship as soon as they are ready, and roughly every quarter the team cuts fresh, tested images named after the year and their place in it. The most recent images are Kali <Latest slug="kali-linux" />.
+
+### Highlights
+
+- **Tools picked through metapackages.** Several hundred tools for forensics, reverse engineering, wireless, web testing and more are grouped into metapackages. The installer preselects the default set (`kali-linux-default`); `kali-tweaks` or `apt` adds other groups later.
+- **Quiet by default.** systemd hooks keep network services from starting on their own, whatever you install, and Bluetooth is blocklisted. Since 2020.1 you work as a regular user rather than root.
+- **A kernel patched for injection.** The kernel carries wireless packet injection patches for Wi-Fi assessments.
+- **A small, trusted pipeline.** Only a small core team can commit packages, and every package is GPG-signed by the developer who built it and again by the repository.
+- **Rolling on top of Debian testing.** The default `kali-rolling` repository combines Debian testing with Kali's own packages and only lets through what is installable. If you would rather move only from one quarterly release to the next, use `kali-last-snapshot`.
+
+### Editions and variants
+
+- **PC images** come as Installer (complete offline install), NetInstaller (downloads packages during setup) and Live (runs from USB without installing). The Everything flavor, with nearly every tool included, is offered by BitTorrent only.
+- **Ready-made virtual machines** for VMware, VirtualBox, Hyper-V and QEMU, **ARM images** for single-board computers such as the Raspberry Pi and for Apple Silicon, plus cloud, container and WSL builds.
+- **Kali NetHunter** is a mobile penetration testing platform for Android devices.
+- **Kali Purple** targets defensive work for blue and purple teams; it first appeared as a technical preview in 2023.1.
+
+### Who it suits
+
+- Professional penetration testers and security auditors
+- Students working toward a penetration testing certification who need a lab toolkit
+- Anyone who needs the full toolset on site without network access
+
+### Good to know
+
+- The project itself does not recommend Kali to people new to Linux or looking for a general-purpose desktop. PPAs and `apt-add-repository` are not supported, and adding untested repositories is an easy way to break the system.
+- Using these tools on networks without authorization can have serious legal consequences.
+- The Kali kernel is not signed, so Secure Boot has to be disabled in the UEFI settings before installing.
+- Being rolling, Kali should be updated every few days or weeks with `sudo apt update` and `sudo apt full-upgrade`, but not in the middle of an engagement, where an update could break a tool you need.
+- Live sessions and the prebuilt VM and ARM images log in as `kali` with the password `kali`.
+
+### A short history
+
+Kali follows a line of earlier projects: Whoppix, WHAX and then BackTrack, which was based on Slackware and later Ubuntu. The first Kali Linux, based on Debian 7, came out on 13 March 2013, and in January 2016 Kali became a rolling distribution built on Debian testing.

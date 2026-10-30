@@ -1,0 +1,53 @@
+---
+title: About OpenMandriva Lx
+description: What sets OpenMandriva Lx, the independent community successor to Mandriva Linux, apart, its release channels, who it suits and what to know first.
+sources:
+  - https://www.openmandriva.org/release-picking/
+  - https://www.openmandriva.org/info-rock/
+  - https://www.openmandriva.org/info-rome/
+  - https://www.openmandriva.org/info-spins/
+  - https://www.openmandriva.org/info-server/
+  - https://www.openmandriva.org/en/doc/association/About/
+  - https://www.openmandriva.org/en/news/article/2026-10-01-openmandriva-rome-26-09/
+  - https://wiki.openmandriva.org/en/distribution
+  - https://wiki.openmandriva.org/en/distribution/releases
+  - https://wiki.openmandriva.org/en/distribution/releases/rome/notes
+  - https://wiki.openmandriva.org/en/distribution/releases/omlx60/notes
+  - https://wiki.openmandriva.org/en/policies/release-plan-and-repositories
+  - https://wiki.openmandriva.org/en/distribution/guides/software-management
+lastReviewed: 2026-10-29
+---
+
+OpenMandriva Lx is an independent community distribution that carries on the line of Mandrake and Mandriva Linux. It is made by the OpenMandriva Association, a nonprofit set up under French law, and no company controls it. The edition the project means for most users is ROME, a rolling release that keeps updating in place instead of waiting for new versions. If you would rather see fewer updates, the fixed Rock release arrives about once a year.
+
+### Highlights
+
+- **Built with Clang.** LLVM/Clang is the default compiler, and the default kernel is compiled with Clang as well, with a GCC-built `kernel-desktop-gcc` available if you need it. Almost every package is built with link-time optimization (LTO).
+- **Builds for AMD Zen.** Besides the generic x86_64 images, znver1 images and repositories target AMD processors from 2017 on (Ryzen, Threadripper, EPYC) and use their newer features. They are meant only for those CPUs.
+- **RPMs managed with dnf.** System packages are RPMs handled by `dnf`; `zypper` works too, and Flatpak is supported. For updates the project recommends `dnf dsync` (distro-sync) rather than `dnf up`.
+- **Its own tools.** The OM Welcome app, the OpenMandriva Control Center, the Dnfdrake package installer and om-repo-picker (the Software Repository Selector) come with the system.
+- **KDE Plasma by default.** The main images ship Plasma, with separate images for an X11 or a Wayland session.
+
+### Editions and variants
+
+- **ROME** is the rolling edition with the newest packages. Expect to solve the occasional problem yourself in a terminal.
+- **Rock** is the stable edition for home and work. Updates are mostly bug and security fixes, and the Rock repositories move to each new stable release on their own. A Plasma Slim image leaves most app choices to you.
+- **Cooker** is the development branch, and the project says plainly that it will break.
+- **Spins** (GNOME, LXQt, Xfce, COSMIC and others) are community-maintained images with other desktops; not everything may work out of the box.
+
+### Who it suits
+
+- Desktop users who want KDE Plasma with current packages
+- Owners of AMD Zen machines such as Ryzen PCs who want to try an optimized build
+- Developers curious about a Clang toolchain and builds with LTO
+
+### Good to know
+
+- Secure Boot is not supported, so switch it off in the firmware settings before installing.
+- Never mix repositories from Rock, ROME and Cooker on one system. The project’s advice for a system broken that way is a fresh install.
+- Libraries held back for legal reasons such as patents sit in the restricted repository, and non-free software such as NVIDIA’s proprietary driver in non-free. Turn them on with om-repo-picker if you need them.
+- The Calamares installer cannot set up LVM or RAID.
+
+### A short history
+
+The project sees itself as the continuation of a line that began with Mandrake Linux in 1998. The OpenMandriva Association was founded in December 2012, and its first release, OpenMandriva Lx 2013.0, followed in November 2013 as the successor to Mandriva Linux 2011. The rolling ROME edition first appeared in September 2022.

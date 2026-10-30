@@ -1,0 +1,42 @@
+---
+title: About Arch Linux
+description: What sets Arch Linux, the independent rolling-release distribution you build up from a minimal base, apart, who it suits and what to know first.
+sources:
+  - https://archlinux.org/download/
+  - https://wiki.archlinux.org/title/Arch_Linux
+  - https://wiki.archlinux.org/title/Frequently_asked_questions
+  - https://wiki.archlinux.org/title/Arch_User_Repository
+  - https://wiki.archlinux.org/title/System_maintenance
+  - https://wiki.archlinux.org/title/Installation_guide
+  - https://wiki.archlinux.org/title/Archinstall
+  - https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot
+lastReviewed: 2026-10-29
+---
+
+Arch Linux is an independently developed, general-purpose distribution for x86-64. It follows a rolling release model: you install once and keep upgrading, with no version jumps. A fresh installation image comes out every month, but it is only a starting point. Most of the developers are unpaid volunteers.
+
+### Highlights
+
+- **Software as upstream ships it.** Packages stay close to what the original developers release. Arch's own patches are mostly backported bug fixes that the next upstream release makes unnecessary, and installing a package does not quietly enable its service.
+- **A minimal base.** A fresh install gives you a command line and nothing more. You choose the desktop, networking tools and everything else, so you know what is on the system and why.
+- **One command to upgrade.** `pacman -Syu` brings the whole system up to date. Arch is pragmatic rather than purist: the official repositories hold proprietary packages alongside free software.
+- **The AUR.** The Arch User Repository collects build scripts (PKGBUILDs) contributed by users, so software outside the official repositories can be built with `makepkg` and installed.
+- **The ArchWiki.** Running since 2005, the wiki is the manual. Instead of graphical configuration tools, Arch expects you to read the docs and edit configuration files yourself.
+
+### Who it suits
+
+- People who want to assemble a system from scratch and learn how Linux fits together
+- Developers who want the latest stable kernel, desktop and toolchain at all times
+- Experienced users who are comfortable reading documentation and fixing their own problems
+
+### Good to know
+
+- There is no graphical installer. Either follow the installation guide by hand or run `archinstall`, the text-based guided installer on the live image. Its defaults differ from a manual install, so say you used it when you ask for help.
+- Check the news on the home page before upgrading; updates that need manual steps are announced there. Partial upgrades are unsupported, so always run `pacman -Syu` rather than `pacman -Sy`.
+- AUR packages are unofficial and not thoroughly vetted. Read each PKGBUILD before building, and remember that keeping AUR packages updated and rebuilt is up to you.
+- The official installation image does not support Secure Boot. Turn it off in the firmware or add a signed boot loader yourself.
+- Only x86_64 is supported. Ports for ARM and i686 are separate projects that Arch does not support.
+
+### A short history
+
+Canadian programmer Judd Vinet started Arch in 2001 and released Arch Linux 0.1 on 11 March 2002, together with his own package manager, pacman. Aaron Griffin took over in late 2007, and in 2020 an election made Levente Polyak the project leader.

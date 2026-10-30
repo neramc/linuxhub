@@ -1,0 +1,49 @@
+---
+title: About Bazzite
+description: What sets Bazzite, the image-based gaming distribution built on Fedora Atomic Desktops, apart, its editions, who it suits and what to know first.
+sources:
+  - https://bazzite.gg/
+  - https://docs.bazzite.gg/General/FAQ/
+  - https://docs.bazzite.gg/General/Fedora_Atomic_Comparison/
+  - https://docs.bazzite.gg/Gaming/Hardware_compatibility_for_gaming/
+  - https://docs.bazzite.gg/General/Installation_Guide/secure_boot/
+  - https://docs.bazzite.gg/Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/
+  - https://raw.githubusercontent.com/ublue-os/bazzite/main/README.md
+  - https://universal-blue.discourse.group/t/bazzite-1-0-announcement/49
+lastReviewed: 2026-10-29
+---
+
+Bazzite is a gaming-focused distribution from the Universal Blue project. It is a customized image of Fedora's Atomic Desktops (Kinoite for KDE Plasma, Silverblue for GNOME), so it follows Fedora's release cycle and updates the whole system as a single image. The latest image on the stable channel is <Latest slug="bazzite" />.
+
+### Highlights
+
+- **Ready to play after installing.** Steam and Lutris come preinstalled, and HDR and VRR work by default. Codecs with hardware video acceleration and drivers for many game controllers are included as well, so most of the setup plain Fedora Atomic needs is already done.
+- **Roll back a bad update.** The previous image stays on disk after each update and can be picked from the boot menu. You can also move to any build from the last 90 days, or pin one that works so it is kept.
+- **Apps kept apart from the system.** Desktop apps come from Flathub through the Bazaar app store, command-line tools from Homebrew, and software packaged for other distributions runs in Distrobox containers. Even Firefox ships as a Flatpak rather than as part of the image.
+- **Common tasks behind a button.** Bazzite Portal and the `ujust` scripts collect frequent tweaks and fixes, and Bazzite Updater lets you update or roll back with nothing but a controller.
+
+### Editions and variants
+
+- **Desktop** images are for PCs and laptops. They have no Steam Gaming Mode and download updates in the background, applying them on the next restart.
+- **Bazzite-Deck** is for handhelds and home theater PCs. Like SteamOS, it boots straight into Steam Gaming Mode, and updates are started from there by hand.
+- **Bazzite-DX** is aimed at software development. There is no ISO for it; you rebase an installed Bazzite onto it.
+- Each edition comes with KDE Plasma or GNOME, with separate images for NVIDIA graphics. The image picker on the website chooses the right one for your hardware.
+
+### Who it suits
+
+- People coming from Windows who want PC gaming without much setup
+- Owners of handhelds such as the Steam Deck, ROG Ally or Legion Go who want a SteamOS-like experience with newer packages
+- Anyone turning a PC under the TV into a controller-driven console
+
+### Good to know
+
+- UEFI and a GPT disk are required; CSM or legacy BIOS boot is not supported.
+- To keep Secure Boot on, enroll Universal Blue's key on the screen that appears after installation, or later with `ujust enroll-secure-boot-key`. Without the key the system will not boot.
+- The kernel and graphics drivers are tied to the image and cannot be changed by hand. NVIDIA cards from the Kepler generation and older (most of the GTX 700 series) are not supported.
+- Switching an installed system between KDE Plasma and GNOME is discouraged; back up your files and reinstall instead.
+- Secondary drives for games should be formatted as Btrfs or Ext4. NTFS and exFAT are not supported.
+- If games are not the main point, Universal Blue's Aurora (KDE Plasma) and Bluefin (GNOME) are the closer fit.
+
+### A short history
+
+Bazzite 1.0 was announced in November 2023 after 192 days of development, as a custom image of Fedora 38. The name follows the mineral names Fedora's Atomic Desktops originally used; bazzite is a blue mineral.

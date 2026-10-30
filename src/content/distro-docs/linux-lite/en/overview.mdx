@@ -1,0 +1,36 @@
+---
+title: About Linux Lite
+description: What sets Linux Lite, the lightweight Xfce distribution on Ubuntu LTS, apart, who it suits and what to know first.
+sources:
+  - https://www.linuxliteos.com/
+  - https://www.linuxliteos.com/download.php
+  - https://www.linuxliteos.com/forums/showthread.php?tid=9866
+  - https://wiki.linuxliteos.com/en/home
+lastReviewed: 2026-10-29
+---
+
+Linux Lite is a community distribution that pairs Ubuntu LTS with the lightweight Xfce desktop, aimed at newcomers to Linux and at older computers alike. Each series is built on one Ubuntu LTS release and continues with point releases on a fixed schedule; the current version is Linux Lite <Latest slug="linux-lite" />.
+
+### Highlights
+
+- **Series that follow a calendar.** A series starts with x.0 in June and usually continues with x.2 through x.8 in November, April, September and the following February. The roadmap is published in advance, and series 8 is planned to be supported until June 2031.
+- **Its own Lite tools.** For series 8 most in-house apps were rewritten in Python and GTK4. Lite Software, a store of about a hundred popular apps, replaces Synaptic; Lite Driver Manager installs the right graphics driver in one click; and Lite Game Center sets up Steam, Lutris, Proton and Wine in one go.
+- **A kernel tuned for the desktop.** The default kernel is built from Ubuntu's kernel source with responsiveness patches such as the BORE scheduler. A gaming kernel with even lower input lag can be added later, and Lite Kernel Manager handles both.
+- **Ready to work.** Firefox, Thunderbird, LibreOffice, VLC, GIMP and the Timeshift backup tool come preinstalled, so the web, mail, documents and media work right after installation. The project packages Firefox and Thunderbird itself, so no PPA is involved.
+
+### Who it suits
+
+- People trying Linux for the first time
+- Anyone who wants to give an older PC a simple desktop again
+- Users who like updates on a predictable, published schedule
+- Players who want gaming tools set up with little effort
+
+### Good to know
+
+- Secure Boot is not supported; turn it off in the firmware settings before installing.
+- Since series 8 the installer is Calamares instead of Ubiquity. It needs no internet connection and offers BTRFS and XFS as file system options.
+- Within a series, install updates and then run Lite Upgrade. To move to a new series, install Lite Series Upgrade with `sudo apt install lite-series-upgrade`; the upgrade takes 30 minutes to two hours, and the project advises a full backup with Clonezilla or Timeshift first.
+
+### A short history
+
+Linux Lite began in 2012. Its major series carry mineral names such as Beryl (2.0), Citrine (3.0), Diamond (4.0) and Fluorite (6.0); series 8, built on Ubuntu 26.04 LTS, is called Hematite.

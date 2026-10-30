@@ -1,0 +1,43 @@
+---
+title: MX Linux 소개
+description: antiX와 옛 MEPIS 커뮤니티가 함께 만드는 Debian 안정판 기반 배포판 MX Linux의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://mxrepo.com/mx/repo/pool/main/m/mx-docs/mx-docs-en_202609130mx25_all.deb
+  - https://sourceforge.net/projects/mx-linux/
+  - https://sourceforge.net/projects/mx-linux/files/Final/Xfce/
+lastReviewed: 2026-10-29
+---
+
+MX Linux는 antiX와 옛 MEPIS 커뮤니티가 함께 만드는 데스크톱 배포판입니다. Debian 안정판을 바탕으로 한 고정 릴리스이며, 지금 최신 버전은 MX Linux <Latest slug="mx-linux" />입니다. 스스로를 가볍지도 무겁지도 않은 "중간 무게" 시스템이라 부르며, 쉬운 설정과 안정성을 함께 노립니다.
+
+### 특징
+
+- **MX 도구 모음.** 부트로더 복구, 부팅 옵션, 라이브 USB 만들기처럼 명령어로는 번거로운 일을 MX Tools의 그래픽 도구로 처리합니다. 일부는 antiX에서 가져와 다듬은 것입니다.
+- **안정판 위에 새 앱.** MX Package Installer 하나로 Debian 안정판뿐 아니라 MX Test 저장소, Debian Backports, Flatpak, Snap의 앱까지 찾아 설치합니다. 시스템은 그대로 두고 자주 쓰는 앱만 새 버전으로 받을 수 있습니다.
+- **init을 부팅할 때 고릅니다.** MX 25부터 설치 이미지에 systemd와 SysVinit이 함께 들어 있고, 라이브 부팅 메뉴에서 고른 쪽이 설치한 시스템에도 이어집니다.
+- **들고 다니는 시스템.** USB에 설정과 파일을 저장하며 라이브로 쓸 수 있고, MX Snapshot으로 지금 시스템을 부팅 가능한 ISO로 만들 수 있습니다. 공식 월간 업데이트 ISO도 이 도구로 만듭니다.
+- **Debian과 같은 지원 기간.** 보안 업데이트는 Debian에서 오며 최대 5년간 이어집니다. 지금 버전의 기반 Debian은 <Latest slug="mx-linux" field="eol" />까지 지원될 예정입니다.
+
+### 에디션과 변형
+
+- **Xfce**가 대표 에디션이고, **KDE Plasma**판과 **Fluxbox**판이 따로 나옵니다.
+- **Xfce AHS**판은 표준판보다 새로운 펌웨어와 그래픽 드라이버를 담아, 10세대 Intel이나 AMD Ryzen 그래픽 같은 최근 하드웨어에 권장됩니다. KDE판도 AHS 구성을 따릅니다.
+- Raspberry Pi용 arm64 이미지(respin)도 함께 내려받을 수 있습니다.
+
+### 이런 분께 맞습니다
+
+- Debian의 안정성을 원하면서 설정은 그래픽 도구로 끝내고 싶은 사용자
+- 사양이 높지 않은 PC에서 Xfce 데스크톱을 쓰려는 사람
+- systemd 대신 SysVinit을 쓰고 싶은 사람
+- 자기 환경을 라이브 USB에 담아 다니거나 자기만의 ISO를 만들고 싶은 사람
+
+### 알아 둘 점
+
+- Ubuntu가 아니라 Debian 기반이라 Ubuntu용 PPA나 명령이 맞지 않을 수 있습니다.
+- Secure Boot는 Debian이 서명한 부트로더와 기본 커널을 쓸 때만 동작합니다. Liquorix 같은 다른 커널로 바꾸면 꺼야 하고, AHS판과 KDE판은 처음부터 지원하지 않습니다.
+- 하드웨어가 바로 동작하도록 Broadcom 무선 드라이버 같은 일부 비자유 소프트웨어가 기본으로 들어 있습니다. 목록은 `vrms`로 확인합니다.
+- MX 25부터 64비트 이미지만 나옵니다. 32비트 PC라면 MX 23이나 antiX를 살펴봅니다.
+
+### 간단한 역사
+
+MX Linux는 2014년에 처음 나왔습니다. antiX와 MEPIS 커뮤니티가 각자의 도구와 경험을 모은 공동 프로젝트로 시작했고, Warren Woodford가 처음 만든 작업과 아이디어를 이어받았습니다.

@@ -1,0 +1,45 @@
+---
+title: About EndeavourOS
+description: What sets EndeavourOS, the community distribution that makes a near-Arch system easy to install and leaves the rest to the terminal, apart, its variants, who it suits and what to know first.
+sources:
+  - https://endeavouros.com/
+  - https://endeavouros.com/about-us/
+  - https://endeavouros.com/endeavouros-arm/
+  - https://discovery.endeavouros.com/
+  - https://discovery.endeavouros.com/live-iso-tricks-tips/
+  - https://discovery.endeavouros.com/welcome/
+  - https://discovery.endeavouros.com/mirrors-intro/
+  - https://discovery.endeavouros.com/does-endeavouros-frown-upon-gui-solutions-for-pacman/
+lastReviewed: 2026-10-29
+---
+
+EndeavourOS is a community-built distribution based on Arch Linux. It gets a lightweight, close-to-Arch system onto your disk with a graphical installer, then expects you to look after it from the terminal. It is a rolling release: once installed, the system keeps updating rather than moving between versions.
+
+### Highlights
+
+- **Close to Arch.** System packages come straight from the Arch repositories. Only EndeavourOS’s own packages, such as its tools, come from a separate repository, which is why there is one mirror list for Arch and another for EndeavourOS.
+- **Online install by default.** The online method pulls current packages from the mirrors and builds the system from scratch, so it is up to date the moment installation ends. You can pick one of several desktops, or none at all.
+- **Terminal-first tooling.** No graphical package manager is installed by default. You get `pacman` and the AUR helper `yay`, and the choice of a graphical front end is left to you.
+- **Welcome app and hardware tool.** The Welcome app, shown during installation and at first login, helps with jobs like refreshing mirrors and points to the documentation. `eos-hwtool` handles drivers for graphics cards and virtual machines.
+- **Your choice of boot loader.** systemd-boot is the default and GRUB covers older BIOS machines. You can also skip installing one and add EndeavourOS to a boot loader you already use.
+
+### Editions and variants
+
+- **One ISO for PCs**, with the desktop chosen during installation. The offline method, for installing without a network, installs KDE Plasma only.
+- **EndeavourOS ARM** is a community-driven release with images for the Raspberry Pi 4b and 5b, Odroid N2 and PineBook Pro, plus headless server images for the Raspberry Pi and Odroid N2.
+
+### Who it suits
+
+- People who want Arch but would rather get through the first install with a graphical installer
+- Intermediate users who like to start lean and shape the system themselves
+- Anyone who values an active forum where questions get answered
+
+### Good to know
+
+- Secure Boot is not supported; in most cases you have to turn it off in the firmware to install.
+- An offline install puts down the packages as they were when the ISO was built. The first update may then need manual fixes for what changed in between, so check the announced update issues before running it.
+- Frequent updates are part of a rolling release, so have a way back. Discovery, the official knowledge base, recommends Timeshift snapshots.
+
+### A short history
+
+When the Arch-based Antergos ended in May 2019, a new forum set up to keep its community together grew into a new distribution. The first stable release, with an Xfce desktop, came out on 15 July 2019, and the ARM release followed in September 2020. Since Atlantis in December 2021, releases have been named after spacecraft.

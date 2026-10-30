@@ -1,0 +1,40 @@
+---
+title: About Qubes OS
+description: What sets Qubes OS, the security-focused desktop system that splits your work into isolated Xen virtual machines called qubes, apart, who it suits and what to know first.
+sources:
+  - https://doc.qubes-os.org/en/latest/introduction/intro.html
+  - https://doc.qubes-os.org/en/latest/introduction/getting-started.html
+  - https://doc.qubes-os.org/en/latest/introduction/faq.html
+  - https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/supported-releases.html
+  - https://doc.qubes-os.org/en/latest/user/advanced-topics/kde.html
+  - https://www.qubes-os.org/team/
+lastReviewed: 2026-10-29
+---
+
+Qubes OS is a security-oriented operating system for single-user desktop computing. A bare-metal Xen hypervisor divides the computer into isolated virtual machines called qubes, which is why the project describes itself as closer to a "Xen distribution" than a Linux one. The admin qube that manages everything, dom0, is based on Fedora. Each release is supported until six months after the next one comes out; the current version is Qubes OS <Latest slug="qubes-os" />.
+
+### Highlights
+
+- **Compartments that contain the damage.** Qubes starts from the assumption that all software has bugs and some will be exploited. A fresh install comes with qubes such as `work`, `personal`, `untrusted` and `vault`, and if one is compromised, the attack stays inside it.
+- **Colored window borders.** Windows from every qube share one desktop, but each carries an unforgeable border in its qube's color, so the banking window and the casual browsing window are hard to mix up.
+- **Templates.** App qubes share a template's root file system without being able to change it. Install a program once in the template, update the template, and every qube based on it is updated too. Fedora and Debian templates are officially supported, and Windows qubes are possible.
+- **Networking and USB kept apart.** Network cards and USB controllers are handled by service qubes such as `sys-net` and `sys-usb`, while dom0 has no network access at all.
+- **Disposables and Whonix.** Disposable qubes are created on the fly and destroyed when shut down, Whonix integration runs Tor system-wide, and Split GPG keeps private keys safer.
+
+### Who it suits
+
+- Journalists, activists, whistleblowers and researchers who are likely to be targeted
+- Anyone who wants work, personal life and banking strictly separated on a single computer
+- Linux users willing to accept a more involved workflow in exchange for strong isolation
+
+### Good to know
+
+- Real isolation requires Intel VT-x and VT-d (or AMD-V and AMD-Vi) enabled in the firmware. With several virtual machines running at once, plenty of RAM and a fast SSD make a big difference.
+- Qubes is meant to be installed on bare metal. Running it inside a virtual machine is not supported, and dual-booting with another system is discouraged as a security risk.
+- UEFI Secure Boot is not supported out of the box.
+- Software installed inside an app qube is gone after a restart; install it in the template instead, and never run ordinary apps in dom0.
+- There is no GPU virtualization: graphics are rendered on the CPU. Games and GPU-accelerated video editing can be made to work, but the project does not recommend it.
+
+### A short history
+
+Qubes OS was founded by Joanna Rutkowska, and Release 1 came out on 3 September 2012. Xfce replaced KDE as the default desktop in Release 3.2, and dom0 has moved from Fedora 13 in Release 1 to Fedora 41 in Release 4.3.

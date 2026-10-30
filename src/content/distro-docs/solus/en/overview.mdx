@@ -1,0 +1,53 @@
+---
+title: About Solus
+description: What sets Solus, the independent distribution built from scratch for the desktop, apart, its editions, who it suits and what to know first.
+sources:
+  - https://getsol.us/download/
+  - https://getsol.us/about/organization/
+  - https://getsol.us/about/technology/
+  - https://getsol.us/2015/12/27/solus-1-0-released/
+  - https://getsol.us/2023/04/18/a-new-voyage/
+  - https://getsol.us/2025/10/11/a-new-epoch-begins/
+  - https://getsol.us/2026/05/clearing-up-the-fog/
+  - https://help.getsol.us/docs/user/editions/
+  - https://help.getsol.us/docs/user/package-management/basics/
+  - https://help.getsol.us/docs/user/package-management/history-and-rollback/
+  - https://help.getsol.us/docs/user/package-management/repo-management/
+  - https://help.getsol.us/docs/user/software/third-party/
+  - https://help.getsol.us/docs/user/quick-start/installation/secure-boot/
+lastReviewed: 2026-10-29
+---
+
+Solus is an independent distribution built from scratch for the desktop rather than on top of another distribution. A small, independent team of volunteers develops it. The project calls its model “stable rolling”: tested updates keep arriving, and an installed system is meant to be updated indefinitely rather than reinstalled.
+
+### Highlights
+
+- **Rolling, with a checkpoint.** New packages land in the Unstable repository first and, once tested, are moved over in one step to the stable repository, Polaris, which systems use by default. The aim is the stability of a long-term release without waiting months for new software.
+- **Ready when you are.** The goal is a desktop you can install and start working on straight away, without a round of fixes and tweaks. Each edition comes with its desktop already set up and a sensible set of apps.
+- **eopkg, with undo.** The package manager is `eopkg`, a fork of Pardus’s PiSi. `eopkg history` lists every software change, and `eopkg history -t` takes the system back to an earlier point.
+- **Flatpak first.** For apps the repository does not carry, Flatpak is the preferred route, and Snap and AppImage work too.
+
+### Editions and variants
+
+- **Budgie** is the desktop that has grown up alongside Solus since the project’s early days, with the Raven panel for notifications and media controls and its own settings app.
+- **GNOME** ships with a few extensions so it is ready to go.
+- **Plasma** comes with polished defaults and is aimed at people who like to tinker.
+- **Xfce** keeps things light for less powerful computers.
+
+### Who it suits
+
+- Users who want a desktop that works out of the box and still stays current
+- People who would rather keep one system for years than reinstall or upgrade between versions
+- Anyone looking for a distribution focused on personal computers rather than servers
+
+### Good to know
+
+- Booting the installer with Secure Boot on needs a one-time manual enrollment of the Solus certificate. If you would rather skip that step, turn Secure Boot off in the firmware.
+- A small team looks after thousands of packages, so an app you want may be missing. There is a separate method for apps such as Google Chrome that licensing keeps out of the main repository, but it is due to be retired; Flatpak is the better choice.
+- The Unstable repository is for people who build or test packages. Everyone else stays on the default stable repository.
+- The project plans to move to AerynOS tooling in the future. Even large changes, such as the move to the new stable repository, were planned to reach systems automatically through ordinary updates.
+- Solus runs on 64-bit (x86_64) PCs only.
+
+### A short history
+
+Ikey Doherty started the project as Evolve OS, and a trademark dispute led to the new name, Solus. Solus 1.0 was released on December 27, 2015. In 2023 development restarted on new infrastructure under a new organizational structure.

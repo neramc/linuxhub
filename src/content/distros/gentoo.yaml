@@ -39,6 +39,17 @@ logo:
   source: https://wiki.gentoo.org/images/6/6b/Gentoo-logo.svg
   license: CC-BY-SA-2.5 (vector version of the Gentoo "g" logo by Lennart Andre Rolland, per the Gentoo wiki); Gentoo is a trademark of the Gentoo Foundation, Inc. and of Förderverein Gentoo e.V.
   trademark: https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html
+screenshot:
+  file: gentoo.webp
+  source: https://commons.wikimedia.org/wiki/File:Gentoo_Live_GUI_USB_running_KDE.png
+  author: Gentoo and KDE Developers
+  license: GPLv3 / CC BY-SA 3.0
+  alt:
+    ko: Gentoo 라이브 GUI USB로 띄운 KDE Plasma 5.24 데스크톱. 시스템 설정의 이 시스템 정보 화면이 Gentoo 로고와 함께 소프트웨어 버전과 하드웨어 정보를 보여 주고, 화면 아래에 패널이 있습니다.
+    en: "The KDE Plasma 5.24 desktop of the Gentoo live GUI USB: System Settings shows About this System with the Gentoo logo, the software versions and the hardware, above the bottom panel."
+  caption:
+    ko: Gentoo 라이브 GUI USB의 KDE Plasma 데스크톱(2022년 화면)
+    en: The Gentoo live GUI USB with KDE Plasma (a 2022 screenshot)
 download:
   strategy: mirrors
 sources:

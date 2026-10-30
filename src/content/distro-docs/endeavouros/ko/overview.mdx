@@ -1,0 +1,45 @@
+---
+title: EndeavourOS 소개
+description: Arch에 가까운 시스템을 쉽게 설치하고 터미널로 가꿔 가는 커뮤니티 배포판 EndeavourOS의 특징과 변형, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://endeavouros.com/
+  - https://endeavouros.com/about-us/
+  - https://endeavouros.com/endeavouros-arm/
+  - https://discovery.endeavouros.com/
+  - https://discovery.endeavouros.com/live-iso-tricks-tips/
+  - https://discovery.endeavouros.com/welcome/
+  - https://discovery.endeavouros.com/mirrors-intro/
+  - https://discovery.endeavouros.com/does-endeavouros-frown-upon-gui-solutions-for-pacman/
+lastReviewed: 2026-10-29
+---
+
+EndeavourOS는 Arch Linux를 바탕으로 커뮤니티가 함께 만드는 배포판입니다. Arch에 가까운 가벼운 기본 시스템을 그래픽 설치 프로그램으로 손쉽게 설치하게 해 주고, 그 뒤의 관리는 터미널에서 직접 하는 것을 전제로 합니다. 롤링 릴리스 방식이라 한 번 설치한 시스템을 다시 설치하지 않고 계속 업데이트하며 씁니다.
+
+### 특징
+
+- **Arch에 가까운 구성.** 시스템 패키지는 Arch 저장소에서 받고, EndeavourOS가 만든 도구 같은 자체 패키지만 별도 저장소에서 받습니다. 그래서 미러 목록도 Arch용과 EndeavourOS용이 따로 있습니다.
+- **온라인 설치가 기본.** 온라인 방식은 미러에서 최신 패키지를 받아 시스템을 새로 구성하므로 설치가 끝나면 바로 최신 상태입니다. 여러 데스크톱 가운데 하나를 고르거나 데스크톱 없이 설치할 수도 있습니다.
+- **터미널 중심의 기본 도구.** 그래픽 패키지 관리자는 기본으로 넣지 않고 `pacman`과 AUR 도우미 `yay`를 미리 설치해 둡니다. 어떤 그래픽 도구를 쓸지는 사용자가 고르도록 남겨 둔 것입니다.
+- **Welcome 앱과 하드웨어 도구.** 설치 중과 첫 로그인 때 뜨는 Welcome 앱이 미러 갱신이나 문서 안내 같은 일을 돕고, `eos-hwtool`이 그래픽 카드와 가상 머신용 드라이버를 맡습니다.
+- **부트로더 선택.** 기본은 systemd-boot이고 구형 BIOS 시스템에는 GRUB을 씁니다. 부트로더를 설치하지 않고 이미 쓰는 부트로더에 직접 추가하는 방법도 있습니다.
+
+### 에디션과 변형
+
+- **PC용 ISO**는 하나이며 데스크톱은 설치 중에 고릅니다. 네트워크 없이 설치하는 오프라인 방식은 KDE Plasma만 설치합니다.
+- **EndeavourOS ARM**은 커뮤니티가 꾸려 가는 ARM 판입니다. Raspberry Pi 4b와 5b, Odroid N2, PineBook Pro용 이미지가 있고, Raspberry Pi와 Odroid N2용 헤드리스 서버 이미지도 따로 있습니다.
+
+### 이런 분께 맞습니다
+
+- Arch를 쓰고 싶지만 첫 설치는 그래픽 설치 프로그램으로 빠르게 끝내고 싶은 사람
+- 군더더기 없는 시스템에서 시작해 직접 손보며 꾸려 가려는 중급 사용자
+- 포럼에서 묻고 답하는 활발한 커뮤니티를 중요하게 여기는 사람
+
+### 알아 둘 점
+
+- Secure Boot를 지원하지 않습니다. 대부분의 경우 펌웨어에서 Secure Boot를 꺼야 설치할 수 있습니다.
+- 오프라인 설치는 ISO를 만든 시점의 패키지를 그대로 설치합니다. 첫 업데이트 때 그사이의 변화 때문에 직접 손봐야 할 일이 생길 수 있으니, 먼저 공지된 업데이트 문제를 확인하는 것이 좋습니다.
+- 롤링 릴리스는 업데이트가 잦은 만큼 문제가 생길 때 되돌릴 방법이 필요합니다. 공식 지식 베이스 Discovery는 Timeshift 스냅숏을 권합니다.
+
+### 간단한 역사
+
+2019년 5월 Arch 기반 배포판 Antergos가 개발을 마치자, 그 커뮤니티를 이어 가려고 연 새 포럼이 새 배포판 프로젝트로 발전했습니다. 2019년 7월 15일 Xfce 데스크톱을 담은 첫 안정 릴리스가 나왔고, 2020년 9월에는 ARM 판이 공개되었습니다. 2021년 12월의 Atlantis부터는 릴리스에 우주선 이름을 붙입니다.

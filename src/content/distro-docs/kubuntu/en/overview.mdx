@@ -1,0 +1,43 @@
+---
+title: About Kubuntu
+description: What sets Kubuntu, the official Ubuntu flavor with KDE Plasma, apart, how long it is supported, who it suits and what to know first.
+sources:
+  - https://kubuntu.org/about/
+  - https://kubuntu.org/discover/
+  - https://kubuntu.org/download/
+  - https://kubuntu.org/news/kubuntu-26-04-release-notes/
+  - https://kubuntu.org/news/kubuntu-26-10-release-notes/
+  - https://kubuntu.org/news/plasma-6.6-lts/
+  - https://kubuntu.org/news/kubuntu-26-04-1-bullet-proof-kde/
+  - https://ubuntu.com/desktop/flavors
+  - https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/kubuntu-26.04.1-desktop-amd64.manifest
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2005-April/000024.html
+lastReviewed: 2026-10-29
+---
+
+Kubuntu is the official Ubuntu flavor built around the KDE Plasma desktop. It is made and supported by a community team rather than by Canonical, and follows Ubuntu’s schedule: a new version every six months and a long-term support (LTS) release every second April. The current version is Kubuntu <Latest slug="kubuntu" />.
+
+### Highlights
+
+- **KDE on an Ubuntu base.** Packages and updates come straight from Ubuntu’s archive, with Plasma and KDE apps such as Dolphin, Okular and Gwenview on top. It is an official part of Ubuntu sharing the same archive, not a fork.
+- **Discover and snaps.** Apps are installed from KDE’s Discover, which handles both deb packages from the Ubuntu archive and snaps. Firefox ships as a snap.
+- **Wayland by default.** The Plasma Wayland session is the default and the only one the Kubuntu team supports; the X11 session is not installed.
+- **Calamares installer.** Unlike Ubuntu Desktop, Kubuntu installs with Calamares, an installer shared by many distributions.
+- **KDE fixes for the whole LTS.** Starting with 26.04 LTS, the Bullet-Proof KDE initiative brings bug and security fixes to Plasma, KDE Frameworks and the KDE apps for the full LTS lifetime. Hardware partner Kubuntu Focus funds it, with Kubuntu, KDE and Techpaladin Software doing the work.
+
+### Who it suits
+
+- People who like to fine-tune their desktop, down to panels, widgets and themes
+- Users who want KDE software with Ubuntu’s archive and release schedule underneath
+- Anyone who wants to pair a phone with the PC through KDE Connect
+
+### Good to know
+
+- LTS releases are supported for three years, shorter than Ubuntu Desktop’s five. Interim releases get nine months.
+- If you really need X11, install `plasma-session-x11` yourself; the Kubuntu team does not support it, and 26.10 is the last release that offers the package.
+- To move from an LTS to an interim release, switch release upgrades to “Normal releases” in `software-properties-qt` and run the release upgrader.
+- If panels or themes look broken after an upgrade, reapply your global theme in System Settings under Colors & Themes, including the desktop and window layouts.
+
+### A short history
+
+The first release, Kubuntu 5.04, arrived in April 2005 alongside Ubuntu 5.04 “Hoary Hedgehog”. It grew out of the work to bring KDE 3.4 into Ubuntu’s main repository and came with a promise of 18 months of support.

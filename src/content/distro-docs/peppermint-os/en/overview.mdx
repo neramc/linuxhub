@@ -1,0 +1,47 @@
+---
+title: About Peppermint OS
+description: What sets Peppermint OS, the minimal Debian- and Devuan-based Xfce distribution that leaves app choices to you, apart, its variants, who it suits and what to know first.
+sources:
+  - https://peppermintos.com/
+  - https://peppermintos.com/about/
+  - https://peppermintos.com/trixie-base-downloads/
+  - https://peppermint_os.codeberg.page/html/
+  - https://peppermintos.com/2010/05/come-and-get-it/
+  - https://peppermintos.com/2025/10/peppermint-os-trixie-base-released/
+  - https://peppermintos.com/2026/03/where-are-we-for-2026-in-peppermintos-world/
+  - https://peppermintos.com/2026/06/peppermintos-devuan-release-excalibur/
+  - https://peppermintos.com/2026/09/testing-updated-pepdebian-build-and-shift-to-xlibre/
+  - https://peppermintos.com/2026/10/pepvoid-update-and-continued-testing/
+lastReviewed: 2026-10-29
+---
+
+Peppermint OS is a community-made Xfce distribution built on Debian stable and on Devuan. It installs only the packages needed to run the system and leaves the rest of the software up to you. There are no version numbers: the system takes updates straight from its base, and the ISOs are rebuilt from time to time and identified by build date.
+
+### Highlights
+
+- **A nearly empty start.** A fresh install has no web browser, office suite, media player or firewall. Everyone uses different apps, the project reasons, so you build up a clean system without removing anything first.
+- **Tools that help you choose.** The Suggested section of the welcome screen offers packages picked by a community vote and the web browsers available in the Debian repositories. Peppermint's own tools include Kumo, which opens websites as standalone app windows, and xDaily, which updates the system, cleans caches and trims SSDs in one run, from the terminal or a GUI.
+- **Install once.** Updates and point releases arrive from Debian and Devuan, and improvements to Peppermint's tools reach existing installs without a new ISO. The goal is a system you keep rather than reinstall.
+- **APT first.** Apps come from the Debian or Devuan repositories through APT; Flatpak, Snap and AppImage are third-party sources you enable yourself when something is missing.
+
+### Editions and variants
+
+- The **Debian-based Flagship** is the main build and uses systemd.
+- The **Devuan-based build** has the same desktop and tools without systemd, and lets you pick SysVinit, OpenRC or runit as the init system during installation. A few apps that require systemd are left out.
+- **PepVoid**, built on the rolling Void Linux, is a newer branch that is only available as test builds for now.
+
+### Who it suits
+
+- People who want an uncluttered desktop with only the apps they choose
+- Anyone who wants a Debian-family system without systemd
+- Users who want to install once and keep the system for years
+
+### Good to know
+
+- With no browser installed, your first task is picking one on the welcome screen, so newcomers have a little more to do than on most distributions.
+- The desktop runs on X11 only, with no plans to move to Wayland for now. Upcoming ISO refreshes replace Xorg with XLibre as the display server.
+- Current images are 64-bit only, and the team has not decided whether 32-bit builds will continue.
+
+### A short history
+
+The first release, Peppermint OS One, came out in May 2010. For some years the project was largely one person's effort; today the community and the development team build it together, and since the February 2022 release it has followed Debian and Devuan without version numbers.

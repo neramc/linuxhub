@@ -40,6 +40,18 @@ logo:
   source: https://static.opensuse.org/favicon.svg
   license: CC BY-SA 3.0 (openSUSE artwork default); openSUSE logo trademark, used to identify the project
   trademark: https://en.opensuse.org/openSUSE:Trademark_guidelines
+screenshot:
+  file: opensuse.webp
+  source: https://commons.wikimedia.org/wiki/File:KDE_Plasma_6_screenshot_(openSUSE_dark_mode).png
+  author: "VulcanSphere (software: KDE, openSUSE)"
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: openSUSE에서 띄운 KDE Plasma 6 데스크톱(어두운 테마). 혜성과 구름이 있는 일러스트 바탕 위에 애플리케이션 메뉴가 열려 있고, 즐겨찾기에 시스템 설정, Dolphin, YaST 같은 앱이 보입니다. 화면 아래에 패널이 있습니다.
+    en: "The KDE Plasma 6 desktop on openSUSE in dark mode: over an illustrated wallpaper of a comet and clouds, the application menu is open with favorites such as System Settings, Dolphin and YaST, above the bottom panel."
+  caption:
+    ko: openSUSE Tumbleweed의 KDE Plasma 6 데스크톱(어두운 테마)
+    en: openSUSE Tumbleweed with the KDE Plasma 6 desktop in dark mode
 download:
   strategy: redirector
 sources:

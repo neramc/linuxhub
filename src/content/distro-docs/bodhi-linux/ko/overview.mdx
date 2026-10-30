@@ -1,0 +1,44 @@
+---
+title: Bodhi Linux 소개
+description: Enlightenment에서 갈라져 나온 Moksha 데스크톱을 쓰는 Ubuntu LTS 기반 경량 배포판 Bodhi Linux의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.bodhilinux.com/
+  - https://www.bodhilinux.com/w/what-is-bodhi-linux/
+  - https://www.bodhilinux.com/w/release-cycle/
+  - https://www.bodhilinux.com/w/selecting-the-correct-iso-image/
+  - https://www.bodhilinux.com/w/release-roadmap/
+  - https://www.bodhilinux.com/2023/08/21/introducing-bodhi-linux-7-0-a-landmark-release/
+  - https://www.bodhilinux.com/2025/03/12/the-road-ahead-bodhi-linuxs-future-and-behind-the-scenes-development/
+lastReviewed: 2026-10-29
+---
+
+Bodhi Linux는 최소한의 기본 구성과 자체 Moksha 데스크톱, 이 두 가지를 중심에 둔 가벼운 배포판입니다. 메이저 버전마다 그때의 최신 Ubuntu LTS를 바탕으로 삼으며, 지금 최신 버전은 Bodhi Linux <Latest slug="bodhi-linux" />입니다. 이름은 깨달음을 뜻하는 산스크리트어 낱말에서 왔습니다.
+
+### 특징
+
+- **Moksha 데스크톱.** Bodhi가 처음 썼던 Enlightenment e17을 이어 가는 데스크톱입니다. 새 기능과 이후 Enlightenment 버전의 기능을 더해 왔고, 설정을 숨기지 않고 모두 드러내 원하는 만큼 손볼 수 있게 합니다. 테마와 배경, 모듈로 겉모습과 기능을 더할 수 있습니다.
+- **필요한 것만 남긴 기본 구성.** 기본 앱은 터미널, 웹 브라우저, 파일 관리자, 텍스트 편집기, 이미지 뷰어 정도입니다. 나머지는 사용자가 `apt`, Synaptic, Bodhi AppCenter에서 골라 설치한다는 생각입니다. 다른 웹 브라우저는 Web Browser Manager로 쉽게 바꿔 깔 수 있습니다.
+- **반쯤 롤링하는 릴리스.** 프로젝트는 스스로 "세미 롤링"이라고 부릅니다. 다시 설치할 일은 약 2년마다 나오는 새 메이저 버전 때뿐이고, 그 사이 현재 메이저 버전은 보안 업데이트와 함께 AppCenter의 앱 업데이트도 받습니다. 이전 메이저 버전은 보안 업데이트만 이어집니다.
+
+### 에디션과 변형
+
+- **Standard**는 최소 구성의 기본 판입니다.
+- **HWE**는 Standard에 최신 커널을 더한 판이고, **s76**은 그보다 더 새 커널을 담아 아주 최신 하드웨어를 겨냥합니다.
+- **AppPack**은 LibreOffice, GIMP 같은 앱과 여러 테마를 미리 넣은 판입니다.
+- 32비트 PC용 **Legacy** 판과, Debian을 바탕으로 한 **Debian Edition**(베타)도 있습니다.
+
+### 이런 분께 맞습니다
+
+- 오래되거나 사양이 낮은 PC를 가볍게 되살리고 싶은 사람
+- 처음부터 필요한 앱만 골라 자기 환경을 쌓고 싶은 사람
+- 데스크톱의 세세한 설정과 모양을 직접 만지는 것을 즐기는 사용자
+
+### 알아 둘 점
+
+- 새 메이저 버전으로 옮길 때는 제자리 업그레이드가 아니라 다시 설치해야 합니다.
+- 위키는 약 2년마다 메이저 버전이 나온다고 안내하지만, 7.0(2023년 8월, Ubuntu 22.04 기반) 다음의 Bodhi 8은 2025년 3월 공지 때 아직 개발 중이었습니다. 내려받기 전에 공식 소식을 확인해 두면 좋습니다.
+- 활동하는 팀원이 많지 않은 작은 프로젝트입니다. 도움은 위키와 포럼, Discord 채팅에서 얻습니다.
+
+### 간단한 역사
+
+Bodhi는 Enlightenment e17 데스크톱으로 시작했고, 이를 이어 가기 위해 Moksha를 만들었습니다. Ubuntu 10.04 기반의 1.x부터 Ubuntu 22.04 기반의 7.0까지, 메이저 버전마다 그때의 최신 Ubuntu LTS를 바탕으로 삼아 왔습니다.

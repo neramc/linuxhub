@@ -1,0 +1,43 @@
+---
+title: Ubuntu MATE 소개
+description: 전통적인 MATE 데스크톱을 쓰는 Ubuntu 공식 플레이버 Ubuntu MATE의 특징과 어울리는 사용자, 알아 둘 점.
+sources:
+  - https://ubuntu-mate.org/about/
+  - https://ubuntu-mate.org/about/history/
+  - https://ubuntu-mate.org/about/requirements/
+  - https://ubuntu-mate.org/features/
+  - https://ubuntu-mate.org/features/panel/
+  - https://ubuntu-mate.org/download/
+  - https://ubuntu-mate.org/raspberry-pi/download/
+  - https://ubuntu-mate.org/blog/
+  - https://ubuntu-mate.org/blog/ubuntu-mate-stonking-stingray-release-notes/
+  - https://ubuntu-mate.org/blog/ubuntu-mate-noble-numbat-release-notes/
+  - https://ubuntu.com/desktop/flavors
+lastReviewed: 2026-10-29
+---
+
+Ubuntu MATE는 GNOME 2를 이어 온 MATE 데스크톱을 쓰는 Ubuntu 공식 플레이버입니다. 전통적인 데스크톱 배치를 좋아하는 사람을 위해 커뮤니티가 만들며, Ubuntu 릴리스에 맞춰 새 버전을 냅니다. 지금 최신 버전은 Ubuntu MATE <Latest slug="ubuntu-mate" />입니다.
+
+### 특징
+
+- **GNOME 2를 잇는 데스크톱.** MATE는 10년 넘게 여러 리눅스 배포판의 기본이던 GNOME 2를 이어 온 데스크톱이라 오래 다듬어졌습니다. 파일 관리자 Caja, 편집기 Pluma 같은 MATE 앱이 하나의 제어 센터로 관리됩니다.
+- **MATE Tweak으로 고르는 패널 배치.** Windows 사용자에게 익숙한 Redmond, macOS처럼 독과 메뉴 막대를 둔 Cupertino, Unity 사용자에게 익숙한 Mutiny 같은 템플릿을 고른 뒤 위젯과 패널을 더하고 뺄 수 있습니다.
+- **합성 효과가 필요 없는 가벼움.** 화면 합성(compositing)을 돌리기 버거운 컴퓨터에서도 쓸 수 있는 Ubuntu를 목표로 하며, LTSP나 X2Go 같은 원격 작업 환경도 염두에 둡니다. 디스플레이 서버는 X.org입니다.
+- **Ubuntu에 맞춘 구성.** 24.04부터 Ubuntu와 같은 설치 프로그램과 App Center를 쓰며, 예전의 Software Boutique와 Welcome 앱은 은퇴했습니다.
+
+### 이런 분께 맞습니다
+
+- GNOME 2 시절이나 Windows, macOS와 비슷한 전통적인 화면 배치를 원하는 사람
+- 메모리 2GB 정도의 오래된 PC를 계속 쓰려는 사용자
+- LTSP나 X2Go로 원격 데스크톱 환경을 꾸리려는 관리자
+
+### 알아 둘 점
+
+- 프로젝트가 한동안 쉬면서 26.04 LTS를 내지 않았고, 새 팀이 26.10으로 돌아왔습니다. 장기 지원이 필요하면 2027년 4월까지 지원되는 24.04 LTS에 머물거나, 9개월마다 다음 중간 릴리스로 올려야 합니다.
+- 26.10부터 initramfs-tools 대신 dracut을, ifupdown 대신 netplan을 쓰고 gdebi는 ISO에서 빠졌습니다. 이런 도구에 기대던 스크립트는 미리 점검합니다.
+- 오프라인 업그레이드는 지원하지 않으므로 공식 미러에 연결된 상태에서 업그레이드합니다.
+- Raspberry Pi용 이미지는 더 이상 나올 가능성이 낮습니다. Raspberry Pi에서는 Ubuntu를 설치한 뒤 `ubuntu-mate-desktop` 패키지를 추가하는 방법이 안내되어 있지만, 공식 지원 방식은 아닙니다.
+
+### 간단한 역사
+
+Martin Wimpress와 Alan Pope가 시작한 프로젝트로, 2014년 14.10이 첫 릴리스였습니다. 15.04부터 공식 플레이버가 되었고, 16.04가 첫 공식 LTS였습니다.

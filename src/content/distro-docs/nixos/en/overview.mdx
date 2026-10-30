@@ -1,0 +1,43 @@
+---
+title: About NixOS
+description: What sets NixOS, the distribution where one declarative configuration describes the whole system, apart, its channels, who it suits and what to know first.
+sources:
+  - https://nixos.org/
+  - https://nixos.org/download/
+  - https://nixos.org/manual/nixos/stable/
+  - https://nixos.org/governance/
+  - https://nixos.org/blog/announcements/2013/nixos-1310/
+  - https://wiki.nixos.org/wiki/NixOS
+  - https://wiki.nixos.org/wiki/FAQ
+  - https://wiki.nixos.org/wiki/Secure_Boot
+lastReviewed: 2026-10-29
+---
+
+NixOS is an independent distribution built around the Nix package manager and the Nixpkgs package collection. It is developed by its community; an elected Steering Committee handles technical and community decisions, while the NixOS Foundation, a Dutch nonprofit, takes care of legal and financial matters. Stable releases come twice a year, around the end of May and the end of November; the current one is NixOS <Latest slug="nixos" /> (<Latest slug="nixos" field="codename" />).
+
+### Highlights
+
+- **Declarative configuration.** The whole system, from packages and services to users and the bootloader, is written down in one file, `/etc/nixos/configuration.nix`. After editing it, `nixos-rebuild switch` builds a new system from that description and switches to it.
+- **Atomic upgrades and rollbacks.** Every configuration change creates a new generation with its own boot menu entry. If a change goes wrong, pick an earlier generation at boot or run `nixos-rebuild switch --rollback`.
+- **The Nix store.** Packages live in isolated, hash-named paths under `/nix/store`, and nothing there changes once written. Installing or upgrading one package cannot break another, and the same configuration gives the same result on another machine.
+- **Channels set the pace.** Stable channels get only conservative fixes and updates, while `nixos-unstable` follows the main development branch. Small channels, meant for servers, carry fewer binary packages and so pick up security fixes sooner.
+- **Nix beyond the distribution.** The same tools create shareable per-project development environments, and Nix itself also installs on other Linux distributions and on macOS.
+
+### Who it suits
+
+- Anyone who wants several PCs or servers to share one reproducible configuration, kept in Git
+- Developers who like to experiment with their system and want a guaranteed way back
+- Developers who need cleanly separated tools and libraries for each project
+
+### Good to know
+
+- System configuration lives in the read-only Nix store, so you change it by editing `configuration.nix` rather than files under `/etc`. This is what confuses newcomers most.
+- Binaries downloaded from elsewhere often will not run as they are, because the usual `/lib` paths do not exist. Use `nix-ld` or an FHS-compatible environment, or package the program.
+- Old generations keep their packages on disk until you clean up. Run `nix-collect-garbage` now and then, and delete old generations when you no longer need them.
+- Unfree software installs only after you allow it, either in the installer or with `nixpkgs.config.allowUnfree` in your configuration.
+- A stable release is generally maintained only until the next one arrives; support for the current release ends on <Latest slug="nixos" field="eol" />. Every six months, switch to the new channel and run `nixos-rebuild switch --upgrade`.
+- You will usually need to turn Secure Boot off to install. To use it afterwards, set it up with Lanzaboote or Limine.
+
+### A short history
+
+NixOS was created by Eelco Dolstra and Armijn Hemel. Its first stable branch, NixOS 13.10, was released in 2013.

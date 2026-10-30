@@ -1,0 +1,48 @@
+---
+title: About Void Linux
+description: What sets Void Linux, the independent rolling distribution with runit, its own XBPS package manager and a choice of glibc or musl, apart, its variants, who it suits and what to know first.
+sources:
+  - https://voidlinux.org/
+  - https://voidlinux.org/download/
+  - https://docs.voidlinux.org/about/index.html
+  - https://docs.voidlinux.org/about/history.html
+  - https://docs.voidlinux.org/installation/index.html
+  - https://docs.voidlinux.org/installation/musl.html
+  - https://docs.voidlinux.org/installation/live-images/guide.html
+  - https://docs.voidlinux.org/xbps/index.html
+  - https://docs.voidlinux.org/xbps/repositories/index.html
+  - https://docs.voidlinux.org/config/services/index.html
+lastReviewed: 2026-10-29
+---
+
+Void Linux is an independent distribution written from scratch rather than forked from another one, and a handful of volunteers develop it in their spare time. It is a rolling release that puts stability ahead of having the newest versions first: install once, then keep updating. The name comes from the C keyword `void` and carries no particular meaning.
+
+### Highlights
+
+- **XBPS, its own package manager.** Void wrote both its package manager, XBPS, and its build system, `xbps-src`, from scratch. During updates XBPS checks that shared libraries are not swapped for incompatible versions that would break dependencies, and `xbps-install -Su` updates the whole system.
+- **runit instead of systemd.** runit, a small and simple design, handles booting and supervises services. A service is enabled by symlinking it into the running service directory (`/var/service`) and disabled by removing the link.
+- **glibc or musl.** Alongside the common glibc, Void fully supports musl, a lightweight C library that follows the standards strictly. Every compatible package in the official repositories is built for both, and software that does not work with musl gets patched, with fixes sent upstream. Not using systemd is what makes the musl option possible.
+- **Easy to build from source.** `xbps-src` builds packages in containers isolated with Linux namespaces, without root, and can cross-compile for other architectures.
+
+### Editions and variants
+
+- Each architecture gets a command-line **base** image and an **xfce** image with the Xfce desktop, each in glibc and musl builds (glibc only on i686). Other desktops are supported too but are not offered as installation images, to keep testing manageable.
+- There are also live images for Apple Silicon, ready-to-boot platform images for ARM boards such as the Raspberry Pi, and rootfs tarballs for custom partitioning or chroot installs.
+
+### Who it suits
+
+- People who want a Linux system without systemd, on a simple init system
+- Experienced users who like to build up a system from a minimal base
+- Anyone running low-powered hardware or small musl-based systems
+- Developers who want to build packages from source or contribute packaging
+
+### Good to know
+
+- On musl, proprietary software built only for glibc often will not run, and the proprietary NVIDIA drivers do not support musl at all. Flatpak or a glibc chroot can fill the gap for such applications.
+- Software with non-free licenses lives in the nonfree repository, which is off by default; install `void-repo-nonfree` to enable it. The multilib repository with 32-bit libraries exists only for glibc.
+- The installer, `void-installer`, is a text-mode menu. To get the desktop from the Xfce image, choose the local installation rather than installing from the network.
+- XBPS does not restart services after updating them, so restart them yourself where needed. Changes that call for manual steps are announced in the news on the home page.
+
+### A short history
+
+The first Git import of void-packages dates from September 2008 and that of XBPS from August 2009. The first musl toolchains arrived in 2013, and in July 2014 Void replaced systemd, which it had used for a while, with runit.

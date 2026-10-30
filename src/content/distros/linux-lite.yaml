@@ -39,6 +39,18 @@ logo:
   source: https://www.linuxliteos.com/artwork.html
   license: Official Linux Lite feather logo (artwork pack, used unmodified); Linux Lite trademark, used to identify the project
   trademark: https://www.linuxliteos.com/artwork.html
+screenshot:
+  file: linux-lite.webp
+  source: https://commons.wikimedia.org/wiki/File:Linux_Lite.png
+  author: Jerry Bezencon
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Linux Lite의 Xfce 데스크톱. 짙은 회색 바탕 가운데에 초록색 깃털 로고가 있고, 왼쪽 위에 This PC, 사용자 파일, 제어판, 네트워크, 휴지통, 도움말 아이콘이, 화면 아래에 메뉴가 있는 작업 표시줄이 있습니다.
+    en: "The Xfce desktop of Linux Lite: a green feather logo on a dark grey background, This PC, User Files, Control Panel, Network, Recycle Bin and Help Manual icons at the top left, and a task bar with the menu along the bottom."
+  caption:
+    ko: Linux Lite의 기본 Xfce 데스크톱
+    en: Linux Lite with its default Xfce desktop
 download:
   strategy: mirrors
 sources:

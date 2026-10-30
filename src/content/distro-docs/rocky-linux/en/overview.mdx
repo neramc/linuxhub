@@ -1,0 +1,45 @@
+---
+title: About Rocky Linux
+description: What sets Rocky Linux, the community enterprise distribution that aims to be bug-for-bug compatible with RHEL, apart, its images, who it suits and what to know first.
+sources:
+  - https://rockylinux.org/
+  - https://rockylinux.org/about
+  - https://www.resf.org/about
+  - https://docs.rockylinux.org/releases/
+  - https://docs.rockylinux.org/releases/release_notes/10_0/
+  - https://download.rockylinux.org/pub/rocky/10/live/x86_64/
+  - https://download.rockylinux.org/pub/rocky/9/live/x86_64/
+lastReviewed: 2026-10-29
+---
+
+Rocky Linux is an enterprise distribution started by Gregory Kurtzer, the founder of CentOS, with the goal of behaving bug-for-bug like Red Hat Enterprise Linux (RHEL). The project is hosted by the Rocky Enterprise Software Foundation (RESF). Releases are fixed and track RHEL; the current one is Rocky Linux <Latest slug="rocky-linux" />, codenamed <Latest slug="rocky-linux" field="codename" />.
+
+### Highlights
+
+- **A straight rebuild of RHEL.** Rocky Linux rebuilds RHEL's sources directly, so software and procedures written for RHEL carry over unchanged.
+- **A predictable calendar.** New major versions arrive in May, and minor versions every May and November. Regular upstream updates are targeted to land within 24 to 48 hours.
+- **Ten years in two phases.** Each major version gets roughly five years of general support, then five years of security maintenance on its final minor release (X.10). The newest release is supported until <Latest slug="rocky-linux" field="eol" />.
+- **RISC-V support.** Since Rocky Linux 10, 64-bit RISC-V is supported, so boards such as the StarFive VisionFive 2 can run an enterprise distribution.
+
+### Editions and variants
+
+- **Installation ISOs** come as a full DVD, a Minimal image and a Boot image that pulls packages over the network.
+- **Live images** cover Workstation (GNOME), the lighter Workstation Lite and KDE. Rocky Linux 9 also has Xfce, MATE and Cinnamon versions.
+- Cloud images and Raspberry Pi images are available; on Rocky Linux 10 the Pi images support the Pi 4 and Pi 5.
+
+### Who it suits
+
+- Server administrators moving from CentOS Linux or another RHEL-based system, helped by a free official migration script
+- Teams that need development and test machines that behave exactly like production RHEL
+- Anyone who wants to try an enterprise distribution on RISC-V hardware
+
+### Good to know
+
+- Upgrades between major versions are not supported; moving from 8 or 9 to 10 means a fresh install.
+- Only the latest minor release of each major version is supported. Run `dnf upgrade` when a new one is out; packages from earlier minor releases move to the vault.
+- On x86_64, Rocky Linux 10 needs an x86-64-v3 CPU (Intel Haswell or AMD Excavator and newer) and drops 32-bit compatibility packages. Older processors should stay on Rocky Linux 9.
+- Rocky Linux 10 replaces the X.Org server with Wayland and the old `ifcfg` network scripts with NetworkManager, and the installer leaves the root account disabled by default.
+
+### A short history
+
+In December 2020 Red Hat announced it would end CentOS Linux development and focus on CentOS Stream. Kurtzer responded by starting a project to carry on CentOS's original goals, naming it after the late CentOS co-founder Rocky McGaugh. The first stable release, Rocky Linux 8.4, followed in June 2021.

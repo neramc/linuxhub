@@ -1,0 +1,43 @@
+---
+title: About Oracle Linux
+description: What sets Oracle Linux, Oracle's RHEL-compatible enterprise distribution with its own UEK kernel, apart, its installation images, who it suits and what to know first.
+sources:
+  - https://www.oracle.com/linux/
+  - https://yum.oracle.com/
+  - https://yum.oracle.com/faq.html
+  - https://yum.oracle.com/oracle-linux-isos.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/ol10.0-ShippedKernels.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/ol-Compatibility.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.0/ol10-AvailableArchitectures.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/accessibility/accessibility-SelectingaDesktopVersion.html
+  - https://docs.oracle.com/en/operating-systems/oracle-linux/10/leapp/leapp-AboutLeapp.html
+lastReviewed: 2026-10-29
+---
+
+Oracle Linux is Oracle's enterprise distribution, user-space compatible with Red Hat Enterprise Linux (RHEL). Since 2006 its source, binaries and updates have been free to download, run in production and redistribute. Each major version is a fixed release that receives a series of update releases; the current one is Oracle Linux <Latest slug="oracle-linux" />.
+
+### Highlights
+
+- **Two kernels.** Oracle's own Unbreakable Enterprise Kernel (UEK) is the default on new installs, and on x86_64 you can choose the Red Hat Compatible Kernel (RHCK) instead. Either way, applications built for RHEL run unmodified.
+- **Free to use, support when you want it.** The distribution and the updates on its yum server cost nothing. Around-the-clock support, Ksplice for patching the kernel without a reboot, KVM virtualization management and a Kubernetes environment come with a paid support subscription.
+- **Long support.** Premier Support covers each major version for ten years after release, and Extended Support and Lifetime Sustaining Support can stretch that further.
+- **The base of Oracle's cloud.** Oracle's public cloud runs on Oracle Linux, and OS Management Hub in OCI manages patching across systems from one console.
+
+### Editions and variants
+
+- The **Full ISO** contains everything needed to install.
+- The **UEK Boot ISO** and **Boot ISO** are small images with just what is needed to boot and start an installation; the first boots with UEK, the second with RHCK.
+- Choosing the Server with GUI environment during installation gives you the GNOME desktop. A Source ISO with the package sources is also published.
+
+### Who it suits
+
+- Organizations that also run Oracle Database or Oracle Cloud Infrastructure (OCI)
+- Teams that want a free RHEL-compatible system and paid support only on the servers that need it
+- Operations that need to cut downtime, for example with rebootless kernel patching
+
+### Good to know
+
+- The free yum server comes without support. For help, use the Oracle Linux community or take out a support subscription.
+- On x86_64, Oracle Linux 10 needs an x86-64-v3 CPU. The Arm (aarch64) version runs only with UEK.
+- Leapp handles major-version upgrades, but only from the current Oracle Linux 9 release to the current Oracle Linux 10 release.
+- The Latest channel on the yum server keeps only the packages of the newest update release plus later fixes; older packages move to the Archive channel.

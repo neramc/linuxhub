@@ -1,0 +1,43 @@
+---
+title: About Pop!_OS
+description: What sets Pop!_OS, System76's Ubuntu-based distribution, apart, its install images, who it suits and what to know first.
+sources:
+  - https://system76.com/pop
+  - https://system76.com/download-pop/
+  - https://system76.com/support/install-pop/
+  - https://system76.com/support/upgrade-pop
+  - https://system76.com/blog/post/pop-os-letter-from-our-founder
+  - https://system76.com/blog/post/celebrating-5-years-of-pop_os
+lastReviewed: 2026-10-29
+---
+
+Pop!_OS is an Ubuntu-based distribution made in-house by System76, the US computer manufacturer. It is a fixed release that follows Ubuntu's LTS versions; the current one is Pop!_OS <Latest slug="pop-os" />. Since 24.04 LTS it ships COSMIC, a desktop environment System76 wrote from scratch in Rust.
+
+### Highlights
+
+- **A desktop of its own.** COSMIC lets you set the panel and dock layout, colors and theme straight from Settings, and its core apps, including the file manager, terminal, text editor and app store, were written for it. It is modular, so other projects can build on it too.
+- **Tiling and workspaces.** A single toggle in the panel turns on auto-tiling, and windows can be arranged by dragging or with keyboard shortcuts. Workspaces can be kept per display or pinned, and mixing high-DPI and standard screens scales each one automatically.
+- **Made by a hardware company.** There is a separate ISO with the NVIDIA driver included, and on laptops with hybrid graphics, apps that ask for the discrete GPU run on it without switching modes. Kernels and hardware support keep being updated during a release.
+- **APT and Flatpak.** Software that runs on Ubuntu runs on Pop!_OS, and COSMIC Store also installs apps from Flathub. Holding Space at boot, or starting from the ISO, offers a Refresh install that reinstalls the system while keeping your files and settings.
+
+### Editions and variants
+
+- Pick the install image by graphics card: the standard ISO for Intel or AMD graphics and NVIDIA 10 Series or older, the NVIDIA ISO for NVIDIA 16 Series and newer.
+- ARM64 computers get their own ISO, with and without NVIDIA. It is officially supported on System76's Thelio Astra; other ARM devices are community-supported through Tow-Boot.
+
+### Who it suits
+
+- Anyone who wants window tiling that is easy to use with mouse or keyboard
+- Gamers and creators with NVIDIA graphics cards
+- People who work across several monitors, and owners of System76 computers
+
+### Good to know
+
+- Secure Boot has to be disabled in the firmware before installing.
+- If you installed from the standard ISO and use an NVIDIA card, install the driver with `sudo apt install system76-driver-nvidia`.
+- COSMIC is still young: a few things such as display toggle hotkeys are missing, and it is not yet tuned for touch devices. Features keep arriving through updates.
+- 22.04 can be upgraded to 24.04 from OS Upgrade & Recovery in Settings or with `pop-upgrade release upgrade`, which can take up to an hour. For anything older than 22.04, a fresh install is recommended.
+
+### A short history
+
+System76 decided to build its own operating system so its software and hardware would work as one product, and released the first version, 17.10, on top of Ubuntu 17.10 in 2017. Version 18.04 brought its own installer and 20.04 added auto-tiling. After more than three years of work, the COSMIC desktop environment arrived with 24.04 LTS in December 2025.

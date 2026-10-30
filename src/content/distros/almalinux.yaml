@@ -41,6 +41,18 @@ logo:
   license: AlmaLinux OS marks are owned by the Linux Foundation and sublicensed to the AlmaLinux OS Foundation; official icon from the brand assets page, used unmodified (SVGO-optimized; the empty Adobe Illustrator extension wrapper removed, shapes and colors untouched) to identify the project
   trademark: https://almalinux.org/p/the-almalinux-os-trademark-usage-policy/
   accent: blue
+screenshot:
+  file: almalinux.webp
+  source: https://commons.wikimedia.org/wiki/File:AlmaLinux_10.0_desktop_with_GNOME_47.png
+  author: "Paowee (OS: AlmaLinux OS Foundation)"
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: GNOME의 활동 개요 화면입니다. 위쪽 가운데에 검색 창이 있고, 화면 가운데에는 보라와 주황, 빨강 곡선 무늬 배경 왼쪽 아래에 AlmaLinux 로고가 있는 작업 공간 미리 보기가 크게 보입니다. 아래쪽 대시에는 Firefox, 파일, 소프트웨어, 터미널, 텍스트 편집기, 앱 목록 아이콘이 있습니다.
+    en: "The GNOME Activities overview: a search field at the top center, a large workspace preview with a purple, orange and red swirl wallpaper and the AlmaLinux logo in its lower left, and a dash at the bottom with Firefox, Files, Software, Terminal, Text Editor and the app grid."
+  caption:
+    ko: AlmaLinux 10.0의 GNOME 47 데스크톱
+    en: AlmaLinux 10.0 with the GNOME 47 desktop
 download:
   strategy: redirector
 sources:

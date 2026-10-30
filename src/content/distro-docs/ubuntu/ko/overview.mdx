@@ -1,0 +1,46 @@
+---
+title: Ubuntu 소개
+description: Canonical이 만드는 Debian 기반 배포판 Ubuntu의 릴리스 방식과 특징, 플레이버, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://ubuntu.com/about
+  - https://ubuntu.com/about/release-cycle
+  - https://ubuntu.com/desktop/flavors
+  - https://documentation.ubuntu.com/release-notes/26.04/
+  - https://documentation.ubuntu.com/release-notes/26.04/summary-for-lts-users/
+  - https://ubuntu.com/desktop/docs/en/latest/explanation/snap-and-deb-packages/
+  - https://documentation.ubuntu.com/security/security-features/platform-protections/secure-boot/
+  - https://ubuntu.com/server/docs/how-to/software/upgrade-your-release/
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2004-October/000003.html
+lastReviewed: 2026-10-29
+---
+
+Ubuntu는 Canonical이 만들고 전 세계 커뮤니티가 함께 개발하는 Debian 기반 배포판입니다. 6개월마다 새 버전이 나오고, 2년마다 4월에 나오는 버전은 오래 지원받는 LTS가 됩니다. 지금 최신 버전은 Ubuntu <Latest slug="ubuntu" />입니다.
+
+### 특징
+
+- **연도와 달로 읽는 버전 번호.** 번호는 출시한 해와 달을 뜻합니다. 첫 버전 4.10은 2004년 10월에 나왔습니다. 그 사이의 중간 릴리스는 새 커널과 개발 도구를 빨리 받는 대신 9개월만 지원되고, LTS는 Main 저장소 패키지에 5년 동안 보안 업데이트를 받습니다.
+- **Ubuntu식 GNOME.** 기본 데스크톱은 GNOME에 Ubuntu 자체 확장과 Yaru 테마를 더한 모습입니다. 25.10부터 Ubuntu 세션은 Wayland로만 실행되며, X11용 프로그램은 XWayland로 돌아갑니다.
+- **deb와 snap.** 시스템과 저장소의 프로그램은 deb 패키지로 `apt`가 관리하고, 앱 센터는 snap을 먼저 보여 줍니다. snap 앱은 Ubuntu 버전과 상관없이 최신판으로 매일 자동 갱신되고 대부분 샌드박스 안에서 돌지만, 필요한 라이브러리를 함께 담아 디스크를 더 씁니다.
+- **Ubuntu Pro.** 개인은 5대까지 무료로 쓸 수 있는 구독입니다. LTS의 보안 업데이트를 Universe 저장소까지 넓히고 기간을 10년으로 늘리며, 유료 Legacy 추가 기능으로 최대 15년까지 이어집니다.
+
+### 에디션과 변형
+
+- **Desktop, Server, Core.** 데스크톱판과 서버판(클라우드 이미지 포함) 외에, 시스템 전체를 snap으로 구성한 기기·IoT용 Ubuntu Core가 있습니다.
+- **공식 플레이버**는 커뮤니티가 만들고 Ubuntu와 같은 저장소를 쓰는 판입니다. Kubuntu, Xubuntu, Lubuntu, Ubuntu Budgie, Ubuntu Cinnamon, Ubuntu MATE, Ubuntu Unity는 데스크톱을 바꾼 판이고, Ubuntu Studio는 창작용, Edubuntu는 교육용, Ubuntu Kylin은 중국 사용자에 맞춘 판입니다. 지원 기간과 출시 여부는 플레이버마다 다를 수 있습니다.
+
+### 이런 분께 맞습니다
+
+- 그래픽·무선 랜 드라이버와 코덱까지 설치 프로그램에서 한 번에 갖추고 싶은 입문자
+- 한 버전을 몇 년 동안 쓰면서 보안 업데이트를 꾸준히 받으려는 데스크톱·서버 사용자
+- 서버와 클라우드에서 쓰는 Ubuntu와 같은 환경을 데스크톱에서도 쓰려는 개발자
+
+### 알아 둘 점
+
+- 미디어 코덱과 일부 드라이버는 설치 중에 서드파티 소프트웨어 설치 항목을 골라야 함께 설치됩니다. NVIDIA 드라이버는 `sudo ubuntu-drivers install`로 설치하는 것이 공식 방법입니다.
+- LTS의 무료 5년 보안 지원은 Main 저장소만 대상입니다. Universe의 커뮤니티 패키지까지 보안 업데이트를 받으려면 Ubuntu Pro를 켭니다.
+- Secure Boot를 켠 채 컴퓨터에서 직접 빌드되는 서드파티 커널 모듈을 쓰려면, 설치나 업그레이드 때 만들어지는 MOK 키를 재부팅 화면(MokManager)에서 등록해야 합니다.
+- 업그레이드는 `do-release-upgrade`로 제자리에서 하며 릴리스를 건너뛸 수 없습니다. LTS에서 다음 LTS로는 첫 포인트 릴리스가 나온 뒤에 업그레이드가 열립니다.
+
+### 간단한 역사
+
+2004년 Mark Shuttleworth가 Debian 개발자들을 모아 Canonical을 세웠고, 그해 10월 첫 버전 4.10(Warty Warthog)이 나왔습니다. 2006년에는 2년마다 네 번째 릴리스를 장기 지원판으로 내기로 했고, 여기서 LTS라는 말이 생겼습니다.

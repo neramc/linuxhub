@@ -38,6 +38,18 @@ logo:
   file: parrot-os.svg
   source: https://parrotsec.org/docs/
   license: Trademark of Parrot Security CIC, used to identify the project
+screenshot:
+  file: parrot-os.webp
+  source: https://commons.wikimedia.org/wiki/File:Parrot_OS_Desktop.png
+  author: The Parrot Project Team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Parrot Security 6.0의 MATE 데스크톱. 짙은 남색 바탕에 다각형으로 그린 앵무새가 날고 있고, 가운데에 버전과 하드웨어 정보를 보여 주는 시스템 모니터 창이 열려 있습니다. 화면 위와 아래에 패널이 있습니다.
+    en: "The MATE desktop of Parrot Security 6.0: a low-poly parrot flying over a dark blue background, a System Monitor window in the middle showing the release and hardware, and panels at the top and bottom."
+  caption:
+    ko: Parrot Security 6.0의 MATE 데스크톱
+    en: Parrot Security 6.0 with the MATE desktop
 download:
   strategy: redirector
 sources:

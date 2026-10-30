@@ -1,0 +1,48 @@
+---
+title: About Garuda Linux
+description: What sets Garuda Linux, the Arch-based rolling distribution with Btrfs snapshots, its own update tool and styled desktops, apart, its editions, who it suits and what to know first.
+sources:
+  - https://garudalinux.org/editions
+  - https://garudalinux.org/assets/i18n/en.json
+  - https://wiki.garudalinux.org/en/garuda-in-comparison
+  - https://wiki.garudalinux.org/en/garuda-update
+  - https://wiki.garudalinux.org/en/restoring-snapshots
+  - https://wiki.garudalinux.org/en/system-requirements
+  - https://wiki.garudalinux.org/en/installation-instructions
+  - https://wiki.garudalinux.org/en/secureboot
+  - https://wiki.garudalinux.org/en/gaming-on-garuda
+  - https://forum.garudalinux.org/t/anniversary/18299
+lastReviewed: 2026-10-29
+---
+
+Garuda Linux is a rolling-release distribution built on Arch Linux that comes with a chosen set of applications and settings so it is ready to use from the first boot. It adds its own Chaotic-AUR repository to the Arch repositories and puts a lot of effort into taking the risk out of rolling updates, with Btrfs snapshots and a dedicated update tool.
+
+### Highlights
+
+- **Btrfs snapshots by default.** Installation sets up Btrfs with Snapper, and a snapshot is taken on every system update. If an update goes wrong, boot an earlier snapshot from the “Garuda snapshots” entry in GRUB and restore it. Home and log directories are left out of the snapshots.
+- **Updates through `garuda-update`.** It uses pacman underneath, but first refreshes the mirror list, updates keyrings and applies fixes for package conflicts that the developers have reviewed. The idea is to automate manual interventions, or explain them on the system, rather than announce them on a forum.
+- **Chaotic-AUR.** This extra repository holds thousands of AUR packages already built, and Garuda supports it as a first-class source, so popular software installs without compiling.
+- **Graphical tools.** Garuda Toolbox collects the system management tools, and Garuda System Maintenance fixes and warns about problems common on Arch-based systems. Garuda’s own packages are all free software, but proprietary drivers are included too.
+
+### Editions and variants
+
+- **Dr460nized** is the flagship KDE Plasma edition with a dark, blurred look; **Dr460nized Gaming** adds a large set of gaming software on top. **Mokka** is a KDE Plasma edition in Catppuccin pastels.
+- GNOME, Cinnamon and Xfce editions are offered too, along with Sway and i3 editions that ship a finished configuration and a keybinding cheat sheet.
+- The Hyprland, KDE Lite and COSMIC editions are for advanced users, because they lack some of Garuda’s usual conveniences or because the desktop itself changes often.
+
+### Who it suits
+
+- People who want a polished, heavily styled KDE Plasma desktop straight after installation
+- Gamers who want Steam, Wine, Proton and related tools set up in one go
+- Users who want current Arch-based software with an easy way back when an update misbehaves
+
+### Good to know
+
+- The hardware requirements are on the high side, mostly because the Calamares installer uses a lot of memory and performance tools are included; the window-manager editions need less. Tweaks such as ZRAM make idle memory use look high, and the Dr460nized Gaming download is over 4.7 GB.
+- Garuda is tuned for real hardware. Running it in a virtual machine is discouraged and not supported.
+- Secure Boot support is optional and can be enabled on UEFI systems with `garuda-secureboot`, but the project recommends leaving Secure Boot off unless another operating system or program requires it.
+- Hyprland itself develops quickly and may be unstable, so pick that edition only if you are comfortable troubleshooting.
+
+### A short history
+
+Garuda Linux’s official date of birth is 26 March 2020, after a few months of preparation.

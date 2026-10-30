@@ -1,0 +1,40 @@
+---
+title: deepin 소개
+description: 자체 DDE 데스크톱과 불변(atomic) 시스템, Linyaps 앱 형식을 갖춘 중국의 배포판 deepin의 특징과 어울리는 사용자, 알아 둘 점.
+sources:
+  - https://www.deepin.org/en/aboutus/
+  - https://www.deepin.org/en/deepin-25-release/
+  - https://www.deepin.org/en/deepin-25-2-release/
+  - https://www.deepin.org/en/deepin-25-installation/
+  - https://www.deepin.org/en/deepin-23-is-officially-released/
+  - https://www.deepin.org/en/deepin-os-v23-alpha-2-released/
+lastReviewed: 2026-10-29
+---
+
+deepin은 중국 우한의 Deepin Technology와 deepin 커뮤니티가 만드는 데스크톱 배포판입니다. 보기 좋고 쓰기 쉬운 데스크톱을 내세우며, 버전 번호가 붙는 고정 릴리스로 나옵니다. 지금 최신 버전은 deepin <Latest slug="deepin" />입니다. 처음에는 Debian 기반이었지만, deepin 23부터는 8,000개가 넘는 핵심 패키지를 자체 저장소에서 직접 꾸리며 스스로를 중국 최초의 "루트 커뮤니티"라고 부릅니다.
+
+### 특징
+
+- **자체 DDE 데스크톱.** Qt로 만든 deepin Desktop Environment와 제어 센터를 비롯해 앱 스토어, 스크린숏, 음악, 영상 같은 앱까지 직접 만듭니다. deepin 25에서는 제어 센터와 알림 센터를 QML로 다시 짰고, 자체 창 컴포지터 Treeland도 미리 보기로 넣었습니다.
+- **불변 시스템 Solid.** 핵심 시스템 디렉터리를 읽기 전용으로 두고 업데이트를 원자적으로 적용합니다. 업데이트가 실패하거나 부팅이 안 되면 이전 상태로 자동으로 되돌리고, 스냅숏으로 몇 초 만에 백업하고 복원합니다. 패키지는 여전히 `apt`로 업데이트합니다.
+- **Linyaps 앱 형식.** 앱을 시스템과 분리해 의존성 충돌을 막는 deepin의 패키지 형식으로, Debian, Ubuntu, Arch, Fedora 같은 다른 배포판에서도 돌아갑니다. 앱 스토어에서 Distrobox로 다른 배포판 환경을 한 번에 설치할 수도 있습니다.
+- **시스템에 들어간 AI.** UOS AI가 DeepSeek, ChatGPT 같은 여러 대형 언어 모델과 연결되어 글쓰기, 번역, 설정 변경을 돕고, 로컬 모델로 이미지 속 글자까지 찾는 자연어 검색을 제공합니다.
+
+### 이런 분께 맞습니다
+
+- 다듬어진 모양새의 데스크톱을 원하는 Windows 사용자
+- 업데이트가 잘못돼도 되돌릴 수 있는 시스템을 원하지만 익숙한 `apt`도 쓰고 싶은 사람
+- 중국어 환경과 중국 앱 생태계가 필요하거나, 중국산 ARM·LoongArch 칩을 쓴 하드웨어를 다루는 사용자
+
+### 알아 둘 점
+
+- 권장 사양이 높은 편입니다. 메모리 8GB, SSD 64GB에 못 미치면 설치가 실패하거나 많이 느릴 수 있다고 안내합니다.
+- 설치 전에 펌웨어에서 Secure Boot를 꺼야 합니다. 켜 두면 USB로 부팅되지 않거나 외부 커널 드라이버, 최대 절전이 제대로 동작하지 않을 수 있습니다.
+- deepin 20이나 23에서 25로 바로 업그레이드할 수 없습니다. `/home`을 백업한 뒤 새로 설치해야 합니다.
+- 시스템 디렉터리는 기본적으로 쓰기가 막혀 있습니다. `/usr` 등을 고쳐야 한다면 `sudo deepin-immutable-writable enable`이나 제어 센터의 개발자 옵션으로 보호를 끕니다.
+- ARM64 이미지는 Phytium, Kunpeng 같은 주로 중국 시장용 칩을 겨냥하고, RISC-V 이미지는 일상용이 아닌 기술 미리 보기입니다.
+- 최신 NVIDIA 그래픽에서는 설치 화면이 검게 나올 수 있어, 독점 드라이버 포함 옵션을 끄고 설치한 뒤 드라이버를 따로 설치하라고 안내합니다.
+
+### 간단한 역사
+
+deepin의 뿌리는 2004년 Hiweed Linux로, 중국에서 처음 나온 Debian 기반 현지화 배포판이었습니다. 2008년 deepin으로 이름을 바꿨고, 2011년 투자를 받아 데스크톱 배포판에 전념하는 회사 팀을 꾸렸습니다.

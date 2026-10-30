@@ -1,0 +1,43 @@
+---
+title: NixOS 소개
+description: 설정 파일 하나로 시스템 전체를 선언하는 Nix 기반 배포판 NixOS의 특징과 채널, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://nixos.org/
+  - https://nixos.org/download/
+  - https://nixos.org/manual/nixos/stable/
+  - https://nixos.org/governance/
+  - https://nixos.org/blog/announcements/2013/nixos-1310/
+  - https://wiki.nixos.org/wiki/NixOS
+  - https://wiki.nixos.org/wiki/FAQ
+  - https://wiki.nixos.org/wiki/Secure_Boot
+lastReviewed: 2026-10-29
+---
+
+NixOS는 Nix 패키지 관리자와 패키지 모음 Nixpkgs를 중심으로 만든 독립 배포판입니다. 커뮤니티가 개발하며, 선출된 Steering Committee가 기술과 커뮤니티 문제를, 네덜란드의 비영리 재단 NixOS Foundation이 법률과 재정을 맡습니다. 안정판은 해마다 5월 말과 11월 말 무렵 두 번 나오고, 지금 최신 버전은 NixOS <Latest slug="nixos" />(<Latest slug="nixos" field="codename" />)입니다.
+
+### 특징
+
+- **선언형 설정.** 설치할 패키지와 서비스, 사용자, 부트로더까지 시스템 전체를 `/etc/nixos/configuration.nix` 한 파일에 적습니다. 파일을 고친 뒤 `nixos-rebuild switch`를 실행하면 그 내용대로 새 시스템을 만들어 적용합니다.
+- **원자적 업그레이드와 롤백.** 설정을 바꿀 때마다 새 세대(generation)가 생기고 부팅 메뉴에 항목이 하나씩 늘어납니다. 바꾼 설정이 문제를 일으키면 부팅 메뉴에서 이전 세대를 고르거나 `nixos-rebuild switch --rollback`으로 되돌립니다.
+- **Nix 스토어.** 패키지는 `/nix/store` 아래 해시가 붙은 경로에 서로 격리되어 설치되고, 한번 들어간 파일은 바뀌지 않습니다. 그래서 한 패키지를 설치하거나 올려도 다른 패키지가 망가지지 않고, 같은 설정이면 다른 컴퓨터에서도 같은 결과가 나옵니다.
+- **채널로 고르는 갱신 속도.** 안정 채널은 보수적인 버그 수정과 업데이트만 받고, `nixos-unstable`은 주 개발 브랜치를 따라갑니다. 바이너리 패키지를 줄여 보안 수정이 더 빨리 반영되는 서버용 small 채널도 있습니다.
+- **배포판 밖에서도 쓰는 Nix.** 같은 Nix 도구로 프로젝트별 개발 환경을 만들고 공유할 수 있으며, Nix 자체는 다른 리눅스 배포판이나 macOS에도 설치됩니다.
+
+### 이런 분께 맞습니다
+
+- 여러 대의 PC나 서버를 같은 설정으로 재현하고, 설정 파일을 Git으로 관리하고 싶은 사람
+- 시스템을 과감하게 바꿔 보더라도 언제든 이전 상태로 되돌릴 수 있기를 바라는 개발자
+- 프로젝트마다 다른 도구와 라이브러리를 깔끔하게 나눠 쓰고 싶은 개발자
+
+### 알아 둘 점
+
+- 시스템 설정은 읽기 전용인 Nix 스토어에 들어가므로, `/etc` 아래 파일을 손으로 고치는 대신 `configuration.nix`를 고쳐서 바꿔야 합니다. 처음 쓰는 사람이 가장 많이 헷갈리는 부분입니다.
+- 다른 곳에서 내려받은 실행 파일은 그대로 돌아가지 않는 경우가 많습니다. 일반적인 `/lib` 경로가 없기 때문으로, `nix-ld`나 FHS 호환 환경을 쓰거나 패키지로 만들어야 합니다.
+- 이전 세대가 남아 있는 동안에는 옛 패키지도 지워지지 않아 디스크를 차지합니다. 가끔 `nix-collect-garbage`로 정리하고, 필요하면 오래된 세대를 지웁니다.
+- 독점 소프트웨어(unfree)는 설치 화면에서 허용하거나 설정에서 `nixpkgs.config.allowUnfree`를 켜야 설치할 수 있습니다.
+- 안정판은 대체로 다음 안정판이 나올 무렵까지만 유지됩니다. 현재 버전의 지원은 <Latest slug="nixos" field="eol" />에 끝나므로, 반년마다 새 채널로 바꾼 뒤 `nixos-rebuild switch --upgrade`로 올려야 합니다.
+- 설치하려면 보통 Secure Boot를 꺼야 합니다. 설치 후 Secure Boot를 쓰려면 Lanzaboote나 Limine으로 따로 설정합니다.
+
+### 간단한 역사
+
+NixOS는 Eelco Dolstra와 Armijn Hemel이 만들었습니다. 첫 안정 브랜치인 NixOS 13.10은 2013년에 나왔습니다.

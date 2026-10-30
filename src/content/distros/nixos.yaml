@@ -39,6 +39,18 @@ logo:
   source: https://brand.nixos.org/logos/nixos-logomark-default-gradient-recommended.svg
   license: Official NixOS logomark from brand.nixos.org (default gradient, recommended variant), used unmodified to identify the project. Neither the branding page nor the Branding Guide names a license for the logo files; the guide sets the usage rules (no cropping, distorting or recoloring), and nixos.org content is CC-BY-SA-4.0 per its footer
   trademark: https://nixos.org/branding/
+screenshot:
+  file: nixos.webp
+  source: https://commons.wikimedia.org/wiki/File:NixOS_21.11_GNOME_default_desktop_-_English.png
+  author: NixOS contributors (NixOS Foundation)
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: NixOS 21.11의 GNOME 데스크톱. 짙은 회색 바탕 가운데에 흰 NixOS 눈송이 로고가 있고, 화면 위에 활동 버튼과 날짜·시각, 상태 아이콘이 있는 상단 표시줄이 있습니다.
+    en: "The GNOME desktop of NixOS 21.11: a white NixOS snowflake logo in the middle of a dark grey background, under the top bar with Activities, the date and time, and status icons."
+  caption:
+    ko: NixOS 21.11의 GNOME 기본 데스크톱
+    en: NixOS 21.11 with its default GNOME desktop
 download:
   strategy: redirector
 sources:

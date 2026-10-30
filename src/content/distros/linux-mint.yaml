@@ -38,6 +38,18 @@ logo:
   file: linux-mint.svg
   source: https://raw.githubusercontent.com/linuxmint/mintstick/master/share/icons/hicolor/scalable/status/mintstick-logo-linuxmint.svg
   license: GPL-2.0-or-later (mintstick package); Linux Mint trademark, used to identify the project
+screenshot:
+  file: linux-mint.webp
+  source: https://commons.wikimedia.org/wiki/File:LinuxMint22-Wilma-English.png
+  author: Mipinggrey
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Linux Mint 22의 Cinnamon 데스크톱. 왼쪽에 시스템 정보 창이, 오른쪽에 위키백과 첫 화면을 연 Firefox가 떠 있고, 화면 아래에는 메뉴와 작업 표시줄이 있습니다.
+    en: The Cinnamon desktop of Linux Mint 22, with the System Info window on the left, Firefox showing the Wikipedia front page on the right, and the menu and task bar along the bottom.
+  caption:
+    ko: Linux Mint 22 "Wilma"의 Cinnamon 데스크톱
+    en: Linux Mint 22 "Wilma" with the Cinnamon desktop
 download:
   strategy: mirrors
 sources:

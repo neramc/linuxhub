@@ -39,6 +39,18 @@ logo:
   source: https://sources.archlinux.org/other/artwork/archlinux-artwork-1.6.tar.gz
   license: CC BY-NC-SA 3.0 (archlinux-artwork); Arch Linux trademark, used to identify the project
   trademark: https://terms.archlinux.org/docs/trademark-policy/
+screenshot:
+  file: arch.webp
+  source: https://commons.wikimedia.org/wiki/File:Arch_Linux_screenshot%2C_12.06.2024.png
+  author: Arch Linux developers
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: 분홍과 파랑 톤의 KDE Plasma 배경 화면 위에 열린 창 세 개. 왼쪽 아래에는 Kate, 시스템 설정, Dolphin, Discover가 보이는 애플리케이션 메뉴가, 오른쪽 위에는 Arch Linux 로고와 KDE Plasma 6.4.4·커널 6.16.3을 보여 주는 시스템 정보 창이, 그 아래에는 fastfetch 결과가 출력된 Konsole 터미널이 있고, 화면 아래쪽에 작업 표시줄이 있습니다.
+    en: "Three windows over a pink and blue KDE Plasma wallpaper: the application menu at bottom left showing Kate, System Settings, Dolphin and Discover; the About this System page at top right with the Arch Linux logo, KDE Plasma 6.4.4 and kernel 6.16.3; and below it a Konsole terminal with fastfetch output. A panel runs along the bottom edge."
+  caption:
+    ko: 사용자가 KDE Plasma 6.4를 설치한 Arch Linux
+    en: Arch Linux with KDE Plasma 6.4 installed by the user
 download:
   strategy: mirrors
 sources:

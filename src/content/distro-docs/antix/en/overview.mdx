@@ -1,0 +1,39 @@
+---
+title: About antiX
+description: What sets antiX, the systemd- and elogind-free Debian-based distribution that keeps old PCs useful with light window managers, apart, its editions, who it suits and what to know first.
+sources:
+  - https://robin-antix.codeberg.page/antiX-FAQ/antiX26/
+  - https://sourceforge.net/projects/antix-linux/
+  - https://mxrepo.com/mx/repo/pool/main/m/mx-docs/mx-docs-en_202609130mx25_all.deb
+lastReviewed: 2026-10-29
+---
+
+antiX is a lightweight distribution built on Debian stable, and its defining trait is that it uses neither systemd nor elogind. It is a fixed release that follows Debian stable, and one image is meant to boot anything from very old computers to current machines. antiX is the sister distribution of MX Linux; the two share tools and a wiki.
+
+### Highlights
+
+- **Window managers instead of a desktop environment.** antiX skips the heavy desktops and uses window managers such as IceWM, Fluxbox and JWM. The default is IceWM with zzzFM handling desktop icons; pick another combination with F6 in the boot menu and it carries over to the installed system.
+- **Five init systems to choose from.** One image ships runit (the default), sysVinit, dinit, s6-rc and s6-66, and the one you boot with becomes the installed default. runit and sysVinit are the proven choices; the others are still experimental.
+- **Debian without systemd.** antiX keeps it that way with its own repository of Debian packages rebuilt without their systemd and elogind dependencies, its own tuned kernels and its own scripts.
+- **A live system you can shape.** Run it live from a USB stick that keeps your changes, or as a frugal install on a hard disk. You can remaster the running live system, or turn an installed one into an ISO with iso-snapshot.
+- **Your choice of pace.** By default it uses the Debian stable repositories, updated with `apt dist-upgrade` or the antiX Updater. Enable Debian testing or unstable and it behaves much like a rolling release.
+
+### Editions and variants
+
+- **antiX-full** comes with the window managers and a full set of applications, and is the one most people should pick.
+- **antiX-core** boots without any graphical environment, for people who know Debian well and want to build up only what they need.
+- Both come as 64-bit and 32-bit images. The base and net editions were dropped with antiX 26.
+
+### Who it suits
+
+- Anyone who wants to bring an old, low-memory PC or laptop back into use
+- People who want a Debian-family system without systemd
+- Users happy to work with a window manager and tune a fast, light setup themselves
+- People who want their own setup on a live USB stick they can carry in a pocket
+
+### Good to know
+
+- Working with window managers rather than a desktop environment takes some getting used to. The official FAQ covers each of them.
+- Xfce, MATE, LXQt and LXDE can be installed with consolekit instead of elogind, but pulling in another full desktop environment is likely to bring elogind back.
+- Codecs such as `libdvdcss2` for DVD playback come from the deb-multimedia repository. Package Installer handles this for you, and the project advises against leaving that repository enabled.
+- Now that MX Linux is 64-bit only, antiX still plans to keep releasing 32-bit images.

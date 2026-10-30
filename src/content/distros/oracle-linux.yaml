@@ -39,6 +39,18 @@ logo:
   source: https://www.oracle.com/yum.oracle.com/a/yum/img/penguin-updated.png
   license: Oracle Linux mascot image from the official download page (it carries the Oracle wordmark); Oracle trademark and copyright, used unmodified (trimmed and resized only) to identify the product. Oracle requires written authorization to use the Oracle logo itself
   trademark: https://www.oracle.com/legal/trademarks/
+screenshot:
+  file: oracle-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:Oracle_Linux_9_screenshot.png
+  author: Paowee
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Oracle Linux 9의 GNOME 활동 개요 화면. 위에 검색 창이, 가운데에 Oracle Linux 로고가 들어간 갈색 바탕화면 미리보기가, 아래에 Firefox·파일·소프트웨어·도움말·터미널 아이콘이 있는 독이 있습니다.
+    en: "The GNOME Activities overview of Oracle Linux 9: a search field at the top, a preview of the brown wallpaper with the Oracle Linux logo in the middle, and a dock with Firefox, Files, Software, Help and Terminal below."
+  caption:
+    ko: Oracle Linux 9의 기본 GNOME 데스크톱
+    en: Oracle Linux 9 with its default GNOME desktop
 download:
   strategy: redirector
 sources:

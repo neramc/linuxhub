@@ -1,0 +1,53 @@
+---
+title: Linux Mint 소개
+description: Ubuntu LTS를 바탕으로 쓰기 편한 데스크톱을 만드는 Linux Mint의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.linuxmint.com/about.php
+  - https://www.linuxmint.com/download.php
+  - https://www.linuxmint.com/hwe.php
+  - https://www.linuxmint.com/download_lmde.php
+  - https://www.linuxmint.com/rel_zena.php
+  - https://www.linuxmint.com/rel_wilma_whatsnew.php
+  - https://linuxmint-user-guide.readthedocs.io/en/latest/mintupdate.html
+  - https://linuxmint-user-guide.readthedocs.io/en/latest/upgrade.html
+  - https://linuxmint-user-guide.readthedocs.io/en/latest/snap.html
+  - https://linuxmint-installation-guide.readthedocs.io/en/latest/install.html
+  - https://linuxmint-installation-guide.readthedocs.io/en/latest/efi.html
+  - https://blog.linuxmint.com/?p=4991
+  - https://blog.linuxmint.com/?p=5019
+  - https://blog.linuxmint.com/?p=5086
+lastReviewed: 2026-10-29
+---
+
+Linux Mint는 Ubuntu의 장기 지원(LTS) 버전을 바탕으로 만드는 데스크톱 배포판입니다. 설치한 뒤 따로 손보지 않아도 바로 쓸 수 있는 편안한 데스크톱을 목표로 하며, Windows와 macOS의 대안을 자처합니다. 고정 릴리스 방식이고, 지금 최신 버전은 Linux Mint <Latest slug="linux-mint" />입니다.
+
+### 특징
+
+- **Cinnamon을 직접 만듭니다.** 대표 데스크톱인 Cinnamon은 Linux Mint의 프로젝트입니다. 2011년 GNOME 3에서 패널, 메뉴, 트레이가 사라지자 GNOME 3를 바탕으로 기능을 다 갖춘 데스크톱을 새로 만들었고, 그 전통적인 배치를 지금도 지킵니다.
+- **업데이트와 스냅숏.** 업데이트 관리자는 일반, 보안, 커널 업데이트를 나눠 보여 줍니다. 함께 들어 있는 Timeshift로 매일, 그리고 부팅할 때마다 시스템 스냅숏을 남기라고 권하며, 업데이트 뒤에 문제가 생기면 그 시점으로 되돌릴 수 있습니다. 개인 파일은 스냅숏에 들어가지 않습니다.
+- **LTS만 따르는 보수적인 기반.** 2014년부터 Ubuntu LTS만 기반으로 삼습니다. 지금까지 주요 버전은 5년 동안 지원되었고, 그 안의 포인트 릴리스(22.1, 22.2, 22.3 같은)로는 몇 분이면 올라갑니다.
+- **Snap 대신 APT와 Flatpak.** Canonical의 Snap Store는 Linux Mint 20부터 기본으로 막혀 있습니다. 소프트웨어 관리자는 APT 패키지와 Flatpak을 다루며, Linux Mint 22부터 검증되지 않은 Flatpak은 기본으로 숨깁니다.
+
+### 에디션과 변형
+
+- **Cinnamon 에디션**이 가장 많이 쓰이는 대표판입니다. **Xfce 에디션**은 기능이 조금 적은 대신 가볍고, **MATE 에디션**은 2011년까지 Mint의 기본 데스크톱이던 GNOME 2를 이어 갑니다.
+- **HWE ISO**는 같은 버전에 더 새로운 커널을 넣은 이미지입니다. NVIDIA나 VirtualBox 같은 외부 모듈이 새 커널을 따라가지 못할 수 있어, 일반 ISO가 맞지 않을 때만 쓰라고 안내합니다.
+- **LMDE**(Linux Mint Debian Edition)는 Ubuntu 대신 Debian을 기반으로 한 판으로, Ubuntu 없이도 같은 경험을 낼 수 있게 대비하는 프로젝트입니다.
+
+### 이런 분께 맞습니다
+
+- Windows나 macOS를 쓰다가 처음 Linux로 옮겨 오는 사람
+- 메뉴와 패널이 있는 익숙한 데스크톱을 원하는 사용자
+- 한 번 설치하면 몇 년 동안 큰 변화 없이 쓰고 싶은 사람
+
+### 알아 둘 점
+
+- 멀티미디어 코덱은 인터넷에 연결한 채 설치 프로그램에서 체크 상자를 선택하면 함께 설치됩니다. 설치 후 Secure Boot 위반으로 부팅되지 않으면 이 서드파티 옵션 없이 다시 설치하거나 Secure Boot를 끄라고 안내합니다.
+- NVIDIA 그래픽 카드는 설치 후 드라이버 관리자에서 독점 드라이버를 설치합니다.
+- Cinnamon은 X11 세션을 기본으로 쓰며, Wayland 지원은 아직 실험 단계입니다.
+- 주요 버전 업그레이드는 정해진 경로를 따라야 하고 몇 시간이 걸릴 수 있습니다. 21에서 22로 가려면 먼저 21.3까지 올려야 합니다.
+- 2026년부터 개발 주기를 6개월에서 1년으로 늘렸고, 다음 버전부터는 포인트 릴리스 없이 이듬해 연도를 딴 번호(27, 28 순)를 쓰겠다고 밝혔습니다.
+
+### 간단한 역사
+
+2006년 프랑스 개발자 Clement Lefebvre가 리뷰를 올리려고 연 웹사이트가 출발점입니다. 그해 8월 Kubuntu 6.06 기반의 Linux Mint 1.0 "Ada"가 나왔고, 11월의 2.0 "Barbara"부터 GNOME을 썼습니다.

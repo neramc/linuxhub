@@ -38,6 +38,18 @@ logo:
   file: bodhi-linux.png
   source: https://www.bodhilinux.com/trial/wp-content/uploads/2020/12/LeafLogo_512x512-3.png
   license: No license or trademark policy is stated on the Bodhi Linux site; the official leaf logo is published only as this 512 px PNG (trimmed and resized only), used to identify the project
+screenshot:
+  file: bodhi-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:Bodhi_Linux_7.0.0_Standard_default_desktop_-_English.png
+  author: Bodhi Linux Team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Bodhi Linux 7.0의 Moksha 데스크톱. 검은 바탕에 빛을 받은 초록색 보리수 잎 사진이 있고, 왼쪽 위에 설치·도움말 아이콘이, 오른쪽에 가상 데스크톱 미리보기가, 화면 아래에 선반(패널)이 있습니다.
+    en: "The Moksha desktop of Bodhi Linux 7.0: a lit green bodhi leaf on a black background, Install and Help icons at the top left, virtual desktop previews on the right, and the shelf along the bottom."
+  caption:
+    ko: Bodhi Linux 7.0 Standard의 기본 Moksha 데스크톱
+    en: Bodhi Linux 7.0 Standard with its default Moksha desktop
 download:
   strategy: sourceforge
 sources:

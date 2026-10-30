@@ -1,0 +1,44 @@
+---
+title: About SparkyLinux
+description: What sets SparkyLinux, the lightweight Debian-based distribution with a stable line and a semi-rolling testing line, apart, its editions, who it suits and what to know first.
+sources:
+  - https://sparkylinux.org/about/
+  - https://sparkylinux.org/sparky-8-4/
+  - https://sparkylinux.org/sparky-2026-09/
+  - https://wiki.sparkylinux.org/doku.php/aptus
+lastReviewed: 2026-10-29
+---
+
+SparkyLinux is a fast, lightweight distribution built on Debian. From the start it set out to give old computers a second life, though it runs just as well on new ones. It comes in two lines, a fixed release that follows Debian stable and a semi-rolling one that follows Debian testing; the current stable version is Sparky <Latest slug="sparkylinux" />.
+
+### Highlights
+
+- **Two release lines.** The stable line is fully compatible with Debian stable and gets refreshed install images every quarter. The semi-rolling line tracks Debian testing for newer software. Either way, an existing install just keeps updating; there is no need to reinstall.
+- **APTus and a wide choice of desktops.** The ready-made images use Xfce, LXQt, MATE or KDE Plasma, but Sparky supports about 20 desktop environments and window managers, which APTus, its collection of package tools, installs in one click. APTus also covers upgrades, fixing broken packages and removing non-free packages.
+- **Its own repository.** A Sparky repository sits on top of Debian’s, so even the stable line can pick up newer kernels or the latest Firefox when you want them.
+- **Ready to use.** The desktop images include a curated set of applications, multimedia codecs and plugins, and most wireless and mobile network cards work out of the box.
+
+### Editions and variants
+
+- **Desktop editions** (Xfce, LXQt, MATE, KDE Plasma) are ready to use right after installation.
+- **MinimalGUI** has the Openbox window manager and only the essentials, while **MinimalCLI** starts without any graphical environment so you can build your own desktop. The semi-rolling line adds a MinimalGUI image with Labwc, which runs on Wayland.
+- Special editions: **GameOver** for gaming, **Multimedia** for audio and video work and web development, and **Rescue**, a live system rescue toolbox.
+- There are Openbox and CLI images for ARM64 devices, and MinimalGUI and MinimalCLI images for 32-bit PCs.
+
+### Who it suits
+
+- Anyone who wants to put an old PC back to work on a Debian-based system
+- People who like Debian but want an easier way to set up desktops and applications
+- Users curious to try less common desktop environments and window managers
+- People who need a setup with a clear purpose, such as gaming, media work or system rescue
+
+### Good to know
+
+- By the project’s own account, Sparky is aimed at users with some Linux experience rather than complete beginners, though beginners can get help on the forums.
+- The 64-bit PC images support Secure Boot. An internet connection is recommended when installing on UEFI machines.
+- The 32-bit images do not include the Calamares installer; install in text mode with `sudo sparky-installer`.
+- The semi-rolling line trades some stability for newer applications, and the project recommends it to more experienced users.
+
+### A short history
+
+SparkyLinux began in 2012 as a fully configured, ready-to-use system meant to replace heavier commercial operating systems. When Debian stopped building 32-bit live and install images, Sparky dropped them too, then brought them back in 8.4 because many working 32-bit machines are still in use.

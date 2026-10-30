@@ -39,6 +39,18 @@ logo:
   file: qubes-os.svg
   source: https://www.qubes-os.org/attachment/icons/qubes-logo-home.svg
   license: CC BY-SA 4.0 (official Qubes visual style guide); Qubes OS name and logo, used to identify the project
+screenshot:
+  file: qubes-os.webp
+  source: https://commons.wikimedia.org/wiki/File:Qubes_OS_ws_4-1-2.png
+  author: The Qubes OS Project, Invisible Things Labs, Joanna Rutkowska
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Qubes OS 4.1의 Xfce 데스크톱. Fedora 37과 Debian 11 가상 머신의 터미널 창이 각각 neofetch 결과를 보여 주고, Whonix 가상 머신에서는 Tor Browser가 환영 페이지를 띄우고 있습니다. 창마다 어느 가상 머신의 것인지 제목 표시줄 색과 이름으로 구분됩니다.
+    en: "The Xfce desktop of Qubes OS 4.1: terminals in Fedora 37 and Debian 11 qubes show neofetch output, and Tor Browser runs the welcome page in a Whonix qube. Each window's title bar names its qube and carries its color."
+  caption:
+    ko: Qubes OS 4.1.2에서 Fedora, Debian, Whonix 가상 머신을 함께 띄운 모습
+    en: Qubes OS 4.1.2 running Fedora, Debian and Whonix qubes side by side
 download:
   strategy: mirrors
 sources:
