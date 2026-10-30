@@ -22,7 +22,7 @@
   "antix": {
     "releases": {
       "failingSince": "2026-10-28",
-      "lastError": "robots.txt disallows https://antixlinux.com/download/"
+      "lastError": "robots.txt of https://antixlinux.com could not be read (server error or no answer), so the host is closed for this run: https://antixlinux.com/download/"
     },
     "mirrors": {
       "failingSince": "2026-10-28",
@@ -121,8 +121,8 @@
   },
   "endeavouros": {
     "releases": {
-      "failingSince": "2026-10-29",
-      "lastError": "robots.txt disallows https://github.com/endeavouros-arm/images/releases/download/rpi-4b-image/enosLinuxARM-rpi4-latest.img.xz.sha512sum"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -231,8 +231,8 @@
   },
   "manjaro": {
     "releases": {
-      "failingSince": "2026-10-29",
-      "lastError": "robots.txt disallows https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-gnome-generic-23.02.img.xz.sha1"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -391,8 +391,8 @@
   },
   "slackware": {
     "releases": {
-      "failingSince": "2026-10-30",
-      "lastError": "robots.txt disallows the redirect target https://mirror.fcix.net/slackware/slackware64-15.0/ANNOUNCE.15.0"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,

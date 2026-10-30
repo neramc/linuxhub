@@ -3,17 +3,17 @@
   "sources": [
     "https://tails.net/install/v2/Tails/amd64/stable/latest.json",
     "https://tails.net/install/download/",
-    "https://tails.net/news/version_7.15.1/"
+    "https://tails.net/news/version_7.16/"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-30",
   "releases": [
     {
-      "version": "7.15.1",
+      "version": "7.16",
       "channel": "stable",
       "codename": null,
-      "releaseDate": "2026-10-23",
+      "releaseDate": "2026-10-30",
       "eol": null,
-      "notesUrl": "https://tails.net/news/version_7.15.1/",
+      "notesUrl": "https://tails.net/news/version_7.16/",
       "editions": [
         {
           "id": "tails",
@@ -24,31 +24,31 @@
             {
               "arch": "x86_64",
               "format": "img",
-              "file": "tails-amd64-7.15.1.img",
-              "path": "stable/tails-amd64-7.15.1/tails-amd64-7.15.1.img",
-              "url": "https://download.tails.net/tails/stable/tails-amd64-7.15.1/tails-amd64-7.15.1.img",
-              "size": 1889533952,
+              "file": "tails-amd64-7.16.img",
+              "path": "stable/tails-amd64-7.16/tails-amd64-7.16.img",
+              "url": "https://download.tails.net/tails/stable/tails-amd64-7.16/tails-amd64-7.16.img",
+              "size": 1901068288,
               "checksum": {
                 "type": "sha256",
-                "value": "32eba91c65cd184206eb7c8e9b504277442cf17aae7816815a1d9401e9736761",
+                "value": "7bef45b9aad430e6c2bbfd78c30c5a7ad2f143d498a002b96b88814a18c52a1d",
                 "url": "https://tails.net/install/v2/Tails/amd64/stable/latest.json"
               },
-              "signatureUrl": "https://tails.net/torrents/files/tails-amd64-7.15.1.img.sig",
+              "signatureUrl": "https://tails.net/torrents/files/tails-amd64-7.16.img.sig",
               "torrentUrl": null
             },
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "tails-amd64-7.15.1.iso",
-              "path": "stable/tails-amd64-7.15.1/tails-amd64-7.15.1.iso",
-              "url": "https://download.tails.net/tails/stable/tails-amd64-7.15.1/tails-amd64-7.15.1.iso",
-              "size": 1879707648,
+              "file": "tails-amd64-7.16.iso",
+              "path": "stable/tails-amd64-7.16/tails-amd64-7.16.iso",
+              "url": "https://download.tails.net/tails/stable/tails-amd64-7.16/tails-amd64-7.16.iso",
+              "size": 1891045376,
               "checksum": {
                 "type": "sha256",
-                "value": "f0e68387ebe327808c0a037886f804f7b2268ae8c66a677e3a6c6241d764e3c7",
+                "value": "db90cb147cbfa74a801ede758061a3dcf1393b102405bdeccab4708e2fdbd71e",
                 "url": "https://tails.net/install/v2/Tails/amd64/stable/latest.json"
               },
-              "signatureUrl": "https://tails.net/torrents/files/tails-amd64-7.15.1.iso.sig",
+              "signatureUrl": "https://tails.net/torrents/files/tails-amd64-7.16.iso.sig",
               "torrentUrl": null
             }
           ]

@@ -4,7 +4,7 @@
     "https://manjaro.org/products/download/x86/",
     "https://manjaro.org/products/download/arm/"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-30",
   "releases": [
     {
       "version": "26.1.0",
@@ -276,12 +276,8 @@
               "file": "Manjaro-ARM-gnome-generic-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-gnome-generic-23.02.img.xz",
-              "size": 1261797688,
-              "checksum": {
-                "type": "sha1",
-                "value": "4b7ac4e8c4eb4598cfa3c845fb557a22ebc5b488",
-                "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-gnome-generic-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-gnome-generic-23.02.img.xz.torrent"
             }
@@ -299,12 +295,8 @@
               "file": "Manjaro-ARM-kde-plasma-generic-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-kde-plasma-generic-23.02.img.xz",
-              "size": 1102882212,
-              "checksum": {
-                "type": "sha1",
-                "value": "b0a9f9529bf9faa8968aa2b2d53850ca959b43f1",
-                "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-kde-plasma-generic-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-kde-plasma-generic-23.02.img.xz.torrent"
             }
@@ -322,12 +314,8 @@
               "file": "Manjaro-ARM-mate-generic-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-mate-generic-23.02.img.xz",
-              "size": 996198016,
-              "checksum": {
-                "type": "sha1",
-                "value": "49614c45e6067d46213808234ca18d2a1e7329f4",
-                "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-mate-generic-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-mate-generic-23.02.img.xz.torrent"
             }
@@ -345,12 +333,8 @@
               "file": "Manjaro-ARM-minimal-generic-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-minimal-generic-23.02.img.xz",
-              "size": 432258524,
-              "checksum": {
-                "type": "sha1",
-                "value": "7a496df5a18e7657ff5ae289af2044d74a5ba7ff",
-                "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-minimal-generic-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-minimal-generic-23.02.img.xz.torrent"
             }
@@ -368,12 +352,8 @@
               "file": "Manjaro-ARM-sway-generic-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-sway-generic-23.02.img.xz",
-              "size": 1187723876,
-              "checksum": {
-                "type": "sha1",
-                "value": "481b4927883e11fe2a6490badf946e84db3aaca6",
-                "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-sway-generic-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-sway-generic-23.02.img.xz.torrent"
             }
@@ -391,12 +371,8 @@
               "file": "Manjaro-ARM-xfce-generic-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-xfce-generic-23.02.img.xz",
-              "size": 937028936,
-              "checksum": {
-                "type": "sha1",
-                "value": "b0662e1732eaddd64cda8910bc300dd342315f5b",
-                "url": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-xfce-generic-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-images/releases/download/23.02/Manjaro-ARM-xfce-generic-23.02.img.xz.torrent"
             }
@@ -414,12 +390,8 @@
               "file": "Manjaro-ARM-gnome-generic-efi-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-gnome-generic-efi-23.02.img.xz",
-              "size": 1196784,
-              "checksum": {
-                "type": "sha1",
-                "value": "cdde7dfcceaae44fc91b936ed71507505781783b",
-                "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-gnome-generic-efi-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-gnome-generic-efi-23.02.img.xz.torrent"
             }
@@ -437,12 +409,8 @@
               "file": "Manjaro-ARM-kde-plasma-generic-efi-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-kde-plasma-generic-efi-23.02.img.xz",
-              "size": 1140225388,
-              "checksum": {
-                "type": "sha1",
-                "value": "99b0b3a2cf4100ac0fc94d7df4861fb737e04ea4",
-                "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-kde-plasma-generic-efi-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-kde-plasma-generic-efi-23.02.img.xz.torrent"
             }
@@ -460,12 +428,8 @@
               "file": "Manjaro-ARM-mate-generic-efi-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-mate-generic-efi-23.02.img.xz",
-              "size": 1013431508,
-              "checksum": {
-                "type": "sha1",
-                "value": "76d7e9e473f6526d5a4cd4d54ff23857685bf97e",
-                "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-mate-generic-efi-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-mate-generic-efi-23.02.img.xz.torrent"
             }
@@ -483,12 +447,8 @@
               "file": "Manjaro-ARM-minimal-generic-efi-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-minimal-generic-efi-23.02.img.xz",
-              "size": 403917560,
-              "checksum": {
-                "type": "sha1",
-                "value": "702ff599ef227e283e477b958f1e5459d285aa84",
-                "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-minimal-generic-efi-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-minimal-generic-efi-23.02.img.xz.torrent"
             }
@@ -506,12 +466,8 @@
               "file": "Manjaro-ARM-sway-generic-efi-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-sway-generic-efi-23.02.img.xz",
-              "size": 1219488236,
-              "checksum": {
-                "type": "sha1",
-                "value": "372a016332490f8b983ec31a38bfc7cfcb0c792c",
-                "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-sway-generic-efi-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-sway-generic-efi-23.02.img.xz.torrent"
             }
@@ -529,12 +485,8 @@
               "file": "Manjaro-ARM-xfce-generic-efi-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-xfce-generic-efi-23.02.img.xz",
-              "size": 949296784,
-              "checksum": {
-                "type": "sha1",
-                "value": "cc74a5fc8bf46746257eb3508434885eeda33caf",
-                "url": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-xfce-generic-efi-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/generic-efi-images/releases/download/23.02/Manjaro-ARM-xfce-generic-efi-23.02.img.xz.torrent"
             }
@@ -552,12 +504,8 @@
               "file": "Manjaro-ARM-gnome-vim2-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-gnome-vim2-23.02.img.xz",
-              "size": 1263820788,
-              "checksum": {
-                "type": "sha1",
-                "value": "69a30222909e577a163ad031a9dc9302a8321b07",
-                "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-gnome-vim2-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-gnome-vim2-23.02.img.xz.torrent"
             }
@@ -575,12 +523,8 @@
               "file": "Manjaro-ARM-kde-plasma-vim2-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-kde-plasma-vim2-23.02.img.xz",
-              "size": 1102569396,
-              "checksum": {
-                "type": "sha1",
-                "value": "6abecf9fd4320a2350fef12e5d01c549ec34e0ec",
-                "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-kde-plasma-vim2-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-kde-plasma-vim2-23.02.img.xz.torrent"
             }
@@ -598,12 +542,8 @@
               "file": "Manjaro-ARM-mate-vim2-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-mate-vim2-23.02.img.xz",
-              "size": 1003701924,
-              "checksum": {
-                "type": "sha1",
-                "value": "a7efa86daad1a992c931423cef760a77386c8c56",
-                "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-mate-vim2-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-mate-vim2-23.02.img.xz.torrent"
             }
@@ -621,12 +561,8 @@
               "file": "Manjaro-ARM-minimal-vim2-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-minimal-vim2-23.02.img.xz",
-              "size": 377836352,
-              "checksum": {
-                "type": "sha1",
-                "value": "3f7375bfdf0dbc191622101b25e5b10338f09474",
-                "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-minimal-vim2-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-minimal-vim2-23.02.img.xz.torrent"
             }
@@ -644,12 +580,8 @@
               "file": "Manjaro-ARM-sway-vim2-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-sway-vim2-23.02.img.xz",
-              "size": 1202697580,
-              "checksum": {
-                "type": "sha1",
-                "value": "ad033c52362ccf37548615942326523e94c09916",
-                "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-sway-vim2-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-sway-vim2-23.02.img.xz.torrent"
             }
@@ -667,12 +599,8 @@
               "file": "Manjaro-ARM-xfce-vim2-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-xfce-vim2-23.02.img.xz",
-              "size": 905947448,
-              "checksum": {
-                "type": "sha1",
-                "value": "0c45e18323c8a9fd1f598ef3a9e1c0b0605ef993",
-                "url": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-xfce-vim2-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim2-images/releases/download/23.02/Manjaro-ARM-xfce-vim2-23.02.img.xz.torrent"
             }
@@ -690,12 +618,8 @@
               "file": "Manjaro-ARM-gnome-vim3-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-gnome-vim3-23.02.img.xz",
-              "size": 1267075732,
-              "checksum": {
-                "type": "sha1",
-                "value": "0d50f8e9fda2843978c098828894bf5e568077b1",
-                "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-gnome-vim3-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-gnome-vim3-23.02.img.xz.torrent"
             }
@@ -713,12 +637,8 @@
               "file": "Manjaro-ARM-kde-plasma-vim3-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-kde-plasma-vim3-23.02.img.xz",
-              "size": 1106330408,
-              "checksum": {
-                "type": "sha1",
-                "value": "142ef8e8b7b3056292f704b4e2fcb1ff11a7d9d5",
-                "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-kde-plasma-vim3-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-kde-plasma-vim3-23.02.img.xz.torrent"
             }
@@ -736,12 +656,8 @@
               "file": "Manjaro-ARM-mate-vim3-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-mate-vim3-23.02.img.xz",
-              "size": 998776200,
-              "checksum": {
-                "type": "sha1",
-                "value": "191e6eb017b0c20a445f107506956e401f4dc4a2",
-                "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-mate-vim3-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-mate-vim3-23.02.img.xz.torrent"
             }
@@ -759,12 +675,8 @@
               "file": "Manjaro-ARM-minimal-vim3-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-minimal-vim3-23.02.img.xz",
-              "size": 379830120,
-              "checksum": {
-                "type": "sha1",
-                "value": "110add7512e94513f1fb5c1c76d58b85b556831f",
-                "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-minimal-vim3-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-minimal-vim3-23.02.img.xz.torrent"
             }
@@ -782,12 +694,8 @@
               "file": "Manjaro-ARM-sway-vim3-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-sway-vim3-23.02.img.xz",
-              "size": 1200482980,
-              "checksum": {
-                "type": "sha1",
-                "value": "53ad0f85aae544663fb2af2a2d367a66a36240c5",
-                "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-sway-vim3-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-sway-vim3-23.02.img.xz.torrent"
             }
@@ -805,12 +713,8 @@
               "file": "Manjaro-ARM-xfce-vim3-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-xfce-vim3-23.02.img.xz",
-              "size": 917273660,
-              "checksum": {
-                "type": "sha1",
-                "value": "db8b68966d2fc88a0a291581391680ad0e60887c",
-                "url": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-xfce-vim3-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/vim3-images/releases/download/23.02/Manjaro-ARM-xfce-vim3-23.02.img.xz.torrent"
             }
@@ -828,12 +732,8 @@
               "file": "Manjaro-ARM-gnome-oc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-gnome-oc4-23.02.img.xz",
-              "size": 1189857752,
-              "checksum": {
-                "type": "sha1",
-                "value": "40eba6bf7ffd60ec52bac07ebf379fa6ff0f0673",
-                "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-gnome-oc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-gnome-oc4-23.02.img.xz.torrent"
             }
@@ -851,12 +751,8 @@
               "file": "Manjaro-ARM-kde-plasma-oc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-oc4-23.02.img.xz",
-              "size": 1039693708,
-              "checksum": {
-                "type": "sha1",
-                "value": "9c3ea043faf17ee37e8991e52375bb2f0bbde42f",
-                "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-oc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-oc4-23.02.img.xz.torrent"
             }
@@ -874,12 +770,8 @@
               "file": "Manjaro-ARM-mate-oc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-mate-oc4-23.02.img.xz",
-              "size": 914938212,
-              "checksum": {
-                "type": "sha1",
-                "value": "2d290f2cd70e40f40ef23c80750d2a13b8da3748",
-                "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-mate-oc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-mate-oc4-23.02.img.xz.torrent"
             }
@@ -897,12 +789,8 @@
               "file": "Manjaro-ARM-minimal-oc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-minimal-oc4-23.02.img.xz",
-              "size": 289364104,
-              "checksum": {
-                "type": "sha1",
-                "value": "9842df68e7bf432d2278aed94f21e58e226b15b4",
-                "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-minimal-oc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-minimal-oc4-23.02.img.xz.torrent"
             }
@@ -920,12 +808,8 @@
               "file": "Manjaro-ARM-sway-oc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-sway-oc4-23.02.img.xz",
-              "size": 1117902412,
-              "checksum": {
-                "type": "sha1",
-                "value": "82a1b32e639b6104f4000e1f0388057188fc3cd8",
-                "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-sway-oc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-sway-oc4-23.02.img.xz.torrent"
             }
@@ -943,12 +827,8 @@
               "file": "Manjaro-ARM-xfce-oc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-xfce-oc4-23.02.img.xz",
-              "size": 851045788,
-              "checksum": {
-                "type": "sha1",
-                "value": "45127b71bf6a4917242459455d38293b5eb7e2b3",
-                "url": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-xfce-oc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/oc4-images/releases/download/23.02/Manjaro-ARM-xfce-oc4-23.02.img.xz.torrent"
             }
@@ -966,12 +846,8 @@
               "file": "Manjaro-ARM-gnome-ohc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-gnome-ohc4-23.02.img.xz",
-              "size": 1181010900,
-              "checksum": {
-                "type": "sha1",
-                "value": "6d67e17a4f0b4bf5c2a2f7b19c214def0a68791d",
-                "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-gnome-ohc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-gnome-ohc4-23.02.img.xz.torrent"
             }
@@ -989,12 +865,8 @@
               "file": "Manjaro-ARM-kde-plasma-ohc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-ohc4-23.02.img.xz",
-              "size": 1012153316,
-              "checksum": {
-                "type": "sha1",
-                "value": "5042e4b4e9b35731000d9176f2e0c5af9fddca8f",
-                "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-ohc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-ohc4-23.02.img.xz.torrent"
             }
@@ -1012,12 +884,8 @@
               "file": "Manjaro-ARM-mate-ohc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-mate-ohc4-23.02.img.xz",
-              "size": 902171268,
-              "checksum": {
-                "type": "sha1",
-                "value": "9316afae47a6a42bdf2ca098eeab88ab149fb835",
-                "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-mate-ohc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-mate-ohc4-23.02.img.xz.torrent"
             }
@@ -1035,12 +903,8 @@
               "file": "Manjaro-ARM-minimal-ohc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-minimal-ohc4-23.02.img.xz",
-              "size": 303552188,
-              "checksum": {
-                "type": "sha1",
-                "value": "e85c91ad56ca6d5cccfe0b8917e18ae6f59512b8",
-                "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-minimal-ohc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-minimal-ohc4-23.02.img.xz.torrent"
             }
@@ -1058,12 +922,8 @@
               "file": "Manjaro-ARM-sway-ohc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-sway-ohc4-23.02.img.xz",
-              "size": 1130429484,
-              "checksum": {
-                "type": "sha1",
-                "value": "af3bbd5c59d414ac57444c2827a4e3cae0705f3c",
-                "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-sway-ohc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-sway-ohc4-23.02.img.xz.torrent"
             }
@@ -1081,12 +941,8 @@
               "file": "Manjaro-ARM-xfce-ohc4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-xfce-ohc4-23.02.img.xz",
-              "size": 831380184,
-              "checksum": {
-                "type": "sha1",
-                "value": "86b9f3b7ee7b2b5fe817572e2f67912f31f1a5a1",
-                "url": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-xfce-ohc4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/ohc4-images/releases/download/23.02/Manjaro-ARM-xfce-ohc4-23.02.img.xz.torrent"
             }
@@ -1104,12 +960,8 @@
               "file": "Manjaro-ARM-gnome-om1-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-gnome-om1-23.02.img.xz",
-              "size": 1158462760,
-              "checksum": {
-                "type": "sha1",
-                "value": "8ce779b7803b58225bf00dca10769a5b5ec1ab35",
-                "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-gnome-om1-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-gnome-om1-23.02.img.xz.torrent"
             }
@@ -1127,12 +979,8 @@
               "file": "Manjaro-ARM-kde-plasma-om1-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-kde-plasma-om1-23.02.img.xz",
-              "size": 1024737200,
-              "checksum": {
-                "type": "sha1",
-                "value": "80369ce2373fdf47e6d99d1279f70f8079b1cce6",
-                "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-kde-plasma-om1-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-kde-plasma-om1-23.02.img.xz.torrent"
             }
@@ -1150,12 +998,8 @@
               "file": "Manjaro-ARM-mate-om1-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-mate-om1-23.02.img.xz",
-              "size": 910202268,
-              "checksum": {
-                "type": "sha1",
-                "value": "096e00f6267f9e7e43f5a18d02fb928da429f016",
-                "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-mate-om1-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-mate-om1-23.02.img.xz.torrent"
             }
@@ -1173,12 +1017,8 @@
               "file": "Manjaro-ARM-minimal-om1-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-minimal-om1-23.02.img.xz",
-              "size": 279711704,
-              "checksum": {
-                "type": "sha1",
-                "value": "23fdb337d237b5711971b6578aa1cbb63e45f4b8",
-                "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-minimal-om1-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-minimal-om1-23.02.img.xz.torrent"
             }
@@ -1196,12 +1036,8 @@
               "file": "Manjaro-ARM-sway-om1-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-sway-om1-23.02.img.xz",
-              "size": 1087877720,
-              "checksum": {
-                "type": "sha1",
-                "value": "b2270a874e91a26628c3a1069928f71ba78f46d2",
-                "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-sway-om1-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-sway-om1-23.02.img.xz.torrent"
             }
@@ -1219,12 +1055,8 @@
               "file": "Manjaro-ARM-xfce-om1-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-xfce-om1-23.02.img.xz",
-              "size": 836158480,
-              "checksum": {
-                "type": "sha1",
-                "value": "24d1a4357a2eae71d13241cbac3b635204c0d2df",
-                "url": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-xfce-om1-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/om1-images/releases/download/23.02/Manjaro-ARM-xfce-om1-23.02.img.xz.torrent"
             }
@@ -1242,12 +1074,8 @@
               "file": "Manjaro-ARM-gnome-opi3-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-gnome-opi3-lts-23.02.img.xz",
-              "size": 1269505856,
-              "checksum": {
-                "type": "sha1",
-                "value": "867eb01e911244b52297122eaac56971200e69bc",
-                "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-gnome-opi3-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-gnome-opi3-lts-23.02.img.xz.torrent"
             }
@@ -1265,12 +1093,8 @@
               "file": "Manjaro-ARM-kde-plasma-opi3-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi3-lts-23.02.img.xz",
-              "size": 1154494760,
-              "checksum": {
-                "type": "sha1",
-                "value": "b05abb9addf391e158400fb85855f8146080619f",
-                "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi3-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi3-lts-23.02.img.xz.torrent"
             }
@@ -1288,12 +1112,8 @@
               "file": "Manjaro-ARM-mate-opi3-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-mate-opi3-lts-23.02.img.xz",
-              "size": 1029509580,
-              "checksum": {
-                "type": "sha1",
-                "value": "b84967bca5c5ea2d7d5daea5cdeaf3ea816cf2c9",
-                "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-mate-opi3-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-mate-opi3-lts-23.02.img.xz.torrent"
             }
@@ -1311,12 +1131,8 @@
               "file": "Manjaro-ARM-minimal-opi3-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-minimal-opi3-lts-23.02.img.xz",
-              "size": 390749812,
-              "checksum": {
-                "type": "sha1",
-                "value": "a4f6d768bc9c6756f2ab7144c296345b5584f9ba",
-                "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-minimal-opi3-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-minimal-opi3-lts-23.02.img.xz.torrent"
             }
@@ -1334,12 +1150,8 @@
               "file": "Manjaro-ARM-sway-opi3-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-sway-opi3-lts-23.02.img.xz",
-              "size": 1219564556,
-              "checksum": {
-                "type": "sha1",
-                "value": "d98509c84d3a913e30003979a75baa97bfa8ac91",
-                "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-sway-opi3-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-sway-opi3-lts-23.02.img.xz.torrent"
             }
@@ -1357,12 +1169,8 @@
               "file": "Manjaro-ARM-xfce-opi3-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-xfce-opi3-lts-23.02.img.xz",
-              "size": 929361796,
-              "checksum": {
-                "type": "sha1",
-                "value": "e7961c9f70cdb776616a118c658aa58453b20fa1",
-                "url": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-xfce-opi3-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi3-lts-images/releases/download/23.02/Manjaro-ARM-xfce-opi3-lts-23.02.img.xz.torrent"
             }
@@ -1380,12 +1188,8 @@
               "file": "Manjaro-ARM-gnome-opi4-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-gnome-opi4-lts-23.02.img.xz",
-              "size": 1316556112,
-              "checksum": {
-                "type": "sha1",
-                "value": "31cea9b13d7ddf12e424a59b5505acd21e0ec7a9",
-                "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-gnome-opi4-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-gnome-opi4-lts-23.02.img.xz.torrent"
             }
@@ -1403,12 +1207,8 @@
               "file": "Manjaro-ARM-kde-plasma-opi4-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi4-lts-23.02.img.xz",
-              "size": 1137209240,
-              "checksum": {
-                "type": "sha1",
-                "value": "b9edc8f767345c3486f28da6e69e5a6592a10cbb",
-                "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi4-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi4-lts-23.02.img.xz.torrent"
             }
@@ -1426,12 +1226,8 @@
               "file": "Manjaro-ARM-mate-opi4-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-mate-opi4-lts-23.02.img.xz",
-              "size": 1028216052,
-              "checksum": {
-                "type": "sha1",
-                "value": "050f9af38cf5a27b97d9445154d59fa406b088a4",
-                "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-mate-opi4-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-mate-opi4-lts-23.02.img.xz.torrent"
             }
@@ -1449,12 +1245,8 @@
               "file": "Manjaro-ARM-minimal-opi4-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-minimal-opi4-lts-23.02.img.xz",
-              "size": 377291904,
-              "checksum": {
-                "type": "sha1",
-                "value": "ed6c096badeb0c6bf733a628880ce355ebfbb4cb",
-                "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-minimal-opi4-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-minimal-opi4-lts-23.02.img.xz.torrent"
             }
@@ -1472,12 +1264,8 @@
               "file": "Manjaro-ARM-sway-opi4-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-sway-opi4-lts-23.02.img.xz",
-              "size": 1197307444,
-              "checksum": {
-                "type": "sha1",
-                "value": "4ff57f122e9d435ea374081bfae565fb63c03570",
-                "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-sway-opi4-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-sway-opi4-lts-23.02.img.xz.torrent"
             }
@@ -1495,12 +1283,8 @@
               "file": "Manjaro-ARM-xfce-opi4-lts-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-xfce-opi4-lts-23.02.img.xz",
-              "size": 935826012,
-              "checksum": {
-                "type": "sha1",
-                "value": "98d75418fab8727e677f6118a1d1e24a7d907785",
-                "url": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-xfce-opi4-lts-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi4-lts-images/releases/download/23.02/Manjaro-ARM-xfce-opi4-lts-23.02.img.xz.torrent"
             }
@@ -1518,12 +1302,8 @@
               "file": "Manjaro-ARM-gnome-opi-800-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-gnome-opi-800-23.02.img.xz",
-              "size": 1279749576,
-              "checksum": {
-                "type": "sha1",
-                "value": "241af1745a053eedb47eab7e164885f8d85dcbc5",
-                "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-gnome-opi-800-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-gnome-opi-800-23.02.img.xz.torrent"
             }
@@ -1541,12 +1321,8 @@
               "file": "Manjaro-ARM-kde-plasma-opi-800-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi-800-23.02.img.xz",
-              "size": 1125257312,
-              "checksum": {
-                "type": "sha1",
-                "value": "7138e3ab0790e2c3c806558f51b0ad60150b1055",
-                "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi-800-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-kde-plasma-opi-800-23.02.img.xz.torrent"
             }
@@ -1564,12 +1340,8 @@
               "file": "Manjaro-ARM-mate-opi-800-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-mate-opi-800-23.02.img.xz",
-              "size": 1032227636,
-              "checksum": {
-                "type": "sha1",
-                "value": "c11dc03d78d5c9baed22c08ec4974ade2bab5108",
-                "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-mate-opi-800-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-mate-opi-800-23.02.img.xz.torrent"
             }
@@ -1587,12 +1359,8 @@
               "file": "Manjaro-ARM-minimal-opi-800-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-minimal-opi-800-23.02.img.xz",
-              "size": 391220304,
-              "checksum": {
-                "type": "sha1",
-                "value": "c2e9da8cb2ac1abef4ee6433c55df3b55497125d",
-                "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-minimal-opi-800-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-minimal-opi-800-23.02.img.xz.torrent"
             }
@@ -1610,12 +1378,8 @@
               "file": "Manjaro-ARM-sway-opi-800-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-sway-opi-800-23.02.img.xz",
-              "size": 1208873900,
-              "checksum": {
-                "type": "sha1",
-                "value": "a3f0bbe2d38701be624bd06879cbbb87f25327fc",
-                "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-sway-opi-800-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-sway-opi-800-23.02.img.xz.torrent"
             }
@@ -1633,12 +1397,8 @@
               "file": "Manjaro-ARM-xfce-opi-800-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-xfce-opi-800-23.02.img.xz",
-              "size": 921448144,
-              "checksum": {
-                "type": "sha1",
-                "value": "57998e0a397aea63133e7c10c118c43263c1e8cc",
-                "url": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-xfce-opi-800-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/opi-800-images/releases/download/23.02/Manjaro-ARM-xfce-opi-800-23.02.img.xz.torrent"
             }
@@ -1656,12 +1416,8 @@
               "file": "Manjaro-ARM-gnome-pbpro-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-gnome-pbpro-23.02.img.xz",
-              "size": 1263078140,
-              "checksum": {
-                "type": "sha1",
-                "value": "6c24bc93858fd9f5073885f3a60f315887663978",
-                "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-gnome-pbpro-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-gnome-pbpro-23.02.img.xz.torrent"
             }
@@ -1679,12 +1435,8 @@
               "file": "Manjaro-ARM-kde-plasma-pbpro-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-kde-plasma-pbpro-23.02.img.xz",
-              "size": 1120871092,
-              "checksum": {
-                "type": "sha1",
-                "value": "d7e8c4893899d03bf9f905a2e86698b464a84234",
-                "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-kde-plasma-pbpro-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-kde-plasma-pbpro-23.02.img.xz.torrent"
             }
@@ -1702,12 +1454,8 @@
               "file": "Manjaro-ARM-mate-pbpro-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-mate-pbpro-23.02.img.xz",
-              "size": 1008238596,
-              "checksum": {
-                "type": "sha1",
-                "value": "98755ae0f2ad50ca7863ba9864c217fee82f5b19",
-                "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-mate-pbpro-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-mate-pbpro-23.02.img.xz.torrent"
             }
@@ -1725,12 +1473,8 @@
               "file": "Manjaro-ARM-minimal-pbpro-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-minimal-pbpro-23.02.img.xz",
-              "size": 391566884,
-              "checksum": {
-                "type": "sha1",
-                "value": "17d8e8b969116079d6e59762f55dab9b1db4682a",
-                "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-minimal-pbpro-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-minimal-pbpro-23.02.img.xz.torrent"
             }
@@ -1748,12 +1492,8 @@
               "file": "Manjaro-ARM-sway-pbpro-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-sway-pbpro-23.02.img.xz",
-              "size": 1205804940,
-              "checksum": {
-                "type": "sha1",
-                "value": "70e5db25f9bc04373123b13591f0f229280e8240",
-                "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-sway-pbpro-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-sway-pbpro-23.02.img.xz.torrent"
             }
@@ -1771,12 +1511,8 @@
               "file": "Manjaro-ARM-xfce-pbpro-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-xfce-pbpro-23.02.img.xz",
-              "size": 909163808,
-              "checksum": {
-                "type": "sha1",
-                "value": "bd26da6bbc5b94028667b1fafe298f7371785e41",
-                "url": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-xfce-pbpro-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/pbpro-images/releases/download/23.02/Manjaro-ARM-xfce-pbpro-23.02.img.xz.torrent"
             }
@@ -1794,12 +1530,8 @@
               "file": "Manjaro-ARM-gnome-quartz64-a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-gnome-quartz64-a-23.02.img.xz",
-              "size": 1163344916,
-              "checksum": {
-                "type": "sha1",
-                "value": "3e89635253a157504fec8748bfdff5983527f4d6",
-                "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-gnome-quartz64-a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-gnome-quartz64-a-23.02.img.xz.torrent"
             }
@@ -1817,12 +1549,8 @@
               "file": "Manjaro-ARM-kde-plasma-quartz64-a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-kde-plasma-quartz64-a-23.02.img.xz",
-              "size": 1018945580,
-              "checksum": {
-                "type": "sha1",
-                "value": "cc400214390d07c6298dd7d149ef5b6760933805",
-                "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-kde-plasma-quartz64-a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-kde-plasma-quartz64-a-23.02.img.xz.torrent"
             }
@@ -1840,12 +1568,8 @@
               "file": "Manjaro-ARM-mate-quartz64-a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-mate-quartz64-a-23.02.img.xz",
-              "size": 910009808,
-              "checksum": {
-                "type": "sha1",
-                "value": "4801f62b7588a582c87bb4286d4d76f0bebf87a2",
-                "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-mate-quartz64-a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-mate-quartz64-a-23.02.img.xz.torrent"
             }
@@ -1863,12 +1587,8 @@
               "file": "Manjaro-ARM-minimal-quartz64-a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-minimal-quartz64-a-23.02.img.xz",
-              "size": 288936492,
-              "checksum": {
-                "type": "sha1",
-                "value": "6c219a8384845b16de5aaad841ed0ac4ccf295ca",
-                "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-minimal-quartz64-a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-minimal-quartz64-a-23.02.img.xz.torrent"
             }
@@ -1886,12 +1606,8 @@
               "file": "Manjaro-ARM-sway-quartz64-a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-sway-quartz64-a-23.02.img.xz",
-              "size": 1085771176,
-              "checksum": {
-                "type": "sha1",
-                "value": "0cde29a5c8a3842a85fe37b576d4bf6848141faa",
-                "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-sway-quartz64-a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-sway-quartz64-a-23.02.img.xz.torrent"
             }
@@ -1909,12 +1625,8 @@
               "file": "Manjaro-ARM-xfce-quartz64-a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-xfce-quartz64-a-23.02.img.xz",
-              "size": 836109544,
-              "checksum": {
-                "type": "sha1",
-                "value": "83f31f46a5b3943786488df65ce2b1a860d5daf6",
-                "url": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-xfce-quartz64-a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-a-images/releases/download/23.02/Manjaro-ARM-xfce-quartz64-a-23.02.img.xz.torrent"
             }
@@ -1932,12 +1644,8 @@
               "file": "Manjaro-ARM-gnome-quartz64-b-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-gnome-quartz64-b-23.02.img.xz",
-              "size": 1277732924,
-              "checksum": {
-                "type": "sha1",
-                "value": "025a36b3e4ba3d51c025975f75807f6954a079b2",
-                "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-gnome-quartz64-b-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-gnome-quartz64-b-23.02.img.xz.torrent"
             }
@@ -1955,12 +1663,8 @@
               "file": "Manjaro-ARM-kde-plasma-quartz64-b-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-kde-plasma-quartz64-b-23.02.img.xz",
-              "size": 1114059432,
-              "checksum": {
-                "type": "sha1",
-                "value": "8815fc730eadbb1785a85748e980aa3bbb7cf65b",
-                "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-kde-plasma-quartz64-b-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-kde-plasma-quartz64-b-23.02.img.xz.torrent"
             }
@@ -1978,12 +1682,8 @@
               "file": "Manjaro-ARM-mate-quartz64-b-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-mate-quartz64-b-23.02.img.xz",
-              "size": 996850096,
-              "checksum": {
-                "type": "sha1",
-                "value": "39335a7f37989dc04857c9dcef233e85606541d6",
-                "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-mate-quartz64-b-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-mate-quartz64-b-23.02.img.xz.torrent"
             }
@@ -2001,12 +1701,8 @@
               "file": "Manjaro-ARM-minimal-quartz64-b-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-minimal-quartz64-b-23.02.img.xz",
-              "size": 387234104,
-              "checksum": {
-                "type": "sha1",
-                "value": "de9e5d89476ef5a77765894843b3d1d226c34de9",
-                "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-minimal-quartz64-b-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-minimal-quartz64-b-23.02.img.xz.torrent"
             }
@@ -2024,12 +1720,8 @@
               "file": "Manjaro-ARM-sway-quartz64-b-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-sway-quartz64-b-23.02.img.xz",
-              "size": 1212833728,
-              "checksum": {
-                "type": "sha1",
-                "value": "d7add40a62093188317cc5243f26dd20b2da2020",
-                "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-sway-quartz64-b-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-sway-quartz64-b-23.02.img.xz.torrent"
             }
@@ -2047,12 +1739,8 @@
               "file": "Manjaro-ARM-xfce-quartz64-b-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-xfce-quartz64-b-23.02.img.xz",
-              "size": 934293176,
-              "checksum": {
-                "type": "sha1",
-                "value": "a7052e13593cc1a84fe2a2721c0846cc81b0a91a",
-                "url": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-xfce-quartz64-b-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/quartz64-b-images/releases/download/23.02/Manjaro-ARM-xfce-quartz64-b-23.02.img.xz.torrent"
             }
@@ -2070,12 +1758,8 @@
               "file": "Manjaro-ARM-gnome-radxa-zero-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-gnome-radxa-zero-23.02.img.xz",
-              "size": 1161912100,
-              "checksum": {
-                "type": "sha1",
-                "value": "16efef491446d84e4410dc4fde16057f82476ed8",
-                "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-gnome-radxa-zero-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-gnome-radxa-zero-23.02.img.xz.torrent"
             }
@@ -2093,12 +1777,8 @@
               "file": "Manjaro-ARM-kde-plasma-radxa-zero-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-kde-plasma-radxa-zero-23.02.img.xz",
-              "size": 1009572636,
-              "checksum": {
-                "type": "sha1",
-                "value": "5dce526bab0836619f08241aae73fc3fbc89985f",
-                "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-kde-plasma-radxa-zero-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-kde-plasma-radxa-zero-23.02.img.xz.torrent"
             }
@@ -2116,12 +1796,8 @@
               "file": "Manjaro-ARM-mate-radxa-zero-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-mate-radxa-zero-23.02.img.xz",
-              "size": 910001036,
-              "checksum": {
-                "type": "sha1",
-                "value": "8d610904b6c3ab0ddaa9b30744e198b19ec2e59b",
-                "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-mate-radxa-zero-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-mate-radxa-zero-23.02.img.xz.torrent"
             }
@@ -2139,12 +1815,8 @@
               "file": "Manjaro-ARM-minimal-radxa-zero-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-minimal-radxa-zero-23.02.img.xz",
-              "size": 287145856,
-              "checksum": {
-                "type": "sha1",
-                "value": "a82b8212786fe9d60d043df3402ff7087045a0d1",
-                "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-minimal-radxa-zero-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-minimal-radxa-zero-23.02.img.xz.torrent"
             }
@@ -2162,12 +1834,8 @@
               "file": "Manjaro-ARM-sway-radxa-zero-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-sway-radxa-zero-23.02.img.xz",
-              "size": 1106240968,
-              "checksum": {
-                "type": "sha1",
-                "value": "b3354c1951ab7ddd10176d7cd4b679cb2ae5982f",
-                "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-sway-radxa-zero-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-sway-radxa-zero-23.02.img.xz.torrent"
             }
@@ -2185,12 +1853,8 @@
               "file": "Manjaro-ARM-xfce-radxa-zero-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-xfce-radxa-zero-23.02.img.xz",
-              "size": 828314728,
-              "checksum": {
-                "type": "sha1",
-                "value": "df6e9db9e8ec6b778c38f10f53fc7ea8605fc210",
-                "url": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-xfce-radxa-zero-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/radxa-zero-images/releases/download/23.02/Manjaro-ARM-xfce-radxa-zero-23.02.img.xz.torrent"
             }
@@ -2208,12 +1872,8 @@
               "file": "Manjaro-ARM-gnome-rpi4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-gnome-rpi4-23.02.img.xz",
-              "size": 1279678276,
-              "checksum": {
-                "type": "sha1",
-                "value": "68dd7058cd59d50f810d8438ff58fdb38bb7ce42",
-                "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-gnome-rpi4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-gnome-rpi4-23.02.img.xz.torrent"
             }
@@ -2231,12 +1891,8 @@
               "file": "Manjaro-ARM-kde-plasma-rpi4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-rpi4-23.02.img.xz",
-              "size": 1135722444,
-              "checksum": {
-                "type": "sha1",
-                "value": "f2ec8b736b4302223fc05ae74c916d26f43652fd",
-                "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-rpi4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-kde-plasma-rpi4-23.02.img.xz.torrent"
             }
@@ -2254,12 +1910,8 @@
               "file": "Manjaro-ARM-mate-rpi4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-mate-rpi4-23.02.img.xz",
-              "size": 1042339148,
-              "checksum": {
-                "type": "sha1",
-                "value": "6c9b3752448390b50c0164c2970ff6566621f478",
-                "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-mate-rpi4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-mate-rpi4-23.02.img.xz.torrent"
             }
@@ -2277,12 +1929,8 @@
               "file": "Manjaro-ARM-minimal-rpi4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-minimal-rpi4-23.02.img.xz",
-              "size": 447649056,
-              "checksum": {
-                "type": "sha1",
-                "value": "a12c5ec9bc07dca878776b80243c7137ed091ff7",
-                "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-minimal-rpi4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-minimal-rpi4-23.02.img.xz.torrent"
             }
@@ -2300,12 +1948,8 @@
               "file": "Manjaro-ARM-sway-rpi4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-sway-rpi4-23.02.img.xz",
-              "size": 1238764252,
-              "checksum": {
-                "type": "sha1",
-                "value": "f789c3b7544f980d4fd3109825fc928b619cbee2",
-                "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-sway-rpi4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-sway-rpi4-23.02.img.xz.torrent"
             }
@@ -2323,12 +1967,8 @@
               "file": "Manjaro-ARM-xfce-rpi4-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-xfce-rpi4-23.02.img.xz",
-              "size": 957763004,
-              "checksum": {
-                "type": "sha1",
-                "value": "ae9d9a8cebdfdbdd8edffcd9f6c3ec3c20f56136",
-                "url": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-xfce-rpi4-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rpi4-images/releases/download/23.02/Manjaro-ARM-xfce-rpi4-23.02.img.xz.torrent"
             }
@@ -2346,12 +1986,8 @@
               "file": "Manjaro-ARM-gnome-rock3a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-gnome-rock3a-23.02.img.xz",
-              "size": 1153954200,
-              "checksum": {
-                "type": "sha1",
-                "value": "770c51cc93cb99a82ce5406679fd7860d0bc01df",
-                "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-gnome-rock3a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-gnome-rock3a-23.02.img.xz.torrent"
             }
@@ -2369,12 +2005,8 @@
               "file": "Manjaro-ARM-kde-plasma-rock3a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-kde-plasma-rock3a-23.02.img.xz",
-              "size": 1014024240,
-              "checksum": {
-                "type": "sha1",
-                "value": "17d1fac7fba2dfbc2a3825b1de35b2a0e69c1ba2",
-                "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-kde-plasma-rock3a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-kde-plasma-rock3a-23.02.img.xz.torrent"
             }
@@ -2392,12 +2024,8 @@
               "file": "Manjaro-ARM-mate-rock3a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-mate-rock3a-23.02.img.xz",
-              "size": 908552340,
-              "checksum": {
-                "type": "sha1",
-                "value": "c6b0c706561676fde1b23b6b4d84286c19132ce7",
-                "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-mate-rock3a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-mate-rock3a-23.02.img.xz.torrent"
             }
@@ -2415,12 +2043,8 @@
               "file": "Manjaro-ARM-minimal-rock3a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-minimal-rock3a-23.02.img.xz",
-              "size": 280901404,
-              "checksum": {
-                "type": "sha1",
-                "value": "7481e8138c75838baf796a97bd62e92d6be74942",
-                "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-minimal-rock3a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-minimal-rock3a-23.02.img.xz.torrent"
             }
@@ -2438,12 +2062,8 @@
               "file": "Manjaro-ARM-sway-rock3a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-sway-rock3a-23.02.img.xz",
-              "size": 1105803280,
-              "checksum": {
-                "type": "sha1",
-                "value": "6354b6a826696526dad67d80706cb7d5b08a0bf1",
-                "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-sway-rock3a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-sway-rock3a-23.02.img.xz.torrent"
             }
@@ -2461,12 +2081,8 @@
               "file": "Manjaro-ARM-xfce-rock3a-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-xfce-rock3a-23.02.img.xz",
-              "size": 834150052,
-              "checksum": {
-                "type": "sha1",
-                "value": "691ebf180314afedd70ea7dea5b8ff3448d9e1e6",
-                "url": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-xfce-rock3a-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/rock3a-images/releases/download/23.02/Manjaro-ARM-xfce-rock3a-23.02.img.xz.torrent"
             }
@@ -2484,12 +2100,8 @@
               "file": "Manjaro-ARM-gnome-am6-plus-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-gnome-am6-plus-23.02.img.xz",
-              "size": 1198486132,
-              "checksum": {
-                "type": "sha1",
-                "value": "36fc08aeccc435521970687961a5e5d6cff0c656",
-                "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-gnome-am6-plus-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-gnome-am6-plus-23.02.img.xz.torrent"
             }
@@ -2507,12 +2119,8 @@
               "file": "Manjaro-ARM-kde-plasma-am6-plus-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-kde-plasma-am6-plus-23.02.img.xz",
-              "size": 1043544208,
-              "checksum": {
-                "type": "sha1",
-                "value": "37822267727e5e131bf99d844bf9398a731b81de",
-                "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-kde-plasma-am6-plus-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-kde-plasma-am6-plus-23.02.img.xz.torrent"
             }
@@ -2530,12 +2138,8 @@
               "file": "Manjaro-ARM-mate-am6-plus-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-mate-am6-plus-23.02.img.xz",
-              "size": 902944916,
-              "checksum": {
-                "type": "sha1",
-                "value": "88786e9ede638933433e202fb8343f128553d70a",
-                "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-mate-am6-plus-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-mate-am6-plus-23.02.img.xz.torrent"
             }
@@ -2553,12 +2157,8 @@
               "file": "Manjaro-ARM-minimal-am6-plus-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-minimal-am6-plus-23.02.img.xz",
-              "size": 275047844,
-              "checksum": {
-                "type": "sha1",
-                "value": "7d0f36b2876eccb1f4932162b5b066e60ee78842",
-                "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-minimal-am6-plus-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-minimal-am6-plus-23.02.img.xz.torrent"
             }
@@ -2576,12 +2176,8 @@
               "file": "Manjaro-ARM-sway-am6-plus-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-sway-am6-plus-23.02.img.xz",
-              "size": 1144533204,
-              "checksum": {
-                "type": "sha1",
-                "value": "9044e216f8c93d6afbf0b29f6f59bc319560676b",
-                "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-sway-am6-plus-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-sway-am6-plus-23.02.img.xz.torrent"
             }
@@ -2599,12 +2195,8 @@
               "file": "Manjaro-ARM-xfce-am6-plus-23.02.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-xfce-am6-plus-23.02.img.xz",
-              "size": 842339244,
-              "checksum": {
-                "type": "sha1",
-                "value": "8939ce9cac71d444c02af655fe3f64be4dfbff15",
-                "url": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-xfce-am6-plus-23.02.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": "https://github.com/manjaro-arm/am6-plus-images/releases/download/23.02/Manjaro-ARM-xfce-am6-plus-23.02.img.xz.torrent"
             }
@@ -2632,12 +2224,8 @@
               "file": "Manjaro-ARM-phosh-pinephone-beta32.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-pinephone/phosh/releases/download/beta32/Manjaro-ARM-phosh-pinephone-beta32.img.xz",
-              "size": 1049586692,
-              "checksum": {
-                "type": "sha256",
-                "value": "ea2090e2295c9792223d57245920656222368fb444ee42ad09378919871eda59",
-                "url": "https://github.com/manjaro-pinephone/phosh/releases/download/beta32/Manjaro-ARM-phosh-pinephone-beta32.img.xz.sha256"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
             }
@@ -2655,12 +2243,8 @@
               "file": "Manjaro-ARM-phosh-pinephonepro-beta32.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-pinephone/phosh/releases/download/beta32/Manjaro-ARM-phosh-pinephonepro-beta32.img.xz",
-              "size": 1176383684,
-              "checksum": {
-                "type": "sha256",
-                "value": "5d6f61362b4676cf7945d5da93953b661d001705aa454fc1d0e1e5a9dc144ba6",
-                "url": "https://github.com/manjaro-pinephone/phosh/releases/download/beta32/Manjaro-ARM-phosh-pinephonepro-beta32.img.xz.sha256"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
             }
@@ -2688,12 +2272,8 @@
               "file": "Manjaro-ARM-plasma-mobile-pinephone-beta14.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-pinephone/plasma-mobile/releases/download/beta14/Manjaro-ARM-plasma-mobile-pinephone-beta14.img.xz",
-              "size": 1137000240,
-              "checksum": {
-                "type": "sha1",
-                "value": "7e80301e237f0de65856b01f29b05069cd7af524",
-                "url": "https://github.com/manjaro-pinephone/plasma-mobile/releases/download/beta14/Manjaro-ARM-plasma-mobile-pinephone-beta14.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
             }
@@ -2711,12 +2291,8 @@
               "file": "Manjaro-ARM-plasma-mobile-pinephonepro-beta14.img.xz",
               "path": null,
               "url": "https://github.com/manjaro-pinephone/plasma-mobile/releases/download/beta14/Manjaro-ARM-plasma-mobile-pinephonepro-beta14.img.xz",
-              "size": 1242615748,
-              "checksum": {
-                "type": "sha1",
-                "value": "4376123d2f23aadbb5d688dfdbb5a1876f28c7f4",
-                "url": "https://github.com/manjaro-pinephone/plasma-mobile/releases/download/beta14/Manjaro-ARM-plasma-mobile-pinephonepro-beta14.img.xz.sha1"
-              },
+              "size": null,
+              "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
             }
