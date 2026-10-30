@@ -4,7 +4,7 @@
     "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso.mirrorlist",
     "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso.mirrorlist"
   ],
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "mirrors": [
     {
       "url": "https://mirror.telepoint.bg/slackware/",
@@ -138,6 +138,14 @@
       "url": "https://mirror1.sox.rs/slackware/",
       "country": "RS",
       "name": "mirror1.sox.rs",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yandex.ru/slackware/",
+      "country": "RU",
+      "name": "mirror.yandex.ru",
       "lat": null,
       "lon": null,
       "score": null

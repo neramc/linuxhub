@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.alpinelinux.org/mirrors.json"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-30",
   "mirrors": [
     {
       "url": "https://mirror.alwyzon.net/alpine/",
@@ -497,6 +497,14 @@
       "url": "https://ftp.icm.edu.pl/pub/Linux/distributions/alpine/",
       "country": "PL",
       "name": "ICM",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.torchbyte.com/alpine/",
+      "country": "RO",
+      "name": "Torchbyte",
       "lat": null,
       "lon": null,
       "score": null

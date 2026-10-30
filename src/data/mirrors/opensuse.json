@@ -5,7 +5,7 @@
     "https://get.opensuse.org/api/v0/distributions.json",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/pub/opensuse/opensuse/",
@@ -64,6 +64,22 @@
       "score": null
     },
     {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/opensuse/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.zju.edu.cn/opensuse/",
+      "country": "CN",
+      "name": "mirrors.zju.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ftp.sh.cvut.cz/opensuse/",
       "country": "CZ",
       "name": "ftp.sh.cvut.cz",
@@ -83,14 +99,6 @@
       "url": "https://ftp.gwdg.de/pub/opensuse/",
       "country": "DE",
       "name": "ftp.gwdg.de",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ftp.halifax.rwth-aachen.de/opensuse/",
-      "country": "DE",
-      "name": "ftp.halifax.rwth-aachen.de",
       "lat": null,
       "lon": null,
       "score": null
@@ -299,6 +307,14 @@
       "url": "https://mirror.mai.co.ua/opensuse/",
       "country": "UA",
       "name": "mirror.mai.co.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.fcix.net/opensuse/",
+      "country": "US",
+      "name": "mirror.fcix.net",
       "lat": null,
       "lon": null,
       "score": null

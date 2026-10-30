@@ -2,9 +2,9 @@
   "slug": "tails",
   "sources": [
     "https://download.tails.net/tails/?mirrorstats",
-    "https://download.tails.net/tails/stable/tails-amd64-7.15.1/tails-amd64-7.15.1.img?mirrorlist"
+    "https://download.tails.net/tails/stable/tails-amd64-7.16/tails-amd64-7.16.img?mirrorlist"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-30",
   "mirrors": [
     {
       "url": "https://mirror.gofoss.xyz/tails/tails/",
@@ -156,14 +156,6 @@
       "name": "mirror.clarkson.edu",
       "lat": 44.6667,
       "lon": -74.9864,
-      "score": null
-    },
-    {
-      "url": "https://tails.darklab.sh/pub/tails/",
-      "country": "US",
-      "name": "tails.darklab.sh",
-      "lat": 33.4413,
-      "lon": -112.0421,
       "score": null
     }
   ]

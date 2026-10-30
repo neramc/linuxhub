@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -814,6 +814,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.marcusn.net/ubuntu-releases/",
+      "country": "GB",
+      "name": "Marcus N",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.server.net/ubuntu-releases/",
       "country": "GB",
       "name": "Server.net",
@@ -929,14 +937,6 @@
       "url": "https://mirror.citrahost.com/ubuntu-releases/",
       "country": "ID",
       "name": "Citrahost by Citranet",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.gi.co.id/ubuntu-releases/",
-      "country": "ID",
-      "name": "PT Global Intermedia Nusantara",
       "lat": null,
       "lon": null,
       "score": null
