@@ -23,6 +23,7 @@ import CompareTable from "~/components/CompareTable.astro";
 import CopyButtons from "~/components/CopyButtons.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
+import DistroScreenshot from "~/components/DistroScreenshot.astro";
 import Breadcrumb from "~/components/site/Breadcrumb.astro";
 import { LOCALES, localeParam, localizePath, type MessageKey, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
@@ -41,6 +42,7 @@ const distros = (await getCollection("distros"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 6);
 const sample = distros[0]?.data;
+const sampleShot = distros.find((d) => d.data.screenshot)?.data.screenshot;
 const swatches = [
   ["accent-bg-color", "accent-color", "destructive-color", "success-color", "warning-color"],
   ["window-bg-color", "view-bg-color", "card-bg-color", "headerbar-bg-color", "sidebar-bg-color"],
@@ -259,6 +261,10 @@ const compareCells = Object.fromEntries(
     {/* The compare page's table: a real table from 768px, one group per
         attribute below (open this page at 390px for that layout). */}
     <CompareTable rows={compareRows} columns={compareColumns} cells={compareCells} />
+
+    {/* A distro's screenshot (ADR-0018): card radius and shadow, what it shows,
+        then the credit its license asks for. */}
+    {sampleShot && <DistroScreenshot shot={sampleShot} locale={locale} />}
 
     {/* Code block with its copy button; a copy is confirmed by the toast. */}
     <section class="prose">

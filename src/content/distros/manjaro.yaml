@@ -38,6 +38,17 @@ logo:
   source: https://manjaro.org/logo.svg
   license: Public domain (simple geometry); Manjaro registered trademark of Manjaro GmbH & Co. KG
   trademark: https://manjaro.org/terms-of-use
+screenshot:
+  file: manjaro.webp
+  source: https://commons.wikimedia.org/wiki/File:Manjaro_Linux_24.0_KDE_Plasma_Desktop_English.png
+  author: NotRepubilcTV
+  license: GPL / MIT
+  alt:
+    ko: 파란 하늘과 흰 산, 청록색 물을 그린 배경 화면의 KDE Plasma 데스크톱. 왼쪽 위에 'Install Manjaro Linux' 아이콘이 있고, 왼쪽 아래에는 Firefox, 시스템 설정, Dolphin이 즐겨찾기로 보이는 애플리케이션 메뉴가, 오른쪽 위에는 초록색 Manjaro 로고와 Plasma 6.0.5를 보여 주는 neofetch 결과가 나온 Konsole 터미널이 열려 있으며, 화면 아래에 작업 표시줄이 있습니다.
+    en: A KDE Plasma desktop with a wallpaper of blue sky, white mountains and teal water. An 'Install Manjaro Linux' icon sits at top left, the application menu is open at bottom left with Firefox, System Settings and Dolphin as favourites, and a Konsole terminal at top right shows neofetch output with the green Manjaro logo and Plasma 6.0.5. A panel runs along the bottom.
+  caption:
+    ko: Manjaro 24.0 KDE Plasma 에디션의 라이브 환경
+    en: The live session of Manjaro 24.0 KDE Plasma edition
 download:
   strategy: redirector
 sources:

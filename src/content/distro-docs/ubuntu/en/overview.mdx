@@ -1,0 +1,46 @@
+---
+title: About Ubuntu
+description: How Ubuntu, Canonical's Debian-based distribution, is released, what sets it apart, its flavors, who it suits and what to know first.
+sources:
+  - https://ubuntu.com/about
+  - https://ubuntu.com/about/release-cycle
+  - https://ubuntu.com/desktop/flavors
+  - https://documentation.ubuntu.com/release-notes/26.04/
+  - https://documentation.ubuntu.com/release-notes/26.04/summary-for-lts-users/
+  - https://ubuntu.com/desktop/docs/en/latest/explanation/snap-and-deb-packages/
+  - https://documentation.ubuntu.com/security/security-features/platform-protections/secure-boot/
+  - https://ubuntu.com/server/docs/how-to/software/upgrade-your-release/
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2004-October/000003.html
+lastReviewed: 2026-10-29
+---
+
+Ubuntu is a Debian-based distribution made by Canonical together with a worldwide community. A new version comes out every six months, and the April release every second year is a long-term support (LTS) release. The current version is Ubuntu <Latest slug="ubuntu" />.
+
+### Highlights
+
+- **Version numbers are dates.** The number is the year and month of release: the first version, 4.10, came out in October 2004. Interim releases in between bring newer kernels and toolchains but get only nine months of updates, while an LTS gets five years of security updates for packages in the Main repository.
+- **GNOME, the Ubuntu way.** The default desktop is GNOME with Ubuntu’s own extensions and the Yaru theme. Since 25.10 the Ubuntu session runs on Wayland only; X11 programs keep working through XWayland.
+- **deb and snap.** The system and the programs in the archive are deb packages handled by `apt`, while the App Center shows snaps first. Snaps track the app’s latest version regardless of your Ubuntu release, update themselves daily and are mostly sandboxed, but they bundle their libraries and take more disk space.
+- **Ubuntu Pro.** This subscription is free for personal use on up to five machines. It extends LTS security updates to the Universe repository and to ten years, and a paid Legacy add-on stretches that to fifteen.
+
+### Editions and variants
+
+- **Desktop, Server and Core.** Besides the desktop and server editions (cloud images included), Ubuntu Core is an all-snap system for appliances and IoT devices.
+- **Official flavors** are community-made versions that share Ubuntu’s archive. Kubuntu, Xubuntu, Lubuntu, Ubuntu Budgie, Ubuntu Cinnamon, Ubuntu MATE and Ubuntu Unity swap in another desktop; Ubuntu Studio targets content creation, Edubuntu education, and Ubuntu Kylin is tuned for users in China. Support periods, and whether a flavor ships a given release, can differ from Ubuntu itself.
+
+### Who it suits
+
+- Newcomers who want graphics and Wi-Fi drivers and media codecs set up from the installer
+- Desktop and server users who want to stay on one release for years and keep getting security fixes
+- Developers who want the same environment on their desktop as on Ubuntu servers and clouds
+
+### Good to know
+
+- Media codecs and some drivers are installed only if you tick “Install third-party software for graphics and Wi-Fi hardware and additional media formats” during installation. For NVIDIA, `sudo ubuntu-drivers install` is the supported way to get the driver.
+- The free five years of LTS security support covers the Main repository only. Turn on Ubuntu Pro to get security updates for community packages in Universe as well.
+- With Secure Boot on, third-party kernel modules built on your machine need the Machine Owner Key (MOK) created at installation or upgrade, which you enroll in MokManager on the next boot.
+- Upgrades happen in place with `do-release-upgrade`, one release at a time. Moving from one LTS to the next is offered only after the new LTS’s first point release.
+
+### A short history
+
+In 2004 Mark Shuttleworth brought together a small team of Debian developers, founded Canonical, and shipped the first release, 4.10 “Warty Warthog”, that October. In 2006 the project decided that every fourth release, one every two years, would get long-term support, which is where the term LTS comes from.

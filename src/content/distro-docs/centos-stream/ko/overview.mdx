@@ -1,0 +1,44 @@
+---
+title: CentOS Stream 소개
+description: Fedora와 RHEL 사이에서 RHEL의 다음 마이너 버전이 만들어지는 배포판 CentOS Stream의 특징과 이미지, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.centos.org/about/
+  - https://www.centos.org/centos-stream/
+  - https://www.centos.org/download/
+  - https://www.centos.org/centos10/
+  - https://www.centos.org/stream9/
+  - https://sigs.centos.org/altimages/
+  - https://blog.centos.org/2019/09/centos-8-and-centos-stream-released/
+  - https://blog.centos.org/2020/12/future-is-centos-stream/
+lastReviewed: 2026-10-29
+---
+
+CentOS Stream은 Red Hat Enterprise Linux(RHEL) 엔지니어들이 만드는 배포판입니다. Fedora Linux에서 갈라져 나왔고, RHEL의 다음 마이너 버전이 여기서 만들어집니다. 프로젝트는 스스로를 Fedora와 RHEL 사이의 "중간 단계(midstream)"라고 설명합니다. 메이저 버전 안에서 업데이트가 준비되는 대로 계속 배포되며, 지금 최신 메이저 버전은 CentOS Stream <Latest slug="centos-stream" />입니다.
+
+### 특징
+
+- **RHEL보다 한발 앞서.** 다음 RHEL 마이너 버전에 들어갈 변경이 먼저 들어옵니다. 그래서 곧 나올 RHEL을 미리 써 보는 용도로도 쓰입니다.
+- **3년마다 새 메이저 버전, 5년 유지.** 새 메이저 버전은 3년마다 나오고, 각 버전은 RHEL의 전체 지원(Full Support) 기간이 끝날 때까지 약 5년 동안 유지됩니다. 최신 버전은 <Latest slug="centos-stream" field="eol" />까지입니다.
+- **누구나 기여하는 RHEL 개발.** 소스는 GitLab에 공개되어 있고 누구나 변경을 제안할 수 있습니다. 제안은 RHEL 엔지니어링 팀이 검토하며, CentOS Stream에 기여하는 것이 곧 RHEL에 기여하는 것이 됩니다.
+- **SIG의 토대.** CentOS의 특별 관심 그룹(SIG)이 이 위에서 다른 판과 이미지를 만들고 추가 소프트웨어를 패키징합니다.
+
+### 에디션과 변형
+
+- 공식 이미지는 설치용 DVD ISO, 클라우드에 올리는 GenericCloud 이미지, Amazon EC2 이미지, 컨테이너 이미지, Vagrant 박스입니다.
+- 데스크톱을 바로 써 보는 Live 이미지 같은 대체 ISO는 Alternative Images SIG가 만들며, 적어도 3개월마다 새로 빌드합니다.
+
+### 이런 분께 맞습니다
+
+- 다음 RHEL 마이너 버전에 맞춰 소프트웨어나 하드웨어를 미리 시험하려는 개발자와 업체
+- 버그 수정이나 기능을 RHEL에 직접 기여하고 싶은 사람
+- RHEL 계열 위에서 새 기술을 패키징하는 SIG 참여자
+
+### 알아 둘 점
+
+- 예전 CentOS Linux처럼 RHEL을 그대로 다시 빌드한 것이 아닙니다. RHEL보다 앞서 가므로 특정 RHEL 마이너 버전과 똑같지 않습니다.
+- 지원은 RHEL의 전체 지원 기간이 끝나는 약 5년 뒤에 끝나므로, 그때는 새 메이저 버전으로 옮겨야 합니다.
+- CentOS Stream 10은 x86_64에서 x86-64-v3 CPU가 필요하고, Xorg 서버가 빠져 Wayland를 쓰며, 오래된 X11 앱은 Xwayland로 실행합니다. GIMP, LibreOffice, Inkscape 같은 데스크톱 앱도 빠졌으므로 Flathub나 EPEL에서 설치합니다.
+
+### 간단한 역사
+
+CentOS Stream은 2019년 9월 CentOS 8과 함께 처음 나왔습니다. 2020년 12월 CentOS 프로젝트는 RHEL 리빌드인 CentOS Linux에서 CentOS Stream으로 중심을 옮긴다고 발표했고, CentOS Linux 8은 2021년 말에 끝났습니다.

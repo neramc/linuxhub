@@ -39,6 +39,18 @@ logo:
   source: https://assets.ubuntu.com/v1/ce518a18-CoF-2022_solid+O.svg
   license: Trademark of Canonical Ltd., used to identify the project (Wikimedia Commons lists the 2022 Circle of Friends as GPL-3.0-or-later)
   trademark: https://canonical.com/legal/intellectual-property-policy
+screenshot:
+  file: ubuntu.webp
+  source: https://commons.wikimedia.org/wiki/File:Ubuntu_26.10_default_desktop_light_-_English.png
+  author: Canonical Limited
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Ubuntu 26.10의 기본 데스크톱. 왼쪽에 앱 아이콘이 세로로 늘어선 독이 있고, 진한 보라색 바탕 가운데에 가오리 그림이 있습니다. 화면 위에는 날짜와 시각이 있는 상단 표시줄이 있습니다.
+    en: "The default Ubuntu 26.10 desktop: a dock of app icons down the left edge, a deep purple wallpaper with a stingray in the middle, and the top bar with the date and time."
+  caption:
+    ko: Ubuntu 26.10의 기본 데스크톱(밝은 테마)
+    en: Ubuntu 26.10 with its default desktop (light theme)
 download:
   strategy: mirrors
 sources:

@@ -2,11 +2,12 @@ import { describe, expect, it } from "vitest";
 import {
   type Distro,
   editorialPicks,
+  endingSupport,
   groupReleases,
   latestReleaseGroups,
   releaseSeries,
 } from "./catalog";
-import type { HistoryEntry } from "./data-schemas";
+import type { HistoryEntry, ReleasesFile } from "./data-schemas";
 
 const distro = (id: string, order: number, basedOn: string | null): Distro =>
   ({
@@ -112,5 +113,53 @@ describe("editorialPicks (slider fallback before the first popularity sync)", ()
         .sort(),
     ).toEqual(["debian", "ubuntu"]);
     expect(editorialPicks([], 5, day(0))).toEqual([]);
+  });
+});
+
+describe("endingSupport (home: support ending within about six months)", () => {
+  const file = (slug: string, ...releases: [string, string | null][]): ReleasesFile =>
+    ({
+      slug,
+      releases: releases.map(([version, eol]) => ({ version, eol, channel: "stable" })),
+    }) as unknown as ReleasesFile;
+  const releases = new Map<string, ReleasesFile | undefined>([
+    ["fedora", file("fedora", ["44", "2027-05-12"], ["43", "2026-12-02"])],
+    ["ubuntu", file("ubuntu", ["26.04.1", "2031-05-31"], ["24.04.5", "2029-06-30"])],
+    ["kubuntu", file("kubuntu", ["26.04.1", "2029-04-30"], ["24.04.5", "2027-04-30"])],
+    ["lubuntu", file("lubuntu", ["26.04.1", "2029-04-30"], ["24.04.5", "2027-04-30"])],
+    ["xubuntu", file("xubuntu", ["24.04.5", "2027-04-22"])],
+    ["debian", file("debian", ["13.2", null], ["12.13", "2026-06-10"])],
+    ["mint", file("mint", ["22.3", "2029-04-30"], ["21.3", "2027-04-30"])],
+  ]);
+  const rows = endingSupport(catalog, releases, "2026-10-29", 10);
+
+  it("lists ends of life from today to about six months ahead, soonest first", () => {
+    // Same day: editorial order (Mint 1, Kubuntu 17).
+    expect(rows.map((r) => `${r.distro.id} ${r.series} ${r.eol}`)).toEqual([
+      "fedora 43 2026-12-02",
+      "xubuntu 24.04 2027-04-22",
+      "mint 21.3 2027-04-30",
+      "kubuntu 24.04 2027-04-30",
+    ]);
+  });
+
+  it("joins a related distro's same series ending the same day, not another series", () => {
+    const kubuntu = rows.find((r) => r.distro.id === "kubuntu");
+    expect(kubuntu?.flavors.map((d) => d.id)).toEqual(["lubuntu"]);
+    // Mint 21.3 ends the same day but is another series: its own row.
+    expect(rows.find((r) => r.distro.id === "mint")?.flavors).toEqual([]);
+  });
+
+  it("names the newer version to move to, never the ending series itself", () => {
+    expect(rows[0]?.latest).toBe("44");
+    expect(rows.find((r) => r.distro.id === "xubuntu")?.latest).toBeUndefined();
+  });
+
+  it("stops at the limit; a flavor never takes the place of a row cut off", () => {
+    expect(endingSupport(catalog, releases, "2026-10-29", 3).map((r) => r.distro.id)).toEqual([
+      "fedora",
+      "xubuntu",
+      "mint",
+    ]);
   });
 });

@@ -6,7 +6,7 @@ upstream: Mandriva Linux
 status: active
 releaseModel: rolling
 desktops: [kde, xfce, mate]
-packageManagers: [dnf, apt, rpm]
+packageManagers: [dnf, rpm]
 initSystem: SysVinit
 installer: drakx
 useCases: [desktop]
@@ -35,6 +35,18 @@ logo:
   file: pclinuxos.png
   source: https://distro.ibiblio.org/pclinuxos/wallpapers/name-logo.png
   license: No license or trademark policy is stated in the project's artwork directory (author Texstar); PCLinuxOS logo, used to identify the project
+screenshot:
+  file: pclinuxos.webp
+  source: https://commons.wikimedia.org/wiki/File:PCLinuxOS_2020.10_screenshot.png
+  author: PCLinuxOS developers
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: PCLinuxOS 2020.10의 KDE Plasma 데스크톱. 노을 진 하늘 아래 나무 실루엣이 있는 바탕에 왼쪽 아래로 분류별 애플리케이션 메뉴가 열려 있고, 화면 아래에 패널이 있습니다.
+    en: "The KDE Plasma desktop of PCLinuxOS 2020.10: a sunset sky over silhouetted trees, the application menu open by category at the bottom left, and the panel along the bottom."
+  caption:
+    ko: PCLinuxOS 2020.10의 KDE Plasma 데스크톱
+    en: PCLinuxOS 2020.10 with the KDE Plasma desktop
 download:
   strategy: mirrors
 sources:

@@ -37,6 +37,18 @@ logo:
   file: devuan.svg
   source: https://commons.wikimedia.org/wiki/File:Devuan-emblem.svg
   license: Public domain (simple geometry); Devuan trademark of the Dyne.org foundation
+screenshot:
+  file: devuan.webp
+  source: https://commons.wikimedia.org/wiki/File:Devuan_5_Xfce_LiveDVD_uname%2Bissue.png
+  author: BBHCB
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: 파란 바탕에 Devuan 로고와 "software freedom, your way" 문구가 있는 Xfce 데스크톱입니다. 왼쪽에는 휴지통, 홈, Install Devuan, 글꼴 크기 조절, README와 릴리스 노트 아이콘이 있고, 오른쪽 위 터미널 창은 uname -a와 /etc/issue 결과로 Devuan daedalus를 보여 줍니다. 화면 위쪽에는 패널이, 아래쪽 가운데에는 실행기 독이 있습니다.
+    en: An Xfce desktop on a blue wallpaper with the Devuan logo and the words software freedom, your way. Icons for Trash, Home, Install Devuan, font size controls, README files and the release notes run down the left, and a terminal at top right shows the output of uname -a and /etc/issue reading Devuan daedalus. A panel runs along the top and a launcher dock sits at the bottom centre.
+  caption:
+    ko: Devuan 5 Daedalus desktop-live의 Xfce 데스크톱
+    en: The Xfce desktop of the Devuan 5 Daedalus desktop-live image
 download:
   strategy: mirrors
 sources:

@@ -1,0 +1,48 @@
+---
+title: Nobara 소개
+description: 게임과 방송, 영상 제작에 맞춰 손본 Fedora 기반 배포판 Nobara의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://nobaraproject.org/
+  - https://nobaraproject.org/download.html
+  - https://wiki.nobaraproject.org/
+  - https://wiki.nobaraproject.org/FAQ/FAQ
+  - https://wiki.nobaraproject.org/en/new-user-guide-general-guidelines
+  - https://wiki.nobaraproject.org/general-usage/troubleshooting/update-system
+  - https://wiki.nobaraproject.org/general-usage/troubleshooting/upgrade-nobara
+  - https://wiki.nobaraproject.org/modifications/packages
+lastReviewed: 2026-10-29
+---
+
+Nobara는 Fedora를 바탕으로 게임과 방송, 영상 제작에 맞게 손본 데스크톱 배포판입니다. Fedora의 공식 Spin이 아니며 Fedora나 Red Hat과 관계없이 운영되는 취미 프로젝트입니다. 버전 41부터 semi-rolling 방식으로 바뀌어 평소처럼 업데이트하면 다음 버전으로 넘어가며, 지금 기반 버전은 Nobara <Latest slug="nobara" />입니다.
+
+### 특징
+
+- **처음부터 갖춘 게임 환경.** WINE에 필요한 패키지와 Steam, OBS Studio가 들어 있고 RPM Fusion 같은 서드파티 저장소가 켜져 있습니다. Fedora에서 직접 해야 하는 코덱과 드라이버 설정을 첫 실행 안내가 대신 챙겨 줍니다.
+- **직접 손본 커널과 패키지.** 패치한 커널과 Mesa 같은 핵심 패키지는 Nobara의 COPR 저장소에서 빌드해 Fedora와 별도로 빠르게 내보냅니다. Fedora 저장소는 스냅숏으로 받아 한 달에 한두 번 맞추므로 문제가 생긴 패키지를 되돌리기 쉽습니다. 보안 모듈도 SELinux 대신 AppArmor를 씁니다.
+- **전용 업데이트 도구.** 시스템 업데이트는 DNF App Center나 `nobara-sync`로 합니다. 패키지만 올리는 것이 아니라 저장소 변경을 확인하고, 설치된 패키지 버전을 저장소와 맞추며, 상류에서 철회된 업데이트는 되돌립니다. 그래서 `dnf update`만으로는 충분하지 않습니다.
+- **그래픽 도구 위주.** NVIDIA 드라이버는 설치할 때 체크 상자 하나로 넣고, 나중에는 Nobara Driver Manager에서 바꿉니다. ROCm이나 CUDA처럼 선택 사항인 구성 요소도 같은 곳에서 설치합니다.
+
+### 에디션과 변형
+
+- **Official**은 Nobara만의 모양으로 꾸민 KDE Plasma로, 프로젝트의 기준이 되는 판입니다.
+- **GNOME**은 Nobara의 조정을 바탕에 깐 단순한 GNOME이고, **KDE**는 패널과 위젯을 마음대로 꾸미기 좋은 전통적인 배치의 KDE Plasma입니다.
+- **Steam-HTPC**는 TV와 컨트롤러용으로 콘솔처럼 부팅하고, **Steam-Handheld**는 Steam Deck 같은 휴대용 기기의 작은 화면에 맞춘 판입니다.
+- 모든 ISO가 AMD·Intel과 NVIDIA 그래픽을 함께 지원하므로 NVIDIA용 이미지를 따로 고를 필요가 없습니다.
+
+### 이런 분께 맞습니다
+
+- Fedora 기반 시스템에서 설정 없이 바로 게임과 방송을 하고 싶은 사람
+- OBS Studio나 DaVinci Resolve로 영상을 만드는 사람
+- 긴 터미널 명령보다 그래픽 도구로 시스템을 관리하고 싶은 사람
+
+### 알아 둘 점
+
+- 직접 패치한 커널을 쓰기 때문에 Secure Boot를 지원하지 않습니다. 설치 전에 BIOS에서 끄고 UEFI 모드로 부팅해야 합니다.
+- 보증과 전문 지원이 없는 취미 배포판이라 중요한 업무 환경에는 맞지 않습니다.
+- 기존 Fedora에 Nobara 저장소를 추가해 바꾸는 방법은 지원하지 않으며 새로 설치해야 합니다.
+- 새 Fedora 버전을 따라가는 데 보통 한 달 정도 걸립니다. 이전 버전의 저장소는 반년 안에 지워지므로 오래 업데이트하지 않으면 다시 설치해야 할 수 있습니다.
+- NVIDIA GTX 10 시리즈(Pascal)와 그보다 오래된 카드는 현재 드라이버가 지원하지 않습니다. X11 세션도 제공하지 않습니다.
+
+### 간단한 역사
+
+Nobara는 개발자가 자신과 아버지가 새로 설치한 뒤 문제 해결이나 저장소 추가 없이 바로 쓸 수 있는 시스템을 원해서 시작되었습니다. 버전 41부터는 semi-rolling 방식이 되어 새 버전으로 넘어갈 때 따로 업그레이드 절차를 밟지 않아도 됩니다.

@@ -1,0 +1,44 @@
+---
+title: About Vanilla OS
+description: What sets Vanilla OS, the immutable Debian-based distribution that replaces the whole system with a tested image, apart, its image variants, who it suits and what to know first.
+sources:
+  - https://vanillaos.org/blog/article/2026-08-24/vanilla-os-3-reunion---stable-release
+  - https://vanillaos.org/blog/article/2026-07-15/vanilla-os-3-reunion---development-update-and-some-clarifications
+  - https://vanillaos.org/blog/article/2024-07-28/vanilla-os-2-orchid---stable-release
+  - https://vanillaos.org/blog/article/2023-03-07/vanilla-os-20-orchid---initial-work
+  - https://vanillaos.org/blog/article/2022-12-29/vanilla-os-2210-kinetic-is-out
+  - https://raw.githubusercontent.com/Vanilla-OS/handbook/main/articles/en/installation.md
+  - https://raw.githubusercontent.com/Vanilla-OS/handbook/main/articles/en/install-and-manage-applications.md
+lastReviewed: 2026-10-29
+---
+
+Vanilla OS is an immutable (atomic) desktop distribution that ships GNOME close to how its developers intend it. The team builds the system from Debian packages into an image, tests it, and every installation then swaps in that exact image as a whole. The current version is Vanilla OS <Latest slug="vanilla-os" /> "<Latest slug="vanilla-os" field="codename" />".
+
+### Highlights
+
+- **A/B updates with ABRoot.** Two root partitions take turns: a new image is applied atomically to the one not in use. Everyone gets the system exactly as it was tested, and a bad update can be rolled back.
+- **Flatpak first.** Flathub is enabled out of the box, so desktop apps come straight from the Software app.
+- **Debian packages live in VSO.** The terminal opens in the VSO subsystem, a mutable environment separate from the host. Debian packages go in there with `vso native install`, and `sudo` is only available inside it; administrative actions on the host go through PolKit prompts instead.
+- **Other distributions through Apx.** Apx creates isolated subsystems, with Debian and openSUSE Leap stacks included and custom ones possible, so development environments stay apart from the system.
+
+### Editions and variants
+
+- Besides the standard GNOME image there are images for NVIDIA graphics and for virtual machines; the installer detects the hardware and suggests the right one.
+- Since Vanilla OS 3, ARM64 devices with UEFI firmware are officially supported alongside 64-bit x86.
+
+### Who it suits
+
+- People who want a clean GNOME desktop without worrying that an update will break the system
+- Developers who keep toolchains from several distributions in separate containers
+- Anyone happy to install most apps as Flatpaks
+
+### Good to know
+
+- The A/B layout needs at least 50 GB of disk, and dual-booting from the same disk is not set up automatically.
+- Secure Boot can stay on unless you need NVIDIA drivers or other custom kernel modules; then it has to be disabled.
+- Android app support from Vanilla OS 2 has been retired because it did not meet the project's stability standards.
+- Vanilla OS 2 systems move to 3 with a regular update or `abroot upgrade`, but need ABRoot 2.4.0 or newer first.
+
+### A short history
+
+The first stable release, Vanilla OS 22.10 Kinetic, came out on 29 December 2022 and was based on Ubuntu. Vanilla OS 2 Orchid, released in July 2024, moved the base to Debian and switched updates to OCI images.

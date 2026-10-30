@@ -37,6 +37,18 @@ logo:
   file: mx-linux.svg
   source: https://mxrepo.com/mx/repo/pool/main/m/mx-welcome-data/
   license: LGPL-3.0+ (official mx-welcome-data package); MX Linux logo, used to identify the project
+screenshot:
+  file: mx-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:MX25_screenshot_23_September_2025.png
+  author: FullScale4Me
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0
+  alt:
+    ko: MX Linux 25의 Xfce 데스크톱. 밤하늘 아래 구불구불 이어진 길 그림이 바탕에 깔려 있고, 오른쪽 위에는 시각과 디스크·메모리·CPU 사용량을 보여 주는 Conky 위젯이, 아래에는 작업 표시줄이 있습니다.
+    en: "The Xfce desktop of MX Linux 25: a wallpaper of a winding road under a night sky, a Conky widget with the time and disk, memory and CPU use at the top right, and the panel along the bottom."
+  caption:
+    ko: MX Linux 25 "Infinity"의 Xfce 데스크톱
+    en: MX Linux 25 "Infinity" with the Xfce desktop
 download:
   strategy: sourceforge
 sources:

@@ -1,0 +1,48 @@
+---
+title: About Slackware
+description: What sets Slackware, the independent distribution that has kept to a simple, Unix-like design since 1993, apart, its editions, who it suits and what to know first.
+sources:
+  - https://docs.slackware.com/slackware:slackware
+  - https://docs.slackware.com/slackware:philosophy
+  - https://docs.slackware.com/slackware:faq
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/ANNOUNCE.15.0
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/RELEASE_NOTES
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/README_UEFI.TXT
+  - https://mirrors.slackware.com/slackware/slackware64-15.0/ChangeLog.txt
+  - https://mirrors.slackware.com/slackware/slackware64-current/ChangeLog.txt
+  - https://arm.slackware.com/releases/
+lastReviewed: 2026-10-29
+---
+
+Slackware is an independent distribution that Patrick Volkerding has been building since 1993, with the aim, from the start, of being the most Unix-like Linux around. Volkerding makes the major decisions, and a core team and contributors build it with him. Releases are fixed and come out when they are ready rather than on a schedule; the current one is Slackware <Latest slug="slackware" />, released on <Latest slug="slackware" field="releaseDate" />.
+
+### Highlights
+
+- **Configured through text files.** Instead of graphical settings tools, you edit well-commented configuration files in a text editor or use small ncurses scripts. The project openly prefers simplicity over convenience.
+- **Upstream as shipped.** Software goes in with little or no patching, so it behaves the way its authors intended.
+- **Package tools without dependency resolution.** Packages are compressed tarballs handled by the pkgtools scripts such as `installpkg`, `upgradepkg` and `removepkg`, and `slackpkg` fetches updates from a mirror. Because nothing resolves dependencies for you, a full installation is the recommended setup.
+- **Years of security fixes.** A stable release keeps receiving security updates for several years, published in the `patches` directory of its tree. Feature updates are not backported.
+- **Sources and build scripts included.** Every package ships with the source and the script that built it, and there is a script that rebuilds the whole operating system from source.
+
+### Editions and variants
+
+- **Slackware64** (64-bit) and **32-bit Slackware** come out as the same release. On any x86_64 machine the 64-bit edition is the recommended one.
+- **Slackware ARM / AArch64** is the official ARM port, released together with or shortly after the x86 editions.
+- **slackware-current** is the development tree for the next stable release. Updates are frequent and can be disruptive, so anyone running it is in effect a beta tester.
+
+### Who it suits
+
+- People who want to learn how Linux works by reading and editing its configuration files themselves
+- Server and desktop users who want software close to upstream on a system that changes slowly
+- Users comfortable building software from source and packaging it themselves
+
+### Good to know
+
+- Slackware does not work with Secure Boot enabled. UEFI installs are supported on the 64-bit edition only; turn Secure Boot off in the firmware settings first.
+- Software outside the official release is usually built with community scripts from SlackBuilds.org, and you take care of the dependencies yourself.
+- Stable releases can be years apart. If you need newer software you have to follow -current, and be ready to fix things yourself.
+- To move to the next stable release, follow `UPGRADE.TXT` and `CHANGES_AND_HINTS.TXT` from the new release.
+
+### A short history
+
+The first Slackware beta appeared in April 1993. It began when Volkerding’s old friend Brett Person, long regarded as a co-founder, encouraged him to put it up on FTP.

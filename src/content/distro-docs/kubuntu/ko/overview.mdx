@@ -1,0 +1,43 @@
+---
+title: Kubuntu 소개
+description: KDE Plasma를 쓰는 Ubuntu 공식 플레이버 Kubuntu의 특징과 지원 기간, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://kubuntu.org/about/
+  - https://kubuntu.org/discover/
+  - https://kubuntu.org/download/
+  - https://kubuntu.org/news/kubuntu-26-04-release-notes/
+  - https://kubuntu.org/news/kubuntu-26-10-release-notes/
+  - https://kubuntu.org/news/plasma-6.6-lts/
+  - https://kubuntu.org/news/kubuntu-26-04-1-bullet-proof-kde/
+  - https://ubuntu.com/desktop/flavors
+  - https://cdimage.ubuntu.com/kubuntu/releases/26.04.1/release/kubuntu-26.04.1-desktop-amd64.manifest
+  - https://lists.ubuntu.com/archives/ubuntu-announce/2005-April/000024.html
+lastReviewed: 2026-10-29
+---
+
+Kubuntu는 KDE Plasma 데스크톱을 쓰는 Ubuntu 공식 플레이버입니다. Canonical이 아니라 커뮤니티가 만들고 지원하며, Ubuntu와 같은 일정으로 6개월마다 새 버전을, 2년마다 4월에 장기 지원(LTS) 판을 냅니다. 지금 최신 버전은 Kubuntu <Latest slug="kubuntu" />입니다.
+
+### 특징
+
+- **Ubuntu 위의 KDE.** 패키지와 업데이트는 Ubuntu 저장소를 그대로 쓰고, 그 위에 Plasma와 Dolphin, Okular, Gwenview 같은 KDE 앱을 기본으로 갖춥니다. Ubuntu와 갈라진 별도 배포판이 아니라 같은 저장소를 쓰는 공식 프로젝트입니다.
+- **Discover와 snap.** 앱은 KDE의 Discover에서 설치하며, Ubuntu 저장소의 deb 패키지와 snap을 함께 다룹니다. Firefox는 snap으로 들어 있습니다.
+- **Wayland 기본.** Plasma Wayland 세션이 기본이자 Kubuntu 팀이 지원하는 유일한 세션입니다. X11 세션은 기본으로 설치되지 않습니다.
+- **Calamares 설치 프로그램.** Ubuntu Desktop과 달리 여러 배포판이 함께 쓰는 Calamares로 설치합니다.
+- **LTS 동안의 KDE 수정.** 26.04 LTS부터 Bullet-Proof KDE 계획에 따라 Plasma, KDE Frameworks, KDE 앱 전체가 LTS 기간 내내 버그·보안 수정을 받습니다. 하드웨어 협력사 Kubuntu Focus가 비용을 대고, Kubuntu와 KDE, Techpaladin Software가 함께 작업합니다.
+
+### 이런 분께 맞습니다
+
+- 패널과 위젯, 테마까지 데스크톱을 세밀하게 바꾸고 싶은 사람
+- KDE 앱을 쓰면서 Ubuntu의 저장소와 릴리스 일정을 그대로 누리고 싶은 사용자
+- KDE Connect로 휴대폰과 PC를 연결해 쓰고 싶은 사람
+
+### 알아 둘 점
+
+- LTS 판의 지원 기간은 3년으로, 5년인 Ubuntu Desktop보다 짧습니다. 중간 릴리스는 9개월 동안 지원됩니다.
+- X11 세션이 꼭 필요하면 `plasma-session-x11` 패키지를 직접 설치해야 하고, Kubuntu 팀은 이를 지원하지 않습니다. 26.10이 이 패키지를 받을 수 있는 마지막 릴리스입니다.
+- LTS에서 중간 릴리스로 올리려면 `software-properties-qt`에서 새 버전 알림을 일반 릴리스(Normal releases)로 바꾼 뒤 업그레이드 도구를 실행합니다.
+- 업그레이드 뒤 패널 배치나 테마가 깨지면, 시스템 설정의 색상과 테마에서 전역 테마를 데스크톱·창 배치까지 포함해 다시 적용해 봅니다.
+
+### 간단한 역사
+
+첫 릴리스는 2005년 4월 Ubuntu 5.04(Hoary Hedgehog)와 함께 나온 Kubuntu 5.04입니다. KDE 3.4를 Ubuntu의 main 저장소에 넣는 작업에서 출발했고, 18개월 지원을 약속했습니다.

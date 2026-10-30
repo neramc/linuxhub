@@ -1,0 +1,43 @@
+---
+title: About Ubuntu MATE
+description: What sets Ubuntu MATE, the official Ubuntu flavor with the traditional MATE desktop, apart, who it suits and what to know first.
+sources:
+  - https://ubuntu-mate.org/about/
+  - https://ubuntu-mate.org/about/history/
+  - https://ubuntu-mate.org/about/requirements/
+  - https://ubuntu-mate.org/features/
+  - https://ubuntu-mate.org/features/panel/
+  - https://ubuntu-mate.org/download/
+  - https://ubuntu-mate.org/raspberry-pi/download/
+  - https://ubuntu-mate.org/blog/
+  - https://ubuntu-mate.org/blog/ubuntu-mate-stonking-stingray-release-notes/
+  - https://ubuntu-mate.org/blog/ubuntu-mate-noble-numbat-release-notes/
+  - https://ubuntu.com/desktop/flavors
+lastReviewed: 2026-10-29
+---
+
+Ubuntu MATE is the official Ubuntu flavor with the MATE desktop, the continuation of GNOME 2. A community team builds it for people who prefer a traditional desktop layout and releases it alongside Ubuntu. The current version is Ubuntu MATE <Latest slug="ubuntu-mate" />.
+
+### Highlights
+
+- **GNOME 2, carried on.** MATE continues GNOME 2, which was the default desktop on many Linux systems for over a decade, so it is well worn in. MATE’s own apps, such as the Caja file manager and the Pluma editor, are configured from one control center.
+- **Panel layouts with MATE Tweak.** Pick a template, such as Redmond for people coming from Windows, Cupertino with a macOS-style dock and menu bar, or Mutiny for former Unity users, then add or remove panels and widgets.
+- **Light without compositing.** The project aims to give Ubuntu to computers that struggle with a composited desktop, and to serve remote workstation setups such as LTSP and X2Go. The display server is X.org.
+- **Closer to Ubuntu.** Since 24.04 it uses Ubuntu’s installer and the App Center; the old Software Boutique and Welcome app have been retired.
+
+### Who it suits
+
+- People who want a traditional layout like GNOME 2, Windows or macOS
+- Users keeping an older PC with around 2 GB of RAM in service
+- Administrators building remote desktops with LTSP or X2Go
+
+### Good to know
+
+- The project took a break and skipped the 26.04 LTS release, then returned with a new team for 26.10. If you need long-term support, stay on 24.04 LTS (supported until April 2027) or move to each new interim release every nine months.
+- From 26.10, dracut replaces initramfs-tools, netplan replaces ifupdown, and gdebi is no longer on the ISO. Check any scripts that rely on them.
+- Offline upgrades are not supported, so upgrade while connected to an official mirror.
+- New Raspberry Pi images are unlikely. On a Pi you can install Ubuntu and add the `ubuntu-mate-desktop` package, though the project calls that unofficial.
+
+### A short history
+
+Martin Wimpress and Alan Pope started the project, and 14.10 in 2014 was the first release. Ubuntu MATE became an official flavor with 15.04, and 16.04 was its first official LTS.

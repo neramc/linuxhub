@@ -1,0 +1,45 @@
+---
+title: Rocky Linux 소개
+description: RHEL과 버그까지 똑같이 동작하는 것을 목표로 하는 커뮤니티 엔터프라이즈 배포판 Rocky Linux의 특징과 설치 이미지, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://rockylinux.org/
+  - https://rockylinux.org/about
+  - https://www.resf.org/about
+  - https://docs.rockylinux.org/releases/
+  - https://docs.rockylinux.org/releases/release_notes/10_0/
+  - https://download.rockylinux.org/pub/rocky/10/live/x86_64/
+  - https://download.rockylinux.org/pub/rocky/9/live/x86_64/
+lastReviewed: 2026-10-29
+---
+
+Rocky Linux는 CentOS를 만든 Gregory Kurtzer가 시작한 엔터프라이즈 배포판으로, Red Hat Enterprise Linux(RHEL)와 버그까지 똑같이 동작하는 것(bug-for-bug)을 목표로 합니다. 프로젝트는 Rocky Enterprise Software Foundation(RESF)이 맡고 있습니다. RHEL을 따라가는 고정 릴리스이며, 지금 최신 버전은 Rocky Linux <Latest slug="rocky-linux" />(코드명 <Latest slug="rocky-linux" field="codename" />)입니다.
+
+### 특징
+
+- **RHEL을 그대로 다시 빌드.** RHEL의 소스를 바로 가져와 다시 빌드하므로 RHEL을 대상으로 만든 소프트웨어와 설정 방법을 그대로 쓸 수 있습니다.
+- **예측할 수 있는 일정.** 새 메이저 버전은 5월에, 마이너 버전은 해마다 5월과 11월에 나옵니다. 상류의 일반 업데이트는 보통 24~48시간 안에 반영하는 것을 목표로 합니다.
+- **두 단계로 나뉜 10년 지원.** 메이저 버전마다 약 5년의 일반 지원이 끝나면 마지막 마이너 버전(X.10)으로 5년 동안 보안 유지보수를 받습니다. 최신 버전의 지원 종료일은 <Latest slug="rocky-linux" field="eol" />입니다.
+- **RISC-V 지원.** Rocky Linux 10부터 64비트 RISC-V를 지원해, StarFive VisionFive 2 같은 보드에서도 엔터프라이즈 리눅스를 쓸 수 있습니다.
+
+### 에디션과 변형
+
+- **설치 ISO**는 전체 패키지를 담은 DVD, 최소 설치용 Minimal, 네트워크로 패키지를 받는 Boot가 있습니다.
+- **Live 이미지**로는 GNOME 기반의 Workstation과 더 가벼운 Workstation Lite, KDE가 있습니다. Rocky Linux 9에는 Xfce, MATE, Cinnamon판도 있습니다.
+- 클라우드 이미지와 Raspberry Pi용 이미지가 있으며, Rocky Linux 10의 Raspberry Pi 이미지는 Pi 4와 Pi 5를 지원합니다.
+
+### 이런 분께 맞습니다
+
+- CentOS Linux나 다른 RHEL 계열에서 옮겨 오려는 서버 관리자. 공식 마이그레이션 스크립트를 무료로 제공합니다.
+- 운영 환경의 RHEL과 똑같이 동작하는 개발·시험 환경이 필요한 팀
+- RISC-V 하드웨어에서 엔터프라이즈 배포판을 시험해 보려는 사람
+
+### 알아 둘 점
+
+- 메이저 버전 사이의 업그레이드는 지원하지 않습니다. 8이나 9에서 10으로 가려면 새로 설치해야 합니다.
+- 각 메이저 버전에서는 최신 마이너 버전만 지원합니다. 새 마이너 버전이 나오면 `dnf upgrade`로 올려야 하며, 이전 버전의 패키지는 vault 저장소로 옮겨집니다.
+- Rocky Linux 10은 x86_64에서 x86-64-v3(Intel Haswell, AMD Excavator 세대 이후) CPU가 필요하고, 32비트 호환 패키지도 없습니다. 오래된 CPU라면 Rocky Linux 9를 씁니다.
+- Rocky Linux 10에서는 X.Org 서버 대신 Wayland를 쓰고, 예전 `ifcfg` 네트워크 스크립트 대신 NetworkManager만 씁니다. 설치할 때 root 계정은 기본으로 꺼져 있습니다.
+
+### 간단한 역사
+
+2020년 12월 Red Hat이 CentOS Linux 개발을 끝내고 CentOS Stream에 집중하겠다고 발표하자, Kurtzer가 CentOS의 원래 목표를 다시 잇겠다며 프로젝트를 시작했습니다. 이름은 세상을 떠난 CentOS 공동 창립자 Rocky McGaugh를 기린 것입니다. 첫 안정판 Rocky Linux 8.4는 2021년 6월에 나왔습니다.

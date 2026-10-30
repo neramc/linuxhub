@@ -1,0 +1,39 @@
+---
+title: About Alpine Linux
+description: What sets Alpine Linux, the small, security-minded independent distribution built on musl libc and BusyBox, apart, its variants, who it suits and what to know first.
+sources:
+  - https://alpinelinux.org/about/
+  - https://alpinelinux.org/releases/
+  - https://alpinelinux.org/downloads/
+  - https://alpinelinux.org/posts/Alpine-3.24.0-released.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Installing/setup_alpine.html
+lastReviewed: 2026-10-29
+---
+
+Alpine Linux is an independent, non-commercial distribution built on musl libc and BusyBox, aimed at experienced users who care about security, simplicity and using few resources. A new stable branch is cut every May and November, and the current release is Alpine Linux <Latest slug="alpine-linux" />.
+
+### Highlights
+
+- **Very small.** With musl libc and BusyBox at its core, a container needs no more than 8 MB and a minimal disk install around 130 MB. Binary packages are split finely, so you install only the parts you need.
+- **Hardened builds.** Every userland binary is compiled as a position-independent executable (PIE) with stack smashing protection, which blocks whole classes of exploits, including ones not yet known.
+- **apk, OpenRC and setup scripts.** The package manager `apk`, the OpenRC init system and setup scripts such as `setup-alpine` make up nearly the whole base. Packages you install explicitly are recorded in `/etc/apk/world`, and `apk update` followed by `apk upgrade` updates the system.
+- **Stable branches and edge.** Each stable branch’s main repository is usually supported for two years and its community repository until the next stable release. If you need the newest packages, edge is the rolling branch.
+
+### Editions and variants
+
+- **Standard** has just enough to get an installation going and needs a network connection to install. **Extended** adds commonly used packages and AMD and Intel microcode updates, runs from RAM and suits routers and servers.
+- **Virtual** uses a slimmed-down kernel for virtual machines, and **Xen** is meant for a Xen Dom0. There are also images for the Raspberry Pi, U-Boot boards, network booting and the cloud.
+- **Mini root filesystem** is a bare root file system for containers and minimal chroots.
+
+### Who it suits
+
+- Developers and operators who want small, simple container images
+- People running routers, firewalls or embedded devices with few resources
+- Experienced users who want a lean server built from only the packages they choose
+
+### Good to know
+
+- The official installation images include no desktop environment. Desktops such as GNOME and KDE Plasma are in the repositories, but installing and configuring one is up to you.
+- Community packages stop receiving support once the next stable release is out, so a system that relies on them should move to the new branch every six months. Change the version in `/etc/apk/repositories` and run `apk upgrade --available`.
+- The testing repository is only available on edge. Edge is stable enough for daily use but less tested than the stable branches.

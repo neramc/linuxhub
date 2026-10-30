@@ -389,11 +389,12 @@ function init(root: HTMLElement) {
   const auto = root.dataset.strategy === "redirector" || root.dataset.strategy === "sourceforge";
   const official = auto ? labels.auto : labels.origin;
   if (mirrorsUrl && mirrorSel && mirrorLabel) {
+    // Korean and English both group thousands with a comma; toLocaleString would
+    // set up ICU number data on the main thread for this one label.
+    const grouped = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     const describe = (m: RankedMirror) => {
       const name = m.n ?? new URL(m.u).hostname;
-      return m.km === null
-        ? name
-        : `${name} · ${labels.distance.replace("{km}", m.km.toLocaleString(locale))}`;
+      return m.km === null ? name : `${name} · ${labels.distance.replace("{km}", grouped(m.km))}`;
     };
     /** `retried`: the visitor asked, so the wait and a failure are announced. */
     const run = async (retried = false) => {

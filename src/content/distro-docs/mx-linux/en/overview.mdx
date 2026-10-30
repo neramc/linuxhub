@@ -1,0 +1,43 @@
+---
+title: About MX Linux
+description: What sets MX Linux, the Debian stable–based joint project of the antiX and former MEPIS communities, apart, its editions, who it suits and what to know first.
+sources:
+  - https://mxrepo.com/mx/repo/pool/main/m/mx-docs/mx-docs-en_202609130mx25_all.deb
+  - https://sourceforge.net/projects/mx-linux/
+  - https://sourceforge.net/projects/mx-linux/files/Final/Xfce/
+lastReviewed: 2026-10-29
+---
+
+MX Linux is a desktop distribution made jointly by the antiX and former MEPIS communities. It is a fixed release built on Debian stable; the current version is MX Linux <Latest slug="mx-linux" />. The project calls it a mid-weight system: not stripped down, not heavy, and aimed at easy configuration and a stable base.
+
+### Highlights
+
+- **MX Tools.** Jobs that are fiddly on the command line, such as repairing the boot loader, editing boot options or writing a live USB, each have a small graphical tool in the MX Tools dashboard. Some of them started life in antiX.
+- **New apps on a stable base.** MX Package Installer searches Debian stable, the MX Test repository, Debian Backports, Flatpak and Snap from one window, so you can keep the system steady and still get newer versions of the apps you use most.
+- **Pick your init at boot.** Since MX 25 the install images carry both systemd and SysVinit. Whichever you choose in the live boot menu becomes the default of the installed system.
+- **A system you can carry.** The live system can save settings and files back to the USB stick, and MX Snapshot turns your running system into a bootable ISO. The project builds its official monthly refresh ISOs with the same tool.
+- **Debian’s support window.** Security updates come from Debian for up to five years; the Debian base of the current version is scheduled to be supported until <Latest slug="mx-linux" field="eol" />.
+
+### Editions and variants
+
+- **Xfce** is the flagship edition, with separate **KDE Plasma** and **Fluxbox** editions.
+- **Xfce AHS** ships newer firmware and graphics drivers than the standard images and is the one to pick for recent hardware, such as 10th-generation Intel or AMD Ryzen graphics. The KDE edition is built on the same AHS stack.
+- An arm64 respin for the Raspberry Pi is offered alongside the PC images.
+
+### Who it suits
+
+- People who want Debian’s stability but would rather configure the system with graphical tools
+- Anyone looking for an Xfce desktop that runs well on modest hardware
+- Users who prefer SysVinit to systemd
+- People who want to carry their setup on a live USB or build their own ISO
+
+### Good to know
+
+- MX is based on Debian, not Ubuntu, so Ubuntu PPAs and Ubuntu-specific instructions may not work.
+- Secure Boot works only with the Debian-signed boot loader and the stock Debian kernel. Switching to another kernel such as Liquorix means turning it off, and the AHS and KDE editions do not support it at all.
+- To make hardware work out of the box, some non-free software is included, such as the Broadcom `wl` wireless driver. Run `vrms` to see the list.
+- Since MX 25 only 64-bit images are released. On a 32-bit PC, look at MX 23 or antiX instead.
+
+### A short history
+
+MX Linux first appeared in 2014 as a joint effort of the antiX and MEPIS communities, pooling the tools and experience of both. It also carries on work and ideas first created by Warren Woodford.

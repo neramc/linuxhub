@@ -40,6 +40,18 @@ logo:
   source: https://rockylinux.org/images/logo.svg
   license: Rocky Linux is a registered trademark of the Rocky Enterprise Software Foundation; official logo (mark and wordmark) as published on rockylinux.org, used unmodified (SVGO-optimized only; shapes and colors untouched) to identify the project. The foundation's guidelines require written permission for most other uses
   trademark: https://rockylinux.org/legal/trademarks
+screenshot:
+  file: rocky-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:Rocky_Linux_10_Workstation.png
+  author: "ZalnaRs (OS: Rocky Enterprise Software Foundation)"
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Rocky Linux 10 Workstation의 GNOME 활동 개요 화면. 위에 검색 창이, 가운데에 붉은 빛과 선으로 그린 산 무늬 바탕화면 미리보기가, 아래에 소프트웨어·터미널·텍스트 편집기·계산기 아이콘이 있는 독이 있습니다.
+    en: "The GNOME Activities overview of Rocky Linux 10 Workstation: a search field at the top, a preview of the red line-art mountain wallpaper in the middle, and a dock with Software, Terminal, Text Editor and Calculator below."
+  caption:
+    ko: Rocky Linux 10 Workstation의 GNOME 데스크톱
+    en: Rocky Linux 10 Workstation with the GNOME desktop
 download:
   strategy: redirector
 sources:

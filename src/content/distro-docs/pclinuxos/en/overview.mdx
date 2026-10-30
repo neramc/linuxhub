@@ -1,0 +1,36 @@
+---
+title: About PCLinuxOS
+description: What sets PCLinuxOS, the rolling desktop distribution that branched off the Mandriva line, apart, its images, who it suits and what to know first.
+sources:
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/iso/
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/apt/pclinuxos/64bit/
+  - https://ftp.nluug.nl/os/Linux/distr/pclinuxos/apt/pclinuxos/64bit/RPMS.x86_64/
+lastReviewed: 2026-10-29
+---
+
+PCLinuxOS is a desktop distribution that branched off the Mandriva line and has gone its own way since. Instead of opening a new repository for each version, it keeps updating a single one: a rolling release you install once and then simply keep up to date. The install ISOs are rebuilt from time to time and named after the year and month.
+
+### Highlights
+
+- **From apt to dnf.** PCLinuxOS used to manage its RPM packages with apt and has now moved to `dnf`; its system tools (drakxtools) were switched from apt to dnf as well. For a graphical front end there is DNF-Package Manager, made for PCLinuxOS, and dnfdragora.
+- **No systemd.** The init system is SysVinit, and the official repository carries no systemd package at all.
+- **A Mandriva-style control center.** System settings live in drakconf, the control center built on drakxtools.
+- **A choice of kernels.** Kernels from more than one series sit side by side in the repository, so you can pick the one that fits your hardware or use.
+- **A repository in sections.** Besides the main section there are separate ones for KDE, MATE, Xfce and the Trinity desktop, for kernels, and for particular NVIDIA driver series (340, 470 and 525).
+
+### Editions and variants
+
+- The official ISOs are **KDE**, **KDE Darkstar**, **MATE** and **Xfce**. KDE Darkstar is a smaller image than the regular KDE one.
+- The distribution’s `getpclinuxos` tool lists and downloads the official ISOs along with ISOs made by the community.
+
+### Who it suits
+
+- Anyone looking for an RPM-based desktop without systemd
+- People who would rather keep one system updated than reinstall or upgrade every few years
+- Users who want a ready-to-use KDE, MATE or Xfce desktop
+
+### Good to know
+
+- It is 64-bit only; there are no images or repositories for 32-bit PCs.
+- The official mirror offers only an MD5 checksum file for each ISO, with no SHA-256 checksums or signatures.
+- To switch the system language or add a new one, use the `addlocale` script.

@@ -1,0 +1,44 @@
+---
+title: About CentOS Stream
+description: What sets CentOS Stream, the distribution between Fedora and RHEL where the next RHEL minor releases take shape, apart, its images, who it suits and what to know first.
+sources:
+  - https://www.centos.org/about/
+  - https://www.centos.org/centos-stream/
+  - https://www.centos.org/download/
+  - https://www.centos.org/centos10/
+  - https://www.centos.org/stream9/
+  - https://sigs.centos.org/altimages/
+  - https://blog.centos.org/2019/09/centos-8-and-centos-stream-released/
+  - https://blog.centos.org/2020/12/future-is-centos-stream/
+lastReviewed: 2026-10-29
+---
+
+CentOS Stream is built by Red Hat Enterprise Linux (RHEL) engineers. It is derived from Fedora Linux and is the branch from which upcoming RHEL minor releases are cut; the project calls it the midstream between Fedora and RHEL. Within a major version, updates are delivered continuously as they are ready. The newest major version is CentOS Stream <Latest slug="centos-stream" />.
+
+### Highlights
+
+- **Just ahead of RHEL.** Changes meant for the next RHEL minor release land here first, which makes CentOS Stream a way to preview where RHEL is going.
+- **A new major version every three years, maintained for five.** Each major version is maintained until the end of the matching RHEL release's Full Support phase, about five years. The newest one runs until <Latest slug="centos-stream" field="eol" />.
+- **RHEL development in the open.** The sources live on GitLab and anyone can propose changes. The RHEL engineering team reviews them, because a contribution to CentOS Stream is a contribution to RHEL.
+- **A base for SIGs.** CentOS Special Interest Groups build variant editions and images on top of it and package additional software.
+
+### Editions and variants
+
+- Official images are the installation DVD ISO, GenericCloud images for your own cloud, Amazon EC2 images, container images and Vagrant boxes.
+- Alternative ISOs, including live images for trying a desktop, come from the Alternative Images SIG and are rebuilt at least every three months.
+
+### Who it suits
+
+- Developers and vendors who want to test software or hardware against the next RHEL minor release early
+- People who want to contribute fixes or features directly to RHEL
+- SIG members packaging newer technology on an RHEL-family base
+
+### Good to know
+
+- Unlike the old CentOS Linux, it is not a rebuild of RHEL. It runs ahead of RHEL, so it is not identical to any particular RHEL minor release.
+- Support ends with RHEL's Full Support phase, about five years in, after which you need to move to a new major version.
+- On x86_64, CentOS Stream 10 needs an x86-64-v3 CPU. It drops the Xorg server in favor of Wayland, with Xwayland for older X11 apps, and leaves out desktop apps such as GIMP, LibreOffice and Inkscape; install those from Flathub or EPEL.
+
+### A short history
+
+CentOS Stream first appeared alongside CentOS 8 in September 2019. In December 2020 the CentOS Project announced it was moving its focus from CentOS Linux, the RHEL rebuild, to CentOS Stream, and CentOS Linux 8 ended at the close of 2021.

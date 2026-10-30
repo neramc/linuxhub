@@ -1,0 +1,47 @@
+---
+title: About CachyOS
+description: What sets CachyOS, the Arch-based rolling distribution with CPU-specific package builds and a tuned kernel, apart, its editions, who it suits and what to know first.
+sources:
+  - https://cachyos.org/
+  - https://cachyos.org/about/
+  - https://cachyos.org/download/
+  - https://wiki.cachyos.org/cachyos_basic/why_cachyos/
+  - https://wiki.cachyos.org/features/optimized_repos/
+  - https://wiki.cachyos.org/cachyos_basic/faq/
+  - https://wiki.cachyos.org/installation/installation_prepare/
+  - https://wiki.cachyos.org/installation/filesystem/
+  - https://wiki.cachyos.org/configuration/secure_boot_setup/
+lastReviewed: 2026-10-29
+---
+
+CachyOS is an independent, community-run distribution built on Arch Linux with performance as its focus. It recompiles Arch packages for newer CPU instruction sets and ships its own kernel tuned for desktop responsiveness. Like Arch it is a rolling release, so you install once and keep updating.
+
+### Highlights
+
+- **Repositories built per CPU level.** CachyOS rebuilds Arch packages for x86-64-v3, x86-64-v4 and AMD Zen 4 and newer, adding compiler optimizations such as LTO, PGO and BOLT where they pay off. Your software uses the newer instructions without you rebuilding anything.
+- **A tuned kernel with scheduler options.** The default `linux-cachyos` kernel adjusts the EEVDF scheduler for desktop use and carries patches that have not reached the mainline kernel yet, after internal testing. Variants with the BORE scheduler and options such as sched-ext are available too.
+- **An installer that asks.** There is a graphical installer and a command-line one, and you pick from 17 or more desktops and window managers. Kernel, boot manager and file system are chosen during installation as well; the default file system is Btrfs with zstd compression.
+- **Home-grown tools.** CachyOS Hello gathers tweaks and fixes, and the project also maintains a graphical package installer, a kernel manager and a hardware detection tool that installs the drivers your system needs.
+
+### Editions and variants
+
+- **Desktop Edition** is for ordinary PCs. The live session runs KDE Plasma, and you choose the desktop to install separately.
+- **Handheld Edition** targets handheld gaming PCs, with official support for the Steam Deck (OLED and LCD), ROG Ally, Legion Go and Legion Go S. It comes with gaming tools preinstalled and currently supports KDE Plasma only.
+
+### Who it suits
+
+- Gamers and owners of fast PCs who want the most out of a modern CPU
+- People who want an Arch-based system with a graphical installer and sensible tuning out of the box
+- Users who like to try different kernels and schedulers
+- Anyone putting desktop Linux on a handheld such as the Steam Deck
+
+### Good to know
+
+- Installation downloads packages as it goes, so a stable internet connection is required.
+- Secure Boot and CSM must be off in the firmware while installing. You can set up Secure Boot afterwards by following the wiki.
+- The recommended CPU supports x86-64-v3. Intel 12th-generation and later chips may report x86-64-v4, but they cannot actually run AVX-512, so they belong on the v3 repositories.
+- The project advises managing system packages with `pacman` or a front end that wraps it directly. Using Pamac, Discover or GNOME Software for system packages can break the system; keep those apps to Flatpaks.
+
+### A short history
+
+The name comes from “Cachy”, the original name of the cacULE CPU scheduler for the Linux kernel. Around 2020–2021, co-founder Peter Jung and a developer he was testing that scheduler with decided to build an Arch-based distribution optimized for x86-64-v3, and named it after the scheduler.

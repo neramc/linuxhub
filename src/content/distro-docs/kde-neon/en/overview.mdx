@@ -1,0 +1,44 @@
+---
+title: About KDE neon
+description: What sets KDE neon, the latest KDE software on an Ubuntu LTS base, apart, its editions, who it suits and what to know first.
+sources:
+  - https://neon.kde.org/
+  - https://neon.kde.org/faq
+  - https://neon.kde.org/download
+  - https://blog.neon.kde.org/2024/10/10/kde-neon-rebased-on-ubuntu-24-04-lts/
+  - https://blog.neon.kde.org/2024/04/29/kde-neon-post-plasma-6-updates-review/
+  - https://blog.neon.kde.org/2020/08/10/kde-neon-rebased-on-20-04/
+  - https://dot.kde.org/2016/06/08/kde-neon-user-edition-56-available-now/
+lastReviewed: 2026-10-29
+---
+
+KDE neon is a distribution made by the KDE community that puts Plasma and the KDE apps on the latest Ubuntu LTS as soon as new versions are released. The Ubuntu base stays put while the KDE software keeps rolling, so there are no numbered releases; the installation images are simply rebuilt as things change.
+
+### Highlights
+
+- **KDE as its developers made it.** KDE software ships without distribution patches or changed defaults. Plasma, KDE Frameworks, the KDE apps and the Qt underneath them are all newer than in Ubuntu.
+- **Rolling on the KDE side only.** The Ubuntu base does not roll; individual packages are updated only when KDE software needs a newer library.
+- **Apps from Discover as snaps and Flatpaks.** Ordinary apps in the base repositories can be up to two years old, so Discover is set up to show only snap and Flatpak apps.
+- **A new base every two years.** When a new Ubuntu LTS arrives, neon is rebuilt on it in a two-year cycle and installed systems get an upgrade prompt. According to the FAQ, the current base is Ubuntu 24.04 LTS.
+
+### Editions and variants
+
+- **User Edition** carries officially released KDE software and goes through automated QA before updates are deployed. It is the edition meant for everyday use.
+- **Testing Edition** is built daily from bugfix branches and **Unstable Edition** from new-feature branches, both with pre-release software; Unstable has no QA. **Developer Edition** is Unstable plus the development libraries.
+- The User, Testing and Unstable editions come as Mobile and Bigscreen images besides Desktop, and daily container images let you run neon with distrobox.
+
+### Who it suits
+
+- KDE enthusiasts who want new Plasma and KDE app releases the moment they are out
+- Testers and developers who want to try KDE software before release and report bugs
+
+### Good to know
+
+- The project itself says neon may not be right if you need mission-critical reliability. Even User Edition polishes only the KDE software, not the whole system, and during the 2024 move to Plasma 6 some updates left systems broken.
+- Update through Discover’s updater or with `sudo apt full-upgrade`. Plain `apt upgrade` is blocked because it can leave packages behind.
+- The open-source Nouveau driver is the only NVIDIA driver supported. Proprietary drivers can be installed with `ubuntu-drivers`, but you are on your own if they cause problems.
+- Desktops other than Plasma are not supported, and neon cannot sit alongside Kubuntu on the same system. The download mirrors are http only, so check the ISO against its GPG signature.
+
+### A short history
+
+Four months after the project was announced, the first User Edition, based on Plasma 5.6, came out on 8 June 2016. When neon moved to Ubuntu 20.04 in 2020, all of its installation images switched to the Calamares installer.

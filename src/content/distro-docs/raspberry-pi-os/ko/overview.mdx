@@ -1,0 +1,47 @@
+---
+title: Raspberry Pi OS 소개
+description: Raspberry Pi 컴퓨터를 위한 Debian 기반 공식 운영체제 Raspberry Pi OS의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/os/rpi-os-introduction.adoc
+  - https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/os/updating.adoc
+  - https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/getting-started/install.adoc
+  - https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/
+  - https://www.raspberrypi.com/news/a-new-release-of-raspberry-pi-os/
+  - https://www.raspberrypi.com/news/introducing-pixel/
+  - https://www.raspberrypi.com/news/raspbian-sneak-peek-from-dom/
+  - https://www.raspberrypi.com/news/latest-raspberry-pi-os-update-may-2020/
+  - https://www.raspberrypi.com/news/raspberry-pi-os-64-bit/
+lastReviewed: 2026-10-29
+---
+
+Raspberry Pi OS는 Raspberry Pi 컴퓨터를 위해 Raspberry Pi가 직접 만드는 무료 공식 운영체제입니다. Debian을 바탕으로 하며, 새 Debian이 나오면 조금 뒤에 따라가는 방식이라 큰 버전은 대략 2년마다 바뀌고 그사이에는 업데이트된 이미지가 나옵니다. 지금 판은 Debian <Latest slug="raspberry-pi-os" field="codename" /> 기반이고, 가장 최근 이미지는 <Latest slug="raspberry-pi-os" field="releaseDate" />에 나왔습니다.
+
+### 특징
+
+- **Raspberry Pi에 맞춘 Debian.** Debian 저장소의 패키지를 그대로 쓰면서, Raspberry Pi용 커널과 펌웨어도 같은 `apt` 업데이트로 받습니다. Raspberry Pi OS는 Debian보다 패키지 의존성이 자주 바뀌므로 `sudo apt full-upgrade`로 올리라고 권합니다.
+- **가벼운 Raspberry Pi Desktop.** LXDE를 손봐 2016년에 PIXEL이라는 이름을 붙인 데스크톱이 출발점입니다. 2024년 10월부터는 모든 모델에서 labwc 컴포지터로 Wayland를 기본으로 쓰고, 오래된 X 앱은 Xwayland로 돌아갑니다. 필요하면 `raspi-config`에서 X로 되돌릴 수 있습니다. Trixie 판에서는 흩어져 있던 설정 앱을 Control Centre 하나로 모았습니다.
+- **Imager로 설치와 첫 설정을 한 번에.** Windows, macOS, Linux에서 도는 Raspberry Pi Imager로 SD 카드에 이미지를 쓰면서 호스트 이름, 시간대, 사용자 계정, Wi-Fi, 원격 접속, Raspberry Pi Connect를 미리 설정할 수 있습니다.
+- **배우기 좋은 기본 앱.** Python 개발 환경 Thonny가 기본으로 들어 있고, Full 에디션에는 Scratch도 있습니다.
+
+### 에디션과 변형
+
+- **Raspberry Pi OS**는 Imager가 권하는 기본 판으로, 데스크톱과 Chromium·Firefox 브라우저, VLC 등을 담습니다.
+- **Full**은 여기에 LibreOffice, KiCad, Scratch 등 추천 앱을 더한 판입니다.
+- **Lite**는 데스크톱 없는 명령줄 판으로, 화면 없이 쓰는 서버나 임베디드 용도, 오래된 모델에 알맞습니다. Trixie부터는 `rpd-` 메타패키지로 Lite에 데스크톱을 얹거나 반대로 걷어 낼 수 있습니다.
+- 각 판은 Raspberry Pi 3·4·5 같은 64비트 모델용과 초기 Raspberry Pi·Pi 2·Pi Zero 같은 32비트 모델용으로 나뉩니다.
+
+### 이런 분께 맞습니다
+
+- 무엇을 설치할지 고민하는 Raspberry Pi 사용자(공식 문서는 대부분의 용도에 이 OS를 권합니다)
+- 프로그래밍과 컴퓨터를 배우는 학생과 교사
+- Lite 판으로 가정용 서버나 전자 공작 프로젝트를 꾸리려는 사람
+
+### 알아 둘 점
+
+- 일반 PC가 아니라 Raspberry Pi 보드를 위한 운영체제입니다.
+- Bookworm에서 Trixie로 가는 것처럼 큰 버전이 바뀔 때는 제자리 업그레이드를 권하지도 지원하지도 않습니다. 중요한 파일을 백업하고 새 이미지를 다시 씁니다.
+- `rpi-update`는 출시 전 커널과 펌웨어를 시험하는 도구라서 시스템이 불안정해지거나 부팅되지 않을 수 있습니다. 평소 업데이트는 `apt`로 충분합니다.
+
+### 간단한 역사
+
+2012년 7월, Raspberry Pi는 프로세서의 부동소수점 하드웨어를 활용하는 Debian 포트 Raspbian을 바탕으로 공식 이미지를 내놓겠다고 예고했습니다. 2016년 PIXEL 데스크톱이 들어갔고, 2020년에 이름을 Raspberry Pi OS로 바꾸었습니다. 64비트 판은 1년가량의 베타를 거쳐 2022년 2월 모든 사용자에게 공개되었습니다.

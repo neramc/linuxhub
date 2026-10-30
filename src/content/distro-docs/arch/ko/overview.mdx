@@ -1,0 +1,42 @@
+---
+title: Arch Linux 소개
+description: 최소 구성에서 사용자가 직접 시스템을 쌓아 올리는 독립 롤링 릴리스 배포판 Arch Linux의 특징과 어울리는 사용자, 알아 둘 점.
+sources:
+  - https://archlinux.org/download/
+  - https://wiki.archlinux.org/title/Arch_Linux
+  - https://wiki.archlinux.org/title/Frequently_asked_questions
+  - https://wiki.archlinux.org/title/Arch_User_Repository
+  - https://wiki.archlinux.org/title/System_maintenance
+  - https://wiki.archlinux.org/title/Installation_guide
+  - https://wiki.archlinux.org/title/Archinstall
+  - https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot
+lastReviewed: 2026-10-29
+---
+
+Arch Linux는 다른 배포판을 바탕으로 하지 않고 독자적으로 개발되는 x86-64용 범용 배포판입니다. 롤링 릴리스 방식이라 한 번 설치하면 버전을 갈아타는 일 없이 계속 업데이트하며 씁니다. 설치 이미지는 매달 새로 나오지만 설치를 시작하는 출발점일 뿐이고, 개발자 대부분은 보수를 받지 않는 자원봉사자입니다.
+
+### 특징
+
+- **업스트림에 가까운 패키지.** 소프트웨어를 원래 개발자가 내놓은 모습 그대로 담는 것을 원칙으로 합니다. 배포판 자체 패치는 대부분 다음 버전에서 필요 없어질 버그 수정이고, 패키지를 설치했다고 서비스를 알아서 켜 주지도 않습니다.
+- **최소 구성에서 출발.** 설치 직후에는 명령줄 환경만 있습니다. 데스크톱이나 네트워크 도구도 사용자가 하나씩 골라 넣으므로, 무엇이 왜 설치되어 있는지 스스로 아는 시스템이 됩니다.
+- **명령 하나로 전체 업데이트.** 패키지 관리자 `pacman`은 `pacman -Syu` 한 번으로 시스템 전체를 최신 상태로 올립니다. 공식 저장소에는 자유 소프트웨어뿐 아니라 독점 소프트웨어 패키지도 있습니다.
+- **AUR.** 사용자들이 올린 빌드 스크립트(PKGBUILD)를 모은 Arch User Repository가 있어, 공식 저장소에 없는 프로그램도 `makepkg`로 빌드해 설치할 수 있습니다.
+- **ArchWiki.** 2005년에 문을 연 공식 위키가 설치와 설정의 설명서 역할을 합니다. 설정 도구 대신 문서를 읽고 텍스트 편집기로 직접 고치는 방식입니다.
+
+### 이런 분께 맞습니다
+
+- 시스템을 처음부터 직접 구성하며 리눅스가 어떻게 돌아가는지 배우고 싶은 사람
+- 커널과 데스크톱, 개발 도구를 늘 최신 안정 버전으로 쓰고 싶은 개발자
+- 문서를 찾아 읽고 문제를 스스로 해결하는 데 익숙한 사용자
+
+### 알아 둘 점
+
+- 그래픽 설치 마법사가 없습니다. 위키의 설치 안내서를 따라 명령어로 설치하거나, 설치 이미지에 들어 있는 텍스트 기반 안내 설치 프로그램 `archinstall`을 씁니다. `archinstall`은 수동 설치와 기본값이 일부 다르므로 도움을 요청할 때 그 사실을 밝히는 것이 좋습니다.
+- 업데이트 전에는 홈페이지의 뉴스를 확인합니다. 사용자가 직접 손봐야 하는 업데이트는 뉴스로 안내됩니다. 일부 패키지만 올리는 부분 업그레이드는 지원하지 않으니 `pacman -Sy` 대신 항상 `pacman -Syu`를 씁니다.
+- AUR 패키지는 공식 패키지가 아니며 검증을 거치지 않습니다. 설치 전에 PKGBUILD를 직접 읽어 보고, 업데이트와 재빌드도 사용자가 챙겨야 합니다.
+- 공식 설치 이미지는 Secure Boot를 지원하지 않습니다. 펌웨어에서 Secure Boot를 끄거나 서명된 부트로더를 직접 더해야 합니다.
+- 공식 지원 아키텍처는 x86_64 하나입니다. ARM용과 i686용은 별도 파생 프로젝트이며 Arch가 지원하지 않습니다.
+
+### 간단한 역사
+
+캐나다의 프로그래머 Judd Vinet가 2001년에 개발을 시작해 2002년 3월 11일 Arch Linux 0.1을 내놓았고, 패키지 관리자 pacman도 이때 직접 만들었습니다. 2007년 말에 Aaron Griffin이 뒤를 이었고, 2020년에는 선거를 거쳐 Levente Polyak이 프로젝트 리더가 되었습니다.

@@ -1,0 +1,53 @@
+---
+title: Debian 소개
+description: 전 세계 자원봉사자들이 만드는 범용 운영체제 Debian의 특징과 릴리스 갈래, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.debian.org/intro/why_debian
+  - https://www.debian.org/releases/
+  - https://wiki.debian.org/DebianReleases
+  - https://wiki.debian.org/LTS
+  - https://www.debian.org/social_contract
+  - https://www.debian.org/News/2025/20250809
+  - https://www.debian.org/releases/bookworm/amd64/release-notes/ch-whats-new.en.html
+  - https://www.debian.org/doc/manuals/debian-faq/choosing.en.html
+  - https://www.debian.org/doc/manuals/debian-faq/ftparchives.en.html
+  - https://backports.debian.org/
+  - https://www.debian.org/CD/live/
+  - https://www.debian.org/releases/stable/amd64/ch06s03.en.html
+  - https://www.debian.org/releases/trixie/release-notes/upgrading.html
+  - https://wiki.debian.org/SecureBoot
+  - https://www.debian.org/doc/manuals/project-history/intro.en.html
+lastReviewed: 2026-10-29
+---
+
+Debian은 회사가 아니라 전 세계 자원봉사자들이 함께 만드는 자유 소프트웨어 운영체제입니다. 새 안정판(stable)은 대략 2년마다 나오고, 그 사이에는 수정 사항을 모은 포인트 릴리스가 이어집니다. 지금 최신 버전은 Debian <Latest slug="debian" />입니다. Ubuntu, Tails 같은 많은 배포판이 Debian을 바탕으로 만들어집니다.
+
+### 특징
+
+- **사회 계약으로 정한 원칙.** 1997년에 처음 비준된 사회 계약(Social Contract)과 그 일부인 Debian 자유 소프트웨어 지침(DFSG)이 무엇을 기본 저장소에 넣을지 정합니다. 모든 구성원이 같은 권리를 갖는 민주적인 운영 구조라 한 회사가 프로젝트를 좌우할 수 없습니다.
+- **APT와 약 7만 개의 패키지.** 소프트웨어는 deb 형식으로 묶여 있고 `apt`로 설치합니다. 패키지마다 의존 관계를 꼼꼼히 기록하고 설치·업그레이드·제거 테스트를 자동으로 돌리기 때문에, 시스템 전체를 다음 버전으로 올리기도 비교적 수월합니다.
+- **5년 지원.** 안정판은 처음 3년 동안 보안팀이 지원하고, 이어서 별도의 LTS 팀이 2년을 더 맡습니다. 그 뒤에도 일부 패키지는 유료 Extended LTS로 이어집니다.
+- **넓은 하드웨어 지원.** 64비트 PC부터 ARM 보드, IBM 메인프레임까지 같은 시스템을 씁니다. Debian 13에서는 64비트 RISC-V가 처음으로 정식 아키텍처가 되었습니다.
+
+### 에디션과 변형
+
+- **stable, testing, unstable.** 일반 사용에는 stable을 권합니다. testing은 다음 안정판을 준비하는 갈래로 더 새로운 소프트웨어가 들어 있고, unstable(sid)은 개발이 직접 이루어지는 곳입니다.
+- **backports.** testing의 패키지를 안정판용으로 다시 빌드한 것으로, 안정판을 유지한 채 특정 프로그램만 새 버전으로 쓸 때 고릅니다.
+- **설치 이미지.** 기본 설치 프로그램(debian-installer)은 GNOME을 기본으로 넣고 설치 중에 다른 데스크톱을 고를 수 있습니다. 64비트 PC용 라이브 이미지는 데스크톱별로 나뉘며, 먼저 써 본 뒤 Calamares로 설치합니다.
+
+### 이런 분께 맞습니다
+
+- 한 번 설치한 뒤 몇 년 동안 크게 손대지 않고 쓰려는 서버·데스크톱 사용자
+- 특정 회사에 묶이지 않은 공동체 프로젝트와 자유 소프트웨어 원칙을 중요하게 여기는 사람
+- ARM, RISC-V 같은 여러 하드웨어에서 같은 시스템을 쓰려는 개발자
+
+### 알아 둘 점
+
+- 안정판의 프로그램은 출시 시점의 버전에 머물기 때문에 최신 데스크톱이나 새 하드웨어 지원이 늦게 들어옵니다. testing은 더 새롭지만 안정판처럼 꾸준한 보안 지원을 받지 못합니다.
+- Debian 12부터 펌웨어가 non-free-firmware라는 별도 영역으로 나뉘어 공식 설치 이미지에 들어갈 수 있게 되었습니다. 그 밖의 비자유 패키지가 필요하면 contrib나 non-free 영역을 직접 추가합니다.
+- Secure Boot는 Debian 10부터 지원합니다. DKMS로 빌드하는 외부 커널 모듈은 직접 등록한 MOK 키로 서명해야 합니다.
+- Debian 13부터 32비트 PC(i386)용 설치 프로그램과 커널이 없습니다. 업그레이드는 바로 이전 안정판에서만 지원하며, 릴리스 노트를 따라 APT 소스를 바꾸고 `apt full-upgrade`를 실행합니다.
+
+### 간단한 역사
+
+Ian Murdock이 1993년 8월 16일에 프로젝트를 시작했고, 이름은 그와 아내 Debra의 이름을 합친 것입니다. 1996년의 1.1(Buzz) 이후 안정판의 코드명은 영화 토이 스토리의 등장인물에서 따 오고 있습니다.

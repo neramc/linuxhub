@@ -1,0 +1,48 @@
+---
+title: Mageia 소개
+description: Mandriva Linux에서 갈라져 나온 커뮤니티 배포판 Mageia의 특징과 설치 이미지, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.mageia.org/en/about/
+  - https://www.mageia.org/en/about/2010-sept-announcement.html
+  - https://www.mageia.org/en/10/
+  - https://www.mageia.org/en/downloads/
+  - https://www.mageia.org/en/support/
+  - https://blog.mageia.org/en/2026/06/30/the-power-of-10/
+  - https://blog.mageia.org/en/2026/09/25/end-of-support-for-mageia-9/
+  - https://doc.mageia.org/installer/10/en/content/software.html
+  - https://doc.mageia.org/mcc/10/en/content/software-management.html
+  - https://doc.mageia.org/mcc/10/en/content/mcc-boot.html
+lastReviewed: 2026-10-29
+---
+
+Mageia는 Mandriva Linux에서 갈라져 나온 커뮤니티 배포판입니다. 특정 회사가 아니라, 선출된 기여자들이 운영하는 프랑스 파리의 비영리 단체 Mageia.Org가 프로젝트를 뒷받침합니다. 버전을 하나씩 내놓는 고정 릴리스 방식이며, 지금 최신 버전은 Mageia <Latest slug="mageia" />입니다.
+
+### 특징
+
+- **Mageia 제어판(MCC).** 소프트웨어 설치와 업데이트, 하드웨어와 드라이버 확인, 부트로더와 자동 로그인 설정까지 시스템 관리 대부분을 그래픽 도구 한곳에서 처리합니다. 통합 설정 도구는 프로젝트를 시작할 때부터 내세운 목표였습니다.
+- **urpmi를 중심으로 한 패키지 관리.** 시스템 패키지는 RPM이고, 기본 도구는 `urpmi`와 그 그래픽 화면인 rpmdrake입니다. `dnf`도 지원하며, 데스크톱 앱은 Flatpak이나 AppImage로도 받을 수 있습니다.
+- **성격별로 나뉜 저장소.** 기본인 Core 외에, 독점 드라이버와 펌웨어를 담은 Nonfree, 일부 나라에서 특허 문제가 될 수 있는 코덱 등을 담은 Tainted 저장소가 따로 있습니다. 무엇을 쓸지 사용자가 직접 고릅니다.
+- **오래된 PC도 지원.** 64비트와 함께 32비트 PC용 이미지도 계속 내놓습니다.
+- **최소 18개월 지원.** 각 버전은 최소 18개월, 또는 다음 버전이 나오고 3개월이 지날 때까지 중 더 긴 기간 동안 보안·버그 수정 업데이트를 받습니다.
+
+### 에디션과 변형
+
+- **Classical ISO**는 전통적인 설치 이미지입니다. 설치 프로그램 DrakX에서 Plasma나 GNOME, 또는 원하는 데스크톱과 패키지 묶음을 고르고, 이전 버전에서 업그레이드할 때도 이 이미지를 씁니다.
+- **Live 이미지**(Plasma, GNOME, Xfce)는 설치하지 않고 먼저 써 본 뒤 그대로 새로 설치할 수 있습니다.
+- **네트워크 설치 CD**는 50MB 안팎의 작은 이미지로, 유선 네트워크로 필요한 패키지를 받아 가며 설치합니다. 자유 소프트웨어만 담은 판과 일부 장치용 비자유 펌웨어를 더한 판이 있습니다.
+
+### 이런 분께 맞습니다
+
+- 터미널보다 그래픽 설정 도구로 시스템을 관리하고 싶은 사용자
+- 32비트 PC를 포함해 오래된 컴퓨터를 계속 쓰고 싶은 사람
+- 회사가 아닌 커뮤니티가 꾸리는 RPM 계열 배포판을 찾는 사용자
+
+### 알아 둘 점
+
+- 일부 미디어 코덱과 NVIDIA 독점 드라이버는 Tainted와 Nonfree 저장소에 있습니다. 필요하면 설치 중 저장소 선택 화면이나 설치 뒤 MCC의 미디어 설정에서 이 저장소를 추가합니다.
+- Live 이미지로는 기존 시스템을 업그레이드할 수 없습니다. 시스템 트레이의 업그레이드 도구나 명령줄로 올리거나, Classical ISO를 씁니다.
+- 새 버전이 나오는 간격이 일정하지 않습니다. 최근 두 번은 2년 반에서 3년 가까이 걸렸습니다. 새 버전이 나온 뒤 이전 버전은 짧으면 3개월 만에 지원이 끝나므로, 업그레이드 시기를 미리 챙겨야 합니다.
+
+### 간단한 역사
+
+2010년 9월, Mandriva Linux의 앞날이 불투명해지자 전직 직원과 커뮤니티 기여자들이 특정 회사에 기대지 않는 배포판을 만들겠다며 Mageia를 시작했습니다. 첫 버전은 2011년 6월에 나왔습니다.

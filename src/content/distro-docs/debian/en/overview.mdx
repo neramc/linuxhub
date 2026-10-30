@@ -1,0 +1,53 @@
+---
+title: About Debian
+description: What sets Debian, the universal operating system built by volunteers, apart, its release branches, who it suits and what to know first.
+sources:
+  - https://www.debian.org/intro/why_debian
+  - https://www.debian.org/releases/
+  - https://wiki.debian.org/DebianReleases
+  - https://wiki.debian.org/LTS
+  - https://www.debian.org/social_contract
+  - https://www.debian.org/News/2025/20250809
+  - https://www.debian.org/releases/bookworm/amd64/release-notes/ch-whats-new.en.html
+  - https://www.debian.org/doc/manuals/debian-faq/choosing.en.html
+  - https://www.debian.org/doc/manuals/debian-faq/ftparchives.en.html
+  - https://backports.debian.org/
+  - https://www.debian.org/CD/live/
+  - https://www.debian.org/releases/stable/amd64/ch06s03.en.html
+  - https://www.debian.org/releases/trixie/release-notes/upgrading.html
+  - https://wiki.debian.org/SecureBoot
+  - https://www.debian.org/doc/manuals/project-history/intro.en.html
+lastReviewed: 2026-10-29
+---
+
+Debian is a free software operating system made by volunteers around the world rather than by a company. A new stable release comes out about every two years, with point releases collecting fixes in between; the current one is Debian <Latest slug="debian" />. Many other distributions, Ubuntu and Tails among them, are built on top of it.
+
+### Highlights
+
+- **Principles in writing.** The Social Contract, first ratified in 1997, and the Debian Free Software Guidelines it contains decide what goes into the main archive. Every member has equal rights in a democratic structure, so no single company can steer the project.
+- **APT and around 70,000 packages.** Software comes as deb packages installed with `apt`. Dependencies are recorded in detail and every package is tested automatically for installation, upgrade and removal, which is why moving a whole system to the next release usually goes smoothly.
+- **Five years of support.** The security team covers each stable release for its first three years, then a separate LTS team takes over for two more. A paid Extended LTS service carries a limited set of packages beyond that.
+- **Broad hardware reach.** The same system runs on 64-bit PCs, ARM boards and IBM mainframes. Debian 13 is the first release with official 64-bit RISC-V support.
+
+### Editions and variants
+
+- **stable, testing and unstable.** stable is the release recommended for normal use. testing collects packages for the next stable release and has newer software; unstable, always called sid, is where development happens.
+- **Backports** are packages from testing rebuilt for stable, for when you want a newer version of one program without leaving stable.
+- **Installation images.** The standard debian-installer sets up GNOME by default and lets you pick another desktop during installation. Live images for 64-bit PCs come in one flavor per desktop, so you can try the system first and then install it with Calamares.
+
+### Who it suits
+
+- Server and desktop users who want to install once and leave the system alone for years
+- People who value a community project with written free software principles and no company in charge
+- Developers who want the same system across x86, ARM and RISC-V hardware
+
+### Good to know
+
+- Programs in stable stay at the version they shipped with, so new desktop releases and support for new hardware arrive late. testing is newer, but it does not get the steady security support that stable does.
+- Since Debian 12, firmware lives in its own non-free-firmware area so official installation images can include it. For other non-free packages, add the contrib or non-free areas yourself.
+- Secure Boot is supported since Debian 10. Out-of-tree kernel modules built with DKMS have to be signed with a Machine Owner Key (MOK) that you enroll.
+- Debian 13 has no installer or kernel for 32-bit PCs (i386). Upgrades are supported only from the previous stable release: follow the release notes, point APT at the new release and run `apt full-upgrade`.
+
+### A short history
+
+Ian Murdock founded the project on 16 August 1993 and named it after himself and his wife, Debra. Since 1.1 (Buzz) in 1996, stable releases have been named after characters from the Toy Story films.

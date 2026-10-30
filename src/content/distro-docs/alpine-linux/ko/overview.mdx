@@ -1,0 +1,39 @@
+---
+title: Alpine Linux 소개
+description: musl libc와 BusyBox로 만든 작고 보안에 신경 쓴 독립 배포판 Alpine Linux의 특징과 변형, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://alpinelinux.org/about/
+  - https://alpinelinux.org/releases/
+  - https://alpinelinux.org/downloads/
+  - https://alpinelinux.org/posts/Alpine-3.24.0-released.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html
+  - https://docs.alpinelinux.org/user-handbook/0.1a/Installing/setup_alpine.html
+lastReviewed: 2026-10-29
+---
+
+Alpine Linux는 musl libc와 BusyBox를 바탕으로 만든 독립 비상업 배포판으로, 보안과 단순함, 자원 효율을 중시하는 숙련 사용자를 겨냥합니다. 매년 5월과 11월 무렵 새 안정 브랜치를 내는 고정 릴리스 방식이며, 지금 최신 버전은 Alpine Linux <Latest slug="alpine-linux" />입니다.
+
+### 특징
+
+- **아주 작은 크기.** musl libc와 BusyBox로 구성되어 컨테이너는 8MB를 넘지 않고, 디스크에 최소 설치해도 130MB 안팎이면 됩니다. 바이너리 패키지를 잘게 나눠 두어 꼭 필요한 부분만 골라 설치할 수 있습니다.
+- **보안을 고려한 빌드.** 사용자 영역의 모든 바이너리를 위치 독립 실행 파일(PIE)로, 스택 보호 기능을 켜서 컴파일합니다. 알려지지 않은 취약점을 포함해 여러 유형의 공격을 미리 막기 위한 설계입니다.
+- **apk와 OpenRC, 스크립트 설정.** 자체 패키지 관리자 `apk`, OpenRC init 시스템, `setup-alpine` 같은 설정 스크립트가 기본 구성의 거의 전부입니다. 직접 설치한 패키지는 `/etc/apk/world`에 기록되고, `apk update`와 `apk upgrade`로 시스템을 업데이트합니다.
+- **안정 브랜치와 edge.** 안정 브랜치마다 main 저장소는 보통 2년, community 저장소는 다음 안정 릴리스가 나올 때까지 지원합니다. 최신 패키지가 필요하면 롤링 브랜치인 edge를 쓸 수 있습니다.
+
+### 에디션과 변형
+
+- **Standard**는 설치를 시작할 만큼만 담은 기본 이미지로, 설치할 때 네트워크 연결이 필요합니다. **Extended**는 자주 쓰는 패키지와 CPU 마이크로코드 업데이트를 더한 판으로, RAM에서 실행되며 라우터와 서버에 알맞습니다.
+- **Virtual**은 커널을 줄여 가상 머신에 맞춘 판이고, **Xen**은 Xen Dom0용입니다. Raspberry Pi, U-Boot 보드, 네트워크 부팅용 이미지와 클라우드 이미지도 따로 있습니다.
+- **Mini root filesystem**은 컨테이너와 최소 chroot 환경에 쓰는 루트 파일 시스템입니다.
+
+### 이런 분께 맞습니다
+
+- 컨테이너 이미지를 작고 단순하게 유지하고 싶은 개발자와 운영자
+- 라우터나 방화벽, 임베디드 장비처럼 자원이 적은 환경을 다루는 사람
+- 필요한 것만 직접 골라 올리는 가벼운 서버를 원하는 숙련 사용자
+
+### 알아 둘 점
+
+- 공식 설치 이미지에는 데스크톱 환경이 들어 있지 않습니다. 저장소에는 GNOME과 KDE Plasma 같은 데스크톱도 있지만, 설치와 설정은 직접 해야 합니다.
+- community 저장소의 패키지는 다음 안정 릴리스가 나오면 지원이 끝나므로, 이 저장소에 기대는 시스템은 반년마다 새 브랜치로 올리는 것이 좋습니다. `/etc/apk/repositories`의 버전을 바꾼 뒤 `apk upgrade --available`을 실행하면 됩니다.
+- testing 저장소는 edge에서만 쓸 수 있습니다. edge는 일상적으로 쓸 만큼 안정적이지만 안정 브랜치보다는 덜 검증된 상태입니다.

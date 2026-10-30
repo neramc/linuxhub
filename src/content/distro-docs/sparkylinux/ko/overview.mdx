@@ -1,0 +1,44 @@
+---
+title: SparkyLinux 소개
+description: Debian 안정판 기반 고정 릴리스와 testing 기반 세미 롤링을 함께 내는 경량 배포판 SparkyLinux의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://sparkylinux.org/about/
+  - https://sparkylinux.org/sparky-8-4/
+  - https://sparkylinux.org/sparky-2026-09/
+  - https://wiki.sparkylinux.org/doku.php/aptus
+lastReviewed: 2026-10-29
+---
+
+SparkyLinux는 Debian을 바탕으로 한 가볍고 빠른 배포판입니다. 오래된 컴퓨터에 두 번째 삶을 주는 것을 처음부터 목표로 삼았지만 최신 PC에서도 잘 돌아갑니다. Debian 안정판을 따르는 고정 릴리스와 Debian testing을 따르는 세미 롤링판, 두 갈래로 나오며 안정판의 지금 최신 버전은 Sparky <Latest slug="sparkylinux" />입니다.
+
+### 특징
+
+- **두 갈래의 릴리스.** 안정판은 Debian 안정판과 완전히 호환되며 분기마다 갱신된 설치 이미지가 나옵니다. 세미 롤링판은 Debian testing을 따라 더 새로운 소프트웨어를 씁니다. 어느 쪽이든 이미 설치했다면 다시 설치할 필요 없이 업데이트만 하면 됩니다.
+- **원하는 데스크톱을 고르는 APTus.** 기본 판은 Xfce, LXQt, MATE, KDE Plasma로 나오지만 Sparky는 약 20가지 데스크톱 환경과 창 관리자를 지원하며, 패키지 관리 도구 모음인 APTus에서 클릭 한 번으로 설치할 수 있습니다. 시스템 업데이트, 깨진 패키지 고치기, 비자유 패키지 제거 같은 일도 APTus 메뉴로 처리합니다.
+- **자체 저장소.** Debian 저장소 위에 Sparky 저장소가 더해져, 안정판에서도 더 새로운 커널이나 최신 Firefox 같은 패키지를 골라 받을 수 있습니다.
+- **바로 쓰는 기본 구성.** 데스크톱 판에는 자주 쓰는 앱과 멀티미디어 코덱, 플러그인이 들어 있고, 대부분의 무선·모바일 네트워크 카드를 지원합니다.
+
+### 에디션과 변형
+
+- **데스크톱 판**(Xfce, LXQt, MATE, KDE Plasma)은 설치하자마자 쓸 수 있는 구성입니다.
+- **MinimalGUI**는 Openbox 창 관리자와 꼭 필요한 것만 담은 판이고, **MinimalCLI**는 그래픽 환경 없이 시작해 원하는 데스크톱을 직접 쌓는 판입니다. 세미 롤링판에는 Wayland에서 도는 Labwc를 쓴 MinimalGUI도 있습니다.
+- 특수 판으로 게임용 **GameOver**, 오디오·영상 작업과 웹 개발용 **Multimedia**, 라이브로 시스템을 고치는 **Rescue**가 있습니다.
+- ARM64 기기용 Openbox·CLI 이미지와, 32비트 PC용 MinimalGUI·MinimalCLI 이미지도 나옵니다.
+
+### 이런 분께 맞습니다
+
+- 오래된 PC를 Debian 기반 시스템으로 다시 쓰고 싶은 사람
+- Debian을 쓰고 싶지만 데스크톱과 앱 구성은 더 편하게 하고 싶은 사람
+- 흔하지 않은 데스크톱 환경이나 창 관리자를 시험해 보고 싶은 사용자
+- 게임, 멀티미디어 작업, 시스템 복구처럼 목적이 분명한 환경이 필요한 사람
+
+### 알아 둘 점
+
+- 프로젝트 스스로 Linux 입문자보다는 어느 정도 경험이 있는 사용자를 대상으로 한다고 밝힙니다. 입문자도 포럼에서 도움을 받을 수 있습니다.
+- 64비트 PC 이미지는 Secure Boot를 지원합니다. UEFI 컴퓨터에 설치할 때는 인터넷에 연결해 두기를 권합니다.
+- 32비트 이미지에는 Calamares 설치 프로그램이 없어 `sudo sparky-installer`로 텍스트 모드 설치를 합니다.
+- 세미 롤링판은 앱이 더 새로운 대신 덜 안정적일 수 있어, 프로젝트는 숙련된 사용자에게 권합니다.
+
+### 간단한 역사
+
+SparkyLinux는 2012년에 무겁고 상업적인 운영체제를 대신할, 바로 쓸 수 있게 다듬은 시스템으로 시작했습니다. Debian이 32비트 라이브·설치 이미지를 그만두자 Sparky도 한때 32비트 지원을 접었지만, 아직 쓰이는 32비트 PC가 많다는 이유로 8.4에서 다시 되살렸습니다.

@@ -38,6 +38,18 @@ logo:
   source: https://raw.githubusercontent.com/lubuntu-team/artwork/ubuntu/plucky/src/usr/share/lxqt/themes/Lubuntu%20Arc/mainmenu.svg
   license: GPL-2.0-or-later (lubuntu-artwork package); Lubuntu is a trademark of Canonical Ltd.
   trademark: https://canonical.com/legal/intellectual-property-policy
+screenshot:
+  file: lubuntu.webp
+  source: https://commons.wikimedia.org/wiki/File:Lubuntu_26.04_LTS_default_desktop_-_English.jpg
+  author: Lubuntu Team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Lubuntu 26.04 LTS의 LXQt 데스크톱. 왼쪽 위에 컴퓨터, 설치, 홈, 설명서, 네트워크, 휴지통 아이콘이 있고, 바탕에는 짙은 파란색 소용돌이와 나무 위의 너구리 그림이 있습니다. 화면 아래에 얇은 패널이 있습니다.
+    en: The LXQt desktop of Lubuntu 26.04 LTS, with Computer, Install, Home, Manual, Network and Trash icons at the top left over a dark blue wallpaper of a swirl and a raccoon on a tree, and a thin panel along the bottom.
+  caption:
+    ko: Lubuntu 26.04 LTS의 기본 LXQt 데스크톱
+    en: Lubuntu 26.04 LTS with its default LXQt desktop
 download:
   strategy: mirrors
 sources:

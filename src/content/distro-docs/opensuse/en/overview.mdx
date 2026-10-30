@@ -1,0 +1,48 @@
+---
+title: About openSUSE
+description: What sets openSUSE, the community project behind rolling Tumbleweed and the SUSE Linux Enterprise–based Leap, apart, its variants, who it suits and what to know first.
+sources:
+  - https://get.opensuse.org/
+  - https://get.opensuse.org/desktop/
+  - https://get.opensuse.org/tumbleweed/
+  - https://get.opensuse.org/leap/16.0/
+  - https://get.opensuse.org/microos/
+  - https://get.opensuse.org/leapmicro/6.2/
+  - https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/16.0/release-notes-leap-160.txt
+  - https://doc.opensuse.org/documentation/leap/startup/html/book-startup/art-opensuse-installquick.html
+  - https://agama-project.github.io/docs/overview
+  - https://news.opensuse.org/2025/07/09/celebrating-20-yrs-of-os/
+lastReviewed: 2026-10-29
+---
+
+openSUSE is a community distribution from the openSUSE Project, which ships two quite different systems under one name. Tumbleweed is a rolling release that keeps delivering new packages without version upgrades, while Leap is a fixed release that combines source from SUSE Linux Enterprise (SLE) with community work. Both use RPM packages managed with `zypper`.
+
+### Highlights
+
+- **A tested rolling release.** Tumbleweed brings fresh kernels, drivers and desktops quickly, but each package is tested on its own and in combination with others before a snapshot is published.
+- **Roll back with snapshots.** With the Btrfs file system and Snapper, a snapshot is taken automatically whenever software is installed or updated. If an update goes wrong, boot an earlier snapshot and you are back to a working system in minutes.
+- **Leap, built on SLE.** A new Leap minor release comes out every year, and each one gets 24 months of updates. If you need longer support, the openSUSE migration tool moves a system to SUSE Linux Enterprise.
+- **Built in the open.** Sources and build scripts for every package are visible on the Open Build Service. Free and non-free software sit in separate repositories, so the non-free one can be switched off.
+
+### Editions and variants
+
+- **Tumbleweed** and **Leap** are the main distributions for desktops and servers. You pick a desktop during installation; the project centers its support on KDE Plasma, GNOME and Xfce.
+- **MicroOS** is an immutable (atomic) rolling distribution with a read-only Btrfs root and transactional updates, designed for running containers.
+- **Leap Micro** is a lightweight immutable system based on SUSE Linux Micro, aimed at container and virtualization workloads.
+
+### Who it suits
+
+- Developers and gamers who want current software with an easy way back when something breaks (Tumbleweed)
+- Sysadmins, enterprise developers and everyday desktop users who value stability (Leap)
+- Servers that may later move to SUSE Linux Enterprise
+
+### Good to know
+
+- Leap 16 introduced the new Agama installer and replaced YaST with the web-based Cockpit for system administration.
+- Leap 16 requires an x86-64-v2 CPU and runs only 64-bit programs. Because of limited 32-bit library support, Steam is to be installed as a Flatpak.
+- The Leap 16 installer offers only Wayland desktop sessions; Xorg-based environments can be added after installation. AppArmor can no longer be chosen as the security module during a new installation.
+- To use snapshots comfortably, give the root partition at least 40 GB.
+
+### A short history
+
+The openSUSE Project launched on August 9, 2005, and marked its 20th anniversary in 2025. Leap 16.0 changed the way openSUSE Leap is built and extended support for each release to 24 months.

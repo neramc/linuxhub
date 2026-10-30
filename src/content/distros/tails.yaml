@@ -39,6 +39,18 @@ logo:
   source: https://tails.net/contribute/how/promote/logo/tails-logo-drawing.svg
   license: GPL-3.0+ (official Tails logo page); the Tails word and logo marks are Tor Marks under The Tor Project's trademark policy
   trademark: https://www.torproject.org/about/trademark/
+screenshot:
+  file: tails.webp
+  source: https://commons.wikimedia.org/wiki/File:Tails_7.1_Screenshot_2025-10.png
+  author: "Sora Célestinia (OS: The Tails Project; Tor Browser: Tor Project)"
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Tails 7.1에서 Tor Browser를 연 화면. 새 탭에 Tor 프로젝트의 안내 상자와 DuckDuckGo 검색 창, 그리고 지금 Tails 7.1을 쓰고 있다는 문구가 보입니다. 화면 위에는 GNOME 상단 표시줄이, 아래에는 창 목록이 있습니다.
+    en: "Tor Browser open in Tails 7.1: the new tab shows a Tor Project notice, a DuckDuckGo search field and a line saying you are running Tails 7.1, with the GNOME top bar above and the window list below."
+  caption:
+    ko: Tails 7.1에서 실행한 Tor Browser
+    en: Tor Browser running on Tails 7.1
 download:
   strategy: redirector
 sources:

@@ -39,6 +39,18 @@ logo:
   source: https://gitlab.com/kalilinux/documentation/press-pack
   license: Trademark of OffSec, used to identify the project (official press pack)
   trademark: https://www.kali.org/docs/policy/trademark/
+screenshot:
+  file: kali-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:VirtualBox_Kali_Linux_29_03_2022_11_10_35.png
+  author: Gased basek
+  license: CC BY-SA 4.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/4.0
+  alt:
+    ko: Kali Linux의 Xfce 데스크톱. 파란 바탕에 검은 용 모양 Kali 로고가 있고, 오른쪽에 홈 폴더를 연 파일 관리자 창이, 화면 위에 앱 아이콘과 작업 공간 번호가 있는 패널이 있습니다.
+    en: "The Xfce desktop of Kali Linux: the black Kali dragon on a blue background, a file manager showing the home folder on the right, and a top panel with app icons and workspace numbers."
+  caption:
+    ko: Kali Linux의 기본 Xfce 데스크톱(2022년 화면)
+    en: Kali Linux with its default Xfce desktop (a 2022 screenshot)
 download:
   strategy: redirector
 sources:

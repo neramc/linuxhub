@@ -1,0 +1,50 @@
+---
+title: Manjaro 소개
+description: 자체 저장소에서 업데이트를 한 번 더 시험해 내보내는 Arch 기반 롤링 배포판 Manjaro의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://manjaro.org/products/download/x86/
+  - https://manjaro.org/products/download/arm/
+  - https://manjaro.org/team/
+  - https://wiki.manjaro.org/index.php?title=About_Manjaro
+  - https://wiki.manjaro.org/index.php?title=Manjaro:A_Different_Kind_of_Beast
+  - https://wiki.manjaro.org/index.php?title=The_Rolling_Release_Development_Model
+  - https://wiki.manjaro.org/index.php?title=Switching_Branches
+  - https://wiki.manjaro.org/index.php?title=Manjaro_Kernels
+  - https://wiki.manjaro.org/index.php?title=Pamac
+  - https://wiki.manjaro.org/index.php?title=Arch_User_Repository
+  - https://wiki.manjaro.org/index.php?title=UEFI_-_Install_Guide
+lastReviewed: 2026-10-29
+---
+
+Manjaro는 Arch Linux를 바탕으로 하지만 Arch와는 다른 팀이 따로 개발하는 배포판으로, Manjaro GmbH & Co. KG가 프로젝트를 뒷받침합니다. 롤링 릴리스 방식이라 한 번 설치한 시스템을 계속 업데이트하며 씁니다. ISO에 붙는 버전 번호는 특정 시점의 시스템을 담은 설치용 스냅숏을 구분하는 표시이고, 업데이트를 해 온 시스템이라면 다시 설치할 필요가 없습니다.
+
+### 특징
+
+- **자체 저장소와 세 단계 브랜치.** Arch 공식 저장소 대신 Manjaro 저장소에서 패키지를 받습니다. Arch에서 온 패키지는 unstable과 testing 브랜치에서 사용자들의 확인을 거친 뒤 기본 브랜치인 stable로 넘어옵니다. 그만큼 Arch보다 며칠에서 몇 주, 때로는 몇 달 늦게 도착합니다.
+- **하드웨어 자동 설정.** 자체 도구 `mhwd`가 그래픽 카드 같은 하드웨어를 감지해 맞는 드라이버를 설치하고, 하이브리드 그래픽도 설정합니다. 멀티미디어 코덱도 처음부터 들어 있습니다.
+- **커널을 골라 쓰기.** 여러 커널을 함께 설치해 두고 Manjaro 설정 관리자나 `mhwd-kernel`로 추가하거나 지울 수 있습니다. ISO에는 그 시점의 최신 LTS 커널이 들어갑니다.
+- **Pamac.** Manjaro 팀이 만든 패키지 관리자 Pamac(소프트웨어 추가/제거)으로 검색, 설치, 업데이트를 하고 업데이트 알림도 받습니다. 설정에서 켜면 AUR 패키지도 다룹니다.
+
+### 에디션과 변형
+
+- **KDE Plasma, Xfce, GNOME**은 Manjaro 팀이 직접 만드는 공식 이미지입니다.
+- **Cinnamon, i3, Sway**는 커뮤니티 구성원이 관리하는 이미지입니다. 공식 이미지와 출시 일정이 따로 움직이며, i3와 Sway는 숙련 사용자용입니다.
+- **ARM 이미지**는 Manjaro ARM 팀이 Raspberry Pi, Pinebook Pro, PinePhone 같은 기기마다 따로 만듭니다.
+
+### 이런 분께 맞습니다
+
+- Arch 계열의 새 소프트웨어를 쓰고 싶지만 설치와 초기 구성은 간단하길 바라는 사람
+- 드라이버와 커널, 패키지를 그래픽 도구로 관리하고 싶은 데스크톱 사용자
+- 새 패키지가 한 번 더 시험을 거친 뒤 들어오는 쪽을 선호하는 사용자
+- Raspberry Pi나 Pinebook Pro 같은 ARM 기기에서 데스크톱을 쓰려는 사람
+
+### 알아 둘 점
+
+- AUR 스크립트는 Arch 사용자가 Arch를 기준으로 만든 것이라 Manjaro 업데이트 뒤에 동작하지 않을 수 있습니다. Manjaro 팀은 AUR로 설치한 소프트웨어 문제를 지원하지 않습니다.
+- LTS가 아닌 커널은 지원이 끝나도 다음 커널로 자동으로 넘어가지 않습니다. 직접 새 커널로 옮기지 않으면 오래된 커널이 저장소에서 빠질 때 NVIDIA 드라이버 등에서 문제가 생길 수 있습니다.
+- 시스템 전체가 함께 업데이트되므로 특정 패키지만 옛 버전에 묶어 두기 어렵고, 새 소프트웨어를 설치하기 전에는 시스템부터 업데이트해야 합니다.
+- 공식 UEFI 설치 안내서는 Secure Boot를 끈 상태를 전제로 합니다.
+
+### 간단한 역사
+
+현재 프로젝트 리더인 Philip Müller가 2011년에 다른 개발자 네 명과 함께 Manjaro를 시작했습니다. 개발은 오스트리아, 프랑스, 독일을 중심으로 이루어져 왔습니다.

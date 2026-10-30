@@ -1,0 +1,47 @@
+---
+title: CachyOS 소개
+description: CPU에 맞춰 다시 빌드한 패키지와 손본 커널을 쓰는 Arch 기반 롤링 배포판 CachyOS의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://cachyos.org/
+  - https://cachyos.org/about/
+  - https://cachyos.org/download/
+  - https://wiki.cachyos.org/cachyos_basic/why_cachyos/
+  - https://wiki.cachyos.org/features/optimized_repos/
+  - https://wiki.cachyos.org/cachyos_basic/faq/
+  - https://wiki.cachyos.org/installation/installation_prepare/
+  - https://wiki.cachyos.org/installation/filesystem/
+  - https://wiki.cachyos.org/configuration/secure_boot_setup/
+lastReviewed: 2026-10-29
+---
+
+CachyOS는 Arch Linux를 바탕으로 성능에 초점을 맞춘 독립 커뮤니티 배포판입니다. Arch 패키지를 최신 CPU 명령어 집합에 맞춰 다시 컴파일해 제공하고, 데스크톱 반응성에 맞게 손본 자체 커널을 씁니다. Arch와 같은 롤링 릴리스 방식이라 한 번 설치한 뒤 계속 업데이트하며 씁니다.
+
+### 특징
+
+- **CPU별로 다시 빌드한 저장소.** Arch 패키지를 x86-64-v3, x86-64-v4, AMD Zen 4 이상용으로 다시 빌드한 저장소를 운영합니다. 패키지에 따라 LTO, PGO, BOLT 같은 컴파일러 최적화를 더하므로, 사용자가 직접 다시 빌드하지 않아도 CPU의 새 명령어를 활용합니다.
+- **손본 커널과 스케줄러 선택.** 기본 커널 `linux-cachyos`는 EEVDF 스케줄러 설정을 데스크톱에 맞게 조정하고, 아직 메인라인에 들어가지 않은 패치를 내부 시험을 거쳐 담습니다. BORE 스케줄러를 쓰는 변형이나 sched-ext 같은 선택지도 있습니다.
+- **고르는 설치.** 그래픽 설치 프로그램과 명령줄 설치 프로그램이 있고, 17가지 이상의 데스크톱과 창 관리자 가운데 하나를 고릅니다. 커널과 부트 매니저, 파일 시스템도 설치 때 정하며, 기본 파일 시스템은 zstd 압축을 켠 Btrfs입니다.
+- **자체 도구.** 설정과 문제 해결을 모은 CachyOS Hello, 그래픽 패키지 설치 도구, 커널 관리자, 하드웨어를 감지해 드라이버를 설치하는 도구를 직접 만듭니다.
+
+### 에디션과 변형
+
+- **Desktop Edition**은 일반 PC용입니다. 라이브 환경은 KDE Plasma이고, 설치할 데스크톱은 따로 고릅니다.
+- **Handheld Edition**은 Steam Deck(OLED, LCD), ROG Ally, Legion Go, Legion Go S를 공식 지원하는 휴대용 게임기용 판입니다. 게임 도구가 미리 들어 있고, 지금은 KDE Plasma만 지원합니다.
+
+### 이런 분께 맞습니다
+
+- 최신 CPU의 성능을 끌어내고 싶은 게이머와 고성능 PC 사용자
+- Arch 계열을 쓰고 싶지만 그래픽 설치 프로그램과 미리 다듬은 설정을 원하는 사람
+- 커널과 스케줄러를 바꿔 가며 시험해 보고 싶은 사용자
+- Steam Deck 같은 휴대용 게임기에 데스크톱 리눅스를 올리려는 사람
+
+### 알아 둘 점
+
+- 설치 중에 패키지를 내려받으므로 안정적인 인터넷 연결이 필요합니다.
+- 설치할 때는 펌웨어에서 Secure Boot와 CSM을 꺼야 합니다. Secure Boot는 설치를 마친 뒤 위키 안내에 따라 직접 설정할 수 있습니다.
+- 권장 사양은 x86-64-v3를 지원하는 CPU입니다. Intel 12세대 이후 CPU는 x86-64-v4를 지원한다고 보고해도 실제로는 AVX-512를 쓸 수 없으므로 v3 저장소를 써야 합니다.
+- 시스템 패키지는 `pacman`이나 pacman을 직접 감싸는 도구로 관리하라고 권합니다. Pamac이나 Discover, GNOME 소프트웨어로 시스템 패키지를 다루면 시스템이 망가질 수 있으며, 이 앱들은 Flatpak 관리에만 쓰는 편이 안전합니다.
+
+### 간단한 역사
+
+이름은 리눅스 커널용 CPU 스케줄러 cacULE의 원래 이름인 "Cachy"에서 왔습니다. 2020년에서 2021년 사이, 공동 창립자 Peter Jung이 이 스케줄러를 함께 시험하던 개발자와 x86-64-v3에 최적화한 Arch 기반 배포판을 만들기로 하면서 프로젝트가 시작되었습니다.

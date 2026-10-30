@@ -17,7 +17,11 @@
  *   release assets for the ARM images): the files and, next to each, the
  *   checksum file the page links (.sha256 or .sha512 for ISOs, .sha1 or .sha256
  *   for ARM images), the .sig signature and the .torrent when the index lists
- *   them. A checksum file that does not name its image throws.
+ *   them. A checksum file that does not name its image throws. github.com's
+ *   robots.txt disallows release downloads for every bot ("/*\/download"), so
+ *   the ARM and phone images' checksum files there are not read: those images
+ *   have no checksum (they stay linked; the same treatment as every checksum
+ *   robots.txt closes).
  *
  * The page decides what is offered (as for every distro): releases follow the
  * versions in the file names the page links. Today that is 26.1.0 for the
@@ -45,7 +49,7 @@
 import type { Artifact, Edition, Release } from "../../../src/lib/data-schemas";
 import { DESKTOPS, type Desktop } from "../../../src/lib/taxonomy";
 import { getText } from "../http";
-import { checksumType, parseChecksums } from "../lib/checksums";
+import { checksumType, readChecksum } from "../lib/checksums";
 import { mapLimit, originAsMirror } from "../lib/mirrors";
 import { compareVersions } from "../lib/versions";
 import { defineSource } from "../source";
@@ -149,8 +153,8 @@ async function artifact(
   const url = officialUrl(img.image, "image link");
   const file = fileOf(url);
   const sumUrl = officialUrl(img.checksum, `checksum link for ${file}`);
-  const hash = parseChecksums(await getText(sumUrl)).get(file);
-  if (!hash) throw new Error(`${sumUrl} does not list ${file}`);
+  // Null for a checksum file robots.txt closes (GitHub release assets, see the header).
+  const hash = await readChecksum(sumUrl, file);
   return {
     arch,
     format,
@@ -158,7 +162,7 @@ async function artifact(
     path,
     url,
     size: null,
-    checksum: { type: checksumType(hash), value: hash, url: sumUrl },
+    checksum: hash ? { type: checksumType(hash), value: hash, url: sumUrl } : null,
     signatureUrl: img.signature ? officialUrl(img.signature, `signature link for ${file}`) : null,
     torrentUrl: img.torrent ? officialUrl(img.torrent, `torrent link for ${file}`) : null,
   };

@@ -76,6 +76,14 @@ export const en = {
     recent: "New releases",
     allReleases: "All release news",
     newToLinux: "New to Linux?",
+    finderHint: "Answer a few questions and get the distros that fit you",
+    compareHint: "Put two or three distros side by side",
+    ending: "Support ending soon",
+    endingRow: "Support ends {date}",
+    families: "Browse by family",
+    familyTree: "Family tree",
+    familyMembers: "{names} and {count} more",
+    familyCount: "{count} distros",
     popular: {
       title: "Popular today",
       picks: "Today’s picks",
@@ -166,6 +174,11 @@ export const en = {
     international: "International",
     dataUpdated: "Updated {date} · checked against official sources every 6 hours",
     reviewed: "Facts reviewed {date}",
+  },
+  screenshot: {
+    by: "Screenshot: {author}",
+    commons: "Wikimedia Commons",
+    source: "Source",
   },
   sources: {
     title: "Official sources ({count})",

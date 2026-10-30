@@ -1,0 +1,40 @@
+---
+title: About TUXEDO OS
+description: What sets TUXEDO OS, the KDE Plasma distribution German computer maker TUXEDO Computers tunes for its own hardware, apart, who it suits and what to know first.
+sources:
+  - https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo
+  - https://os.tuxedocomputers.com/
+  - https://os.tuxedocomputers.com/TUXEDO-OS_current.manifest
+  - https://www.tuxedocomputers.com/en/Tailor-made-OS-for-your-TUXEDO-TUXEDO-OS-1-available-as-ISO.tuxedo
+  - https://www.tuxedocomputers.com/en/Infos/Help-Support/Frequently-asked-questions/What-is-the-differences-between-TUXEDO-OS-and-Ubuntu/Kubuntu-_1.tuxedo
+  - https://www.tuxedocomputers.com/en/First-Steps-with-TUXEDO-OS.tuxedo
+  - https://www.tuxedocomputers.com/en/Infos/Help-and-Support/Instructions/How-do-I-create-and-start-a-Live-Medium.tuxedo
+lastReviewed: 2026-10-29
+---
+
+TUXEDO OS is the distribution TUXEDO Computers, a German maker of Linux laptops and PCs, builds for its own hardware. It pairs an Ubuntu LTS base with the KDE Plasma desktop, and many packages, Plasma and the kernel among them, are built by TUXEDO and served from its own repositories. Instead of version numbers, the ISO is rebuilt regularly; the current image was built on <Latest slug="tuxedo-os" field="releaseDate" />.
+
+### Highlights
+
+- **Plasma, ready to use.** TUXEDO chose KDE Plasma for how far it can be configured, and sets it up so the bottom panel, menu and the Discover app store work from the first login. The motto is simple by default, powerful when needed.
+- **Kernel and tools for the hardware.** The kernel is modified for TUXEDO hardware, and the TUXEDO Control Center adjusts and monitors performance, power and battery features. The TUXEDO Tomte troubleshooting tool is included as well.
+- **Drivers on the ISO.** The image carries the open-source Intel and AMD drivers plus NVIDIA's proprietary driver, which is used automatically when an NVIDIA card is detected. That spares manual driver installs on many non-TUXEDO PCs too.
+- **Ubuntu without Snap.** snapd is not installed, and Firefox comes preinstalled as a deb package rather than a Snap. No telemetry settings or promotional apps are included by default.
+
+### Who it suits
+
+- Owners of TUXEDO laptops and PCs
+- Anyone who wants a KDE Plasma desktop that needs little setup
+- People with NVIDIA graphics who want to start without configuring drivers
+- Users who want an Ubuntu-based system without Snap
+
+### Good to know
+
+- It installs on other brands' computers, but TUXEDO's support focuses on its own hardware and does not answer questions about third-party hardware or general software.
+- The live ISO's installer can install alongside other systems, encrypt the disk and use btrfs or XFS instead of ext4. The WebFAI automatic install in the boot menu, by contrast, erases every disk in the machine.
+- The live system has one-click tools to chroot into an existing installation or attempt an automatic repair, worth trying before a reinstall.
+- When writing the USB stick on Windows, TUXEDO advises against Rufus and suggests balenaEtcher or the TUXEDO WebFAI Creator.
+
+### A short history
+
+TUXEDO OS started as the system preinstalled on TUXEDO computers. With the move to an Ubuntu 22.04 LTS base in 2022 its default desktop changed from Budgie to KDE Plasma, and that October TUXEDO OS 1 became available to everyone as a live ISO for the first time.

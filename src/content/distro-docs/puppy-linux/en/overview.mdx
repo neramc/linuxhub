@@ -1,0 +1,48 @@
+---
+title: About Puppy Linux
+description: What sets Puppy Linux, the family of small distributions that run from a USB stick or RAM and keep your changes in a save file, apart, its editions, who it suits and what to know first.
+sources:
+  - https://puppylinux-woof-ce.github.io/
+  - https://puppylinux-woof-ce.github.io/history.html
+  - https://forum.puppylinux.com/puppy-linux-collection
+  - https://forum.puppylinux.com/viewtopic.php?t=5314
+  - https://forum.puppylinux.com/viewtopic.php?t=17376
+  - https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/README.md
+  - https://wikka.puppylinux.com/HomePage
+lastReviewed: 2026-10-29
+---
+
+Puppy Linux is a family of small distributions for home computers. Barry Kauler created it in 2003, and the community-run Puppy Linux Team carries it on today. Each edition is built with the woof-CE build system from another distribution's packages, such as Debian, Ubuntu, Slackware or Void Linux, while sharing the same Puppy tools and behavior. Editions follow the version of their base; the one the official wiki lists first is TrixiePup, based on Debian <Latest slug="puppy-linux" field="codename" />.
+
+### Highlights
+
+- **Small, and runs from RAM.** A release is typically 1.5 GB or less. At boot its compressed SFS files are copied into memory and Puppy runs entirely from RAM, while the original files stay read-only and as good as new.
+- **Changes go into a save file.** Settings, added programs and your documents are kept in a save file or save folder, which Puppy offers to create when you shut down. If that data ever gets corrupted, you can boot without it and start from a pristine system.
+- **An install that is just a few files.** Rather than spreading thousands of files across a drive, the usual "frugal" install copies a handful of compressed files to a USB stick or internal disk. That makes Puppy easy to move and back up, and several Puppies for different jobs can share one partition.
+- **Package management depends on the edition.** Debian-based editions and ResolutePup64 use APT and `.deb` packages, Void-based ones use xbps, and Slackware-based editions, NoblePup32 and others manage Puppy's own PET packages with PPM.
+- **Easy remastering.** Puppy can turn a running system into a new ISO, which is why the community has produced so many variants, known as puplets.
+
+### Editions and variants
+
+- **Debian-based**: TrixiePup (a 64-bit Wayland edition and 64- and 32-bit Retro editions) and BookwormPup
+- **Ubuntu-based**: ResolutePup64 and NoblePup32
+- **Slackware-based**: S15Pup, in 64 and 32 bits
+- **Void-based**: VoidPup, built from rolling-release snapshots, in 64 and 32 bits
+
+### Who it suits
+
+- Anyone bringing an old or low-powered PC back into use, with 32-bit editions still available
+- People who want to carry their own desktop around on a USB stick
+- Tinkerers who like to adjust a system and roll their own edition
+
+### Good to know
+
+- You run as the root user by default, so there is no `sudo`.
+- Make the boot stick with Rufus or UNetbootin on Windows, or UNetbootin on Linux. `dd`, balenaEtcher and other tools that write an ISO9660 stick are not recommended.
+- A save file needs a FAT32 stick; a save folder needs ext3 or ext4.
+- On newer PCs you may have to turn off Secure Boot or Fast Boot first.
+- Drives are mounted only when you open their icon, and a USB stick has to be unmounted before you pull it out.
+
+### A short history
+
+Puppy began as a smaller, leaner take on Vector Linux. Woof, which builds Puppy from other distributions' packages, arrived in the 4.x series. After Barry Kauler stepped back, the build system was renamed Woof-CE, and with the 6.x series the community took over development and began offering 64-bit editions.

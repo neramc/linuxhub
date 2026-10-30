@@ -1,0 +1,47 @@
+---
+title: About Raspberry Pi OS
+description: What sets Raspberry Pi OS, the official Debian-based operating system for Raspberry Pi computers, apart, its editions, who it suits and what to know first.
+sources:
+  - https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/os/rpi-os-introduction.adoc
+  - https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/os/updating.adoc
+  - https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/getting-started/install.adoc
+  - https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/
+  - https://www.raspberrypi.com/news/a-new-release-of-raspberry-pi-os/
+  - https://www.raspberrypi.com/news/introducing-pixel/
+  - https://www.raspberrypi.com/news/raspbian-sneak-peek-from-dom/
+  - https://www.raspberrypi.com/news/latest-raspberry-pi-os-update-may-2020/
+  - https://www.raspberrypi.com/news/raspberry-pi-os-64-bit/
+lastReviewed: 2026-10-29
+---
+
+Raspberry Pi OS is the free, official operating system for Raspberry Pi computers, made by Raspberry Pi itself. It is based on Debian and follows Debian's release cycle a little behind, so a new major version arrives roughly every two years, with refreshed images in between. The current version is based on Debian <Latest slug="raspberry-pi-os" field="codename" />, and the latest image was released on <Latest slug="raspberry-pi-os" field="releaseDate" />.
+
+### Highlights
+
+- **Debian, tuned for the Pi.** You get Debian's package archive, and the Raspberry Pi kernel and firmware arrive through the same `apt` updates. Because Raspberry Pi OS changes package dependencies more often than Debian, the project recommends `sudo apt full-upgrade` over a plain upgrade.
+- **A light desktop of its own.** Raspberry Pi Desktop began as a reworked LXDE that was named PIXEL in 2016. Since October 2024 it runs Wayland on every model, using the labwc compositor, with Xwayland for older X applications; `raspi-config` can switch back to X if needed. The Trixie release gathered the old preferences tools into a single Control Centre.
+- **Imager sets things up for you.** Raspberry Pi Imager, available for Windows, macOS and Linux, writes the image to an SD card and can preconfigure the hostname, time zone, user account, Wi-Fi, remote access and Raspberry Pi Connect.
+- **Ready for learning.** The Thonny Python environment comes preinstalled, and the Full edition adds Scratch.
+
+### Editions and variants
+
+- **Raspberry Pi OS** is the default edition recommended in Imager, with the desktop, the Chromium and Firefox browsers, VLC and more.
+- **Full** adds recommended applications such as LibreOffice, KiCad and Scratch.
+- **Lite** has no desktop and suits headless servers, embedded projects and older models. Since Trixie, `rpd-` metapackages make it possible to turn Lite into a desktop system or strip a desktop image back down.
+- Each edition comes in a 64-bit version for models such as the Raspberry Pi 3, 4 and 5, and a 32-bit version for older boards such as the original Raspberry Pi, the Pi 2 and the Pi Zero.
+
+### Who it suits
+
+- Raspberry Pi owners deciding what to install; the official documentation recommends it for most uses
+- Students and teachers learning programming and how computers work
+- Makers who want the Lite edition for a home server or an electronics project
+
+### Good to know
+
+- It is an operating system for Raspberry Pi boards, not for ordinary PCs.
+- Moving to a new major version, for example from Bookworm to Trixie, is not recommended or supported as an in-place upgrade. Back up your files and write a fresh image instead.
+- `rpi-update` installs pre-release kernels and firmware for testing and can leave the system unstable or unbootable. For routine updates, `apt` is all you need.
+
+### A short history
+
+In July 2012 Raspberry Pi announced an official image based on Raspbian, a Debian port that makes use of the processor's floating-point hardware. The PIXEL desktop arrived in 2016, the system was renamed Raspberry Pi OS in 2020, and after a year-long beta the 64-bit version opened to everyone in February 2022.

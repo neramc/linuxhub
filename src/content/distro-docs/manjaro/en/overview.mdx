@@ -1,0 +1,50 @@
+---
+title: About Manjaro
+description: What sets Manjaro, the Arch-based rolling distribution that tests updates in its own repositories before they ship, apart, its editions, who it suits and what to know first.
+sources:
+  - https://manjaro.org/products/download/x86/
+  - https://manjaro.org/products/download/arm/
+  - https://manjaro.org/team/
+  - https://wiki.manjaro.org/index.php?title=About_Manjaro
+  - https://wiki.manjaro.org/index.php?title=Manjaro:A_Different_Kind_of_Beast
+  - https://wiki.manjaro.org/index.php?title=The_Rolling_Release_Development_Model
+  - https://wiki.manjaro.org/index.php?title=Switching_Branches
+  - https://wiki.manjaro.org/index.php?title=Manjaro_Kernels
+  - https://wiki.manjaro.org/index.php?title=Pamac
+  - https://wiki.manjaro.org/index.php?title=Arch_User_Repository
+  - https://wiki.manjaro.org/index.php?title=UEFI_-_Install_Guide
+lastReviewed: 2026-10-29
+---
+
+Manjaro is built on Arch Linux but developed separately, by its own team, with Manjaro GmbH & Co. KG backing the project. It is a rolling release: an installed system keeps updating and never needs reinstalling. The version numbers on the ISOs only label installation snapshots taken at a point in time; a system you keep updated is already on the latest one.
+
+### Highlights
+
+- **Its own repositories, in three branches.** Manjaro does not pull from Arch’s official repositories. Packages arriving from Arch pass through the unstable and testing branches, where users check them, before they reach stable, the default branch. As a result they land days, weeks or occasionally months after Arch.
+- **Hardware set up for you.** Manjaro’s `mhwd` tool detects hardware such as the graphics card, installs a matching driver and handles hybrid graphics. Multimedia codecs come preinstalled.
+- **A choice of kernels.** Several kernels can be installed side by side and added or removed in Manjaro Settings Manager or with `mhwd-kernel`. Each ISO ships with the latest LTS kernel of its day.
+- **Pamac.** The Manjaro team’s own package manager, Pamac (Add/Remove Software), searches, installs and updates software and tells you when updates are waiting. AUR support can be switched on in its preferences.
+
+### Editions and variants
+
+- **KDE Plasma, Xfce and GNOME** are the official images, made by the Manjaro team.
+- **Cinnamon, i3 and Sway** are community images maintained by members of the community. They follow their own release timing, and the i3 and Sway images are meant for experienced users.
+- **ARM images** come from the Manjaro ARM team, built for specific devices such as the Raspberry Pi, Pinebook Pro and PinePhone.
+
+### Who it suits
+
+- People who want current Arch-based software without assembling the system by hand
+- Desktop users who prefer graphical tools for drivers, kernels and packages
+- Anyone who would rather let updates sit through an extra round of testing
+- Owners of ARM devices such as a Raspberry Pi or Pinebook Pro who want a desktop on them
+
+### Good to know
+
+- AUR scripts are written by Arch users for Arch, so they can stop working after a Manjaro update, and the Manjaro team gives no support for software installed from the AUR.
+- A non-LTS kernel does not move on to the next kernel by itself when it reaches end of life. Switch to a newer one yourself, or expect trouble, notably with NVIDIA drivers, once the old kernel leaves the repositories.
+- The system updates as a whole, so holding a single package at an older version is hard, and you should update the system before installing new software.
+- The official UEFI installation guide assumes Secure Boot is turned off.
+
+### A short history
+
+Philip Müller, still the project lead, started Manjaro in 2011 together with four other developers. Development has been centred in Austria, France and Germany.

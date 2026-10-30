@@ -75,6 +75,14 @@ export const ko: DictionaryShape = {
     recent: "새 릴리스",
     allReleases: "릴리스 소식 전체 보기",
     newToLinux: "리눅스가 처음이라면",
+    finderHint: "몇 가지 질문에 답하면 어울리는 배포판을 골라 드립니다",
+    compareHint: "두세 배포판을 나란히 놓고 비교합니다",
+    ending: "지원 종료가 다가오는 버전",
+    endingRow: "{date} 지원 종료",
+    families: "계열별로 둘러보기",
+    familyTree: "계보 보기",
+    familyMembers: "{names} 외 {count}개",
+    familyCount: "{count}개",
     popular: {
       title: "오늘의 인기 배포판",
       picks: "오늘의 추천 배포판",
@@ -164,6 +172,11 @@ export const ko: DictionaryShape = {
     international: "국제 커뮤니티",
     dataUpdated: "{date} 업데이트 · 6시간마다 공식 소스에서 확인",
     reviewed: "정보 검토 {date}",
+  },
+  screenshot: {
+    by: "스크린샷: {author}",
+    commons: "위키미디어 공용",
+    source: "원본",
   },
   sources: {
     title: "공식 출처 ({count})",

@@ -55,7 +55,7 @@ const props = {
   strategy: "redirector" as const,
   officialDownload: "https://example.org/download/",
   releases,
-  mirrorCountries: null as string[] | null,
+  mirrors: null as { country: string | null }[] | null,
   guide: undefined as string | undefined,
   officialGuide: "https://docs.example.org/install/",
 };
@@ -97,7 +97,12 @@ describe("DownloadWizard", () => {
     const artifact = withPath.releases[0]?.editions[0]?.artifacts[0];
     if (artifact) artifact.path = "/44/Example-44-x86_64.iso";
     const html = await render(DownloadWizard, {
-      props: { ...props, strategy: "mirrors", mirrorCountries: ["DE", "KR"], releases: withPath },
+      props: {
+        ...props,
+        strategy: "mirrors",
+        mirrors: [{ country: "KR" }, { country: "DE" }],
+        releases: withPath,
+      },
     });
     expect(html).toContain('data-mirrors="/data/mirrors/example.json"');
     // The mirror groups' country names come from the server, not the browser's Intl.
@@ -122,7 +127,12 @@ describe("DownloadWizard", () => {
     if (artifact) artifact.path = "/44/Example-44-x86_64.iso";
     for (const strategy of ["redirector", "sourceforge", "mirrors"] as const) {
       const html = await render(DownloadWizard, {
-        props: { ...props, strategy, mirrorCountries: ["DE", "KR"], releases: withPath },
+        props: {
+          ...props,
+          strategy,
+          mirrors: [{ country: "KR" }, { country: "DE" }],
+          releases: withPath,
+        },
       });
       expect(html).toContain('data-mirrors="/data/mirrors/example.json"');
       const official = strategy === "mirrors" ? "공식 서버" : "자동 — 가장 가까운 공식 서버";
@@ -131,12 +141,29 @@ describe("DownloadWizard", () => {
     }
   });
 
+  it("offers no server menu when the official list is the project's one server", async () => {
+    const withPath = structuredClone(releases);
+    const artifact = withPath.releases[0]?.editions[0]?.artifacts[0];
+    if (artifact) artifact.path = "/44/Example-44-x86_64.iso";
+    const html = await render(DownloadWizard, {
+      props: { ...props, mirrors: [{ country: "US" }], releases: withPath },
+    });
+    expect(html).not.toContain("data-mirrors=");
+    expect(html).not.toContain('name="mirror"');
+    expect(html).toMatch(/data-mirror-label[^>]*>\s*자동 — 가장 가까운 공식 서버\s*</);
+  });
+
   it("gives the island the default file's mirror path, so a mirror needs no release data", async () => {
     const withPath = structuredClone(releases);
     const artifact = withPath.releases[0]?.editions[0]?.artifacts[0];
     if (artifact) artifact.path = "/44/Example-44-x86_64.iso";
     const mirrored = await render(DownloadWizard, {
-      props: { ...props, strategy: "mirrors", mirrorCountries: ["DE", "KR"], releases: withPath },
+      props: {
+        ...props,
+        strategy: "mirrors",
+        mirrors: [{ country: "KR" }, { country: "DE" }],
+        releases: withPath,
+      },
     });
     expect(mirrored).toContain('data-path="/44/Example-44-x86_64.iso"');
     expect(await render(DownloadWizard, { props })).not.toContain("data-path=");

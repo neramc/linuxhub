@@ -11,6 +11,7 @@ import {
   statusFileSchema,
 } from "./data-schemas";
 import { type Movement, movement, rerank, wikipediaUrl } from "./popularity";
+import { eolStatus, featuredRelease } from "./releases";
 
 /** Display formats and release pickers live in client-safe modules; build-time code imports them from here too. */
 export { formatBytes, formatDate } from "./format";
@@ -146,6 +147,12 @@ export interface ReleaseGroup {
   flavors: Distro[];
 }
 
+/** One is based on the other, or both on the same parent (Ubuntu and its flavors). */
+const related = (a: Distro, b: Distro) =>
+  a.data.basedOn === b.id ||
+  b.data.basedOn === a.id ||
+  (a.data.basedOn !== null && a.data.basedOn === b.data.basedOn);
+
 const byVersionDesc = (a: string, b: string) =>
   b.localeCompare(a, "en", { numeric: true, sensitivity: "base" });
 
@@ -185,11 +192,6 @@ export function groupReleases(
       a.distro.data.order - b.distro.data.order ||
       byVersionDesc(a.version, b.version),
   );
-
-  const related = (a: Distro, b: Distro) =>
-    a.data.basedOn === b.id ||
-    b.data.basedOn === a.id ||
-    (a.data.basedOn !== null && a.data.basedOn === b.data.basedOn);
 
   const groups: ReleaseGroup[] = [];
   let day: ReleaseGroup[] = [];
@@ -242,6 +244,67 @@ export function latestReleaseGroups(
     for (const id of members) shown.add(id);
     rows.push(group);
   }
+  return rows;
+}
+
+/** A supported release whose end of life is near (home "support ending soon"). */
+export interface EndingSupport {
+  distro: Distro;
+  /** Release series, e.g. "24.04". */
+  series: string;
+  /** End of life (YYYY-MM-DD). */
+  eol: string;
+  /** The distro's current version, when it is a newer series to move to. */
+  latest: string | undefined;
+  /** Related distros whose same series ends the same day (e.g. Ubuntu flavors). */
+  flavors: Distro[];
+}
+
+/**
+ * Releases whose support ends from `today` (YYYY-MM-DD) within about six
+ * months: the facts panel's "ending soon" (eolStatus), soonest first. A series
+ * of a related distro that ends the same day joins the first row instead of
+ * taking its own. Releases already past their end of life are not listed.
+ */
+export function endingSupport(
+  distros: readonly Distro[],
+  releases: ReadonlyMap<string, ReleasesFile | undefined>,
+  today: string,
+  limit: number,
+): EndingSupport[] {
+  const ending = distros.flatMap((distro) => {
+    const file = releases.get(distro.id);
+    const latest = featuredRelease(file)?.version;
+    return (file?.releases ?? []).flatMap((r) =>
+      r.eol && eolStatus(r.eol, today) === "soon"
+        ? [{ distro, series: releaseSeries(r.version), eol: r.eol, latest }]
+        : [],
+    );
+  });
+  ending.sort((a, b) => a.eol.localeCompare(b.eol) || a.distro.data.order - b.distro.data.order);
+
+  const rows: EndingSupport[] = [];
+  for (const e of ending) {
+    const row = rows.find(
+      (r) =>
+        r.eol === e.eol &&
+        r.series === e.series &&
+        [r.distro, ...r.flavors].some((m) => related(m, e.distro)),
+    );
+    if (row) {
+      if (row.distro !== e.distro && !row.flavors.includes(e.distro)) row.flavors.push(e.distro);
+      continue;
+    }
+    if (rows.length >= limit) continue;
+    rows.push({
+      distro: e.distro,
+      series: e.series,
+      eol: e.eol,
+      latest: e.latest && releaseSeries(e.latest) !== e.series ? e.latest : undefined,
+      flavors: [],
+    });
+  }
+  for (const row of rows) row.flavors.sort((a, b) => a.data.name.localeCompare(b.data.name, "en"));
   return rows;
 }
 

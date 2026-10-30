@@ -1,0 +1,44 @@
+---
+title: Vanilla OS 소개
+description: 시스템을 시험을 마친 이미지로 통째로 바꾸는 Debian 기반 불변(atomic) 배포판 Vanilla OS의 특징과 이미지 종류, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://vanillaos.org/blog/article/2026-08-24/vanilla-os-3-reunion---stable-release
+  - https://vanillaos.org/blog/article/2026-07-15/vanilla-os-3-reunion---development-update-and-some-clarifications
+  - https://vanillaos.org/blog/article/2024-07-28/vanilla-os-2-orchid---stable-release
+  - https://vanillaos.org/blog/article/2023-03-07/vanilla-os-20-orchid---initial-work
+  - https://vanillaos.org/blog/article/2022-12-29/vanilla-os-2210-kinetic-is-out
+  - https://raw.githubusercontent.com/Vanilla-OS/handbook/main/articles/en/installation.md
+  - https://raw.githubusercontent.com/Vanilla-OS/handbook/main/articles/en/install-and-manage-applications.md
+lastReviewed: 2026-10-29
+---
+
+Vanilla OS는 GNOME을 원래 모습에 가깝게 담은 불변(atomic) 데스크톱 배포판입니다. 팀이 Debian 패키지로 만들어 시험한 시스템 이미지를 그대로 받아 통째로 바꾸는 방식입니다. 지금 최신 버전은 Vanilla OS <Latest slug="vanilla-os" /> "<Latest slug="vanilla-os" field="codename" />"입니다.
+
+### 특징
+
+- **ABRoot의 A/B 업데이트.** 루트 파티션 두 개를 번갈아 쓰며 새 이미지를 쓰지 않는 쪽에 원자적으로 적용합니다. 모두가 시험을 마친 그대로의 시스템을 받고, 문제가 생기면 이전 상태로 돌아갈 수 있습니다.
+- **앱은 Flatpak이 기본.** Flathub가 처음부터 켜져 있어 데스크톱 앱은 소프트웨어 앱에서 바로 설치합니다.
+- **Debian 패키지는 VSO 안에서.** 터미널은 호스트가 아니라 변경 가능한 VSO 서브시스템에서 열립니다. Debian 패키지는 여기서 `vso native install`로 설치하고, `sudo`도 이 안에서만 씁니다.
+- **Apx로 다른 배포판 환경.** Debian, openSUSE Leap 등의 격리된 서브시스템을 만들어 개발 환경을 시스템과 따로 둡니다.
+
+### 에디션과 변형
+
+- 기본 GNOME 이미지 말고도 NVIDIA 그래픽용과 가상 머신용 이미지가 있으며, 설치 프로그램이 하드웨어를 보고 알맞은 쪽을 권합니다.
+- Vanilla OS 3부터 UEFI를 쓰는 ARM64 기기도 공식 지원합니다.
+
+### 이런 분께 맞습니다
+
+- 업데이트로 시스템이 망가질 걱정 없이 깔끔한 GNOME을 쓰고 싶은 사람
+- 여러 배포판의 개발 도구를 컨테이너로 나눠 쓰는 개발자
+- 앱을 주로 Flatpak으로 설치해도 괜찮은 사람
+
+### 알아 둘 점
+
+- A/B 파티션 때문에 디스크가 50GB 이상 필요하고, 같은 디스크에서의 듀얼 부팅은 자동으로 지원하지 않습니다.
+- Secure Boot는 NVIDIA 드라이버나 별도 커널 모듈이 필요할 때만 끄면 됩니다.
+- Vanilla OS 2에 있던 Android 앱 지원은 안정성 기준에 못 미쳐 빠졌습니다.
+- Vanilla OS 2에서 3으로는 `abroot upgrade`로 올라갈 수 있습니다(ABRoot 2.4.0 이상 필요).
+
+### 간단한 역사
+
+첫 정식 버전 22.10 Kinetic은 2022년 12월 29일 Ubuntu를 바탕으로 나왔습니다. 2024년 7월의 Vanilla OS 2 Orchid에서 바탕을 Debian으로 옮기고 OCI 이미지 방식의 업데이트를 도입했습니다.

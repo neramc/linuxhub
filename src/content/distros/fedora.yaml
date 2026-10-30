@@ -41,6 +41,18 @@ logo:
   source: https://commons.wikimedia.org/wiki/File:Fedora_icon_(2021).svg
   license: Public domain (simple geometry); Fedora trademark
   trademark: https://fedoraproject.org/legal/trademarks/
+screenshot:
+  file: fedora.webp
+  source: https://commons.wikimedia.org/wiki/File:Fedora_44_Workstation.png
+  author: The Fedora Project
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Fedora 44 Workstation의 GNOME 바탕화면. 맨 위 표시줄에 날짜와 시각, 네트워크·소리·전원 아이콘이 있고, 바탕에는 연한 초록과 파랑으로 물든 입체 도시 그림이 깔려 있습니다.
+    en: The GNOME desktop of Fedora 44 Workstation. The top bar shows the date and time and the network, sound and power icons over a wallpaper of a pale green-and-blue isometric town.
+  caption:
+    ko: Fedora 44 Workstation의 기본 GNOME 데스크톱
+    en: Fedora 44 Workstation with its default GNOME desktop
 download:
   strategy: redirector
 sources:

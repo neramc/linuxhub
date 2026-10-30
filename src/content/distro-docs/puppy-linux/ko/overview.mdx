@@ -1,0 +1,48 @@
+---
+title: Puppy Linux 소개
+description: USB나 RAM에서 바로 실행하고 바뀐 내용은 저장 파일에 남기는 소형 배포판 모음 Puppy Linux의 특징과 판의 종류, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://puppylinux-woof-ce.github.io/
+  - https://puppylinux-woof-ce.github.io/history.html
+  - https://forum.puppylinux.com/puppy-linux-collection
+  - https://forum.puppylinux.com/viewtopic.php?t=5314
+  - https://forum.puppylinux.com/viewtopic.php?t=17376
+  - https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/README.md
+  - https://wikka.puppylinux.com/HomePage
+lastReviewed: 2026-10-29
+---
+
+Puppy Linux는 가정용 컴퓨터를 위한 작은 배포판들의 모음입니다. 2003년 Barry Kauler가 처음 만들었고, 지금은 커뮤니티인 Puppy Linux Team이 이어 갑니다. 각 판은 woof-CE라는 빌드 도구로 Debian, Ubuntu, Slackware, Void Linux 같은 다른 배포판의 패키지를 가져와 만들되, 같은 Puppy 도구와 동작을 공유합니다. 판마다 바탕 배포판의 버전을 따라가며, 공식 위키가 먼저 권하는 판은 Debian <Latest slug="puppy-linux" field="codename" /> 기반의 TrixiePup입니다.
+
+### 특징
+
+- **RAM에서 도는 작은 시스템.** 이미지는 보통 1.5GB 이하입니다. 부팅하면 압축된 SFS 파일을 메모리로 올려 RAM에서만 돌아가고, 원본 파일은 읽기 전용이라 늘 처음 상태를 유지합니다.
+- **저장 파일에 남기는 변경.** 설정, 설치한 프로그램, 만든 문서는 종료할 때 묻는 저장 파일(save file)이나 저장 폴더에 들어갑니다. 저장 데이터가 망가지면 이를 쓰지 않고 깨끗한 상태로 부팅할 수 있습니다.
+- **파일 몇 개로 끝나는 설치.** 보통은 시스템 파일 수천 개를 펼치지 않고, 압축 파일 몇 개를 USB나 내장 디스크에 복사하는 "frugal" 설치를 씁니다. 옮기기와 백업이 쉽고, 한 파티션에 용도별 Puppy를 여러 개 둘 수도 있습니다.
+- **판마다 다른 패키지 관리.** Debian 기반 판과 ResolutePup64는 APT로 `.deb` 패키지를, Void 기반 판은 xbps 패키지를 씁니다. Slackware 기반 판과 NoblePup32 등은 Puppy 고유의 PET 패키지를 PPM으로 관리합니다.
+- **손쉬운 리마스터.** 지금 쓰는 시스템을 새 ISO로 만드는 기능이 있어, 커뮤니티가 만든 변형판(puplet)이 많습니다.
+
+### 에디션과 변형
+
+- **Debian 기반**: TrixiePup(64비트 Wayland 판과 64·32비트 Retro 판), BookwormPup
+- **Ubuntu 기반**: ResolutePup64, NoblePup32
+- **Slackware 기반**: S15Pup(64·32비트)
+- **Void 기반**: VoidPup(롤링 스냅숏, 64·32비트)
+
+### 이런 분께 맞습니다
+
+- 오래되거나 사양이 낮은 PC를 다시 쓰고 싶은 사람(32비트 판도 있습니다)
+- USB 메모리 하나에 자기 데스크톱을 넣어 다니고 싶은 사람
+- 시스템을 직접 손보고 자기만의 판으로 만들어 보고 싶은 사람
+
+### 알아 둘 점
+
+- 기본으로 root 사용자로 실행되며 `sudo`를 쓰지 않습니다.
+- 부팅 USB는 Windows에서는 Rufus나 UNetbootin, Linux에서는 UNetbootin으로 만듭니다. `dd`나 balenaEtcher처럼 ISO9660 형식 그대로 쓰는 방법은 권하지 않습니다.
+- 저장 파일을 쓰려면 USB가 FAT32, 저장 폴더를 쓰려면 ext3·ext4여야 합니다.
+- 최신 PC에서는 Secure Boot나 Fast Boot를 먼저 꺼야 할 수 있습니다.
+- 디스크는 아이콘을 열 때 마운트되므로, USB 메모리는 빼기 전에 직접 마운트를 해제해야 합니다.
+
+### 간단한 역사
+
+Puppy는 Vector Linux를 더 작게 줄인 판으로 출발했습니다. 4.x에서 다른 배포판의 패키지로 Puppy를 만드는 Woof가 나왔고, Barry Kauler가 물러난 뒤 이름을 Woof-CE로 바꾼 6.x부터 커뮤니티가 개발을 맡으며 64비트 판도 내기 시작했습니다.

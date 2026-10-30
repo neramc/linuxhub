@@ -38,6 +38,18 @@ logo:
   file: garuda-linux.svg
   source: https://gitlab.com/garuda-linux/themes-and-settings/artwork/garuda-icons/-/blob/master/usr/share/pixmaps/garudalinux-logo.svg
   license: GPL-3.0-or-later (garuda-icons repository); Garuda Linux logo, used to identify the project
+screenshot:
+  file: garuda-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:Garuda_Linux_Dr460nized%2C_Bird_of_Prey.png
+  author: Garuda Linux Team
+  license: GPLv3
+  licenseUrl: https://www.gnu.org/licenses/gpl-3.0.html
+  alt:
+    ko: Garuda Linux "Bird of Prey"의 Dr460nized KDE Plasma 데스크톱. 붉은 용 그림 바탕 위에 애플리케이션 메뉴, 시스템 정보 창, fastfetch 결과를 띄운 터미널, Garuda 환영 창이 열려 있고, 아래에 앱 아이콘이 늘어선 독이 있습니다.
+    en: 'The Dr460nized KDE Plasma desktop of Garuda Linux "Bird of Prey": over a red dragon wallpaper, the application menu, the About this System window, a terminal with fastfetch output and the Garuda Welcome window are open, above a dock of app icons.'
+  caption:
+    ko: Garuda Linux "Bird of Prey"의 Dr460nized(KDE Plasma) 판
+    en: Garuda Linux "Bird of Prey", Dr460nized edition (KDE Plasma)
 download:
   strategy: redirector
 sources:

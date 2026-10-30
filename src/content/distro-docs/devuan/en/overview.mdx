@@ -1,0 +1,46 @@
+---
+title: About Devuan GNU+Linux
+description: What sets Devuan GNU+Linux, the systemd-free Debian fork built around Init Freedom, apart, its install media, who it suits and what to know first.
+sources:
+  - https://www.devuan.org/
+  - https://www.devuan.org/os/init-freedom
+  - https://www.devuan.org/os/announce/stable-jessie-announce-052517
+  - https://www.devuan.org/os/announce/excalibur-release-announce-2025-11-02
+  - https://www.devuan.org/os/documentation/install-guides/excalibur/install-devuan
+  - https://files.devuan.org/devuan_excalibur/Release_notes.txt
+  - https://files.devuan.org/devuan_excalibur/desktop-live/README_desktop-live.txt
+lastReviewed: 2026-10-29
+---
+
+Devuan GNU+Linux is a fork of Debian without systemd. Each release is a fixed release based on the Debian stable of its time; the current one is Devuan <Latest slug="devuan" /> (<Latest slug="devuan" field="codename" />). The project’s guiding idea is “Init Freedom”: you, not the distribution, decide which init system runs your machine.
+
+### Highlights
+
+- **Choose your init at install time.** sysvinit is the default, but the installer asks which init system you want, and OpenRC and runit are available from the official repositories. Device management is handled by eudev, a udev fork without the systemd dependency.
+- **Mostly Debian’s packages.** Devuan forks and maintains only a portion of the archive; everything else is Debian’s own packages. Much of Debian’s release notes and documentation therefore applies to Devuan as well.
+- **A way over from Debian.** There is an official path for migrating an existing Debian stable system of the same generation to Devuan without reinstalling, as well as a direct upgrade from the previous Devuan release.
+- **Xfce by default.** Accepting the installer’s defaults gives you an Xfce desktop, and you can choose others such as MATE, LXQt, KDE or Cinnamon instead.
+
+### Editions and variants
+
+- **desktop-live** lets you try the default desktop and install it with the Refracta installer; it also includes a remastering tool for building your own live image. **minimal-live** is the same idea without a graphical environment.
+- **netinstall** is for online installs and the **desktop** DVD for offline desktop installs, with a separate CD set for servers.
+- Mini ISOs for the other architectures and official Docker images are also available.
+
+### Who it suits
+
+- People who want Debian’s packages and stability, minus systemd
+- Administrators who want to choose between sysvinit, OpenRC and runit on servers or desktops
+- Debian users who want to move an existing system off systemd without reinstalling
+
+### Good to know
+
+- Upgrades go one release at a time; skipping a release is not supported.
+- Following Debian, a merged-/usr layout is now mandatory. Install the `usrmerge` package before upgrading from the previous release.
+- As Debian dropped its i386 kernel and installer, the current release has no install ISO for 32-bit PCs.
+- Non-free firmware your hardware needs, typically for Wi-Fi, is installed automatically, and the live images come with it preinstalled. To avoid it, pick Expert install in the installer menu, or run `remove_firmware.sh` on the live system.
+- The live images’ installer does not partition disks for you, so create the partitions yourself.
+
+### A short history
+
+In November 2014 a group calling itself the Veteran Unix Admins announced that it would fork Debian. Two and a half years later, in May 2017, it released the first stable version, Devuan Jessie 1.0.0, as a long-term support release. ASCII, Beowulf, Chimaera, Daedalus and Excalibur followed.

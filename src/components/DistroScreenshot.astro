@@ -1,0 +1,39 @@
+---
+/**
+ * A distro's desktop screenshot (ADR-0018) at the end of its overview: what it
+ * shows, then the credit the license asks for (author, license, the file's
+ * description page).
+ */
+import Screenshot from "~/components/adw/Screenshot.astro";
+import { type Locale, useTranslations } from "~/i18n";
+import type { DistroData } from "~/lib/schemas";
+import { screenshotImage } from "~/lib/screenshots";
+
+interface Props {
+  shot: NonNullable<DistroData["screenshot"]>;
+  locale: Locale;
+}
+
+const { shot, locale } = Astro.props;
+const t = useTranslations(locale);
+const onCommons = new URL(shot.source).host === "commons.wikimedia.org";
+---
+
+<Screenshot src={screenshotImage(shot.file)} alt={shot.alt[locale]}>
+  <span>{shot.caption[locale]}</span>
+  {/* Only the plain words are dimmed: a dimmed link would fall below 4.5:1. */}
+  <span>
+    <span class="dim-label">{t("screenshot.by", { author: shot.author })} · </span>
+    {
+      shot.licenseUrl ? (
+        <a class="target-link" href={shot.licenseUrl} rel="noopener external">{shot.license}</a>
+      ) : (
+        <span class="dim-label">{shot.license}</span>
+      )
+    }
+    <span class="dim-label"> · </span>
+    <a class="target-link" href={shot.source} rel="noopener external">
+      {t(onCommons ? "screenshot.commons" : "screenshot.source")}
+    </a>
+  </span>
+</Screenshot>

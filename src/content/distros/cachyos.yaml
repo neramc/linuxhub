@@ -38,6 +38,18 @@ logo:
   file: cachyos.svg
   source: https://cachyos.org/favicon.svg
   license: GPL-2.0-or-later (released by founder Peter Jung on Wikimedia Commons); CachyOS mark, used to identify the project
+screenshot:
+  file: cachyos.webp
+  source: https://commons.wikimedia.org/wiki/File:CachyOS_2024.03.16_KDE_welcome_-_English.png
+  author: CachyOS Team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: 보라색 하늘과 구름, 하늘을 가르는 청록색 혜성을 그린 만화풍 배경 화면 위에 CachyOS Hello 창이 열려 있습니다. 창에는 'Welcome to CachyOS!' 제목 아래 문서, 지원, 프로젝트 링크 버튼과 'Launch installer' 버튼이 있고, 화면 아래에 KDE Plasma 작업 표시줄이 있습니다.
+    en: A CachyOS Hello window over a cartoon-style wallpaper of a purple sky, clouds and a teal comet. Under the heading 'Welcome to CachyOS!' it has buttons for documentation, support and project links and a 'Launch installer' button. A KDE Plasma panel runs along the bottom.
+  caption:
+    ko: KDE Plasma 라이브 환경에서 열린 CachyOS Hello 환영 앱
+    en: The CachyOS Hello welcome app in the KDE Plasma live session
 download:
   strategy: redirector
 sources:

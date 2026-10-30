@@ -39,6 +39,17 @@ logo:
   source: https://commons.wikimedia.org/wiki/File:Slackware_logo_from_the_official_Slackware_site.svg
   license: Public domain per Wikimedia Commons (simple shapes and text; Commons copy of Slackware_web_logo.svg from the official Slackware site, by Patrick Volkerding); Slackware is a registered trademark of Patrick Volkerding and Slackware Linux, Inc.
   trademark: https://mirrors.slackware.com/slackware/slackware64-15.0/COPYRIGHT.TXT
+screenshot:
+  file: slackware.webp
+  source: https://commons.wikimedia.org/wiki/File:Slackware_15.0_screenshot.png
+  author: "VulcanSphere (software: The Slackware Linux Project)"
+  license: GPL / LGPL
+  alt:
+    ko: Slackware 15.0의 KDE Plasma 5 데스크톱. 왼쪽 위의 Konsole 창에서 파란 바탕의 패키지 도구 pkgtool이 실행 중이고, 오른쪽에는 시스템 설정의 이 시스템 정보 화면이 Slackware 15.0과 Plasma 5.23 버전을 보여 줍니다.
+    en: "The KDE Plasma 5 desktop of Slackware 15.0: the blue pkgtool package tool runs in a Konsole window at the top left, and System Settings on the right shows About this System with Slackware 15.0 and Plasma 5.23."
+  caption:
+    ko: Slackware 15.0의 KDE Plasma 5 데스크톱과 패키지 도구 pkgtool
+    en: Slackware 15.0 with KDE Plasma 5 and the pkgtool package tool
 download:
   strategy: mirrors
 sources:

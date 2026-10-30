@@ -37,6 +37,18 @@ logo:
   file: void-linux.svg
   source: https://repo-default.voidlinux.org/logos/void.svg
   license: No license or trademark policy for the logo is stated on voidlinux.org or in the handbook; the official file from the project's logos directory, used unmodified to identify the project
+screenshot:
+  file: void-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:Void_Linux_20210930_Xfce_Thunar_4.15.10_default_Adwaita_theme_-_English.png
+  author: The Void Linux Community
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Void Linux 라이브 이미지의 Xfce 데스크톱. 청록색 바탕 위에 Thunar 파일 관리자 창 두 개가 홈 폴더를 보여 주고, 왼쪽에 드라이브와 휴지통 아이콘이, 화면 위에 패널이, 아래 가운데에 작은 독이 있습니다.
+    en: "The Xfce desktop of a Void Linux live image: two Thunar file manager windows showing the home folder on a teal background, drive and trash icons down the left, a panel at the top and a small dock at the bottom center."
+  caption:
+    ko: Void Linux(2021년 9월 30일 이미지)의 Xfce 데스크톱과 Thunar 파일 관리자
+    en: Void Linux (the 2021-09-30 image) with Xfce and the Thunar file manager
 download:
   strategy: mirrors
 sources:

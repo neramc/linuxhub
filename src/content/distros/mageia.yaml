@@ -40,6 +40,18 @@ logo:
   source: https://www.mageia.org/g/media/logo/mageia-2013.svg
   license: No license stated for the logo on the official media page (its CC BY-SA notice covers only the CD/DVD covers); Mageia logo, used to identify the project
   trademark: https://www.mageia.org/en/about/license/
+screenshot:
+  file: mageia.webp
+  source: https://commons.wikimedia.org/wiki/File:Mageia_8_Welcome_screen.png
+  author: Mageia developers
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Mageia 8의 KDE Plasma 데스크톱. 파란 리본 무늬 바탕 가운데에 환영 창이 열려 있고, 왼쪽 아래에 애플리케이션 메뉴가, 화면 아래에 패널이 있습니다.
+    en: "The KDE Plasma desktop of Mageia 8: the Welcome to Mageia window in the middle of a blue ribbon wallpaper, the application menu open at the bottom left, and the panel along the bottom."
+  caption:
+    ko: Mageia 8의 KDE Plasma 데스크톱과 환영 창
+    en: Mageia 8 with KDE Plasma and its welcome screen
 download:
   strategy: mirrors
 sources:

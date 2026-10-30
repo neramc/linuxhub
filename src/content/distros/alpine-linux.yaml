@@ -38,6 +38,18 @@ logo:
   file: alpine-linux.svg
   source: https://alpinelinux.org/alpinelinux-logo.svg
   license: Official Alpine Linux logo (hexagon mark with wordmark), the one alpinelinux.org shows in its header, used unmodified to identify the project. The site names no logo license or trademark policy; its footer reads "Copyright 2026 Alpine Linux Development Team all rights reserved"
+screenshot:
+  file: alpine-linux.webp
+  source: https://commons.wikimedia.org/wiki/File:Alpine_Linux_3.18_KDE_-_English.png
+  author: Alpine Linux development team
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: Alpine Linux 3.18에 KDE Plasma를 설치한 데스크톱. 산 사진 바탕 위에 왼쪽 아래로 애플리케이션 메뉴가, 오른쪽 위로 Alpine Linux 3.18.0과 Plasma 5.27 버전을 보여 주는 시스템 설정 창이 열려 있습니다.
+    en: "Alpine Linux 3.18 with KDE Plasma installed: over a mountain photo, the application menu is open at the bottom left and System Settings at the top right shows Alpine Linux 3.18.0 with Plasma 5.27."
+  caption:
+    ko: KDE Plasma를 설치한 Alpine Linux 3.18(Alpine에는 기본 데스크톱이 없습니다)
+    en: Alpine Linux 3.18 with KDE Plasma installed (Alpine has no default desktop)
 download:
   strategy: redirector
 sources:

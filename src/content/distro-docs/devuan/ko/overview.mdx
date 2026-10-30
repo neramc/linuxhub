@@ -1,0 +1,46 @@
+---
+title: Devuan GNU+Linux 소개
+description: systemd 없이 init을 고를 자유를 내세우는 Debian 포크 Devuan GNU+Linux의 특징과 설치 매체, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://www.devuan.org/
+  - https://www.devuan.org/os/init-freedom
+  - https://www.devuan.org/os/announce/stable-jessie-announce-052517
+  - https://www.devuan.org/os/announce/excalibur-release-announce-2025-11-02
+  - https://www.devuan.org/os/documentation/install-guides/excalibur/install-devuan
+  - https://files.devuan.org/devuan_excalibur/Release_notes.txt
+  - https://files.devuan.org/devuan_excalibur/desktop-live/README_desktop-live.txt
+lastReviewed: 2026-10-29
+---
+
+Devuan GNU+Linux는 systemd를 쓰지 않는 Debian 포크입니다. 각 릴리스는 같은 시기의 Debian 안정판을 바탕으로 한 고정 릴리스이며, 지금 최신 버전은 Devuan <Latest slug="devuan" />(<Latest slug="devuan" field="codename" />)입니다. 프로젝트는 init을 스스로 고를 자유, 곧 "Init Freedom"을 가장 앞에 둡니다.
+
+### 특징
+
+- **init을 고르는 설치.** 기본 init은 sysvinit이지만, 설치 도중에 어떤 init을 쓸지 고를 수 있습니다. OpenRC와 runit도 공식 저장소에서 쓸 수 있습니다. 장치 관리는 udev 대신 systemd에 기대지 않는 eudev가 맡습니다.
+- **Debian과 거의 같은 패키지.** Devuan이 따로 갈라 내어 고친 패키지는 일부이고, 나머지는 Debian 패키지를 그대로 씁니다. 그래서 Debian의 릴리스 노트와 문서도 상당 부분 그대로 참고할 수 있습니다.
+- **Debian에서 옮겨 오는 길.** 새로 설치하지 않아도, 같은 세대의 Debian 안정판에서 Devuan으로 옮기는 공식 안내가 있습니다. 이전 Devuan 릴리스에서도 바로 업그레이드할 수 있습니다.
+- **기본 데스크톱은 Xfce.** 설치 프로그램의 기본값을 따르면 Xfce 데스크톱이 깔리고, MATE, LXQt, KDE, Cinnamon 같은 다른 데스크톱도 고를 수 있습니다.
+
+### 에디션과 변형
+
+- **desktop-live**는 기본 데스크톱을 그대로 체험하고 Refracta 설치 프로그램으로 설치까지 하는 라이브 이미지입니다. 직접 라이브 이미지를 만드는 리마스터 도구도 들어 있습니다. 그래픽 환경이 없는 **minimal-live**도 있습니다.
+- **netinstall**은 온라인 설치용, **desktop** DVD는 오프라인 데스크톱 설치용이고, 서버용 CD 묶음도 따로 있습니다.
+- 그 밖의 아키텍처용 mini ISO와 공식 Docker 이미지도 제공합니다.
+
+### 이런 분께 맞습니다
+
+- Debian의 패키지와 안정성은 그대로 두고 systemd만 빼고 싶은 사람
+- 서버나 데스크톱에서 sysvinit, OpenRC, runit 가운데 init을 직접 고르려는 관리자
+- 쓰던 Debian 시스템을 다시 설치하지 않고 systemd 없는 환경으로 옮기고 싶은 사람
+
+### 알아 둘 점
+
+- 업그레이드는 한 릴리스씩만 지원합니다. 버전을 건너뛰어 올릴 수는 없습니다.
+- Debian을 따라 merged-/usr 구조가 필수가 되었습니다. 이전 릴리스에서 업그레이드하기 전에 `usrmerge` 패키지를 먼저 설치해야 합니다.
+- Debian이 i386 커널과 설치 프로그램을 없앤 것을 따라, 현재 릴리스에는 32비트 PC용 설치 ISO가 없습니다.
+- 와이파이처럼 하드웨어에 필요한 비자유 펌웨어는 설치할 때 자동으로 들어가고, 라이브 이미지에는 미리 깔려 있습니다. 원하지 않으면 설치 메뉴의 Expert install을 고르거나 라이브에서 `remove_firmware.sh`로 지웁니다.
+- 라이브 이미지의 설치 프로그램은 자동 분할을 하지 않으므로, 파티션은 직접 만들어야 합니다.
+
+### 간단한 역사
+
+2014년 11월 Veteran Unix Admins를 자처한 개발자들이 Debian을 포크하겠다고 발표했고, 2년 반 남짓 지난 2017년 5월 첫 안정판 Devuan Jessie 1.0.0을 장기 지원 릴리스로 내놓았습니다. 이후 ASCII, Beowulf, Chimaera, Daedalus, Excalibur로 이어지고 있습니다.

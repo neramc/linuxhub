@@ -1,0 +1,48 @@
+---
+title: About Q4OS
+description: What sets Q4OS, the Debian-based long-term support desktop with a choice of Plasma or the lightweight Trinity, apart, its editions, who it suits and what to know first.
+sources:
+  - https://www.q4os.org/
+  - https://www.q4os.org/downloads1.html
+  - https://www.q4os.org/blog.html
+  - https://www.q4os.org/dqa015.html
+  - https://www.q4os.org/dqa016.html
+  - https://www.q4os.org/dqa014.html
+  - https://www.q4os.org/business.html
+  - https://www.q4os.org/forum/viewtopic.php?id=5030
+lastReviewed: 2026-10-29
+---
+
+Q4OS is a light, easy-to-use desktop distribution built on Debian, developed by a team now based in Prague, Czech Republic. It ships long-term support (LTS) releases on top of Debian stable and refreshes the install media every few months with point releases; the current one is Q4OS <Latest slug="q4os" /> (<Latest slug="q4os" field="codename" />).
+
+### Highlights
+
+- **Set up once, left alone.** Desktop environments and most tools stay on the major version they shipped with and only get security fixes; new features reach the base system only in rare cases. Applications can still be kept current through Flatpak.
+- **Desktop profiler.** Instead of a system packed with preinstalled apps, you pick a profile, a predefined set of applications, and install it in one go. You can save your current system as a profile and load it in the Calamares installer on another machine.
+- **Plasma and Trinity side by side.** KDE Plasma is the default desktop and is kept in its stock look. The lightweight Trinity desktop can be installed next to it without the two getting in each other’s way, and you choose between them at the login screen.
+- **Installs from inside Windows.** A setup wizard run in Windows puts Q4OS into a folder on the Windows drive, with no repartitioning. It is not a virtual machine: you pick it at boot and it runs directly on the hardware.
+- **Five years of updates.** LTS releases get security patches and updates for five years; the current one is supported until at least <Latest slug="q4os" field="eol" />.
+
+### Editions and variants
+
+- **Plasma live** is the default download, and the same LTS also comes as **Trinity live**. For older machines the project recommends the Trinity **install-cd**.
+- **WinSetup**, the Windows installer, runs on Windows 11, 10, 8 and 7.
+- A Trinity-based edition for 64-bit ARM devices covers Chromebooks, tablets and single-board computers, and an unofficial Raspberry Pi spin is offered from the unofficial repository.
+
+### Who it suits
+
+- Anyone who wants to keep an old or low-powered PC going with a light desktop
+- Windows users who want Linux next to Windows without touching partitions
+- People and businesses who want a system that needs little attention for years once it is set up
+- Administrators who need to put the same set of applications on many PCs quickly
+
+### Good to know
+
+- The current LTS has no 32-bit edition. For 32-bit PCs, use the 32-bit install-cd of the previous LTS, which is supported until June 2028.
+- Secure Boot is supported by default. If a Q4OS installed with the Windows installer will not start, the firmware may need Secure Boot switched to Audit mode or turned off.
+- The Windows installer does not support BitLocker-encrypted drives. Some PCs’ firmware lists only the Windows boot loader, so you open the boot menu with a function key at power-on and choose Q4OS there.
+- If you want a Q4OS look rather than stock Plasma, switch to the Debonaire theme in System Settings or install Lookswitcher.
+
+### A short history
+
+Q4OS began in 2014 as an international project, and its development has since settled in Prague. Andromeda, based on Debian 13, came out in September 2025, and an edition for 64-bit ARM devices followed that December.

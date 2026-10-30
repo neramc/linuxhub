@@ -1,0 +1,48 @@
+---
+title: About Mageia
+description: What sets Mageia, the community distribution forked from Mandriva Linux, apart, its install images, who it suits and what to know first.
+sources:
+  - https://www.mageia.org/en/about/
+  - https://www.mageia.org/en/about/2010-sept-announcement.html
+  - https://www.mageia.org/en/10/
+  - https://www.mageia.org/en/downloads/
+  - https://www.mageia.org/en/support/
+  - https://blog.mageia.org/en/2026/06/30/the-power-of-10/
+  - https://blog.mageia.org/en/2026/09/25/end-of-support-for-mageia-9/
+  - https://doc.mageia.org/installer/10/en/content/software.html
+  - https://doc.mageia.org/mcc/10/en/content/software-management.html
+  - https://doc.mageia.org/mcc/10/en/content/mcc-boot.html
+lastReviewed: 2026-10-29
+---
+
+Mageia is a community distribution that forked from Mandriva Linux. No company stands behind it: the project is backed by Mageia.Org, a nonprofit based in Paris and run by elected contributors. Mageia ships numbered fixed releases; the current one is Mageia <Latest slug="mageia" />.
+
+### Highlights
+
+- **The Mageia Control Center (MCC).** One graphical tool covers most of the system: installing and updating software, reviewing detected hardware and drivers, and setting up the bootloader or automatic login. Integrated configuration tools were one of the goals the project set out with.
+- **urpmi at the core.** System packages are RPMs handled by `urpmi` and its graphical front end, rpmdrake. `dnf` is supported too, and desktop apps can also come from Flatpak or AppImage.
+- **Repositories split by kind.** Next to the base Core repository sit Nonfree, with proprietary drivers and firmware, and Tainted, with software such as codecs that may run into patent law in some countries. You decide which ones to use.
+- **Room for old hardware.** Alongside 64-bit images, Mageia still builds images for 32-bit PCs.
+- **At least 18 months of updates.** Each release gets security and bug fixes for 18 months or until three months after the next release, whichever is longer.
+
+### Editions and variants
+
+- **Classical ISO** is the traditional installer image. In the DrakX installer you pick Plasma, GNOME or a custom set of desktops and package groups, and it is also the image to use when upgrading from the previous release.
+- **Live images** (Plasma, GNOME and Xfce) let you try Mageia first and then install it from the same session.
+- **Network install CDs** are about 50 MB and pull the packages over a wired connection during setup. One contains only free software; the other adds nonfree firmware for some disk controllers and network cards.
+
+### Who it suits
+
+- People who would rather manage their system through graphical settings tools than a terminal
+- Anyone keeping older computers in use, including 32-bit PCs
+- Users looking for an RPM-based distribution run by a community rather than a company
+
+### Good to know
+
+- Some media codecs and proprietary drivers such as NVIDIA’s live in the Tainted and Nonfree repositories. Add them from the media selection screen during installation, or later under media settings in the MCC.
+- Live images cannot upgrade an existing system. Upgrade with the release upgrade tool in the system tray, from the command line, or with the Classical ISO.
+- Releases do not follow a fixed schedule; the last two each took between two and a half and three years. Once a new release is out, the old one may lose support after only three months, so plan the upgrade ahead.
+
+### A short history
+
+In September 2010, with Mandriva Linux’s future in doubt, former Mandriva employees and community contributors announced Mageia as a distribution that would not depend on any one company. The first release followed in June 2011.

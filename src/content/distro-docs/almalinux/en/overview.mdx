@@ -1,0 +1,48 @@
+---
+title: About AlmaLinux
+description: What sets AlmaLinux OS, the RHEL-compatible enterprise distribution run by a non-profit foundation, apart, its images, who it suits and what to know first.
+sources:
+  - https://almalinux.org/
+  - https://almalinux.org/foundation/
+  - https://wiki.almalinux.org/FAQ.html
+  - https://wiki.almalinux.org/Comparison.html
+  - https://wiki.almalinux.org/release-notes/10.0.html
+  - https://wiki.almalinux.org/LiveMedia.html
+  - https://wiki.almalinux.org/development/almalinux-os-kitten-10.html
+  - https://wiki.almalinux.org/documentation/nvidia.html
+  - https://wiki.almalinux.org/elevate/
+lastReviewed: 2026-10-29
+---
+
+AlmaLinux OS is an enterprise distribution created to fill the gap left when the stable CentOS Linux release was discontinued. It is owned and run by the AlmaLinux OS Foundation, a non-profit, and aims for binary compatibility with Red Hat Enterprise Linux (RHEL). It uses fixed releases; the current one is AlmaLinux <Latest slug="almalinux" />, codenamed <Latest slug="almalinux" field="codename" />.
+
+### Highlights
+
+- **ABI-compatible with RHEL.** Applications and kernel modules that work on RHEL are expected to work on AlmaLinux, and anything that does not is treated as a bug. New minor releases usually follow RHEL's within a few days.
+- **Ten years per major version.** Each major version gets security updates and bug fixes for ten years. A minor version ends when the next one is out, so you simply keep updating within the same major version. The newest release is supported until <Latest slug="almalinux" field="eol" />.
+- **Where it differs from RHEL.** AlmaLinux 10 follows RHEL 10's raised CPU baseline (x86-64-v3) but also offers a separate x86-64-v2 build for older processors. It restores support for some older RAID and network adapters that RHEL dropped, and enables SPICE.
+- **Governed by its community.** Foundation members elect the board, meeting minutes are published, and the bylaws stop any single employer from holding more than one voting seat.
+
+### Editions and variants
+
+- **Installation ISOs** come as a full DVD with nearly every package, a Minimal image for offline installs, and a Boot image that fetches packages over the network.
+- **Live Media** lets you try AlmaLinux or repair a system without installing. AlmaLinux 10 offers GNOME and KDE; versions 8 and 9 add GNOME Mini, MATE and Xfce.
+- Official images also exist for clouds, containers, WSL and the Raspberry Pi.
+- **AlmaLinux OS Kitten**, built from CentOS Stream 10 code, sits directly upstream of AlmaLinux 10. Fixes and features land there first.
+
+### Who it suits
+
+- Administrators who need a free, RHEL-compatible replacement for CentOS Linux
+- Teams that want to run or test software built for RHEL without license costs
+- Anyone who wants a current enterprise Linux on older x86 servers that RHEL 10 no longer supports
+
+### Good to know
+
+- Packages that RHEL does not ship are not added to the base repositories; look to EPEL for extra software.
+- Paid support comes not from the foundation but from companies such as TuxCare and Cybertrust Japan.
+- The ELevate project upgrades a system in place to the next major version, one step at a time.
+- Third-party packages for RHEL 10 all target x86-64-v3, so they may not run on the x86-64-v2 build, which also has no official NVIDIA driver packages.
+
+### A short history
+
+The first release, AlmaLinux 8.3, came out in March 2021, the same month the foundation was set up. In July 2023 the project changed its goal from rebuilding RHEL exactly to staying ABI-compatible with it. Alma means “soul” in Spanish and other Latin languages.

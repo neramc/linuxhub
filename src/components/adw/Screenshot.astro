@@ -1,0 +1,65 @@
+---
+/**
+ * A screenshot after GNOME Software's app screenshots: the image on the card
+ * radius and shadow, with what it shows and its credit under it (figcaption,
+ * the default slot). AVIF with a WebP <img> fallback (not PNG: no browser
+ * that reads <picture> needs it) at a few widths via astro:assets, with
+ * width and height set (no layout shift). Lazy: put it below the fold, where
+ * it can never become the page's LCP element (ADR-0018).
+ *
+ *   <Screenshot src={image} alt="…">Fedora Workstation 45 · <span>credit</span></Screenshot>
+ */
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  src: ImageMetadata;
+  /** What the image shows, for people who cannot see it. */
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+const widths = [480, 800, 1280].filter((w) => w <= src.width);
+---
+
+<figure class="adw-screenshot">
+  <Picture
+    src={src}
+    alt={alt}
+    formats={["avif"]}
+    fallbackFormat="webp"
+    widths={widths.length ? widths : [src.width]}
+    sizes="(width >= 1000px) 800px, 100vw"
+    loading="lazy"
+    decoding="async"
+    class="adw-screenshot-image"
+  />
+  <figcaption class="adw-screenshot-caption caption"><slot /></figcaption>
+</figure>
+
+<style>
+  .adw-screenshot {
+    display: grid;
+    gap: var(--space-2);
+    max-inline-size: 800px;
+    margin: 0;
+  }
+
+  .adw-screenshot :global(picture) {
+    display: block;
+  }
+
+  .adw-screenshot :global(.adw-screenshot-image) {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    background-color: var(--card-bg-color);
+  }
+
+  .adw-screenshot-caption {
+    display: grid;
+    gap: var(--space-1);
+  }
+</style>

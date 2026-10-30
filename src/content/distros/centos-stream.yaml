@@ -39,6 +39,18 @@ logo:
   source: https://www.centos.org/assets/img/centos-symbol.svg
   license: CentOS Marks are trademarks of Red Hat, Inc.; official symbol as linked from www.centos.org, used unmodified (losslessly optimized with SVGO only) to identify the project
   trademark: https://www.centos.org/legal/trademarks/
+screenshot:
+  file: centos-stream.webp
+  source: https://commons.wikimedia.org/wiki/File:CentOS_Stream_10_screenshot%2C_with_GNOME_47.png
+  author: "Paowee (OS: The CentOS Project)"
+  license: GPL
+  licenseUrl: https://www.gnu.org/licenses/gpl.html
+  alt:
+    ko: CentOS Stream 10의 GNOME 47 활동 개요 화면. 위에 검색 창이, 가운데에 보라색 해파리 그림 바탕화면 미리보기가, 아래에 Firefox·파일·소프트웨어·터미널·텍스트 편집기 아이콘이 있는 독이 있습니다.
+    en: "The GNOME 47 Activities overview of CentOS Stream 10: a search field at the top, a preview of the purple jellyfish wallpaper in the middle, and a dock with Firefox, Files, Software, Terminal and Text Editor below."
+  caption:
+    ko: CentOS Stream 10의 GNOME 47 데스크톱
+    en: CentOS Stream 10 with the GNOME 47 desktop
 download:
   strategy: redirector
 sources:

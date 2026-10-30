@@ -1,0 +1,40 @@
+---
+title: Qubes OS 소개
+description: Xen 가상화로 작업마다 격리된 가상 머신(qube)을 나눠 쓰는 보안 중심 데스크톱 운영체제 Qubes OS의 특징과 어울리는 사용자, 알아 둘 점.
+sources:
+  - https://doc.qubes-os.org/en/latest/introduction/intro.html
+  - https://doc.qubes-os.org/en/latest/introduction/getting-started.html
+  - https://doc.qubes-os.org/en/latest/introduction/faq.html
+  - https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/supported-releases.html
+  - https://doc.qubes-os.org/en/latest/user/advanced-topics/kde.html
+  - https://www.qubes-os.org/team/
+lastReviewed: 2026-10-29
+---
+
+Qubes OS는 한 사람이 쓰는 데스크톱을 위한 보안 중심 운영체제입니다. 하드웨어 위에서 바로 도는 Xen 하이퍼바이저로 컴퓨터를 qube라는 격리된 가상 머신 여러 개로 나눠 씁니다. 그래서 프로젝트 스스로 Linux 배포판이라기보다 "Xen 배포판"에 가깝다고 설명하며, 시스템 전체를 관리하는 dom0는 Fedora를 바탕으로 합니다. 각 릴리스는 다음 릴리스가 나온 뒤 6개월까지 지원되고, 지금 최신 버전은 Qubes OS <Latest slug="qubes-os" />입니다.
+
+### 특징
+
+- **일을 qube로 나눠 피해를 가둡니다.** 모든 소프트웨어에는 버그가 있고 언젠가 뚫린다는 전제에서 출발합니다. 설치하면 `work`, `personal`, `untrusted`, `vault` 같은 qube가 미리 준비되어 있고, 하나가 뚫려도 피해가 그 qube에 머뭅니다.
+- **색으로 구분하는 창.** 모든 창이 한 데스크톱에 뜨지만, 테두리 색이 어느 qube의 창인지 알려 줍니다. 앱이 위조할 수 없는 테두리라서 은행 창과 아무 사이트나 여는 창을 헷갈리지 않게 해 줍니다.
+- **템플릿 시스템.** 앱 qube는 템플릿의 루트 파일 시스템을 함께 쓰지만 템플릿을 고칠 수는 없습니다. 프로그램은 템플릿에 한 번 설치하면 되고, 템플릿을 업데이트하면 거기서 나온 qube가 모두 업데이트됩니다. Fedora와 Debian 템플릿을 공식 지원하며 Windows qube도 만들 수 있습니다.
+- **네트워크와 USB도 따로.** 네트워크 카드와 USB 컨트롤러는 `sys-net`, `sys-usb` 같은 서비스 qube가 맡고, 관리용 dom0에는 네트워크가 아예 없습니다.
+- **일회용 qube와 Whonix.** 끄면 사라지는 일회용(disposable) qube를 바로 만들 수 있고, Whonix를 통합해 시스템 전체에서 Tor를 쓸 수 있습니다. Split GPG로 개인 키를 더 안전하게 지킬 수도 있습니다.
+
+### 이런 분께 맞습니다
+
+- 공격 대상이 되기 쉬운 기자, 활동가, 내부 고발자, 연구자
+- 업무와 개인 생활, 금융 같은 일을 한 컴퓨터에서 확실히 분리하고 싶은 사람
+- Linux 경험이 있고 보안을 위해 조금 더 복잡한 사용법을 받아들일 수 있는 사람
+
+### 알아 둘 점
+
+- 격리가 제대로 되려면 CPU와 펌웨어에서 Intel VT-x·VT-d(AMD는 AMD-V·AMD-Vi) 기능이 켜져 있어야 합니다. 여러 가상 머신이 함께 돌기 때문에 메모리가 넉넉하고 빠른 SSD가 있어야 쾌적합니다.
+- 하드웨어에 직접 설치해야 합니다. 가상 머신 안에 설치하는 것은 지원하지 않고, 다른 운영체제와의 멀티 부팅도 보안상 권하지 않습니다.
+- Secure Boot는 기본으로 지원하지 않습니다.
+- 앱 qube에 설치한 프로그램은 다시 시작하면 사라집니다. 소프트웨어는 템플릿에 설치하고, dom0에서는 일반 앱을 실행하지 않습니다.
+- GPU 가상화가 없어 그래픽은 CPU로 그립니다. 게임이나 GPU 가속이 필요한 영상 편집은 설정하기에 따라 가능하지만 권하지 않습니다.
+
+### 간단한 역사
+
+Qubes OS는 Joanna Rutkowska가 세운 프로젝트로, 2012년 9월 3일 Release 1이 나왔습니다. 3.2부터 기본 데스크톱이 KDE에서 Xfce로 바뀌었고, dom0의 바탕도 Release 1의 Fedora 13에서 4.3의 Fedora 41까지 올라왔습니다.

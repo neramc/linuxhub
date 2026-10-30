@@ -71,5 +71,12 @@ jobs:
         with:
           name: dist
           path: .
+      # Korean visitors' devices all have a Korean system font (Malgun Gothic,
+      # Apple SD Gothic Neo, Noto Sans CJK); the runner has no CJK font, so Chrome
+      # would hunt for a fallback for every run of Hangul and the Korean pages'
+      # layout would cost several times what visitors see. Install the one the
+      # font stack names.
+      - name: Korean system font (as on visitors' devices)
+        run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends fonts-noto-cjk
       - name: Lighthouse budgets (performance ≥ 95, a11y/best practices/SEO = 100)
         run: npx --yes @lhci/cli@0.15.x autorun

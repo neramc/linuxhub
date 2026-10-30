@@ -1,0 +1,48 @@
+---
+title: About Nobara
+description: What sets Nobara, the Fedora-based distribution tuned for gaming, streaming and content creation, apart, its editions, who it suits and what to know first.
+sources:
+  - https://nobaraproject.org/
+  - https://nobaraproject.org/download.html
+  - https://wiki.nobaraproject.org/
+  - https://wiki.nobaraproject.org/FAQ/FAQ
+  - https://wiki.nobaraproject.org/en/new-user-guide-general-guidelines
+  - https://wiki.nobaraproject.org/general-usage/troubleshooting/update-system
+  - https://wiki.nobaraproject.org/general-usage/troubleshooting/upgrade-nobara
+  - https://wiki.nobaraproject.org/modifications/packages
+lastReviewed: 2026-10-29
+---
+
+Nobara is a Fedora-based desktop distribution tuned for gaming, streaming and content creation. It is not a Fedora Spin: it is a hobby project run independently of Fedora and Red Hat. Since version 41 it has been semi-rolling, so ordinary updates carry the system on to the next release; it is currently based on Nobara <Latest slug="nobara" />.
+
+### Highlights
+
+- **A gaming setup from the start.** WINE dependencies, Steam and OBS Studio are included, and third-party repositories such as RPM Fusion are already enabled. The first-run steps take care of the codec and driver setup you would do by hand on Fedora.
+- **Its own kernel and packages.** A patched kernel, Mesa and other modified packages are built in Nobara's COPR repositories and updated quickly, separately from Fedora. Fedora's repositories are used as snapshots synced once or twice a month, which makes it easier to pull back a problem package. AppArmor replaces SELinux.
+- **A dedicated updater.** Updates go through DNF App Center or `nobara-sync`. Besides upgrading packages, it checks for repository changes, brings installed versions back in line with the repositories and rolls back updates that were withdrawn upstream, which is why plain `dnf update` is not enough.
+- **Graphical tools first.** NVIDIA drivers are a single checkbox in the installer and can be changed later in Nobara Driver Manager, which also offers optional pieces such as ROCm and CUDA.
+
+### Editions and variants
+
+- **Official** is KDE Plasma with Nobara's own look and the project's reference edition.
+- **GNOME** is a clean GNOME with Nobara's tweaks underneath, while **KDE** is a more traditional Plasma layout for people who want to shape it themselves.
+- **Steam-HTPC** boots into a console-like setup for TVs and controllers, and **Steam-Handheld** is sized for Steam Deck-style devices.
+- Every ISO handles both AMD/Intel and NVIDIA graphics, so there is no separate NVIDIA image to pick.
+
+### Who it suits
+
+- Players and streamers who want a Fedora-based system that works without setup
+- Creators who edit and record with OBS Studio or DaVinci Resolve
+- People who would rather manage their system with graphical tools than long terminal commands
+
+### Good to know
+
+- Because Nobara uses its own patched kernel, Secure Boot is not supported. Turn it off in the firmware and boot in UEFI mode before installing.
+- It is a hobby distribution with no warranty or professional support, so it is not meant for critical work.
+- Converting an existing Fedora install by adding Nobara's repositories is not supported; a clean install is required.
+- A new Fedora release usually reaches Nobara about a month later. Old repositories are removed within six months, so a system left without updates for long may need a reinstall.
+- NVIDIA cards from the GTX 10 series (Pascal) and older are not supported by the current driver, and there is no X11 session.
+
+### A short history
+
+Nobara began because its developer wanted a system that he and his father could use straight after a clean install, without troubleshooting or adding repositories. Since version 41 it has been semi-rolling, so moving to a new release no longer needs a separate upgrade procedure.

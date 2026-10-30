@@ -1,0 +1,53 @@
+---
+title: Solus 소개
+description: 처음부터 데스크톱용으로 만든 독립 배포판 Solus의 특징과 에디션, 어울리는 사용자와 알아 둘 점.
+sources:
+  - https://getsol.us/download/
+  - https://getsol.us/about/organization/
+  - https://getsol.us/about/technology/
+  - https://getsol.us/2015/12/27/solus-1-0-released/
+  - https://getsol.us/2023/04/18/a-new-voyage/
+  - https://getsol.us/2025/10/11/a-new-epoch-begins/
+  - https://getsol.us/2026/05/clearing-up-the-fog/
+  - https://help.getsol.us/docs/user/editions/
+  - https://help.getsol.us/docs/user/package-management/basics/
+  - https://help.getsol.us/docs/user/package-management/history-and-rollback/
+  - https://help.getsol.us/docs/user/package-management/repo-management/
+  - https://help.getsol.us/docs/user/software/third-party/
+  - https://help.getsol.us/docs/user/quick-start/installation/secure-boot/
+lastReviewed: 2026-10-29
+---
+
+Solus는 다른 배포판을 바탕으로 하지 않고 처음부터 데스크톱용으로 만든 독립 배포판입니다. 자원봉사자로 이루어진 작은 독립 팀이 개발합니다. 프로젝트가 "안정 롤링"이라 부르는 방식으로, 검증을 거친 업데이트를 꾸준히 내보냅니다. 한 번 설치하면 다시 설치하지 않고 계속 업데이트하며 쓰는 배포판입니다.
+
+### 특징
+
+- **검증을 거치는 롤링.** 새 패키지는 먼저 Unstable 저장소에 들어가고, 시험을 거친 뒤 기본 저장소인 안정 저장소(Polaris)로 한꺼번에 옮겨집니다. 새 소프트웨어를 몇 달씩 기다리지 않으면서도 고정 릴리스에 가까운 안정성을 노립니다.
+- **설치하면 바로 쓰는 데스크톱.** 설치한 뒤 이것저것 손보지 않아도 곧바로 일을 시작할 수 있게 하는 것을 목표로 삼습니다. 각 에디션은 데스크톱마다 기본 설정과 앱을 미리 갖춰 둡니다.
+- **eopkg와 되돌리기.** 패키지 관리자는 Pardus의 PiSi에서 갈라져 나온 `eopkg`입니다. `eopkg history`로 지금까지의 설치·업데이트 기록을 보고, `eopkg history -t`로 원하는 시점의 상태로 되돌릴 수 있습니다.
+- **Flatpak 우선.** 저장소에 없는 앱은 Flatpak으로 설치하는 것을 권장하며, Snap과 AppImage도 쓸 수 있습니다.
+
+### 에디션과 변형
+
+- **Budgie**는 프로젝트 초기부터 Solus와 함께 개발돼 온 데스크톱으로, 알림과 미디어 조절을 모은 Raven 패널과 전용 설정 앱이 있습니다.
+- **GNOME**은 몇 가지 확장을 더해 바로 쓸 수 있게 내놓습니다.
+- **Plasma**는 기본값을 다듬어 두되, 손보기를 좋아하는 사용자를 겨냥합니다.
+- **Xfce**는 사양이 낮은 컴퓨터에서도 가볍게 돌아가는 판입니다.
+
+### 이런 분께 맞습니다
+
+- 설치 후 바로 쓸 수 있는 데스크톱을 원하면서, 소프트웨어는 최신으로 유지하고 싶은 사용자
+- 재설치나 큰 버전 업그레이드 없이 한 시스템을 오래 쓰고 싶은 사람
+- 서버보다 개인용 PC에 맞춘 배포판을 찾는 사람
+
+### 알아 둘 점
+
+- Secure Boot를 켠 채 설치하려면 첫 부팅 때 Solus 인증서를 한 번 직접 등록해야 합니다. 등록이 번거롭다면 펌웨어에서 Secure Boot를 꺼도 됩니다.
+- 작은 팀이 수천 개의 패키지를 관리하는 저장소라, 찾는 앱이 없을 때도 있습니다. 라이선스 문제로 기본 저장소에 넣지 못한 Google Chrome 같은 앱을 위한 별도 방식이 있지만, 곧 없어질 예정이라 Flatpak을 쓰는 편이 좋습니다.
+- Unstable 저장소는 패키지를 만들거나 시험하는 사람을 위한 것입니다. 일반 사용자는 기본 안정 저장소만 씁니다.
+- 프로젝트는 앞으로 AerynOS의 도구로 옮겨 갈 계획을 밝혔습니다. 새 안정 저장소로 옮기는 것 같은 큰 전환도 평소 업데이트를 통해 자동으로 이루어지도록 계획했습니다.
+- 64비트(x86_64) PC 전용입니다.
+
+### 간단한 역사
+
+Ikey Doherty가 Evolve OS라는 이름으로 시작했고, 상표 분쟁으로 이름을 Solus로 바꿨습니다. 첫 정식 버전 Solus 1.0은 2015년 12월 27일에 나왔습니다. 2023년에는 새 인프라와 새 운영 구조로 개발을 다시 시작했습니다.
