@@ -242,7 +242,7 @@
   - DistroWatch가 만든 스크린샷은 쓰지 않는다(규칙 6의 취지).
 - **수집 방법:** `bun scripts/assets/screenshot.ts`가 동기화와 같은 요청 모듈(`scripts/sync/http.ts`: LinuxhubBot UA, robots.txt, 호스트별 간격)로 읽는다.
   - 위키백과·공용의 robots.txt가 막는 `/w/api.php`는 쓰지 않는다. 문서 페이지와 파일 설명 페이지(`/wiki/…`)를 읽고, 원본 파일은 `upload.wikimedia.org`에서 받는다.
-  - 이미지 서버는 봇이 원본이나 표준이 아닌 크기를 요청하면 429로 막고 표준 썸네일 크기(mediawiki.org의 Common thumbnail sizes)를 쓰라고 안내한다. 그래서 1280px 또는 960px 표준 썸네일을 받는다. 이 작업 환경의 공용 IP에도 요청 한도가 걸려 있어서, 이미지는 45초 이상 간격을 두고 받고 429에는 Retry-After만큼(최소 60초) 기다린다.
+  - 이미지 서버는 봇이 원본이나 표준이 아닌 크기를 요청하면 429로 막고 표준 썸네일 크기(mediawiki.org의 Common thumbnail sizes)를 쓰라고 안내한다. 그래서 위키미디어 페이지가 쓰는 썸네일 호스트 `thumb.wikimedia.org`에서 1280px 또는 960px 표준 썸네일을 받는다. `upload.wikimedia.org`의 썸네일 경로는 봇에게 429를 준다. 이미지는 15초 이상 간격을 두고 받고, 429에는 Retry-After만큼(최소 30초) 기다린다.
   - 결과는 `src/assets/screenshots/<slug>.webp`(최대 1280px, WebP 85)다. 크기 조절과 다시 인코딩만 하고 자르거나 고치지 않는다.
 - **기록과 표시:** 카탈로그 YAML의 `screenshot`에 파일, 파일 설명 페이지, 작성자, 라이선스(가능하면 링크), 대체 텍스트와 캡션(한국어·영어)을 적는다. 대체 텍스트와 캡션은 이미지를 직접 보고 쓴다(어떤 버전과 데스크톱인지).
   - 화면에서는 캡션 아래에 "스크린샷: 작성자 · 라이선스 · 위키미디어 공용"을 링크와 함께 보인다. GPL·CC BY-SA가 요구하는 표시다.
