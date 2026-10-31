@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/CentOS?page_size=500&page_number=1"
   ],
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "mirrors": [
     {
       "url": "https://mirrors.teamcloud.am/centos-stream/",
@@ -209,6 +209,14 @@
       "url": "https://mirror.scaleuptech.com/centos-stream/",
       "country": "DE",
       "name": "mirror.scaleuptech.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.stadtwerke-soest.de/centos-stream/",
+      "country": "DE",
+      "name": "mirror.stadtwerke-soest.de",
       "lat": null,
       "lon": null,
       "score": null

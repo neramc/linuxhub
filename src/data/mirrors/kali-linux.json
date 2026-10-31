@@ -9,7 +9,7 @@
     "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso?mirrorlist",
     "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso?mirrorlist"
   ],
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "mirrors": [
     {
       "url": "https://kali.itsec.am/kali-images/",
@@ -111,6 +111,14 @@
       "url": "https://mirror.nju.edu.cn/kali-images/",
       "country": "CN",
       "name": "mirror.nju.edu.cn",
+      "lat": 34.7732,
+      "lon": 113.722,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirror.nyist.edu.cn",
       "lat": 34.7732,
       "lon": 113.722,
       "score": null
@@ -529,6 +537,14 @@
       "name": "mirror.fcix.net",
       "lat": 37.5217,
       "lon": -121.9249,
+      "score": null
+    },
+    {
+      "url": "https://mirror.shomepower.com/kali-images/",
+      "country": "US",
+      "name": "mirror.shomepower.com",
+      "lat": 37.751,
+      "lon": -97.822,
       "score": null
     },
     {

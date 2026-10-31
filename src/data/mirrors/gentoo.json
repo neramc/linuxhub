@@ -3,7 +3,7 @@
   "sources": [
     "https://api.gentoo.org/mirrors/distfiles.xml"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-31",
   "mirrors": [
     {
       "url": "https://gentoo.zero.com.ar/gentoo/",
@@ -929,6 +929,14 @@
       "url": "https://gentoo.osuosl.org/",
       "country": "US",
       "name": "OSU Open Source Lab (Corvallis; New York; Chicago)",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.odu.edu/gentoo-distfiles/",
+      "country": "US",
+      "name": "Old Dominion University",
       "lat": null,
       "lon": null,
       "score": null

@@ -7,7 +7,7 @@
     "https://mirrors.mageia.org/api/mageia.10.i686.list",
     "https://mirrors.mageia.org/api/mageia.10.x86_64.list"
   ],
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/pub/mageia/",
@@ -130,6 +130,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.nju.edu.cn/mageia/",
+      "country": "IN",
+      "name": "mirrors.nju.edu.cn",
+      "lat": 32.0558,
+      "lon": 118.779,
+      "score": null
+    },
+    {
       "url": "https://mageia.mirror.garr.it/mageia/",
       "country": "IT",
       "name": "mageia.mirror.garr.it",
@@ -234,14 +242,6 @@
       "score": null
     },
     {
-      "url": "https://mirrors.kernel.org/mageia/",
-      "country": "US",
-      "name": "mirrors.kernel.org",
-      "lat": 38,
-      "lon": -97,
-      "score": null
-    },
-    {
       "url": "https://us.mirrors.cicku.me/mageia/",
       "country": "US",
       "name": "us.mirrors.cicku.me",
@@ -250,9 +250,9 @@
       "score": null
     },
     {
-      "url": "https://mirrors.nju.edu.cn/mageia/",
+      "url": "https://mirrors.kernel.org/mageia/",
       "country": null,
-      "name": "mirrors.nju.edu.cn",
+      "name": "mirrors.kernel.org",
       "lat": null,
       "lon": null,
       "score": null

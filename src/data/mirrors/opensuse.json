@@ -5,7 +5,7 @@
     "https://get.opensuse.org/api/v0/distributions.json",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/pub/opensuse/opensuse/",
@@ -104,6 +104,14 @@
       "score": null
     },
     {
+      "url": "https://ftp.halifax.rwth-aachen.de/opensuse/",
+      "country": "DE",
+      "name": "ftp.halifax.rwth-aachen.de",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ftp.rz.uni-wuerzburg.de/linux/opensuse/",
       "country": "DE",
       "name": "ftp.rz.uni-wuerzburg.de",
@@ -184,6 +192,14 @@
       "score": null
     },
     {
+      "url": "https://download.opensuse.id/",
+      "country": "ID",
+      "name": "download.opensuse.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://opensuse.mirror.garr.it/mirrors/opensuse/",
       "country": "IT",
       "name": "opensuse.mirror.garr.it",
@@ -227,14 +243,6 @@
       "url": "https://opensuse.mirror.liteserver.nl/",
       "country": "NL",
       "name": "opensuse.mirror.liteserver.nl",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ftp.icm.edu.pl/pub/Linux/opensuse/",
-      "country": "PL",
-      "name": "ftp.icm.edu.pl",
       "lat": null,
       "lon": null,
       "score": null

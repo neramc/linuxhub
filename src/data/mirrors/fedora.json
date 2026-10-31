@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/44/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-10-29",
+  "updated": "2026-10-31",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
@@ -297,6 +297,14 @@
       "url": "https://mirror.plusline.net/fedora/linux/",
       "country": "DE",
       "name": "mirror.plusline.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.stadtwerke-soest.de/fedora/linux/",
+      "country": "DE",
+      "name": "mirror.stadtwerke-soest.de",
       "lat": null,
       "lon": null,
       "score": null
