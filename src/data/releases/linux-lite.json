@@ -5,13 +5,13 @@
     "https://repo.linuxliteos.com/linuxlite/isos/",
     "https://www.linuxliteos.com/forums/forumdisplay.php?fid=11"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-31",
   "releases": [
     {
-      "version": "8.0",
+      "version": "8.2",
       "channel": "lts",
       "codename": null,
-      "releaseDate": "2026-06-01",
+      "releaseDate": "2026-11-01",
       "eol": "2031-06-30",
       "notesUrl": "https://www.linuxliteos.com/forums/showthread.php?tid=9866",
       "editions": [
@@ -24,17 +24,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "linux-lite-8.0-64bit.iso",
-              "path": "8.0/linux-lite-8.0-64bit.iso",
-              "url": "https://repo.linuxliteos.com/linuxlite/isos/8.0/linux-lite-8.0-64bit.iso",
-              "size": 2533359616,
+              "file": "linux-lite-8.2-64bit.iso",
+              "path": "8.2/linux-lite-8.2-64bit.iso",
+              "url": "https://repo.linuxliteos.com/linuxlite/isos/8.2/linux-lite-8.2-64bit.iso",
+              "size": 2564407296,
               "checksum": {
                 "type": "sha256",
-                "value": "7cfc63baf597156a0a5ecac87e860aff3967279694b19fa67fb410a34802857e",
-                "url": "https://repo.linuxliteos.com/linuxlite/isos/8.0/linux-lite-8.0-64bit.iso.sha256"
+                "value": "c0967038ec23522648285d306021829bf4602327a137ecb1bdc3d4be4026e9b0",
+                "url": "https://repo.linuxliteos.com/linuxlite/isos/8.2/linux-lite-8.2-64bit.iso.sha256"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.linuxliteos.com/linuxlite/isos/8.0/linux-lite-8.0-64bit.iso.torrent"
+              "torrentUrl": "https://repo.linuxliteos.com/linuxlite/isos/8.2/linux-lite-8.2-64bit.iso.torrent"
             }
           ]
         }
