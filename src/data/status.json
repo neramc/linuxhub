@@ -392,7 +392,7 @@
   "slackware": {
     "releases": {
       "failingSince": "2026-10-31",
-      "lastError": "redirect to a non-HTTPS URL (http://slackware.cs.utah.edu/pub/slackware/slackware64-15.0/ANNOUNCE.15.0)"
+      "lastError": "robots.txt disallows the redirect target https://plug-mirror.rcac.purdue.edu/slackware/slackware64-15.0/ANNOUNCE.15.0"
     },
     "mirrors": {
       "failingSince": null,
@@ -491,8 +491,8 @@
   },
   "zorin-os": {
     "releases": {
-      "failingSince": "2026-10-31",
-      "lastError": "The operation timed out."
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
