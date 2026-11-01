@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-10-30",
+  "updated": "2026-11-01",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -969,6 +969,14 @@
       "url": "https://mirror.servaxnet.com/rocky-linux/",
       "country": "US",
       "name": "mirror.servaxnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.shomepower.com/rocky-linux/",
+      "country": "US",
+      "name": "mirror.shomepower.com",
       "lat": null,
       "lon": null,
       "score": null

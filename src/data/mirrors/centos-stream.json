@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/CentOS?page_size=500&page_number=1"
   ],
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "mirrors": [
     {
       "url": "https://mirrors.teamcloud.am/centos-stream/",
@@ -585,6 +585,14 @@
       "url": "https://mirror.shastacoe.net/centos-stream/",
       "country": "US",
       "name": "mirror.shastacoe.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.shomepower.com/centos-stream/",
+      "country": "US",
+      "name": "mirror.shomepower.com",
       "lat": null,
       "lon": null,
       "score": null

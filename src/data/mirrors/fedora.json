@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/44/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
@@ -790,14 +790,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.cs.siue.edu/fedora/",
-      "country": "US",
-      "name": "mirror.cs.siue.edu",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.fcix.net/fedora/linux/",
       "country": "US",
       "name": "mirror.fcix.net",
@@ -817,6 +809,14 @@
       "url": "https://mirror.servaxnet.com/fedora/linux/",
       "country": "US",
       "name": "mirror.servaxnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.shomepower.com/fedora/",
+      "country": "US",
+      "name": "mirror.shomepower.com",
       "lat": null,
       "lon": null,
       "score": null

@@ -7,7 +7,7 @@
     "https://mirrors.mageia.org/api/mageia.10.i686.list",
     "https://mirrors.mageia.org/api/mageia.10.x86_64.list"
   ],
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/pub/mageia/",
@@ -242,19 +242,19 @@
       "score": null
     },
     {
+      "url": "https://mirrors.kernel.org/mageia/",
+      "country": "US",
+      "name": "mirrors.kernel.org",
+      "lat": 38,
+      "lon": -97,
+      "score": null
+    },
+    {
       "url": "https://us.mirrors.cicku.me/mageia/",
       "country": "US",
       "name": "us.mirrors.cicku.me",
       "lat": 45.4784,
       "lon": -122.578,
-      "score": null
-    },
-    {
-      "url": "https://mirrors.kernel.org/mageia/",
-      "country": null,
-      "name": "mirrors.kernel.org",
-      "lat": null,
-      "lon": null,
       "score": null
     }
   ]
