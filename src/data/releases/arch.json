@@ -4,15 +4,15 @@
     "https://archlinux.org/releng/releases/json/",
     "https://geo.mirror.pkgbuild.com/images/latest/"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-11-01",
   "releases": [
     {
-      "version": "2026.10.01",
+      "version": "2026.11.01",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-10-01",
+      "releaseDate": "2026-11-01",
       "eol": null,
-      "notesUrl": "https://archlinux.org/releng/releases/2026.10.01/",
+      "notesUrl": "https://archlinux.org/releng/releases/2026.11.01/",
       "editions": [
         {
           "id": "live",
@@ -23,17 +23,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "archlinux-2026.10.01-x86_64.iso",
-              "path": "iso/2026.10.01/archlinux-2026.10.01-x86_64.iso",
-              "url": "https://geo.mirror.pkgbuild.com/iso/2026.10.01/archlinux-2026.10.01-x86_64.iso",
-              "size": 1640497152,
+              "file": "archlinux-2026.11.01-x86_64.iso",
+              "path": "iso/2026.11.01/archlinux-2026.11.01-x86_64.iso",
+              "url": "https://geo.mirror.pkgbuild.com/iso/2026.11.01/archlinux-2026.11.01-x86_64.iso",
+              "size": 1317568512,
               "checksum": {
                 "type": "sha256",
-                "value": "684ded26c63240ff4a41e8c25ee84ea6da233f557364821f13d12c2b0a9059a5",
-                "url": "https://archlinux.org/iso/2026.10.01/sha256sums.txt"
+                "value": "01bcdcf01af2f7d58f2794899c834770d25c9bfc945bd092b32bb66672a4a216",
+                "url": "https://archlinux.org/iso/2026.11.01/sha256sums.txt"
               },
-              "signatureUrl": "https://archlinux.org/iso/2026.10.01/archlinux-2026.10.01-x86_64.iso.sig",
-              "torrentUrl": "https://archlinux.org/releng/releases/2026.10.01/torrent/"
+              "signatureUrl": "https://archlinux.org/iso/2026.11.01/archlinux-2026.11.01-x86_64.iso.sig",
+              "torrentUrl": "https://archlinux.org/releng/releases/2026.11.01/torrent/"
             }
           ]
         },
