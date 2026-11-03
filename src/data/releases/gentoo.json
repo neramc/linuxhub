@@ -293,16 +293,16 @@
             {
               "arch": "riscv64",
               "format": "tar.xz",
-              "file": "stage3-rv64_lp64d-systemd-20261026T164559Z.tar.xz",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-systemd-20261026T164559Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-systemd-20261026T164559Z.tar.xz",
-              "size": 341412028,
+              "file": "stage3-rv64_lp64d-systemd-20261102T160056Z.tar.xz",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-systemd-20261102T160056Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-systemd-20261102T160056Z.tar.xz",
+              "size": 341656080,
               "checksum": {
                 "type": "sha512",
-                "value": "f6dc2491212386aba4ff4e76cde9f120ec24549c503a565ab4319393f1a09d8e0ec9a198713e9e9ddce76d0f57a84316645bee1791da0ed2a422258ab1acba4e",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-systemd-20261026T164559Z.tar.xz.DIGESTS"
+                "value": "f1091025a717fec4f89a5c50053b37cbac71653f185e11ace628e6b5d9a0c25ee44557d05f403f2f34793277f1b8ac81ac71ea0e85375a4daf9ea2eadd3b79de",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-systemd-20261102T160056Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-systemd-20261026T164559Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-systemd-20261102T160056Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -1848,16 +1848,16 @@
             {
               "arch": "riscv64",
               "format": "qcow2",
-              "file": "di-rv64_lp64d-console-20261026T164559Z.qcow2",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-console-20261026T164559Z.qcow2",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-console-20261026T164559Z.qcow2",
-              "size": 1309278208,
+              "file": "di-rv64_lp64d-console-20261102T160056Z.qcow2",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-console-20261102T160056Z.qcow2",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-console-20261102T160056Z.qcow2",
+              "size": 1374420992,
               "checksum": {
                 "type": "sha512",
-                "value": "b33ce32c4c01d87f7fa67dbb2b7fb332bf2b37423d10ba71a42de67406840a0651ed352624f565e1b417978cafeaf4d9c9b6a54227bf4234f047dbcad13033be",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-console-20261026T164559Z.qcow2.DIGESTS"
+                "value": "c49245a88b2f8ce28d75f06b1addc11649232164c83b5e56c7387faaba30b3217f39eb9930bc96e6a1be5a9012c09bd3e8ce8c5ddb17b7f4cf90fdbeaf411e78",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-console-20261102T160056Z.qcow2.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-console-20261026T164559Z.qcow2.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-console-20261102T160056Z.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1901,16 +1901,16 @@
             {
               "arch": "riscv64",
               "format": "qcow2",
-              "file": "di-rv64_lp64d-cloudinit-20261026T164559Z.qcow2",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-cloudinit-20261026T164559Z.qcow2",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-cloudinit-20261026T164559Z.qcow2",
-              "size": 1334968320,
+              "file": "di-rv64_lp64d-cloudinit-20261102T160056Z.qcow2",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-cloudinit-20261102T160056Z.qcow2",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-cloudinit-20261102T160056Z.qcow2",
+              "size": 1338441728,
               "checksum": {
                 "type": "sha512",
-                "value": "e575130b3e6c23376747e3d0d859226637920d5185c4b2d4214e135f0761698663b9f1cb1788ba08b718d0166e314b4146c32523aba833443ae0e1724ae589fb",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-cloudinit-20261026T164559Z.qcow2.DIGESTS"
+                "value": "979a8e213f550f0ad2ba06a7efd27dd8fa053a095b7b3170b0d7849a8df266283ce9158bfbe20b594c264f0209d61ae5b0c6bd9ffbaf845d2220ddc7597e0613",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-cloudinit-20261102T160056Z.qcow2.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/di-rv64_lp64d-cloudinit-20261026T164559Z.qcow2.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/di-rv64_lp64d-cloudinit-20261102T160056Z.qcow2.asc",
               "torrentUrl": null
             }
           ]

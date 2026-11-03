@@ -6,15 +6,15 @@
     "https://torrent.fedoraproject.org/torrents.json",
     "https://endoflife.date/fedora"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-11-03",
   "releases": [
     {
-      "version": "45-beta",
-      "channel": "beta",
+      "version": "45",
+      "channel": "stable",
       "codename": null,
-      "releaseDate": "2026-09-15",
-      "eol": null,
-      "notesUrl": null,
+      "releaseDate": "2026-11-03",
+      "eol": "2027-12-08",
+      "notesUrl": "https://docs.fedoraproject.org/en-US/fedora/f45/release-notes/",
       "editions": [
         {
           "id": "workstation",
@@ -25,29 +25,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Workstation-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Workstation/x86_64/iso/Fedora-Workstation-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2981865472,
+              "file": "Fedora-Workstation-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Workstation/x86_64/iso/Fedora-Workstation-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Workstation/x86_64/iso/Fedora-Workstation-Live-45-1.4.x86_64.iso",
+              "size": 2925092864,
               "checksum": {
                 "type": "sha256",
-                "value": "71367760b4cfda9cb5a1dbe9875a2c5fd89ef8333e6fac7508c366e650207905",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Workstation/x86_64/iso/Fedora-Workstation-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "68338c6bfe4f0d64151f2e47efe9f44a8855ad05b460e56b844fb3fa2c9a3beb",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Workstation/x86_64/iso/Fedora-Workstation-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Workstation-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Workstation/aarch64/images/Fedora-Workstation-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 3197744116,
+              "file": "Fedora-Workstation-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Workstation/aarch64/images/Fedora-Workstation-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Workstation/aarch64/images/Fedora-Workstation-Disk-45-1.4.aarch64.raw.xz",
+              "size": 3222363420,
               "checksum": {
                 "type": "sha256",
-                "value": "6765fb63866b21b1bc77c47fa7ccff0f717dc60060a78aea4d944c049decb1c6",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Workstation/aarch64/images/Fedora-Workstation-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "07ab3377cee9d4bbc15e7203214594f8cfdb58a9a57e195aa0ff183cf81ea0a8",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Workstation/aarch64/images/Fedora-Workstation-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -55,17 +55,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Workstation-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Workstation/aarch64/iso/Fedora-Workstation-Live-45_Beta-1.3.aarch64.iso",
-              "size": 2900705280,
+              "file": "Fedora-Workstation-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Workstation/aarch64/iso/Fedora-Workstation-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Workstation/aarch64/iso/Fedora-Workstation-Live-45-1.4.aarch64.iso",
+              "size": 2987100160,
               "checksum": {
                 "type": "sha256",
-                "value": "fffb36568eb9a519aea2290a959570ad6df4acb87ada5e48cb86834ca047e5f8",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Workstation/aarch64/iso/Fedora-Workstation-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "ad73a977709d417f5b7dda4147fc071396b9d8d2bdcca2df615aa3aab7673710",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Workstation/aarch64/iso/Fedora-Workstation-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -78,29 +78,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-KDE-Desktop-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/KDE/x86_64/iso/Fedora-KDE-Desktop-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3584274432,
+              "file": "Fedora-KDE-Desktop-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/KDE/x86_64/iso/Fedora-KDE-Desktop-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/KDE/x86_64/iso/Fedora-KDE-Desktop-Live-45-1.4.x86_64.iso",
+              "size": 3543603200,
               "checksum": {
                 "type": "sha256",
-                "value": "cd2321a8537667e0017efc3371bac191d7747f834da8fc8c30c88f00a480811e",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/KDE/x86_64/iso/Fedora-KDE-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "79703d9f3b21a4f7873f2874ec129d6511cb00a08532d8f9b36daacaa96e97a5",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/KDE/x86_64/iso/Fedora-KDE-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Desktop-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Desktop-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-KDE-Desktop-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/KDE/aarch64/images/Fedora-KDE-Desktop-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 3807332792,
+              "file": "Fedora-KDE-Desktop-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/KDE/aarch64/images/Fedora-KDE-Desktop-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/KDE/aarch64/images/Fedora-KDE-Desktop-Disk-45-1.4.aarch64.raw.xz",
+              "size": 4045180816,
               "checksum": {
                 "type": "sha256",
-                "value": "3216908cf40d3b1eb25f9b689092056fd13140980f33f34b4be9c0abb75955ab",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/KDE/aarch64/images/Fedora-KDE-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "457aab551cc4e1f11263013462b239c54e0a7c84b060cf434d4285ce4ae73f82",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/KDE/aarch64/images/Fedora-KDE-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -108,29 +108,29 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-KDE-Desktop-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/KDE/aarch64/iso/Fedora-KDE-Desktop-Live-45_Beta-1.3.aarch64.iso",
-              "size": 3416629248,
+              "file": "Fedora-KDE-Desktop-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/KDE/aarch64/iso/Fedora-KDE-Desktop-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/KDE/aarch64/iso/Fedora-KDE-Desktop-Live-45-1.4.aarch64.iso",
+              "size": 3539886080,
               "checksum": {
                 "type": "sha256",
-                "value": "3599fdeb3aa934db2730ef4e2d07f9b7259d47d83e4ceb106f7b2e8e1599a85c",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/KDE/aarch64/iso/Fedora-KDE-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "46a73d4c0a82a77551311ab1589255ecac51b5ce311b4fc84577f5ede5a44f5c",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/KDE/aarch64/iso/Fedora-KDE-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Desktop-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Desktop-Live-aarch64-45.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "Fedora-KDE-Desktop-Live-45_Beta-1.3.ppc64le.iso",
+              "file": "Fedora-KDE-Desktop-Live-45-1.4.ppc64le.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/KDE/ppc64le/iso/Fedora-KDE-Desktop-Live-45_Beta-1.3.ppc64le.iso",
-              "size": 3255631872,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/KDE/ppc64le/iso/Fedora-KDE-Desktop-Live-45-1.4.ppc64le.iso",
+              "size": 3317891072,
               "checksum": {
                 "type": "sha256",
-                "value": "21674388ccf65bcd28353217944993fe1cca3ca591ae4547b7fecf0ab2b51486",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/KDE/ppc64le/iso/Fedora-KDE-iso-45_Beta-1.3-ppc64le-CHECKSUM"
+                "value": "72eb46b7a4d2e870519baeb4e1db9950db1fd83becfec2eb76d7d415c69edb0f",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/KDE/ppc64le/iso/Fedora-KDE-45-1.4-ppc64le-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -146,44 +146,44 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Server-dvd-x86_64-45_Beta-1.3.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/x86_64/iso/Fedora-Server-dvd-x86_64-45_Beta-1.3.iso",
-              "size": 4294180864,
+              "file": "Fedora-Server-dvd-x86_64-45-1.4.iso",
+              "path": "releases/45/Server/x86_64/iso/Fedora-Server-dvd-x86_64-45-1.4.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/x86_64/iso/Fedora-Server-dvd-x86_64-45-1.4.iso",
+              "size": 4100390912,
               "checksum": {
                 "type": "sha256",
-                "value": "ca6f37258d3ccc35845cdd4eaa25f36b3f22e460fa06b4b66336fd8ed7c39cca",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/x86_64/iso/Fedora-Server-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "fcc0f623708ddbd7656df152510ba018bad618bfc99879e73809255fb11a48ff",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/x86_64/iso/Fedora-Server-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Server-dvd-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Server-dvd-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Server-dvd-aarch64-45_Beta-1.3.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/iso/Fedora-Server-dvd-aarch64-45_Beta-1.3.iso",
-              "size": 4075683840,
+              "file": "Fedora-Server-dvd-aarch64-45-1.4.iso",
+              "path": "releases/45/Server/aarch64/iso/Fedora-Server-dvd-aarch64-45-1.4.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/iso/Fedora-Server-dvd-aarch64-45-1.4.iso",
+              "size": 4145348608,
               "checksum": {
                 "type": "sha256",
-                "value": "05292211793482d24ea41b7648563c0a154f4b62e2984f02d28056bb40c622f3",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/iso/Fedora-Server-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "e7ed8f24921a3dd3a7ec9fbff9d3316bef0d568d29468e5a7c5e275a1de9a589",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/iso/Fedora-Server-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Server-dvd-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Server-dvd-aarch64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Server-Host-Generic-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/images/Fedora-Server-Host-Generic-45_Beta-1.3.aarch64.raw.xz",
-              "size": 1402572116,
+              "file": "Fedora-Server-Host-Generic-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Server/aarch64/images/Fedora-Server-Host-Generic-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/images/Fedora-Server-Host-Generic-45-1.4.aarch64.raw.xz",
+              "size": 1459472356,
               "checksum": {
                 "type": "sha256",
-                "value": "1f4f7b5829be3c00e6a585fdb74deb79d432816b5c003db9ff78ccff11b6e1cf",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/images/Fedora-Server-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "c5e3339909ed326480990ec2c0934d19340ff7d5ac9256236966a4e8572752a8",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/images/Fedora-Server-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -191,14 +191,14 @@
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "Fedora-Server-dvd-ppc64le-45_Beta-1.3.iso",
+              "file": "Fedora-Server-dvd-ppc64le-45-1.4.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/ppc64le/iso/Fedora-Server-dvd-ppc64le-45_Beta-1.3.iso",
-              "size": 3308978176,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Server/ppc64le/iso/Fedora-Server-dvd-ppc64le-45-1.4.iso",
+              "size": 3321692160,
               "checksum": {
                 "type": "sha256",
-                "value": "8596247f31d3ddd786e37a37350cda2e53f7384fba6dea5cadad0ae4029336e7",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/ppc64le/iso/Fedora-Server-iso-45_Beta-1.3-ppc64le-CHECKSUM"
+                "value": "a9be36baab6d4b56736a0d7df613794d589bc8937a4d71c55b60422ae6fa4f5f",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Server/ppc64le/iso/Fedora-Server-45-1.4-ppc64le-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -206,14 +206,14 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "Fedora-Server-dvd-s390x-45_Beta-1.3.iso",
+              "file": "Fedora-Server-dvd-s390x-45-1.4.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/s390x/iso/Fedora-Server-dvd-s390x-45_Beta-1.3.iso",
-              "size": 2623864832,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Server/s390x/iso/Fedora-Server-dvd-s390x-45-1.4.iso",
+              "size": 2611478528,
               "checksum": {
                 "type": "sha256",
-                "value": "a0a1477b9267533b24c77523cd9b2c55f6ff6399f454c63ec03f894bb97b3c72",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/s390x/iso/Fedora-Server-iso-45_Beta-1.3-s390x-CHECKSUM"
+                "value": "a8f102272cb56980d49569a0bac10b3622b7a9f23947f526431f8bff55869237",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Server/s390x/iso/Fedora-Server-45-1.4-s390x-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -229,14 +229,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Server-netinst-x86_64-45_Beta-1.3.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/x86_64/iso/Fedora-Server-netinst-x86_64-45_Beta-1.3.iso",
-              "size": 1324955648,
+              "file": "Fedora-Server-netinst-x86_64-45-1.4.iso",
+              "path": "releases/45/Server/x86_64/iso/Fedora-Server-netinst-x86_64-45-1.4.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/x86_64/iso/Fedora-Server-netinst-x86_64-45-1.4.iso",
+              "size": 1272281088,
               "checksum": {
                 "type": "sha256",
-                "value": "426f8f5280053889d1b93ed8159a817ca577ffb6f47a81253f58acd8e49280e9",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/x86_64/iso/Fedora-Server-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "a1e916f139a05955b943cf183b020780cca9c399b02b8f5ec4354c9e5c1dff1a",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/x86_64/iso/Fedora-Server-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -244,14 +244,14 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Server-netinst-aarch64-45_Beta-1.3.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/iso/Fedora-Server-netinst-aarch64-45_Beta-1.3.iso",
-              "size": 1406869504,
+              "file": "Fedora-Server-netinst-aarch64-45-1.4.iso",
+              "path": "releases/45/Server/aarch64/iso/Fedora-Server-netinst-aarch64-45-1.4.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/iso/Fedora-Server-netinst-aarch64-45-1.4.iso",
+              "size": 1436913664,
               "checksum": {
                 "type": "sha256",
-                "value": "31dad075a79020515e58140c5778f6bdf04efa7e4a3b41182bb5e31992c27bd8",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/iso/Fedora-Server-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "311cb9fb35aa39b7df5768c0ccfef571a515d471e824af0d8cbe96de645ddfe8",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/iso/Fedora-Server-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -259,14 +259,14 @@
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "Fedora-Server-netinst-ppc64le-45_Beta-1.3.iso",
+              "file": "Fedora-Server-netinst-ppc64le-45-1.4.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/ppc64le/iso/Fedora-Server-netinst-ppc64le-45_Beta-1.3.iso",
-              "size": 1255585792,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Server/ppc64le/iso/Fedora-Server-netinst-ppc64le-45-1.4.iso",
+              "size": 1260072960,
               "checksum": {
                 "type": "sha256",
-                "value": "33c25030a4f8e446ad543f53ca9cb0b8b67bad1e40a09ac5f9dd273062168294",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/ppc64le/iso/Fedora-Server-iso-45_Beta-1.3-ppc64le-CHECKSUM"
+                "value": "532dde51f1b69fae11d69e8e136ac2b8dac5ae281af03f2af36fbec2b572afbe",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Server/ppc64le/iso/Fedora-Server-45-1.4-ppc64le-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -274,14 +274,14 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "Fedora-Server-netinst-s390x-45_Beta-1.3.iso",
+              "file": "Fedora-Server-netinst-s390x-45-1.4.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/s390x/iso/Fedora-Server-netinst-s390x-45_Beta-1.3.iso",
-              "size": 670525440,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Server/s390x/iso/Fedora-Server-netinst-s390x-45-1.4.iso",
+              "size": 659118080,
               "checksum": {
                 "type": "sha256",
-                "value": "e501f5d42f84c4fa6a9f3a5a53298c99446eb7c5ace4cde053e62a951655fcfe",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/s390x/iso/Fedora-Server-iso-45_Beta-1.3-s390x-CHECKSUM"
+                "value": "04111076beab434cef29823926159e33db4235aaf385a448db7ca219497b70a1",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Server/s390x/iso/Fedora-Server-45-1.4-s390x-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -297,14 +297,14 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Fedora-Server-Guest-Generic-45_Beta-1.3.x86_64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/x86_64/images/Fedora-Server-Guest-Generic-45_Beta-1.3.x86_64.qcow2",
-              "size": 984875008,
+              "file": "Fedora-Server-Guest-Generic-45-1.4.x86_64.qcow2",
+              "path": "releases/45/Server/x86_64/images/Fedora-Server-Guest-Generic-45-1.4.x86_64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/x86_64/images/Fedora-Server-Guest-Generic-45-1.4.x86_64.qcow2",
+              "size": 958398464,
               "checksum": {
                 "type": "sha256",
-                "value": "f9591f39cb3f1502e10932661cbb6b2f644eb0fc1ccfdeb9fe99cc91938b7600",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/x86_64/images/Fedora-Server-images-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "fd174a17aa176e0fc7c235cc63ca85ba0bb716ff2a0987f3fa062d24239ae4e1",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/x86_64/images/Fedora-Server-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -312,14 +312,14 @@
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "Fedora-Server-Guest-Generic-45_Beta-1.3.aarch64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/images/Fedora-Server-Guest-Generic-45_Beta-1.3.aarch64.qcow2",
-              "size": 960823296,
+              "file": "Fedora-Server-Guest-Generic-45-1.4.aarch64.qcow2",
+              "path": "releases/45/Server/aarch64/images/Fedora-Server-Guest-Generic-45-1.4.aarch64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/images/Fedora-Server-Guest-Generic-45-1.4.aarch64.qcow2",
+              "size": 977600512,
               "checksum": {
                 "type": "sha256",
-                "value": "19702bf2179aea79b078e9192ad9ad7385fceba9383da4d49f37f96b27cb6424",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Server/aarch64/images/Fedora-Server-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "ec7709414ef778b846a70bb4548ec6cf27cb11d83bd184698e83b437246c4e37",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Server/aarch64/images/Fedora-Server-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -327,14 +327,14 @@
             {
               "arch": "ppc64le",
               "format": "qcow2",
-              "file": "Fedora-Server-Guest-Generic-45_Beta-1.3.ppc64le.qcow2",
+              "file": "Fedora-Server-Guest-Generic-45-1.4.ppc64le.qcow2",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/ppc64le/images/Fedora-Server-Guest-Generic-45_Beta-1.3.ppc64le.qcow2",
-              "size": 883097600,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Server/ppc64le/images/Fedora-Server-Guest-Generic-45-1.4.ppc64le.qcow2",
+              "size": 897974272,
               "checksum": {
                 "type": "sha256",
-                "value": "73eee668c91c09a6d6012c5e365ff6b8524b05f70a13dccbca5379d6ac5353c9",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Server/ppc64le/images/Fedora-Server-images-45_Beta-1.3-ppc64le-CHECKSUM"
+                "value": "cb45b52ff61868138b89a9f31b019bede0763837b265d89f77bc599442342024",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Server/ppc64le/images/Fedora-Server-45-1.4-ppc64le-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -350,14 +350,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Everything-netinst-x86_64-45_Beta-1.3.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-45_Beta-1.3.iso",
-              "size": 1313835008,
+              "file": "Fedora-Everything-netinst-x86_64-45-1.4.iso",
+              "path": "releases/45/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-45-1.4.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-45-1.4.iso",
+              "size": 1261156352,
               "checksum": {
                 "type": "sha256",
-                "value": "5d5a7592e6759c37367ac3ef93212307f484c6ca8f5fb6a4c368efa59ecdaf00",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Everything/x86_64/iso/Fedora-Everything-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "42abc36792f91575b2f541db19110cc661864819031e57cd5f5c9ec764ebbddf",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Everything/x86_64/iso/Fedora-Everything-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -365,14 +365,14 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Everything-netinst-aarch64-45_Beta-1.3.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-45_Beta-1.3.iso",
-              "size": 1396703232,
+              "file": "Fedora-Everything-netinst-aarch64-45-1.4.iso",
+              "path": "releases/45/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-45-1.4.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-45-1.4.iso",
+              "size": 1426759680,
               "checksum": {
                 "type": "sha256",
-                "value": "5489a6a830eb9843a0a0771a836aecaa6f1833b4ac06308fa8e27d637072b210",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Everything/aarch64/iso/Fedora-Everything-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "7a49151002c0b2b2d107c6da61e55ced468b86399dc6cfe015b6f1fc9498c99e",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Everything/aarch64/iso/Fedora-Everything-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -380,14 +380,14 @@
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "Fedora-Everything-netinst-ppc64le-45_Beta-1.3.iso",
+              "file": "Fedora-Everything-netinst-ppc64le-45-1.4.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Everything/ppc64le/iso/Fedora-Everything-netinst-ppc64le-45_Beta-1.3.iso",
-              "size": 1244028928,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Everything/ppc64le/iso/Fedora-Everything-netinst-ppc64le-45-1.4.iso",
+              "size": 1248481280,
               "checksum": {
                 "type": "sha256",
-                "value": "70e837079906332d1f117e4b3c8d73282a5ba37e21ede1ec82ec59877abcd470",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Everything/ppc64le/iso/Fedora-Everything-iso-45_Beta-1.3-ppc64le-CHECKSUM"
+                "value": "c70ce5e37b7d8134da90258eee767ed5f47b8c47c2a5d10db10442ad8026f440",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Everything/ppc64le/iso/Fedora-Everything-45-1.4-ppc64le-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -395,14 +395,14 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "Fedora-Everything-netinst-s390x-45_Beta-1.3.iso",
+              "file": "Fedora-Everything-netinst-s390x-45-1.4.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Everything/s390x/iso/Fedora-Everything-netinst-s390x-45_Beta-1.3.iso",
-              "size": 659478528,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Everything/s390x/iso/Fedora-Everything-netinst-s390x-45-1.4.iso",
+              "size": 648038400,
               "checksum": {
                 "type": "sha256",
-                "value": "5450e3982d90f3292a0f86aa019a1770f0cb2d6da7ec0b7aeecd64fd9c5bdac2",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Everything/s390x/iso/Fedora-Everything-iso-45_Beta-1.3-s390x-CHECKSUM"
+                "value": "052e74c1b68f2c2ab3d1f10cee816691dca33a120090d656b6e796a0983466d2",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Everything/s390x/iso/Fedora-Everything-45-1.4-s390x-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -418,29 +418,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Silverblue-Installer-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/x86_64/iso/Fedora-Silverblue-Installer-45_Beta-1.3.x86_64.iso",
-              "size": 3253975040,
+              "file": "Fedora-Silverblue-Installer-45-1.4.x86_64.iso",
+              "path": "releases/45/Silverblue/x86_64/iso/Fedora-Silverblue-Installer-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/x86_64/iso/Fedora-Silverblue-Installer-45-1.4.x86_64.iso",
+              "size": 2957811712,
               "checksum": {
                 "type": "sha256",
-                "value": "5a0d75fde6f978178f13a4c3373f0916d6ac259adcd13f7c57ed29398ea1189b",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/x86_64/iso/Fedora-Silverblue-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "cd221b750b4b74b3d559880bfa37df495d2154cdb9733ff5878f3b4a88032568",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/x86_64/iso/Fedora-Silverblue-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Silverblue-Installer-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Silverblue-Installer-x86_64-45.torrent"
             },
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Fedora-Silverblue-QCOW-45_Beta-1.3.x86_64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/x86_64/images/Fedora-Silverblue-QCOW-45_Beta-1.3.x86_64.qcow2",
-              "size": 3168272384,
+              "file": "Fedora-Silverblue-QCOW-45-1.4.x86_64.qcow2",
+              "path": "releases/45/Silverblue/x86_64/images/Fedora-Silverblue-QCOW-45-1.4.x86_64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/x86_64/images/Fedora-Silverblue-QCOW-45-1.4.x86_64.qcow2",
+              "size": 3102408704,
               "checksum": {
                 "type": "sha256",
-                "value": "0c33e0a95375fc2d4595c8f1ddfa3cb7b3705f3a745738d915a66d6744cb1cca",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/x86_64/images/Fedora-Silverblue-images-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "a7e88014bc4d8080e0ff1056958c5e81ab9ca52416d8fbbf5318b2fb95a20cfa",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/x86_64/images/Fedora-Silverblue-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -448,14 +448,14 @@
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Silverblue-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/aarch64/images/Fedora-Silverblue-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 2669247316,
+              "file": "Fedora-Silverblue-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Silverblue/aarch64/images/Fedora-Silverblue-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/aarch64/images/Fedora-Silverblue-Disk-45-1.4.aarch64.raw.xz",
+              "size": 2814141592,
               "checksum": {
                 "type": "sha256",
-                "value": "b7d9c91ba1362974cf4f11e83be507af5ec90b555eabfc6037632b979e1489b1",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/aarch64/images/Fedora-Silverblue-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "14180b00093a20a3ed06782ac6cf3686cf2ec120db569ed73e61ad19d169d3f4",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/aarch64/images/Fedora-Silverblue-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -463,29 +463,29 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Silverblue-Installer-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/aarch64/iso/Fedora-Silverblue-Installer-45_Beta-1.3.aarch64.iso",
-              "size": 3153141760,
+              "file": "Fedora-Silverblue-Installer-45-1.4.aarch64.iso",
+              "path": "releases/45/Silverblue/aarch64/iso/Fedora-Silverblue-Installer-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/aarch64/iso/Fedora-Silverblue-Installer-45-1.4.aarch64.iso",
+              "size": 3076206592,
               "checksum": {
                 "type": "sha256",
-                "value": "cda78b8c355442fe1f704b0519cedb3a038011cf49df75f9528321c0f994cac5",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/aarch64/iso/Fedora-Silverblue-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "907ff9ed6e7c2c374f760e9adf8da5bb92c468359e0573e6288295c7a9f764c2",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/aarch64/iso/Fedora-Silverblue-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Silverblue-Installer-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Silverblue-Installer-aarch64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "Fedora-Silverblue-QCOW-45_Beta-1.3.aarch64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/aarch64/images/Fedora-Silverblue-QCOW-45_Beta-1.3.aarch64.qcow2",
-              "size": 3153657856,
+              "file": "Fedora-Silverblue-QCOW-45-1.4.aarch64.qcow2",
+              "path": "releases/45/Silverblue/aarch64/images/Fedora-Silverblue-QCOW-45-1.4.aarch64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/aarch64/images/Fedora-Silverblue-QCOW-45-1.4.aarch64.qcow2",
+              "size": 3300877312,
               "checksum": {
                 "type": "sha256",
-                "value": "cc04024c22f4d8144f779334baaed31c412891d7456fca5e56dfe37be6691c4f",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Silverblue/aarch64/images/Fedora-Silverblue-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "f335acfca3e3877f9300e238011ed001597fa37c6845195b845aa86199be2bae",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Silverblue/aarch64/images/Fedora-Silverblue-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -501,29 +501,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Kinoite-Installer-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/x86_64/iso/Fedora-Kinoite-Installer-45_Beta-1.3.x86_64.iso",
-              "size": 3968667648,
+              "file": "Fedora-Kinoite-Installer-45-1.4.x86_64.iso",
+              "path": "releases/45/Kinoite/x86_64/iso/Fedora-Kinoite-Installer-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/x86_64/iso/Fedora-Kinoite-Installer-45-1.4.x86_64.iso",
+              "size": 3671287808,
               "checksum": {
                 "type": "sha256",
-                "value": "770ed28b32d60260e46813e20dd13a5eee223d93ea3626e647db5ec8f5ea7b7d",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/x86_64/iso/Fedora-Kinoite-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "85a5fb08291c79d33b074126e9f7f2a8e79730a0782903bb590e8f8b4cf881e5",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/x86_64/iso/Fedora-Kinoite-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Kinoite-Installer-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Kinoite-Installer-x86_64-45.torrent"
             },
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Fedora-Kinoite-QCOW-45_Beta-1.3.x86_64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/x86_64/images/Fedora-Kinoite-QCOW-45_Beta-1.3.x86_64.qcow2",
-              "size": 3857415680,
+              "file": "Fedora-Kinoite-QCOW-45-1.4.x86_64.qcow2",
+              "path": "releases/45/Kinoite/x86_64/images/Fedora-Kinoite-QCOW-45-1.4.x86_64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/x86_64/images/Fedora-Kinoite-QCOW-45-1.4.x86_64.qcow2",
+              "size": 3820290048,
               "checksum": {
                 "type": "sha256",
-                "value": "79290535ebb2d012ae2107cc457c8750c355f1817e46ed2953a222a217ee2ad4",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/x86_64/images/Fedora-Kinoite-images-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "9ec62e29464258487cb1b9a5f955add03eb8cc69f4500d85f13c0e8ac2b0322a",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/x86_64/images/Fedora-Kinoite-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -531,14 +531,14 @@
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Kinoite-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/aarch64/images/Fedora-Kinoite-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 3248838904,
+              "file": "Fedora-Kinoite-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Kinoite/aarch64/images/Fedora-Kinoite-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/aarch64/images/Fedora-Kinoite-Disk-45-1.4.aarch64.raw.xz",
+              "size": 3431155344,
               "checksum": {
                 "type": "sha256",
-                "value": "a485504b510596d80d18c671f3c1fa87666796bb1a83282b231988c6d1515653",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/aarch64/images/Fedora-Kinoite-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "ea22aeea3c7a783b1471a3406c59cb715d21d96240ae8f0f918bdac06b230197",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/aarch64/images/Fedora-Kinoite-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -546,29 +546,29 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Kinoite-Installer-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/aarch64/iso/Fedora-Kinoite-Installer-45_Beta-1.3.aarch64.iso",
-              "size": 3825942528,
+              "file": "Fedora-Kinoite-Installer-45-1.4.aarch64.iso",
+              "path": "releases/45/Kinoite/aarch64/iso/Fedora-Kinoite-Installer-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/aarch64/iso/Fedora-Kinoite-Installer-45-1.4.aarch64.iso",
+              "size": 3761383424,
               "checksum": {
                 "type": "sha256",
-                "value": "79a0b6011213563ac3d26823ae8ca2895e917d287e2a9b4c43d691468cfe9bef",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/aarch64/iso/Fedora-Kinoite-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "d5e34ea940f77077ea8e9920da7077a6dc243dd0e7209dd2df8818ceafe9e97e",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/aarch64/iso/Fedora-Kinoite-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Kinoite-Installer-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Kinoite-Installer-aarch64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "Fedora-Kinoite-QCOW-45_Beta-1.3.aarch64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/aarch64/images/Fedora-Kinoite-QCOW-45_Beta-1.3.aarch64.qcow2",
-              "size": 3812385280,
+              "file": "Fedora-Kinoite-QCOW-45-1.4.aarch64.qcow2",
+              "path": "releases/45/Kinoite/aarch64/images/Fedora-Kinoite-QCOW-45-1.4.aarch64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/aarch64/images/Fedora-Kinoite-QCOW-45-1.4.aarch64.qcow2",
+              "size": 3997560832,
               "checksum": {
                 "type": "sha256",
-                "value": "b2db11d5c9df04c4266b608789cd48b1a35d7a48fb57b939e4c8adac3581bfae",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Kinoite/aarch64/images/Fedora-Kinoite-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "e45c3d0f517e48cd6105cc01e92e3e52a2482a0b033b835555cd8c94b28a91ad",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Kinoite/aarch64/images/Fedora-Kinoite-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -584,32 +584,32 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-CosmicAtomic-Installer-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/COSMIC-Atomic/x86_64/iso/Fedora-CosmicAtomic-Installer-45_Beta-1.3.x86_64.iso",
-              "size": 2877483008,
+              "file": "Fedora-CosmicAtomic-Installer-45-1.4.x86_64.iso",
+              "path": "releases/45/COSMIC-Atomic/x86_64/iso/Fedora-CosmicAtomic-Installer-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/COSMIC-Atomic/x86_64/iso/Fedora-CosmicAtomic-Installer-45-1.4.x86_64.iso",
+              "size": 2996602880,
               "checksum": {
                 "type": "sha256",
-                "value": "f0cff94104ad94093aa29cfe1166af329e2f2fe640b782170ffe88e9904b78ff",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/COSMIC-Atomic/x86_64/iso/Fedora-COSMIC-Atomic-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "a8c0aecb9debfa7273c94c05bc36d75f73751ea203e3f8c5eff7fb355a18980e",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/COSMIC-Atomic/x86_64/iso/Fedora-COSMIC-Atomic-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-CosmicAtomic-Installer-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-CosmicAtomic-Installer-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-CosmicAtomic-Installer-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/COSMIC-Atomic/aarch64/iso/Fedora-CosmicAtomic-Installer-45_Beta-1.3.aarch64.iso",
-              "size": 2820743168,
+              "file": "Fedora-CosmicAtomic-Installer-45-1.4.aarch64.iso",
+              "path": "releases/45/COSMIC-Atomic/aarch64/iso/Fedora-CosmicAtomic-Installer-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/COSMIC-Atomic/aarch64/iso/Fedora-CosmicAtomic-Installer-45-1.4.aarch64.iso",
+              "size": 3109496832,
               "checksum": {
                 "type": "sha256",
-                "value": "1997cc46445b45b931701e21c8ed6dffbb0876e2d95ca81e0031b2b3481282c9",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/COSMIC-Atomic/aarch64/iso/Fedora-COSMIC-Atomic-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "96eab8d40a1b960db6f6a75dd4dd5649d08b67d0f7d13237931bfee897a0354f",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/COSMIC-Atomic/aarch64/iso/Fedora-COSMIC-Atomic-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-CosmicAtomic-Installer-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-CosmicAtomic-Installer-aarch64-45.torrent"
             }
           ]
         },
@@ -622,29 +622,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Xfce-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Xfce-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3044065280,
+              "file": "Fedora-Xfce-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-Xfce-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Xfce-Live-45-1.4.x86_64.iso",
+              "size": 3002775552,
               "checksum": {
                 "type": "sha256",
-                "value": "bbbfa9b4477caa257e2981ce13db5964fadc22683780a82c3bbe18bfda4f583d",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "66e695a5b1f4203822af220e30152c1e4837d640a3aabd51ac41c6ef2cb9180c",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Xfce-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Xfce-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Xfce-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Xfce-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 3299696760,
+              "file": "Fedora-Xfce-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-Xfce-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Xfce-Disk-45-1.4.aarch64.raw.xz",
+              "size": 3206595480,
               "checksum": {
                 "type": "sha256",
-                "value": "0143d0bbabfeb7274eab4525f5540c138c6861df0723acedddcdaf220220fd09",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Spins-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "e320657c51bab29365eb1c5ee02e9cd8dc6d43e2d5d2f9bbc0bc17f9b7ba3d6c",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -652,17 +652,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Xfce-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Xfce-Live-45_Beta-1.3.aarch64.iso",
-              "size": 2893799424,
+              "file": "Fedora-Xfce-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-Xfce-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Xfce-Live-45-1.4.aarch64.iso",
+              "size": 2977312768,
               "checksum": {
                 "type": "sha256",
-                "value": "b769e44b72b8a7c89bb1663332d2f076371bffea3c1e72a41becdcf18031aa59",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Spins-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "29e5ba7c122b8ae819906e8982898056dc8fc8e5d94d4d9a25a1622a5adbe700",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Xfce-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Xfce-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -675,17 +675,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Cinnamon-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Cinnamon-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3364052992,
+              "file": "Fedora-Cinnamon-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-Cinnamon-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Cinnamon-Live-45-1.4.x86_64.iso",
+              "size": 3339063296,
               "checksum": {
                 "type": "sha256",
-                "value": "71fae7165e2308eea9025771b29d7db49ce03389aa9079c5206b94ac1f402af8",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "3916445a58bcc66f82851acbd6a689708c3be5fad7120183e94b864f838ffdd5",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Cinnamon-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Cinnamon-Live-x86_64-45.torrent"
             }
           ]
         },
@@ -698,17 +698,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-MATE_Compiz-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-MATE_Compiz-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3407763456,
+              "file": "Fedora-MATE_Compiz-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-MATE_Compiz-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-MATE_Compiz-Live-45-1.4.x86_64.iso",
+              "size": 3361978368,
               "checksum": {
                 "type": "sha256",
-                "value": "7040ecd150ae2b255f4ef703dc9ae4e563d9554f49f33eb4692a59e7cd51e01d",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "f7526aca2874e32783f83bca839c37d591f6f216a3101964a6dc416fa5eb2193",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-MATE_Compiz-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-MATE_Compiz-Live-x86_64-45.torrent"
             }
           ]
         },
@@ -721,29 +721,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-LXQt-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-LXQt-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2595600384,
+              "file": "Fedora-LXQt-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-LXQt-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-LXQt-Live-45-1.4.x86_64.iso",
+              "size": 2544365568,
               "checksum": {
                 "type": "sha256",
-                "value": "597d5d54af99d0a1729567db0763cf96ebfc70c79877dbb6d32d9a0e1b2ea4fd",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "132d8519235fdc8e8d95aeb0b1a04fd329dc26ba49fae5d88ca393838d40b6cc",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-LXQt-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-LXQt-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-LXQt-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-LXQt-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 2704633940,
+              "file": "Fedora-LXQt-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-LXQt-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-LXQt-Disk-45-1.4.aarch64.raw.xz",
+              "size": 2753047040,
               "checksum": {
                 "type": "sha256",
-                "value": "a1fb86677c0b33621195f91a25454485681021e119dfd756a2bdd0fc3cecc658",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Spins-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "e57e53f8cfdbbb7139102761cad9d4d17afc09f35406e3d02c1da5f4423ae064",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -751,17 +751,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-LXQt-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-LXQt-Live-45_Beta-1.3.aarch64.iso",
-              "size": 2465863680,
+              "file": "Fedora-LXQt-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-LXQt-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-LXQt-Live-45-1.4.aarch64.iso",
+              "size": 2550689792,
               "checksum": {
                 "type": "sha256",
-                "value": "f4d4771cd5dbc4b63ebfa8138cd53a2bdcbbbd1baa8446dc6f7a50c0e14aa1ec",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Spins-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "0b2d0fa93ed8a21a0d7c0105ba23913f2713887dde7c7811a06fecca3c0504ac",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-LXQt-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-LXQt-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -774,17 +774,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-LXDE-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-LXDE-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2702110720,
+              "file": "Fedora-LXDE-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-LXDE-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-LXDE-Live-45-1.4.x86_64.iso",
+              "size": 2655266816,
               "checksum": {
                 "type": "sha256",
-                "value": "909c7217096f77efc98c724d2f2c0cf2be5639ca82b84db8f2f098d1301f280b",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "bbedd8f300f566f15805b0ef4209272a1a1c88327da65355d28a6e81381db834",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-LXDE-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-LXDE-Live-x86_64-45.torrent"
             }
           ]
         },
@@ -797,17 +797,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Budgie-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Budgie-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3187652608,
+              "file": "Fedora-Budgie-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-Budgie-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Budgie-Live-45-1.4.x86_64.iso",
+              "size": 3139418112,
               "checksum": {
                 "type": "sha256",
-                "value": "8b8b3c19ec7b04846e626c972aca2c6a876e4e9237bc9862c0f317e91e2652b0",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "c91160f7d0d6ccd82faa6b8d96bd2e2dbc3ceec9ceabeee1a86ed1e243089375",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Budgie-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Budgie-Live-x86_64-45.torrent"
             }
           ]
         },
@@ -820,29 +820,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-COSMIC-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-COSMIC-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3320791040,
+              "file": "Fedora-COSMIC-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-COSMIC-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-COSMIC-Live-45-1.4.x86_64.iso",
+              "size": 3256915968,
               "checksum": {
                 "type": "sha256",
-                "value": "b9cada6c69c40cdb82508920510265d1c886919fc5ecb73509bdf80e85a48442",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "3b3a9d4537b089b9c5f56e9691b65cf1a32398d38366e58499e45d1f50719f84",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-COSMIC-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-COSMIC-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-COSMIC-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-COSMIC-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 3434405780,
+              "file": "Fedora-COSMIC-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-COSMIC-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-COSMIC-Disk-45-1.4.aarch64.raw.xz",
+              "size": 3611688268,
               "checksum": {
                 "type": "sha256",
-                "value": "5eb8a29e4e77fe79405bb714c4ed9d89eea97da8b9e300be91e603d6d63811a9",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Spins-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "b10bba617b4cb73b9cee77cb76ade0e8645bacc59726e5630f42770ee17e2cf0",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -850,17 +850,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-COSMIC-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-COSMIC-Live-45_Beta-1.3.aarch64.iso",
-              "size": 3129647104,
+              "file": "Fedora-COSMIC-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-COSMIC-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-COSMIC-Live-45-1.4.aarch64.iso",
+              "size": 3233591296,
               "checksum": {
                 "type": "sha256",
-                "value": "737148353721905bf98369fa9a8e4246742230e936eafada5feba2589fa520ec",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Spins-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "47fc6c62e634910e1fcabd9edb36cd7327c875d1bf0f156ebdb2bc78e0e9d589",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-COSMIC-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-COSMIC-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -873,17 +873,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Sway-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Sway-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2515959808,
+              "file": "Fedora-Sway-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-Sway-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Sway-Live-45-1.4.x86_64.iso",
+              "size": 2442932224,
               "checksum": {
                 "type": "sha256",
-                "value": "1bb292150fb68aaa99ee089c383e1e3e667d68dfdefd431e2e5ef4f715b3b32e",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "41b26951ea25552ec68bc4c5b730da6d20d0803db31974cffc3b9424ab717351",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Sway-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Sway-Live-x86_64-45.torrent"
             }
           ]
         },
@@ -896,32 +896,32 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-i3-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-i3-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2529562624,
+              "file": "Fedora-i3-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-i3-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-i3-Live-45-1.4.x86_64.iso",
+              "size": 2488913920,
               "checksum": {
                 "type": "sha256",
-                "value": "69e6b7f0d726d01e2549e6bb012fb22a42144ac7133e0b262ebc0acdb4b3a676",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "1eb553e22dc4c92f72d7d5ecebd213a80adbe400c5c4713a425f0a0a6e79b0e9",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-i3-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-i3-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-i3-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-i3-Live-45_Beta-1.3.aarch64.iso",
-              "size": 2407921664,
+              "file": "Fedora-i3-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-i3-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-i3-Live-45-1.4.aarch64.iso",
+              "size": 2495096832,
               "checksum": {
                 "type": "sha256",
-                "value": "78a64e6636d005303554ddc7fe19266c31199fd52dd1f8eb922c67a21ddc5dc1",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Spins-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "36a621ee2fe0a72604f4ea51f898d9daf18efa7ff7fb89f97221a8d7c612d7f6",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-i3-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-i3-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -934,29 +934,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-KDE-Mobile-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-KDE-Mobile-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2785165312,
+              "file": "Fedora-KDE-Mobile-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-KDE-Mobile-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-KDE-Mobile-Live-45-1.4.x86_64.iso",
+              "size": 2691733504,
               "checksum": {
                 "type": "sha256",
-                "value": "4725b8d5b02142cd224c56f079b92c30931d3ed47bfdeac41e3360cf6556d1a7",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "5ca0f654993ac86fab58f59eebde58d27353f11eb0c7ae28a9ff9e7339e53785",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Mobile-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Mobile-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-KDE-Mobile-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-KDE-Mobile-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 2982133944,
+              "file": "Fedora-KDE-Mobile-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-KDE-Mobile-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-KDE-Mobile-Disk-45-1.4.aarch64.raw.xz",
+              "size": 2985064276,
               "checksum": {
                 "type": "sha256",
-                "value": "8274f774c57519463cc193e59d3a3da486867c615e0af9467ccb329edb2f775d",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Spins-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "4dd145813d2040389ced7df41f14b72b44b8e467f41a5b85f28a04e1e6cad9a4",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -964,17 +964,70 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-KDE-Mobile-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-KDE-Mobile-Live-45_Beta-1.3.aarch64.iso",
-              "size": 2645211136,
+              "file": "Fedora-KDE-Mobile-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-KDE-Mobile-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-KDE-Mobile-Live-45-1.4.aarch64.iso",
+              "size": 2727530496,
               "checksum": {
                 "type": "sha256",
-                "value": "3e46fc1b1bbfcc62706f9d427e43301206f8a76506db22991292921c80876a60",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Spins-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "68b5a0acad5a709c1ebd872758d7b8a9725866f6786c4a9a08a2e8732b5a3017",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Mobile-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-KDE-Mobile-Live-aarch64-45.torrent"
+            }
+          ]
+        },
+        {
+          "id": "miraclewm",
+          "name": "MiracleWM",
+          "desktop": null,
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "Fedora-MiracleWM-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-MiracleWM-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-MiracleWM-Live-45-1.4.x86_64.iso",
+              "size": 2568001536,
+              "checksum": {
+                "type": "sha256",
+                "value": "f059aa2878618643fe51f09de53cffd81f8797b5ea7bd4aae265bafc541ba344",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-MiracleWM-Live-x86_64-45.torrent"
+            },
+            {
+              "arch": "aarch64",
+              "format": "raw.xz",
+              "file": "Fedora-MiracleWM-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-MiracleWM-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-MiracleWM-Disk-45-1.4.aarch64.raw.xz",
+              "size": 2750947864,
+              "checksum": {
+                "type": "sha256",
+                "value": "1ff2dad4f0c5d35fdaa12c962487a89d6310a6c88e57092a063560dd9f6b9692",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": null
+            },
+            {
+              "arch": "aarch64",
+              "format": "iso",
+              "file": "Fedora-MiracleWM-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-MiracleWM-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-MiracleWM-Live-45-1.4.aarch64.iso",
+              "size": 2598387712,
+              "checksum": {
+                "type": "sha256",
+                "value": "0736a6bcbc7b274c676810bef27bd38d148fa164f2d573f87ca82c76c05fee92",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
+              },
+              "signatureUrl": null,
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-MiracleWM-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -987,29 +1040,29 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-SoaS-Live-45_Beta-1.3.x86_64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-SoaS-Live-45_Beta-1.3.x86_64.iso",
-              "size": 2412109824,
+              "file": "Fedora-SoaS-Live-45-1.4.x86_64.iso",
+              "path": "releases/45/Spins/x86_64/iso/Fedora-SoaS-Live-45-1.4.x86_64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-SoaS-Live-45-1.4.x86_64.iso",
+              "size": 2371909632,
               "checksum": {
                 "type": "sha256",
-                "value": "42690f147af100376319227e98cac95e4e7222c6422db80630d42d69e52ed4c4",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/x86_64/iso/Fedora-Spins-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "0ea1883fd856f67c05ade60e57471fb4ed65cadc90e96159df3685592b762c9c",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/x86_64/iso/Fedora-Spins-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-SoaS-Live-x86_64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-SoaS-Live-x86_64-45.torrent"
             },
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-SoaS-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-SoaS-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 2345293176,
+              "file": "Fedora-SoaS-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-SoaS-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-SoaS-Disk-45-1.4.aarch64.raw.xz",
+              "size": 2446417496,
               "checksum": {
                 "type": "sha256",
-                "value": "bb70dbf5393db1d6e8c08c42ac7e0eacce1ad25766718b99fc20febbe459759b",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Spins-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "84fcff9db3a4ec328c7547fd78393547a6e6f8d561d5e562bf105d088d4e5698",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1017,17 +1070,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-SoaS-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-SoaS-Live-45_Beta-1.3.aarch64.iso",
-              "size": 2270779392,
+              "file": "Fedora-SoaS-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Spins/aarch64/iso/Fedora-SoaS-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-SoaS-Live-45-1.4.aarch64.iso",
+              "size": 2351810560,
               "checksum": {
                 "type": "sha256",
-                "value": "57143eebae9c0c128d77a565deffc3aa2c7425ac434486af3ca89b03a6fe6f50",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/iso/Fedora-Spins-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "43646d68829f997eaf448e5a6f4dfc2891c2c25bc051826a8504d8d7a13de589",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/iso/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-SoaS-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-SoaS-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -1040,14 +1093,14 @@
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Minimal-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Minimal-45_Beta-1.3.aarch64.raw.xz",
-              "size": 782365712,
+              "file": "Fedora-Minimal-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Spins/aarch64/images/Fedora-Minimal-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Minimal-45-1.4.aarch64.raw.xz",
+              "size": 722655324,
               "checksum": {
                 "type": "sha256",
-                "value": "4a74a00a4b7ccb80d0e5508d6009e7bad7e27d705b8670e72031cab51e859ba1",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Spins/aarch64/images/Fedora-Spins-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "85cd74fc507b42e0bdb3921f9a4396ba231596de49733492d4f4fc86a45d3841",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Spins/aarch64/images/Fedora-Spins-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1063,14 +1116,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Astronomy_KDE-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Astronomy_KDE-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Astronomy_KDE-Live-45_Beta-1.3.x86_64.iso",
-              "size": 6064072704,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Astronomy_KDE-Live-45-1.4.x86_64.iso",
+              "size": 6044854272,
               "checksum": {
                 "type": "sha256",
-                "value": "e7e118af7214bed6061f2eaf713139857765d49d5c2f9449f04b5d4c0f0230e4",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "818378acff1cd2507cbf0dc0527ae20305d07057bd29420137d708ba85de29cc",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1086,14 +1139,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Design_suite-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Design_suite-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Design_suite-Live-45_Beta-1.3.x86_64.iso",
-              "size": 5357453312,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Design_suite-Live-45-1.4.x86_64.iso",
+              "size": 5418326016,
               "checksum": {
                 "type": "sha256",
-                "value": "f73b32c686b2b632355ee972901904f3823bdec6197d1e0e5a77d67c5c809baf",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "9bd1c1b3215037602601780fb2588be51c5209097149fab79d8b9e4805589571",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1109,14 +1162,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Games-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Games-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Games-Live-45_Beta-1.3.x86_64.iso",
-              "size": 8964503552,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Games-Live-45-1.4.x86_64.iso",
+              "size": 8932820992,
               "checksum": {
                 "type": "sha256",
-                "value": "2b9f77948d9f4e60da6e4d042e6d435758d1afdc54aadfeaef31bf725ea4177f",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "3ec743a9fb9b4bdf60b031ec2dcc539c710b659298b72c55d890407402f3a37f",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1132,14 +1185,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Jam_KDE-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Jam_KDE-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Jam_KDE-Live-45_Beta-1.3.x86_64.iso",
-              "size": 4521027584,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Jam_KDE-Live-45-1.4.x86_64.iso",
+              "size": 4477421568,
               "checksum": {
                 "type": "sha256",
-                "value": "e3c632811399fc43090a2ca1ec98d4466062fc93d74c273acf99e3b07e92676c",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "96bc33bb5a8914b7959c54c9a10105418464c6de4b7cca6717c6425a197812f6",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1155,14 +1208,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Python-Classroom-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Python-Classroom-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Python-Classroom-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3239639040,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Python-Classroom-Live-45-1.4.x86_64.iso",
+              "size": 3171753984,
               "checksum": {
                 "type": "sha256",
-                "value": "2d2333e4edca7e5810279b8047dfbc08b406737b4b334f8f3b3f282cbb3fa0e7",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "4790b2b94a35c1b5564c1b4f9bc97a5f1409ce4565537e43ddea28d73d1d5414",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1170,14 +1223,14 @@
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Python-Classroom-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/images/Fedora-Python-Classroom-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 3558637856,
+              "file": "Fedora-Python-Classroom-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Labs/aarch64/images/Fedora-Python-Classroom-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/images/Fedora-Python-Classroom-Disk-45-1.4.aarch64.raw.xz",
+              "size": 3637197124,
               "checksum": {
                 "type": "sha256",
-                "value": "6288051cf9d7f0e049cd71ddc89481f804d5ae8a3876f1bd49471f0bb2ce415f",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/images/Fedora-Labs-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "2bc7ca5994d72605e23b84b7e9e8059b55cd7ade7000e27ad512ec85e4bab89b",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/images/Fedora-Labs-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1185,17 +1238,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Python-Classroom-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/iso/Fedora-Python-Classroom-Live-45_Beta-1.3.aarch64.iso",
-              "size": 3062423552,
+              "file": "Fedora-Python-Classroom-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Labs/aarch64/iso/Fedora-Python-Classroom-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/iso/Fedora-Python-Classroom-Live-45-1.4.aarch64.iso",
+              "size": 3159685120,
               "checksum": {
                 "type": "sha256",
-                "value": "00548eaa6444b37f5a1f2aea8e6884ee5a8ee14231080096044ce1dbc7d126f9",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/iso/Fedora-Labs-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "e18494befa3b2b70121cdb1fb99378404011b714b41f285180c646d219b1c6d4",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/iso/Fedora-Labs-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Python-Classroom-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Python-Classroom-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -1208,14 +1261,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Scientific_KDE-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Scientific_KDE-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Scientific_KDE-Live-45_Beta-1.3.x86_64.iso",
-              "size": 6792908800,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Scientific_KDE-Live-45-1.4.x86_64.iso",
+              "size": 6752571392,
               "checksum": {
                 "type": "sha256",
-                "value": "aee3c4173852dd6a3a29d7904234762c44ae95f1d019f841a2d490525a996583",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "0e6c889a7cfe44cdea8ee00d139b495f15f5b301c9677a5124a5ed0335843f3d",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1223,14 +1276,14 @@
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Scientific_KDE-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/images/Fedora-Scientific_KDE-Disk-45_Beta-1.3.aarch64.raw.xz",
-              "size": 7567264736,
+              "file": "Fedora-Scientific_KDE-Disk-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Labs/aarch64/images/Fedora-Scientific_KDE-Disk-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/images/Fedora-Scientific_KDE-Disk-45-1.4.aarch64.raw.xz",
+              "size": 7752398356,
               "checksum": {
                 "type": "sha256",
-                "value": "d5da8afa89ab921994e5b648ae8dd1b9b901fd9b3a7a1e6a06bc50b2da7d69ae",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/images/Fedora-Labs-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "a008b204b76eac4b2ee06d0d15cd5a80c1b7a617e03c3c17d54fea9bddbfc44a",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/images/Fedora-Labs-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1238,17 +1291,17 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "Fedora-Scientific_KDE-Live-45_Beta-1.3.aarch64.iso",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/iso/Fedora-Scientific_KDE-Live-45_Beta-1.3.aarch64.iso",
-              "size": 6334601216,
+              "file": "Fedora-Scientific_KDE-Live-45-1.4.aarch64.iso",
+              "path": "releases/45/Labs/aarch64/iso/Fedora-Scientific_KDE-Live-45-1.4.aarch64.iso",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/iso/Fedora-Scientific_KDE-Live-45-1.4.aarch64.iso",
+              "size": 6456209408,
               "checksum": {
                 "type": "sha256",
-                "value": "119eaf7bfa78b7cd60e6e67ff6b54c0693a41ca4201227b0e1fc81f7ba7e5bfa",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Labs/aarch64/iso/Fedora-Labs-iso-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "1baed55bdfb140ae68225aff35072ae4bdf112cb2c2a523ae9b7fa1fa6769763",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Labs/aarch64/iso/Fedora-Labs-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Scientific_KDE-Live-aarch64-45_Beta.torrent"
+              "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Scientific_KDE-Live-aarch64-45.torrent"
             }
           ]
         },
@@ -1261,14 +1314,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "Fedora-Security-Live-45_Beta-1.3.x86_64.iso",
+              "file": "Fedora-Security-Live-45-1.4.x86_64.iso",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Security-Live-45_Beta-1.3.x86_64.iso",
-              "size": 3936669696,
+              "url": "https://download.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Security-Live-45-1.4.x86_64.iso",
+              "size": 3913013248,
               "checksum": {
                 "type": "sha256",
-                "value": "f58c46c9a56e4a536f29b2886679938ee7d976861f5b8b85dfb273bcec6fca6e",
-                "url": "https://dl.fedoraproject.org/pub/alt/releases/test/45_Beta/Labs/x86_64/iso/Fedora-Labs-iso-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "3f0c877ff684c6525edf09bcf5cfd54cf3130be04989f2c7c84239f067900e5a",
+                "url": "https://dl.fedoraproject.org/pub/alt/releases/45/Labs/x86_64/iso/Fedora-Labs-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1284,14 +1337,14 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Fedora-Cloud-Base-Generic-45_Beta-1.3.x86_64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-45_Beta-1.3.x86_64.qcow2",
-              "size": 632946688,
+              "file": "Fedora-Cloud-Base-Generic-45-1.4.x86_64.qcow2",
+              "path": "releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-45-1.4.x86_64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-45-1.4.x86_64.qcow2",
+              "size": 606732288,
               "checksum": {
                 "type": "sha256",
-                "value": "06bd4382a3bc5e5f94cd520f9ee15bdfb38d7bb72552b27fe06d581ba9a84292",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/x86_64/images/Fedora-Cloud-images-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "50bdc5e70f6a24f540932d15411c1c6ae9fcfa40fb990d876d83c5cc823b2ad0",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1299,14 +1352,14 @@
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "Fedora-Cloud-Base-Generic-45_Beta-1.3.aarch64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-45_Beta-1.3.aarch64.qcow2",
-              "size": 584712192,
+              "file": "Fedora-Cloud-Base-Generic-45-1.4.aarch64.qcow2",
+              "path": "releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-45-1.4.aarch64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-45-1.4.aarch64.qcow2",
+              "size": 596705280,
               "checksum": {
                 "type": "sha256",
-                "value": "2bacfd793c2e769a325520da64a0bfcd38a7bbd755561d3d332a35b5ae83169c",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/aarch64/images/Fedora-Cloud-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "1632acc8bc14d45b6c9596a0acc71b070d3748d1abdcf1a519be5c983bb0286c",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1314,14 +1367,14 @@
             {
               "arch": "ppc64le",
               "format": "qcow2",
-              "file": "Fedora-Cloud-Base-Generic-45_Beta-1.3.ppc64le.qcow2",
+              "file": "Fedora-Cloud-Base-Generic-45-1.4.ppc64le.qcow2",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Cloud/ppc64le/images/Fedora-Cloud-Base-Generic-45_Beta-1.3.ppc64le.qcow2",
-              "size": 593100800,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Cloud/ppc64le/images/Fedora-Cloud-Base-Generic-45-1.4.ppc64le.qcow2",
+              "size": 604176384,
               "checksum": {
                 "type": "sha256",
-                "value": "dfc5647f7f5eff2417b20ef691b48c2c58574d03355259541ac0e57360776d14",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Cloud/ppc64le/images/Fedora-Cloud-images-45_Beta-1.3-ppc64le-CHECKSUM"
+                "value": "6b30386f4137eba1ec5248b88fbd918b99ea1999d3a0f77b41ec5bc7d1878ba7",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Cloud/ppc64le/images/Fedora-Cloud-45-1.4-ppc64le-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1329,14 +1382,14 @@
             {
               "arch": "s390x",
               "format": "qcow2",
-              "file": "Fedora-Cloud-Base-Generic-45_Beta-1.3.s390x.qcow2",
+              "file": "Fedora-Cloud-Base-Generic-45-1.4.s390x.qcow2",
               "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Cloud/s390x/images/Fedora-Cloud-Base-Generic-45_Beta-1.3.s390x.qcow2",
-              "size": 655216128,
+              "url": "https://download.fedoraproject.org/pub/fedora-secondary/releases/45/Cloud/s390x/images/Fedora-Cloud-Base-Generic-45-1.4.s390x.qcow2",
+              "size": 662315520,
               "checksum": {
                 "type": "sha256",
-                "value": "7e048580b6d671fa99e56015666e8f7706fd80bdb49d08d0d3cebb33a92f8b24",
-                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/test/45_Beta/Cloud/s390x/images/Fedora-Cloud-images-45_Beta-1.3-s390x-CHECKSUM"
+                "value": "173fd4c164d25b81aaba9a65840b41047685aa5649599a70354bdea7c9a732f1",
+                "url": "https://dl.fedoraproject.org/pub/fedora-secondary/releases/45/Cloud/s390x/images/Fedora-Cloud-45-1.4-s390x-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1352,14 +1405,14 @@
             {
               "arch": "x86_64",
               "format": "raw.xz",
-              "file": "Fedora-Cloud-Base-AmazonEC2-45_Beta-1.3.x86_64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/x86_64/images/Fedora-Cloud-Base-AmazonEC2-45_Beta-1.3.x86_64.raw.xz",
-              "size": 635591328,
+              "file": "Fedora-Cloud-Base-AmazonEC2-45-1.4.x86_64.raw.xz",
+              "path": "releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-AmazonEC2-45-1.4.x86_64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-AmazonEC2-45-1.4.x86_64.raw.xz",
+              "size": 604092132,
               "checksum": {
                 "type": "sha256",
-                "value": "16dea6f45c4e177d5766c4c84b4ffc87a3699a1d73d16fdd5e31ebd5e0cd72d7",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/x86_64/images/Fedora-Cloud-images-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "e55e78f53fa7647505d564394538fcf3319ba4bae7d93f5d4ae32052b3b6f8a0",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1367,14 +1420,14 @@
             {
               "arch": "aarch64",
               "format": "raw.xz",
-              "file": "Fedora-Cloud-Base-AmazonEC2-45_Beta-1.3.aarch64.raw.xz",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/aarch64/images/Fedora-Cloud-Base-AmazonEC2-45_Beta-1.3.aarch64.raw.xz",
-              "size": 549677984,
+              "file": "Fedora-Cloud-Base-AmazonEC2-45-1.4.aarch64.raw.xz",
+              "path": "releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-AmazonEC2-45-1.4.aarch64.raw.xz",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-AmazonEC2-45-1.4.aarch64.raw.xz",
+              "size": 567490936,
               "checksum": {
                 "type": "sha256",
-                "value": "460931534436942491a51d7827bd7e481586a6df7dd86690a01cd55e2e4110e7",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/aarch64/images/Fedora-Cloud-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "37876d647caa2a1bb28e592a6ec576e021433fc70acc21f8e18454e4f3c88187",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1390,14 +1443,14 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Fedora-Cloud-Base-UEFI-UKI-45_Beta-1.3.x86_64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/x86_64/images/Fedora-Cloud-Base-UEFI-UKI-45_Beta-1.3.x86_64.qcow2",
-              "size": 694157312,
+              "file": "Fedora-Cloud-Base-UEFI-UKI-45-1.4.x86_64.qcow2",
+              "path": "releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-UEFI-UKI-45-1.4.x86_64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-UEFI-UKI-45-1.4.x86_64.qcow2",
+              "size": 662634496,
               "checksum": {
                 "type": "sha256",
-                "value": "71cd4286b1da17589149c9269c2b8bf78610784edcb56876a3ac43c310f1af64",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/x86_64/images/Fedora-Cloud-images-45_Beta-1.3-x86_64-CHECKSUM"
+                "value": "b8da44c0c57fa3e98cf2e4c85b6ca8b93365e1ed9e05ddd996bbc9a3a116a491",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-45-1.4-x86_64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -1405,14 +1458,14 @@
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "Fedora-Cloud-Base-UEFI-UKI-45_Beta-1.3.aarch64.qcow2",
-              "path": null,
-              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/aarch64/images/Fedora-Cloud-Base-UEFI-UKI-45_Beta-1.3.aarch64.qcow2",
-              "size": 615186432,
+              "file": "Fedora-Cloud-Base-UEFI-UKI-45-1.4.aarch64.qcow2",
+              "path": "releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-UEFI-UKI-45-1.4.aarch64.qcow2",
+              "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-UEFI-UKI-45-1.4.aarch64.qcow2",
+              "size": 623050752,
               "checksum": {
                 "type": "sha256",
-                "value": "823464bdb033ec89b1c614f36b907fe45ba20f7676b18c6125c8757a29f83931",
-                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/test/45_Beta/Cloud/aarch64/images/Fedora-Cloud-images-45_Beta-1.3-aarch64-CHECKSUM"
+                "value": "f51f556104434e66df591d647d3e54254cc722378c5ac31c4b1c37b15075e4f1",
+                "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-45-1.4-aarch64-CHECKSUM"
               },
               "signatureUrl": null,
               "torrentUrl": null

@@ -3,11 +3,10 @@
   "sources": [
     "https://get.opensuse.org/api/v0/distributions.json",
     "https://get.opensuse.org/tumbleweed/",
-    "https://get.opensuse.org/leap/16.0/",
     "https://get.opensuse.org/leap/16.1/",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "releases": [
     {
       "version": "20261031",
@@ -56,13 +55,13 @@
             {
               "arch": "i686",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-LegacyX86-DVD-i586-Snapshot20261101-Media.iso",
+              "file": "openSUSE-Tumbleweed-LegacyX86-DVD-i586-Snapshot20261102-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-DVD-i586-Current.iso",
               "size": 3687841792,
               "checksum": {
                 "type": "sha256",
-                "value": "8ba8cebb5c9733537830e3464bd3169c92aeeaeba0644411f496565df62b75a8",
+                "value": "ab86b63053f007a3b470096dd5efae8d8efc78466f5980fef015499bfe89b510",
                 "url": "https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-DVD-i586-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-DVD-i586-Current.iso.sha256.asc",
@@ -139,13 +138,13 @@
             {
               "arch": "i686",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-LegacyX86-NET-i586-Snapshot20261101-Media.iso",
+              "file": "openSUSE-Tumbleweed-LegacyX86-NET-i586-Snapshot20261102-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-NET-i586-Current.iso",
               "size": 339738624,
               "checksum": {
                 "type": "sha256",
-                "value": "9bd2c76e753024404300c2ae51291641593e973211154c6e3870e8c2fe6bbb0c",
+                "value": "92a44f4e5aca6a9382e869d2061e201d25c4c2c6c9857bd31a04dff9891bf8ee",
                 "url": "https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-NET-i586-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-NET-i586-Current.iso.sha256.asc",
@@ -529,425 +528,12 @@
       ]
     },
     {
-      "version": "16.0",
+      "version": "16.1",
       "channel": "stable",
-      "codename": null,
-      "releaseDate": "2025-10-01",
-      "eol": "2027-10-31",
-      "notesUrl": "https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/16.0/",
-      "editions": [
-        {
-          "id": "offline-image",
-          "name": "Offline Image",
-          "desktop": null,
-          "kind": "other",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "Leap-16.0-offline-installer-x86_64.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso",
-              "size": 4538236928,
-              "checksum": {
-                "type": "sha512",
-                "value": "94411793a1878b3558211c8bbe4f3823c3c5212cc2dd9f9e4532a18be7eddd3be14db5a3bb47a2f36dd957e190ea706cd45af16bce218dfc00f71e64a8469971",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso.sha512.asc",
-              "torrentUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-x86_64.install.iso.torrent"
-            },
-            {
-              "arch": "aarch64",
-              "format": "iso",
-              "file": "Leap-16.0-offline-installer-aarch64.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso",
-              "size": 4642045952,
-              "checksum": {
-                "type": "sha512",
-                "value": "a6328f07434875bd62ab57400829429ad0a908a0b2085a2323faf657bd7fecc6e1b7852531e562302a57e861c90b92935085d8352ebfa7d33a2cda5b96e577d4",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso.sha512.asc",
-              "torrentUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-aarch64.install.iso.torrent"
-            },
-            {
-              "arch": "ppc64le",
-              "format": "iso",
-              "file": "Leap-16.0-offline-installer-ppc64le.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-offline-installer-ppc64le.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-ppc64le.install.iso",
-              "size": 4045406208,
-              "checksum": {
-                "type": "sha512",
-                "value": "739862467b66e5a04d1862b7ad6cd652e7058478741c4fd1a5ecb50c5a52c6e088714f8f0ece52f6304a99a563c4b7e01e13b43641e7914c96a2ed7f660c39dc",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-ppc64le.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-ppc64le.install.iso.sha512.asc",
-              "torrentUrl": null
-            },
-            {
-              "arch": "s390x",
-              "format": "iso",
-              "file": "Leap-16.0-offline-installer-s390x.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-offline-installer-s390x.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-s390x.install.iso",
-              "size": 2477785088,
-              "checksum": {
-                "type": "sha512",
-                "value": "cc2ef9a74780a0d350fabddc7c465c287f9e826b9c1a6a9c090b5d01c73ff9c34925df95395b8f7ecc40ff358538146770d8bbfc0a9e931e269a3bdee484b97c",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-s390x.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-offline-installer-s390x.install.iso.sha512.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "network-image",
-          "name": "Network Image",
-          "desktop": null,
-          "kind": "netinst",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "Leap-16.0-online-installer-x86_64.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso",
-              "size": 746586112,
-              "checksum": {
-                "type": "sha512",
-                "value": "47241c708de25e18cf2d58fb592aa4b4ad9120e1c26b020350e3dc9c8e68efafaeaaf31ddd989825b5bbbfe3f95fbbb72afc8ee34ceb7d7de664536dd49cd441",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso.sha512.asc",
-              "torrentUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso.torrent"
-            },
-            {
-              "arch": "aarch64",
-              "format": "iso",
-              "file": "Leap-16.0-online-installer-aarch64.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-online-installer-aarch64.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-aarch64.install.iso",
-              "size": 750780416,
-              "checksum": {
-                "type": "sha512",
-                "value": "249a08ee456cf7be9cab039dbb9d6e30f804ccbdddece971bb13b4fa6a94e90c4c9f9a5605ec2482b4ceb2b3d82c3c80659b74dc98464de8a003309948fca38f",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-aarch64.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-aarch64.install.iso.sha512.asc",
-              "torrentUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-aarch64.install.iso.torrent"
-            },
-            {
-              "arch": "ppc64le",
-              "format": "iso",
-              "file": "Leap-16.0-online-installer-ppc64le.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-online-installer-ppc64le.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-ppc64le.install.iso",
-              "size": 589299712,
-              "checksum": {
-                "type": "sha512",
-                "value": "069f8d2d49357e532ecb399a4a0359660e1f67ad8da612d40e9cf5f96cbc9cecee9e329a4ff7bf5529c58e02bbae8b2b4cc98581796ef498091b96a560f51d22",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-ppc64le.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-ppc64le.install.iso.sha512.asc",
-              "torrentUrl": null
-            },
-            {
-              "arch": "s390x",
-              "format": "iso",
-              "file": "Leap-16.0-online-installer-s390x.install.iso",
-              "path": "distribution/leap/16.0/offline/Leap-16.0-online-installer-s390x.install.iso",
-              "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-s390x.install.iso",
-              "size": 533725184,
-              "checksum": {
-                "type": "sha512",
-                "value": "2c7952b8853b0b908b75a65a30dd613852673a3ba959f9bf60cdb33f378cb58bb4ea9a8c3d7c579874a7cbc491368653c54654742a729a4dd0de847fd6f770cc",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-s390x.install.iso.sha512"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-s390x.install.iso.sha512.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "kvm-and-xen-image",
-          "name": "KVM and XEN image",
-          "desktop": null,
-          "kind": "minimal",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.x86_64-kvm-and-xen.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.x86_64-kvm-and-xen.qcow2",
-              "size": 325124096,
-              "checksum": {
-                "type": "sha256",
-                "value": "96f620f48c3c764cce05b023522fe5ee09d40df24e885a8b63824eba5da34e11",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256.asc",
-              "torrentUrl": null
-            },
-            {
-              "arch": "aarch64",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.aarch64-kvm.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.aarch64-kvm.qcow2",
-              "size": 301793280,
-              "checksum": {
-                "type": "sha256",
-                "value": "60afaa5d283217d7766d286271981fac423a2830e49ad9385dbf7f77f00b53c4",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.aarch64-kvm.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.aarch64-kvm.qcow2.sha256.asc",
-              "torrentUrl": null
-            },
-            {
-              "arch": "ppc64le",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2",
-              "size": 308871168,
-              "checksum": {
-                "type": "sha256",
-                "value": "3848245753a9f5d1d9153f09fb764a4cdbfa1b2990084323f9202dfe5b2c77c3",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2.sha256.asc",
-              "torrentUrl": null
-            },
-            {
-              "arch": "s390x",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.s390x-s390x-kvm.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.s390x-s390x-kvm.qcow2",
-              "size": 474706944,
-              "checksum": {
-                "type": "sha256",
-                "value": "7c2877b942844e34fb6feefc30dbba1607033a8d3a7704be36c9bc2f90df345d",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.s390x-s390x-kvm.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.s390x-s390x-kvm.qcow2.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "harvester-and-cloud-image",
-          "name": "Harvester and Cloud image",
-          "desktop": null,
-          "kind": "cloud",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.x86_64-Cloud.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.x86_64-Cloud.qcow2",
-              "size": 339668480,
-              "checksum": {
-                "type": "sha256",
-                "value": "2f328a0135f9c8bf62c5ec012405169f76188ea7abf18f9c65cb0ea5374c042b",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.x86_64-Cloud.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.x86_64-Cloud.qcow2.sha256.asc",
-              "torrentUrl": null
-            },
-            {
-              "arch": "aarch64",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.aarch64-Cloud.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.aarch64-Cloud.qcow2",
-              "size": 319029248,
-              "checksum": {
-                "type": "sha256",
-                "value": "5147877de1e3ec7d07d9a72bb98101246eeeea0d3b900c8ccb000007a70fc8a4",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.aarch64-Cloud.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.aarch64-Cloud.qcow2.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "raspberrypi",
-          "name": "RaspberryPi",
-          "desktop": null,
-          "kind": "minimal",
-          "artifacts": [
-            {
-              "arch": "aarch64",
-              "format": "raw.xz",
-              "file": "Leap-16.0-Minimal-Image.aarch64-RaspberryPi.raw.xz",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-Image.aarch64-RaspberryPi.raw.xz",
-              "size": 363591312,
-              "checksum": {
-                "type": "sha256",
-                "value": "593aa370db036aa46a7c56cf64fa307dc8dae092267f651f5fc2af0c1fa5ef42",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-Image.aarch64-RaspberryPi.raw.xz.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-Image.aarch64-RaspberryPi.raw.xz.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "preconfigured-image-raw",
-          "name": "Preconfigured Image (raw)",
-          "desktop": null,
-          "kind": "minimal",
-          "artifacts": [
-            {
-              "arch": "ppc64le",
-              "format": "raw.xz",
-              "file": "Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz",
-              "size": 202754604,
-              "checksum": {
-                "type": "sha256",
-                "value": "729e92c2718d03394d9ce27d3b016766ce279b706932196e30892e51cb2fe778",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "cloud-image",
-          "name": "Cloud image",
-          "desktop": null,
-          "kind": "cloud",
-          "artifacts": [
-            {
-              "arch": "s390x",
-              "format": "qcow2",
-              "file": "Leap-16.0-Minimal-VM.s390x-s390x-Cloud.qcow2",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.s390x-s390x-Cloud.qcow2",
-              "size": 471853056,
-              "checksum": {
-                "type": "sha256",
-                "value": "2a977e32a4295c3bd40c1cb1248f45fa931462f4c36fc41e337901bd05ddf9ab",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.s390x-s390x-Cloud.qcow2.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-Minimal-VM.s390x-s390x-Cloud.qcow2.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "oem-self-install-image-with-gnome-iso",
-          "name": "OEM Self-install Image with GNOME (iso)",
-          "desktop": "gnome",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "Leap-16.0-OEM.x86_64-GNOME.iso",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/iso/Leap-16.0-OEM.x86_64-GNOME.iso",
-              "size": 2703544320,
-              "checksum": {
-                "type": "sha256",
-                "value": "73693619fba2a32e9eec0300c6ace9e5d61220df27938f7268567dec61a13a67",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/iso/Leap-16.0-OEM.x86_64-GNOME.iso.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/iso/Leap-16.0-OEM.x86_64-GNOME.iso.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "oem-preconfigured-image-with-gnome-raw",
-          "name": "OEM Preconfigured Image with GNOME (raw)",
-          "desktop": "gnome",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "raw.xz",
-              "file": "Leap-16.0-OEM.x86_64-GNOME.raw.xz",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-OEM.x86_64-GNOME.raw.xz",
-              "size": 2177192012,
-              "checksum": {
-                "type": "sha256",
-                "value": "0063397a6c3b039ab7e61812c8dcd9034ba1308d6793b0e45b9de323fba3ff89",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-OEM.x86_64-GNOME.raw.xz.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-OEM.x86_64-GNOME.raw.xz.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "oem-self-install-image-with-kde-iso",
-          "name": "OEM Self-install Image with KDE (iso)",
-          "desktop": "kde",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "iso",
-              "file": "Leap-16.0-OEM.x86_64-KDE.iso",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/iso/Leap-16.0-OEM.x86_64-KDE.iso",
-              "size": 2910924800,
-              "checksum": {
-                "type": "sha256",
-                "value": "556a4f6f9f229a4b1e9e129594613eecb490a7a2ccb708a15ac4d618dbdaf028",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/iso/Leap-16.0-OEM.x86_64-KDE.iso.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/iso/Leap-16.0-OEM.x86_64-KDE.iso.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        },
-        {
-          "id": "oem-preconfigured-image-with-kde-raw",
-          "name": "OEM Preconfigured Image with KDE(raw)",
-          "desktop": "kde",
-          "kind": "desktop",
-          "artifacts": [
-            {
-              "arch": "x86_64",
-              "format": "raw.xz",
-              "file": "Leap-16.0-OEM.x86_64-KDE.raw.xz",
-              "path": null,
-              "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-OEM.x86_64-KDE.raw.xz",
-              "size": 2372141404,
-              "checksum": {
-                "type": "sha256",
-                "value": "8948f5cff8ca3ac7b875e881f1a63412cbe9925676eaaed004a10c4f101530c5",
-                "url": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-OEM.x86_64-KDE.raw.xz.sha256"
-              },
-              "signatureUrl": "https://download.opensuse.org/distribution/leap/16.0/appliances/Leap-16.0-OEM.x86_64-KDE.raw.xz.sha256.asc",
-              "torrentUrl": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "version": "16.1-rc",
-      "channel": "beta",
       "codename": null,
       "releaseDate": null,
       "eol": null,
-      "notesUrl": null,
+      "notesUrl": "https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/16.1/",
       "editions": [
         {
           "id": "offline-image",
@@ -959,7 +545,7 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "Leap-16.1-offline-installer-x86_64.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-offline-installer-x86_64.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-x86_64.install.iso",
               "size": 4516216832,
               "checksum": {
@@ -974,7 +560,7 @@
               "arch": "aarch64",
               "format": "iso",
               "file": "Leap-16.1-offline-installer-aarch64.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-offline-installer-aarch64.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-aarch64.install.iso",
               "size": 4607442944,
               "checksum": {
@@ -989,7 +575,7 @@
               "arch": "ppc64le",
               "format": "iso",
               "file": "Leap-16.1-offline-installer-ppc64le.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-offline-installer-ppc64le.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-ppc64le.install.iso",
               "size": 4006608896,
               "checksum": {
@@ -1004,7 +590,7 @@
               "arch": "s390x",
               "format": "iso",
               "file": "Leap-16.1-offline-installer-s390x.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-offline-installer-s390x.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-offline-installer-s390x.install.iso",
               "size": 2445279232,
               "checksum": {
@@ -1027,7 +613,7 @@
               "arch": "x86_64",
               "format": "iso",
               "file": "Leap-16.1-online-installer-x86_64.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-online-installer-x86_64.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-x86_64.install.iso",
               "size": 774897664,
               "checksum": {
@@ -1042,7 +628,7 @@
               "arch": "aarch64",
               "format": "iso",
               "file": "Leap-16.1-online-installer-aarch64.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-online-installer-aarch64.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-aarch64.install.iso",
               "size": 768606208,
               "checksum": {
@@ -1057,7 +643,7 @@
               "arch": "ppc64le",
               "format": "iso",
               "file": "Leap-16.1-online-installer-ppc64le.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-online-installer-ppc64le.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-ppc64le.install.iso",
               "size": 606076928,
               "checksum": {
@@ -1072,7 +658,7 @@
               "arch": "s390x",
               "format": "iso",
               "file": "Leap-16.1-online-installer-s390x.install.iso",
-              "path": null,
+              "path": "distribution/leap/16.1/offline/Leap-16.1-online-installer-s390x.install.iso",
               "url": "https://download.opensuse.org/distribution/leap/16.1/offline/Leap-16.1-online-installer-s390x.install.iso",
               "size": 563085312,
               "checksum": {

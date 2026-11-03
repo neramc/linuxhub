@@ -11,8 +11,8 @@
   },
   "alpine-linux": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-03",
+      "lastError": "no image links on https://alpinelinux.org/downloads/"
     },
     "mirrors": {
       "failingSince": null,
@@ -351,8 +351,8 @@
   },
   "q4os": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-03",
+      "lastError": "unexpected Q4OS download https://mirror.velden.media/isos/q4os/stable/q4os-6.10-x64.r2.iso"
     },
     "mirrors": {
       "failingSince": null,
@@ -391,8 +391,8 @@
   },
   "slackware": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-03",
+      "lastError": "redirect to a non-HTTPS URL (http://ftp.slackware.com/pub/slackware/slackware64-15.0/ANNOUNCE.15.0)"
     },
     "mirrors": {
       "failingSince": null,
@@ -421,8 +421,8 @@
   },
   "tails": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-03",
+      "lastError": "robots.txt of https://download.tails.net could not be read (server error or no answer), so the host is closed for this run: https://download.tails.net/tails/stable/tails-amd64-7.16/tails-amd64-7.16.img?mirrorlist"
     },
     "mirrors": {
       "failingSince": null,
