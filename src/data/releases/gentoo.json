@@ -10,7 +10,7 @@
     "https://www.gentoo.org/downloads/ppc/",
     "https://www.gentoo.org/downloads/s390/"
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "releases": [
     {
       "version": "20261101",
@@ -180,16 +180,16 @@
             {
               "arch": "riscv64",
               "format": "tar.xz",
-              "file": "stage3-rv64_lp64d-openrc-20261026T164559Z.tar.xz",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-openrc-20261026T164559Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-openrc-20261026T164559Z.tar.xz",
-              "size": 324464636,
+              "file": "stage3-rv64_lp64d-openrc-20261102T160056Z.tar.xz",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-openrc-20261102T160056Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-openrc-20261102T160056Z.tar.xz",
+              "size": 324546712,
               "checksum": {
                 "type": "sha512",
-                "value": "0c55572e9f4e8d987f1022cde844ceab76ce299ecc71928316bb53f5e82c4cfd26b377fb07d467fd34cf55521873499d536bf7b2adf5fc0ed00f18ca6446893b",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-openrc-20261026T164559Z.tar.xz.DIGESTS"
+                "value": "f3cc5f828130ae2158fc4503a61345e5caacd798b8f1dc4ca73178305cc8809a9ff9fb5b5d6b980291b31b771f7a9a3835bdec54ccd40e1b19187ca37dff035d",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-openrc-20261102T160056Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d-openrc-20261026T164559Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d-openrc-20261102T160056Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
