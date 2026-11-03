@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -641,6 +641,14 @@
       "url": "https://mirror.marwan.ma/rocky/",
       "country": "MA",
       "name": "mirror.marwan.ma",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hosthink.net/rocky/",
+      "country": "MD",
+      "name": "mirror.hosthink.net",
       "lat": null,
       "lon": null,
       "score": null

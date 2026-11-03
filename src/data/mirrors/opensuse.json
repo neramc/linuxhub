@@ -5,8 +5,16 @@
     "https://get.opensuse.org/api/v0/distributions.json",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "mirrors": [
+    {
+      "url": "https://opensuse.ucom.am/",
+      "country": "AM",
+      "name": "opensuse.ucom.am",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
     {
       "url": "https://mirror.aarnet.edu.au/pub/opensuse/opensuse/",
       "country": "AU",
@@ -56,6 +64,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.sjtu.edu.cn/opensuse/",
+      "country": "CN",
+      "name": "mirror.sjtu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirrors.bfsu.edu.cn/opensuse/",
       "country": "CN",
       "name": "mirrors.bfsu.edu.cn",
@@ -64,9 +80,9 @@
       "score": null
     },
     {
-      "url": "https://mirrors.tuna.tsinghua.edu.cn/opensuse/",
+      "url": "https://mirrors.nju.edu.cn/opensuse/",
       "country": "CN",
-      "name": "mirrors.tuna.tsinghua.edu.cn",
+      "name": "mirrors.nju.edu.cn",
       "lat": null,
       "lon": null,
       "score": null
@@ -75,14 +91,6 @@
       "url": "https://ftp.sh.cvut.cz/opensuse/",
       "country": "CZ",
       "name": "ftp.sh.cvut.cz",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.karneval.cz/pub/linux/opensuse/",
-      "country": "CZ",
-      "name": "mirror.karneval.cz",
       "lat": null,
       "lon": null,
       "score": null
@@ -184,9 +192,25 @@
       "score": null
     },
     {
+      "url": "https://download.opensuse.id/",
+      "country": "ID",
+      "name": "download.opensuse.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://opensuse.mirror.garr.it/mirrors/opensuse/",
       "country": "IT",
       "name": "opensuse.mirror.garr.it",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hashy0917.net/opensuse/",
+      "country": "JP",
+      "name": "mirror.hashy0917.net",
       "lat": null,
       "lon": null,
       "score": null

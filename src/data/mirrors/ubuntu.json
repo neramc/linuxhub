@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-10-31",
+  "updated": "2026-11-03",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1622,6 +1622,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.timeweb.ru/ubuntu-releases/",
+      "country": "RU",
+      "name": "TIMEWEB",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.yandex.ru/ubuntu-releases/",
       "country": "RU",
       "name": "Yandex",
@@ -1806,6 +1814,14 @@
       "score": null
     },
     {
+      "url": "https://ftp.ubuntu-tw.net/ubuntu-releases/",
+      "country": "TW",
+      "name": "Ubuntu-TW",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.twds.com.tw/ubuntu-releases/",
       "country": "TW",
       "name": "Taiwan Digital Streaming Co.",
@@ -1825,14 +1841,6 @@
       "url": "https://distrohub.kyiv.ua/ubuntucd/",
       "country": "UA",
       "name": "Distrohub",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.hostiko.network/ubuntu-releases/",
-      "country": "UA",
-      "name": "Hostiko",
       "lat": null,
       "lon": null,
       "score": null
@@ -2078,6 +2086,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.umd.edu/ubuntu-iso/",
+      "country": "US",
+      "name": "University of Maryland",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.us.leaseweb.net/ubuntu-releases/",
       "country": "US",
       "name": "LeaseWeb USA, Inc",
@@ -2303,14 +2319,6 @@
     },
     {
       "url": "https://volico.mm.fcix.net/ubuntu-releases/",
-      "country": "US",
-      "name": "Fremont Cabal Internet Exchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ziply.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
       "lat": null,

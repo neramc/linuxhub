@@ -3,8 +3,16 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/44/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-01",
+  "updated": "2026-11-03",
   "mirrors": [
+    {
+      "url": "https://fedora.zero.com.ar/linux/",
+      "country": "AR",
+      "name": "fedora.zero.com.ar",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
       "country": "AT",
@@ -470,7 +478,7 @@
       "score": null
     },
     {
-      "url": "https://mirror5.krfoss.org/fedora/",
+      "url": "https://mirror5.krfoss.org/fedora/linux/",
       "country": "KR",
       "name": "mirror5.krfoss.org",
       "lat": null,
@@ -489,6 +497,14 @@
       "url": "https://mirror.vpsnet.com/fedora/linux/",
       "country": "LT",
       "name": "mirror.vpsnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repo.fedora.md/fedora/linux/",
+      "country": "MD",
+      "name": "repo.fedora.md",
       "lat": null,
       "lon": null,
       "score": null
@@ -734,9 +750,9 @@
       "score": null
     },
     {
-      "url": "https://ftp-osl.osuosl.org/pub/fedora/linux/",
+      "url": "https://ftp2.osuosl.org/pub/fedora/linux/",
       "country": "US",
-      "name": "ftp-osl.osuosl.org",
+      "name": "ftp2.osuosl.org",
       "lat": null,
       "lon": null,
       "score": null
@@ -785,6 +801,22 @@
       "url": "https://lolhost.mm.fcix.net/fedora/linux/",
       "country": "US",
       "name": "lolhost.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/",
+      "country": "US",
+      "name": "mirror.cs.princeton.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cs.siue.edu/fedora/",
+      "country": "US",
+      "name": "mirror.cs.siue.edu",
       "lat": null,
       "lon": null,
       "score": null
