@@ -392,7 +392,7 @@
   "slackware": {
     "releases": {
       "failingSince": "2026-11-03",
-      "lastError": "redirect to a non-HTTPS URL (http://ftp.slackware.com/pub/slackware/slackware64-15.0/ANNOUNCE.15.0)"
+      "lastError": "redirect to a non-HTTPS URL (http://slackware.cs.utah.edu/pub/slackware/slackware64-15.0/ANNOUNCE.15.0)"
     },
     "mirrors": {
       "failingSince": null,
@@ -421,8 +421,8 @@
   },
   "tails": {
     "releases": {
-      "failingSince": "2026-11-03",
-      "lastError": "robots.txt of https://download.tails.net could not be read (server error or no answer), so the host is closed for this run: https://download.tails.net/tails/stable/tails-amd64-7.16/tails-amd64-7.16.img?mirrorlist"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
