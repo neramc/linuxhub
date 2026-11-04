@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -782,6 +782,14 @@
       "score": null
     },
     {
+      "url": "https://ubuntu.univ-nantes.fr/ubuntu-cd/",
+      "country": "FR",
+      "name": "Université de Nantes",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://www-ftp.lip6.fr/pub/linux/distributions/Ubuntu/releases/",
       "country": "FR",
       "name": "LIP6/Sorbonne Université",
@@ -1041,6 +1049,14 @@
       "url": "https://ubuntu.mobinhost.com/releases/",
       "country": "IR",
       "name": "Mobinhost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ubuntu.pishgaman.net/releases/",
+      "country": "IR",
+      "name": "Pishgaman Tose Ertebatat",
       "lat": null,
       "lon": null,
       "score": null
