@@ -10,7 +10,7 @@
     "https://www.gentoo.org/downloads/ppc/",
     "https://www.gentoo.org/downloads/s390/"
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "releases": [
     {
       "version": "20261101",
@@ -150,16 +150,16 @@
             {
               "arch": "i686",
               "format": "tar.xz",
-              "file": "stage3-i686-openrc-20261027T170059Z.tar.xz",
-              "path": "releases/x86/autobuilds/20261027T170059Z/stage3-i686-openrc-20261027T170059Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-openrc-20261027T170059Z.tar.xz",
-              "size": 271882724,
+              "file": "stage3-i686-openrc-20261103T164556Z.tar.xz",
+              "path": "releases/x86/autobuilds/20261103T164556Z/stage3-i686-openrc-20261103T164556Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-openrc-20261103T164556Z.tar.xz",
+              "size": 271851616,
               "checksum": {
                 "type": "sha512",
-                "value": "fee2cc68f2a1659b5e84c0d9d505545b85476361890ba9691484b41a41a7661e609b79681f7fa91d52ea8a1640d7d77c8c6f386cbe53cc8ce541601baaa949e9",
-                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-openrc-20261027T170059Z.tar.xz.DIGESTS"
+                "value": "a01225ca877407d5e3ed0162f3ff155f730496ea5b9475d03f11533e1edc026e49082d5a884143c637fa2271f0bce02d0388240a836833a79ae417d95d20f5b4",
+                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-openrc-20261103T164556Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-openrc-20261027T170059Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-openrc-20261103T164556Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -263,16 +263,16 @@
             {
               "arch": "i686",
               "format": "tar.xz",
-              "file": "stage3-i686-systemd-20261027T170059Z.tar.xz",
-              "path": "releases/x86/autobuilds/20261027T170059Z/stage3-i686-systemd-20261027T170059Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-systemd-20261027T170059Z.tar.xz",
-              "size": 290850900,
+              "file": "stage3-i686-systemd-20261103T164556Z.tar.xz",
+              "path": "releases/x86/autobuilds/20261103T164556Z/stage3-i686-systemd-20261103T164556Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-systemd-20261103T164556Z.tar.xz",
+              "size": 291383608,
               "checksum": {
                 "type": "sha512",
-                "value": "7a8180c4f960c18fa3016e0a87edfb978bcad0fccdec0621e73b44f72413a4102ff07dff4ae35d644d9a2650551093b77f4866c0ac7ab7081658ecf9a4a09342",
-                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-systemd-20261027T170059Z.tar.xz.DIGESTS"
+                "value": "da9046dc9b5379c3252ddae5e4f724c827dc5d1ef270a933322944ae5230e3810ae5162674389c966c6d88a72e504ce81e6b4f743ce90b0fb885512d6c46d4a8",
+                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-systemd-20261103T164556Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-systemd-20261027T170059Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-systemd-20261103T164556Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -687,16 +687,16 @@
             {
               "arch": "riscv64",
               "format": "tar.xz",
-              "file": "stage3-rv64_lp64d_musl-systemd-20261026T164559Z.tar.xz",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d_musl-systemd-20261026T164559Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d_musl-systemd-20261026T164559Z.tar.xz",
-              "size": 327282036,
+              "file": "stage3-rv64_lp64d_musl-systemd-20261102T160056Z.tar.xz",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d_musl-systemd-20261102T160056Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d_musl-systemd-20261102T160056Z.tar.xz",
+              "size": 326835612,
               "checksum": {
                 "type": "sha512",
-                "value": "7936ca9b41708e5a66427c9a1f8914b44061446ba1866963a7b0ed01c5f3213e092610791f83b498a2d2ac5513f79f9af9658ffd4768c4a927be8311f6592c6d",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d_musl-systemd-20261026T164559Z.tar.xz.DIGESTS"
+                "value": "5c3ac313640de5666062f55694def4e4c2e4cf7ef5b59b69f327d4da3d44c3309484119dc149736d5692d8ee89c9fe68045704d602b4d13d256a9eece74d2f24",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d_musl-systemd-20261102T160056Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64d_musl-systemd-20261026T164559Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64d_musl-systemd-20261102T160056Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1404,16 +1404,16 @@
             {
               "arch": "i686",
               "format": "tar.xz",
-              "file": "stage3-i486-t64-openrc-20261027T170059Z.tar.xz",
-              "path": "releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-openrc-20261027T170059Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-openrc-20261027T170059Z.tar.xz",
-              "size": 276215696,
+              "file": "stage3-i486-t64-openrc-20261103T164556Z.tar.xz",
+              "path": "releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-openrc-20261103T164556Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-openrc-20261103T164556Z.tar.xz",
+              "size": 275129348,
               "checksum": {
                 "type": "sha512",
-                "value": "c8ee864236f50f4906b055cb437a8ce3d93a1e032dfdef9b609fb58806b96103b699a376c9cbc2419654cdcff060c024d0b48c6b359c95ad9c4da86ff8014179",
-                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-openrc-20261027T170059Z.tar.xz.DIGESTS"
+                "value": "f4e181a655fe213b6e841779032d277e898b28fd7d6e32c6c6ee241eec234436f12e6d27d7e01aef936f2aa766c5e073ffdf8a3084bb97aaddbc0e916b33b756",
+                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-openrc-20261103T164556Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-openrc-20261027T170059Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-openrc-20261103T164556Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1427,16 +1427,16 @@
             {
               "arch": "i686",
               "format": "tar.xz",
-              "file": "stage3-i486-t64-systemd-20261027T170059Z.tar.xz",
-              "path": "releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-systemd-20261027T170059Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-systemd-20261027T170059Z.tar.xz",
-              "size": 292490996,
+              "file": "stage3-i486-t64-systemd-20261103T164556Z.tar.xz",
+              "path": "releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-systemd-20261103T164556Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-systemd-20261103T164556Z.tar.xz",
+              "size": 293006660,
               "checksum": {
                 "type": "sha512",
-                "value": "16d58a37326f070c60486d68fbd7d593191b5d67f16eab112450219eebafaf9fd1ea897feacae3a9ed1339989bc728b65667b94b98a85f77ab9d915f4bda5684",
-                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-systemd-20261027T170059Z.tar.xz.DIGESTS"
+                "value": "1bbb252caf8d1b0caac093450ad693dd63de09d216e9239bedb4bf9d7bce25d888004b999119914ed632ebb3e8f3cf3cb6a713b40aab4e931ed24511664798d5",
+                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-systemd-20261103T164556Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i486-t64-systemd-20261027T170059Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i486-t64-systemd-20261103T164556Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1634,16 +1634,16 @@
             {
               "arch": "riscv64",
               "format": "tar.xz",
-              "file": "stage3-rv64_lp64-openrc-20261026T164559Z.tar.xz",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64-openrc-20261026T164559Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64-openrc-20261026T164559Z.tar.xz",
-              "size": 323477256,
+              "file": "stage3-rv64_lp64-openrc-20261102T160056Z.tar.xz",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64-openrc-20261102T160056Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64-openrc-20261102T160056Z.tar.xz",
+              "size": 323697872,
               "checksum": {
                 "type": "sha512",
-                "value": "96b06677603b53f6f234b56edbd1058d27207c725c1a8ff5008c32076cb829ec87762f8281ae99a831cb41bf6505607647ae98cc52b2e8654871c8f01f2ac43c",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64-openrc-20261026T164559Z.tar.xz.DIGESTS"
+                "value": "b577522fba674aa03bd11a8f563fc881d7a2d3d02188978e0c50ad2d36c9acb88c3cbe185a3a474602bb46a2c8621f21a3f20a3e2e21df7c16f8a9d2ff671d7d",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64-openrc-20261102T160056Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64-openrc-20261026T164559Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64-openrc-20261102T160056Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1726,16 +1726,16 @@
             {
               "arch": "i686",
               "format": "tar.xz",
-              "file": "stage3-i686-ssemath-t64-openrc-20261027T170059Z.tar.xz",
-              "path": "releases/x86/autobuilds/20261027T170059Z/stage3-i686-ssemath-t64-openrc-20261027T170059Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-ssemath-t64-openrc-20261027T170059Z.tar.xz",
-              "size": 272068692,
+              "file": "stage3-i686-ssemath-t64-openrc-20261103T164556Z.tar.xz",
+              "path": "releases/x86/autobuilds/20261103T164556Z/stage3-i686-ssemath-t64-openrc-20261103T164556Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-ssemath-t64-openrc-20261103T164556Z.tar.xz",
+              "size": 271956840,
               "checksum": {
                 "type": "sha512",
-                "value": "d663fd2a1c3eb35afc9739371e5a41eb584467f8ec657ea652679491934716aac5ac4b734740708f7b7552178b70ffa2c876818efe6c12adb70c02a9bb05383c",
-                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-ssemath-t64-openrc-20261027T170059Z.tar.xz.DIGESTS"
+                "value": "47b970e1dd9c8fd859a90e404442ccc3708c3fa32b35af3dd25f743972b963a878c4403519b234ab27c148f87529266970536b7c007895aa1c2b3ef5f5d9bb4f",
+                "url": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-ssemath-t64-openrc-20261103T164556Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261027T170059Z/stage3-i686-ssemath-t64-openrc-20261027T170059Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/x86/autobuilds/20261103T164556Z/stage3-i686-ssemath-t64-openrc-20261103T164556Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
