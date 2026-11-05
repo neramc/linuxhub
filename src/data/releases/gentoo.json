@@ -10,7 +10,7 @@
     "https://www.gentoo.org/downloads/ppc/",
     "https://www.gentoo.org/downloads/s390/"
   ],
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "releases": [
     {
       "version": "20261101",
@@ -823,16 +823,16 @@
             {
               "arch": "ppc64le",
               "format": "tar.xz",
-              "file": "stage3-ppc64le-musl-hardened-systemd-20261028T014558Z.tar.xz",
-              "path": "releases/ppc/autobuilds/20261028T014558Z/stage3-ppc64le-musl-hardened-systemd-20261028T014558Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-ppc64le-musl-hardened-systemd-20261028T014558Z.tar.xz",
-              "size": 245820792,
+              "file": "stage3-ppc64le-musl-hardened-systemd-20261104T034557Z.tar.xz",
+              "path": "releases/ppc/autobuilds/20261104T034557Z/stage3-ppc64le-musl-hardened-systemd-20261104T034557Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-ppc64le-musl-hardened-systemd-20261104T034557Z.tar.xz",
+              "size": 245528360,
               "checksum": {
                 "type": "sha512",
-                "value": "bfd304bf073ec1a9010326ceeb2a124fa17ab5dac4c61805c03243ae3ad205ae890af734d54e43c55a888340422a65a1d3fa2f98893be8b83eb84e39774a5a38",
-                "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-ppc64le-musl-hardened-systemd-20261028T014558Z.tar.xz.DIGESTS"
+                "value": "204deb7ad8207e1ad29ca588e8ffacbf0af40d383e20202a0bca9540cb75ad43f7357d1f0e386b76d527dd55cd3bf4ed24fc198351823149d854ec621edd066d",
+                "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-ppc64le-musl-hardened-systemd-20261104T034557Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-ppc64le-musl-hardened-systemd-20261028T014558Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-ppc64le-musl-hardened-systemd-20261104T034557Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1496,16 +1496,16 @@
             {
               "arch": "ppc64le",
               "format": "tar.xz",
-              "file": "stage3-power9le-musl-hardened-openrc-20261028T014558Z.tar.xz",
-              "path": "releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-openrc-20261028T014558Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-openrc-20261028T014558Z.tar.xz",
-              "size": 231288816,
+              "file": "stage3-power9le-musl-hardened-openrc-20261104T034557Z.tar.xz",
+              "path": "releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-openrc-20261104T034557Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-openrc-20261104T034557Z.tar.xz",
+              "size": 231301200,
               "checksum": {
                 "type": "sha512",
-                "value": "cd095d07d68da6eb522869506615b37c263d9443a7ed007b0954c9c2902df65ee15746d53585083d665e44c2613046a11fe8ccd4841a12a29149ce4f08705552",
-                "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-openrc-20261028T014558Z.tar.xz.DIGESTS"
+                "value": "acc58234478d5d6ca3bdcff0cb236ee76f12f5c26f42316ea95c4e93b545c90991f1be69697121ab199135e6c731524163979b15c2f58f3de4951fa2f72ca532",
+                "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-openrc-20261104T034557Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-openrc-20261028T014558Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-openrc-20261104T034557Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1519,16 +1519,16 @@
             {
               "arch": "ppc64le",
               "format": "tar.xz",
-              "file": "stage3-power9le-musl-hardened-systemd-20261028T014558Z.tar.xz",
-              "path": "releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-systemd-20261028T014558Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-systemd-20261028T014558Z.tar.xz",
-              "size": 245064416,
+              "file": "stage3-power9le-musl-hardened-systemd-20261104T034557Z.tar.xz",
+              "path": "releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-systemd-20261104T034557Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-systemd-20261104T034557Z.tar.xz",
+              "size": 246228932,
               "checksum": {
                 "type": "sha512",
-                "value": "94e46a51983e5499ce10bda429965ff6d19e76a636f315b7d859184ca90dd2e5ba3092a33ab75a6310df6038d4d8a94c10d5a10c71d54e8cc50e8cf62997fcfb",
-                "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-systemd-20261028T014558Z.tar.xz.DIGESTS"
+                "value": "2a8d5e93fbdcb85158a73ee292e190cb47c0848e37014c319179c7358b535d63fe949203d456770dce4f1bf5af67bb5b1c02097bed5f287ce81ca623d5a80c32",
+                "url": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-systemd-20261104T034557Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261028T014558Z/stage3-power9le-musl-hardened-systemd-20261028T014558Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/stage3-power9le-musl-hardened-systemd-20261104T034557Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1611,16 +1611,16 @@
             {
               "arch": "riscv64",
               "format": "tar.xz",
-              "file": "stage3-rv64_lp64_musl-systemd-20261026T164559Z.tar.xz",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64_musl-systemd-20261026T164559Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64_musl-systemd-20261026T164559Z.tar.xz",
-              "size": 328134924,
+              "file": "stage3-rv64_lp64_musl-systemd-20261102T160056Z.tar.xz",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64_musl-systemd-20261102T160056Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64_musl-systemd-20261102T160056Z.tar.xz",
+              "size": 327609104,
               "checksum": {
                 "type": "sha512",
-                "value": "8bbd3cc792f156a692e070110dcdabf0102d3ac2598339b7b930d0111b62ec17d5fb21c28b0a174cf595da218324edbc4ba4c0e50314e3253737d9a758b6e20d",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64_musl-systemd-20261026T164559Z.tar.xz.DIGESTS"
+                "value": "16e8675640e154e9a944e35d1b31571954033518843759eaacd877b312c4e4c9803a8feafea3906d7813230edf9d7a281f3556163f953be053c8e9beeed70868",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64_musl-systemd-20261102T160056Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_lp64_musl-systemd-20261026T164559Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_lp64_musl-systemd-20261102T160056Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1680,16 +1680,16 @@
             {
               "arch": "riscv64",
               "format": "tar.xz",
-              "file": "stage3-rv64_multilib-openrc-20261026T164559Z.tar.xz",
-              "path": "releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_multilib-openrc-20261026T164559Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_multilib-openrc-20261026T164559Z.tar.xz",
-              "size": 367241852,
+              "file": "stage3-rv64_multilib-openrc-20261102T160056Z.tar.xz",
+              "path": "releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_multilib-openrc-20261102T160056Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_multilib-openrc-20261102T160056Z.tar.xz",
+              "size": 367480856,
               "checksum": {
                 "type": "sha512",
-                "value": "8ca872a1d4ea613a8d11c4cfe87d575251238f4e6fc2eb6f1081cfe90608ec59225c18b1cda12da4f986c6e588aebcc09e72f6e977a2441faef873d831dc7a50",
-                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_multilib-openrc-20261026T164559Z.tar.xz.DIGESTS"
+                "value": "45a35b5e04b7f1ed693adbefe29a808c3c340e5af085473dec5404f7418f353399fdf84be19c97caab8fd6b7e17c4ca835e153c742261df81b98ae761cbe019d",
+                "url": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_multilib-openrc-20261102T160056Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261026T164559Z/stage3-rv64_multilib-openrc-20261026T164559Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/riscv/autobuilds/20261102T160056Z/stage3-rv64_multilib-openrc-20261102T160056Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
