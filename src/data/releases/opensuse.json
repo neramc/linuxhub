@@ -6,7 +6,7 @@
     "https://get.opensuse.org/leap/16.1/",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "releases": [
     {
       "version": "20261103",
@@ -85,13 +85,13 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-DVD-s390x-Snapshot20261103-Media.iso",
+              "file": "openSUSE-Tumbleweed-DVD-s390x-Snapshot20261104-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-DVD-s390x-Current.iso",
-              "size": 3091845120,
+              "size": 3092066304,
               "checksum": {
                 "type": "sha256",
-                "value": "7b7d2014d2593ae827ca3b5cf1d8f9a7708cdf33af7ff59ed7c67050e81b5e41",
+                "value": "8bac765a3efba8e3ea37306ba96eeb486371928fa38aa746ba29eb0690f9aaca",
                 "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-DVD-s390x-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-DVD-s390x-Current.iso.sha256.asc",
@@ -123,13 +123,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-aarch64-Snapshot20261020-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-aarch64-Snapshot20261103-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso",
-              "size": 450416640,
+              "size": 455766016,
               "checksum": {
                 "type": "sha256",
-                "value": "33916688227949b0691502ed35f10329ce0047a7312239573bb99a93ce941f82",
+                "value": "743febf47c2ba098bcc84247e11ca8328e9c5d4e36aa4fc4e67fac100a62d9ff",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso.sha256.asc",
@@ -168,13 +168,13 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-s390x-Snapshot20261103-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-s390x-Snapshot20261104-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-NET-s390x-Current.iso",
-              "size": 204529664,
+              "size": 204589056,
               "checksum": {
                 "type": "sha256",
-                "value": "8ce0b04f558576c5f22402a40946d3d23f3ca423ff8f17b5741122ff5e7c429d",
+                "value": "b79e851c7219a3cfb857b19e89ed0593bed84e1c882b39536c7516b4f98a98e4",
                 "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-NET-s390x-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-NET-s390x-Current.iso.sha256.asc",
@@ -209,10 +209,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2",
-              "size": 273416192,
+              "size": 273809408,
               "checksum": {
                 "type": "sha256",
-                "value": "d2ed1e631c6f4a3b21b5eb8aaad097edc4c1422f43a9be8183a2591f4db2417b",
+                "value": "1b43022ec3da33fada990530c95ee41dbd453a120b0cb46eb36040c5ceba3d3f",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2.sha256.asc",
@@ -270,10 +270,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2",
-              "size": 288803840,
+              "size": 289449472,
               "checksum": {
                 "type": "sha256",
-                "value": "854a94040fdf699582745106f233dab3ca3a838aa8c851b4cf43f9f561a4c166",
+                "value": "459bcf3e03aff29f1852fe11a80c6496f264b3b00e8e09481932b8454c7930f5",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2.sha256.asc",
@@ -305,13 +305,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-GNOME-Live-aarch64-Snapshot20261020-Media.iso",
+              "file": "openSUSE-Tumbleweed-GNOME-Live-aarch64-Snapshot20261103-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-aarch64-Current.iso",
-              "size": 1435013120,
+              "size": 1442564096,
               "checksum": {
                 "type": "sha256",
-                "value": "990fbe9742320cc8e3aed9fd228c59ce611d7da0ebdf7c1809abd93059c95e8e",
+                "value": "6b5bd48381cc5cb67f71c3dc15c95f6bef6f22937f62b476fd0f80df71964eb7",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-aarch64-Current.iso.sha256.asc",
@@ -343,13 +343,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-KDE-Live-aarch64-Snapshot20261020-Media.iso",
+              "file": "openSUSE-Tumbleweed-KDE-Live-aarch64-Snapshot20261103-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-aarch64-Current.iso",
-              "size": 1441802240,
+              "size": 1443244032,
               "checksum": {
                 "type": "sha256",
-                "value": "139af2bd0d0a7e21546a4ef1797e07c924e2004731e501e48b2313ef567dd702",
+                "value": "8e9c08ac1df0e6a499486e565a7c3c4037e4401a80fd444d679de5b19a20dad2",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-aarch64-Current.iso.sha256.asc",
@@ -381,13 +381,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-XFCE-Live-aarch64-Snapshot20261020-Media.iso",
+              "file": "openSUSE-Tumbleweed-XFCE-Live-aarch64-Snapshot20261103-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-aarch64-Current.iso",
-              "size": 1400252416,
+              "size": 1403813888,
               "checksum": {
                 "type": "sha256",
-                "value": "721bbfeccaf72f9526017985bec3f546734392a37a6b3e7362e93c72a6d3c85c",
+                "value": "9945504f568d1c96d8033ee820374c8d9cc06681768393974235c362964d6930",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-aarch64-Current.iso.sha256.asc",
@@ -419,13 +419,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-Rescue-CD-aarch64-Snapshot20261020-Media.iso",
+              "file": "openSUSE-Tumbleweed-Rescue-CD-aarch64-Snapshot20261103-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-aarch64-Current.iso",
-              "size": 1069785088,
+              "size": 1075417088,
               "checksum": {
                 "type": "sha256",
-                "value": "bedd082e03ae6c9991dc15f459257ca67e92e613f36a58c5c110a7be01b85d51",
+                "value": "09f90cc50e7c3754d1c632a99eae7af4a49e83dae04eed01401600b7c19724f6",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-aarch64-Current.iso.sha256.asc",
