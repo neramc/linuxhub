@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-04",
+  "updated": "2026-11-06",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1398,14 +1398,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.lyrahosting.com/ubuntureleases/",
-      "country": "NL",
-      "name": "Lyra Hosting",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.nl.altushost.com/ubuntu-releases/",
       "country": "NL",
       "name": "AltusHost B.V.",
@@ -2033,14 +2025,6 @@
       "url": "https://mirror.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.lstn.net/ubuntu-releases/",
-      "country": "US",
-      "name": "Limestone Networks",
       "lat": null,
       "lon": null,
       "score": null

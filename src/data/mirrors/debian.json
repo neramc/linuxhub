@@ -3,7 +3,7 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "mirrors": [
     {
       "url": "https://debian.xfree.com.ar/debian-cd/",
@@ -225,6 +225,14 @@
       "url": "https://mirror.raiolanetworks.com/debian-cd/",
       "country": "ES",
       "name": "mirror.raiolanetworks.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://deb.syxpi.fr/debian-cd/",
+      "country": "FR",
+      "name": "deb.syxpi.fr",
       "lat": null,
       "lon": null,
       "score": null

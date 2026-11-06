@@ -4,7 +4,7 @@
     "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso.mirrorlist",
     "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso.mirrorlist"
   ],
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "mirrors": [
     {
       "url": "https://mirror.telepoint.bg/slackware/",
@@ -151,6 +151,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.lyrahosting.com/slackware/",
+      "country": "SA",
+      "name": "mirror.lyrahosting.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ftp.accum.se/mirror/slackware.com/",
       "country": "SE",
       "name": "ftp.accum.se",
@@ -170,14 +178,6 @@
       "url": "https://mirror.bahnhof.net/slackware/",
       "country": "SE",
       "name": "mirror.bahnhof.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ifconfig.com.ua/slackware/",
-      "country": "UA",
-      "name": "ifconfig.com.ua",
       "lat": null,
       "lon": null,
       "score": null
