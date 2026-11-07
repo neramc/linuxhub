@@ -1,0 +1,413 @@
+{
+  "slug": "antix",
+  "sources": [
+    "https://antixlinux.com/download/",
+    "https://sourceforge.net/projects/antix-linux/files/Final/",
+    "https://rsync-mxlinux.org/ANTIX/Final/",
+    "https://endoflife.date/antix",
+    "https://l2.mxrepo.com/torrents/"
+  ],
+  "updated": "2026-11-07",
+  "releases": [
+    {
+      "version": "26.1",
+      "channel": "stable",
+      "codename": "Stephen Kapos",
+      "releaseDate": "2026-09-29",
+      "eol": "2030-07-30",
+      "notesUrl": "https://antixlinux.com/antix-26-released/",
+      "editions": [
+        {
+          "id": "full",
+          "name": "Full",
+          "desktop": "icewm",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-26.1_x64-full.iso",
+              "path": "ANTIX/Final/antiX-26.1/antiX-26.1_x64-full.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-26.1/antiX-26.1_x64-full.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "293381af0b7c48399abe015da8f67d41fd34372b73c4aafcf53747fbaed22371",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_x64-full.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_x64-full.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/antiX-26.1_x64-full.iso.torrent"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-26.1_386-full.iso",
+              "path": "ANTIX/Final/antiX-26.1/antiX-26.1_386-full.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-26.1/antiX-26.1_386-full.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "6ec6f6522c69b4411d32f61e853709cdaf94df709c264b2a4d7de9724ce57fbc",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_386-full.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_386-full.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/antiX-26.1_386-full.iso.torrent"
+            }
+          ]
+        },
+        {
+          "id": "core",
+          "name": "Core",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-26.1_x64-core.iso",
+              "path": "ANTIX/Final/antiX-26.1/antiX-26.1_x64-core.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-26.1/antiX-26.1_x64-core.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "4f17a36c506a6771460545e18de6f5ea08f5664bca0e0bc285be52b41f5be762",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_x64-core.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_x64-core.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/antiX-26.1_x64-core.iso.torrent"
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-26.1_386-core.iso",
+              "path": "ANTIX/Final/antiX-26.1/antiX-26.1_386-core.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-26.1/antiX-26.1_386-core.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "5e07ed85acba1d2c33a7e41b089e80ce203eeb11d81af8c830e64e2e058ead7e",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_386-core.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-26.1/antiX-26.1_386-core.iso.sig",
+              "torrentUrl": "https://l2.mxrepo.com/torrents/antiX-26.1_386-core.iso.torrent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "23.2",
+      "channel": "stable",
+      "codename": "Arditi del Popolo",
+      "releaseDate": "2024-10-06",
+      "eol": "2028-06-30",
+      "notesUrl": "https://antixlinux.com/antix-23-released/",
+      "editions": [
+        {
+          "id": "full-sysvinit",
+          "name": "Full (sysVinit)",
+          "desktop": "icewm",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2_x64-full.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2_x64-full.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2_x64-full.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "1177e467b14ab9e006b755076680f4c321cb49b989c73a56458fc8050ce713de",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_x64-full.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_x64-full.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2_386-full.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2_386-full.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2_386-full.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "d5df9986e95bc707345779c833b3fc7aee364d58addae07ee19292a162af159b",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_386-full.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_386-full.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "full-runit",
+          "name": "Full (runit)",
+          "desktop": "icewm",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2-runit_x64-full.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-full.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-full.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "4440dec53f61c9caf0ea259e191689ebf2782d13d3de9076bea982aa5723cf98",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-full.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-full.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2-runit_386-full.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-full.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-full.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "ebfb4f2f7a6aa6f874d6269dfb653cb74117786da7511807c4a0e9fdd4f0ec67",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-full.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-full.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "base-sysvinit",
+          "name": "Base (sysVinit)",
+          "desktop": "icewm",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2_x64-base.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2_x64-base.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2_x64-base.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "1e07a1d11ee351f725171f4e05cb989c83185a8c3391162d090f13733217b965",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_x64-base.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_x64-base.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2_386-base.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2_386-base.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2_386-base.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "d5711ba969014b5bcbc3dbe99a0e9b1b4fbfb66df2e88dd2b3d54d05aa43ada0",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_386-base.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_386-base.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "base-runit",
+          "name": "Base (runit)",
+          "desktop": "icewm",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2-runit_x64-base.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-base.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-base.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "720dd239066766d2fb14e2e694fe235d94c40d6a3a9863141fd2a64053f6f8cb",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-base.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-base.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2-runit_386-base.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-base.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-base.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "4b38835888c2b906fa2887e784719571ccae76ecc4626ea5a732e6fde6c4fda3",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-base.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-base.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "core-sysvinit",
+          "name": "Core (sysVinit)",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2_x64-core.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2_x64-core.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2_x64-core.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "5ff254f46fd431c9070d08777299bd9505aed238614920ddb7a9ad1ca8c7efc2",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_x64-core.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_x64-core.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2_386-core.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2_386-core.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2_386-core.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "747ca326fa4f85c2a22d4f574033eccdb8a85cada180435cfcf890ed5dc9b887",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_386-core.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2_386-core.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "core-runit",
+          "name": "Core (runit)",
+          "desktop": "none",
+          "kind": "minimal",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2-runit_x64-core.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-core.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-core.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "3d12d96dc2344562799a4bc5ae021d295997bdbb6e9c6c79bec9d0f6f41d7e55",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-core.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_x64-core.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2-runit_386-core.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-core.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-core.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "997b8a2890b68a91e10543aff32be1d31e92ee4fb7cf86d24fd58e5fe57fbbdd",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-core.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit_386-core.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "net-sysvinit",
+          "name": "Net (sysVinit)",
+          "desktop": "none",
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2-net_x64-net.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2-net_x64-net.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2-net_x64-net.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "e5961678fbcdecf384c6f1137097d09c82b7e65f46ec3c2b90ab95b6a9c2e4c6",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2-net_x64-net.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2-net_x64-net.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2-net_386-net.iso",
+              "path": "ANTIX/Final/antiX-23.2/antiX-23.2-net_386-net.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/antiX-23.2-net_386-net.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a4d030a8ef6593881ffb8838c8337e0a88014244404ca903aa7049d39acfbd89",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2-net_386-net.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/antiX-23.2-net_386-net.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "net-runit",
+          "name": "Net (runit)",
+          "desktop": "none",
+          "kind": "netinst",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "antiX-23.2-runit-net_x64-net.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_x64-net.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_x64-net.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a2492e71381f15af5be024e60372712234e4cc2ba1ed090a6a792d5ad748c7de",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_x64-net.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_x64-net.iso.sig",
+              "torrentUrl": null
+            },
+            {
+              "arch": "i686",
+              "format": "iso",
+              "file": "antiX-23.2-runit-net_386-net.iso",
+              "path": "ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_386-net.iso",
+              "url": "https://sourceforge.net/projects/antix-linux/files/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_386-net.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "d0029dae020d0b41ab4063932b19b306fef607800fdbcbb2307e4a420b7a47b6",
+                "url": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_386-net.iso.sha256"
+              },
+              "signatureUrl": "https://rsync-mxlinux.org/ANTIX/Final/antiX-23.2/runit-antiX-23.2/antiX-23.2-runit-net_386-net.iso.sig",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
