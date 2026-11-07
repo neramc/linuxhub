@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1638,6 +1638,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.truenetwork.ru/ubuntu-releases/",
+      "country": "RU",
+      "name": "Truenetwork",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.yandex.ru/ubuntu-releases/",
       "country": "RU",
       "name": "Yandex",
@@ -2097,6 +2105,14 @@
       "url": "https://mirror.us.leaseweb.net/ubuntu-releases/",
       "country": "US",
       "name": "LeaseWeb USA, Inc",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wayne.edu/ubuntu/releases/",
+      "country": "US",
+      "name": "Wayne State University",
       "lat": null,
       "lon": null,
       "score": null

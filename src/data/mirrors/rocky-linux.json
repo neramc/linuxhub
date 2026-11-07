@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -510,6 +510,14 @@
       "score": null
     },
     {
+      "url": "https://it1.mirror.vhosting-it.com/rockylinux/",
+      "country": "IT",
+      "name": "it1.mirror.vhosting-it.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://it2.mirror.vhosting-it.com/rockylinux/",
       "country": "IT",
       "name": "it2.mirror.vhosting-it.com",
@@ -953,14 +961,6 @@
       "url": "https://mirror.cogentco.com/pub/linux/rocky/",
       "country": "US",
       "name": "mirror.cogentco.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.cs.vt.edu/pub/rocky/",
-      "country": "US",
-      "name": "mirror.cs.vt.edu",
       "lat": null,
       "lon": null,
       "score": null
