@@ -21,6 +21,7 @@ The approved plan lives in `docs/plan.md` (Korean). Decisions are logged in
 | Styling | Plain CSS with libadwaita tokens (`src/styles/`), Astro scoped styles. No Tailwind, no UI framework runtime |
 | Client JS | Small vanilla TS islands only where needed (download wizard, filters, search, quiz, compare, copy, theme) |
 | Search | `astro-pagefind` (index built in `astro:build:done`) with a custom Adwaita dialog |
+| SEO | `/sitemap.xml` and `/robots.txt` routes, search-console tokens via `astro:env`, IndexNow after production deploys (`docs/seo.md`, ADR-0020) |
 | Deploy | Vercel via `@astrojs/vercel` (`imageService: false`, `staticHeaders: true`), region `icn1` |
 | Data refresh | `scripts/sync/` run by `.github/workflows/sync.yml`, writes `src/data/**` and commits |
 | Lint / tests | Biome, Vitest (`tests/`, `scripts/**/*.test.ts`), Playwright + axe (`e2e/`) |

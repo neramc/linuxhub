@@ -5,7 +5,7 @@
 | 항목 | 값 |
 |---|---|
 | 호스팅 | Vercel. 프레임워크 프리셋은 Astro이고, `vercel.json`에 설정되어 있습니다 |
-| 설치 / 빌드 | `bun install --frozen-lockfile` / `bun run build` (Astro + Pagefind + sitemap) |
+| 설치 / 빌드 | `bun install --frozen-lockfile` / `bun run build` (Astro + Pagefind + `/sitemap.xml`) |
 | 출력 | 정적 페이지 전체(`.vercel/output/static`)와 서버 함수 1개(`/api/geo`, `_render.func`) |
 | 함수 리전 | `icn1`(서울)로, `vercel.json`의 `regions`에 지정합니다 |
 | 프로덕션 브랜치 | `main`. 그 밖의 브랜치와 PR은 프리뷰로 배포됩니다 |
@@ -21,6 +21,7 @@
    - `SITE_URL`: 사이트의 정식 주소(예: `https://linuxhub.example`). canonical, hreflang, sitemap, OG 이미지 URL에 쓰입니다. 비워 두면 Vercel이 주는 프로덕션 도메인(`VERCEL_PROJECT_PRODUCTION_URL`)을 씁니다.
    - 둘 다 없으면 Vercel 빌드가 실패합니다. 이 경우 Settings → Environment Variables에서 **Automatically expose System Environment Variables**가 켜져 있는지 확인합니다. canonical이 `localhost`로 배포되지 않게 하려는 장치입니다.
 3. **도메인**: Project → Settings → Domains에서 연결합니다. 연결한 뒤 `SITE_URL`도 그 주소로 바꿉니다.
+   - 정식 도메인은 `linuxhub.kro.kr`입니다. 검색엔진 등록용 환경 변수(소유 확인 코드)와 등록 절차는 `docs/seo.md`에 있습니다.
 4. **GitHub 저장소 설정**
    - **Settings → Actions → General → Workflow permissions**를 **Read and write**로 바꿉니다. 동기화 워크플로가 데이터를 커밋하고 이슈를 열려면 필요합니다.
    - 선택 사항으로 **Variables**에 `SITE_URL`을 넣으면 동기화 봇의 User-Agent에 사이트 주소가 들어갑니다.
@@ -50,7 +51,8 @@ SITE=https://<도메인>
 curl -sI $SITE/ | grep -i -E "content-security-policy|strict-transport|x-frame"
 curl -s $SITE/api/geo/                     # {"cc":"KR","lat":…,"lon":…}, Cache-Control: private, no-store
 curl -sI $SITE/distros/fedora/ | head -1   # 200
-curl -s $SITE/sitemap-index.xml | head -3
+curl -s $SITE/sitemap.xml | head -3
+curl -s $SITE/robots.txt
 curl -s $SITE/rss.xml | head -5
 curl -sI $SITE/og/fedora.png | grep -i content-type   # image/png
 ```

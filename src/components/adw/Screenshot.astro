@@ -8,6 +8,10 @@
  * it can never become the page's LCP element (ADR-0018).
  *
  *   <Screenshot src={image} alt="…">Fedora Workstation 45 · <span>credit</span></Screenshot>
+ *
+ * In a gallery (`href`), the image also links to the page the caption's own
+ * link names; that copy of the link is out of the tab order and hidden from
+ * assistive technology, which reach the caption's link instead.
  */
 import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
@@ -16,24 +20,56 @@ interface Props {
   src: ImageMetadata;
   /** What the image shows, for people who cannot see it. */
   alt: string;
+  /** The image's rendered width per viewport (default: a full-width 800px figure). */
+  sizes?: string | undefined;
+  /** Candidate widths; those above the source's width are dropped. */
+  widths?: readonly number[] | undefined;
+  /** Makes the image a pointer shortcut to this URL (see above). */
+  href?: string | undefined;
+  class?: string | undefined;
 }
 
-const { src, alt } = Astro.props;
-const widths = [480, 800, 1280].filter((w) => w <= src.width);
+const {
+  src,
+  alt,
+  sizes = "(width >= 1000px) 800px, 100vw",
+  widths: candidates = [480, 800, 1280],
+  href,
+  class: className,
+} = Astro.props;
+const widths = candidates.filter((w) => w <= src.width);
 ---
 
-<figure class="adw-screenshot">
-  <Picture
-    src={src}
-    alt={alt}
-    formats={["avif"]}
-    fallbackFormat="webp"
-    widths={widths.length ? widths : [src.width]}
-    sizes="(width >= 1000px) 800px, 100vw"
-    loading="lazy"
-    decoding="async"
-    class="adw-screenshot-image"
-  />
+<figure class:list={["adw-screenshot", className]}>
+  {
+    href ? (
+      <a href={href} class="adw-screenshot-link" tabindex="-1" aria-hidden="true">
+        <Picture
+          src={src}
+          alt={alt}
+          formats={["avif"]}
+          fallbackFormat="webp"
+          widths={widths.length ? widths : [src.width]}
+          sizes={sizes}
+          loading="lazy"
+          decoding="async"
+          class="adw-screenshot-image"
+        />
+      </a>
+    ) : (
+      <Picture
+        src={src}
+        alt={alt}
+        formats={["avif"]}
+        fallbackFormat="webp"
+        widths={widths.length ? widths : [src.width]}
+        sizes={sizes}
+        loading="lazy"
+        decoding="async"
+        class="adw-screenshot-image"
+      />
+    )
+  }
   <figcaption class="adw-screenshot-caption caption"><slot /></figcaption>
 </figure>
 
@@ -45,7 +81,8 @@ const widths = [480, 800, 1280].filter((w) => w <= src.width);
     margin: 0;
   }
 
-  .adw-screenshot :global(picture) {
+  .adw-screenshot :global(picture),
+  .adw-screenshot-link {
     display: block;
   }
 

@@ -1,9 +1,7 @@
 // @ts-check
-import { existsSync } from "node:fs";
 import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import pagefind from "astro-pagefind";
 
 /**
@@ -22,20 +20,6 @@ if (process.env.VERCEL && site.startsWith("http://localhost"))
     "No site URL on Vercel: set SITE_URL or expose system environment variables (VERCEL_PROJECT_PRODUCTION_URL)",
   );
 
-/**
- * Install guides that are not written yet are short noindex pages (ADR-0016)
- * and stay out of the sitemap. A guide is written when
- * src/content/distro-docs/<slug>/<locale>/install.mdx exists.
- * @param {string} page
- */
-function isListed(page) {
-  const match = /^\/(?:(en)\/)?distros\/([^/]+)\/install\/$/.exec(new URL(page).pathname);
-  if (!match) return true;
-  const [, en, slug] = match;
-  const doc = `./src/content/distro-docs/${slug}/${en ? "en" : "ko"}/install.mdx`;
-  return existsSync(new URL(doc, import.meta.url));
-}
-
 export default defineConfig({
   site,
   output: "static",
@@ -45,14 +29,33 @@ export default defineConfig({
     maxDuration: 10,
     staticHeaders: true,
   }),
-  integrations: [
-    mdx(),
-    sitemap({
-      i18n: { defaultLocale: "ko", locales: { ko: "ko-KR", en: "en-US" } },
-      filter: isListed,
-    }),
-    pagefind(),
-  ],
+  integrations: [mdx(), pagefind()],
+  /**
+   * Search-console ownership checks (docs/seo.md, ADR-0020): the tokens Google
+   * Search Console, Naver Search Advisor and Bing Webmaster Tools give for the
+   * HTML-tag method, and Daum's robots.txt value. Set them in Vercel; a page
+   * without them simply has no tag. Read at build time.
+   */
+  env: {
+    schema: {
+      GOOGLE_SITE_VERIFICATION: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+      }),
+      NAVER_SITE_VERIFICATION: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+      }),
+      BING_SITE_VERIFICATION: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+      }),
+      DAUM_WEBMASTER_TOOL: envField.string({ context: "server", access: "public", optional: true }),
+    },
+  },
   i18n: {
     locales: ["ko", "en"],
     defaultLocale: "ko",

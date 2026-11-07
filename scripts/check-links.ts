@@ -2,6 +2,9 @@
  * Checks every internal link of the static build: each root-relative href/src
  * must be a built file or page, and each same-page "#fragment" must name an
  * id on that page. /api/ routes are on-demand functions and are skipped.
+ * Also checks sitemap.xml against the build (ADR-0020): every URL in it is a
+ * built page, and every built page that search engines may index (no
+ * robots noindex) is in it.
  * Usage: bun scripts/check-links.ts [dist/client]
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -53,4 +56,27 @@ for (const file of pages) {
 console.log(`${pages.length} pages, ${links} internal links, ${broken.size} broken`);
 for (const [target, from] of broken)
   console.log(`  ${target} (on ${from.length} page(s), e.g. ${from[0]})`);
-process.exit(broken.size ? 1 : 0);
+
+// sitemap.xml ⇄ indexable pages.
+const sitemapFile = join(root, "sitemap.xml");
+const sitemap = existsSync(sitemapFile) ? readFileSync(sitemapFile, "utf8") : "";
+const listed = new Set(
+  [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc = ""]) => new URL(loc).pathname),
+);
+const indexable = pages
+  .filter((file) => !/<meta name="robots" content="noindex/.test(readFileSync(file, "utf8")))
+  .map((file) =>
+    file
+      .slice(root.length)
+      .replace(/index\.html$/, "")
+      .replace(/\.html$/, "/"),
+  )
+  .filter((path) => path !== "/404/");
+const unlisted = indexable.filter((path) => !listed.has(path));
+const missing = [...listed].filter((path) => !built(path));
+console.log(
+  `sitemap.xml: ${listed.size} URLs, ${unlisted.length} indexable pages missing, ${missing.length} not built`,
+);
+for (const path of unlisted) console.log(`  not in sitemap: ${path}`);
+for (const path of missing) console.log(`  in sitemap, not built: ${path}`);
+process.exit(broken.size || unlisted.length || missing.length || !listed.size ? 1 : 0);

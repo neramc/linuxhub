@@ -1,0 +1,50 @@
+name: IndexNow
+
+# After each successful production deploy (Vercel reports it as a GitHub
+# deployment), tells IndexNow which pages changed since the previous
+# successful production deploy, so Bing, Naver and the other engines that
+# share IndexNow submissions re-crawl them soon (ADR-0020, docs/seo.md).
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+  deployments: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    if: github.event.deployment_status.state == 'success' && startsWith(github.event.deployment.environment, 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+      # The newest earlier deployment to the same environment whose latest
+      # status is success, at another commit; none on the first deploy.
+      - name: Previous production commit
+        id: previous
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+          CURRENT_ID: ${{ github.event.deployment.id }}
+          CURRENT_SHA: ${{ github.event.deployment.sha }}
+        run: |
+          sha=""
+          while read -r id dsha; do
+            [ "$id" = "$CURRENT_ID" ] || [ "$dsha" = "$CURRENT_SHA" ] && continue
+            state=$(gh api "repos/$GITHUB_REPOSITORY/deployments/$id/statuses?per_page=1" --jq '.[0].state // ""')
+            if [ "$state" = "success" ] && git cat-file -e "$dsha^{commit}" 2>/dev/null; then sha=$dsha; break; fi
+          done < <(gh api -X GET "repos/$GITHUB_REPOSITORY/deployments" -f environment="$ENVIRONMENT" -F per_page=20 --jq '.[] | "\(.id) \(.sha)"')
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "previous production commit: ${sha:-none}"
+      - name: Submit changed pages
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://linuxhub.kro.kr' }}
+        run: bun scripts/seo/indexnow.ts "${{ steps.previous.outputs.sha }}" "${{ github.event.deployment.sha }}"

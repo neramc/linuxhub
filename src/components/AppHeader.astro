@@ -28,6 +28,8 @@ interface Props {
   name: string;
   /** The page's h1, e.g. "Fedora Linux 설치 가이드" (default: `name`). */
   title?: string | undefined;
+  /** The name as the page's language writes it ("우분투"), dim after the title in the h1. */
+  altName?: string | undefined;
   tagline?: string | undefined;
   /** A caption under the tagline; several facts wrap as separate spans
       (no middle dots, SPEC §13). */
@@ -36,7 +38,7 @@ interface Props {
   size?: 64 | 128 | undefined;
 }
 
-const { logo, name, title = name, tagline, meta = [], size = 128 } = Astro.props;
+const { logo, name, title = name, altName, tagline, meta = [], size = 128 } = Astro.props;
 const facts = typeof meta === "string" ? [meta] : meta;
 const large = size === 128;
 // A conditional `slot="actions"` still counts as a slot; render the row only
@@ -56,7 +58,10 @@ const actions = Astro.slots.has("actions") ? (await Astro.slots.render("actions"
       imgAttrs={{ "data-pagefind-meta": "image[src]" }}
     />
     <div class="app-header-text">
-      <h1>{title}</h1>
+      {/* The search index keeps the title alone (results show the name, not the alt name). */}
+      <h1 data-pagefind-meta={altName ? `title:${title}` : undefined}>
+        {title}{altName && <> <span class="app-header-alt-name">{altName}</span></>}
+      </h1>
       {tagline && <p class="dim-label" data-pagefind-meta="tagline">{tagline}</p>}
       {
         facts.length > 0 && (
@@ -97,6 +102,11 @@ const actions = Astro.slots.has("actions") ? (await Astro.slots.render("actions"
     display: grid;
     gap: var(--space-1);
     min-inline-size: 0;
+  }
+
+  .app-header-alt-name {
+    font-weight: 400;
+    opacity: var(--dim-opacity);
   }
 
   .app-header-meta {
