@@ -4,8 +4,16 @@
     "https://mirrors.slackware.com/slackware/slackware-iso/slackware64-15.0-iso/slackware64-15.0-install-dvd.iso.mirrorlist",
     "https://mirrors.slackware.com/slackware/slackware-iso/slackware-15.0-iso/slackware-15.0-install-dvd.iso.mirrorlist"
   ],
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "mirrors": [
+    {
+      "url": "https://mirror.telepoint.bg/slackware/",
+      "country": "BG",
+      "name": "mirror.telepoint.bg",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
     {
       "url": "https://ftp.slackware-brasil.com.br/",
       "country": "BR",
@@ -122,6 +130,14 @@
       "url": "https://mirrors.nxthost.com/slackware/",
       "country": "RO",
       "name": "mirrors.nxthost.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror1.sox.rs/slackware/",
+      "country": "RS",
+      "name": "mirror1.sox.rs",
       "lat": null,
       "lon": null,
       "score": null

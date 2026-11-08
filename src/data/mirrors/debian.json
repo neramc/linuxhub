@@ -3,7 +3,7 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-11-06",
+  "updated": "2026-11-08",
   "mirrors": [
     {
       "url": "https://debian.xfree.com.ar/debian-cd/",
@@ -105,6 +105,14 @@
       "url": "https://mirror.dkm.cz/debian-cd/",
       "country": "CZ",
       "name": "mirror.dkm.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian-cd.repulsive.eu/",
+      "country": "DE",
+      "name": "debian-cd.repulsive.eu",
       "lat": null,
       "lon": null,
       "score": null

@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "mirrors": [
     {
       "url": "https://fedora.zero.com.ar/linux/",
@@ -633,6 +633,14 @@
       "url": "https://distrohub.kyiv.ua/fedora/fedora/linux/",
       "country": "UA",
       "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://fedora.ip-connect.info/linux/",
+      "country": "UA",
+      "name": "fedora.ip-connect.info",
       "lat": null,
       "lon": null,
       "score": null

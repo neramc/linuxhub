@@ -7,7 +7,7 @@
     "https://mirrors.mageia.org/api/mageia.10.i686.list",
     "https://mirrors.mageia.org/api/mageia.10.x86_64.list"
   ],
-  "updated": "2026-11-05",
+  "updated": "2026-11-08",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/pub/mageia/",
@@ -170,6 +170,14 @@
       "score": null
     },
     {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/sunsite/distributions/mageia/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
+      "lat": 52.21,
+      "lon": 20.98,
+      "score": null
+    },
+    {
       "url": "https://mirror.yandex.ru/mageia/",
       "country": "RU",
       "name": "mirror.yandex.ru",
@@ -247,14 +255,6 @@
       "name": "us.mirrors.cicku.me",
       "lat": 45.4784,
       "lon": -122.578,
-      "score": null
-    },
-    {
-      "url": "https://ftp.icm.edu.pl/pub/Linux/sunsite/distributions/mageia/",
-      "country": null,
-      "name": "ftp.icm.edu.pl",
-      "lat": null,
-      "lon": null,
       "score": null
     }
   ]

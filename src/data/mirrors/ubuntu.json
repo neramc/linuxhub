@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -950,6 +950,14 @@
       "score": null
     },
     {
+      "url": "https://linux.domainesia.com/ubuntu/iso-release/",
+      "country": "ID",
+      "name": "DomaiNesia",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.citrahost.com/ubuntu-releases/",
       "country": "ID",
       "name": "Citrahost by Citranet",
@@ -977,6 +985,14 @@
       "url": "https://mirror.papua.go.id/ubuntu-releases/",
       "country": "ID",
       "name": "Pemerintah Provinsi Papua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.unair.ac.id/ubuntu-cd/",
+      "country": "ID",
+      "name": "Universitas Airlangga",
       "lat": null,
       "lon": null,
       "score": null
@@ -1911,14 +1927,6 @@
     },
     {
       "url": "https://cofractal-sea.mm.fcix.net/ubuntu-releases/",
-      "country": "US",
-      "name": "Fremont Cabal Internet Exchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://coresite-atl.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
       "lat": null,
