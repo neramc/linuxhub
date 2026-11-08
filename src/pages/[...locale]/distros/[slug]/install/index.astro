@@ -9,7 +9,7 @@
  * Distros without a written guide get a short, honest page instead (SPEC
  * §15, ADR-0016): one sentence and one action, the official install docs.
  * It is noindex, stays out of the search index (no data-pagefind-body) and
- * out of the sitemap (astro.config.mjs); the route stays so old links work.
+ * out of the sitemap (src/pages/sitemap.xml.ts); the route stays so old links work.
  */
 import { render } from "astro:content";
 import AppHeader from "~/components/AppHeader.astro";
@@ -23,6 +23,7 @@ import Toc from "~/components/Toc.astro";
 import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistroDoc, getDistros } from "~/lib/catalog";
+import { distroLabel, siteOrganization } from "~/lib/seo";
 import { DIFFICULTIES, INSTALLERS, SECURE_BOOT } from "~/lib/taxonomy";
 import "~/styles/prose.css";
 
@@ -44,7 +45,9 @@ const d = distro.data;
 const doc = await getDistroDoc(slug, locale, "install");
 const rendered = doc ? await render(doc) : null;
 const distroHref = localizePath(`/distros/${slug}/`, locale);
-const title = t("install.title", { name: d.name });
+// Korean pages lead with the Hangul name Korean searches use (ADR-0020).
+const title = t("install.title", { name: distroLabel(d.name, d.nameKo, locale) });
+const site = Astro.site ?? Astro.url;
 const meta = [
   t("install.installer", { installer: INSTALLERS[d.installer][locale] }),
   t("install.secureBoot", { secureBoot: SECURE_BOOT[d.secureBoot][locale] }),
@@ -59,7 +62,15 @@ const jsonLd = doc
         description: doc.data.description,
         inLanguage: locale,
         dateModified: doc.data.lastReviewed,
-        about: d.name,
+        about: {
+          "@type": "SoftwareApplication",
+          name: d.name,
+          applicationCategory: "OperatingSystem",
+        },
+        url: new URL(localizePath(`/distros/${slug}/install/`, locale), site).href,
+        image: new URL(`/og/${slug}.png`, site).href,
+        author: siteOrganization(site, t("site.name")),
+        publisher: siteOrganization(site, t("site.name")),
       },
     ]
   : [];
@@ -71,6 +82,7 @@ const jsonLd = doc
   description={doc?.data.description ?? t("install.description", { name: d.name })}
   mono={Boolean(rendered)}
   noindex={!rendered}
+  modified={doc?.data.lastReviewed}
   jsonLd={jsonLd}
   image={`/og/${slug}.png`}
 >

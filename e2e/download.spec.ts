@@ -279,7 +279,7 @@ test("an install guide that is not written yet is a noindex page with one action
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
   // Not in the search index (Pagefind indexes only pages with a body) or the sitemap.
   await expect(page.locator("[data-pagefind-body]")).toHaveCount(0);
-  const sitemap = await (await request.get("/sitemap-0.xml")).text();
+  const sitemap = await (await request.get("/sitemap.xml")).text();
   expect(sitemap).toContain("/distros/fedora/install/");
   expect(sitemap).not.toContain("/distros/ubuntu/install/");
   // One h1, no h2 above the section size (title-2, 22px), one action: the official docs.

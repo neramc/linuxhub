@@ -5,9 +5,9 @@
 export const en = {
   site: {
     name: "Linuxhub",
-    tagline: "Find, download and install the right Linux",
+    tagline: "Find, compare and download Linux distributions",
     description:
-      "A clean catalog of popular Linux distributions: short overviews, official downloads from the nearest mirror, and step-by-step install guides.",
+      "Compare popular Linux distributions such as Ubuntu, Fedora, Linux Mint, Debian and Arch Linux, download them from the nearest official mirror, and learn how to install them.",
   },
   nav: {
     distros: "Distributions",
@@ -70,8 +70,19 @@ export const en = {
     failed: "Couldn’t copy. The text is selected so you can copy it yourself.",
   },
   home: {
-    title: "Find the Linux that fits you",
+    title: "Find the Linux distribution that fits you",
     browse: "All distributions",
+    seeAll: "See all {count}",
+    screenshots: "Desktops at a glance",
+    uses: {
+      beginner: "Good first distros",
+      gaming: "For gaming",
+      lightweight: "Light distros for older PCs",
+      server: "For servers and businesses",
+    },
+    security: "Security and privacy",
+    desktops: "Browse by desktop",
+    desktopGuide: "About desktop environments",
     featured: "Recommended",
     recent: "New releases",
     allReleases: "All release news",
@@ -133,6 +144,12 @@ export const en = {
     related: "Similar distributions",
     dataStale: "We couldn’t reach the official source recently; the data shown may be out of date.",
     breadcrumb: "Distributions",
+    seoTitle: "{name} {version}: download and install",
+    seoTitleNoVersion: "{name}: download and install",
+    seoDescription:
+      "{name}: {tagline}. Get the latest version ({version}) from the nearest official mirror, and see what sets it apart and how to install it.",
+    seoDescriptionNoVersion:
+      "{name}: {tagline}. Download it from the nearest official mirror, and see what sets it apart and how to install it.",
   },
   install: {
     title: "How to install {name}",

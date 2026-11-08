@@ -1,9 +1,10 @@
 ---
 /**
  * A distro's official logo on a GNOME app-icon tile (AppTile, ADR-0014).
- * Rendered as a cached <img> (never inlined) with fixed dimensions, so there is
- * no layout shift. `size` snaps to the nearest tile size (24, 36, 48, 64, 96,
- * 128, 160). Wordmark logos (aspect ratio ≥ 2, read from the file at build
+ * Rendered as an <img> with fixed dimensions, so there is no layout shift: an
+ * eager (first-screen) logo may be inlined as a data: URI when small, a lazy
+ * one is always its cached file (src/lib/logos.ts). `size` snaps to the
+ * nearest tile size (24, 36, 48, 64, 96, 128, 160). Wordmark logos (aspect ratio ≥ 2, read from the file at build
  * time) get the wider logo box automatically.
  */
 import { readFileSync } from "node:fs";
@@ -62,7 +63,7 @@ function aspectRatio(name: string): number {
 ---
 
 <AppTile
-  src={logoUrl(file)}
+  src={logoUrl(file, { inline: eager })}
   alt={decorative ? "" : name}
   size={nearestTileSize(size)}
   narrowSize={narrowSize}

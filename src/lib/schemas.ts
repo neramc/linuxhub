@@ -84,6 +84,16 @@ export const distroSchema = z.object({
     source: url.optional(),
   }),
   tagline: localized,
+  /**
+   * The name as Korean writers spell it in Hangul (우분투, 리눅스 민트), when
+   * one is in common use: shown on the Korean distro page and used in its
+   * title and description, since Korean searches use it (ADR-0020). Left out
+   * when Korean text keeps the Latin name (KDE neon, PCLinuxOS).
+   */
+  nameKo: z
+    .string()
+    .regex(/\p{Script=Hangul}/u)
+    .optional(),
   /** Search aliases: romanizations, Hangul spellings, abbreviations. */
   aliases: z.array(z.string()).default([]),
   logo: z.object({

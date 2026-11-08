@@ -20,6 +20,7 @@ import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import { getChapters, readingMinutes } from "~/lib/learn";
+import { siteOrganization } from "~/lib/seo";
 import "~/styles/prose.css";
 
 export async function getStaticPaths() {
@@ -51,6 +52,7 @@ const related = chapter.data.related
   .slice(0, 3);
 const href = (s: string) => localizePath(`/learn/${s}/`, locale);
 const minutes = readingMinutes(chapter.body, locale);
+const site = Astro.site ?? Astro.url;
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -59,12 +61,28 @@ const jsonLd = [
     description: chapter.data.description,
     inLanguage: locale,
     dateModified: chapter.data.lastReviewed,
-    isPartOf: { "@type": "CreativeWorkSeries", name: t("learn.title") },
+    url: new URL(href(slug), site).href,
+    image: new URL("/og/learn.png", site).href,
+    author: siteOrganization(site, t("site.name")),
+    publisher: siteOrganization(site, t("site.name")),
+    isPartOf: {
+      "@type": "CreativeWorkSeries",
+      name: t("learn.title"),
+      url: new URL(localizePath("/learn/", locale), site).href,
+    },
   },
 ];
 ---
 
-<Base locale={locale} title={chapter.data.title} description={chapter.data.description} mono jsonLd={jsonLd} image="/og/learn.png">
+<Base
+  locale={locale}
+  title={chapter.data.title}
+  description={chapter.data.description}
+  mono
+  jsonLd={jsonLd}
+  image="/og/learn.png"
+  modified={chapter.data.lastReviewed}
+>
   <div class="container page" data-pagefind-body data-pagefind-meta="type:guide">
     <header class="page-header">
       <h1>{chapter.data.title}</h1>

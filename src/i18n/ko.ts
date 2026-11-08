@@ -4,9 +4,9 @@ import type { DictionaryShape } from "./en";
 export const ko: DictionaryShape = {
   site: {
     name: "Linuxhub",
-    tagline: "나에게 맞는 리눅스를 찾고, 내려받고, 설치하기",
+    tagline: "리눅스 배포판 추천·비교·다운로드",
     description:
-      "인기 리눅스 배포판을 한눈에 비교하고, 가장 가까운 공식 미러에서 내려받고, 단계별 설치 가이드를 따라 설치하세요.",
+      "우분투, 페도라, 리눅스 민트, 데비안, 아치 리눅스 등 인기 리눅스 배포판을 비교하고, 가장 가까운 공식 미러에서 내려받고, 설치 방법까지 확인하세요.",
   },
   nav: {
     distros: "배포판",
@@ -69,8 +69,19 @@ export const ko: DictionaryShape = {
     failed: "복사하지 못했습니다. 텍스트를 선택해 두었으니 직접 복사하세요.",
   },
   home: {
-    title: "나에게 맞는 리눅스를 찾아보세요",
+    title: "나에게 맞는 리눅스 배포판을 찾아보세요",
     browse: "배포판 둘러보기",
+    seeAll: "{count}개 모두 보기",
+    screenshots: "데스크톱 둘러보기",
+    uses: {
+      beginner: "처음 쓰기 좋은 배포판",
+      gaming: "게임용 배포판",
+      lightweight: "오래된 PC를 위한 가벼운 배포판",
+      server: "서버와 기업용 배포판",
+    },
+    security: "보안과 프라이버시",
+    desktops: "데스크톱 환경별로 둘러보기",
+    desktopGuide: "데스크톱 환경 알아보기",
     featured: "추천 배포판",
     recent: "새 릴리스",
     allReleases: "릴리스 소식 전체 보기",
@@ -132,6 +143,12 @@ export const ko: DictionaryShape = {
     related: "비슷한 배포판",
     dataStale: "최근 공식 소스에 접속하지 못해 표시된 정보가 오래되었을 수 있습니다.",
     breadcrumb: "배포판",
+    seoTitle: "{name} {version} 다운로드와 설치",
+    seoTitleNoVersion: "{name} 다운로드와 설치",
+    seoDescription:
+      "{name}: {tagline}. 최신 버전({version})을 가장 가까운 공식 미러에서 내려받고, 특징과 설치 방법을 확인하세요.",
+    seoDescriptionNoVersion:
+      "{name}: {tagline}. 가장 가까운 공식 미러에서 내려받고, 특징과 설치 방법을 확인하세요.",
   },
   install: {
     title: "{name} 설치 가이드",

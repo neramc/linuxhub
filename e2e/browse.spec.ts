@@ -10,7 +10,8 @@ test("home → catalog → distro detail", async ({ page }) => {
     .first()
     .click();
   await expect(page).toHaveURL(/\/distros\/fedora\/$/);
-  await expect(page.locator("h1")).toHaveText("Fedora Linux");
+  // The Korean page shows the Hangul name after the name (ADR-0020).
+  await expect(page.locator("h1")).toHaveText("Fedora Linux 페도라");
   await expect(page.getByRole("heading", { name: "한눈에 보기" })).toBeVisible();
 });
 

@@ -1,33 +1,42 @@
 ---
 /**
- * Home (ADR-0014): the "popular today" carousel first, then use-case chips,
- * recommended distros (not repeating the carousel), then four lists, side by
- * side from about 900px: new releases (one row per distro, flavors grouped)
- * and support ending soon (from the synced end-of-life dates), a start for
- * newcomers (the finder, first guide chapters, compare) and the largest
- * families with their real counts.
+ * Home (ADR-0014, ADR-0020), as long as Flathub's: the "popular today"
+ * carousel first, then use-case chips, recommended distros (not repeating
+ * the carousel; their logos inline, like the carousel's), one card section
+ * per common use (most viewed first, no distro twice across the card
+ * sections), desktop screenshots (a weekly rotation; low enough that they
+ * do not load with the first screen), then six lists, side by side from
+ * about 900px: new releases (one row per distro, flavors grouped) and
+ * support ending soon (from the synced end-of-life dates), a start for
+ * newcomers (the finder, first guide chapters, compare) and the security
+ * and privacy distros, and the largest families and desktops with their
+ * real counts.
  */
 import ActionRow from "~/components/adw/ActionRow.astro";
 import BoxedList from "~/components/adw/BoxedList.astro";
 import Button from "~/components/adw/Button.astro";
+import DesktopGallery from "~/components/DesktopGallery.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import PopularCarousel from "~/components/PopularCarousel.astro";
 import UseCaseChips from "~/components/UseCaseChips.astro";
-import { localePaths, localizePath, splitAround, useTranslations } from "~/i18n";
+import { localePaths, localizePath, type MessageKey, splitAround, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import {
   endingSupport,
   formatDate,
   getDistros,
   getHistory,
+  getPopularity,
   getReleases,
   getTodaysDistros,
   groupReleases,
   latestReleaseGroups,
 } from "~/lib/catalog";
+import { byPopularity, desktopGroups, useSections, weeklyRotation } from "~/lib/home";
 import { getChapters } from "~/lib/learn";
-import { FAMILIES, keysOf } from "~/lib/taxonomy";
+import { siteOrganization } from "~/lib/seo";
+import { DESKTOPS, FAMILIES, keysOf } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
@@ -38,15 +47,33 @@ const inCarousel = new Set(today.items.map((d) => d.id));
 const featured = distros
   .filter((d) => d.data.status === "active" && !inCarousel.has(d.id))
   .slice(0, 6);
-const recent = latestReleaseGroups(groupReleases(getHistory(), distros), 5);
 // The build day stands in for today (the site is rebuilt when data changes).
+const now = new Date();
+const views = new Map((getPopularity()?.items ?? []).map((i) => [i.slug, i.views]));
+const popular = byPopularity(distros, views);
+const gallery = weeklyRotation(
+  distros.filter((d) => d.data.status === "active" && d.data.screenshot),
+  6,
+  now,
+);
+const sections = useSections(
+  popular,
+  ["beginner", "gaming", "lightweight", "server"] as const,
+  featured.map((d) => d.id),
+);
+const secure = popular.filter(
+  (d) =>
+    d.data.status === "active" && d.data.useCases.some((u) => u === "security" || u === "privacy"),
+);
+const desktops = desktopGroups(popular, keysOf(DESKTOPS)).slice(0, 5);
+const recent = latestReleaseGroups(groupReleases(getHistory(), distros), 5);
 const releaseFiles = new Map(
   await Promise.all(distros.map(async (d) => [d.id, await getReleases(d.id)] as const)),
 );
-const ending = endingSupport(distros, releaseFiles, new Date().toISOString().slice(0, 10), 5);
+const ending = endingSupport(distros, releaseFiles, now.toISOString().slice(0, 10), 5);
 const [endingBefore, endingAfter] = splitAround(t("home.endingRow"), "date");
 /** Guide chapters a newcomer reads first, in this order. */
-const START_CHAPTERS = ["what-is-linux", "distributions"];
+const START_CHAPTERS = ["what-is-linux", "why-linux", "distributions"];
 const chapters = await getChapters(locale);
 const startChapters = START_CHAPTERS.flatMap((slug) => chapters.filter((c) => c.slug === slug));
 const active = distros.filter((d) => d.data.status === "active");
@@ -55,7 +82,7 @@ const families = keysOf(FAMILIES)
   .filter((f) => f.members.length > 0)
   .sort((a, b) => b.members.length - a.members.length)
   .slice(0, 5);
-const familyNames = (members: typeof active) => {
+const memberNames = (members: typeof active) => {
   const names = members.slice(0, 3).map((d) => d.data.name);
   return members.length > 3
     ? t("home.familyMembers", { names: names.join(", "), count: members.length - 3 })
@@ -63,14 +90,20 @@ const familyNames = (members: typeof active) => {
 };
 const list = new Intl.ListFormat(locale, { style: "short", type: "unit" });
 const flavorList = new Intl.ListFormat(locale, { type: "conjunction" });
+const site = Astro.site ?? Astro.url;
+// The site's name in search results comes from WebSite on the home page.
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Linuxhub",
-    url: new URL(localizePath("/", locale), Astro.site).href,
+    name: t("site.name"),
+    alternateName: locale === "ko" ? "리눅스허브" : "Linux Hub",
+    url: new URL(localizePath("/", locale), site).href,
+    description: t("site.description"),
     inLanguage: locale,
+    publisher: siteOrganization(site, t("site.name")),
   },
+  { "@context": "https://schema.org", ...siteOrganization(site, t("site.name")) },
 ];
 ---
 
@@ -88,9 +121,44 @@ const jsonLd = [
         <Button href={localizePath("/distros/", locale)} variant="flat" iconEnd="go-next">{t("home.browse")}</Button>
       </div>
       <ul class="card-grid" role="list">
-        {featured.map((d) => <li><DistroCard distro={d} locale={locale} /></li>)}
+        {featured.map((d) => <li><DistroCard distro={d} locale={locale} eager /></li>)}
       </ul>
     </section>
+
+    {
+      sections.map((s) => (
+        <section aria-labelledby={`use-${s.use}-title`} class="section home-more">
+          <div class="section-header">
+            <h2 id={`use-${s.use}-title`}>{t(`home.uses.${s.use}` as MessageKey)}</h2>
+            <Button
+              href={`${localizePath("/distros/", locale)}?use=${s.use}`}
+              variant="flat"
+              iconEnd="go-next"
+            >
+              {t("home.seeAll", { count: s.total })}
+            </Button>
+          </div>
+          <ul class="card-grid" role="list">
+            {s.distros.map((d) => (
+              <li>
+                <DistroCard distro={d} locale={locale} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    {
+      gallery.length > 0 && (
+        <section aria-labelledby="screenshots-title" class="section">
+          <div class="section-header">
+            <h2 id="screenshots-title">{t("home.screenshots")}</h2>
+          </div>
+          <DesktopGallery distros={gallery} locale={locale} />
+        </section>
+      )
+    }
 
     <div class="home-lists">
       {
@@ -165,6 +233,22 @@ const jsonLd = [
         />
       </BoxedList>
 
+      {
+        secure.length > 0 && (
+          <BoxedList id="secure" title={t("home.security")} level={2}>
+            {secure.map((d) => (
+              <ActionRow
+                href={localizePath(`/distros/${d.id}/`, locale)}
+                title={d.data.name}
+                subtitle={d.data.tagline[locale]}
+              >
+                <DistroLogo slot="prefix" file={d.data.logo.file} name={d.data.name} size={36} />
+              </ActionRow>
+            ))}
+          </BoxedList>
+        )
+      }
+
       <BoxedList id="families" title={t("home.families")} level={2}>
         <Button slot="suffix" href={localizePath("/family/", locale)} variant="flat" iconEnd="go-next">
           {t("home.familyTree")}
@@ -174,9 +258,31 @@ const jsonLd = [
             <ActionRow
               href={`${localizePath("/distros/", locale)}?family=${f.id}`}
               title={FAMILIES[f.id][locale]}
-              subtitle={familyNames(f.members)}
+              subtitle={memberNames(f.members)}
             >
               <span class="dim-label numeric">{t("home.familyCount", { count: f.members.length })}</span>
+            </ActionRow>
+          ))
+        }
+      </BoxedList>
+
+      <BoxedList id="desktops" title={t("home.desktops")} level={2}>
+        <Button
+          slot="suffix"
+          href={localizePath("/learn/desktop-environments/", locale)}
+          variant="flat"
+          iconEnd="go-next"
+        >
+          {t("home.desktopGuide")}
+        </Button>
+        {
+          desktops.map((g) => (
+            <ActionRow
+              href={`${localizePath("/distros/", locale)}?desktop=${g.id}`}
+              title={DESKTOPS[g.id][locale]}
+              subtitle={memberNames(g.members)}
+            >
+              <span class="dim-label numeric">{t("home.familyCount", { count: g.members.length })}</span>
             </ActionRow>
           ))
         }
@@ -186,6 +292,18 @@ const jsonLd = [
 </Base>
 
 <style>
+  /* The card sections are below the fold on every screen: like the lists
+     below them, the browser skips their layout and paint until they come
+     near the viewport, with room for the card shadows (see .home-lists). The
+     screenshot gallery is not skipped: on phones it bleeds into the gutter,
+     which paint containment would clip, and its images load lazily anyway. */
+  .home-more {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
+    padding: 0 var(--space-2) var(--space-2);
+    margin: 0 calc(-1 * var(--space-2)) calc(-1 * var(--space-2));
+  }
+
   /* Two lists side by side when both fit at 440px or more; one column below.
      Rows keep the list's start, so a shorter list never stretches. */
   .home-lists {

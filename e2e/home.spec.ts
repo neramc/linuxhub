@@ -260,6 +260,65 @@ test("home lists releases whose support ends within about six months, soonest fi
   }
 });
 
+test("home has use-case sections that never repeat a recommended distro", async ({ page }) => {
+  await page.goto("/");
+  const sections = page.locator('section[aria-labelledby^="use-"]');
+  expect(await sections.count()).toBeGreaterThanOrEqual(3);
+  const seen = await page
+    .locator('section[aria-labelledby="featured-title"] .distro-card')
+    .evaluateAll((els) => els.map((e) => e.getAttribute("href")));
+  for (const section of await sections.all()) {
+    const hrefs = await section
+      .locator(".distro-card")
+      .evaluateAll((els) => els.map((e) => e.getAttribute("href")));
+    expect(hrefs.length).toBeGreaterThanOrEqual(3);
+    expect(hrefs.length).toBeLessThanOrEqual(6);
+    for (const href of hrefs) expect(seen).not.toContain(href);
+    seen.push(...hrefs);
+    // "See all N" leads to the catalog filtered on the section's use.
+    const all = section.locator(".section-header a");
+    await expect(all).toHaveText(/^\d+개 모두 보기$/);
+    expect(await all.getAttribute("href")).toMatch(/^\/distros\/\?use=[a-z]+$/);
+  }
+});
+
+test("home shows six credited desktop screenshots linking to their distros", async ({ page }) => {
+  await page.goto("/");
+  const tiles = page.locator('section[aria-labelledby="screenshots-title"] li');
+  await expect(tiles).toHaveCount(6);
+  for (const tile of await tiles.all()) {
+    const name = tile.locator("h3 a");
+    const href = await name.getAttribute("href");
+    expect(href).toMatch(/^\/distros\/[a-z0-9-]+\/$/);
+    // The image is a pointer shortcut to the same page, out of the tab order.
+    const image = tile.locator("a.adw-screenshot-link");
+    await expect(image).toHaveAttribute("href", href ?? "");
+    await expect(image).toHaveAttribute("tabindex", "-1");
+    await expect(tile.locator("img")).toHaveAttribute("alt", /.+/);
+    await expect(tile.locator("figcaption")).toContainText("스크린샷:");
+    await expect(tile.locator('figcaption a[rel~="external"]').last()).toHaveAttribute(
+      "href",
+      /^https:\/\//,
+    );
+  }
+});
+
+test("home lists security distros and the largest desktops", async ({ page }) => {
+  await page.goto("/");
+  const secure = page.locator('section[aria-labelledby="secure-title"] a.adw-action-row');
+  expect(await secure.count()).toBeGreaterThanOrEqual(2);
+  await expect(secure.filter({ hasText: "Kali Linux" })).toHaveAttribute(
+    "href",
+    "/distros/kali-linux/",
+  );
+  const desktops = page.locator('section[aria-labelledby="desktops-title"] a.adw-action-row');
+  await expect(desktops).toHaveCount(5);
+  for (const row of await desktops.all()) {
+    expect(await row.getAttribute("href")).toMatch(/^\/distros\/\?desktop=[a-z]+$/);
+    await expect(row).toContainText(/\d+개/);
+  }
+});
+
 test("releases page groups same-day flavors and shows the day only", async ({ page }) => {
   await page.goto("/releases/");
   const months = page.locator("main section h2");

@@ -21,6 +21,7 @@ import SearchEntry from "~/components/adw/SearchEntry.astro";
 import ViewSwitcher from "~/components/adw/ViewSwitcher.astro";
 import CompareTable from "~/components/CompareTable.astro";
 import CopyButtons from "~/components/CopyButtons.astro";
+import DesktopGallery from "~/components/DesktopGallery.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import DistroLogo from "~/components/DistroLogo.astro";
 import DistroScreenshot from "~/components/DistroScreenshot.astro";
@@ -265,6 +266,10 @@ const compareCells = Object.fromEntries(
     {/* A distro's screenshot (ADR-0018): card radius and shadow, what it shows,
         then the credit its license asks for. */}
     {sampleShot && <DistroScreenshot shot={sampleShot} locale={locale} />}
+
+    {/* The home page's desktop gallery (ADR-0020): one 16:9 frame per tile,
+        the name links to the distro; a sideways row on phones. */}
+    <DesktopGallery distros={distros.filter((d) => d.data.screenshot).slice(0, 3)} locale={locale} />
 
     {/* Code block with its copy button; a copy is confirmed by the toast. */}
     <section class="prose">

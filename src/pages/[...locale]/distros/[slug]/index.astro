@@ -37,6 +37,7 @@ import {
   getStatus,
 } from "~/lib/catalog";
 import { relatedDistros } from "~/lib/related";
+import { distroLabel } from "~/lib/seo";
 import "~/styles/prose.css";
 
 export async function getStaticPaths() {
@@ -69,14 +70,21 @@ const guide = (await getDistroDoc(slug, locale, "install"))
   ? localizePath(`/distros/${slug}/install/`, locale)
   : undefined;
 const officialGuide = d.links.installGuide ?? d.links.docs ?? d.links.home;
-const description = `${d.name}: ${d.tagline[locale]}`;
+// Titles and descriptions lead with the Hangul name Korean searches use (ADR-0020).
+const label = distroLabel(d.name, d.nameKo, locale);
+const vars = { name: label, tagline: d.tagline[locale], version: release?.version ?? "" };
+const title = t(release ? "distro.seoTitle" : "distro.seoTitleNoVersion", vars);
+const description = t(release ? "distro.seoDescription" : "distro.seoDescriptionNoVersion", vars);
+const site = Astro.site ?? Astro.url;
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: d.name,
+    ...(d.nameKo ? { alternateName: d.nameKo } : {}),
     description: d.tagline[locale],
+    image: new URL(`/og/${slug}.png`, site).href,
     applicationCategory: "OperatingSystem",
     operatingSystem: "Linux",
     ...(release ? { softwareVersion: release.version } : {}),
@@ -91,23 +99,40 @@ const jsonLd = [
       {
         "@type": "ListItem",
         position: 1,
-        name: t("nav.distros"),
-        item: new URL(catalogHref, Astro.site).href,
+        name: t("site.name"),
+        item: new URL(localizePath("/", locale), site).href,
       },
-      { "@type": "ListItem", position: 2, name: d.name },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: t("nav.distros"),
+        item: new URL(catalogHref, site).href,
+      },
+      { "@type": "ListItem", position: 3, name: label },
     ],
   },
 ];
 ---
 
-<Base locale={locale} title={d.name} description={description} jsonLd={jsonLd} image={`/og/${slug}.png`}>
+<Base
+  locale={locale}
+  title={title}
+  description={description}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+>
   {stale && <Banner tone="warning" title={t("distro.dataStale")} />}
   <div class:list={["container page", { narrow: !Overview }]} data-pagefind-body data-pagefind-meta="type:distro">
     <p class="visually-hidden" aria-hidden="true" data-pagefind-weight="6">{[slug, ...d.aliases].join(" ")}</p>
 
     <div class="page-header">
       <Breadcrumb locale={locale} links={[{ label: t("distro.breadcrumb"), href: catalogHref }]} current={d.name} />
-      <AppHeader logo={d.logo.file} name={d.name} tagline={d.tagline[locale]}>
+      <AppHeader
+        logo={d.logo.file}
+        name={d.name}
+        altName={locale === "ko" ? d.nameKo : undefined}
+        tagline={d.tagline[locale]}
+      >
         <Fragment slot="actions">
           <Button href="#download" icon="download">{t("distro.download")}</Button>
           {
