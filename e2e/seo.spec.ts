@@ -2,11 +2,54 @@ import { expect, test } from "@playwright/test";
 
 /** Search-engine plumbing (ADR-0020, docs/seo.md). */
 
-test("robots.txt allows crawling and names the sitemap", async ({ request }) => {
-  const body = await (await request.get("/robots.txt")).text();
-  expect(body).toContain("User-agent: *");
-  expect(body).toContain("Disallow: /api/");
+test("robots.txt allows crawling, names the sitemap and carries Daum's line", async ({
+  request,
+}) => {
+  const res = await request.get("/robots.txt");
+  expect(res.headers()["content-type"]).toContain("text/plain");
+  const body = await res.text();
+  const lines = body.split("\n");
+  // Daum's webmaster tool line first, exactly as registered (base64 padding included).
+  expect(lines[0]).toBe(
+    "#DaumWebMasterTool:b4b5128b81100cda5fe5bbf7e724c28c09e79d77601e39039e16ee41f5d2b071:8eDCqJCqTZrYCvf1G9zNRA==",
+  );
+  expect(lines).toContain("User-agent: *");
+  expect(lines).toContain("Allow: /");
+  expect(lines).toContain("Disallow: /api/");
+  // Nothing a page needs is disallowed.
+  const disallowed = lines.filter((l) => l.startsWith("Disallow:")).map((l) => l.slice(9).trim());
+  expect(disallowed.sort()).toEqual(["/api/", "/pagefind/"]);
   expect(body).toMatch(/^Sitemap: https?:\/\/[^\s]+\/sitemap\.xml$/m);
+});
+
+test("sitemap.xml and the old sitemap-index.xml are well-formed", async ({ page, request }) => {
+  await page.goto("/");
+  for (const [path, root] of [
+    ["/sitemap.xml", "urlset"],
+    ["/sitemap-index.xml", "sitemapindex"],
+  ] as const) {
+    const res = await request.get(path);
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toContain("xml");
+    const xml = await res.text();
+    const parsed = await page.evaluate((text) => {
+      const doc = new DOMParser().parseFromString(text, "application/xml");
+      return {
+        error: doc.getElementsByTagName("parsererror").length > 0,
+        root: doc.documentElement.localName,
+        ns: doc.documentElement.namespaceURI,
+      };
+    }, xml);
+    expect(parsed).toEqual({
+      error: false,
+      root,
+      ns: "http://www.sitemaps.org/schemas/sitemap/0.9",
+    });
+  }
+  const index = await (await request.get("/sitemap-index.xml")).text();
+  expect(
+    [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1] ?? "").pathname),
+  ).toEqual(["/sitemap.xml"]);
 });
 
 test("sitemap.xml lists indexable pages with their alternates", async ({ request }) => {

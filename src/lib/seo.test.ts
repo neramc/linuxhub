@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { daumRobotsLine, distroLabel, newest, sitemapXml, verificationToken } from "./seo";
+import {
+  daumRobotsLine,
+  distroLabel,
+  newest,
+  notAfter,
+  sitemapIndexXml,
+  sitemapXml,
+  verificationToken,
+} from "./seo";
 
 describe("verificationToken", () => {
   it("keeps a bare token", () => {
@@ -23,6 +31,13 @@ describe("daumRobotsLine", () => {
   it("adds the prefix once", () => {
     expect(daumRobotsLine("abc123:XYZ")).toBe("#DaumWebMasterTool:abc123:XYZ");
     expect(daumRobotsLine("#DaumWebMasterTool:abc123:XYZ")).toBe("#DaumWebMasterTool:abc123:XYZ");
+  });
+
+  it("keeps a base64 id with padding", () => {
+    const value =
+      "b4b5128b81100cda5fe5bbf7e724c28c09e79d77601e39039e16ee41f5d2b071:8eDCqJCqTZrYCvf1G9zNRA==";
+    expect(daumRobotsLine(value)).toBe(`#DaumWebMasterTool:${value}`);
+    expect(daumRobotsLine(`#DaumWebMasterTool:${value}`)).toBe(`#DaumWebMasterTool:${value}`);
   });
 
   it("is undefined when unset or malformed", () => {
@@ -63,5 +78,24 @@ describe("sitemapXml", () => {
     );
     expect(xml.match(/<url>/g)).toHaveLength(2);
     expect(xml.match(/<lastmod>/g)).toHaveLength(1);
+  });
+});
+
+describe("sitemapIndexXml", () => {
+  it("lists each sitemap with its lastmod", () => {
+    const xml = sitemapIndexXml([
+      { loc: "https://example.org/sitemap.xml", lastmod: "2026-11-07" },
+    ]);
+    expect(xml).toContain('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+    expect(xml).toContain("<loc>https://example.org/sitemap.xml</loc>");
+    expect(xml).toContain("<lastmod>2026-11-07</lastmod>");
+  });
+});
+
+describe("notAfter", () => {
+  it("caps a date at today", () => {
+    expect(notAfter("2026-12-01", "2026-11-08")).toBe("2026-11-08");
+    expect(notAfter("2026-11-01", "2026-11-08")).toBe("2026-11-01");
+    expect(notAfter(undefined, "2026-11-08")).toBeUndefined();
   });
 });

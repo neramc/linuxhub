@@ -20,14 +20,16 @@ export function verificationToken(raw: string | undefined): string | undefined {
 
 /**
  * The robots.txt comment Daum's webmaster tool checks, from its value with or
- * without the `#DaumWebMasterTool:` prefix. Undefined when unset or malformed.
+ * without the `#DaumWebMasterTool:` prefix: a hex digest and a base64 id
+ * (`b4b5…071:8eDC…NRA==`). Undefined when unset or not on one line of those
+ * characters.
  */
 export function daumRobotsLine(raw: string | undefined): string | undefined {
   const value = raw
     ?.trim()
     .replace(/^#?\s*DaumWebMasterTool\s*:/i, "")
     .trim();
-  return value && /^[\w:.-]+$/.test(value) ? `#DaumWebMasterTool:${value}` : undefined;
+  return value && /^[\w:.=+/-]+$/.test(value) ? `#DaumWebMasterTool:${value}` : undefined;
 }
 
 /**
@@ -36,6 +38,14 @@ export function daumRobotsLine(raw: string | undefined): string | undefined {
  */
 export function distroLabel(name: string, nameKo: string | undefined, locale: Locale): string {
   return locale === "ko" && nameKo ? `${nameKo}(${name})` : name;
+}
+
+/**
+ * A lastmod for the sitemap: `date`, but never after `today` (a release dated
+ * ahead must not read as a change in the future, which crawlers distrust).
+ */
+export function notAfter(date: string | undefined, today: string): string | undefined {
+  return date && date > today ? today : date;
 }
 
 /** The newest of some ISO dates (YYYY-MM-DD…), or undefined when there are none. */
@@ -99,4 +109,24 @@ export function siteOrganization(site: URL | string, name: string) {
       height: 180,
     },
   };
+}
+
+/** A sitemaps.org sitemap index: the sitemaps (absolute URLs) and when each last changed. */
+export function sitemapIndexXml(
+  sitemaps: readonly { loc: string; lastmod?: string | undefined }[],
+): string {
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...sitemaps.map((s) =>
+      [
+        "  <sitemap>",
+        `    <loc>${xmlEscape(s.loc)}</loc>`,
+        ...(s.lastmod ? [`    <lastmod>${s.lastmod}</lastmod>`] : []),
+        "  </sitemap>",
+      ].join("\n"),
+    ),
+    "</sitemapindex>",
+    "",
+  ].join("\n");
 }

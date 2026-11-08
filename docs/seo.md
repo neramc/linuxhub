@@ -6,7 +6,8 @@ Linuxhub(https://linuxhub.kro.kr)를 Google, 네이버, Bing, Daum에 등록하�
 
 | 항목 | 위치 | 내용 |
 |---|---|---|
-| 사이트맵 | `/sitemap.xml` (`src/pages/sitemap.xml.ts`) | 색인할 페이지를 한국어·영어 모두 담고, 페이지마다 hreflang 대응 주소와 마지막 변경일(lastmod)을 적는다. 아직 쓰지 않은 설치 가이드처럼 noindex인 페이지는 뺀다. `bun run check:links`가 빌드 결과와 맞는지 확인한다. |
+| 사이트맵 | `/sitemap.xml` (`src/pages/sitemap.xml.ts`) | 색인할 페이지를 한국어·영어 모두 담고, 페이지마다 hreflang 대응 주소와 마지막 변경일(lastmod, 빌드한 날을 넘지 않음)을 적는다. 아직 쓰지 않은 설치 가이드처럼 noindex인 페이지는 뺀다. `bun run check:links`가 빌드 결과와 맞는지, 모든 주소가 그 페이지의 canonical인지 확인한다. |
+| 예전 사이트맵 주소 | `/sitemap-index.xml` | 예전 robots.txt가 알리던 주소. 이미 이 주소를 제출한 콘솔을 위해 `/sitemap.xml` 하나를 가리키는 사이트맵 인덱스로 남긴다. 새로 제출할 때는 `/sitemap.xml`을 쓴다. |
 | robots.txt | `/robots.txt` (`src/pages/robots.txt.ts`) | 모든 크롤러를 허용한다. `/api/`와 Pagefind 색인 조각(`/pagefind/`)만 뺀다. 사이트맵 주소와 Daum 확인 줄(설정했을 때)을 담는다. |
 | RSS | `/rss.xml`, `/en/rss.xml` | 새 릴리스 소식. 네이버 서치어드바이저에 제출한다. |
 | 소유 확인 태그 | 홈(`/`, `/en/`)의 `<head>` | 아래 환경 변수를 넣으면 생긴다. |
@@ -25,7 +26,7 @@ Vercel → 프로젝트(linuxhub-001) → Settings → Environment Variables에�
 | `GOOGLE_SITE_VERIFICATION` | 확인 코드 | Google Search Console → HTML 태그 방식 |
 | `NAVER_SITE_VERIFICATION` | 확인 코드 | 네이버 서치어드바이저 → HTML 태그 방식 |
 | `BING_SITE_VERIFICATION` | 확인 코드 | Bing Webmaster Tools → HTML Meta tag 방식(`msvalidate.01`) |
-| `DAUM_WEBMASTER_TOOL` | `#DaumWebMasterTool:` 뒤의 값 | Daum 웹마스터도구 → robots.txt 인증 |
+| `DAUM_WEBMASTER_TOOL` | `#DaumWebMasterTool:` 뒤의 값 | Daum 웹마스터도구 → robots.txt 인증. 등록한 값(`b4b5…071:8eDC…NRA==`)이 `astro.config.mjs`에 기본값으로 들어 있어, 바꿀 때만 넣는다. |
 
 - 확인 코드는 `content="…"` 안의 값만 넣는다. 실수로 `<meta …>` 태그 전체를 붙여 넣어도 값만 뽑아 쓴다(`src/lib/seo.ts`).
 - 이 값들은 HTML과 robots.txt에 공개되는 값이라 비밀이 아니다. 그래도 저장소가 아니라 Vercel에 두어, 코드를 바꾸지 않고 넣고 바꿀 수 있게 한다.
@@ -76,11 +77,28 @@ Vercel → 프로젝트(linuxhub-001) → Settings → Environment Variables에�
   - 모든 페이지의 canonical은 이미 정식 주소를 가리킨다.
 - **미리보기 배포:** Vercel 인증 뒤에 있으므로(Deployment Protection) 검색엔진에 노출되지 않는다.
 
-## 7. 확인 명령
+## 7. "검토 대상이 아님", "수집할 수 없음"이 뜰 때
+
+1. **robots.txt와 사이트맵이 200으로 오는지** 확인한다(아래 명령).
+   - 검색엔진은 robots.txt를 가져오지 못하면(429, 5xx, 보안 확인 페이지) 그동안 사이트 전체를 수집 금지로 본다.
+   - 2026-11-07에는 Vercel의 보안 확인 페이지(429)가 돌아왔고, 2026-11-08에는 robots.txt, 사이트맵, 홈이 모두 200이었다.
+   - 다시 막히면 6절의 Firewall 설정을 본다.
+2. **제출한 사이트맵 주소가 실제로 있는지** 본다.
+   - `/sitemap.xml`은 ADR-0020 변경이 `main`에 들어가 배포된 뒤에 생긴다. 그 전에는 404이다.
+   - 예전 주소 `/sitemap-index.xml`은 그 전후 모두 열린다.
+3. **소유 확인 태그가 홈에 있는지** 본다.
+   - 환경 변수를 넣은 뒤 다시 배포했는지, 배포한 코드가 `astro:env` 태그 코드를 포함하는지 확인한다.
+4. 위가 모두 정상이면 콘솔에서 **robots.txt 검증·사이트맵 제출·수집 요청**을 다시 한다.
+   - 검색엔진이 다시 읽기까지 몇 시간에서 며칠이 걸릴 수 있다.
+
+## 8. 확인 명령
 
 ```bash
 SITE=https://linuxhub.kro.kr
+curl -s -o /dev/null -w "%{http_code} %header{content-type}\n" $SITE/robots.txt   # 200 text/plain
+curl -s -o /dev/null -w "%{http_code} %header{content-type}\n" $SITE/sitemap.xml  # 200 application/xml
 curl -s $SITE/robots.txt
+curl -s $SITE/sitemap-index.xml
 curl -s $SITE/sitemap.xml | head -12
 curl -s $SITE/ | grep -o '<meta name="[a-z.0-9-]*verification[^>]*>\|<meta name="msvalidate.01"[^>]*>'
 curl -s $SITE/b26e3336ffae790029ee6eec37086deb.txt
@@ -88,7 +106,7 @@ curl -s $SITE/b26e3336ffae790029ee6eec37086deb.txt
 SITE_URL=$SITE bun scripts/seo/indexnow.ts HEAD~5 HEAD --dry-run
 ```
 
-## 8. 콘텐츠를 고칠 때
+## 9. 콘텐츠를 고칠 때
 
 - **새 배포판:** 한국어로 흔히 쓰는 한글 이름이 있으면 YAML에 `nameKo`를 넣는다(예: `nameKo: 리눅스 민트`). 한국어 글에서도 라틴 이름을 그대로 쓰는 배포판(KDE neon, PCLinuxOS 등)은 비워 둔다.
 - **제목과 설명:** 페이지마다 다르게, 그 페이지가 실제로 보여 주는 내용으로 쓴다. 배포판 페이지는 `distro.seoTitle`·`seoDescription`(i18n)이 최신 버전을 넣어 만든다.

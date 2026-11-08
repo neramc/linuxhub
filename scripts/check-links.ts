@@ -72,6 +72,17 @@ const indexable = pages
       .replace(/\.html$/, "/"),
   )
   .filter((path) => path !== "/404/");
+// The old address stays as an index that names /sitemap.xml.
+const index = existsSync(join(root, "sitemap-index.xml"))
+  ? readFileSync(join(root, "sitemap-index.xml"), "utf8")
+  : "";
+const indexed = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+  ([, loc = ""]) => new URL(loc).pathname,
+);
+if (indexed.join() !== "/sitemap.xml")
+  console.log(
+    `  sitemap-index.xml should name /sitemap.xml only, names: ${indexed.join(", ") || "nothing"}`,
+  );
 const unlisted = indexable.filter((path) => !listed.has(path));
 const missing = [...listed].filter((path) => !built(path));
 console.log(
@@ -79,4 +90,12 @@ console.log(
 );
 for (const path of unlisted) console.log(`  not in sitemap: ${path}`);
 for (const path of missing) console.log(`  in sitemap, not built: ${path}`);
-process.exit(broken.size || unlisted.length || missing.length || !listed.size ? 1 : 0);
+process.exit(
+  broken.size ||
+    unlisted.length ||
+    missing.length ||
+    !listed.size ||
+    indexed.join() !== "/sitemap.xml"
+    ? 1
+    : 0,
+);

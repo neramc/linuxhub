@@ -53,7 +53,14 @@ export default defineConfig({
         access: "public",
         optional: true,
       }),
-      DAUM_WEBMASTER_TOOL: envField.string({ context: "server", access: "public", optional: true }),
+      // The site's registration in Daum's webmaster tool (a public value: it
+      // is the robots.txt line itself); the variable overrides it.
+      DAUM_WEBMASTER_TOOL: envField.string({
+        context: "server",
+        access: "public",
+        default:
+          "b4b5128b81100cda5fe5bbf7e724c28c09e79d77601e39039e16ee41f5d2b071:8eDCqJCqTZrYCvf1G9zNRA==",
+      }),
     },
   },
   i18n: {

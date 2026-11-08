@@ -272,6 +272,7 @@
 - **결정(등록):**
   - **소유 확인:**
     - Google·네이버·Bing의 HTML 태그 확인 코드와 Daum의 robots.txt 확인 값을 `astro:env` 변수(`GOOGLE_SITE_VERIFICATION`, `NAVER_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`, `DAUM_WEBMASTER_TOOL`)로 받는다.
+    - Daum 값은 사용자가 `main`의 robots.txt에 직접 넣은 등록 값을 기본값으로 둔다.
     - 홈에만 태그를 넣는다. 코드를 바꾸지 않고 Vercel에서 넣을 수 있다.
   - **사이트맵:**
     - `@astrojs/sitemap` 대신 `src/pages/sitemap.xml.ts`가 `/sitemap.xml`을 만든다. 페이지마다 hreflang 대응 주소와, 보여 주는 내용이 실제로 바뀐 날을 `lastmod`로 적는다.
@@ -279,6 +280,8 @@
       - 날짜를 모르는 페이지는 `lastmod`를 비운다.
     - noindex 페이지는 넣지 않는다. `scripts/check-links.ts`가 빌드 결과와 양쪽으로 대조한다.
     - 의존성이 하나 준다.
+    - 예전 주소 `/sitemap-index.xml`은 `/sitemap.xml` 하나를 가리키는 인덱스로 남긴다. 이미 그 주소를 제출한 콘솔도 계속 읽을 수 있다.
+    - `lastmod`는 빌드한 날을 넘지 않는다(예정일로 기록된 릴리스).
   - **robots.txt:** 사이트맵 주소를 바꾸고, Pagefind 색인 조각을 뺀다.
   - **IndexNow:**
     - `.github/workflows/indexnow.yml`이 프로덕션 배포(Vercel의 GitHub deployment)가 성공할 때마다 실행된다.

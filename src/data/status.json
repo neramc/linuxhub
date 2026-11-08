@@ -21,8 +21,8 @@
   },
   "antix": {
     "releases": {
-      "failingSince": "2026-10-28",
-      "lastError": "robots.txt of https://antixlinux.com could not be read (server error or no answer), so the host is closed for this run: https://antixlinux.com/download/"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": "2026-10-28",
@@ -391,7 +391,7 @@
   },
   "slackware": {
     "releases": {
-      "failingSince": "2026-11-03",
+      "failingSince": "2026-11-07",
       "lastError": "robots.txt disallows the redirect target https://plug-mirror.rcac.purdue.edu/slackware/slackware64-15.0/ANNOUNCE.15.0"
     },
     "mirrors": {
@@ -425,8 +425,8 @@
       "lastError": null
     },
     "mirrors": {
-      "failingSince": "2026-11-06",
-      "lastError": "robots.txt of https://download.tails.net could not be read (server error or no answer), so the host is closed for this run: https://download.tails.net/tails/stable/tails-amd64-7.16/tails-amd64-7.16.img?mirrorlist"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "tuxedo-os": {

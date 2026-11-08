@@ -10,12 +10,14 @@ import type { APIRoute } from "astro";
 import { DEFAULT_LOCALE, LOCALE_META, LOCALES, type Locale, localizePath } from "~/i18n";
 import { getDistroDoc, getDistros, getHistory, getPopularity } from "~/lib/catalog";
 import { getChapters } from "~/lib/learn";
-import { newest, type SitemapEntry, sitemapXml } from "~/lib/seo";
+import { newest, notAfter, type SitemapEntry, sitemapXml } from "~/lib/seo";
 
 export const GET: APIRoute = async ({ site }) => {
   if (!site) throw new Error("sitemap.xml needs `site` in astro.config");
   const url = (path: string, locale: Locale) => new URL(localizePath(path, locale), site).href;
   const entries: SitemapEntry[] = [];
+  // The build day stands in for today (the site is rebuilt when data changes).
+  const today = new Date().toISOString().slice(0, 10);
   /** A page in the locales where it exists, each with that locale's lastmod. */
   const add = (
     path: string,
@@ -26,7 +28,8 @@ export const GET: APIRoute = async ({ site }) => {
       locales.map((l) => [LOCALE_META[l].htmlLang, url(path, l)]),
     );
     if (locales.includes(DEFAULT_LOCALE)) alternates["x-default"] = url(path, DEFAULT_LOCALE);
-    for (const l of locales) entries.push({ loc: url(path, l), lastmod: lastmod[l], alternates });
+    for (const l of locales)
+      entries.push({ loc: url(path, l), lastmod: notAfter(lastmod[l], today), alternates });
   };
   const both = (date: string | undefined) => ({ ko: date, en: date });
 
