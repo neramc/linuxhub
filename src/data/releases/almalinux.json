@@ -4,7 +4,7 @@
     "https://almalinux.org/get-almalinux/",
     "https://wiki.almalinux.org/release-notes/"
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-09",
   "releases": [
     {
       "version": "10.2",
@@ -290,10 +290,10 @@
               "file": "AlmaLinux-10-GenericCloud-latest.x86_64.qcow2",
               "path": "10/cloud/x86_64/images/AlmaLinux-10-GenericCloud-latest.x86_64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/10/cloud/x86_64/images/AlmaLinux-10-GenericCloud-latest.x86_64.qcow2",
-              "size": 497876992,
+              "size": 517734400,
               "checksum": {
                 "type": "sha256",
-                "value": "cbee4726fc0f5a60694bb4f289003cc221e715dfbacebcce76b54daf386d8eca",
+                "value": "0c3261d2b2d6ac47b4786bb4f0e96706b885caad760e653aac11276de283f3e3",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -305,10 +305,10 @@
               "file": "AlmaLinux-10-GenericCloud-latest.aarch64.qcow2",
               "path": "10/cloud/aarch64/images/AlmaLinux-10-GenericCloud-latest.aarch64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/AlmaLinux-10-GenericCloud-latest.aarch64.qcow2",
-              "size": 478937088,
+              "size": 391905280,
               "checksum": {
                 "type": "sha256",
-                "value": "ca65d1c32430acd84e9126c2e48f3b4110cd649a592712bfb570a6650e7e19e7",
+                "value": "b8f04aa367f91956ce9d1221d9d0f05406117eb59e737d09ce58b58ce375c4d8",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -323,7 +323,7 @@
               "size": 257884160,
               "checksum": {
                 "type": "sha256",
-                "value": "73f6648eb789eea7a53300c6a7c654fa3c0d8967670173a9ed384eab5a05799a",
+                "value": "52b84ddbc53c1ba642d90ab4f32c8ee5c4b2e47f3d2a0fea6670204ca7d31f72",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -346,7 +346,7 @@
               "size": 491782144,
               "checksum": {
                 "type": "sha256",
-                "value": "370f0ec00ba23082f09f29e4a0d4762d5a5c8aaecfca16d1c6e6b30bc5b48e65",
+                "value": "3d0625119acbb3ba1150c0d06e9d438fb0ac6bda4d2bcf00e6707716b8ae3b79",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -358,10 +358,10 @@
               "file": "AlmaLinux-10-OpenNebula-latest.aarch64.qcow2",
               "path": "10/cloud/aarch64/images/AlmaLinux-10-OpenNebula-latest.aarch64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/AlmaLinux-10-OpenNebula-latest.aarch64.qcow2",
-              "size": 446300160,
+              "size": 388825088,
               "checksum": {
                 "type": "sha256",
-                "value": "0d90572cc658e0c14cb45beae94bc0bb12926062711f49fd18580b1ec33ad7bf",
+                "value": "5ab25570f7a418c163004e083847376fbf5b87b28f2c5269cac867a2edd276f1",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -488,10 +488,10 @@
               "file": "AlmaLinux-10-GenericCloud-latest.x86_64_v2.qcow2",
               "path": "10/cloud/x86_64_v2/images/AlmaLinux-10-GenericCloud-latest.x86_64_v2.qcow2",
               "url": "https://repo.almalinux.org/almalinux/10/cloud/x86_64_v2/images/AlmaLinux-10-GenericCloud-latest.x86_64_v2.qcow2",
-              "size": 535101440,
+              "size": 479068160,
               "checksum": {
                 "type": "sha256",
-                "value": "bf441cb90a56ee08ec8a3c38d920996e217e79cfdf6e33561afd3408bed5a337",
+                "value": "6418337094ffc31874f775f5da1aca8989d29ad66cfe3824ab0047cdc5e45c09",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -514,7 +514,7 @@
               "size": 500826112,
               "checksum": {
                 "type": "sha256",
-                "value": "ae8ffc373d7dff8f9c8c2ad18f60aceb7db6e742347096eb071e5d933d2e13ee",
+                "value": "5aa84d02d56171f4eebd2c0f09438ab05873cbe9b95615429fc8566edc48af14",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,

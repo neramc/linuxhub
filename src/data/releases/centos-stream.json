@@ -4,7 +4,7 @@
     "https://www.centos.org/download/",
     "https://endoflife.date/centos-stream"
   ],
-  "updated": "2026-11-04",
+  "updated": "2026-11-09",
   "releases": [
     {
       "version": "10",
@@ -26,10 +26,10 @@
               "file": "CentOS-Stream-10-latest-x86_64-dvd1.iso",
               "path": "10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-dvd1.iso&redirect=1&protocol=https",
-              "size": 10837491712,
+              "size": 10842931200,
               "checksum": {
                 "type": "sha256",
-                "value": "ffc31d9e9b12117e78b485e9fc1bd3bfd20f285ee299bc4b6e02035aee33e719",
+                "value": "49af28298bda8ed0fac4207d73abfccbad6aced3fa8aea2fe473e6b3c7a1101a",
                 "url": "https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -41,10 +41,10 @@
               "file": "CentOS-Stream-10-latest-aarch64-dvd1.iso",
               "path": "10-stream/BaseOS/aarch64/iso/CentOS-Stream-10-latest-aarch64-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/10-stream/BaseOS/aarch64/iso/CentOS-Stream-10-latest-aarch64-dvd1.iso&redirect=1&protocol=https",
-              "size": 10221977600,
+              "size": 10227810304,
               "checksum": {
                 "type": "sha256",
-                "value": "2784afdaea8d83dfb77e98435e7c298993fe9901d4d3608f6ab893a1cb89f4ae",
+                "value": "5bd9622e507046aa850c7250f3b9b7d494501720dcf2ea31d29a50b6a91d7716",
                 "url": "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/iso/CentOS-Stream-10-latest-aarch64-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -56,10 +56,10 @@
               "file": "CentOS-Stream-10-latest-ppc64le-dvd1.iso",
               "path": "10-stream/BaseOS/ppc64le/iso/CentOS-Stream-10-latest-ppc64le-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/10-stream/BaseOS/ppc64le/iso/CentOS-Stream-10-latest-ppc64le-dvd1.iso&redirect=1&protocol=https",
-              "size": 9477226496,
+              "size": 9481682944,
               "checksum": {
                 "type": "sha256",
-                "value": "f1d54bcc6517dcb1645d2533046043c593e278ddbb595d702497d31129a68538",
+                "value": "6fb901ce83682d2e56f418b8efc495939759462d05f3a21ca24213c0c63be072",
                 "url": "https://mirror.stream.centos.org/10-stream/BaseOS/ppc64le/iso/CentOS-Stream-10-latest-ppc64le-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -71,10 +71,10 @@
               "file": "CentOS-Stream-10-latest-s390x-dvd1.iso",
               "path": "10-stream/BaseOS/s390x/iso/CentOS-Stream-10-latest-s390x-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/10-stream/BaseOS/s390x/iso/CentOS-Stream-10-latest-s390x-dvd1.iso&redirect=1&protocol=https",
-              "size": 8784445440,
+              "size": 8790278144,
               "checksum": {
                 "type": "sha256",
-                "value": "a0188b629f2566f91c7df9101d8094409b5747b7b60f593d0cf09bc97a6357ec",
+                "value": "7cc434dc97d290c06ff6ceef865334324d2736c0ec756060d1e74747af946f88",
                 "url": "https://mirror.stream.centos.org/10-stream/BaseOS/s390x/iso/CentOS-Stream-10-latest-s390x-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -210,10 +210,10 @@
               "file": "CentOS-Stream-9-latest-x86_64-dvd1.iso",
               "path": "9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso&redirect=1&protocol=https",
-              "size": 15984623616,
+              "size": 15985803264,
               "checksum": {
                 "type": "sha256",
-                "value": "984a099365da7ce3a93be3adc1eadfda5bb7439028e99e8d0616f11bbc178af8",
+                "value": "902960cc39940643ec462d62c99e70e52e4d72819632dfd731fe8a28b57830c3",
                 "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -225,10 +225,10 @@
               "file": "CentOS-Stream-9-latest-aarch64-dvd1.iso",
               "path": "9-stream/BaseOS/aarch64/iso/CentOS-Stream-9-latest-aarch64-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/9-stream/BaseOS/aarch64/iso/CentOS-Stream-9-latest-aarch64-dvd1.iso&redirect=1&protocol=https",
-              "size": 13818068992,
+              "size": 13819641856,
               "checksum": {
                 "type": "sha256",
-                "value": "a53cebf65113c930c81eb691f779aa1cb8fe70e59957eaf61115cc02420823ee",
+                "value": "95a5352744b2e452d8e6c69f9805f59257a8a6a73dee1cf3a256a26b6dd0a559",
                 "url": "https://mirror.stream.centos.org/9-stream/BaseOS/aarch64/iso/CentOS-Stream-9-latest-aarch64-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -240,10 +240,10 @@
               "file": "CentOS-Stream-9-latest-ppc64le-dvd1.iso",
               "path": "9-stream/BaseOS/ppc64le/iso/CentOS-Stream-9-latest-ppc64le-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/9-stream/BaseOS/ppc64le/iso/CentOS-Stream-9-latest-ppc64le-dvd1.iso&redirect=1&protocol=https",
-              "size": 13181255680,
+              "size": 13182173184,
               "checksum": {
                 "type": "sha256",
-                "value": "37ad1eda4fc966b96acf254165c2f049de2c26bd6a47936766a0e011c5aae727",
+                "value": "b58f8072c8e27e64e4e5b0706c3baa8281ec87f7f148316be07f4bac778c8112",
                 "url": "https://mirror.stream.centos.org/9-stream/BaseOS/ppc64le/iso/CentOS-Stream-9-latest-ppc64le-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,
@@ -255,10 +255,10 @@
               "file": "CentOS-Stream-9-latest-s390x-dvd1.iso",
               "path": "9-stream/BaseOS/s390x/iso/CentOS-Stream-9-latest-s390x-dvd1.iso",
               "url": "https://mirrors.centos.org/mirrorlist?path=/9-stream/BaseOS/s390x/iso/CentOS-Stream-9-latest-s390x-dvd1.iso&redirect=1&protocol=https",
-              "size": 11681660928,
+              "size": 11682971648,
               "checksum": {
                 "type": "sha256",
-                "value": "4359700cb2ef091cc49b75ab6c65f194c478560f9ccde64d6bb45bd9cc9662bc",
+                "value": "3d665c3a51f3d32864963d796182d4ac887ea26be66b2f55b3c8dab71b7b4b65",
                 "url": "https://mirror.stream.centos.org/9-stream/BaseOS/s390x/iso/CentOS-Stream-9-latest-s390x-dvd1.iso.SHA256SUM"
               },
               "signatureUrl": null,

@@ -151,8 +151,8 @@
   },
   "gentoo": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-09",
+      "lastError": "newest version went backwards (20261108 → 20261101)"
     },
     "mirrors": {
       "failingSince": null,
@@ -181,8 +181,8 @@
   },
   "kubuntu": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-09",
+      "lastError": "robots.txt of https://ubuntu.com could not be read (server error or no answer), so the host is closed for this run: https://ubuntu.com/project/docs/release-team/list-of-releases/"
     },
     "mirrors": {
       "failingSince": null,
@@ -211,8 +211,8 @@
   },
   "lubuntu": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-09",
+      "lastError": "robots.txt of https://ubuntu.com could not be read (server error or no answer), so the host is closed for this run: https://ubuntu.com/project/docs/release-team/list-of-releases/"
     },
     "mirrors": {
       "failingSince": null,
@@ -281,8 +281,8 @@
   },
   "opensuse": {
     "releases": {
-      "failingSince": "2026-11-08",
-      "lastError": "https://get.opensuse.org/tumbleweed/ no longer offers the x86_64 offline-image ISO"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": "2026-11-04",
@@ -392,7 +392,7 @@
   "slackware": {
     "releases": {
       "failingSince": "2026-11-07",
-      "lastError": "robots.txt disallows the redirect target https://dfw.mirror.rackspace.com/slackware/slackware64-15.0/ANNOUNCE.15.0"
+      "lastError": "redirect to a non-HTTPS URL (http://ftp.slackware.com/pub/slackware/slackware64-15.0/ANNOUNCE.15.0)"
     },
     "mirrors": {
       "failingSince": null,
@@ -441,8 +441,8 @@
   },
   "ubuntu": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-09",
+      "lastError": "robots.txt of https://ubuntu.com could not be read (server error or no answer), so the host is closed for this run: https://ubuntu.com/project/docs/release-team/list-of-releases/"
     },
     "mirrors": {
       "failingSince": null,
@@ -451,8 +451,8 @@
   },
   "ubuntu-mate": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-09",
+      "lastError": "robots.txt of https://ubuntu.com could not be read (server error or no answer), so the host is closed for this run: https://ubuntu.com/project/docs/release-team/list-of-releases/"
     },
     "mirrors": {
       "failingSince": null,
@@ -481,8 +481,8 @@
   },
   "xubuntu": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-09",
+      "lastError": "robots.txt of https://ubuntu.com could not be read (server error or no answer), so the host is closed for this run: https://ubuntu.com/project/docs/release-team/list-of-releases/"
     },
     "mirrors": {
       "failingSince": null,
