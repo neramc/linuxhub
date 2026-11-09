@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-08",
+  "updated": "2026-11-09",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -209,6 +209,14 @@
       "url": "https://lesnet.mm.fcix.net/ubuntu-releases/",
       "country": "CA",
       "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.cpsc.ucalgary.ca/mirror/ubuntu.com/releases/",
+      "country": "CA",
+      "name": "University of Calgary",
       "lat": null,
       "lon": null,
       "score": null
@@ -641,6 +649,14 @@
       "url": "https://mirrors.fibianet.dk/ubuntu-releases/",
       "country": "DK",
       "name": "Fibia P/S",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://stix.mm.fcix.net/ubuntu-releases/",
+      "country": "DO",
+      "name": "Fremont Cabal Internet Exchange",
       "lat": null,
       "lon": null,
       "score": null
@@ -1478,6 +1494,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.nepalicloud.com/ubuntu-releases/",
+      "country": "NP",
+      "name": "Nepali Cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.2degrees.nz/ubuntu-releases/",
       "country": "NZ",
       "name": "2degrees",
@@ -1849,6 +1873,14 @@
       "url": "https://ftp.ubuntu-tw.net/ubuntu-releases/",
       "country": "TW",
       "name": "Ubuntu-TW",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ossplanet.net/ubuntu-releases/",
+      "country": "TW",
+      "name": "OSSPlanet",
       "lat": null,
       "lon": null,
       "score": null
@@ -2271,6 +2303,14 @@
     },
     {
       "url": "https://ohioix.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://opencolo.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
       "lat": null,

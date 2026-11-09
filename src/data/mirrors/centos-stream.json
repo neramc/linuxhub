@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/CentOS?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-05",
+  "updated": "2026-11-09",
   "mirrors": [
     {
       "url": "https://mirrors.teamcloud.am/centos-stream/",
@@ -126,25 +126,9 @@
       "score": null
     },
     {
-      "url": "https://mirrors.bfsu.edu.cn/centos-stream/",
-      "country": "CN",
-      "name": "mirrors.bfsu.edu.cn",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirrors.qlu.edu.cn/centos-stream/",
       "country": "CN",
       "name": "mirrors.qlu.edu.cn",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirrors.tuna.tsinghua.edu.cn/centos-stream/",
-      "country": "CN",
-      "name": "mirrors.tuna.tsinghua.edu.cn",
       "lat": null,
       "lon": null,
       "score": null

@@ -5,7 +5,7 @@
     "https://www.openmandriva.org/info-rome",
     "https://mirror.openmandriva.org/?mirrorstats"
   ],
-  "updated": "2026-11-08",
+  "updated": "2026-11-09",
   "mirrors": [
     {
       "url": "https://openmandriva.c3sl.ufpr.br/",
@@ -37,6 +37,14 @@
       "name": "www.mirrorservice.org",
       "lat": 51.3065,
       "lon": 1.0366,
+      "score": null
+    },
+    {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/dist/openmandriva/",
+      "country": "PL",
+      "name": "ftp.icm.edu.pl",
+      "lat": 52.2394,
+      "lon": 21.0362,
       "score": null
     },
     {
