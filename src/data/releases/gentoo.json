@@ -10,13 +10,13 @@
     "https://www.gentoo.org/downloads/ppc/",
     "https://www.gentoo.org/downloads/s390/"
   ],
-  "updated": "2026-11-05",
+  "updated": "2026-11-09",
   "releases": [
     {
-      "version": "20261101",
+      "version": "20261108",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-11-01",
+      "releaseDate": "2026-11-08",
       "eol": null,
       "notesUrl": "https://www.gentoo.org/news/",
       "editions": [
@@ -29,16 +29,16 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "install-amd64-minimal-20261101T164556Z.iso",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/install-amd64-minimal-20261101T164556Z.iso",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/install-amd64-minimal-20261101T164556Z.iso",
-              "size": 1035399168,
+              "file": "install-amd64-minimal-20261108T170107Z.iso",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/install-amd64-minimal-20261108T170107Z.iso",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/install-amd64-minimal-20261108T170107Z.iso",
+              "size": 1035681792,
               "checksum": {
                 "type": "sha512",
-                "value": "5deffe95d677446c3a745e4bbc44060b67fd7d272a286b00ef90e9cfaf1ba7574e3628cb7aa773faa6a62b45df5153e86c635ce12038415fd61161a9b9e68334",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/install-amd64-minimal-20261101T164556Z.iso.DIGESTS"
+                "value": "9d78f9fb42e5a48aab4b2d007c7a322b53ea731c7bf7a044861ae76254e64c467c670d4d7884f11e3745cd9f85ddb5a387dbcdb3c89f870bf0d2e804eff3ae28",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/install-amd64-minimal-20261108T170107Z.iso.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/install-amd64-minimal-20261101T164556Z.iso.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/install-amd64-minimal-20261108T170107Z.iso.asc",
               "torrentUrl": null
             },
             {
@@ -120,16 +120,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-20261101T164556Z.tar.xz",
-              "size": 269119284,
+              "file": "stage3-amd64-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-20261108T170107Z.tar.xz",
+              "size": 266535188,
               "checksum": {
                 "type": "sha512",
-                "value": "3a37f794ae0f83b7fe915a7818cced5723381608d4d817d32b692aa0c0448371f3d1d3276e1f6c25f972f54f4c29a08c3257e9eababec10d117e80f0e88d623f",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "a4e32025df88fc5cca66c31897930cd80880ed2e5a83fbabbcaa149ef411cb07923ef2c14b2e6d8cd77a578b863a7d87fd0b4bf3523a4793708692129436260c",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -233,16 +233,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-systemd-20261101T164556Z.tar.xz",
-              "size": 280754320,
+              "file": "stage3-amd64-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-systemd-20261108T170107Z.tar.xz",
+              "size": 280639788,
               "checksum": {
                 "type": "sha512",
-                "value": "10e33f5c552e24afb8e3d0768090688a983d5930f21bcb3d854cd9872de4888d7e51d7b446907bcdfc738c941adb3ca927d010b492f796cf87150c9e31746cd7",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "489e5717756a8a1d55f109a6e9858be6bb0b69105dea874a45abc2de683a8940025bac0a17228fea2811bc8388b8ef755e6482547b2d358b412452b913564d92",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -346,16 +346,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-desktop-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-openrc-20261101T164556Z.tar.xz",
-              "size": 757726148,
+              "file": "stage3-amd64-desktop-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-openrc-20261108T170107Z.tar.xz",
+              "size": 757190412,
               "checksum": {
                 "type": "sha512",
-                "value": "0bcaa0c2018709d52cac4d7d27d1270692869178edd2eecdb2dd3e25a0fb114f6bd528a069c8207e18cff0503caccc9769c4317617f25ad8b3dc23e015c57e41",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "abc1cbff7afba460a56a97a73a2388b73ba13abb9d2bea25b9268bb8e442df690b0374e09bf4e7dddac9ef7e3fb2de74bf70a7dccf5ded35aae58db3ee18de6a",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -384,16 +384,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-desktop-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-systemd-20261101T164556Z.tar.xz",
-              "size": 764549660,
+              "file": "stage3-amd64-desktop-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-systemd-20261108T170107Z.tar.xz",
+              "size": 764589188,
               "checksum": {
                 "type": "sha512",
-                "value": "06ba2293946cbd000b7bcb57e846b592b2d033125c4305ba975e90f9c0c9717af534a4c2eb5a58ffaece2edb568afe04d1ea25aa112077fa199f7d1e71b7aece",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "b88a445309cc5ccc9170a3e5488fb89c4899d74222f031065eadbc6b425727e6d5d3930737711a3d0a68b16d0206afe50aeae07630312886209380f4f2a164b1",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-desktop-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-desktop-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -422,16 +422,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-nomultilib-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-openrc-20261101T164556Z.tar.xz",
-              "size": 260468888,
+              "file": "stage3-amd64-nomultilib-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-openrc-20261108T170107Z.tar.xz",
+              "size": 260157720,
               "checksum": {
                 "type": "sha512",
-                "value": "a2609b2876cce10f52e2187f86407e0ea8aed4a104f6cb71da509d7d9ee03e49f3f2962e3a9eadf2f0bd511680382f1af0834625d9a849134450b20c4a9bf506",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "186004e57d654f1f457329a9833ace6c497ff336ae047faa06545f7f511d84179937a4ff594851768be8ed899b4a1b039712e6879318aa19bd23d56c65f6e8b8",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -445,16 +445,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-nomultilib-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-systemd-20261101T164556Z.tar.xz",
-              "size": 271037576,
+              "file": "stage3-amd64-nomultilib-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-systemd-20261108T170107Z.tar.xz",
+              "size": 270978524,
               "checksum": {
                 "type": "sha512",
-                "value": "8a45e4976e6d0757df95b29bd82586729ac9ba33bcb22c433e688aedf69c4e2b899c295a867a340e58e2f10b40f50cd664e5ba79c827b2906abb4330dd469ed4",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "9d3cd135687f6ee03080808a91ce20324389baf2857d0e1e7cd68833a347813c30e355263690d3e7a0158af93133601ef3dd16531f4a86314a3f719a1a07f37d",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-nomultilib-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-nomultilib-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -468,16 +468,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-hardened-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-openrc-20261101T164556Z.tar.xz",
-              "size": 267415512,
+              "file": "stage3-amd64-hardened-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-openrc-20261108T170107Z.tar.xz",
+              "size": 268910960,
               "checksum": {
                 "type": "sha512",
-                "value": "36203cc9add85f66a3059932310d378b8d58523d3e770ded6f135c4a163a036237ebba9cf57140830a6cbae2d08cce13b7aea1c99a7e04b7f6fe36725924388b",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "a46c125b8d133e9001213d8ea76c63d428215666df8595f57d463f963ece75fde5aef96a40f6f13aa6b7a64bc038d985d1badac9083fe5abbfb4b1905cfdf3ee",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -506,16 +506,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-hardened-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-systemd-20261101T164556Z.tar.xz",
-              "size": 280750600,
+              "file": "stage3-amd64-hardened-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-systemd-20261108T170107Z.tar.xz",
+              "size": 281589188,
               "checksum": {
                 "type": "sha512",
-                "value": "a60f86699b0ef7f875682a66a3aea713c6bcb70e1a4359621576c17377a1f40c350b45e1113e0f2c4f621dc36e6c5a4cf8e126efb06975dc807d62437109bcc3",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "4e91a6764d5ecf36000a258e40df99e9e6419e4b025e6733ed362920d399fcf877bfe3cb59263eb80551d33678928278ac97b609a58129464c525ec2c8506bf5",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -544,16 +544,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-musl-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-openrc-20261101T164556Z.tar.xz",
-              "size": 244154436,
+              "file": "stage3-amd64-musl-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-openrc-20261108T170107Z.tar.xz",
+              "size": 245057924,
               "checksum": {
                 "type": "sha512",
-                "value": "728ffd1c0ea7dbfcc30647728b890222d01249335af03f9a5b02309985aa8ac59f57a3e80ff8af71e8608a82f69ee9658a77d5f46cee8c50c79692319c6ba0c7",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "76c197056da38c44c633e696cef3b5c87dac0af76f1e6c21cf56a595e56cae2c1a9ffd836eb3e1040878e0a1bb141129e371790a1c1ca6d49b27a332b0d67f19",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -627,16 +627,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-musl-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-systemd-20261101T164556Z.tar.xz",
-              "size": 256760220,
+              "file": "stage3-amd64-musl-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-systemd-20261108T170107Z.tar.xz",
+              "size": 257283600,
               "checksum": {
                 "type": "sha512",
-                "value": "52744d27fad43f71dd1252f5be18e892d777985b80828330a8ff19030251d31c3a6d52d7ef35a65fceb319e13ea742690a4470a53ddc2cdfd6b9ae3560632e47",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "7b3f84ae018e64dea788c9b1ad2a2cf27b7a704d2c193582324f3cb823a7e8da32fef740d3b89029346d2d15e5005fff3d729c9895dab9dea8e5345911faf0d9",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -710,16 +710,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-musl-hardened-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-openrc-20261101T164556Z.tar.xz",
-              "size": 245368780,
+              "file": "stage3-amd64-musl-hardened-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-openrc-20261108T170107Z.tar.xz",
+              "size": 246164728,
               "checksum": {
                 "type": "sha512",
-                "value": "dedb096f3867704cebb697b868101c6285d5f5f606c4728174dad79811b252ff1b45a968f8ed753c9290dad40aa9ec5f48def4453a163a4f46df4c7ceb6c9227",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "0c698a0e97c412860eb56714f0258f55ed9858d075d72ca33d0c3833c753b352d8cde0b53d1af80cc19b725d98c5022ccd4dee0d77f6d9ca2a2ade851eaf5225",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -778,16 +778,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-musl-hardened-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-systemd-20261101T164556Z.tar.xz",
-              "size": 260066156,
+              "file": "stage3-amd64-musl-hardened-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-systemd-20261108T170107Z.tar.xz",
+              "size": 260813472,
               "checksum": {
                 "type": "sha512",
-                "value": "34cfe35c962068f5187e5ca283317bb07b69e06e5b4cfd3bdd56b265c74f7bce9355d9b7da3c79a9564949ae0b32348997351ebf2fc67fe90a71f63f67c36d36",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "b1381e19f4b1305305b88530af65068f839029f0483c1f6dff9065688cf4d33f249b8335e8bf3d7bddd0a38e3fb1d27dd51c44c8c02a35bd8e5d1866c9295206",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-hardened-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-hardened-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -846,16 +846,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-llvm-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-openrc-20261101T164556Z.tar.xz",
-              "size": 445679536,
+              "file": "stage3-amd64-llvm-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-openrc-20261108T170107Z.tar.xz",
+              "size": 445465908,
               "checksum": {
                 "type": "sha512",
-                "value": "f9e0bcbdfa263dd8be033d721682f63fddf5e244287785dd499bf9ee51edc55488a62a00ec9c5f282712a48fc97d4fb85d4355cb10906c16a41eb8c66500b8c7",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "d6cf807f665a235b89da4cf93e272964cb71f2d2130af5bfe4b85e3c3d1f96db3cb4a05dc521538897f56671784e4429cb174d4c20193980aba39f7fce2e11f8",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -884,16 +884,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-llvm-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-systemd-20261101T164556Z.tar.xz",
-              "size": 459112940,
+              "file": "stage3-amd64-llvm-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-systemd-20261108T170107Z.tar.xz",
+              "size": 458581528,
               "checksum": {
                 "type": "sha512",
-                "value": "d54fa1dd98a2858596b1e9a37a8a89d88ea471ddd99dd0b81324553abe4387c3849b94c7554732b24a7df4429a64eed66b5b3cf4f762852014ba30e12036a288",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "687629af071eb1a868048bfda6d80453742fdc3d12e1414f9319093a1aa338b36c460429aedc82dfe2ddbd24aef85a80d634fa456fc04f2888774b566d856ae8",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-llvm-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-llvm-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -922,16 +922,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-musl-llvm-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-openrc-20261101T164556Z.tar.xz",
-              "size": 249203056,
+              "file": "stage3-amd64-musl-llvm-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-openrc-20261108T170107Z.tar.xz",
+              "size": 249218424,
               "checksum": {
                 "type": "sha512",
-                "value": "ebd595c05dfe16b52af01812ce5dcb137ffe00ad0988d0d0142d1ff22f1b2a116e9d72c9317103f15b5150c9f805c0683ebb3465e54252de8b1284faed90ad1d",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "36ee28e72a382ebcafdf1f5df500dd2f1a1ccb516972ea0539fef244f527dda4ac2c6bb8fa94602f07d060c79df6e46b427238cff3972d6672af40114787a418",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -960,16 +960,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-musl-llvm-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-systemd-20261101T164556Z.tar.xz",
-              "size": 259938268,
+              "file": "stage3-amd64-musl-llvm-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-systemd-20261108T170107Z.tar.xz",
+              "size": 259613528,
               "checksum": {
                 "type": "sha512",
-                "value": "120194c4370019833cf81391aca0c6d9fe17ba63ec2fb4270e450c90b2c347802f9c06196ef9a2e3833174065e1f54f3ec088488d7b3a85e1445ce9fb2daac23",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "0c745321ff999124e8dbc7b33da5d9a159cac0c7b6a9f5b79de4a4ec257bb6dfdfa23e7de62c9241b79f006ca22ab0aad5a4af803f5787db680702452c69ec59",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-musl-llvm-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-musl-llvm-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -998,16 +998,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-hardened-selinux-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-openrc-20261101T164556Z.tar.xz",
-              "size": 290469560,
+              "file": "stage3-amd64-hardened-selinux-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-openrc-20261108T170107Z.tar.xz",
+              "size": 290413528,
               "checksum": {
                 "type": "sha512",
-                "value": "4493dd3efb6112a116bc85c397d3ecbfdb522e3fc702dc8291d7c59143ad83b7090965a1ed7372d0178d580e0c4cfa6a0c94f90288e241dd82fba7c1bdcd7402",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "b2b34e958a7c6230cf070a7ceaaca911315290717fd482614c8ab177064ace4eb627d56d815abe48de9b4a328bb41406b405eb883392475302091adc6988e753",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1021,16 +1021,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-hardened-selinux-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-systemd-20261101T164556Z.tar.xz",
-              "size": 299609752,
+              "file": "stage3-amd64-hardened-selinux-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-systemd-20261108T170107Z.tar.xz",
+              "size": 298117928,
               "checksum": {
                 "type": "sha512",
-                "value": "54e155ae05b136d944fa3f5119158801b8774f4a5a58ef0d3fb2567af914a364a3db4c69d389dbb51babe437d65a50a99806197e675f98358260252c4e53eca5",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "5c058c6e8fa8a4af15083b94dabf3d7a26858d09f040d6f36a001862e893412a4e4f2f705c10ffd323e65b7198185e47955d818ff292e7fe607733fd15a9fb47",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-hardened-selinux-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-hardened-selinux-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1044,16 +1044,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-x32-openrc-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-x32-openrc-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-x32-openrc-20261101T164556Z.tar.xz",
-              "size": 291011928,
+              "file": "stage3-x32-openrc-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-x32-openrc-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-x32-openrc-20261108T170107Z.tar.xz",
+              "size": 289142008,
               "checksum": {
                 "type": "sha512",
-                "value": "3f0991b479feecdccaa1f73269b8955d8b7938168fa8fa1e007a331550bc2aa4836f4ca682de2e8c55a8861078d39ec4024edccbf8afe6f43c768e7f1c1481dc",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-x32-openrc-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "1a609ad5a88444b895a1a4b282de4162627f278c8faae56239b2641869862a406bb2ecd08e954e11957c92b47b9503e17b232d39d132581e73de9d22deb7ebf6",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-x32-openrc-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-x32-openrc-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-x32-openrc-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1067,16 +1067,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-x32-systemd-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-x32-systemd-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-x32-systemd-20261101T164556Z.tar.xz",
-              "size": 308147628,
+              "file": "stage3-x32-systemd-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-x32-systemd-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-x32-systemd-20261108T170107Z.tar.xz",
+              "size": 308733196,
               "checksum": {
                 "type": "sha512",
-                "value": "354c9e7d7d53c510706ab5798adf78b3e3021881f6a84206800f5c3b41ff831e4200a677a130afc3cdb544cf4c9f986650c716dbece3bb835c40ff9ca6972773",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-x32-systemd-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "815ab6996ab43c42afb9d674ff8134f463402e767464d99e270c5e1ab318b491118840d1333a2e74215bf668a6a2f51fe1714752ee004dbc56905b509526530e",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-x32-systemd-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-x32-systemd-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-x32-systemd-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             }
           ]
@@ -1090,16 +1090,16 @@
             {
               "arch": "x86_64",
               "format": "tar.xz",
-              "file": "stage3-amd64-openrc-splitusr-20261101T164556Z.tar.xz",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-splitusr-20261101T164556Z.tar.xz",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-splitusr-20261101T164556Z.tar.xz",
-              "size": 265674176,
+              "file": "stage3-amd64-openrc-splitusr-20261108T170107Z.tar.xz",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-splitusr-20261108T170107Z.tar.xz",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-splitusr-20261108T170107Z.tar.xz",
+              "size": 265997744,
               "checksum": {
                 "type": "sha512",
-                "value": "3872310504d8ebe12fa5f4916562dad470464ef755255c2d4063d5cb6ae555496d1a1933c73d155cb354ebff54e9deacfadfc38cd8558cc2a2db1d7ab9cdb81c",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-splitusr-20261101T164556Z.tar.xz.DIGESTS"
+                "value": "90d5ecaeb15a0461337ebbb0e139f141036b96f083f71bf220efda89e9018e7a2b655083b1634e26708ff629cd6aea2bf33248036c7e928aa6a70570ad8e0c05",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-splitusr-20261108T170107Z.tar.xz.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/stage3-amd64-openrc-splitusr-20261101T164556Z.tar.xz.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/stage3-amd64-openrc-splitusr-20261108T170107Z.tar.xz.asc",
               "torrentUrl": null
             },
             {
@@ -1818,16 +1818,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "di-amd64-console-20261101T164556Z.qcow2",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/di-amd64-console-20261101T164556Z.qcow2",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/di-amd64-console-20261101T164556Z.qcow2",
-              "size": 1170341888,
+              "file": "di-amd64-console-20261108T170107Z.qcow2",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/di-amd64-console-20261108T170107Z.qcow2",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/di-amd64-console-20261108T170107Z.qcow2",
+              "size": 1676476416,
               "checksum": {
                 "type": "sha512",
-                "value": "4aab3367796c69697e488da3dfe9553efeede7e2ae15a49e09cdcb5dda5eb02a835334edb93e73a590321f48c2003eaaa749dee05fac76faebc8e678e13a1bea",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/di-amd64-console-20261101T164556Z.qcow2.DIGESTS"
+                "value": "e819a796adc855c8a2ddc8929003e2793a30166152d8ea4999f5f85bb6210f413f68f3c595b132015750028d38912d1ee8928f0c1f6e2432427f7c75ee728aed",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/di-amd64-console-20261108T170107Z.qcow2.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/di-amd64-console-20261101T164556Z.qcow2.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/di-amd64-console-20261108T170107Z.qcow2.asc",
               "torrentUrl": null
             },
             {
@@ -1871,16 +1871,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "di-amd64-cloudinit-20261101T164556Z.qcow2",
-              "path": "releases/amd64/autobuilds/20261101T164556Z/di-amd64-cloudinit-20261101T164556Z.qcow2",
-              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/di-amd64-cloudinit-20261101T164556Z.qcow2",
-              "size": 1469120512,
+              "file": "di-amd64-cloudinit-20261108T170107Z.qcow2",
+              "path": "releases/amd64/autobuilds/20261108T170107Z/di-amd64-cloudinit-20261108T170107Z.qcow2",
+              "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/di-amd64-cloudinit-20261108T170107Z.qcow2",
+              "size": 1470824448,
               "checksum": {
                 "type": "sha512",
-                "value": "ca3195ff7347e4040b433d473cf6b2f08c49c48d2e340e95973cfb9c0b04ed91305cf128fd2a29ab199e25eb28e6c8fcd906e1f8e1ef3bbd9c049ab56026d7dd",
-                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/di-amd64-cloudinit-20261101T164556Z.qcow2.DIGESTS"
+                "value": "a20f624ed6697cd96b67a2617b9ec9bbcad8b7c856839789f116c043eff710c9f3b3fac914cd04fd1400733067d19f74410c4901a80d2cec16da0049c08c95ef",
+                "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/di-amd64-cloudinit-20261108T170107Z.qcow2.DIGESTS"
               },
-              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261101T164556Z/di-amd64-cloudinit-20261101T164556Z.qcow2.asc",
+              "signatureUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20261108T170107Z/di-amd64-cloudinit-20261108T170107Z.qcow2.asc",
               "torrentUrl": null
             },
             {
