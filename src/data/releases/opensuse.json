@@ -6,7 +6,7 @@
     "https://get.opensuse.org/leap/16.1/",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "releases": [
     {
       "version": "20261108",
@@ -40,13 +40,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-DVD-aarch64-Snapshot20261020-Media.iso",
+              "file": "openSUSE-Tumbleweed-DVD-aarch64-Snapshot20261108-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-DVD-aarch64-Current.iso",
-              "size": 4235493376,
+              "size": 4215422976,
               "checksum": {
                 "type": "sha256",
-                "value": "3276133a3f691997f27e628531f959091c666fb37632675e54e64e84804d53ed",
+                "value": "fc5c5aa237d1195c43d644700505c09b0903ec63180071316b33bd2990bef249",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-DVD-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-DVD-aarch64-Current.iso.sha256.asc",
@@ -123,13 +123,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-aarch64-Snapshot20261105-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-aarch64-Snapshot20261108-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso",
-              "size": 455780352,
+              "size": 455657472,
               "checksum": {
                 "type": "sha256",
-                "value": "0b9102d5be0c14e5de85b19bb0e763f4754a4dc173c4cc6f4c00baa4b60dec66",
+                "value": "4cec13710aa0617742007b6e4629812bcdb1842df5cf3dc48a02fe55c8671525",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso.sha256.asc",
