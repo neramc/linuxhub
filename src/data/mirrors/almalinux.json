@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.almalinux.org/"
   ],
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "mirrors": [
     {
       "url": "https://alma.mirror.nyuad.nyu.edu/",
@@ -422,6 +422,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.qlu.edu.cn/almalinux/",
+      "country": "CN",
+      "name": "mirrors.qlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirrors.tencent.com/almalinux/",
       "country": "CN",
       "name": "mirrors.tencent.com",
@@ -814,14 +822,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.cov.ukservers.com/almalinux/",
-      "country": "GB",
-      "name": "mirror.cov.ukservers.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.ox.ac.uk/sites/repo.almalinux.org/",
       "country": "GB",
       "name": "mirror.ox.ac.uk",
@@ -982,14 +982,6 @@
       "score": null
     },
     {
-      "url": "https://almalinux.excellmedia.net/",
-      "country": "IN",
-      "name": "almalinux.excellmedia.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://blr.aws.repo.almalinux.org/almalinux/",
       "country": "IN",
       "name": "blr.aws.repo.almalinux.org",
@@ -1038,14 +1030,6 @@
       "score": null
     },
     {
-      "url": "https://almalinux.mobinhost.com/",
-      "country": "IR",
-      "name": "almalinux.mobinhost.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://ir.almalinux.sindad.cloud/",
       "country": "IR",
       "name": "ir.almalinux.sindad.cloud",
@@ -1062,9 +1046,25 @@
       "score": null
     },
     {
+      "url": "https://mirror.hostbaran.com/almalinux/",
+      "country": "IR",
+      "name": "mirror.hostbaran.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.parsdev.com/Almalinux/",
       "country": "IR",
       "name": "mirror.parsdev.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.rootlicense.com/almalinux/",
+      "country": "IR",
+      "name": "mirror.rootlicense.com",
       "lat": null,
       "lon": null,
       "score": null
@@ -1686,6 +1686,14 @@
       "score": null
     },
     {
+      "url": "https://ftp.lysator.liu.se/pub/almalinux/",
+      "country": "SE",
+      "name": "ftp.lysator.liu.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.accum.se/mirror/almalinux.org/",
       "country": "SE",
       "name": "mirror.accum.se",
@@ -1846,6 +1854,14 @@
       "score": null
     },
     {
+      "url": "https://almalinux-mirror.freehost.com.ua/",
+      "country": "UA",
+      "name": "almalinux-mirror.freehost.com.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://almalinux.ip-connect.info/",
       "country": "UA",
       "name": "almalinux.ip-connect.info",
@@ -1865,22 +1881,6 @@
       "url": "https://almalinux.mirror.ukraine.com.ua/",
       "country": "UA",
       "name": "almalinux.mirror.ukraine.com.ua",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://distrohub.kyiv.ua/almalinux/",
-      "country": "UA",
-      "name": "distrohub.kyiv.ua",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.hostiko.network/almalinux/",
-      "country": "UA",
-      "name": "mirror.hostiko.network",
       "lat": null,
       "lon": null,
       "score": null
@@ -2257,14 +2257,6 @@
       "url": "https://mirror.wdc2.us.leaseweb.net/almalinux/",
       "country": "US",
       "name": "mirror.wdc2.us.leaseweb.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.wiseglobalsolutions.com/almalinux/",
-      "country": "US",
-      "name": "mirror.wiseglobalsolutions.com",
       "lat": null,
       "lon": null,
       "score": null
