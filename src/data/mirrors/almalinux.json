@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.almalinux.org/"
   ],
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "mirrors": [
     {
       "url": "https://alma.mirror.nyuad.nyu.edu/",
@@ -318,6 +318,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.reenigne.net/almalinux/",
+      "country": "CA",
+      "name": "mirror.reenigne.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://muug.ca/mirror/almalinux/",
       "country": "CA",
       "name": "muug.ca",
@@ -425,14 +433,6 @@
       "url": "https://mirrors.qlu.edu.cn/almalinux/",
       "country": "CN",
       "name": "mirrors.qlu.edu.cn",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirrors.tencent.com/almalinux/",
-      "country": "CN",
-      "name": "mirrors.tencent.com",
       "lat": null,
       "lon": null,
       "score": null
@@ -822,6 +822,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.cov.ukservers.com/almalinux/",
+      "country": "GB",
+      "name": "mirror.cov.ukservers.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.ox.ac.uk/sites/repo.almalinux.org/",
       "country": "GB",
       "name": "mirror.ox.ac.uk",
@@ -881,14 +889,6 @@
       "url": "https://ftp.bme.hu/almalinux/",
       "country": "HU",
       "name": "ftp.bme.hu",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.niif.hu/almalinux/",
-      "country": "HU",
-      "name": "mirror.niif.hu",
       "lat": null,
       "lon": null,
       "score": null
@@ -982,6 +982,14 @@
       "score": null
     },
     {
+      "url": "https://almalinux.excellmedia.net/",
+      "country": "IN",
+      "name": "almalinux.excellmedia.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://blr.aws.repo.almalinux.org/almalinux/",
       "country": "IN",
       "name": "blr.aws.repo.almalinux.org",
@@ -1038,33 +1046,9 @@
       "score": null
     },
     {
-      "url": "https://mirror.famaserver.com/almalinux/",
-      "country": "IR",
-      "name": "mirror.famaserver.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.hostbaran.com/almalinux/",
-      "country": "IR",
-      "name": "mirror.hostbaran.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.parsdev.com/Almalinux/",
       "country": "IR",
       "name": "mirror.parsdev.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.rootlicense.com/almalinux/",
-      "country": "IR",
-      "name": "mirror.rootlicense.com",
       "lat": null,
       "lon": null,
       "score": null
@@ -1257,14 +1241,6 @@
       "url": "https://mirror.ps.kz/almalinux/",
       "country": "KZ",
       "name": "mirror.ps.kz",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.vpsnet.com/almalinux/",
-      "country": "LT",
-      "name": "mirror.vpsnet.com",
       "lat": null,
       "lon": null,
       "score": null
@@ -1654,6 +1630,14 @@
       "score": null
     },
     {
+      "url": "https://mirror1.sox.rs/almalinux/",
+      "country": "RS",
+      "name": "mirror1.sox.rs",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.docker.ru/almalinux/",
       "country": "RU",
       "name": "mirror.docker.ru",
@@ -1849,14 +1833,6 @@
       "url": "https://mirror.aptus.co.tz/pub/almalinux/",
       "country": "TZ",
       "name": "mirror.aptus.co.tz",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://almalinux-mirror.freehost.com.ua/",
-      "country": "UA",
-      "name": "almalinux-mirror.freehost.com.ua",
       "lat": null,
       "lon": null,
       "score": null
@@ -2257,6 +2233,14 @@
       "url": "https://mirror.wdc2.us.leaseweb.net/almalinux/",
       "country": "US",
       "name": "mirror.wdc2.us.leaseweb.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.wiseglobalsolutions.com/almalinux/",
+      "country": "US",
+      "name": "mirror.wiseglobalsolutions.com",
       "lat": null,
       "lon": null,
       "score": null

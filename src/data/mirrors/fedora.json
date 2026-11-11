@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-09",
+  "updated": "2026-11-11",
   "mirrors": [
     {
       "url": "https://fedora.zero.com.ar/linux/",
@@ -17,14 +17,6 @@
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
       "country": "AT",
       "name": "at.mirrors.cicku.me",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.ufdroht.net/fedora/fedora/linux/",
-      "country": "AT",
-      "name": "mirror.ufdroht.net",
       "lat": null,
       "lon": null,
       "score": null
@@ -614,14 +606,6 @@
       "score": null
     },
     {
-      "url": "https://distrohub.kyiv.ua/fedora/fedora/linux/",
-      "country": "UA",
-      "name": "distrohub.kyiv.ua",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://fedora.ip-connect.info/linux/",
       "country": "UA",
       "name": "fedora.ip-connect.info",
@@ -809,6 +793,14 @@
       "url": "https://mirror.fcix.net/fedora/linux/",
       "country": "US",
       "name": "mirror.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lstn.net/fedora/",
+      "country": "US",
+      "name": "mirror.lstn.net",
       "lat": null,
       "lon": null,
       "score": null
