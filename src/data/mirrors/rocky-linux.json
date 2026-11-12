@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-10",
+  "updated": "2026-11-12",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -449,6 +449,14 @@
       "url": "https://rocky-linux-asia-east2.production.gcp.mirrors.ctrliq.cloud/pub/rocky/",
       "country": "HK",
       "name": "rocky-linux-asia-east2.production.gcp.mirrors.ctrliq.cloud",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.amscloud.co.id/rockylinux/",
+      "country": "ID",
+      "name": "mirror.amscloud.co.id",
       "lat": null,
       "lon": null,
       "score": null

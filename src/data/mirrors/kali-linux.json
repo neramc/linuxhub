@@ -9,7 +9,7 @@
     "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-netinst-arm64.iso?mirrorlist",
     "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-purple-amd64.iso?mirrorlist"
   ],
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "mirrors": [
     {
       "url": "https://kali.itsec.am/kali-images/",
@@ -137,6 +137,14 @@
       "name": "mirrors.tuna.tsinghua.edu.cn",
       "lat": 39.911,
       "lon": 116.395,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.ustc.edu.cn/kali-images/",
+      "country": "CN",
+      "name": "mirrors.ustc.edu.cn",
+      "lat": 34.7732,
+      "lon": 113.722,
       "score": null
     },
     {
@@ -321,14 +329,6 @@
       "name": "mirror.keiminem.com",
       "lat": 36.1135,
       "lon": 128.343,
-      "score": null
-    },
-    {
-      "url": "https://mirror.siwoo.org/kali-images/",
-      "country": "KR",
-      "name": "mirror.siwoo.org",
-      "lat": 35.2119,
-      "lon": 126.8545,
       "score": null
     },
     {
@@ -521,6 +521,14 @@
       "name": "ftp2.osuosl.org",
       "lat": 44.5632,
       "lon": -123.28,
+      "score": null
+    },
+    {
+      "url": "https://kali.darklab.sh/kali-images/",
+      "country": "US",
+      "name": "kali.darklab.sh",
+      "lat": 33.4413,
+      "lon": -112.0421,
       "score": null
     },
     {

@@ -3,16 +3,8 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "mirrors": [
-    {
-      "url": "https://fedora.zero.com.ar/linux/",
-      "country": "AR",
-      "name": "fedora.zero.com.ar",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
       "country": "AT",
@@ -129,14 +121,6 @@
       "url": "https://mirror.dst.ca/fedora-linux/fedora/linux/",
       "country": "CA",
       "name": "mirror.dst.ca",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://yxeix.mm.fcix.net/fedora/linux/",
-      "country": "CA",
-      "name": "yxeix.mm.fcix.net",
       "lat": null,
       "lon": null,
       "score": null
@@ -646,14 +630,6 @@
       "score": null
     },
     {
-      "url": "https://cofractal-ewr.mm.fcix.net/fedora/linux/",
-      "country": "US",
-      "name": "cofractal-ewr.mm.fcix.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://cofractal-sea.mm.fcix.net/fedora/linux/",
       "country": "US",
       "name": "cofractal-sea.mm.fcix.net",
@@ -726,14 +702,6 @@
       "score": null
     },
     {
-      "url": "https://gigsouth.mm.fcix.net/fedora/linux/",
-      "country": "US",
-      "name": "gigsouth.mm.fcix.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://iad.mirror.rackspace.com/fedora/",
       "country": "US",
       "name": "iad.mirror.rackspace.com",
@@ -769,6 +737,14 @@
       "url": "https://lolhost.mm.fcix.net/fedora/linux/",
       "country": "US",
       "name": "lolhost.mm.fcix.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.acm.umn.edu/fedora/fedora/",
+      "country": "US",
+      "name": "mirror.acm.umn.edu",
       "lat": null,
       "lon": null,
       "score": null
