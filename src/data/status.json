@@ -81,8 +81,8 @@
   },
   "debian": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-12",
+      "lastError": "latest/SHA512SUMS has no debian-13-nocloud-amd64.qcow2"
     },
     "mirrors": {
       "failingSince": null,
@@ -342,7 +342,7 @@
   "puppy-linux": {
     "releases": {
       "failingSince": "2026-11-02",
-      "lastError": "SourceForge shows no hash for NoblePup32-24.04-261101.iso"
+      "lastError": "The operation timed out."
     },
     "mirrors": {
       "failingSince": null,
@@ -391,8 +391,8 @@
   },
   "slackware": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-12",
+      "lastError": "redirect to a non-HTTPS URL (http://ftp.slackware.com/pub/slackware/slackware64-15.0/ANNOUNCE.15.0)"
     },
     "mirrors": {
       "failingSince": null,
