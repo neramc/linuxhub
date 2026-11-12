@@ -439,9 +439,12 @@ function checkDownloadsPage(html: string, releases: Release[], newest: string) {
       .find((r) => r.version === newest)
       ?.editions.flatMap((e) => e.artifacts.map((a) => a.url)) ?? [],
   );
+  // The page has written the links' slashes both as "/" and as "&#x2F;".
   const offered = [
-    ...html.matchAll(/href="(https:&#x2F;&#x2F;dl-cdn\.alpinelinux\.org[^"]+\.(?:iso|img\.gz))"/g),
-  ].map((m) => (m[1] as string).replaceAll("&#x2F;", "/"));
+    ...html
+      .replaceAll("&#x2F;", "/")
+      .matchAll(/href="(https:\/\/dl-cdn\.alpinelinux\.org[^"]+\.(?:iso|img\.gz))"/g),
+  ].map((m) => m[1] as string);
   if (!offered.length) throw new Error(`no image links on ${DOWNLOADS}`);
   const missing = offered.filter(
     (u) => !have.has(u) && !UNSUPPORTED_ARCHES.some((a) => u.includes(`-${a}.`)),

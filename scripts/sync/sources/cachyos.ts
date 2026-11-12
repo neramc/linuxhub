@@ -55,6 +55,12 @@
  * mirror.zyner.org's robots.txt closes it to LinuxhubBot (or it does not answer), so
  * run.ts cannot check its root and keeps it on the project's word.
  *
+ * Direct link (changed again, November 2026): https://iso.cachyos.org/<dir>/<date>/<file>,
+ * on the project's own domain but in another layout (no ISO/ segment) and not among the
+ * page's web seeds. It names the same dir, snapshot and file as the seeds, so it is
+ * parsed for those; as a host that is not a listed web seed it changes nothing else
+ * (`url` stays on the CDN, the mirrors are the seeds).
+ *
  * Deviations: desktop is null for the Desktop Edition because no official page
  * says which desktop its live session runs (the installer offers 17+); the
  * Handheld Edition is KDE Plasma ("only KDE Plasma is supported", download
@@ -139,14 +145,15 @@ async function readPage(): Promise<Offered[]> {
     const direct = str("direct_url");
     const title = str("title");
     if (!direct || !title) continue;
-    // The direct link may sit on the CDN, the origin or a mirror (mirror.zyner.org
-    // since October 2026), so only its layout is fixed: <root>/ISO/<dir>/<date>/<file>.
+    // The direct link may sit on the CDN, the origin, a mirror (mirror.zyner.org since
+    // October 2026) or iso.cachyos.org (November 2026, without the ISO/ segment), so
+    // only its layout is fixed: <root>[ISO/]<dir>/<date>/<file>.
     const m = direct.match(
-      /^(https:\/\/[^/]+\/(?:[a-z0-9._-]+\/)*?)ISO\/([a-z0-9-]+)\/(\d{6})\/(cachyos-\2-linux-\3\.iso)$/,
+      /^(https:\/\/[^/]+\/(?:[a-z0-9._-]+\/)*?)(ISO\/)?([a-z0-9-]+)\/(\d{6})\/(cachyos-\3-linux-\4\.iso)$/,
     );
-    if (!m?.[1] || !m[2] || !m[3] || !m[4])
+    if (!m?.[1] || !m[3] || !m[4] || !m[5])
       throw new Error(`unexpected direct URL ${direct} on ${PAGE}`);
-    const [, directRoot, dir, date, file] = m;
+    const [, directRoot, isoSegment, dir, date, file] = m;
     const tail = `ISO/${dir}/${date}/${file}`;
     const seeds = [...(str("magnet_url") ?? "").matchAll(/[?&]ws=([^&]+)/g)].flatMap((w) => {
       const seed = decodeURIComponent(w[1] ?? "");
@@ -161,7 +168,8 @@ async function readPage(): Promise<Offered[]> {
     // The direct link is used only for the layout of a mirror the page also lists as a web seed
     // (its direct link is on mirror.zyner.org, whose seed entry has another prefix); a host the
     // page does not list as carrying the file is not trusted and changes nothing.
-    const directHost = new URL(directRoot).hostname;
+    // Only a root in the seeds' layout (…/ISO/<dir>/…) can stand in for a seed's.
+    const directHost = isoSegment ? new URL(directRoot).hostname : null;
     const roots = seeds.map((root) => (new URL(root).hostname === directHost ? directRoot : root));
     offered.push({
       title,

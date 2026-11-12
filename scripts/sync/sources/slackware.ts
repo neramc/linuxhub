@@ -26,7 +26,9 @@
  *   files were published; the project announced 2022-02-02.) Like every
  *   non-ISO file there, the announcement is redirected by the mirror
  *   redirector to one of the project's mirrors, which serves the project's
- *   copy (a date only, the same whichever mirror answers).
+ *   copy (a date only, the same whichever mirror answers). When the mirror it
+ *   picks turns the bot away in robots.txt, the copy is read from the mirrors
+ *   the ISO's mirror list names instead (a few, in order).
  * - mirrors.slackware.com/slackware/slackware-iso/slackware64-<N>-iso/ and
  *   slackware-<N>-iso/: the ISO directories (64-bit x86_64 and 32-bit x86). The
  *   install DVD (slackware[64]-<N>-install-dvd.iso) is the image; the
@@ -73,7 +75,7 @@
  */
 
 import type { Artifact, Mirror, Release } from "../../../src/lib/data-schemas";
-import { getText, HttpError } from "../http";
+import { getText, HttpError, RobotsDisallowed } from "../http";
 import { parseChecksums } from "../lib/checksums";
 import { listDirectory } from "../lib/dirlist";
 import { type Cycle, endOfLife } from "../lib/endoflife";
@@ -192,16 +194,44 @@ async function mirrorlist(iso: Iso): Promise<MirrorbrainPage> {
 
 const announcement = (version: string) => `${ROOT}slackware64-${version}/ANNOUNCE.${version}`;
 
-/** The release date from the announcement's dateline ("… 2022-02-02:"); null without an announcement or date. */
-async function announced(version: string, today: string): Promise<string | null> {
-  try {
-    const text = await getText(announcement(version));
-    const day = text.slice(0, 300).match(/\b(\d{4}-\d{2}-\d{2})\b/)?.[1] ?? null;
-    return day && isoDay(day) === day && day <= today ? day : null;
-  } catch (error) {
-    if (error instanceof HttpError && error.status === 404) return null;
-    throw error;
+/** How many of the ISO's listed mirrors are tried for the announcement before giving up. */
+const ANNOUNCEMENT_MIRRORS = 5;
+
+/**
+ * The release date from the announcement's dateline ("… 2022-02-02:"); null
+ * without an announcement or date. The redirector sends the request to one of
+ * the project's mirrors; when that mirror's robots.txt turns the bot away
+ * (plug-mirror.rcac.purdue.edu, dfw.mirror.rackspace.com in November 2026), the
+ * same file is read from the mirrors the ISO's mirror list names, in order,
+ * up to ANNOUNCEMENT_MIRRORS of them, skipping those that refuse too.
+ */
+async function announced(
+  version: string,
+  today: string,
+  mirrorRoots: readonly string[],
+  log: (message: string) => void,
+): Promise<string | null> {
+  const relative = `slackware64-${version}/ANNOUNCE.${version}`;
+  const candidates = [
+    announcement(version),
+    ...mirrorRoots.map((root) => `${withSlash(root)}${relative}`),
+  ];
+  for (const [i, url] of candidates.slice(0, 1 + ANNOUNCEMENT_MIRRORS).entries()) {
+    try {
+      const text = await getText(url);
+      if (i > 0) log(`ANNOUNCE.${version} read from the listed mirror ${new URL(url).host}`);
+      const day = text.slice(0, 300).match(/\b(\d{4}-\d{2}-\d{2})\b/)?.[1] ?? null;
+      return day && isoDay(day) === day && day <= today ? day : null;
+    } catch (error) {
+      if (error instanceof HttpError && error.status === 404 && i === 0) return null;
+      // A mirror that refuses the bot, lacks the file or does not answer: try the next one.
+      if (error instanceof RobotsDisallowed || error instanceof HttpError) continue;
+      throw error;
+    }
   }
+  throw new Error(
+    `ANNOUNCE.${version}: the redirector and ${Math.min(mirrorRoots.length, ANNOUNCEMENT_MIRRORS)} listed mirrors refused it or did not answer`,
+  );
 }
 
 export default defineSource({
@@ -217,9 +247,11 @@ export default defineSource({
     const sources = ["https://endoflife.date/slackware", ISO_ROOT];
     for (const [version, list] of byCycle) {
       const artifacts: Artifact[] = [];
+      const mirrorRoots = new Set<string>();
       for (const iso of list) {
         const url = `${iso.dir}${iso.file}`;
         const page = await mirrorlist(iso);
+        for (const root of page.roots.keys()) mirrorRoots.add(root);
         const sumUrl = `${url}.sha256`;
         const sha256 = parseChecksums(await getText(sumUrl)).get(iso.file);
         if (!sha256) throw new Error(`${sumUrl} does not list ${iso.file}`);
@@ -242,7 +274,7 @@ export default defineSource({
         });
       }
       const cycle = (list[0] as Iso).cycle;
-      const official = await announced(version, ctx.today);
+      const official = await announced(version, ctx.today, [...mirrorRoots], ctx.log);
       if (official) sources.push(announcement(version));
       releases.push({
         version,

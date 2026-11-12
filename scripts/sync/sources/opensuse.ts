@@ -73,7 +73,9 @@
  *
  * Mirrors: the report's HTTPS entries that carry the `iso` tree of Tumbleweed
  * and of every Leap line listed (the list's own flag, entries it rates
- * "outdated" excluded). Deviation: the mirror list is per distro, so a mirror
+ * "outdated" excluded). A Leap line the report has no column for yet (16.1,
+ * released before the report listed it) is judged by the newest older line of
+ * the same major (16.0), and logged. Deviation: the mirror list is per distro, so a mirror
  * that carries only Leap (for example Kakao and JAIST) or only Tumbleweed is
  * left out rather than listed for files it does not have. Country from the
  * report; the report has no coordinates or scores. run.ts then checks each
@@ -515,11 +517,30 @@ export default defineSource({
       if (i < 2) throw new Error(`the mirror report has no column matching ${name}`);
       return i;
     };
+    // A Leap line newer than the report (16.1 in November 2026, released before the
+    // report added it) is judged by the report's newest older line of the same major.
+    const leapColumn = (v: string) => {
+      const exact = columns.findIndex((c) => c.replace(/^Leap /, "") === v);
+      if (exact >= 2) return exact;
+      const older = columns
+        .map((c, i) => ({ v: c.replace(/^Leap /, ""), i }))
+        .filter(
+          (x) =>
+            x.i >= 2 &&
+            /^\d+\.\d+$/.test(x.v) &&
+            x.v.split(".")[0] === v.split(".")[0] &&
+            compareVersions(x.v, v) < 0,
+        )
+        .sort((a, b) => compareVersions(b.v, a.v))[0];
+      if (!older)
+        throw new Error(
+          `the mirror report has no column for Leap ${v} or an older ${v.split(".")[0]}.x`,
+        );
+      ctx.log(`the mirror report has no Leap ${v} column yet; its ${older.v} column stands in`);
+      return older.i;
+    };
     // Tumbleweed and every listed Leap line must carry their iso tree.
-    const needed = [
-      column(/^Tumbleweed$/),
-      ...lines.stable.map((v) => column(new RegExp(`^(?:Leap )?${v.replace(".", "\\.")}$`))),
-    ];
+    const needed = [column(/^Tumbleweed$/), ...lines.stable.map(leapColumn)];
 
     const mirrors = new Map<string, Mirror>();
     for (const row of html.slice(html.indexOf("<tbody>")).split(/<tr>/).slice(1)) {

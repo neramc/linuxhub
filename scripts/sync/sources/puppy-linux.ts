@@ -18,8 +18,8 @@
  *   official GitHub builds are transferred to; its files pages are
  *   robots-allowed): per build, the dated ISOs (<Pup>-<version>-<YYMMDD>.iso,
  *   the last three monthly rebuilds), their upload days and the hashes
- *   SourceForge computed. The newest ISO is the current one. The project also
- *   publishes SHA512checksums.txt in each folder (the sync requires it to be
+ *   SourceForge computed. The newest ISO with a hash is the current one. The
+ *   project also publishes SHA512checksums.txt in each folder (the sync requires it to be
  *   listed), but it can only be read through SourceForge's download redirector,
  *   whose hosts disallow all bots, so the checksum is the strongest hash the
  *   files page shows (SHA-256) and `checksum.url` is that page (the same
@@ -205,11 +205,17 @@ interface Build {
   artifact: Artifact;
 }
 
-/** The newest ISO of a SourceForge build folder. */
+/**
+ * The newest ISO of a SourceForge build folder that SourceForge shows a hash
+ * for. A fresh upload can go without one for days (NoblePup32-24.04-261101.iso
+ * still had none 11 days after its upload, while every other file of the
+ * folder had them); it is skipped, logged, until the hash appears.
+ */
 async function sourceforgeBuild(
   folder: string,
   prefix: string,
   arch: Artifact["arch"],
+  log: (message: string) => void,
 ): Promise<Build> {
   const entries = await sourceforgeFolder(PROJECT, folder);
   if (!entries.some((e) => e.type === "file" && e.name === "SHA512checksums.txt"))
@@ -218,12 +224,16 @@ async function sourceforgeBuild(
   const isos = entries
     .filter((e): e is SfEntry => e.type === "file" && pattern.test(e.name))
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "") || b.name.localeCompare(a.name));
-  const iso = isos[0];
+  if (!isos.length) throw new Error(`no ${prefix} ISO in ${sourceforgeFolderUrl(PROJECT, folder)}`);
+  const url = sourceforgeFolderUrl(PROJECT, folder);
+  const iso = isos.find((e) => sourceforgeChecksum(e, url));
+  for (const skipped of isos.slice(0, iso ? isos.indexOf(iso) : isos.length))
+    log(`${skipped.name}: SourceForge shows no hash for it yet, so it is not offered`);
   const version = iso ? pattern.exec(iso.name)?.[1] : undefined;
   if (!iso || !version)
-    throw new Error(`no ${prefix} ISO in ${sourceforgeFolderUrl(PROJECT, folder)}`);
+    throw new Error(`SourceForge shows no hash for any ${prefix} ISO in ${url}`);
   if (!iso.date) throw new Error(`SourceForge shows no upload day for ${iso.name}`);
-  const checksum = sourceforgeChecksum(iso, sourceforgeFolderUrl(PROJECT, folder));
+  const checksum = sourceforgeChecksum(iso, url);
   if (!checksum) throw new Error(`SourceForge shows no hash for ${iso.name}`);
   return {
     version,
@@ -344,7 +354,7 @@ export default defineSource({
       const prefix = prefixOf(row.isoName);
       const build =
         place.kind === "sourceforge"
-          ? await sourceforgeBuild(place.folder, prefix, arch)
+          ? await sourceforgeBuild(place.folder, prefix, arch, ctx.log)
           : await treeBuild(place.dir, prefix, arch);
       if (place.kind === "sourceforge") folders.add(place.folder);
 

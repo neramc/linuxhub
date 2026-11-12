@@ -13,7 +13,10 @@
  *   mirror link. Each image link goes through dnt_download.html?target=N (a
  *   donation page; its script maps N to redirectNN.html) and redirectNN.html,
  *   which names the file's SourceForge URL; both are followed, so the files come
- *   from the same place a visitor's browser ends up.
+ *   from the same place a visitor's browser ends up. Since November 2026 some
+ *   redirect pages name the file on the fast mirror below instead; that tree is
+ *   SourceForge's, so the file is taken as the SourceForge one at the same path
+ *   (it must be on the SourceForge files page, with matching md5).
  * - sourceforge.net/projects/q4os/files/{stable,oldstable}/ (robots.txt allows
  *   the files pages): SourceForge's SHA-256, SHA-1 and MD5 of every ISO and its
  *   upload day. The page's md5 sum of a file must equal SourceForge's MD5 (a
@@ -87,6 +90,8 @@ const SF_FILE = new RegExp(
   `^https://sourceforge\\.net/projects/${PROJECT}/files/((?:stable|oldstable)/[^/]+)/download$`,
 );
 const STATIC_FILE = /^https:\/\/q4os\.sourceforge\.io\/download\/([^/]+)$/;
+/** The download page's "Fast mirror in <country>" links: the mirror roots. */
+const FAST_MIRROR = /<a href="(https:\/\/[^"]+)">Fast mirror in ([A-Za-z ]+)<\/a>/g;
 
 interface Link {
   /** Absolute URL of the donation page, e.g. .../dnt_download.html?target=8 */
@@ -187,6 +192,7 @@ export default defineSource({
     const legacy = await getText(legacyPage, { accept: "text/html" });
 
     const links = [...parseLinks(main, DOWNLOADS), ...parseLinks(legacy, legacyPage)];
+    const fastMirrors = [...main.matchAll(FAST_MIRROR)].map((m) => withSlash(m[1] as string));
     const md5s = new Map([...parseMd5(legacy), ...parseMd5(main)]);
     const targets = parseTargets(await getText(links[0]?.href as string, { accept: "text/html" }));
 
@@ -204,7 +210,13 @@ export default defineSource({
       const body = await getText(new URL(redirect, SITE).href, { accept: "text/html" });
       const url = body.match(/window\.location\.href\s*=\s*"([^"]+)"/)?.[1];
       if (!url) throw new Error(`${redirect} names no download URL`);
-      const sfPath = SF_FILE.exec(url)?.[1] ?? null;
+      // Since November 2026 some links end on the fast mirror instead of SourceForge; it
+      // keeps the same stable/ and oldstable/ tree, so the file is the SourceForge one.
+      const mirrored = fastMirrors
+        .map((root) => (url.startsWith(root) ? url.slice(root.length) : ""))
+        .find((rest) => /^(?:stable|oldstable)\/[^/]+$/.test(rest));
+      if (mirrored) ctx.log(`${l.edition} (${l.arch}) links the fast mirror: ${url}`);
+      const sfPath = SF_FILE.exec(url)?.[1] ?? mirrored ?? null;
       const file = (sfPath ?? STATIC_FILE.exec(url)?.[1])?.split("/").pop();
       const iso = file ? ISO.exec(file) : null;
       const win = file ? WINSETUP.exec(file) : null;
@@ -301,9 +313,7 @@ export default defineSource({
   async mirrors() {
     const main = await getText(DOWNLOADS, { accept: "text/html" });
     const mirrors: Mirror[] = [originAsMirror(sourceforgeRoot(PROJECT), "SourceForge", null)];
-    for (const m of main.matchAll(
-      /<a href="(https:\/\/[^"]+)">Fast mirror in ([A-Za-z ]+)<\/a>/g,
-    )) {
+    for (const m of main.matchAll(FAST_MIRROR)) {
       const url = new URL(m[1] as string);
       mirrors.push({
         url: withSlash(url.href),

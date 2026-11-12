@@ -12,7 +12,9 @@
  * - cdimage.deepin.com/releases/<version>/<arch>/: the release repository.
  *   The folder listing prints the exact size of each file in bytes; SHA256SUMS
  *   (the strongest published; MD5SUMS also exists) holds the checksum. Every
- *   image the page links must be in both, or the sync throws.
+ *   image the page links must be in the folder, or the sync throws. An image
+ *   whose SHA256SUMS does not name it (a misspelt entry) is left out and
+ *   logged, since its checksum cannot be verified as published.
  * - www.deepin.org/en/wp-json/wp/v2/posts: the project's own post "deepin
  *   <version> Release Note", for the release date (its publication day) and
  *   the notes link. No post (yet): date and link stay null.
@@ -166,11 +168,19 @@ export default defineSource({
         const listing = await getText(dir, { accept: "text/html" });
         const file = `deepin-desktop-community-${version}-${dirName}.iso`;
         const size = sizes(listing).get(file);
-        const sha = parseChecksums(await getText(`${dir}SHA256SUMS`)).get(file);
-        if (!size || !sha)
-          throw new Error(
-            `deepin ${version}/${dirName}: ${file} is linked but not in the folder or its SHA256SUMS`,
+        if (!size)
+          throw new Error(`deepin ${version}/${dirName}: ${file} is linked but not in the folder`);
+        const sums = parseChecksums(await getText(`${dir}SHA256SUMS`));
+        const sha = sums.get(file);
+        if (!sha) {
+          // The image is there but its SHA256SUMS does not name it (25.3.0/riscv64 of
+          // 2026-11-11 lists "eepin-desktop-community-…"): without a checksum that
+          // verifies it, the image is left out until the file is fixed.
+          ctx.log(
+            `${version}/${dirName}: ${dir}SHA256SUMS does not name ${file} (it lists ${[...sums.keys()].join(", ") || "nothing"}), left out`,
           );
+          continue;
+        }
         artifacts.push({
           arch,
           format: "iso",
