@@ -44,9 +44,13 @@
  * model's architecture list, so those images are left out.
  *
  * Cloud images are rebuilt every one to two weeks under a fixed `latest/` name.
- * A user who downloads after a rebuild would see a checksum mismatch, so the
- * dated build directory whose SHA512SUMS equals latest/'s is used for the URL,
- * the file name and the checksum. cloud.debian.org publishes no sizes (the
+ * A user who downloads after a rebuild would see a checksum mismatch, so each
+ * image is pinned to the dated build directory whose SHA512SUMS entry equals
+ * latest/'s, for the URL, the file name and the checksum. A build can leave an
+ * image out (latest/ of 2026-11-11 had no nocloud amd64 while the download page
+ * still linked it): that image comes from the newest of the last three builds
+ * that has it, so one missing cloud image does not hold back the whole distro.
+ * cloud.debian.org publishes no sizes (the
  * directory index rounds them) and robots.txt forbids HEAD on qcow2 and raw, so
  * sizes stay null; the signature of SHA512SUMS is linked when the directory has
  * one (none today).
@@ -61,8 +65,8 @@
  *
  * Fails closed when the release table or one of the pages changes shape, when
  * the page offers an image that its checksum file lacks, when the installer
- * images are not the point release the release page names, or when the cloud
- * latest/ directory matches none of the newest builds.
+ * images are not the point release the release page names, or when a cloud
+ * image matches none of the newest builds (or is in none of them).
  */
 
 import type { Artifact, Edition, Mirror, Release } from "../../../src/lib/data-schemas";
@@ -405,7 +409,11 @@ async function liveEditions(major: string): Promise<Edition[]> {
 const CLOUD_FORMATS: Record<string, Artifact["format"]> = { qcow2: "qcow2", raw: "img" };
 
 /** The cloud images the download page links (qcow2 and raw), from their newest dated build. */
-async function cloudEditions(codename: string, major: string): Promise<Edition[]> {
+async function cloudEditions(
+  codename: string,
+  major: string,
+  log: (message: string) => void,
+): Promise<Edition[]> {
   const page = await getText(DOWNLOAD_PAGE);
   const wanted: { variant: string; debArch: string; ext: string; name: string }[] = [];
   for (const m of page.matchAll(
@@ -424,36 +432,47 @@ async function cloudEditions(codename: string, major: string): Promise<Edition[]
   if (!wanted.length) throw new Error(`no ${codename} cloud image links on ${DOWNLOAD_PAGE}`);
 
   const latest = parseChecksums(await getText(`${CLOUD}${codename}/latest/SHA512SUMS`));
-  for (const w of wanted)
-    if (!latest.has(`${w.name}.${w.ext}`))
-      throw new Error(`latest/SHA512SUMS has no ${w.name}.${w.ext}`);
-
-  // Pin the build that latest/ currently is, so URL and checksum stay valid after a rebuild.
+  // Pin each image to a dated build, so URL and checksum stay valid after a rebuild: the
+  // build latest/ currently is, or, for an image a build left out (latest/ of 2026-11-11
+  // had no nocloud amd64 while the page still linked it), the newest build that has it.
   const builds = (await listDirectory(`${CLOUD}${codename}/`))
     .map((n) => n.match(/^(\d{8}-\d+)\/$/)?.[1])
     .filter((n): n is string => Boolean(n))
     .sort((a, b) => compareVersions(b, a))
     .slice(0, 3);
-  let build: string | null = null;
-  let dated = new Map<string, string>();
-  for (const candidate of builds) {
-    const sums = parseChecksums(await getText(`${CLOUD}${codename}/${candidate}/SHA512SUMS`));
-    if (
-      wanted.every(
-        (w) => sums.get(`${w.name}-${candidate}.${w.ext}`) === latest.get(`${w.name}.${w.ext}`),
-      )
-    ) {
-      build = candidate;
-      dated = sums;
-      break;
+  const sumsOf = new Map<string, Map<string, string>>();
+  for (const build of builds)
+    sumsOf.set(build, parseChecksums(await getText(`${CLOUD}${codename}/${build}/SHA512SUMS`)));
+  const pinned = new Map<string, { build: string; value: string }>();
+  for (const w of wanted) {
+    const current = latest.get(`${w.name}.${w.ext}`);
+    let pin: { build: string; value: string } | undefined;
+    for (const build of builds) {
+      const value = sumsOf.get(build)?.get(`${w.name}-${build}.${w.ext}`);
+      if (value !== undefined && (current === undefined || value === current)) {
+        pin = { build, value };
+        break;
+      }
     }
+    if (!pin)
+      throw new Error(
+        current
+          ? `cloud latest/ ${w.name}.${w.ext} matches none of the newest builds (${builds.join(", ")})`
+          : `${w.name}.${w.ext} is in neither latest/ nor the newest builds (${builds.join(", ")})`,
+      );
+    if (current === undefined)
+      log(
+        `${w.name}.${w.ext} is not in latest/SHA512SUMS; the newest build that has it is ${pin.build}`,
+      );
+    pinned.set(`${w.name}.${w.ext}`, pin);
   }
-  if (!build)
-    throw new Error(`cloud latest/ matches none of the newest builds (${builds.join(", ")})`);
 
-  const dir = `${CLOUD}${codename}/${build}/`;
-  const sumsUrl = `${dir}SHA512SUMS`;
-  const signatureUrl = (await exists(`${sumsUrl}.sign`)) ? `${sumsUrl}.sign` : null;
+  const signatures = new Map<string, string | null>();
+  for (const { build } of pinned.values())
+    if (!signatures.has(build)) {
+      const sumsUrl = `${CLOUD}${codename}/${build}/SHA512SUMS`;
+      signatures.set(build, (await exists(`${sumsUrl}.sign`)) ? `${sumsUrl}.sign` : null);
+    }
   const variants = [...new Set(wanted.map((w) => w.variant))].sort();
   const editions: Edition[] = [];
   for (const variant of variants) {
@@ -465,9 +484,10 @@ async function cloudEditions(codename: string, major: string): Promise<Edition[]
       .sort((a, b) => a.debArch.localeCompare(b.debArch) || a.ext.localeCompare(b.ext))) {
       const arch = debianArch(w.debArch, DOWNLOAD_PAGE);
       if (!arch) continue;
-      const file = `${w.name}-${build}.${w.ext}`;
-      const value = dated.get(file);
-      if (!value) throw new Error(`${sumsUrl} has no ${file}`);
+      const pin = pinned.get(`${w.name}.${w.ext}`);
+      if (!pin) continue;
+      const dir = `${CLOUD}${codename}/${pin.build}/`;
+      const file = `${w.name}-${pin.build}.${w.ext}`;
       artifacts.push({
         arch,
         format: CLOUD_FORMATS[w.ext] as Artifact["format"],
@@ -477,8 +497,8 @@ async function cloudEditions(codename: string, major: string): Promise<Edition[]
         // Not published: the checksum list and the build JSON carry no sizes (the directory
         // index rounds them) and robots.txt forbids HEAD on qcow2 and raw.
         size: null,
-        checksum: { type: "sha512", value, url: sumsUrl },
-        signatureUrl,
+        checksum: { type: "sha512", value: pin.value, url: `${dir}SHA512SUMS` },
+        signatureUrl: signatures.get(pin.build) ?? null,
         torrentUrl: null,
       });
     }
@@ -513,7 +533,7 @@ export default defineSource({
       if (line.stable) {
         sources.push(LIVE_PAGE, DOWNLOAD_PAGE);
         editions.push(...(await liveEditions(line.major)));
-        editions.push(...(await cloudEditions(line.codename, line.major)));
+        editions.push(...(await cloudEditions(line.codename, line.major, ctx.log)));
       }
       releases.push({
         version,
