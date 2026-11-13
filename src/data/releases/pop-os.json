@@ -5,7 +5,7 @@
     "https://api.pop-os.org/builds/",
     "https://endoflife.date/pop-os"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-11-13",
   "releases": [
     {
       "version": "24.04",
@@ -24,14 +24,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "pop-os_24.04_amd64_generic_28.iso",
-              "path": "24.04/amd64/generic/28/pop-os_24.04_amd64_generic_28.iso",
-              "url": "https://iso.pop-os.org/24.04/amd64/generic/28/pop-os_24.04_amd64_generic_28.iso",
-              "size": 3526164480,
+              "file": "pop-os_24.04_amd64_generic_29.iso",
+              "path": "24.04/amd64/generic/29/pop-os_24.04_amd64_generic_29.iso",
+              "url": "https://iso.pop-os.org/24.04/amd64/generic/29/pop-os_24.04_amd64_generic_29.iso",
+              "size": 3265167360,
               "checksum": {
                 "type": "sha256",
-                "value": "8d78e500fc95da765a91cddcf2ab7ba71ce4e7997e4f008456d4d872ee8f8221",
-                "url": "https://iso.pop-os.org/24.04/amd64/generic/28/SHA256SUMS"
+                "value": "49567ae95aedbfc0fd238893447df9b2dde3bc6eb7f28653257785a4a067d0b7",
+                "url": "https://iso.pop-os.org/24.04/amd64/generic/29/SHA256SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -62,14 +62,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "pop-os_24.04_amd64_nvidia_28.iso",
-              "path": "24.04/amd64/nvidia/28/pop-os_24.04_amd64_nvidia_28.iso",
-              "url": "https://iso.pop-os.org/24.04/amd64/nvidia/28/pop-os_24.04_amd64_nvidia_28.iso",
-              "size": 3934945280,
+              "file": "pop-os_24.04_amd64_nvidia_29.iso",
+              "path": "24.04/amd64/nvidia/29/pop-os_24.04_amd64_nvidia_29.iso",
+              "url": "https://iso.pop-os.org/24.04/amd64/nvidia/29/pop-os_24.04_amd64_nvidia_29.iso",
+              "size": 3674210304,
               "checksum": {
                 "type": "sha256",
-                "value": "bd867a6b93810769b2189471cfc2d7b6b9c642213c7bf827de511be5f42ce666",
-                "url": "https://iso.pop-os.org/24.04/amd64/nvidia/28/SHA256SUMS"
+                "value": "e0e5644c274976f7c66314d6c3d20d5d33f3d3bdf420cd0c7c98b3a4c1d5c214",
+                "url": "https://iso.pop-os.org/24.04/amd64/nvidia/29/SHA256SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
