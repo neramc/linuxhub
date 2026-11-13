@@ -5,7 +5,7 @@
     "https://get.opensuse.org/api/v0/distributions.json",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-13",
   "mirrors": [
     {
       "url": "https://opensuse.ucom.am/",
@@ -80,9 +80,9 @@
       "score": null
     },
     {
-      "url": "https://mirrors.nju.edu.cn/opensuse/",
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/opensuse/",
       "country": "CN",
-      "name": "mirrors.nju.edu.cn",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
       "lat": null,
       "lon": null,
       "score": null
@@ -91,6 +91,14 @@
       "url": "https://ftp.sh.cvut.cz/opensuse/",
       "country": "CZ",
       "name": "ftp.sh.cvut.cz",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.karneval.cz/pub/linux/opensuse/",
+      "country": "CZ",
+      "name": "mirror.karneval.cz",
       "lat": null,
       "lon": null,
       "score": null
@@ -163,6 +171,14 @@
       "url": "https://mirrors.dotsrc.org/opensuse/",
       "country": "DK",
       "name": "mirrors.dotsrc.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.makelink.ee/",
+      "country": "EE",
+      "name": "mirror.makelink.ee",
       "lat": null,
       "lon": null,
       "score": null
@@ -328,14 +344,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.fcix.net/opensuse/",
-      "country": "US",
-      "name": "mirror.fcix.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://slc-mirror.opensuse.org/",
       "country": "US",
       "name": "slc-mirror.opensuse.org",
@@ -344,9 +352,9 @@
       "score": null
     },
     {
-      "url": "https://mirror.dc.uz/opensuse/",
-      "country": "UZ",
-      "name": "mirror.dc.uz",
+      "url": "https://opensuse.mirror.net.za/",
+      "country": "ZA",
+      "name": "opensuse.mirror.net.za",
       "lat": null,
       "lon": null,
       "score": null

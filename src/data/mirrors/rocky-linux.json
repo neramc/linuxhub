@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -598,14 +598,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.pangkin.com/rocky/",
-      "country": "KR",
-      "name": "mirror.pangkin.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.wonchan.net/rocky-linux/",
       "country": "KR",
       "name": "mirror.wonchan.net",
@@ -881,6 +873,14 @@
       "url": "https://mirror.verinomi.com/rocky/",
       "country": "TR",
       "name": "mirror.verinomi.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.veritescil.com.tr/rocky/",
+      "country": "TR",
+      "name": "mirror.veritescil.com.tr",
       "lat": null,
       "lon": null,
       "score": null

@@ -3,7 +3,7 @@
   "sources": [
     "https://parrotsec.org/docs/mirrors/mirrors-list/"
   ],
-  "updated": "2026-11-06",
+  "updated": "2026-11-13",
   "mirrors": [
     {
       "url": "https://mirror.ourhost.az/parrot/",
@@ -201,6 +201,14 @@
       "url": "https://mirror.yandex.ru/mirrors/parrot/",
       "country": "RU",
       "name": "mirror.yandex.ru",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://repository.su/parrot/",
+      "country": "RU",
+      "name": "repository.su",
       "lat": null,
       "lon": null,
       "score": null

@@ -11,8 +11,8 @@
   },
   "alpine-linux": {
     "releases": {
-      "failingSince": "2026-11-03",
-      "lastError": "no image links on https://alpinelinux.org/downloads/"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -61,12 +61,12 @@
   },
   "cachyos": {
     "releases": {
-      "failingSince": "2026-11-01",
-      "lastError": "unexpected direct URL https://iso.cachyos.org/desktop/260809/cachyos-desktop-linux-260809.iso on https://cachyos.org/download/"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
-      "failingSince": "2026-11-02",
-      "lastError": "unexpected direct URL https://iso.cachyos.org/desktop/260809/cachyos-desktop-linux-260809.iso on https://cachyos.org/download/"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "centos-stream": {
@@ -81,8 +81,8 @@
   },
   "debian": {
     "releases": {
-      "failingSince": "2026-11-12",
-      "lastError": "latest/SHA512SUMS has no debian-13-nocloud-amd64.qcow2"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -91,8 +91,8 @@
   },
   "deepin": {
     "releases": {
-      "failingSince": "2026-11-11",
-      "lastError": "deepin 25.3.0/riscv64: deepin-desktop-community-25.3.0-riscv64.iso is linked but not in the folder or its SHA256SUMS"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -151,8 +151,8 @@
   },
   "gentoo": {
     "releases": {
-      "failingSince": "2026-11-13",
-      "lastError": "newest version went backwards (20261108 → 20261101)"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -285,8 +285,8 @@
       "lastError": null
     },
     "mirrors": {
-      "failingSince": "2026-11-04",
-      "lastError": "the mirror report has no column matching /^(?:Leap )?16\\.1$/"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "oracle-linux": {
@@ -341,8 +341,8 @@
   },
   "puppy-linux": {
     "releases": {
-      "failingSince": "2026-11-02",
-      "lastError": "SourceForge shows no hash for NoblePup32-24.04-261101.iso"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -351,8 +351,8 @@
   },
   "q4os": {
     "releases": {
-      "failingSince": "2026-11-03",
-      "lastError": "unexpected Q4OS download https://mirror.velden.media/isos/q4os/stable/q4os-6.10-x64.r2.iso"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -445,8 +445,8 @@
       "lastError": null
     },
     "mirrors": {
-      "failingSince": "2026-11-11",
-      "lastError": "HTTP 503"
+      "failingSince": null,
+      "lastError": null
     }
   },
   "ubuntu-mate": {

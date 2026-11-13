@@ -9,7 +9,7 @@
     "https://www.debian.org/releases/bookworm/",
     "https://www.debian.org/releases/bookworm/debian-installer/"
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-13",
   "releases": [
     {
       "version": "13.7",
@@ -431,14 +431,14 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "debian-13-generic-amd64-20261103-2651.qcow2",
+              "file": "debian-13-generic-amd64-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-amd64-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-amd64-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "1207e6e3efaff8ee77ab7a32c156a3eea6a9e53f94cfc48efbd1f49ba554ca36ac62ab27395aa813a1775a8c0a393b1a1ce5377d9e5670f6113e3110c57fee4b",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "ec8c175e39d59e711798c3a2f22ba11b9aee9bca1887c7e505a800aeffd5d7616099bd0e9fad869efba96100fe09d2c8b49d6d7001d501f0056c556bdc25b605",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -446,14 +446,14 @@
             {
               "arch": "x86_64",
               "format": "img",
-              "file": "debian-13-generic-amd64-20261103-2651.raw",
+              "file": "debian-13-generic-amd64-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-amd64-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-amd64-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "6ad2f89dd5f4985ab92fa4e8fd1ce001495bf7a971fee947fd5095895ebc7296c5319e5d8df6b2d13091b0192fd2624ed6284e149e57729556a9ba58bf722de0",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "753f64f01014e7e8c6e4974aefa4bbbd3c3e9fbc256d1c076341fb8aeddb6f56bb78f00bf3ff728f8a7cbe8f717af9320aa4f2c2001e18183ec779eca6e280a4",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -461,14 +461,14 @@
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "debian-13-generic-arm64-20261103-2651.qcow2",
+              "file": "debian-13-generic-arm64-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-arm64-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-arm64-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "878f563f6c95af7fe1e8e51cd39470a1cdb570dddbee22377c85a347bce9d521d95f2cf0f825a38bc0a757889034fac6d83e932f04a3a122ab08cea68cc9ff8a",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "45a3ed38b6946500187e037259c6ae4d62ab0314b42ddbc5a340168fc5a2165ff79d780876e1748fa302697ba9ad3d3db133006413097c5127b2ee61bb787a27",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -476,14 +476,14 @@
             {
               "arch": "aarch64",
               "format": "img",
-              "file": "debian-13-generic-arm64-20261103-2651.raw",
+              "file": "debian-13-generic-arm64-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-arm64-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-arm64-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "510b942c5299a755bce4d2ade463b4b78c7b23f32f7776bf2cbd70a55b84828557e3007c2e7756ea22cc40f0c9fd7fe3d92be418c9096b590c5fe6fff3a98995",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "14922aa712bd4ad962e02ae1558ceda93570d8ac88438811c009b79b8ad0ae6ff7113428cb429366e52bc534892c15ef9ac887bf3d771e8b951707dff4a2040a",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -491,14 +491,14 @@
             {
               "arch": "riscv64",
               "format": "qcow2",
-              "file": "debian-13-generic-riscv64-20261103-2651.qcow2",
+              "file": "debian-13-generic-riscv64-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-riscv64-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-riscv64-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "31c77110cb310d8fd6f216f784e2679b50002de6fb0e10212e3823c77bada26f73d8c93e37ce9bfef8c012d9218d366da8098057c2f9e8bcff437fd84f33daa4",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "d02476c9a2b0767df6e16c0f05513a56ed55f67f5bdd24e96aaae0da35d2b824c3784aa0ff0bb41c21636ed5908c278568ca62c72915ab186c73d3a31de36d9b",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -506,14 +506,14 @@
             {
               "arch": "riscv64",
               "format": "img",
-              "file": "debian-13-generic-riscv64-20261103-2651.raw",
+              "file": "debian-13-generic-riscv64-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-riscv64-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-riscv64-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "31d28bfc9b66974e976aeae6849c810be51019cd6f8db0ebc08e3cfa578f11c63a095e30caf1f3a5d7b8a706b802b564430f646db6bf25b4140d888120034bcc",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "b61a12e59d114a4cd922886436723af7e6641f195c6df77975b1ccbc456f7e7c60af46bbadebf6187949f0f8bc43ff2a77f52e6b68fba240d399846a6742cc6d",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -521,14 +521,14 @@
             {
               "arch": "ppc64le",
               "format": "qcow2",
-              "file": "debian-13-generic-ppc64el-20261103-2651.qcow2",
+              "file": "debian-13-generic-ppc64el-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-ppc64el-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-ppc64el-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "5b47fffd72981c7bd07b579401625d777f3b94d5d87e9345f9d8f9cc3fa423fdf7faf0f932dfe50069c52a685f6870d0148efd06f8df49b17f1a32926011bfe4",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "8170d9bd0f8539058cc32294ded2fc4a5cb07b966217a9172a4860f9487d7652fef6760cb46a3425494529318e49c80751c1ec77a2e688793651c1c441643c30",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -536,14 +536,14 @@
             {
               "arch": "ppc64le",
               "format": "img",
-              "file": "debian-13-generic-ppc64el-20261103-2651.raw",
+              "file": "debian-13-generic-ppc64el-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-generic-ppc64el-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-generic-ppc64el-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "3515a76a65f23e8d36904d9a72f448bff504a5f0ac2b3e201902586859dc55f9c727a350a7228820c6108cef7bd4ca27be483225e144a65904590e89725610d5",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "3c25c65b2f722fa3b1a7ca28abf588fe77f4e2b0c3a908ccab921db228b1e5155ceb96af72d685b7bc76f446aaf7e043af3d1846f1ba3e3d5271e95a58e8a368",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -589,14 +589,14 @@
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "debian-13-nocloud-arm64-20261103-2651.qcow2",
+              "file": "debian-13-nocloud-arm64-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-nocloud-arm64-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-nocloud-arm64-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "f99c23f0d4c18ba7512bae254a201b72dafe11ef0c69beac489a2daba4e128171ca5dcfcdc6d76c2b81a8aa17fc6da8ced2d0a3b9442c97358b3e99ed6668ca7",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "495673471009f5df02d901e164028898c312b50e9ff7c6eb869b22932d1f088ad19765ee59ad473e6b881a40d62d7623512a60d6fccf62bd2457c882459de94f",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -604,14 +604,14 @@
             {
               "arch": "aarch64",
               "format": "img",
-              "file": "debian-13-nocloud-arm64-20261103-2651.raw",
+              "file": "debian-13-nocloud-arm64-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-nocloud-arm64-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-nocloud-arm64-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "0dd282669421382366df6ec374fae51d1963e55ff2ca5bcec4b7362329c9d5fb435ba10b6d875c82e51acffcffc1395233240d4f808732585879f196e72237a6",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "39cbe99b4ac0c9993a69a23dd7c6477136f2d610d4c995e11f9125539894dd1a7a4fe4678f35be7d2790b725ff52b49514a7277639a1cbc180c0dbf7be044ba0",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -619,14 +619,14 @@
             {
               "arch": "riscv64",
               "format": "qcow2",
-              "file": "debian-13-nocloud-riscv64-20261103-2651.qcow2",
+              "file": "debian-13-nocloud-riscv64-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-nocloud-riscv64-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-nocloud-riscv64-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "96654bc5f415582a77d200e46f6f877427a54105f543a78b35d9b69594a1591ea432dd5aa14eb5a9017f49d6171475cbabe25b8dd3fd5111a6e70aaafe7dbda4",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "1c12cbdbc7dcaec53609e537d1c28ebb01f9401f0bf2f871be475bd08f0ba799a37c2da850521db77e7810964d8bc73986f2105b53b8051590b7f41648fdc1e0",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -634,14 +634,14 @@
             {
               "arch": "riscv64",
               "format": "img",
-              "file": "debian-13-nocloud-riscv64-20261103-2651.raw",
+              "file": "debian-13-nocloud-riscv64-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-nocloud-riscv64-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-nocloud-riscv64-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "725d5e8bd696f4d4ce5a32635070a08b21b593090c7cb9456d93cabfc6f1d693e99a70fbbdf100af04f18d1f9b2de9d287cc2883595e9a1dc68dcc2f5cf3208b",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "21c8e440658c59954da43a2a026a5ebcc090cc164ccdc92fbe6dd787287fb0b338d8e04798a80fd1c1f9b530ab1ecc9add5042e5d259874c7a59109f6d3b0392",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -649,14 +649,14 @@
             {
               "arch": "ppc64le",
               "format": "qcow2",
-              "file": "debian-13-nocloud-ppc64el-20261103-2651.qcow2",
+              "file": "debian-13-nocloud-ppc64el-20261111-2659.qcow2",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-nocloud-ppc64el-20261103-2651.qcow2",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-nocloud-ppc64el-20261111-2659.qcow2",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "4736f3fbb9b820279c4dc94f4c91fc866ce381429ba6cabe6da765d12843ee476f4ef0ee3513e123f60923293e0afe901e48673893645c92c2b3907a5b9c182e",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "8f21adb6eb9f2eed2f5bef97b8835770f2d711fbd9cbb154064b70716e6b608bdfcfdf70b6056c313aacd67a76113cbc9fc5716c84deaf5a9ebae2a7d18e5e8d",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -664,14 +664,14 @@
             {
               "arch": "ppc64le",
               "format": "img",
-              "file": "debian-13-nocloud-ppc64el-20261103-2651.raw",
+              "file": "debian-13-nocloud-ppc64el-20261111-2659.raw",
               "path": null,
-              "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/debian-13-nocloud-ppc64el-20261103-2651.raw",
+              "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/debian-13-nocloud-ppc64el-20261111-2659.raw",
               "size": null,
               "checksum": {
                 "type": "sha512",
-                "value": "1c4505aa1c8305f5a5b89312b2b8e804abf79b40d8b8b1b2ed80e675a72fdd677197f535fc386c9ef09cb30d949ddce4e546d27d6d3e2de1846c7672a6603f6b",
-                "url": "https://cloud.debian.org/images/cloud/trixie/20261103-2651/SHA512SUMS"
+                "value": "3d9bbfad71bbcc3521d23cd7003c94b878e24c411bd2a38e3858bae37edbb78974f8bf9dd010a4db46d65e29d27e93109625b386ac98a649848f6c471b491d43",
+                "url": "https://cloud.debian.org/images/cloud/trixie/20261111-2659/SHA512SUMS"
               },
               "signatureUrl": null,
               "torrentUrl": null

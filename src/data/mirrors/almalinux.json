@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.almalinux.org/"
   ],
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "mirrors": [
     {
       "url": "https://alma.mirror.nyuad.nyu.edu/",
@@ -414,14 +414,6 @@
       "score": null
     },
     {
-      "url": "https://mirrors.qlu.edu.cn/almalinux/",
-      "country": "CN",
-      "name": "mirrors.qlu.edu.cn",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirrors.tencent.com/almalinux/",
       "country": "CN",
       "name": "mirrors.tencent.com",
@@ -649,14 +641,6 @@
       "url": "https://mirrors.fibianet.dk/almalinux/",
       "country": "DK",
       "name": "mirrors.fibianet.dk",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://stix.mm.fcix.net/almalinux/",
-      "country": "DO",
-      "name": "stix.mm.fcix.net",
       "lat": null,
       "lon": null,
       "score": null
@@ -974,6 +958,14 @@
       "score": null
     },
     {
+      "url": "https://almalinux.excellmedia.net/",
+      "country": "IN",
+      "name": "almalinux.excellmedia.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://blr.aws.repo.almalinux.org/almalinux/",
       "country": "IN",
       "name": "blr.aws.repo.almalinux.org",
@@ -1030,17 +1022,17 @@
       "score": null
     },
     {
-      "url": "https://mirror.hostbaran.com/almalinux/",
+      "url": "https://mirror.famaserver.com/almalinux/",
       "country": "IR",
-      "name": "mirror.hostbaran.com",
+      "name": "mirror.famaserver.com",
       "lat": null,
       "lon": null,
       "score": null
     },
     {
-      "url": "https://mirror.parsdev.com/Almalinux/",
+      "url": "https://mirror.hostbaran.com/almalinux/",
       "country": "IR",
-      "name": "mirror.parsdev.com",
+      "name": "mirror.hostbaran.com",
       "lat": null,
       "lon": null,
       "score": null
@@ -1110,17 +1102,17 @@
       "score": null
     },
     {
-      "url": "https://ftp.jaist.ac.jp/pub/Linux/almalinux/",
+      "url": "https://ftp.riken.jp/Linux/almalinux/",
       "country": "JP",
-      "name": "ftp.jaist.ac.jp",
+      "name": "ftp.riken.jp",
       "lat": null,
       "lon": null,
       "score": null
     },
     {
-      "url": "https://ftp.riken.jp/Linux/almalinux/",
+      "url": "https://ftp.sakura.ad.jp/almalinux/",
       "country": "JP",
-      "name": "ftp.riken.jp",
+      "name": "ftp.sakura.ad.jp",
       "lat": null,
       "lon": null,
       "score": null
@@ -1622,6 +1614,14 @@
       "score": null
     },
     {
+      "url": "https://mirror1.sox.rs/almalinux/",
+      "country": "RS",
+      "name": "mirror1.sox.rs",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.docker.ru/almalinux/",
       "country": "RU",
       "name": "mirror.docker.ru",
@@ -1649,6 +1649,14 @@
       "url": "https://mirror.maeen.sa/almalinuxos-mirror/",
       "country": "SA",
       "name": "mirror.maeen.sa",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.lysator.liu.se/pub/almalinux/",
+      "country": "SE",
+      "name": "ftp.lysator.liu.se",
       "lat": null,
       "lon": null,
       "score": null
@@ -1785,14 +1793,6 @@
       "url": "https://mirror.verinomi.com/almalinux/",
       "country": "TR",
       "name": "mirror.verinomi.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.veritescil.com.tr/almalinux/",
-      "country": "TR",
-      "name": "mirror.veritescil.com.tr",
       "lat": null,
       "lon": null,
       "score": null
@@ -2297,6 +2297,14 @@
       "url": "https://mirrors.rit.edu/almalinux/",
       "country": "US",
       "name": "mirrors.rit.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.sonic.net/almalinux/",
+      "country": "US",
+      "name": "mirrors.sonic.net",
       "lat": null,
       "lon": null,
       "score": null

@@ -8,15 +8,15 @@
     "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/",
     "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/"
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-13",
   "releases": [
     {
-      "version": "3.24.3",
+      "version": "3.24.4",
       "channel": "stable",
       "codename": null,
-      "releaseDate": "2026-10-21",
+      "releaseDate": "2026-11-05",
       "eol": "2028-06-01",
-      "notesUrl": "https://alpinelinux.org/posts/Alpine-3.21.9-3.22.7-3.23.7-3.24.3-released.html",
+      "notesUrl": "https://alpinelinux.org/posts/Alpine-3.21.10-3.22.8-3.23.8-3.24.4-released.html",
       "editions": [
         {
           "id": "standard",
@@ -27,106 +27,106 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-x86_64.iso",
-              "path": "v3.24/releases/x86_64/alpine-standard-3.24.3-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-standard-3.24.3-x86_64.iso",
+              "file": "alpine-standard-3.24.4-x86_64.iso",
+              "path": "v3.24/releases/x86_64/alpine-standard-3.24.4-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-standard-3.24.4-x86_64.iso",
               "size": 370147328,
               "checksum": {
                 "type": "sha512",
-                "value": "17f3aaa397c67f5e2e41b565db85b42b1c0def0800cf497d2baf24c8f02e3864056e2110e842cf0bfc617f80855ed1ac25850d214116edfb1819c681d2af5a83",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-standard-3.24.3-x86_64.iso.sha512"
+                "value": "28e324177e1c00efcf7b055f6ba79257f15cc35b99623706311d0348403a2c483517973214368b579dfb44f61bbb30afb3d25f182aec5ed8c1fcb399d04eccc0",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-standard-3.24.4-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-standard-3.24.3-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-standard-3.24.4-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-aarch64.iso",
-              "path": "v3.24/releases/aarch64/alpine-standard-3.24.3-aarch64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-standard-3.24.3-aarch64.iso",
-              "size": 394645504,
+              "file": "alpine-standard-3.24.4-aarch64.iso",
+              "path": "v3.24/releases/aarch64/alpine-standard-3.24.4-aarch64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-standard-3.24.4-aarch64.iso",
+              "size": 394668032,
               "checksum": {
                 "type": "sha512",
-                "value": "7945086512023253dba95bbbc12b3ee79e3a3b11523781c000cbdc7cced120ead03ed1099c51e4a035ac9ef29f64aad80fef2082529eb7532f20dae2a45b5534",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-standard-3.24.3-aarch64.iso.sha512"
+                "value": "131e3e6451004f601e473ce0cdefebc5c2927813755d47dee37ac2a2c7db5fbfef72bf29bb510f102f66b6a93c20154a8d00427adb7d381d2e7fe6cba1254bfb",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-standard-3.24.4-aarch64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-standard-3.24.3-aarch64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-standard-3.24.4-aarch64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-x86.iso",
-              "path": "v3.24/releases/x86/alpine-standard-3.24.3-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-standard-3.24.3-x86.iso",
+              "file": "alpine-standard-3.24.4-x86.iso",
+              "path": "v3.24/releases/x86/alpine-standard-3.24.4-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-standard-3.24.4-x86.iso",
               "size": 290455552,
               "checksum": {
                 "type": "sha512",
-                "value": "7f5956c48fbdea1e06ef2d6225ebbfd390e9190b453c6e1bd7475af02b8643f29d5d8e2049e67e7e946f7ffa94af50d46bf32f76f25dee217c901c4ee998983f",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-standard-3.24.3-x86.iso.sha512"
+                "value": "1c4da7385b3ed66b5280dbba73f6adcf6759193cc4643a418b72993c2b96ce3e906a7837f423c193178765eeccab72b06779cee502b68e8525cf90f29253e564",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-standard-3.24.4-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-standard-3.24.3-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-standard-3.24.4-x86.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-armv7.iso",
-              "path": "v3.24/releases/armv7/alpine-standard-3.24.3-armv7.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-standard-3.24.3-armv7.iso",
-              "size": 119531520,
+              "file": "alpine-standard-3.24.4-armv7.iso",
+              "path": "v3.24/releases/armv7/alpine-standard-3.24.4-armv7.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-standard-3.24.4-armv7.iso",
+              "size": 119539712,
               "checksum": {
                 "type": "sha512",
-                "value": "0693d413c5e4fa97de5980bdad1c9a7d83dcd564b2a5b33db728d34d7d06561e4f2d37db55389d32091434ba8a6595986a14f39c5d478ad0531808e982294f67",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-standard-3.24.3-armv7.iso.sha512"
+                "value": "a7ad5c00bd28fac957cc28fc574e4306b0e645bb2010d5f6960d1f1842f655d17af681d279527255bc7cb02dfe7766ca286ee274c14dd1f75b88c8d1f465a81b",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-standard-3.24.4-armv7.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-standard-3.24.3-armv7.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-standard-3.24.4-armv7.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "riscv64",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-riscv64.iso",
-              "path": "v3.24/releases/riscv64/alpine-standard-3.24.3-riscv64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/riscv64/alpine-standard-3.24.3-riscv64.iso",
-              "size": 58300416,
+              "file": "alpine-standard-3.24.4-riscv64.iso",
+              "path": "v3.24/releases/riscv64/alpine-standard-3.24.4-riscv64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/riscv64/alpine-standard-3.24.4-riscv64.iso",
+              "size": 58312704,
               "checksum": {
                 "type": "sha512",
-                "value": "4aab85d65bcb98c16afcdfb777732414731e089003e894bbcec15bd1a0a7e35bcc211a4f2399a76f09a917cd1191b90b30f962424399c7ca14a72e2dd8199685",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/riscv64/alpine-standard-3.24.3-riscv64.iso.sha512"
+                "value": "6e0f8eb1cad5f71b2bd998dcb554a9d354b10c13d9fff0a3861535eec763a487deb481bc8b831b2b6cd3c5845238826ccc1b5b0a0fe03cc1737d9105aa51c972",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/riscv64/alpine-standard-3.24.4-riscv64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/riscv64/alpine-standard-3.24.3-riscv64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/riscv64/alpine-standard-3.24.4-riscv64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-ppc64le.iso",
-              "path": "v3.24/releases/ppc64le/alpine-standard-3.24.3-ppc64le.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/ppc64le/alpine-standard-3.24.3-ppc64le.iso",
-              "size": 254177280,
+              "file": "alpine-standard-3.24.4-ppc64le.iso",
+              "path": "v3.24/releases/ppc64le/alpine-standard-3.24.4-ppc64le.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/ppc64le/alpine-standard-3.24.4-ppc64le.iso",
+              "size": 254189568,
               "checksum": {
                 "type": "sha512",
-                "value": "4ab488040f039b38b53d9b0693c44ed69022362d6172e4627bd9cbc0095c932f6e956030ffd5c2ec4eeee5058b014ae3be0c2cee753d3371d8c954c3852185c7",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/ppc64le/alpine-standard-3.24.3-ppc64le.iso.sha512"
+                "value": "a3caf89a280230df4db777804bfb91df153cd0c009451b074aed223178e313360754d8546cced800000820e5a44cc2bb5ddd0a37efa6cee2d8ed9618414fc940",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/ppc64le/alpine-standard-3.24.4-ppc64le.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/ppc64le/alpine-standard-3.24.3-ppc64le.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/ppc64le/alpine-standard-3.24.4-ppc64le.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "alpine-standard-3.24.3-s390x.iso",
-              "path": "v3.24/releases/s390x/alpine-standard-3.24.3-s390x.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/s390x/alpine-standard-3.24.3-s390x.iso",
-              "size": 92227584,
+              "file": "alpine-standard-3.24.4-s390x.iso",
+              "path": "v3.24/releases/s390x/alpine-standard-3.24.4-s390x.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/s390x/alpine-standard-3.24.4-s390x.iso",
+              "size": 92260352,
               "checksum": {
                 "type": "sha512",
-                "value": "a2a6bcc9bde6e9a4074e7de39bb815344eacc7d553050b9cfbe10da6ffaa9c9a441939eb67c37deb91db80d53e6d7d387637435d733775dac432d1778e5c9a6f",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/s390x/alpine-standard-3.24.3-s390x.iso.sha512"
+                "value": "431a4b64f4f09378c48f56d86f7f4b967a9639ad4841b3874e635ed3cdced1017f63d20104cb845b4c76d3a618fd57fe6ad5a80895c9668fa8bc722095c5e204",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/s390x/alpine-standard-3.24.4-s390x.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/s390x/alpine-standard-3.24.3-s390x.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/s390x/alpine-standard-3.24.4-s390x.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -140,31 +140,31 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-extended-3.24.3-x86_64.iso",
-              "path": "v3.24/releases/x86_64/alpine-extended-3.24.3-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-extended-3.24.3-x86_64.iso",
+              "file": "alpine-extended-3.24.4-x86_64.iso",
+              "path": "v3.24/releases/x86_64/alpine-extended-3.24.4-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-extended-3.24.4-x86_64.iso",
               "size": 1458192384,
               "checksum": {
                 "type": "sha512",
-                "value": "5b04b7891ad495184fb0d1f455654416b5704f06259ef6857b6a740a51e9f583ea20a8797c34a21e07313db58e0ef9c8b2a8f39730018c6dbc8f6c6e1db90fc4",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-extended-3.24.3-x86_64.iso.sha512"
+                "value": "19f83a2d387afba4330065d01f4fd2d198d21659b20d3881c70301f7594aed37b45fee934a0d2dfd4bee81b6bc3bf083bde6a5b6a039111ede4fd13bf590d5b3",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-extended-3.24.4-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-extended-3.24.3-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-extended-3.24.4-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-extended-3.24.3-x86.iso",
-              "path": "v3.24/releases/x86/alpine-extended-3.24.3-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-extended-3.24.3-x86.iso",
+              "file": "alpine-extended-3.24.4-x86.iso",
+              "path": "v3.24/releases/x86/alpine-extended-3.24.4-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-extended-3.24.4-x86.iso",
               "size": 1297121280,
               "checksum": {
                 "type": "sha512",
-                "value": "35c93881caec96350da1d405bf20ea70a81e333c6c4028e4f3055d051b593babc84f703dc9a0bf563ddfc1e6d62f0f35a71b6c71fae1a54a0ed2312c6d9b2167",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-extended-3.24.3-x86.iso.sha512"
+                "value": "41c77ee0c80c7c843d3609c22dbcdd8f3ad8b8ba5dc8791e671949a6414458cfd6cab5cea08f509f8d0b090a3ae952e74d1d03e405e54033c434e3a5cf7c5e5c",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-extended-3.24.4-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-extended-3.24.3-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-extended-3.24.4-x86.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -178,31 +178,31 @@
             {
               "arch": "aarch64",
               "format": "img.gz",
-              "file": "alpine-rpi-3.24.3-aarch64.img.gz",
-              "path": "v3.24/releases/aarch64/alpine-rpi-3.24.3-aarch64.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-rpi-3.24.3-aarch64.img.gz",
-              "size": 88040973,
+              "file": "alpine-rpi-3.24.4-aarch64.img.gz",
+              "path": "v3.24/releases/aarch64/alpine-rpi-3.24.4-aarch64.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-rpi-3.24.4-aarch64.img.gz",
+              "size": 88115056,
               "checksum": {
                 "type": "sha512",
-                "value": "b5e34306dde39aef446592e30144661b51d67693ccdf427bdb79b6b8fc87177eb33ab35d3ff3d6c65d13ea12ca8bb7bbe7e7507aff8be4ebe34a31caa8f0ef5b",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-rpi-3.24.3-aarch64.img.gz.sha512"
+                "value": "52755d61e604342856fed6eebdd51b7ef66bb2e265be028300269304e569ebfc8a581f4541559f2e583ae4c824ee741b2cafc0ef4906ab937cdc8ed9b74a65bb",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-rpi-3.24.4-aarch64.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-rpi-3.24.3-aarch64.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-rpi-3.24.4-aarch64.img.gz.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "img.gz",
-              "file": "alpine-rpi-3.24.3-armhf.img.gz",
-              "path": "v3.24/releases/armhf/alpine-rpi-3.24.3-armhf.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armhf/alpine-rpi-3.24.3-armhf.img.gz",
-              "size": 70313630,
+              "file": "alpine-rpi-3.24.4-armhf.img.gz",
+              "path": "v3.24/releases/armhf/alpine-rpi-3.24.4-armhf.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armhf/alpine-rpi-3.24.4-armhf.img.gz",
+              "size": 70383883,
               "checksum": {
                 "type": "sha512",
-                "value": "69330b2208bbcef9f5f7db924d03c310bdc4586072cd4d6875802abd88df4977d927fa5150545b96c163fdf857bbe2f524ed8b44e66a146609bc7180105dca51",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armhf/alpine-rpi-3.24.3-armhf.img.gz.sha512"
+                "value": "c64a1977d204c7bdf6ad9541a4340aecf80753f92a6c07d53e1d7dc4f069a0d6244e7d54316f757274d47c491ff7425e5f8bdee31e2ba0d075c4b3fce396ff80",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armhf/alpine-rpi-3.24.4-armhf.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armhf/alpine-rpi-3.24.3-armhf.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armhf/alpine-rpi-3.24.4-armhf.img.gz.asc",
               "torrentUrl": null
             }
           ]
@@ -216,16 +216,16 @@
             {
               "arch": "armhf",
               "format": "img.gz",
-              "file": "alpine-rpi-3.24.3-armv7.img.gz",
-              "path": "v3.24/releases/armv7/alpine-rpi-3.24.3-armv7.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-rpi-3.24.3-armv7.img.gz",
-              "size": 69935381,
+              "file": "alpine-rpi-3.24.4-armv7.img.gz",
+              "path": "v3.24/releases/armv7/alpine-rpi-3.24.4-armv7.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-rpi-3.24.4-armv7.img.gz",
+              "size": 70000297,
               "checksum": {
                 "type": "sha512",
-                "value": "310a082d10d7a80872dde5bf61291b8715d5b1f1b54f0b2c49294735a5f79555748e17bf8b0720c75b228f4146a8a5ba8a628a5f9a36c369ed322bf9843371fc",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-rpi-3.24.3-armv7.img.gz.sha512"
+                "value": "d5031cdb26747c07a55c092a7687e8b2e1f08ae114a2e070717069bc79069d6f25bf7692febb742b5a4a2f78f484d3f04b82e2adeb47fe73b74bb44c97091a90",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-rpi-3.24.4-armv7.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-rpi-3.24.3-armv7.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-rpi-3.24.4-armv7.img.gz.asc",
               "torrentUrl": null
             }
           ]
@@ -239,61 +239,61 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-virt-3.24.3-x86_64.iso",
-              "path": "v3.24/releases/x86_64/alpine-virt-3.24.3-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.3-x86_64.iso",
+              "file": "alpine-virt-3.24.4-x86_64.iso",
+              "path": "v3.24/releases/x86_64/alpine-virt-3.24.4-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.4-x86_64.iso",
               "size": 70254592,
               "checksum": {
                 "type": "sha512",
-                "value": "8dcb83380f5c53178142eb9470fc78aae80c60df03bb85b16434e1cd338c27782252171f5f23763d04295afc89a2738e24e70290dc2479ccc41c6c47db54962d",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.3-x86_64.iso.sha512"
+                "value": "036b1d90a71cbe99525b7f985331ee874e3bfff28b3e86f9cb4f07251f9d01ef2eea592a3069b8f718ea7e79d5e5eecead129376a2a5b48ff6eb98ad0f75b603",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.4-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.3-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.4-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "alpine-virt-3.24.3-aarch64.iso",
-              "path": "v3.24/releases/aarch64/alpine-virt-3.24.3-aarch64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.3-aarch64.iso",
-              "size": 93452288,
+              "file": "alpine-virt-3.24.4-aarch64.iso",
+              "path": "v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso",
+              "size": 93464576,
               "checksum": {
                 "type": "sha512",
-                "value": "4a18e56dad0f7a7c3b4b5ed898d00b77d9e2a07399b64d877b26627d42eef2584b0be97d9504394f0aa89d462f4526a4f443e533d1f4e600e91beae3dc50b6e0",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.3-aarch64.iso.sha512"
+                "value": "7f565939516aed4e7af566fb446bc870ffc1a95e59cac5db1b1634f54c27472572a3687763c2ff4c776394ae6bf1f99d325dde5f18125a53709b1fbccd7e8a4d",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.3-aarch64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-virt-3.24.3-x86.iso",
-              "path": "v3.24/releases/x86/alpine-virt-3.24.3-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-virt-3.24.3-x86.iso",
+              "file": "alpine-virt-3.24.4-x86.iso",
+              "path": "v3.24/releases/x86/alpine-virt-3.24.4-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-virt-3.24.4-x86.iso",
               "size": 51380224,
               "checksum": {
                 "type": "sha512",
-                "value": "023a01190352a1ba7ea19ab1e11109c08c29eb3fe57a8eef2a3bb5672f0de77ba656c84f6eabfd5191840befe385576a7a05420ec0005a0ee2cd753c802f1139",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-virt-3.24.3-x86.iso.sha512"
+                "value": "4b6597797e9e076bd9e730c3b46ff466bf7394f2f790b3a92a02f6d55f91073e7a4f266cb868a2432b2a755bbd6e039f341696c18dd347df90792451034c6ec1",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-virt-3.24.4-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-virt-3.24.3-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86/alpine-virt-3.24.4-x86.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "iso",
-              "file": "alpine-virt-3.24.3-armv7.iso",
-              "path": "v3.24/releases/armv7/alpine-virt-3.24.3-armv7.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-virt-3.24.3-armv7.iso",
-              "size": 48109568,
+              "file": "alpine-virt-3.24.4-armv7.iso",
+              "path": "v3.24/releases/armv7/alpine-virt-3.24.4-armv7.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-virt-3.24.4-armv7.iso",
+              "size": 48117760,
               "checksum": {
                 "type": "sha512",
-                "value": "c706f7759cf28d75ccfdd32da8c5bcb7123ddca0747c94354d6aa5732827bec26adf51636263f643db800039ac3fa5dac83bb6ab3edccc94aa2a1aedeaa8a999",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-virt-3.24.3-armv7.iso.sha512"
+                "value": "dd64db810c6460901b30149c21dd7c4050f6324bd6273422e9b735add493b18badc1c76f9673cf4b96e0d9f60d64743b00ebb8f8a792ba6209546b7418999d24",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-virt-3.24.4-armv7.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-virt-3.24.3-armv7.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/armv7/alpine-virt-3.24.4-armv7.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -307,16 +307,16 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-xen-3.24.3-x86_64.iso",
-              "path": "v3.24/releases/x86_64/alpine-xen-3.24.3-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-xen-3.24.3-x86_64.iso",
+              "file": "alpine-xen-3.24.4-x86_64.iso",
+              "path": "v3.24/releases/x86_64/alpine-xen-3.24.4-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-xen-3.24.4-x86_64.iso",
               "size": 1529937920,
               "checksum": {
                 "type": "sha512",
-                "value": "e2732775b33f5f2b3b85920f62b41f326ae992671a8493b2a8d9b41f1d16cbd7b2276797d4de72f951f5b86adb47857ad72f6130532dc6bc20cc1fbc2b2ba8b2",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-xen-3.24.3-x86_64.iso.sha512"
+                "value": "fd689cbc837d304d9b4428e980fca86718f23c359bf46236bd9a4039a073cf31fe958d234c020f07e7d09f803ff97a8973cafcfb2ef30debeaff0f02872b1197",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-xen-3.24.4-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-xen-3.24.3-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-xen-3.24.4-x86_64.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -330,31 +330,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-x86_64-tiny-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-r0.qcow2",
-              "size": 98041856,
+              "file": "alpine-3.24.4-x86_64-tiny-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-r0.qcow2",
+              "size": 98697216,
               "checksum": {
                 "type": "sha512",
-                "value": "82908bad6166949b41be00264c1990952c0df0e746a71d6051e9f8a6dadae56cac505f54fcf61b38db9c32d32face832c7cc9879e44bb935ff804fdc5741d93a",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-r0.qcow2.sha512"
+                "value": "2b58f6774f7102c8366b00e00eb1075d7e9d30ff2df25fbce2f88952b33da056a582655332495c09f12a5fb07135ebcdf08b9e03710ddc84b74999f01c514f51",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-aarch64-tiny-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-r0.qcow2",
-              "size": 125566976,
+              "file": "alpine-3.24.4-aarch64-tiny-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-r0.qcow2",
+              "size": 126287872,
               "checksum": {
                 "type": "sha512",
-                "value": "0476de642495fd3a328c79284bfd8389410a12975562862fe2d21931adb5a71b0622b117208d2799fafafdfc442a5a5765f09d970e373b19219e39cd1c8ae678",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-r0.qcow2.sha512"
+                "value": "0b82595259ae4602cbebb2abb55c76fe32a85baebf8931ddf7bc377f9b3ffa776166979bf28f3bf17ae0fd8d5b24f4066da35bee86c4f86b5905b50571f30992",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -368,31 +368,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-x86_64-tiny-metal-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-metal-r0.qcow2",
-              "size": 633077760,
+              "file": "alpine-3.24.4-x86_64-tiny-metal-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-metal-r0.qcow2",
+              "size": 634585088,
               "checksum": {
                 "type": "sha512",
-                "value": "9c75cf2bf2d5495aaea5b6c5645f91119f3aaab2f960f4b9a065f85a3706daf6c369fa236d61a988c3b30f1c1b5614f66b6160aec19e0691009fb9cc881b162a",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-metal-r0.qcow2.sha512"
+                "value": "91d29fd4386ac980a62257f3ae759fb372aec4174fff3b3f32941a2e6381b3486c2bad739a41964a522027ce1d29f8c14de340448f79d8742af1db303fe4ab61",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-aarch64-tiny-metal-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-metal-r0.qcow2",
-              "size": 667942912,
+              "file": "alpine-3.24.4-aarch64-tiny-metal-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-metal-r0.qcow2",
+              "size": 668729344,
               "checksum": {
                 "type": "sha512",
-                "value": "8802790dca540f722483b2af60c87af0e258d373b7a5e0c2adeeb96ccaa0d9833254f8f386297d5bf8c8839b2518b3552ee6a58eb2877370a6b698d47ff469d6",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-metal-r0.qcow2.sha512"
+                "value": "2d306417b1fc18900699d2401857e5c1f33c46c303819cdac1512fcf2ad64fe096e431cbe59a36418c5f5b6fd97c0f79c607fd99489be3caab849b0f48b95ae0",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -406,31 +406,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-x86_64-cloudinit-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-r0.qcow2",
-              "size": 157810688,
+              "file": "alpine-3.24.4-x86_64-cloudinit-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-r0.qcow2",
+              "size": 158007296,
               "checksum": {
                 "type": "sha512",
-                "value": "cf1b95fb4b77d32a9e5c3d02290e203f24907550192fe21819e1abaa28541dab3fe025aa2afa1b952773e3d8e6ea5593bc2e6bfcf398bff886fe5c6f2785f308",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-r0.qcow2.sha512"
+                "value": "deaf133ef03ea58fc38abcfe11ec8847d97a7e4b30b9ec5d9df62b945eead7a59638464bd4a421caca6498fe8e4ee5d0c8e21d828c34ec529aecc88ab6f01364",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-aarch64-cloudinit-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-r0.qcow2",
-              "size": 191823872,
+              "file": "alpine-3.24.4-aarch64-cloudinit-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-r0.qcow2",
+              "size": 192020480,
               "checksum": {
                 "type": "sha512",
-                "value": "9eb2a1639df38123af47915938a4ebd2943ae543ac535c69e790e441ee11a74257ae80ad6ff10be22fdfacdf9e2b5510e0e2e6a65beaa7329d1f506ac213bebc",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-r0.qcow2.sha512"
+                "value": "a30a4f096adcdc193f27f15b3b6f3e84ec42aa1bc2b98042baa36f48bd9ae9b3175b4f18b8825992eea18304ed90e92d25f74fa6584d4267a4f5bcf8d6defb0d",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -444,31 +444,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-x86_64-cloudinit-metal-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-metal-r0.qcow2",
-              "size": 698351616,
+              "file": "alpine-3.24.4-x86_64-cloudinit-metal-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-metal-r0.qcow2",
+              "size": 699924480,
               "checksum": {
                 "type": "sha512",
-                "value": "ca0b5b3bbafae3456fea1a85c09e8d036773bbba2e7f455036f911233031583aaa6417aef37552f61414147dc264f295a933007485aa9a06b3b92b01d048aaf7",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-metal-r0.qcow2.sha512"
+                "value": "c7bb2eb6fc6ef13512eab83273d5a255335b846c73c568b0db67d6dcd3bc7eba5b450cc2b0cb9be74fcf8619a537d9657d3a8e78644709bfa7a0ec8c9b482468",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-x86_64-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-x86_64-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.24.3-aarch64-cloudinit-metal-r0.qcow2",
-              "path": "v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-metal-r0.qcow2",
-              "size": 739180544,
+              "file": "alpine-3.24.4-aarch64-cloudinit-metal-r0.qcow2",
+              "path": "v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-metal-r0.qcow2",
+              "size": 740032512,
               "checksum": {
                 "type": "sha512",
-                "value": "25b0b45d456bdb6085f89c1dc086e797452a43ee4c9e6a6f1c1c08259a3c490256f4679b25789af8b5d8380ba43c534cd56a5f482fbcff7fbaba05d955a24b5a",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-metal-r0.qcow2.sha512"
+                "value": "67408489efeebd43d0c99fdb9332ae2ccbc4af91c79d92404967947a999d8a1569d6e71cd09abd9c212ed1f82ad1f19b9d7a65d85eb2dd25b7239a55f22c6640",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.3-aarch64-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/cloud/alpine-3.24.4-aarch64-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -476,12 +476,12 @@
       ]
     },
     {
-      "version": "3.23.7",
+      "version": "3.23.8",
       "channel": "stable",
       "codename": null,
-      "releaseDate": "2026-10-21",
+      "releaseDate": "2026-11-05",
       "eol": "2027-11-01",
-      "notesUrl": "https://alpinelinux.org/posts/Alpine-3.21.9-3.22.7-3.23.7-3.24.3-released.html",
+      "notesUrl": "https://alpinelinux.org/posts/Alpine-3.21.10-3.22.8-3.23.8-3.24.4-released.html",
       "editions": [
         {
           "id": "standard",
@@ -492,106 +492,106 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-x86_64.iso",
-              "path": "v3.23/releases/x86_64/alpine-standard-3.23.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.7-x86_64.iso",
+              "file": "alpine-standard-3.23.8-x86_64.iso",
+              "path": "v3.23/releases/x86_64/alpine-standard-3.23.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.8-x86_64.iso",
               "size": 364904448,
               "checksum": {
                 "type": "sha512",
-                "value": "3421eefa87ac199f3b66a942fa1f7005852a5fd690daaf52cc331ce9cb6e65d70c3ae11d5ddb05b6d80367a44193b5d79406593be97f2ffa983206088441d89b",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.7-x86_64.iso.sha512"
+                "value": "e60fcc547868130cb6addb497de76fff6232a924c9cd04a5dbdfa34dbf28854db9d143e96be35c4404f58d40e07a75331b3706bf7e77f10a6c0a50fae33b14e0",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.8-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-aarch64.iso",
-              "path": "v3.23/releases/aarch64/alpine-standard-3.23.7-aarch64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.7-aarch64.iso",
-              "size": 391960576,
+              "file": "alpine-standard-3.23.8-aarch64.iso",
+              "path": "v3.23/releases/aarch64/alpine-standard-3.23.8-aarch64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.8-aarch64.iso",
+              "size": 391981056,
               "checksum": {
                 "type": "sha512",
-                "value": "64edf2ce2be6ff87599c36f2f9e5a9b480f84d7cf31d0f07a7ae335cbf87456832f7a012d3acbc79ec74fddf4074ab96296feedb5676426e197e282fec4082a1",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.7-aarch64.iso.sha512"
+                "value": "ffac7be0033eb9f11480fcbdadc9807cdb098d20c100aa6aee16330e1e386a321de65b465659f5d0553dd0be9e33cfb49a25bf1796ebff686addd28dd5cf44bb",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.8-aarch64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.7-aarch64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.8-aarch64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-x86.iso",
-              "path": "v3.23/releases/x86/alpine-standard-3.23.7-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-standard-3.23.7-x86.iso",
+              "file": "alpine-standard-3.23.8-x86.iso",
+              "path": "v3.23/releases/x86/alpine-standard-3.23.8-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-standard-3.23.8-x86.iso",
               "size": 811597824,
               "checksum": {
                 "type": "sha512",
-                "value": "5cc55da4214f36129c9d5c8c7ef6d42fd4089e51181286406d1394cb11cf7fc4a1273592eb791cb1dd397ab1948eb543c657f7d49e69de5ef0023f80486f4572",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-standard-3.23.7-x86.iso.sha512"
+                "value": "c0b41b139563bb81b7149df2e618e689a4aff4247f930ea7febb1f69ba4b46e26fede73fbd7869982bcc27d5045e7cbc7fd4a86dcff6ead11ca9e2eb120b6208",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-standard-3.23.8-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-standard-3.23.7-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-standard-3.23.8-x86.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-armv7.iso",
-              "path": "v3.23/releases/armv7/alpine-standard-3.23.7-armv7.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.7-armv7.iso",
-              "size": 122148864,
+              "file": "alpine-standard-3.23.8-armv7.iso",
+              "path": "v3.23/releases/armv7/alpine-standard-3.23.8-armv7.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.8-armv7.iso",
+              "size": 122150912,
               "checksum": {
                 "type": "sha512",
-                "value": "42f202b1faa8d2d17e943d38add3c0dd1e692155945e2f65661cd9aab92eaee87f400d2f077a1d0c7a6b36dfb61b8daf4d6002d6f19a76476e3cdeab5d413c75",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.7-armv7.iso.sha512"
+                "value": "672aebaa0b7a93bbd50b5e83c22cbbd5bd5f0a072cbb2f89f3bc56c3054201ad79df6281947b482d5fdfb191425e395ec5af61195ae0100679f620ef9d245fb2",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.8-armv7.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.7-armv7.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.8-armv7.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "riscv64",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-riscv64.iso",
-              "path": "v3.23/releases/riscv64/alpine-standard-3.23.7-riscv64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/riscv64/alpine-standard-3.23.7-riscv64.iso",
-              "size": 55265280,
+              "file": "alpine-standard-3.23.8-riscv64.iso",
+              "path": "v3.23/releases/riscv64/alpine-standard-3.23.8-riscv64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/riscv64/alpine-standard-3.23.8-riscv64.iso",
+              "size": 55267328,
               "checksum": {
                 "type": "sha512",
-                "value": "0e230470e23ecf81a63209120936d0312e625479ddfa324d68fb5d6b982740126bc3731ff86fa6bdc8675b81ea0f670e92036cc7c2a8110d148bf77b807b9292",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/riscv64/alpine-standard-3.23.7-riscv64.iso.sha512"
+                "value": "6d9926fdf03de0a20a4011d28699ce661733066ed08b0b6792e8488fe6628e473b89197cc0f4e6cf2bfbdd9760b9a9a34aa0f8bba67357d79e54950658a1d0d8",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/riscv64/alpine-standard-3.23.8-riscv64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/riscv64/alpine-standard-3.23.7-riscv64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/riscv64/alpine-standard-3.23.8-riscv64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-ppc64le.iso",
-              "path": "v3.23/releases/ppc64le/alpine-standard-3.23.7-ppc64le.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/ppc64le/alpine-standard-3.23.7-ppc64le.iso",
-              "size": 254523392,
+              "file": "alpine-standard-3.23.8-ppc64le.iso",
+              "path": "v3.23/releases/ppc64le/alpine-standard-3.23.8-ppc64le.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/ppc64le/alpine-standard-3.23.8-ppc64le.iso",
+              "size": 254533632,
               "checksum": {
                 "type": "sha512",
-                "value": "581c17d3c2844694e9098a86fabb8715f4606779798dab91198ba2b5205e9090680f3701dec859f1de3c7b14228fdd4a4b6bc6428b4ebda6728af4ade0125f2f",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/ppc64le/alpine-standard-3.23.7-ppc64le.iso.sha512"
+                "value": "82ae08cfd8323e8c858736b03b343dfa77489c91fbd8fdbe258cd969517159acee71a854e74b24d572c26e9a66338fde71f48af2ff3f0caddadbe3000e2d9d35",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/ppc64le/alpine-standard-3.23.8-ppc64le.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/ppc64le/alpine-standard-3.23.7-ppc64le.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/ppc64le/alpine-standard-3.23.8-ppc64le.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "alpine-standard-3.23.7-s390x.iso",
-              "path": "v3.23/releases/s390x/alpine-standard-3.23.7-s390x.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/s390x/alpine-standard-3.23.7-s390x.iso",
-              "size": 92784640,
+              "file": "alpine-standard-3.23.8-s390x.iso",
+              "path": "v3.23/releases/s390x/alpine-standard-3.23.8-s390x.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/s390x/alpine-standard-3.23.8-s390x.iso",
+              "size": 92813312,
               "checksum": {
                 "type": "sha512",
-                "value": "b297dee0dfcd4e3c142c89cdf6ce6ba7486f414aa12fe4b218671458ff26b7c143bd4a4c6b61b530c94678a2300b23fc1c75471adfa7c40929b818e68f669b6f",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/s390x/alpine-standard-3.23.7-s390x.iso.sha512"
+                "value": "93561714a754cf501bc4184e00f0fbaf80de1f279e8badaac2813474e4116b434024c704d997c984c18a357aa9a8b29b9d147076277b899f3a66239f50fb2b7d",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/s390x/alpine-standard-3.23.8-s390x.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/s390x/alpine-standard-3.23.7-s390x.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/s390x/alpine-standard-3.23.8-s390x.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -605,31 +605,31 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-extended-3.23.7-x86_64.iso",
-              "path": "v3.23/releases/x86_64/alpine-extended-3.23.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.7-x86_64.iso",
+              "file": "alpine-extended-3.23.8-x86_64.iso",
+              "path": "v3.23/releases/x86_64/alpine-extended-3.23.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.8-x86_64.iso",
               "size": 1419100160,
               "checksum": {
                 "type": "sha512",
-                "value": "4a934510db056a06618fcaebfa7d046501720877f31d566988391645df69251d56872102f44c1f371e783a238b7bef5955abd2f987606689e6a70b1912a61e5b",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.7-x86_64.iso.sha512"
+                "value": "614a8c5ace2a81488c7c93acdc57aa8de16174990735d98434c619c6c88a59e8b22a8685067a374f5531e84de72dfd80aa750325ab39a4098ab35639031bd4c7",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.8-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-extended-3.23.7-x86.iso",
-              "path": "v3.23/releases/x86/alpine-extended-3.23.7-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-extended-3.23.7-x86.iso",
+              "file": "alpine-extended-3.23.8-x86.iso",
+              "path": "v3.23/releases/x86/alpine-extended-3.23.8-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-extended-3.23.8-x86.iso",
               "size": 1795162112,
               "checksum": {
                 "type": "sha512",
-                "value": "f2398600e174a5d3b67c839b081eefc60f21c3d5de4ad1f70c4b8686d4424d450db843c8133bc7a3759d02f1b78323f80fe3d686adeb4b5f82c9f7c9ffcf70d8",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-extended-3.23.7-x86.iso.sha512"
+                "value": "53e5f09c8a8dd142c97baa6991888c6f5fa4b4b08fa9a67b37e2bb51dd336d444c8a59c785f2e9ba4a35417d1c71e891e97ed054fab46fdaa1b9541ed3642576",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-extended-3.23.8-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-extended-3.23.7-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-extended-3.23.8-x86.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -643,31 +643,31 @@
             {
               "arch": "aarch64",
               "format": "img.gz",
-              "file": "alpine-rpi-3.23.7-aarch64.img.gz",
-              "path": "v3.23/releases/aarch64/alpine-rpi-3.23.7-aarch64.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-rpi-3.23.7-aarch64.img.gz",
-              "size": 90940098,
+              "file": "alpine-rpi-3.23.8-aarch64.img.gz",
+              "path": "v3.23/releases/aarch64/alpine-rpi-3.23.8-aarch64.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-rpi-3.23.8-aarch64.img.gz",
+              "size": 91439922,
               "checksum": {
                 "type": "sha512",
-                "value": "682117b17aa77a9f318b345bcaf749c22f8145ec4b822ae129cd317f1edd44c25a3bf25c39c0924dd721ab69f655f3f118caaf91646deba33225334ba5afb819",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-rpi-3.23.7-aarch64.img.gz.sha512"
+                "value": "5f972f1c7035c6119083b202cc36c35e650d1d8a32930bc8b9c20d27cf8437adb4d09513ae12848d848e80fe8c28f87fba813c4c3d3ec94436a16d5ed1ebab79",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-rpi-3.23.8-aarch64.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-rpi-3.23.7-aarch64.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-rpi-3.23.8-aarch64.img.gz.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "img.gz",
-              "file": "alpine-rpi-3.23.7-armhf.img.gz",
-              "path": "v3.23/releases/armhf/alpine-rpi-3.23.7-armhf.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armhf/alpine-rpi-3.23.7-armhf.img.gz",
-              "size": 70140657,
+              "file": "alpine-rpi-3.23.8-armhf.img.gz",
+              "path": "v3.23/releases/armhf/alpine-rpi-3.23.8-armhf.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armhf/alpine-rpi-3.23.8-armhf.img.gz",
+              "size": 70619093,
               "checksum": {
                 "type": "sha512",
-                "value": "4d18739ceac9ac8bae3ccac40d248c921eb85b3df8884c9746af7bc674e1689536f729f72d1fe7ac0bbb6e092f3abaaa374a5574b4d811a363003a52050f02bd",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armhf/alpine-rpi-3.23.7-armhf.img.gz.sha512"
+                "value": "f7a1517b9480b508b65083ad417a7919067c81cc1d25a92d8f61065fbaeed977e78bf9f4ed286ad13373d736d97860bacbb640f4fd3dc4d8dc10b9973dd6ed3d",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armhf/alpine-rpi-3.23.8-armhf.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armhf/alpine-rpi-3.23.7-armhf.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armhf/alpine-rpi-3.23.8-armhf.img.gz.asc",
               "torrentUrl": null
             }
           ]
@@ -681,16 +681,16 @@
             {
               "arch": "armhf",
               "format": "img.gz",
-              "file": "alpine-rpi-3.23.7-armv7.img.gz",
-              "path": "v3.23/releases/armv7/alpine-rpi-3.23.7-armv7.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-rpi-3.23.7-armv7.img.gz",
-              "size": 69511892,
+              "file": "alpine-rpi-3.23.8-armv7.img.gz",
+              "path": "v3.23/releases/armv7/alpine-rpi-3.23.8-armv7.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-rpi-3.23.8-armv7.img.gz",
+              "size": 69979598,
               "checksum": {
                 "type": "sha512",
-                "value": "823ae28cc5356acd9bd1c884ae019c1a2407dee603d601d62ef2f8535cabe7fd2b675c10fd61d9b185d3d1cc7d7abbb01d5b274479e229264e5c6268aa2f4768",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-rpi-3.23.7-armv7.img.gz.sha512"
+                "value": "59d8570ac1970112b968721e29cbbeb32b3ccdda2a39d94393bb8a07e84d34f88c72db78b6934f7a67190896eae3c1feb5d6b6b6ba31e50ad57340951c95c29d",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-rpi-3.23.8-armv7.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-rpi-3.23.7-armv7.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-rpi-3.23.8-armv7.img.gz.asc",
               "torrentUrl": null
             }
           ]
@@ -704,61 +704,61 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-virt-3.23.7-x86_64.iso",
-              "path": "v3.23/releases/x86_64/alpine-virt-3.23.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.7-x86_64.iso",
+              "file": "alpine-virt-3.23.8-x86_64.iso",
+              "path": "v3.23/releases/x86_64/alpine-virt-3.23.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.8-x86_64.iso",
               "size": 71303168,
               "checksum": {
                 "type": "sha512",
-                "value": "8d482c9a5689dfbec50957c83449c03f2e0d3efffe717ff8b61acba83dacc2d70c11ec59f5e772eb807c0cb259d9a333a0196c5803814587391b496e9ccf1f16",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.7-x86_64.iso.sha512"
+                "value": "f96b2031986c057ea6c5571ccf3b300c8dc602d34277555b051049ac110de6904c55f3de2b30a5640f8966450f03c0209e8159da144adcdd1fa8f4e98247ec3e",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.8-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "alpine-virt-3.23.7-aarch64.iso",
-              "path": "v3.23/releases/aarch64/alpine-virt-3.23.7-aarch64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-virt-3.23.7-aarch64.iso",
-              "size": 94746624,
+              "file": "alpine-virt-3.23.8-aarch64.iso",
+              "path": "v3.23/releases/aarch64/alpine-virt-3.23.8-aarch64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-virt-3.23.8-aarch64.iso",
+              "size": 94756864,
               "checksum": {
                 "type": "sha512",
-                "value": "e729ed56e3dddaafb2d77fe8a8b024ad7660eace5ed5613d896c24854d4762b407786c8e583836d9444c3f72ae00cb252026d1220214f77e702c8a1d1c1e3138",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-virt-3.23.7-aarch64.iso.sha512"
+                "value": "6977f1309d905d5475d3071a4e237e5b854e594ef517497a80365ad0e5d11d236c3eca8f5a3d9c41c0688b57d87f10441354ccc627c63e262a03b5e24402b0ac",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-virt-3.23.8-aarch64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-virt-3.23.7-aarch64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-virt-3.23.8-aarch64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-virt-3.23.7-x86.iso",
-              "path": "v3.23/releases/x86/alpine-virt-3.23.7-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-virt-3.23.7-x86.iso",
+              "file": "alpine-virt-3.23.8-x86.iso",
+              "path": "v3.23/releases/x86/alpine-virt-3.23.8-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-virt-3.23.8-x86.iso",
               "size": 54525952,
               "checksum": {
                 "type": "sha512",
-                "value": "7546779bf7aff99d6e0a96948d2017728c13b53dbb2b8069422202b9bff85e0659d4b66ff35f7d96bd14558a95755c04ee8c32d527233168ab8e6601c6864272",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-virt-3.23.7-x86.iso.sha512"
+                "value": "e601ea3342ec902a7e00af0456abea090a5cc3ede3b0b19cb78c00baa7d0751dd25cfa70b04458fd7c9ebcfdff884e3c49863ce8372981bfb73e27635a7fc878",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-virt-3.23.8-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-virt-3.23.7-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86/alpine-virt-3.23.8-x86.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "iso",
-              "file": "alpine-virt-3.23.7-armv7.iso",
-              "path": "v3.23/releases/armv7/alpine-virt-3.23.7-armv7.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-virt-3.23.7-armv7.iso",
-              "size": 50882560,
+              "file": "alpine-virt-3.23.8-armv7.iso",
+              "path": "v3.23/releases/armv7/alpine-virt-3.23.8-armv7.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-virt-3.23.8-armv7.iso",
+              "size": 50892800,
               "checksum": {
                 "type": "sha512",
-                "value": "b9b69559be350570ab9c88976ef828995e230614fa54d4d4a58b64594277d14c334994282e8f8029a02c7c8cf4abe728905e13c5d30d078fde3a42a18034c6ce",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-virt-3.23.7-armv7.iso.sha512"
+                "value": "0e39c5d5b8400ec169b580d7d95476e4ee9964b2a0babb5a1ed7bd1fbb561931af6007b5a9b8439d3c30e76d4a3c17b586725693e91a84c20b1087ae4bb3f863",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-virt-3.23.8-armv7.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-virt-3.23.7-armv7.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-virt-3.23.8-armv7.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -772,16 +772,16 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-xen-3.23.7-x86_64.iso",
-              "path": "v3.23/releases/x86_64/alpine-xen-3.23.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-xen-3.23.7-x86_64.iso",
+              "file": "alpine-xen-3.23.8-x86_64.iso",
+              "path": "v3.23/releases/x86_64/alpine-xen-3.23.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-xen-3.23.8-x86_64.iso",
               "size": 1474953216,
               "checksum": {
                 "type": "sha512",
-                "value": "20c3bb56e0014e4db8eedc23d626ed8016f0b01f54e73eed7bfb25af56cda7153b992710ff932e300f1a849dce145e04d73db625e106af3fd45fe1614c8b19bd",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-xen-3.23.7-x86_64.iso.sha512"
+                "value": "db6552bfe1fdd41c50353163b3ec44532d00bd1b40f70f89c1c85df2e9a0861867d67b9fd9a25166794c6d9f544c18d42e6aab9afeb34798cc1a79dea6954e68",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-xen-3.23.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-xen-3.23.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-xen-3.23.8-x86_64.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -795,16 +795,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-bios-tiny-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-r0.qcow2",
-              "size": 103546880,
+              "file": "alpine-3.23.8-x86_64-bios-tiny-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-r0.qcow2",
+              "size": 104005632,
               "checksum": {
                 "type": "sha512",
-                "value": "e635d88c763afa9d09b6b3718b6f746d9421f3d19b82a341f6fa6f23e0c2bc30c609f0f70cf5c78c1bad62e34be3a019d33b48d48e3f81a50ef7cb00ff8f5955",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-r0.qcow2.sha512"
+                "value": "557af62462f83969d9e3d449702fd239417808038cc23b3974b715e30a7ded484fc82ba05947fe14fdfedb4461d774afc87a2fcf070feba34cfffe015d4367e9",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -818,16 +818,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-bios-tiny-metal-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-metal-r0.qcow2",
-              "size": 627965952,
+              "file": "alpine-3.23.8-x86_64-bios-tiny-metal-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-metal-r0.qcow2",
+              "size": 629211136,
               "checksum": {
                 "type": "sha512",
-                "value": "74cb833f649cecfc204aa57c7b5f60e6f1484f535a19ea302d64ec4e6102700aff7770850aeb0e76f285e443bff97f4d261e91304fe515b5209c7df722be67cc",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-metal-r0.qcow2.sha512"
+                "value": "edc9daf28f0b85256955e713a5d18ee90329160090a01248e9b1fe9130c753afd8c3a9ca35aab38a1089058bea5279b1927c2508961f2fd3d778a492cf5c37ca",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -841,16 +841,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-bios-cloudinit-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-r0.qcow2",
-              "size": 165019648,
+              "file": "alpine-3.23.8-x86_64-bios-cloudinit-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-r0.qcow2",
+              "size": 165150720,
               "checksum": {
                 "type": "sha512",
-                "value": "648a6295f5bfb1b19cbb9aee0c137111609c8ac80c908cbd62e8237b0ff6cb4cbef3f830dd855af406ecf8081a3f79c8249284f4b7456c815dd7336d91acff70",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-r0.qcow2.sha512"
+                "value": "a25fda500f1dbce25a0283b5fe155cbc7da8718996664d5975b2747d9fb8e03bad332d973b04662aa59dc957c7c2098dbefea7cd5dd631fefcca82362b97d387",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -864,16 +864,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-bios-cloudinit-metal-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-metal-r0.qcow2",
-              "size": 694878208,
+              "file": "alpine-3.23.8-x86_64-bios-cloudinit-metal-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-metal-r0.qcow2",
+              "size": 695926784,
               "checksum": {
                 "type": "sha512",
-                "value": "80702c4b66f6b7c29597a6c68a29ace1c243f871d30fd7dbfe54d7bb6f6149ad6b4a12a88989ef76e823083c58cc9de6f390485ac43a2a9002b3c65f8ec62316",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-metal-r0.qcow2.sha512"
+                "value": "68ca4569ff6d527f9413077c5a8a09ca7ebfd0d9a18db0beb1810d2c8970c10176593a8c6f8b86e86d81775cd5b37abc06bf7dcd27df5b482d252055ef87aeca",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-bios-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-bios-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -887,31 +887,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-uefi-tiny-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-r0.qcow2",
-              "size": 125042688,
+              "file": "alpine-3.23.8-x86_64-uefi-tiny-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-r0.qcow2",
+              "size": 125566976,
               "checksum": {
                 "type": "sha512",
-                "value": "f48ae2b1a23979627f443ce0afc3c54e71ce6cd884370fb95e31635f2effa09a33c3a7658f229d2025c8f730bae5df49b982ad7cb23bd7cb4ac78e13bd14b40b",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-r0.qcow2.sha512"
+                "value": "d69457a2003d21eb026834dc3e9b5f1ee7cbdeb1dd390ef514cb0c154fbe5dba92a42463c670b7a66e29bc1006a10b99395a2cd884c59a1ddebefa2eb79e52fe",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-aarch64-uefi-tiny-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-r0.qcow2",
-              "size": 152961024,
+              "file": "alpine-3.23.8-aarch64-uefi-tiny-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-r0.qcow2",
+              "size": 153812992,
               "checksum": {
                 "type": "sha512",
-                "value": "dd6cf174f0f37dce5d62fabd4b1c19ff4719ae41b754d733f97f1f19dde975cde36aebd83d2a466fd26616ca53018c651b16eab919f14f01f1a62e9707f1a9a7",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-r0.qcow2.sha512"
+                "value": "3370c575d7f4a0838395dd06be9fdf3eb4013de3dbfc339f1899e62508a2be327320d6babdc05c25c9ade5a5952622e144e841c1653f9cca0c70f01479da6269",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -925,31 +925,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-uefi-tiny-metal-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-metal-r0.qcow2",
-              "size": 655425536,
+              "file": "alpine-3.23.8-x86_64-uefi-tiny-metal-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-metal-r0.qcow2",
+              "size": 655818752,
               "checksum": {
                 "type": "sha512",
-                "value": "3ee400eb66204829cf0a60aa6e1c42d8f821ffd75ef1ae0cb674146074b2cab500cef67bf4c186360e875e5b56d9ed09fd49cf16788e129aaf90a7fb82834f35",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-metal-r0.qcow2.sha512"
+                "value": "4d4851bc7fbd450b7d42d0fbbd73b4d8691859bdfc8ddce768fb502ddf2f7bbd94089880e6ef404ad7bad3e4285b6c59edce8f60f1190af03f3e970d8718b500",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-aarch64-uefi-tiny-metal-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-metal-r0.qcow2",
-              "size": 691666944,
+              "file": "alpine-3.23.8-aarch64-uefi-tiny-metal-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-metal-r0.qcow2",
+              "size": 691535872,
               "checksum": {
                 "type": "sha512",
-                "value": "a6c37dede6f383afa6b6d7f22a5c8ec4e71b4c6f71c7b70d06a389b08da593b49d2df506ff54c1e029bc632a146a09339ed07b44e95ae3e91746e51e512c5eee",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-metal-r0.qcow2.sha512"
+                "value": "7baa7dbe8337c8b5aad3366349ff2aca243e1fe37c5755817d733f6cdfa7272e9a56518663231a68fcd0ea10bc57f4d3a8357aacc8bca402658bffddd44ee345",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -963,31 +963,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-uefi-cloudinit-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-r0.qcow2",
-              "size": 187039744,
+              "file": "alpine-3.23.8-x86_64-uefi-cloudinit-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-r0.qcow2",
+              "size": 186712064,
               "checksum": {
                 "type": "sha512",
-                "value": "09130d88c3d51f5c698088ab5b305e371736c7c6afc1b327d05a28bcd1b013d0b35b0e8a3858675c2786e0d7e1bfacb96c546a7be7bce9ffeb87ca1d09a5f3cf",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-r0.qcow2.sha512"
+                "value": "0216a1c94d89eaf02e43f05c5504ff2031044ecfe219da246102dd9c91cb52227c3994ec08178f6e260c26f11bf4de4ce41722f93cca5a7b6a493e13366fa308",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-aarch64-uefi-cloudinit-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-r0.qcow2",
-              "size": 221249536,
+              "file": "alpine-3.23.8-aarch64-uefi-cloudinit-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-r0.qcow2",
+              "size": 221839360,
               "checksum": {
                 "type": "sha512",
-                "value": "fda913a0054198c8894a3615c75ddbf40bb2cc9d569da2136937ca23cbe7f5a3007059922d785037e73280b81f7e73e4ae4eea74a0a5121e188ceab580c00866",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-r0.qcow2.sha512"
+                "value": "bd1347e5d9647c581a8671e654c0f0702b5adf27c133907d9622ade39b6dd51688cecf0745f5bf408088372932d981346e3eaa86a30e6396ab088b3e5dc62452",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1001,31 +1001,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-x86_64-uefi-cloudinit-metal-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-metal-r0.qcow2",
-              "size": 720109568,
+              "file": "alpine-3.23.8-x86_64-uefi-cloudinit-metal-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-metal-r0.qcow2",
+              "size": 720044032,
               "checksum": {
                 "type": "sha512",
-                "value": "7bd595aa0ab5f587ecb3536db0b9f1fc24b47a1daab42803d505bec3145ddd6ca0069bf3e273b561510245a799f3def92ab6dcdf56deded19f398f8a248f1200",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-metal-r0.qcow2.sha512"
+                "value": "5c04e5bb157f46abeba107a05db22ff84c16b85cd694916cdcae89ae71e35f278fa99190fee00c9e75ec0165cd57056c66373276e7acf99a73c849cab231ac68",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-x86_64-uefi-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-x86_64-uefi-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.23.7-aarch64-uefi-cloudinit-metal-r0.qcow2",
-              "path": "v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-metal-r0.qcow2",
-              "size": 762511360,
+              "file": "alpine-3.23.8-aarch64-uefi-cloudinit-metal-r0.qcow2",
+              "path": "v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-metal-r0.qcow2",
+              "size": 762052608,
               "checksum": {
                 "type": "sha512",
-                "value": "a20df6f562bf3e0bb86407ef9f67f6963e1a4aaa0adb50b6cd851ace7f7c2c6f27046f67abdb6a94f0ab3d63103e1ce84eacc5954aa0df62e00b74c662f8d572",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-metal-r0.qcow2.sha512"
+                "value": "4c2c496c5ba4e2dc6e607f059d55463a11d53acf72ef5e76e551ae598b9aa0ffb82730a00cbca300bc6b5004f4aae3440c9aa9bc89aa03f579bfae22d9aada07",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.7-aarch64-uefi-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/alpine-3.23.8-aarch64-uefi-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1033,12 +1033,12 @@
       ]
     },
     {
-      "version": "3.22.7",
+      "version": "3.22.8",
       "channel": "stable",
       "codename": null,
-      "releaseDate": "2026-10-21",
+      "releaseDate": "2026-11-05",
       "eol": "2027-05-01",
-      "notesUrl": "https://alpinelinux.org/posts/Alpine-3.21.9-3.22.7-3.23.7-3.24.3-released.html",
+      "notesUrl": "https://alpinelinux.org/posts/Alpine-3.21.10-3.22.8-3.23.8-3.24.4-released.html",
       "editions": [
         {
           "id": "standard",
@@ -1049,91 +1049,91 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-standard-3.22.7-x86_64.iso",
-              "path": "v3.22/releases/x86_64/alpine-standard-3.22.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-standard-3.22.7-x86_64.iso",
+              "file": "alpine-standard-3.22.8-x86_64.iso",
+              "path": "v3.22/releases/x86_64/alpine-standard-3.22.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-standard-3.22.8-x86_64.iso",
               "size": 284164096,
               "checksum": {
                 "type": "sha512",
-                "value": "7d637dc81cc8ee792ff26be3ae0e810bd84484f3c57b03cebdf1b22de4dffcd19eacd5ecc847b2ed62187cb5459180984954d456bdf4d5794b301cdea5443261",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-standard-3.22.7-x86_64.iso.sha512"
+                "value": "71322db3f4eb74708a6d35359632f224ba312648993fe770582f1336088288d1b1e6b4fa8ccc142e756d72525744b3a66926736e3fb7e7d103a50e82decaa026",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-standard-3.22.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-standard-3.22.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-standard-3.22.8-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "alpine-standard-3.22.7-aarch64.iso",
-              "path": "v3.22/releases/aarch64/alpine-standard-3.22.7-aarch64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-standard-3.22.7-aarch64.iso",
-              "size": 290205696,
+              "file": "alpine-standard-3.22.8-aarch64.iso",
+              "path": "v3.22/releases/aarch64/alpine-standard-3.22.8-aarch64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-standard-3.22.8-aarch64.iso",
+              "size": 290187264,
               "checksum": {
                 "type": "sha512",
-                "value": "0dfeffe13fded7cb157f319076660f2d013287f4bd9fda4a19f1d17b3754985405c9b5a73cdbc056c5b04f00497fade3ac0e1287a4d4d16640a2e43035f42833",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-standard-3.22.7-aarch64.iso.sha512"
+                "value": "5b04acb58b206cfa81d3695e22cd525db782c3d3f77d7b3d48aef051d8740c5d12c4a190bc4cf6ee4e6b4e59c96cbb8cce22c877f0ee8bc2920dec3d3396f7e6",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-standard-3.22.8-aarch64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-standard-3.22.7-aarch64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-standard-3.22.8-aarch64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-standard-3.22.7-x86.iso",
-              "path": "v3.22/releases/x86/alpine-standard-3.22.7-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-standard-3.22.7-x86.iso",
+              "file": "alpine-standard-3.22.8-x86.iso",
+              "path": "v3.22/releases/x86/alpine-standard-3.22.8-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-standard-3.22.8-x86.iso",
               "size": 223346688,
               "checksum": {
                 "type": "sha512",
-                "value": "04e0ae4152987908e447fc47b692eb390dac23c683df3035fbaf63d03025d1e789bdf1d5e12de17fd8f79acf4a94349df8ada173f2d34a86963a5daa6f6277c6",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-standard-3.22.7-x86.iso.sha512"
+                "value": "e2d6684a28ba5e8e63fba34013d0fc0c82d16d97469e53a6d682f841423ec0eb3dae66cd0ce41a68919558bbd765c0e3544b7297b24161e932ff91df61895c74",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-standard-3.22.8-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-standard-3.22.7-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-standard-3.22.8-x86.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "iso",
-              "file": "alpine-standard-3.22.7-armv7.iso",
-              "path": "v3.22/releases/armv7/alpine-standard-3.22.7-armv7.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-standard-3.22.7-armv7.iso",
-              "size": 115898368,
+              "file": "alpine-standard-3.22.8-armv7.iso",
+              "path": "v3.22/releases/armv7/alpine-standard-3.22.8-armv7.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-standard-3.22.8-armv7.iso",
+              "size": 115908608,
               "checksum": {
                 "type": "sha512",
-                "value": "a1108f235db27ad431b143a18be841bc04099708e09c45022ac5cd33535b01aa0eab91a0c73dcfc540a66ab95b047cd28e01b89fc95d2eba9568e22b99e06423",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-standard-3.22.7-armv7.iso.sha512"
+                "value": "31da8ac33ef0a740de937dc7d3447de1d5ac7e553cca65534839b787cda64d498310266690e374dc0fd4943543c0df683b3c2c1ca63384289eae447734320159",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-standard-3.22.8-armv7.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-standard-3.22.7-armv7.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-standard-3.22.8-armv7.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "alpine-standard-3.22.7-ppc64le.iso",
-              "path": "v3.22/releases/ppc64le/alpine-standard-3.22.7-ppc64le.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/ppc64le/alpine-standard-3.22.7-ppc64le.iso",
-              "size": 181235712,
+              "file": "alpine-standard-3.22.8-ppc64le.iso",
+              "path": "v3.22/releases/ppc64le/alpine-standard-3.22.8-ppc64le.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/ppc64le/alpine-standard-3.22.8-ppc64le.iso",
+              "size": 181237760,
               "checksum": {
                 "type": "sha512",
-                "value": "7eb023e87272c314dcf7fdc04787c2b53486e9924e56b00d227469e9f80556edb96f18b3b1d15d986f80448a362e7f59546d11dbe4dbe6f3d0e52f970bc3b066",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/ppc64le/alpine-standard-3.22.7-ppc64le.iso.sha512"
+                "value": "20f189c3e71208c977f4df1325224b762039b19e39f07d091683262ac599be29656ad9973ee254ac2b5fe702fbf8cd3212303e478c96d5c35cdae5c18b467524",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/ppc64le/alpine-standard-3.22.8-ppc64le.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/ppc64le/alpine-standard-3.22.7-ppc64le.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/ppc64le/alpine-standard-3.22.8-ppc64le.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "alpine-standard-3.22.7-s390x.iso",
-              "path": "v3.22/releases/s390x/alpine-standard-3.22.7-s390x.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/s390x/alpine-standard-3.22.7-s390x.iso",
-              "size": 90779648,
+              "file": "alpine-standard-3.22.8-s390x.iso",
+              "path": "v3.22/releases/s390x/alpine-standard-3.22.8-s390x.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/s390x/alpine-standard-3.22.8-s390x.iso",
+              "size": 90800128,
               "checksum": {
                 "type": "sha512",
-                "value": "9430cb2e71db487ac32850c7a54dd8012756a3c95fa5b8cd7d1a21facad2fdc2af786a49cfa899d49c4d21823a446c2da115f62e96d156e2b380b6367832ee05",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/s390x/alpine-standard-3.22.7-s390x.iso.sha512"
+                "value": "b278aa545c12adc2fc3ff63a7eb06cedc9af97c3ffa742fddc2967a1ebfee61fe554419f5f732b63ca91857120a92aae92688eb55034d6104a07b397ef8eb840",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/s390x/alpine-standard-3.22.8-s390x.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/s390x/alpine-standard-3.22.7-s390x.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/s390x/alpine-standard-3.22.8-s390x.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -1147,31 +1147,31 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-extended-3.22.7-x86_64.iso",
-              "path": "v3.22/releases/x86_64/alpine-extended-3.22.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.7-x86_64.iso",
-              "size": 1174405120,
+              "file": "alpine-extended-3.22.8-x86_64.iso",
+              "path": "v3.22/releases/x86_64/alpine-extended-3.22.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.8-x86_64.iso",
+              "size": 1174896640,
               "checksum": {
                 "type": "sha512",
-                "value": "9857dd45e0afbfac3b59f1f8e3411588523b1270d89234eed3416c0deb91fad46711149c2bcf56bc8eb76a6acbc101296c40eccfefbd24ca24af7cb006a2e487",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.7-x86_64.iso.sha512"
+                "value": "00593fd63960bb90d4f0d6eee1c3ad10e3bcb45c3aea4b343fffc875600bc20076ee6a36cb68735054d36b42c71ade62db20b16742f0f315d805a9573c20a6b4",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.8-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-extended-3.22.7-x86.iso",
-              "path": "v3.22/releases/x86/alpine-extended-3.22.7-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-extended-3.22.7-x86.iso",
+              "file": "alpine-extended-3.22.8-x86.iso",
+              "path": "v3.22/releases/x86/alpine-extended-3.22.8-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-extended-3.22.8-x86.iso",
               "size": 1049624576,
               "checksum": {
                 "type": "sha512",
-                "value": "e757d6a3aa3856ad0211f84b8d54ff2153404764f2971c8052f3f6b00c51161558cf87c1c7eb9b8f65b1c47258d0ee4d277c3bc3d4e4d6f90963997f80845cdd",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-extended-3.22.7-x86.iso.sha512"
+                "value": "878f8ca544df96e116e46e342dd107fcb62eade4d3426ba8cf365873fe680544888026bcda8d8f9f45b70dce69df6f3630ea70181177f4245a28c4250f8e0d92",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-extended-3.22.8-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-extended-3.22.7-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-extended-3.22.8-x86.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -1185,31 +1185,31 @@
             {
               "arch": "aarch64",
               "format": "img.gz",
-              "file": "alpine-rpi-3.22.7-aarch64.img.gz",
-              "path": "v3.22/releases/aarch64/alpine-rpi-3.22.7-aarch64.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-rpi-3.22.7-aarch64.img.gz",
-              "size": 90038258,
+              "file": "alpine-rpi-3.22.8-aarch64.img.gz",
+              "path": "v3.22/releases/aarch64/alpine-rpi-3.22.8-aarch64.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-rpi-3.22.8-aarch64.img.gz",
+              "size": 90533580,
               "checksum": {
                 "type": "sha512",
-                "value": "56f037b9c596bf142b9cf48762490594fad243679a58fee648016a93d70adcb23959ed042a3ac1555baaa6f4b085f8e12ad677e0cbde51f17828a53acf7edd94",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-rpi-3.22.7-aarch64.img.gz.sha512"
+                "value": "34fd507f300ef863fd801d1cfdf702394102cd1ea0f5b8b5fbf6ab19221cc77bb9d9b7589eb437395b1b1a823139df2ce424294338d6227edb92d4656463da01",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-rpi-3.22.8-aarch64.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-rpi-3.22.7-aarch64.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-rpi-3.22.8-aarch64.img.gz.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "img.gz",
-              "file": "alpine-rpi-3.22.7-armhf.img.gz",
-              "path": "v3.22/releases/armhf/alpine-rpi-3.22.7-armhf.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armhf/alpine-rpi-3.22.7-armhf.img.gz",
-              "size": 68868070,
+              "file": "alpine-rpi-3.22.8-armhf.img.gz",
+              "path": "v3.22/releases/armhf/alpine-rpi-3.22.8-armhf.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armhf/alpine-rpi-3.22.8-armhf.img.gz",
+              "size": 69343249,
               "checksum": {
                 "type": "sha512",
-                "value": "3db9350b1d8c590248a665342a1d28a3bc20b5d88ab1ded7de68a52aebdcdb1a0d00efbcdaa45498538db72708d2b58c3924ffdbcf1f2db66d2963675d764901",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armhf/alpine-rpi-3.22.7-armhf.img.gz.sha512"
+                "value": "51c8c206e94232abc478481717dc55e80c41108c550720aea9baf15104b32ff22668ebbfaf3666f2a0de55f474d75a64f3929be3b87469d649713c73760b7b9d",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armhf/alpine-rpi-3.22.8-armhf.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armhf/alpine-rpi-3.22.7-armhf.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armhf/alpine-rpi-3.22.8-armhf.img.gz.asc",
               "torrentUrl": null
             }
           ]
@@ -1223,16 +1223,16 @@
             {
               "arch": "armhf",
               "format": "img.gz",
-              "file": "alpine-rpi-3.22.7-armv7.img.gz",
-              "path": "v3.22/releases/armv7/alpine-rpi-3.22.7-armv7.img.gz",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-rpi-3.22.7-armv7.img.gz",
-              "size": 68331056,
+              "file": "alpine-rpi-3.22.8-armv7.img.gz",
+              "path": "v3.22/releases/armv7/alpine-rpi-3.22.8-armv7.img.gz",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-rpi-3.22.8-armv7.img.gz",
+              "size": 68800033,
               "checksum": {
                 "type": "sha512",
-                "value": "260a6ed8254b7f9bfad69d85a01a58ecb6c2ce918fcdc86f26317abdfdd33fc804b5c7b5091a298c927c7b60d0ea4b2ca81a1691a1b3ec3fe08dee35b20dccf1",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-rpi-3.22.7-armv7.img.gz.sha512"
+                "value": "38d1bb28a4fb9ba90f2de8e4e3ddc825118f5ecfce39d55f56d16bb9123b3baa4b1d8aeaae84db4245114d87670f01f9b0650edbbb4c3c6d001723c293963bc8",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-rpi-3.22.8-armv7.img.gz.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-rpi-3.22.7-armv7.img.gz.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-rpi-3.22.8-armv7.img.gz.asc",
               "torrentUrl": null
             }
           ]
@@ -1246,61 +1246,61 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-virt-3.22.7-x86_64.iso",
-              "path": "v3.22/releases/x86_64/alpine-virt-3.22.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-virt-3.22.7-x86_64.iso",
+              "file": "alpine-virt-3.22.8-x86_64.iso",
+              "path": "v3.22/releases/x86_64/alpine-virt-3.22.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-virt-3.22.8-x86_64.iso",
               "size": 68157440,
               "checksum": {
                 "type": "sha512",
-                "value": "22e1bf364be63239c2900cb2ece3def5f105ddc0cf24282e5826c9766889d0bb1d9e46779bd0a24569a779d7b49189a399f000fa6e64a5845a069426b95e7f42",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-virt-3.22.7-x86_64.iso.sha512"
+                "value": "c44e903d8d490fe2d85dcd3e432d58d2bf261379f42e2bbc2f6aa0d1d917f40722156291cf8bdfa7789715af5da92d8acb950f95b9133d4508d8a5b9161b31f9",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-virt-3.22.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-virt-3.22.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-virt-3.22.8-x86_64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "alpine-virt-3.22.7-aarch64.iso",
-              "path": "v3.22/releases/aarch64/alpine-virt-3.22.7-aarch64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-virt-3.22.7-aarch64.iso",
-              "size": 80644096,
+              "file": "alpine-virt-3.22.8-aarch64.iso",
+              "path": "v3.22/releases/aarch64/alpine-virt-3.22.8-aarch64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-virt-3.22.8-aarch64.iso",
+              "size": 80646144,
               "checksum": {
                 "type": "sha512",
-                "value": "e27be215417f1c6e7025b0ca500b66ed6547db4d877e647a56e774ae1545ac2b1328a8e7bbadafb16168d125a8cc7abca06bb21487e52ec02c3c3ede7d1b752d",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-virt-3.22.7-aarch64.iso.sha512"
+                "value": "143880c10ba21b124cf73877f11e257c348d977879c699b28a23b7bd2b652b55bbdc895f3b6549c58781dda7a69e729dd68b9b7638299cbe09c6178dd45cdfb3",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-virt-3.22.8-aarch64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-virt-3.22.7-aarch64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-virt-3.22.8-aarch64.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "i686",
               "format": "iso",
-              "file": "alpine-virt-3.22.7-x86.iso",
-              "path": "v3.22/releases/x86/alpine-virt-3.22.7-x86.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-virt-3.22.7-x86.iso",
+              "file": "alpine-virt-3.22.8-x86.iso",
+              "path": "v3.22/releases/x86/alpine-virt-3.22.8-x86.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-virt-3.22.8-x86.iso",
               "size": 52428800,
               "checksum": {
                 "type": "sha512",
-                "value": "f43c0ea70271abd89feba95ef896e3c5269ce175cf27338377a2cf7f7826031e080398ec028151cbecf5845b077ae569e1b59fa5a3317339799460c591936632",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-virt-3.22.7-x86.iso.sha512"
+                "value": "b4a46e2e2f70ce6d411cb09a0e5586b29caeeb9fc7d8009cb9d188973b9d19a60d2bf1352d2390d63d906466e0ded82695f0a9bf52f692983a3f89b316ae37b4",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-virt-3.22.8-x86.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-virt-3.22.7-x86.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86/alpine-virt-3.22.8-x86.iso.asc",
               "torrentUrl": null
             },
             {
               "arch": "armhf",
               "format": "iso",
-              "file": "alpine-virt-3.22.7-armv7.iso",
-              "path": "v3.22/releases/armv7/alpine-virt-3.22.7-armv7.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-virt-3.22.7-armv7.iso",
-              "size": 49084416,
+              "file": "alpine-virt-3.22.8-armv7.iso",
+              "path": "v3.22/releases/armv7/alpine-virt-3.22.8-armv7.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-virt-3.22.8-armv7.iso",
+              "size": 49092608,
               "checksum": {
                 "type": "sha512",
-                "value": "5713148db3de63ddec48443372bc6caa310d117daebe39bb65c172d25c3644a84b53e6380ff1b3221e70d2269d4d0fd6c760d7512da5d0cfacb4a4f46e7360ae",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-virt-3.22.7-armv7.iso.sha512"
+                "value": "7cad00e70af7aeb95e9705601e8e1d5335140b8a6c48eebb87ab39ff4b7a2337623d731fc2af6ab123e7860100ef795b19d4ee0ea351298322d78d7975257044",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-virt-3.22.8-armv7.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-virt-3.22.7-armv7.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/armv7/alpine-virt-3.22.8-armv7.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -1314,16 +1314,16 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "alpine-xen-3.22.7-x86_64.iso",
-              "path": "v3.22/releases/x86_64/alpine-xen-3.22.7-x86_64.iso",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-xen-3.22.7-x86_64.iso",
+              "file": "alpine-xen-3.22.8-x86_64.iso",
+              "path": "v3.22/releases/x86_64/alpine-xen-3.22.8-x86_64.iso",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-xen-3.22.8-x86_64.iso",
               "size": 1250918400,
               "checksum": {
                 "type": "sha512",
-                "value": "eb20aeb8386e9e6e3f30bd9d277cfc4e2c8793455269a022ffc8ab8ce4c56dc1816bce67820b1ba4f1d1b728d38dba0c8a113162364a292109b404835a1983b3",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-xen-3.22.7-x86_64.iso.sha512"
+                "value": "0e99237d27386c14b04470b2042211fddad67001a9ac64dddab9dfaeb7a64e545b9b8e5f4555e44b965a88c768785939bdba79824ff7206340c6482a8a2df1e7",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-xen-3.22.8-x86_64.iso.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-xen-3.22.7-x86_64.iso.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-xen-3.22.8-x86_64.iso.asc",
               "torrentUrl": null
             }
           ]
@@ -1337,16 +1337,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-bios-tiny-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-r0.qcow2",
-              "size": 100335616,
+              "file": "alpine-3.22.8-x86_64-bios-tiny-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-r0.qcow2",
+              "size": 100532224,
               "checksum": {
                 "type": "sha512",
-                "value": "e58023b375a8ec5ae41bf08d138b5e8bbbb96fad6a17e812e162527a30889b529a0f040260e84dfa70094840ce61164313a1e55f78536b6d00ba2173b6efe659",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-r0.qcow2.sha512"
+                "value": "e4c7cf95d9f7295d8598c2219b7305128c1a14b50bbb70b4beda95eefd4b79b7b7e47fa4ae43f1197137f4219dae4ec0a5a818c3715c2f6b9e500dc8118f6448",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1360,16 +1360,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-bios-tiny-metal-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-metal-r0.qcow2",
-              "size": 543358976,
+              "file": "alpine-3.22.8-x86_64-bios-tiny-metal-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-metal-r0.qcow2",
+              "size": 544407552,
               "checksum": {
                 "type": "sha512",
-                "value": "26aec96dcb22b478490e14f701d975d6110d5345981e5d30a9f8557e56fe2a30ebd9c51ab0387a4b607089df223a237c83ce59cfcbbc01f438f44e0699a8e048",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-metal-r0.qcow2.sha512"
+                "value": "f525cc5d874b9d413264f01da92247b61d7538d4a2532e6a44333e01ddef09b43ffa40a2ca8006372f4968a2d80c99965dd8a4cd60453b45666e32598583d694",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1383,16 +1383,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-bios-cloudinit-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-r0.qcow2",
-              "size": 161218560,
+              "file": "alpine-3.22.8-x86_64-bios-cloudinit-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-r0.qcow2",
+              "size": 161677312,
               "checksum": {
                 "type": "sha512",
-                "value": "f35baeb22a7ed23489655d40a20a8fe30dda55e588a98ff75c9ae99dcbf1afc343c5abe4a7fe7f236265dcf7b299d2794858c1af905a5ad2281bee96a1b764ef",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-r0.qcow2.sha512"
+                "value": "36b89ac687c9c8bc4712e874f7bc92d6d880144be03093dbb7d2fdc63678afd32733992776aedeeb32c4b93810267a12d58e45ecd5b6be8267c83afa72c98810",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1406,16 +1406,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-bios-cloudinit-metal-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-metal-r0.qcow2",
-              "size": 610205696,
+              "file": "alpine-3.22.8-x86_64-bios-cloudinit-metal-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-metal-r0.qcow2",
+              "size": 611123200,
               "checksum": {
                 "type": "sha512",
-                "value": "43196471e74a1f0f819737f43bbc776a9332e6b67d8f8d47816b0923a7272feaf40be1744168e0499f60bc2473bf9d03061f9eb402751c77cdbc388805adb5fb",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-metal-r0.qcow2.sha512"
+                "value": "9b1b92b3bd3679b5e8c72402eba2e8d0a140f7698f1da08ba741fea0aeb232a87d4ab942a701b6bb945f12600a1e9d1e97cc41906a194ba25f1f905d0cc0d2ba",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-bios-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-bios-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1429,31 +1429,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-uefi-tiny-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-r0.qcow2",
+              "file": "alpine-3.22.8-x86_64-uefi-tiny-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-r0.qcow2",
               "size": 122028032,
               "checksum": {
                 "type": "sha512",
-                "value": "19977188c4aeb484de6496a28645cba57a5fdd5ef76d273bde93973cc584a3b4669a890a1fa1e87c49f8cf3187dd94fe6b1c8dc2562011dbfdbfc40ad168cc27",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-r0.qcow2.sha512"
+                "value": "1934666454a80e5feae240f69743469119bb9d4e993d5b90dab597d76203ef5b248ab9269c2dead856a8f3adb0984d55987ea53727a03d7f3cc18b670ce431ff",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-aarch64-uefi-tiny-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-r0.qcow2",
-              "size": 138805248,
+              "file": "alpine-3.22.8-aarch64-uefi-tiny-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-r0.qcow2",
+              "size": 139001856,
               "checksum": {
                 "type": "sha512",
-                "value": "08e161d4656d6f2c38d6ff096c0ce929b6e8cdf43c15b441f3d6f42242ad5ef3c0b986aa20042b4428ebafb76b51a70e5efa200dcb9371a1cf54a1b2da91a7d0",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-r0.qcow2.sha512"
+                "value": "c2f10e05b7f9224f47a6f6d63eb4f8c439b25bdfe0194a9030df98e70359f0b87f30d3f04952233eb0630b0bb087661d7df1061da748e349f423123d557525eb",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1467,31 +1467,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-uefi-tiny-metal-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-metal-r0.qcow2",
-              "size": 571539456,
+              "file": "alpine-3.22.8-x86_64-uefi-tiny-metal-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-metal-r0.qcow2",
+              "size": 571932672,
               "checksum": {
                 "type": "sha512",
-                "value": "8ceae460b51d8d6db7a41f63faa96171307ea4a5064f5d1243f3a5cf561b157b088fe60e87fa9269dbddda7527ab5b2713f72ea13bff59cecd9a05bbda55d5c8",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-metal-r0.qcow2.sha512"
+                "value": "38284edabe37de7acf7abf35b82ac27c1e4c4264239b31d18fa3f665b0f2408c4ed04eeefe595072ebc248b6725c91b94f31e9cd5c5ce883736ed4a45644d963",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-aarch64-uefi-tiny-metal-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-metal-r0.qcow2",
-              "size": 581632000,
+              "file": "alpine-3.22.8-aarch64-uefi-tiny-metal-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-metal-r0.qcow2",
+              "size": 581500928,
               "checksum": {
                 "type": "sha512",
-                "value": "7f90e571c642e6abd88923da8b137f7aa91df94d552f39ea4e8ce7afa852de078ecba2d4ad50359e04adcce7f5b9a6548b1ae8705d7dcf45d3a648212d6f6d18",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-metal-r0.qcow2.sha512"
+                "value": "9b84319aeee96b051d20275d4d94282dbf3197e92d28fdc8a0dd31c09ad769411342f2643cf02e3a95941ec28fd0ba0c80ebadcfe8427829c0c8e5bec9e228ee",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-tiny-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-tiny-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1505,31 +1505,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-uefi-cloudinit-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-r0.qcow2",
-              "size": 183107584,
+              "file": "alpine-3.22.8-x86_64-uefi-cloudinit-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-r0.qcow2",
+              "size": 183238656,
               "checksum": {
                 "type": "sha512",
-                "value": "876ae6f11342cf45f46a1a748ff8d2b2ea220e9ec3b7c3774e1cfa0e90590e9fdff8d7808008eeee2787ea2e3ecdd5376ca733573c34ff0454882cdb22519600",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-r0.qcow2.sha512"
+                "value": "b7cc65d68d7f69b88190bbc4601c8055b1a16dcab9d25919e1f9992a02a0bc50bbe4d56aedbb4779970bdd9aae10b434da1438955987001e79a32e9319ff5825",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-aarch64-uefi-cloudinit-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-r0.qcow2",
-              "size": 206176256,
+              "file": "alpine-3.22.8-aarch64-uefi-cloudinit-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-r0.qcow2",
+              "size": 206700544,
               "checksum": {
                 "type": "sha512",
-                "value": "c73ef67891b118f4939cdc45c2d891cbca77305f6e6073cb0d702c82aaf7eef3934cf81274c6b9f350efc03e904926316771aebfc3b67a677d890dd36d162401",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-r0.qcow2.sha512"
+                "value": "1058154815107b1ebb094483dbe520eff2f2809309c42047f14d3dbf82b2c77aa0e0dc3b36760482870a62675bbf7e860132b67e48afb0d9a7ede36f8f2c241c",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
@@ -1543,31 +1543,31 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-x86_64-uefi-cloudinit-metal-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-metal-r0.qcow2",
-              "size": 635830272,
+              "file": "alpine-3.22.8-x86_64-uefi-cloudinit-metal-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-metal-r0.qcow2",
+              "size": 635633664,
               "checksum": {
                 "type": "sha512",
-                "value": "0d4a91e7f084fcdebf89288bc91b0e7c07ffe7e3069d4c1f652801239cb56cbfac6c7db34a6dd75397a4a417f33fe18c6e4c9b67e5bf3fa6d001660fd6362eb9",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-metal-r0.qcow2.sha512"
+                "value": "9aa349647fe36b580156988e53bb9f51b63fd719be21abd55bd188f1de2fcfe0a97bfaab0b8b2ef6f63f8a2d1bab0c3c5435f0b5fe74c95bca554bdf3acfe81c",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-x86_64-uefi-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-x86_64-uefi-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             },
             {
               "arch": "aarch64",
               "format": "qcow2",
-              "file": "alpine-3.22.7-aarch64-uefi-cloudinit-metal-r0.qcow2",
-              "path": "v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-metal-r0.qcow2",
-              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-metal-r0.qcow2",
-              "size": 652214272,
+              "file": "alpine-3.22.8-aarch64-uefi-cloudinit-metal-r0.qcow2",
+              "path": "v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-metal-r0.qcow2",
+              "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-metal-r0.qcow2",
+              "size": 652017664,
               "checksum": {
                 "type": "sha512",
-                "value": "8c0463c8c62ec4a7c347028d17faeaffc85bfc3d3d4438207ce9101ef23a3868938dcce74befaaca69a12fccb0492d43a8f52c9ebbb2a9ae611b50a006b9b59b",
-                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-metal-r0.qcow2.sha512"
+                "value": "f3c969bb6b4f0164839e58e6990dc873bef1dead8938be560a77355fc02cb9f37ec43f2687cb9fc1e34dfc230d649acc9d6850abd48449b68411fa3f7a2c020a",
+                "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-metal-r0.qcow2.sha512"
               },
-              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.7-aarch64-uefi-cloudinit-metal-r0.qcow2.asc",
+              "signatureUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/cloud/alpine-3.22.8-aarch64-uefi-cloudinit-metal-r0.qcow2.asc",
               "torrentUrl": null
             }
           ]
