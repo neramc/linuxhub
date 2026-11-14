@@ -51,8 +51,8 @@
   },
   "bodhi-linux": {
     "releases": {
-      "failingSince": "2026-11-14",
-      "lastError": "robots.txt of https://www.bodhilinux.com could not be read (server error or no answer), so the host is closed for this run: https://www.bodhilinux.com/download/"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -421,8 +421,8 @@
   },
   "tails": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-14",
+      "lastError": "robots.txt of https://download.tails.net could not be read (server error or no answer), so the host is closed for this run: https://download.tails.net/tails/stable/tails-amd64-7.17/tails-amd64-7.17.img?mirrorlist"
     },
     "mirrors": {
       "failingSince": null,
