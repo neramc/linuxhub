@@ -3,7 +3,7 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "mirrors": [
     {
       "url": "https://debian.xfree.com.ar/debian-cd/",
@@ -73,14 +73,6 @@
       "url": "https://debian.ethz.ch/debian-cd/",
       "country": "CH",
       "name": "debian.ethz.ch",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.lzu.edu.cn/debian-cd/",
-      "country": "CN",
-      "name": "mirror.lzu.edu.cn",
       "lat": null,
       "lon": null,
       "score": null
@@ -366,14 +358,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.siwoo.org/debian-cd/",
-      "country": "KR",
-      "name": "mirror.siwoo.org",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://debian.mirror.vu.lt/debian-cd/",
       "country": "LT",
       "name": "debian.mirror.vu.lt",
@@ -561,6 +545,14 @@
       "url": "https://mirror.twds.com.tw/debian-cd/",
       "country": "TW",
       "name": "mirror.twds.com.tw",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://debian.volia.net/debian-cd/",
+      "country": "UA",
+      "name": "debian.volia.net",
       "lat": null,
       "lon": null,
       "score": null

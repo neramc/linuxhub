@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1737,14 +1737,6 @@
       "url": "https://mirror1.sox.rs/ubuntu/releases/",
       "country": "RS",
       "name": "Serbian Open eXchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.corbina.net/ubuntu-cd/",
-      "country": "RU",
-      "name": "Beeline",
       "lat": null,
       "lon": null,
       "score": null

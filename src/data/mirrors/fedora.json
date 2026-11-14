@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
@@ -857,6 +857,14 @@
       "url": "https://pubmirror1.math.uh.edu/fedora-buffet/fedora/linux/",
       "country": "US",
       "name": "pubmirror1.math.uh.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://pubmirror2.math.uh.edu/fedora-buffet/fedora/linux/",
+      "country": "US",
+      "name": "pubmirror2.math.uh.edu",
       "lat": null,
       "lon": null,
       "score": null
