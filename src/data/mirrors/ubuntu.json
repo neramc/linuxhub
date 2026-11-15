@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -329,6 +329,14 @@
       "url": "https://ftp.sjtu.edu.cn/ubuntu-cd/",
       "country": "CN",
       "name": "Shanghai Jiao Tong University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.lzu.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Lanzhou University Open Source Society",
       "lat": null,
       "lon": null,
       "score": null
@@ -2063,6 +2071,14 @@
     },
     {
       "url": "https://cofractal-sea.mm.fcix.net/ubuntu-releases/",
+      "country": "US",
+      "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://coresite-atl.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
       "lat": null,

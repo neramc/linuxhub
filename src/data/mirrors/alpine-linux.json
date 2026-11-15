@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.alpinelinux.org/mirrors.json"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-15",
   "mirrors": [
     {
       "url": "https://mirror.alwyzon.net/alpine/",
@@ -665,6 +665,14 @@
       "url": "https://mirror.cs.odu.edu/alpine/",
       "country": "US",
       "name": "mirrors.cs.odu.edu",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.latigo.net/alpine/",
+      "country": "US",
+      "name": "mirror.latigo.net",
       "lat": null,
       "lon": null,
       "score": null
