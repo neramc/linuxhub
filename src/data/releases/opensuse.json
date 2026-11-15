@@ -6,7 +6,7 @@
     "https://get.opensuse.org/leap/16.1/",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-15",
   "releases": [
     {
       "version": "20261111",
@@ -85,13 +85,13 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-DVD-s390x-Snapshot20261108-Media.iso",
+              "file": "openSUSE-Tumbleweed-DVD-s390x-Snapshot20261113-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-DVD-s390x-Current.iso",
-              "size": 3106095104,
+              "size": 3108167680,
               "checksum": {
                 "type": "sha256",
-                "value": "5338ca5687ad6e9e332bc3c595251bc5dee51e46249db3e918165123e834746d",
+                "value": "f34c524722c3f2b1a2e7101522c60cfe26bbce39fad54d61969aafc32c8f83a8",
                 "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-DVD-s390x-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-DVD-s390x-Current.iso.sha256.asc",
@@ -168,13 +168,13 @@
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-s390x-Snapshot20261108-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-s390x-Snapshot20261113-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-NET-s390x-Current.iso",
-              "size": 204662784,
+              "size": 204912640,
               "checksum": {
                 "type": "sha256",
-                "value": "eb8c84fd71d7e190f4637ca019ab519acebbd6b38678165cd849b55dead1b10d",
+                "value": "6a97199fa639bf8775e95c954bf256f6fa9b46763661ff19b810d60e49125db0",
                 "url": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-NET-s390x-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/zsystems/tumbleweed/iso/openSUSE-Tumbleweed-NET-s390x-Current.iso.sha256.asc",

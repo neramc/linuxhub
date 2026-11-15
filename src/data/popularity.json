@@ -1,343 +1,343 @@
 {
   "source": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/",
   "project": "en.wikipedia",
-  "day": "2026-11-13",
+  "day": "2026-11-14",
   "items": [
     {
       "slug": "ubuntu",
       "article": "Ubuntu",
-      "views": 1168,
+      "views": 1089,
       "rank": 1,
       "prevRank": 1
     },
     {
       "slug": "debian",
       "article": "Debian",
-      "views": 851,
+      "views": 803,
       "rank": 2,
       "prevRank": 2
     },
     {
       "slug": "linux-mint",
       "article": "Linux Mint",
-      "views": 725,
+      "views": 621,
       "rank": 3,
       "prevRank": 3
     },
     {
       "slug": "fedora",
       "article": "Fedora Linux",
-      "views": 561,
+      "views": 528,
       "rank": 4,
       "prevRank": 4
     },
     {
       "slug": "arch",
       "article": "Arch Linux",
-      "views": 498,
+      "views": 485,
       "rank": 5,
       "prevRank": 5
     },
     {
-      "slug": "nixos",
-      "article": "NixOS",
-      "views": 455,
-      "rank": 6,
-      "prevRank": 6
-    },
-    {
       "slug": "cachyos",
       "article": "CachyOS",
-      "views": 345,
-      "rank": 7,
+      "views": 406,
+      "rank": 6,
       "prevRank": 7
     },
     {
-      "slug": "opensuse",
-      "article": "OpenSUSE",
-      "views": 319,
-      "rank": 8,
-      "prevRank": 13
+      "slug": "nixos",
+      "article": "NixOS",
+      "views": 401,
+      "rank": 7,
+      "prevRank": 6
     },
     {
       "slug": "alpine-linux",
       "article": "Alpine Linux",
-      "views": 312,
-      "rank": 9,
-      "prevRank": 8
-    },
-    {
-      "slug": "gentoo",
-      "article": "Gentoo Linux",
-      "views": 280,
-      "rank": 10,
-      "prevRank": 12
-    },
-    {
-      "slug": "slackware",
-      "article": "Slackware",
-      "views": 271,
-      "rank": 11,
-      "prevRank": 10
-    },
-    {
-      "slug": "tails",
-      "article": "Tails (operating system)",
-      "views": 270,
-      "rank": 12,
-      "prevRank": 11
+      "views": 276,
+      "rank": 8,
+      "prevRank": 9
     },
     {
       "slug": "kali-linux",
       "article": "Kali Linux",
+      "views": 274,
+      "rank": 9,
+      "prevRank": 13
+    },
+    {
+      "slug": "slackware",
+      "article": "Slackware",
       "views": 265,
-      "rank": 13,
-      "prevRank": 9
+      "rank": 10,
+      "prevRank": 11
     },
     {
       "slug": "zorin-os",
       "article": "Zorin OS",
-      "views": 254,
-      "rank": 14,
-      "prevRank": 17
+      "views": 262,
+      "rank": 11,
+      "prevRank": 14
     },
     {
-      "slug": "bazzite",
-      "article": "Bazzite (operating system)",
-      "views": 244,
-      "rank": 15,
-      "prevRank": 15
+      "slug": "tails",
+      "article": "Tails (operating system)",
+      "views": 253,
+      "rank": 12,
+      "prevRank": 12
+    },
+    {
+      "slug": "opensuse",
+      "article": "OpenSUSE",
+      "views": 250,
+      "rank": 13,
+      "prevRank": 8
     },
     {
       "slug": "pop-os",
       "article": "Pop!_OS",
-      "views": 213,
+      "views": 222,
+      "rank": 14,
+      "prevRank": 16
+    },
+    {
+      "slug": "bazzite",
+      "article": "Bazzite (operating system)",
+      "views": 219,
+      "rank": 15,
+      "prevRank": 15
+    },
+    {
+      "slug": "gentoo",
+      "article": "Gentoo Linux",
+      "views": 210,
       "rank": 16,
-      "prevRank": 18
+      "prevRank": 10
     },
     {
       "slug": "raspberry-pi-os",
       "article": "Raspberry Pi OS",
-      "views": 195,
+      "views": 201,
       "rank": 17,
-      "prevRank": 16
-    },
-    {
-      "slug": "rocky-linux",
-      "article": "Rocky Linux",
-      "views": 190,
-      "rank": 18,
-      "prevRank": 14
-    },
-    {
-      "slug": "qubes-os",
-      "article": "Qubes OS",
-      "views": 180,
-      "rank": 19,
-      "prevRank": 20
-    },
-    {
-      "slug": "lubuntu",
-      "article": "Lubuntu",
-      "views": 170,
-      "rank": 20,
-      "prevRank": 19
+      "prevRank": 17
     },
     {
       "slug": "void-linux",
       "article": "Void Linux",
-      "views": 152,
-      "rank": 21,
+      "views": 184,
+      "rank": 18,
       "prevRank": 21
     },
     {
-      "slug": "almalinux",
-      "article": "AlmaLinux",
-      "views": 144,
-      "rank": 22,
-      "prevRank": 22
+      "slug": "lubuntu",
+      "article": "Lubuntu",
+      "views": 163,
+      "rank": 19,
+      "prevRank": 20
+    },
+    {
+      "slug": "qubes-os",
+      "article": "Qubes OS",
+      "views": 163,
+      "rank": 20,
+      "prevRank": 19
     },
     {
       "slug": "manjaro",
       "article": "Manjaro",
-      "views": 131,
-      "rank": 23,
+      "views": 152,
+      "rank": 21,
       "prevRank": 23
     },
     {
       "slug": "antix",
       "article": "AntiX",
-      "views": 128,
-      "rank": 24,
-      "prevRank": 27
+      "views": 124,
+      "rank": 22,
+      "prevRank": 24
     },
     {
       "slug": "mx-linux",
       "article": "MX Linux",
-      "views": 118,
-      "rank": 25,
-      "prevRank": 30
-    },
-    {
-      "slug": "oracle-linux",
-      "article": "Oracle Linux",
-      "views": 115,
-      "rank": 26,
+      "views": 124,
+      "rank": 23,
       "prevRank": 25
-    },
-    {
-      "slug": "puppy-linux",
-      "article": "Puppy Linux",
-      "views": 108,
-      "rank": 27,
-      "prevRank": 29
-    },
-    {
-      "slug": "endeavouros",
-      "article": "EndeavourOS",
-      "views": 102,
-      "rank": 28,
-      "prevRank": 24
     },
     {
       "slug": "kubuntu",
       "article": "Kubuntu",
-      "views": 102,
-      "rank": 29,
+      "views": 115,
+      "rank": 24,
+      "prevRank": 29
+    },
+    {
+      "slug": "puppy-linux",
+      "article": "Puppy Linux",
+      "views": 114,
+      "rank": 25,
+      "prevRank": 27
+    },
+    {
+      "slug": "endeavouros",
+      "article": "EndeavourOS",
+      "views": 104,
+      "rank": 26,
       "prevRank": 28
-    },
-    {
-      "slug": "elementary-os",
-      "article": "Elementary OS",
-      "views": 97,
-      "rank": 30,
-      "prevRank": 31
-    },
-    {
-      "slug": "devuan",
-      "article": "Devuan",
-      "views": 84,
-      "rank": 31,
-      "prevRank": 32
-    },
-    {
-      "slug": "deepin",
-      "article": "Deepin",
-      "views": 81,
-      "rank": 32,
-      "prevRank": 35
-    },
-    {
-      "slug": "centos-stream",
-      "article": "CentOS Stream",
-      "views": 80,
-      "rank": 33,
-      "prevRank": 26
-    },
-    {
-      "slug": "xubuntu",
-      "article": "Xubuntu",
-      "views": 73,
-      "rank": 34,
-      "prevRank": 34
     },
     {
       "slug": "nobara",
       "article": "Nobara (operating system)",
-      "views": 66,
-      "rank": 35,
-      "prevRank": 33
+      "views": 96,
+      "rank": 27,
+      "prevRank": 35
+    },
+    {
+      "slug": "rocky-linux",
+      "article": "Rocky Linux",
+      "views": 94,
+      "rank": 28,
+      "prevRank": 18
+    },
+    {
+      "slug": "devuan",
+      "article": "Devuan",
+      "views": 92,
+      "rank": 29,
+      "prevRank": 31
+    },
+    {
+      "slug": "almalinux",
+      "article": "AlmaLinux",
+      "views": 89,
+      "rank": 30,
+      "prevRank": 22
+    },
+    {
+      "slug": "xubuntu",
+      "article": "Xubuntu",
+      "views": 87,
+      "rank": 31,
+      "prevRank": 34
+    },
+    {
+      "slug": "elementary-os",
+      "article": "Elementary OS",
+      "views": 74,
+      "rank": 32,
+      "prevRank": 30
     },
     {
       "slug": "parrot-os",
       "article": "Parrot OS",
-      "views": 64,
-      "rank": 36,
+      "views": 70,
+      "rank": 33,
       "prevRank": 36
+    },
+    {
+      "slug": "deepin",
+      "article": "Deepin",
+      "views": 66,
+      "rank": 34,
+      "prevRank": 32
+    },
+    {
+      "slug": "q4os",
+      "article": "Q4OS",
+      "views": 64,
+      "rank": 35,
+      "prevRank": 38
+    },
+    {
+      "slug": "centos-stream",
+      "article": "CentOS Stream",
+      "views": 59,
+      "rank": 36,
+      "prevRank": 33
     },
     {
       "slug": "kde-neon",
       "article": "KDE neon",
       "views": 59,
       "rank": 37,
-      "prevRank": 38
-    },
-    {
-      "slug": "q4os",
-      "article": "Q4OS",
-      "views": 59,
-      "rank": 38,
-      "prevRank": 41
+      "prevRank": 37
     },
     {
       "slug": "garuda-linux",
       "article": "Garuda Linux",
-      "views": 49,
-      "rank": 39,
-      "prevRank": 42
-    },
-    {
-      "slug": "solus",
-      "article": "Solus (operating system)",
-      "views": 48,
-      "rank": 40,
-      "prevRank": 37
-    },
-    {
-      "slug": "mageia",
-      "article": "Mageia",
-      "views": 47,
-      "rank": 41,
-      "prevRank": 44
+      "views": 57,
+      "rank": 38,
+      "prevRank": 39
     },
     {
       "slug": "pclinuxos",
       "article": "PCLinuxOS",
+      "views": 52,
+      "rank": 39,
+      "prevRank": 42
+    },
+    {
+      "slug": "oracle-linux",
+      "article": "Oracle Linux",
+      "views": 48,
+      "rank": 40,
+      "prevRank": 26
+    },
+    {
+      "slug": "solus",
+      "article": "Solus (operating system)",
+      "views": 47,
+      "rank": 41,
+      "prevRank": 40
+    },
+    {
+      "slug": "mageia",
+      "article": "Mageia",
       "views": 41,
       "rank": 42,
-      "prevRank": 39
-    },
-    {
-      "slug": "bodhi-linux",
-      "article": "Bodhi Linux",
-      "views": 38,
-      "rank": 43,
-      "prevRank": 47
-    },
-    {
-      "slug": "linux-lite",
-      "article": "Linux Lite",
-      "views": 37,
-      "rank": 44,
-      "prevRank": 40
+      "prevRank": 41
     },
     {
       "slug": "ubuntu-mate",
       "article": "Ubuntu MATE",
       "views": 33,
-      "rank": 45,
-      "prevRank": 46
+      "rank": 43,
+      "prevRank": 45
+    },
+    {
+      "slug": "openmandriva",
+      "article": "OpenMandriva Lx",
+      "views": 32,
+      "rank": 44,
+      "prevRank": 48
     },
     {
       "slug": "peppermint-os",
       "article": "Peppermint OS",
-      "views": 30,
+      "views": 32,
+      "rank": 45,
+      "prevRank": 46
+    },
+    {
+      "slug": "linux-lite",
+      "article": "Linux Lite",
+      "views": 31,
       "rank": 46,
+      "prevRank": 44
+    },
+    {
+      "slug": "bodhi-linux",
+      "article": "Bodhi Linux",
+      "views": 25,
+      "rank": 47,
       "prevRank": 43
     },
     {
       "slug": "sparkylinux",
       "article": "SparkyLinux",
-      "views": 29,
-      "rank": 47,
-      "prevRank": 48
-    },
-    {
-      "slug": "openmandriva",
-      "article": "OpenMandriva Lx",
-      "views": 28,
+      "views": 21,
       "rank": 48,
-      "prevRank": 45
+      "prevRank": 47
     }
   ]
 }
