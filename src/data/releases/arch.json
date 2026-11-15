@@ -4,7 +4,7 @@
     "https://archlinux.org/releng/releases/json/",
     "https://geo.mirror.pkgbuild.com/images/latest/"
   ],
-  "updated": "2026-11-01",
+  "updated": "2026-11-15",
   "releases": [
     {
       "version": "2026.11.01",
@@ -46,16 +46,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Arch-Linux-x86_64-basic-20261101.620452.qcow2",
+              "file": "Arch-Linux-x86_64-basic-20261115.625457.qcow2",
               "path": null,
-              "url": "https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-basic-20261101.620452.qcow2",
-              "size": 520552448,
+              "url": "https://geo.mirror.pkgbuild.com/images/v20261115.625457/Arch-Linux-x86_64-basic-20261115.625457.qcow2",
+              "size": 525926400,
               "checksum": {
                 "type": "sha256",
-                "value": "bc52e4dc79cd55b55ae2d1c119b1ffe61e93f5545ea800d5183a04668de1e962",
-                "url": "https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-basic-20261101.620452.qcow2.SHA256"
+                "value": "8c5b86a30573e373140158d7c019ba8244f9a8c1344e496f69052029e2a55b33",
+                "url": "https://geo.mirror.pkgbuild.com/images/v20261115.625457/Arch-Linux-x86_64-basic-20261115.625457.qcow2.SHA256"
               },
-              "signatureUrl": "https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-basic-20261101.620452.qcow2.sig",
+              "signatureUrl": "https://geo.mirror.pkgbuild.com/images/v20261115.625457/Arch-Linux-x86_64-basic-20261115.625457.qcow2.sig",
               "torrentUrl": null
             }
           ]
@@ -69,16 +69,16 @@
             {
               "arch": "x86_64",
               "format": "qcow2",
-              "file": "Arch-Linux-x86_64-cloudimg-20261101.620452.qcow2",
+              "file": "Arch-Linux-x86_64-cloudimg-20261115.625457.qcow2",
               "path": null,
-              "url": "https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-cloudimg-20261101.620452.qcow2",
-              "size": 576697856,
+              "url": "https://geo.mirror.pkgbuild.com/images/v20261115.625457/Arch-Linux-x86_64-cloudimg-20261115.625457.qcow2",
+              "size": 569933312,
               "checksum": {
                 "type": "sha256",
-                "value": "794eb4889b39e1f0ed7d5ae998b2a1ed2137db8cf8c3476cf2962c7437ecb003",
-                "url": "https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-cloudimg-20261101.620452.qcow2.SHA256"
+                "value": "dbd02830f6eb0fe07ef6e5edaddbae8b577ce4296d9e79118904704cce0a1f60",
+                "url": "https://geo.mirror.pkgbuild.com/images/v20261115.625457/Arch-Linux-x86_64-cloudimg-20261115.625457.qcow2.SHA256"
               },
-              "signatureUrl": "https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-cloudimg-20261101.620452.qcow2.sig",
+              "signatureUrl": "https://geo.mirror.pkgbuild.com/images/v20261115.625457/Arch-Linux-x86_64-cloudimg-20261115.625457.qcow2.sig",
               "torrentUrl": null
             }
           ]
