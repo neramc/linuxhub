@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-16",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -553,14 +553,6 @@
       "url": "https://ftp.yz.yamagata-u.ac.jp/pub/Linux/rocky-linux/",
       "country": "JP",
       "name": "ftp.yz.yamagata-u.ac.jp",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.hashy0917.net/rocky/",
-      "country": "JP",
-      "name": "mirror.hashy0917.net",
       "lat": null,
       "lon": null,
       "score": null
@@ -1137,6 +1129,14 @@
       "url": "https://rocky.deadbatteries.work/",
       "country": "US",
       "name": "rocky.deadbatteries.work",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://rocky.mirror.lunovpn.com/",
+      "country": "US",
+      "name": "rocky.mirror.lunovpn.com",
       "lat": null,
       "lon": null,
       "score": null

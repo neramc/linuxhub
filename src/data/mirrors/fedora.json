@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-14",
+  "updated": "2026-11-16",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
@@ -57,6 +57,14 @@
       "url": "https://fedora.ipacct.com/fedora/linux/",
       "country": "BG",
       "name": "fedora.ipacct.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.telepoint.bg/fedora/",
+      "country": "BG",
+      "name": "mirror.telepoint.bg",
       "lat": null,
       "lon": null,
       "score": null
