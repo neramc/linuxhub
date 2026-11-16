@@ -4,15 +4,15 @@
     "https://almalinux.org/get-almalinux/",
     "https://wiki.almalinux.org/release-notes/"
   ],
-  "updated": "2026-11-12",
+  "updated": "2026-11-16",
   "releases": [
     {
-      "version": "10.2",
+      "version": "10.3",
       "channel": "stable",
-      "codename": "Lavender Lion",
-      "releaseDate": "2026-05-26",
+      "codename": "Mauve Lion",
+      "releaseDate": "2026-11-16",
       "eol": "2035-05-31",
-      "notesUrl": "https://wiki.almalinux.org/release-notes/10.2.html",
+      "notesUrl": "https://wiki.almalinux.org/release-notes/10.3.html",
       "editions": [
         {
           "id": "dvd",
@@ -23,62 +23,62 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64-dvd.iso",
-              "path": "10/isos/x86_64/AlmaLinux-10.2-x86_64-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.2-x86_64-dvd.iso",
-              "size": 10106372096,
+              "file": "AlmaLinux-10.3-x86_64-dvd.iso",
+              "path": "10/isos/x86_64/AlmaLinux-10.3-x86_64-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.3-x86_64-dvd.iso",
+              "size": 10824908800,
               "checksum": {
                 "type": "sha256",
-                "value": "90244ac532f67c978831a381b420da8bda363729e1f4cf8fb8991daca70ee287",
+                "value": "f74ae9c4a8e7e3e70147534856ea276f71649d16c70b7d3ec80d0905a7b93982",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/x86_64/AlmaLinux-10.2-x86_64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/x86_64/AlmaLinux-10.3-x86_64.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-aarch64-dvd.iso",
-              "path": "10/isos/aarch64/AlmaLinux-10.2-aarch64-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/aarch64/AlmaLinux-10.2-aarch64-dvd.iso",
-              "size": 9588244480,
+              "file": "AlmaLinux-10.3-aarch64-dvd.iso",
+              "path": "10/isos/aarch64/AlmaLinux-10.3-aarch64-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/aarch64/AlmaLinux-10.3-aarch64-dvd.iso",
+              "size": 10288496640,
               "checksum": {
                 "type": "sha256",
-                "value": "bc3790b1200254790e03f1d941162a9f9082d46dcdff841b83f348501625b29e",
+                "value": "15205de0cadbde2a564284a1f5c688dc3f27a12f691b0bb8403684afcafe51ab",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/aarch64/AlmaLinux-10.2-aarch64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/aarch64/AlmaLinux-10.3-aarch64.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "AlmaLinux-10.2-ppc64le-dvd.iso",
-              "path": "10/isos/ppc64le/AlmaLinux-10.2-ppc64le-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/ppc64le/AlmaLinux-10.2-ppc64le-dvd.iso",
-              "size": 8920694784,
+              "file": "AlmaLinux-10.3-ppc64le-dvd.iso",
+              "path": "10/isos/ppc64le/AlmaLinux-10.3-ppc64le-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/ppc64le/AlmaLinux-10.3-ppc64le-dvd.iso",
+              "size": 9496428544,
               "checksum": {
                 "type": "sha256",
-                "value": "6a9de2f07d4cfc171c6f5bc6609662b993d04554f5591e203c6d8167d079d3b0",
+                "value": "40c3e6217a8d31f3a7f0b5908a9ec9a2c6e6de403591afc0ecdc7970d570133a",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/ppc64le/AlmaLinux-10.2-ppc64le.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/ppc64le/AlmaLinux-10.3-ppc64le.torrent"
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "AlmaLinux-10.2-s390x-dvd.iso",
-              "path": "10/isos/s390x/AlmaLinux-10.2-s390x-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/s390x/AlmaLinux-10.2-s390x-dvd.iso",
-              "size": 8160083968,
+              "file": "AlmaLinux-10.3-s390x-dvd.iso",
+              "path": "10/isos/s390x/AlmaLinux-10.3-s390x-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/s390x/AlmaLinux-10.3-s390x-dvd.iso",
+              "size": 8788508672,
               "checksum": {
                 "type": "sha256",
-                "value": "fba6a4088db5b835572c5a978b8e7e7dd795d9a782b6907d64b32a12e3864258",
+                "value": "5adec12a466d7feb07a5f42b447c5467e93fbefc4c6daee8d4d19a06fd9d694c",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/s390x/AlmaLinux-10.2-s390x.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/s390x/AlmaLinux-10.3-s390x.torrent"
             }
           ]
         },
@@ -91,62 +91,62 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64-minimal.iso",
-              "path": "10/isos/x86_64/AlmaLinux-10.2-x86_64-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.2-x86_64-minimal.iso",
-              "size": 1651376128,
+              "file": "AlmaLinux-10.3-x86_64-minimal.iso",
+              "path": "10/isos/x86_64/AlmaLinux-10.3-x86_64-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.3-x86_64-minimal.iso",
+              "size": 1567490048,
               "checksum": {
                 "type": "sha256",
-                "value": "1b532f534231da0d1cd0ccae622bea6cd588d8a0d7b259f1f131501a6eed41a4",
+                "value": "3fa350594c8b3d8200b5bb4c7bda23a8e05607ea482a06f9cc862f6f477c4965",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/x86_64/AlmaLinux-10.2-x86_64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/x86_64/AlmaLinux-10.3-x86_64.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-aarch64-minimal.iso",
-              "path": "10/isos/aarch64/AlmaLinux-10.2-aarch64-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/aarch64/AlmaLinux-10.2-aarch64-minimal.iso",
-              "size": 1657339904,
+              "file": "AlmaLinux-10.3-aarch64-minimal.iso",
+              "path": "10/isos/aarch64/AlmaLinux-10.3-aarch64-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/aarch64/AlmaLinux-10.3-aarch64-minimal.iso",
+              "size": 1618739200,
               "checksum": {
                 "type": "sha256",
-                "value": "ca5dd9b7e1193de5881df850a93b611c6ba0ba8c5860f54ee822c53585b3014d",
+                "value": "fa25507cac880a89906aceb1fd7c6449663f725437431d074a4716a97c0dd403",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/aarch64/AlmaLinux-10.2-aarch64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/aarch64/AlmaLinux-10.3-aarch64.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "AlmaLinux-10.2-ppc64le-minimal.iso",
-              "path": "10/isos/ppc64le/AlmaLinux-10.2-ppc64le-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/ppc64le/AlmaLinux-10.2-ppc64le-minimal.iso",
-              "size": 1559953408,
+              "file": "AlmaLinux-10.3-ppc64le-minimal.iso",
+              "path": "10/isos/ppc64le/AlmaLinux-10.3-ppc64le-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/ppc64le/AlmaLinux-10.3-ppc64le-minimal.iso",
+              "size": 1490288640,
               "checksum": {
                 "type": "sha256",
-                "value": "ce8618654c90af07725026b40adbfde761149ab0bd1df58e5fd1a1a495b3b291",
+                "value": "0d56b06937afbf84ce2a048843189b6312c79dbc16b56871ba8d96f054509f15",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/ppc64le/AlmaLinux-10.2-ppc64le.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/ppc64le/AlmaLinux-10.3-ppc64le.torrent"
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "AlmaLinux-10.2-s390x-minimal.iso",
-              "path": "10/isos/s390x/AlmaLinux-10.2-s390x-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/s390x/AlmaLinux-10.2-s390x-minimal.iso",
-              "size": 1004535808,
+              "file": "AlmaLinux-10.3-s390x-minimal.iso",
+              "path": "10/isos/s390x/AlmaLinux-10.3-s390x-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/s390x/AlmaLinux-10.3-s390x-minimal.iso",
+              "size": 1033043968,
               "checksum": {
                 "type": "sha256",
-                "value": "bc4ab16b8501222da9af41f543b7b702b0dd5759aeeeabb5d20e90d63082fea6",
+                "value": "551c35ebfe29034f91f97422d5d16a819e3c23c05ce71683a7052a3e297924d4",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/s390x/AlmaLinux-10.2-s390x.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/s390x/AlmaLinux-10.3-s390x.torrent"
             }
           ]
         },
@@ -159,62 +159,62 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64-boot.iso",
-              "path": "10/isos/x86_64/AlmaLinux-10.2-x86_64-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.2-x86_64-boot.iso",
-              "size": 1056202752,
+              "file": "AlmaLinux-10.3-x86_64-boot.iso",
+              "path": "10/isos/x86_64/AlmaLinux-10.3-x86_64-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.3-x86_64-boot.iso",
+              "size": 953014272,
               "checksum": {
                 "type": "sha256",
-                "value": "b3f865468075bcada8f208d830289302c67529789d668041d24e8d6fc697ba6a",
+                "value": "d842df0dca98a3bf79c84cfcce49505ba7a7f56f03dcb02639b8377410154f4d",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/x86_64/AlmaLinux-10.2-x86_64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/x86_64/AlmaLinux-10.3-x86_64.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-aarch64-boot.iso",
-              "path": "10/isos/aarch64/AlmaLinux-10.2-aarch64-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/aarch64/AlmaLinux-10.2-aarch64-boot.iso",
-              "size": 1128263680,
+              "file": "AlmaLinux-10.3-aarch64-boot.iso",
+              "path": "10/isos/aarch64/AlmaLinux-10.3-aarch64-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/aarch64/AlmaLinux-10.3-aarch64-boot.iso",
+              "size": 1069295616,
               "checksum": {
                 "type": "sha256",
-                "value": "20807d65338627a0afa3d5fbd3bee222115d66ce34ac1e4647b0af8fc6c4aa23",
+                "value": "3bf0f44bd2c9c75eb02a1795c7253c29926d189e13bc53d0f78673ab4929b1fd",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/aarch64/AlmaLinux-10.2-aarch64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/aarch64/AlmaLinux-10.3-aarch64.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "AlmaLinux-10.2-ppc64le-boot.iso",
-              "path": "10/isos/ppc64le/AlmaLinux-10.2-ppc64le-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/ppc64le/AlmaLinux-10.2-ppc64le-boot.iso",
-              "size": 1032443904,
+              "file": "AlmaLinux-10.3-ppc64le-boot.iso",
+              "path": "10/isos/ppc64le/AlmaLinux-10.3-ppc64le-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/ppc64le/AlmaLinux-10.3-ppc64le-boot.iso",
+              "size": 943003648,
               "checksum": {
                 "type": "sha256",
-                "value": "a81a74356e90e0f6ad056f64435b2bc892a8d80d4cfcdb8e6753612607d56315",
+                "value": "5ded5d03ee37e062eb59185e7d543943e28b9e86107c5d296a26aaaed1ca6ceb",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/ppc64le/AlmaLinux-10.2-ppc64le.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/ppc64le/AlmaLinux-10.3-ppc64le.torrent"
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "AlmaLinux-10.2-s390x-boot.iso",
-              "path": "10/isos/s390x/AlmaLinux-10.2-s390x-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/s390x/AlmaLinux-10.2-s390x-boot.iso",
-              "size": 513171456,
+              "file": "AlmaLinux-10.3-s390x-boot.iso",
+              "path": "10/isos/s390x/AlmaLinux-10.3-s390x-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/s390x/AlmaLinux-10.3-s390x-boot.iso",
+              "size": 522014720,
               "checksum": {
                 "type": "sha256",
-                "value": "31902701a6b50ac227f16992b01e09039c9e86826b3e95ac6f1345d86879e07a",
+                "value": "5db7ee62a919a2cf9fd99aecdbabfb9f68a332a1c31fca48accd3f809a0f091c",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/s390x/AlmaLinux-10.2-s390x.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/s390x/AlmaLinux-10.3-s390x.torrent"
             }
           ]
         },
@@ -227,10 +227,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64-Live-GNOME.iso",
-              "path": "10/live/x86_64/AlmaLinux-10.2-x86_64-Live-GNOME.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64/AlmaLinux-10.2-x86_64-Live-GNOME.iso",
-              "size": 1930422272,
+              "file": "AlmaLinux-10.3-x86_64-Live-GNOME.iso",
+              "path": "10/live/x86_64/AlmaLinux-10.3-x86_64-Live-GNOME.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64/AlmaLinux-10.3-x86_64-Live-GNOME.iso",
+              "size": 1848915968,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -238,10 +238,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-aarch64-Live-GNOME.iso",
-              "path": "10/live/aarch64/AlmaLinux-10.2-aarch64-Live-GNOME.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/live/aarch64/AlmaLinux-10.2-aarch64-Live-GNOME.iso",
-              "size": 1822427136,
+              "file": "AlmaLinux-10.3-aarch64-Live-GNOME.iso",
+              "path": "10/live/aarch64/AlmaLinux-10.3-aarch64-Live-GNOME.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/live/aarch64/AlmaLinux-10.3-aarch64-Live-GNOME.iso",
+              "size": 1762207744,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -257,10 +257,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64-Live-KDE.iso",
-              "path": "10/live/x86_64/AlmaLinux-10.2-x86_64-Live-KDE.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64/AlmaLinux-10.2-x86_64-Live-KDE.iso",
-              "size": 2644930560,
+              "file": "AlmaLinux-10.3-x86_64-Live-KDE.iso",
+              "path": "10/live/x86_64/AlmaLinux-10.3-x86_64-Live-KDE.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64/AlmaLinux-10.3-x86_64-Live-KDE.iso",
+              "size": 2637408256,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -268,10 +268,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-aarch64-Live-KDE.iso",
-              "path": "10/live/aarch64/AlmaLinux-10.2-aarch64-Live-KDE.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/live/aarch64/AlmaLinux-10.2-aarch64-Live-KDE.iso",
-              "size": 2509086720,
+              "file": "AlmaLinux-10.3-aarch64-Live-KDE.iso",
+              "path": "10/live/aarch64/AlmaLinux-10.3-aarch64-Live-KDE.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/live/aarch64/AlmaLinux-10.3-aarch64-Live-KDE.iso",
+              "size": 2512195584,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -293,7 +293,7 @@
               "size": 517734400,
               "checksum": {
                 "type": "sha256",
-                "value": "0c3261d2b2d6ac47b4786bb4f0e96706b885caad760e653aac11276de283f3e3",
+                "value": "845d3a4e41fde973bdbf9763b62a88538c1a1fadc2332a89f6ea01e2c17c78ee",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -308,7 +308,7 @@
               "size": 391905280,
               "checksum": {
                 "type": "sha256",
-                "value": "b8f04aa367f91956ce9d1221d9d0f05406117eb59e737d09ce58b58ce375c4d8",
+                "value": "4e8901ee8d8b280bca6fcc5735e8fd8fa253c4607fe9fa1cba22b20e0bc3b417",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -323,7 +323,7 @@
               "size": 257884160,
               "checksum": {
                 "type": "sha256",
-                "value": "52b84ddbc53c1ba642d90ab4f32c8ee5c4b2e47f3d2a0fea6670204ca7d31f72",
+                "value": "c8a210c016d7091457e744b8232772590b64cf18a2ac3a8c39d658b2a7970062",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -343,10 +343,10 @@
               "file": "AlmaLinux-10-OpenNebula-latest.x86_64.qcow2",
               "path": "10/cloud/x86_64/images/AlmaLinux-10-OpenNebula-latest.x86_64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/10/cloud/x86_64/images/AlmaLinux-10-OpenNebula-latest.x86_64.qcow2",
-              "size": 491782144,
+              "size": 472907776,
               "checksum": {
                 "type": "sha256",
-                "value": "3d0625119acbb3ba1150c0d06e9d438fb0ac6bda4d2bcf00e6707716b8ae3b79",
+                "value": "09a0f0356039e0a3780c3980f2c8f4fc8a24319e066220c0705683698faebc18",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -361,7 +361,7 @@
               "size": 388825088,
               "checksum": {
                 "type": "sha256",
-                "value": "5ab25570f7a418c163004e083847376fbf5b87b28f2c5269cac867a2edd276f1",
+                "value": "47c49d36048aad71ae8cf39e4e4d6e77cdd8572a03a89369ac1b36cc96acc818",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -378,17 +378,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64_v2-dvd.iso",
-              "path": "10/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2-dvd.iso",
-              "size": 10107617280,
+              "file": "AlmaLinux-10.3-x86_64_v2-dvd.iso",
+              "path": "10/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2-dvd.iso",
+              "size": 10826874880,
               "checksum": {
                 "type": "sha256",
-                "value": "320a10d3195ece72d99a10ae8316f78124ae6228a5f542b6f5870126d5708b91",
+                "value": "b6e73f2e9a87b440126faeabbc047a131bda964eb25c31faee5cfd43948ab369",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2.torrent"
             }
           ]
         },
@@ -401,17 +401,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64_v2-minimal.iso",
-              "path": "10/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2-minimal.iso",
-              "size": 1660682240,
+              "file": "AlmaLinux-10.3-x86_64_v2-minimal.iso",
+              "path": "10/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2-minimal.iso",
+              "size": 1577058304,
               "checksum": {
                 "type": "sha256",
-                "value": "c75ee2e209dcb4ec6fde01e421074edddf5d19bb7388fa12a102edb40fc47eb0",
+                "value": "c14b9bc0411b5053ba11c9f95ffe0076ca5d2f17f6a06ace18b8922cb19db51a",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2.torrent"
             }
           ]
         },
@@ -424,17 +424,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64_v2-boot.iso",
-              "path": "10/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2-boot.iso",
-              "size": 1065881600,
+              "file": "AlmaLinux-10.3-x86_64_v2-boot.iso",
+              "path": "10/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2-boot.iso",
+              "size": 962920448,
               "checksum": {
                 "type": "sha256",
-                "value": "97b38e392dfe51b62a61c7dc400ce730228135e827c214fbaf32efc3a766607f",
+                "value": "d0523d002e3d9b40b3a812d4bf5972d611f12085ea143a062caf9dfb9ec767e9",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/10.2/isos/x86_64_v2/AlmaLinux-10.2-x86_64_v2.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/10.3/isos/x86_64_v2/AlmaLinux-10.3-x86_64_v2.torrent"
             }
           ]
         },
@@ -447,10 +447,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64_v2-Live-GNOME.iso",
-              "path": "10/live/x86_64_v2/AlmaLinux-10.2-x86_64_v2-Live-GNOME.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64_v2/AlmaLinux-10.2-x86_64_v2-Live-GNOME.iso",
-              "size": 1927759872,
+              "file": "AlmaLinux-10.3-x86_64_v2-Live-GNOME.iso",
+              "path": "10/live/x86_64_v2/AlmaLinux-10.3-x86_64_v2-Live-GNOME.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64_v2/AlmaLinux-10.3-x86_64_v2-Live-GNOME.iso",
+              "size": 1846427648,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -466,10 +466,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-10.2-x86_64_v2-Live-KDE.iso",
-              "path": "10/live/x86_64_v2/AlmaLinux-10.2-x86_64_v2-Live-KDE.iso",
-              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64_v2/AlmaLinux-10.2-x86_64_v2-Live-KDE.iso",
-              "size": 2639147008,
+              "file": "AlmaLinux-10.3-x86_64_v2-Live-KDE.iso",
+              "path": "10/live/x86_64_v2/AlmaLinux-10.3-x86_64_v2-Live-KDE.iso",
+              "url": "https://repo.almalinux.org/almalinux/10/live/x86_64_v2/AlmaLinux-10.3-x86_64_v2-Live-KDE.iso",
+              "size": 2634543104,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -491,7 +491,7 @@
               "size": 479068160,
               "checksum": {
                 "type": "sha256",
-                "value": "6418337094ffc31874f775f5da1aca8989d29ad66cfe3824ab0047cdc5e45c09",
+                "value": "b0230172417de9da4f56b1db3f373d6b0b4d7de3fa647a131b1685ed39ade84e",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -511,10 +511,10 @@
               "file": "AlmaLinux-10-OpenNebula-latest.x86_64_v2.qcow2",
               "path": "10/cloud/x86_64_v2/images/AlmaLinux-10-OpenNebula-latest.x86_64_v2.qcow2",
               "url": "https://repo.almalinux.org/almalinux/10/cloud/x86_64_v2/images/AlmaLinux-10-OpenNebula-latest.x86_64_v2.qcow2",
-              "size": 500826112,
+              "size": 475922432,
               "checksum": {
                 "type": "sha256",
-                "value": "5aa84d02d56171f4eebd2c0f09438ab05873cbe9b95615429fc8566edc48af14",
+                "value": "b57ef8756c2277ff0bf7f476ccfab495f07884171512017c701e8c6221eeac9e",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -525,12 +525,12 @@
       ]
     },
     {
-      "version": "9.8",
+      "version": "9.9",
       "channel": "stable",
-      "codename": "Olive Jaguar",
-      "releaseDate": "2026-05-26",
+      "codename": "Chartreuse Bobcat",
+      "releaseDate": "2026-11-16",
       "eol": "2032-05-31",
-      "notesUrl": "https://wiki.almalinux.org/release-notes/9.8.html",
+      "notesUrl": "https://wiki.almalinux.org/release-notes/9.9.html",
       "editions": [
         {
           "id": "dvd",
@@ -541,62 +541,62 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-dvd.iso",
-              "path": "9/isos/x86_64/AlmaLinux-9.8-x86_64-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.8-x86_64-dvd.iso",
-              "size": 15151923200,
+              "file": "AlmaLinux-9.9-x86_64-dvd.iso",
+              "path": "9/isos/x86_64/AlmaLinux-9.9-x86_64-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.9-x86_64-dvd.iso",
+              "size": 15895363584,
               "checksum": {
                 "type": "sha256",
-                "value": "7a392bdc879afd159b30da39a356b7b26c1ddf618b01549164da9aadbc40d814",
+                "value": "e591228288e323e1ca8939f07354d547419c384e3ec83ea5206c9cbe93a88478",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/x86_64/AlmaLinux-9.8-x86_64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/x86_64/AlmaLinux-9.9-x86_64.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-dvd.iso",
-              "path": "9/isos/aarch64/AlmaLinux-9.8-aarch64-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/aarch64/AlmaLinux-9.8-aarch64-dvd.iso",
-              "size": 13012508672,
+              "file": "AlmaLinux-9.9-aarch64-dvd.iso",
+              "path": "9/isos/aarch64/AlmaLinux-9.9-aarch64-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/aarch64/AlmaLinux-9.9-aarch64-dvd.iso",
+              "size": 13665026048,
               "checksum": {
                 "type": "sha256",
-                "value": "916ec3ec8ceff4ea206daf1a030af77f811cdfcbef598c58639b6ddf39aeaf0f",
+                "value": "d945ec1b84676b2efc24cd695d24afee02db97235e08d9cb1bbb0eb592f3e761",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/aarch64/AlmaLinux-9.8-aarch64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/aarch64/AlmaLinux-9.9-aarch64.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "AlmaLinux-9.8-ppc64le-dvd.iso",
-              "path": "9/isos/ppc64le/AlmaLinux-9.8-ppc64le-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/ppc64le/AlmaLinux-9.8-ppc64le-dvd.iso",
-              "size": 12580718592,
+              "file": "AlmaLinux-9.9-ppc64le-dvd.iso",
+              "path": "9/isos/ppc64le/AlmaLinux-9.9-ppc64le-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/ppc64le/AlmaLinux-9.9-ppc64le-dvd.iso",
+              "size": 13132478464,
               "checksum": {
                 "type": "sha256",
-                "value": "9ab92d6a534de8c14c7ef83830744d9626cde7a48adb6ebc6f728d23fe542346",
+                "value": "78a0ac01b7569aa2de13ee424e802ae7f368ca14bcef83587db66e669cec794a",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/ppc64le/AlmaLinux-9.8-ppc64le.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/ppc64le/AlmaLinux-9.9-ppc64le.torrent"
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "AlmaLinux-9.8-s390x-dvd.iso",
-              "path": "9/isos/s390x/AlmaLinux-9.8-s390x-dvd.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/s390x/AlmaLinux-9.8-s390x-dvd.iso",
-              "size": 11105460224,
+              "file": "AlmaLinux-9.9-s390x-dvd.iso",
+              "path": "9/isos/s390x/AlmaLinux-9.9-s390x-dvd.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/s390x/AlmaLinux-9.9-s390x-dvd.iso",
+              "size": 11562172416,
               "checksum": {
                 "type": "sha256",
-                "value": "e5d9d794e64425845f9b067c3a5e81c5a75de9257603f310a4e7e43e1c9950d6",
+                "value": "9d07bfc5b4bc4cc5ddbbfd78eaba065dc3796a37fedd8ff8e2f6937346c6a989",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/s390x/AlmaLinux-9.8-s390x.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/s390x/AlmaLinux-9.9-s390x.torrent"
             }
           ]
         },
@@ -609,62 +609,62 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-minimal.iso",
-              "path": "9/isos/x86_64/AlmaLinux-9.8-x86_64-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.8-x86_64-minimal.iso",
-              "size": 2838495232,
+              "file": "AlmaLinux-9.9-x86_64-minimal.iso",
+              "path": "9/isos/x86_64/AlmaLinux-9.9-x86_64-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.9-x86_64-minimal.iso",
+              "size": 2985295872,
               "checksum": {
                 "type": "sha256",
-                "value": "7762a4b45a66235726db145a573658964bf77bf7b9bc1c018afe86a4cf37cc2e",
+                "value": "0a0929bd4bbad481fe30066278aa66534a1d7a219a39c0495f0d51f82511bfd5",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/x86_64/AlmaLinux-9.8-x86_64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/x86_64/AlmaLinux-9.9-x86_64.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-minimal.iso",
-              "path": "9/isos/aarch64/AlmaLinux-9.8-aarch64-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/aarch64/AlmaLinux-9.8-aarch64-minimal.iso",
-              "size": 2608277504,
+              "file": "AlmaLinux-9.9-aarch64-minimal.iso",
+              "path": "9/isos/aarch64/AlmaLinux-9.9-aarch64-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/aarch64/AlmaLinux-9.9-aarch64-minimal.iso",
+              "size": 2752815104,
               "checksum": {
                 "type": "sha256",
-                "value": "08913740ab695c5f1003165c1d0e41c0615d0ffe4114ab92a8e13ae49fb691ac",
+                "value": "8e7b3399932922312a6378d95bf473aefa9ec2102e46f5b7f36d18efbf9d217e",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/aarch64/AlmaLinux-9.8-aarch64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/aarch64/AlmaLinux-9.9-aarch64.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "AlmaLinux-9.8-ppc64le-minimal.iso",
-              "path": "9/isos/ppc64le/AlmaLinux-9.8-ppc64le-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/ppc64le/AlmaLinux-9.8-ppc64le-minimal.iso",
-              "size": 2656440320,
+              "file": "AlmaLinux-9.9-ppc64le-minimal.iso",
+              "path": "9/isos/ppc64le/AlmaLinux-9.9-ppc64le-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/ppc64le/AlmaLinux-9.9-ppc64le-minimal.iso",
+              "size": 2799828992,
               "checksum": {
                 "type": "sha256",
-                "value": "bed3e7cbfdb78d824cb776603ee24dcd8cb3be9b3a37ecd68da2a4e535cc6508",
+                "value": "2089f6e347eb0b24f5cf368038ab7181bc01ddf9f43a50771376b5cdcec1584d",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/ppc64le/AlmaLinux-9.8-ppc64le.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/ppc64le/AlmaLinux-9.9-ppc64le.torrent"
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "AlmaLinux-9.8-s390x-minimal.iso",
-              "path": "9/isos/s390x/AlmaLinux-9.8-s390x-minimal.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/s390x/AlmaLinux-9.8-s390x-minimal.iso",
-              "size": 1661016064,
+              "file": "AlmaLinux-9.9-s390x-minimal.iso",
+              "path": "9/isos/s390x/AlmaLinux-9.9-s390x-minimal.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/s390x/AlmaLinux-9.9-s390x-minimal.iso",
+              "size": 1738364928,
               "checksum": {
                 "type": "sha256",
-                "value": "2587baef97d9a6897d620735e536b6d992145ac5a200e35f01d908a1e760b535",
+                "value": "8af22c266b74e25f5e48d008755863cd16775d7780652c7bbd8c543782726c5c",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/s390x/AlmaLinux-9.8-s390x.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/s390x/AlmaLinux-9.9-s390x.torrent"
             }
           ]
         },
@@ -677,62 +677,62 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-boot.iso",
-              "path": "9/isos/x86_64/AlmaLinux-9.8-x86_64-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.8-x86_64-boot.iso",
-              "size": 1519271936,
+              "file": "AlmaLinux-9.9-x86_64-boot.iso",
+              "path": "9/isos/x86_64/AlmaLinux-9.9-x86_64-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/x86_64/AlmaLinux-9.9-x86_64-boot.iso",
+              "size": 1596456960,
               "checksum": {
                 "type": "sha256",
-                "value": "445f99e24399bbe98aab86111d60751c142eda049d2444fd76da5eb03472e4ab",
+                "value": "b42da86274caabc56294ab9bc37d1bb8b2298fcf4304dca40c21d4cfb938f651",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/x86_64/AlmaLinux-9.8-x86_64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/x86_64/AlmaLinux-9.9-x86_64.torrent"
             },
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-boot.iso",
-              "path": "9/isos/aarch64/AlmaLinux-9.8-aarch64-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/aarch64/AlmaLinux-9.8-aarch64-boot.iso",
-              "size": 1458331648,
+              "file": "AlmaLinux-9.9-aarch64-boot.iso",
+              "path": "9/isos/aarch64/AlmaLinux-9.9-aarch64-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/aarch64/AlmaLinux-9.9-aarch64-boot.iso",
+              "size": 1532641280,
               "checksum": {
                 "type": "sha256",
-                "value": "144b4a6c0535dc393864c82238c96e196f703c1ba7ce0096551db517f55310dc",
+                "value": "bdcabe99fa2fc5e863be228691fbc3e15946e82024fd87656cb112ba933498b1",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/aarch64/AlmaLinux-9.8-aarch64.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/aarch64/AlmaLinux-9.9-aarch64.torrent"
             },
             {
               "arch": "ppc64le",
               "format": "iso",
-              "file": "AlmaLinux-9.8-ppc64le-boot.iso",
-              "path": "9/isos/ppc64le/AlmaLinux-9.8-ppc64le-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/ppc64le/AlmaLinux-9.8-ppc64le-boot.iso",
-              "size": 1500190720,
+              "file": "AlmaLinux-9.9-ppc64le-boot.iso",
+              "path": "9/isos/ppc64le/AlmaLinux-9.9-ppc64le-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/ppc64le/AlmaLinux-9.9-ppc64le-boot.iso",
+              "size": 1573836800,
               "checksum": {
                 "type": "sha256",
-                "value": "7c06f0c17fb1f2b26400d0154003cefbb45a63adc2d48e54854d79b8da1d42af",
+                "value": "be2c2426127326457300e5c3bba184d26381bd4cc2e09ff2ed6116535300ac5d",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/ppc64le/AlmaLinux-9.8-ppc64le.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/ppc64le/AlmaLinux-9.9-ppc64le.torrent"
             },
             {
               "arch": "s390x",
               "format": "iso",
-              "file": "AlmaLinux-9.8-s390x-boot.iso",
-              "path": "9/isos/s390x/AlmaLinux-9.8-s390x-boot.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/isos/s390x/AlmaLinux-9.8-s390x-boot.iso",
-              "size": 550443008,
+              "file": "AlmaLinux-9.9-s390x-boot.iso",
+              "path": "9/isos/s390x/AlmaLinux-9.9-s390x-boot.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/isos/s390x/AlmaLinux-9.9-s390x-boot.iso",
+              "size": 557496320,
               "checksum": {
                 "type": "sha256",
-                "value": "bae0a971cf525cf615f54c3934f1963477252a982581daea443bdaddef578bd8",
+                "value": "572885c3a937957ca6b413e20c14f86d08ae6b9e55d43c3c99d5b885c9b1cb2a",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
-              "torrentUrl": "https://repo.almalinux.org/almalinux/9.8/isos/s390x/AlmaLinux-9.8-s390x.torrent"
+              "torrentUrl": "https://repo.almalinux.org/almalinux/9.9/isos/s390x/AlmaLinux-9.9-s390x.torrent"
             }
           ]
         },
@@ -745,10 +745,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-Live-GNOME.iso",
-              "path": "9/live/x86_64/AlmaLinux-9.8-x86_64-Live-GNOME.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.8-x86_64-Live-GNOME.iso",
-              "size": 2740715520,
+              "file": "AlmaLinux-9.9-x86_64-Live-GNOME.iso",
+              "path": "9/live/x86_64/AlmaLinux-9.9-x86_64-Live-GNOME.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.9-x86_64-Live-GNOME.iso",
+              "size": 2687942656,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -756,10 +756,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-Live-GNOME.iso",
-              "path": "9/live/aarch64/AlmaLinux-9.8-aarch64-Live-GNOME.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.8-aarch64-Live-GNOME.iso",
-              "size": 2295840768,
+              "file": "AlmaLinux-9.9-aarch64-Live-GNOME.iso",
+              "path": "9/live/aarch64/AlmaLinux-9.9-aarch64-Live-GNOME.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.9-aarch64-Live-GNOME.iso",
+              "size": 2250928128,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -775,10 +775,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-Live-GNOME-Mini.iso",
-              "path": "9/live/x86_64/AlmaLinux-9.8-x86_64-Live-GNOME-Mini.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.8-x86_64-Live-GNOME-Mini.iso",
-              "size": 2399141888,
+              "file": "AlmaLinux-9.9-x86_64-Live-GNOME-Mini.iso",
+              "path": "9/live/x86_64/AlmaLinux-9.9-x86_64-Live-GNOME-Mini.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.9-x86_64-Live-GNOME-Mini.iso",
+              "size": 2346516480,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -786,10 +786,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-Live-GNOME-Mini.iso",
-              "path": "9/live/aarch64/AlmaLinux-9.8-aarch64-Live-GNOME-Mini.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.8-aarch64-Live-GNOME-Mini.iso",
-              "size": 2267279360,
+              "file": "AlmaLinux-9.9-aarch64-Live-GNOME-Mini.iso",
+              "path": "9/live/aarch64/AlmaLinux-9.9-aarch64-Live-GNOME-Mini.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.9-aarch64-Live-GNOME-Mini.iso",
+              "size": 2221776896,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -805,10 +805,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-Live-KDE.iso",
-              "path": "9/live/x86_64/AlmaLinux-9.8-x86_64-Live-KDE.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.8-x86_64-Live-KDE.iso",
-              "size": 3292200960,
+              "file": "AlmaLinux-9.9-x86_64-Live-KDE.iso",
+              "path": "9/live/x86_64/AlmaLinux-9.9-x86_64-Live-KDE.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.9-x86_64-Live-KDE.iso",
+              "size": 3251601408,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -816,10 +816,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-Live-KDE.iso",
-              "path": "9/live/aarch64/AlmaLinux-9.8-aarch64-Live-KDE.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.8-aarch64-Live-KDE.iso",
-              "size": 3134642176,
+              "file": "AlmaLinux-9.9-aarch64-Live-KDE.iso",
+              "path": "9/live/aarch64/AlmaLinux-9.9-aarch64-Live-KDE.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.9-aarch64-Live-KDE.iso",
+              "size": 2907523072,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -835,10 +835,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-Live-XFCE.iso",
-              "path": "9/live/x86_64/AlmaLinux-9.8-x86_64-Live-XFCE.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.8-x86_64-Live-XFCE.iso",
-              "size": 2612133888,
+              "file": "AlmaLinux-9.9-x86_64-Live-XFCE.iso",
+              "path": "9/live/x86_64/AlmaLinux-9.9-x86_64-Live-XFCE.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.9-x86_64-Live-XFCE.iso",
+              "size": 2556887040,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -846,10 +846,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-Live-XFCE.iso",
-              "path": "9/live/aarch64/AlmaLinux-9.8-aarch64-Live-XFCE.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.8-aarch64-Live-XFCE.iso",
-              "size": 2472775680,
+              "file": "AlmaLinux-9.9-aarch64-Live-XFCE.iso",
+              "path": "9/live/aarch64/AlmaLinux-9.9-aarch64-Live-XFCE.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.9-aarch64-Live-XFCE.iso",
+              "size": 2234232832,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -865,10 +865,10 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-x86_64-Live-MATE.iso",
-              "path": "9/live/x86_64/AlmaLinux-9.8-x86_64-Live-MATE.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.8-x86_64-Live-MATE.iso",
-              "size": 3027779584,
+              "file": "AlmaLinux-9.9-x86_64-Live-MATE.iso",
+              "path": "9/live/x86_64/AlmaLinux-9.9-x86_64-Live-MATE.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/x86_64/AlmaLinux-9.9-x86_64-Live-MATE.iso",
+              "size": 2986344448,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -876,10 +876,10 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "AlmaLinux-9.8-aarch64-Live-MATE.iso",
-              "path": "9/live/aarch64/AlmaLinux-9.8-aarch64-Live-MATE.iso",
-              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.8-aarch64-Live-MATE.iso",
-              "size": 2875981824,
+              "file": "AlmaLinux-9.9-aarch64-Live-MATE.iso",
+              "path": "9/live/aarch64/AlmaLinux-9.9-aarch64-Live-MATE.iso",
+              "url": "https://repo.almalinux.org/almalinux/9/live/aarch64/AlmaLinux-9.9-aarch64-Live-MATE.iso",
+              "size": 2651717632,
               "checksum": null,
               "signatureUrl": null,
               "torrentUrl": null
@@ -898,10 +898,10 @@
               "file": "AlmaLinux-9-GenericCloud-latest.x86_64.qcow2",
               "path": "9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2",
-              "size": 614662144,
+              "size": 565248000,
               "checksum": {
                 "type": "sha256",
-                "value": "bf9088375c94dd5df7c22ab78f6183eea007a1c66076224e115d4e2c26205fa4",
+                "value": "50e428e36083531995df84302268b95f0bf30db1d5e6b931f73dc40642dd77bb",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -913,10 +913,10 @@
               "file": "AlmaLinux-9-GenericCloud-latest.aarch64.qcow2",
               "path": "9/cloud/aarch64/images/AlmaLinux-9-GenericCloud-latest.aarch64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/9/cloud/aarch64/images/AlmaLinux-9-GenericCloud-latest.aarch64.qcow2",
-              "size": 453050368,
+              "size": 452591616,
               "checksum": {
                 "type": "sha256",
-                "value": "6a3151c99cf5c38861fd7ce97689d6564f098892996fee5c4db8d080bb553e89",
+                "value": "9e492c3b6729991be4bd5500eabc742ae171dd015f1f1dfa1559871c2f6b9b37",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -931,7 +931,7 @@
               "size": 519035904,
               "checksum": {
                 "type": "sha256",
-                "value": "2c716d5743d3ff6608b3ca28b7619f972c856b85c0c9470f6bb7bff38adc3e65",
+                "value": "cb6d103922c3676f19a28425bb9991fd4e0cbf716fff1e9e5d960e19cae640ad",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -943,10 +943,10 @@
               "file": "AlmaLinux-9-GenericCloud-latest.s390x.qcow2",
               "path": "9/cloud/s390x/images/AlmaLinux-9-GenericCloud-latest.s390x.qcow2",
               "url": "https://repo.almalinux.org/almalinux/9/cloud/s390x/images/AlmaLinux-9-GenericCloud-latest.s390x.qcow2",
-              "size": 281472000,
+              "size": 281501184,
               "checksum": {
                 "type": "sha256",
-                "value": "f38df797cd5ab5de1e5e7433658868aaf56ba1adff9a7eefe11cf598f08f3ac2",
+                "value": "137acb917637510fb103c092e61066bbfa8f18e955ebe8f2f9ceddbd22110d20",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -966,10 +966,10 @@
               "file": "AlmaLinux-9-OpenNebula-latest.x86_64.qcow2",
               "path": "9/cloud/x86_64/images/AlmaLinux-9-OpenNebula-latest.x86_64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-OpenNebula-latest.x86_64.qcow2",
-              "size": 521601024,
+              "size": 518848512,
               "checksum": {
                 "type": "sha256",
-                "value": "a2cb286ead017c39695490424dec300123d5aebcdf3c5b73f930b9e9907c31c4",
+                "value": "25fde66e381ffda9411864000a39604915741e550ceead2641fe187bffa592b8",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -981,10 +981,10 @@
               "file": "AlmaLinux-9-OpenNebula-latest.aarch64.qcow2",
               "path": "9/cloud/aarch64/images/AlmaLinux-9-OpenNebula-latest.aarch64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/9/cloud/aarch64/images/AlmaLinux-9-OpenNebula-latest.aarch64.qcow2",
-              "size": 399835136,
+              "size": 402325504,
               "checksum": {
                 "type": "sha256",
-                "value": "ec729b57cb60c19c5121a5868a19347f90afb155a2ca7f9c11f09da3a15c7e2e",
+                "value": "68eb991ba6eba23a509544bd442b95dbd5b78cf459e955653003c6c4b3bdb4e8",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
