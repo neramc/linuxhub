@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -537,14 +537,6 @@
       "url": "https://mirror.kamp.de/ubuntu-releases/",
       "country": "DE",
       "name": "KAMP Netzwerkdienste GmbH",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.kkg.berlin/ubuntu-releases/",
-      "country": "DE",
-      "name": "KKG Berlin",
       "lat": null,
       "lon": null,
       "score": null
@@ -1376,7 +1368,7 @@
     {
       "url": "https://mirror.bacloud.com/ubuntu-mirror/releases/",
       "country": "LT",
-      "name": "Informacinės sistemos ir technologijos, UAB logotipas Informacinės sistemos ir technologijos, UAB",
+      "name": "Bacloud UAB",
       "lat": null,
       "lon": null,
       "score": null
@@ -1417,14 +1409,6 @@
       "url": "https://mirror.ihost.md/ubuntu-releases/",
       "country": "MD",
       "name": "iHost",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.mangohost.net/ubuntu-releases/",
-      "country": "MD",
-      "name": "MangoHost",
       "lat": null,
       "lon": null,
       "score": null
@@ -1601,14 +1585,6 @@
       "url": "https://mirror.fsmg.org.nz/ubuntu-releases/",
       "country": "NZ",
       "name": "Free Software Mirror Group (FSMG)",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://ftp.icm.edu.pl/pub/Linux/ubuntu-releases/",
-      "country": "PL",
-      "name": "ICM - Interdisciplinary Centre for Mathematical and Computational Modelling",
       "lat": null,
       "lon": null,
       "score": null

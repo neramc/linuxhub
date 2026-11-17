@@ -3,7 +3,7 @@
   "sources": [
     "https://mirror-master.debian.org/status/Mirrors.masterlist"
   ],
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "mirrors": [
     {
       "url": "https://debian.xfree.com.ar/debian-cd/",
@@ -366,6 +366,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.siwoo.org/debian-cd/",
+      "country": "KR",
+      "name": "mirror.siwoo.org",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://debian.mirror.vu.lt/debian-cd/",
       "country": "LT",
       "name": "debian.mirror.vu.lt",
@@ -425,6 +433,14 @@
       "url": "https://mirror.duocast.net/debian-cd/",
       "country": "NL",
       "name": "mirror.duocast.net",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nl.leaseweb.net/debian-cd/",
+      "country": "NL",
+      "name": "mirror.nl.leaseweb.net",
       "lat": null,
       "lon": null,
       "score": null
