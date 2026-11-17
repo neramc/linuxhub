@@ -4,7 +4,7 @@
     "https://rockylinux.org/download",
     "https://docs.rockylinux.org/releases/"
   ],
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "releases": [
     {
       "version": "10.3",
@@ -441,6 +441,29 @@
                 "url": "https://dl.rockylinux.org/pub/rocky/10/images/s390x/CHECKSUM"
               },
               "signatureUrl": "https://dl.rockylinux.org/pub/rocky/10/images/s390x/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "raw.xz",
+              "file": "Rocky-10-SBC-RaspberryPi-10.2-20260525.0.aarch64.raw.xz",
+              "path": null,
+              "url": "https://dl.rockylinux.org/vault/rocky/10.2/images/aarch64/Rocky-10-SBC-RaspberryPi-10.2-20260525.0.aarch64.raw.xz",
+              "size": 993789128,
+              "checksum": {
+                "type": "sha256",
+                "value": "d2b20199e4bf356e725690e5520ca559ee918187cab4bc6a57d757b7f92d1a70",
+                "url": "https://dl.rockylinux.org/vault/rocky/10.2/images/aarch64/Rocky-10-SBC-RaspberryPi-10.2-20260525.0.aarch64.raw.xz.CHECKSUM"
+              },
+              "signatureUrl": "https://dl.rockylinux.org/vault/rocky/10.2/images/aarch64/Rocky-10-SBC-RaspberryPi-10.2-20260525.0.aarch64.raw.xz.CHECKSUM.asc",
               "torrentUrl": null
             }
           ]
@@ -974,6 +997,29 @@
                 "url": "https://dl.rockylinux.org/pub/rocky/9/images/s390x/CHECKSUM"
               },
               "signatureUrl": "https://dl.rockylinux.org/pub/rocky/9/images/s390x/CHECKSUM.asc",
+              "torrentUrl": null
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi",
+          "desktop": null,
+          "kind": "other",
+          "artifacts": [
+            {
+              "arch": "aarch64",
+              "format": "raw.xz",
+              "file": "Rocky-9-SBC-RaspberryPi-9.8-20260615.0.aarch64.raw.xz",
+              "path": null,
+              "url": "https://dl.rockylinux.org/vault/rocky/9.8/images/aarch64/Rocky-9-SBC-RaspberryPi-9.8-20260615.0.aarch64.raw.xz",
+              "size": 983980188,
+              "checksum": {
+                "type": "sha256",
+                "value": "d05798b317d9d085f806742f30b0a4feea8161e6cbcb15681dceef059f470f1f",
+                "url": "https://dl.rockylinux.org/vault/rocky/9.8/images/aarch64/Rocky-9-SBC-RaspberryPi-9.8-20260615.0.aarch64.raw.xz.CHECKSUM"
+              },
+              "signatureUrl": null,
               "torrentUrl": null
             }
           ]
