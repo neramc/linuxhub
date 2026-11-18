@@ -21,8 +21,8 @@
   },
   "antix": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-18",
+      "lastError": "robots.txt of https://antixlinux.com could not be read (server error or no answer), so the host is closed for this run: https://antixlinux.com/download/"
     },
     "mirrors": {
       "failingSince": null,
@@ -291,8 +291,8 @@
   },
   "oracle-linux": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-18",
+      "lastError": "HTTP 404 for https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-x86_64.checksum"
     },
     "mirrors": {
       "failingSince": null,
