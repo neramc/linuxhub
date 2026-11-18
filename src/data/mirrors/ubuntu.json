@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-17",
+  "updated": "2026-11-18",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -345,14 +345,6 @@
       "url": "https://mirror.nju.edu.cn/ubuntu-releases/",
       "country": "CN",
       "name": "eScience Center, Nanjing University",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.nyist.edu.cn/ubuntu-releases/",
-      "country": "CN",
-      "name": "Nanyang Institute of Technology",
       "lat": null,
       "lon": null,
       "score": null
@@ -1086,14 +1078,6 @@
       "score": null
     },
     {
-      "url": "https://ir.ubuntu.sindad.cloud/releases/",
-      "country": "IR",
-      "name": "Sindad LLC",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.famaserver.com/cd-image/",
       "country": "IR",
       "name": "FamaServer",
@@ -1622,14 +1606,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.leitecastro.com/ubuntu-releases/",
-      "country": "PT",
-      "name": "Tomas Leite de Castro",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirrors.up.pt/pub/ubuntu-releases/",
       "country": "PT",
       "name": "Universidade do Porto",
@@ -1998,6 +1974,14 @@
       "score": null
     },
     {
+      "url": "https://distrohub.kyiv.ua/ubuntucd/",
+      "country": "UA",
+      "name": "Distrohub",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ubuntu.netforce.hosting/ubuntu-releases/",
       "country": "UA",
       "name": "NetForce Ukraine LLC",
@@ -2015,14 +1999,6 @@
     },
     {
       "url": "https://abqix.mm.fcix.net/ubuntu-releases/",
-      "country": "US",
-      "name": "Fremont Cabal Internet Exchange",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://cfhcable.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
       "lat": null,
