@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.alpinelinux.org/mirrors.json"
   ],
-  "updated": "2026-11-15",
+  "updated": "2026-11-19",
   "mirrors": [
     {
       "url": "https://mirror.alwyzon.net/alpine/",
@@ -641,6 +641,14 @@
       "url": "https://distrohub.kyiv.ua/alpine/",
       "country": "UA",
       "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yunexal.com/alpine/",
+      "country": "UA",
+      "name": "mirror.yunexal.com",
       "lat": null,
       "lon": null,
       "score": null

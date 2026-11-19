@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -81,6 +81,14 @@
       "url": "https://mirror.aarnet.edu.au/pub/ubuntu/releases/",
       "country": "AU",
       "name": "AARNet Pty Ltd",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.datamossa.io/ubuntu/releases/",
+      "country": "AU",
+      "name": "DataMossa",
       "lat": null,
       "lon": null,
       "score": null
@@ -1942,14 +1950,6 @@
       "score": null
     },
     {
-      "url": "https://ftp.ubuntu-tw.net/ubuntu-releases/",
-      "country": "TW",
-      "name": "Ubuntu-TW",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.ossplanet.net/ubuntu-releases/",
       "country": "TW",
       "name": "OSSPlanet",
@@ -1977,6 +1977,14 @@
       "url": "https://distrohub.kyiv.ua/ubuntucd/",
       "country": "UA",
       "name": "Distrohub",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hostiko.network/ubuntu-releases/",
+      "country": "UA",
+      "name": "Hostiko",
       "lat": null,
       "lon": null,
       "score": null
