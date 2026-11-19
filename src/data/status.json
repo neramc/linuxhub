@@ -21,8 +21,8 @@
   },
   "antix": {
     "releases": {
-      "failingSince": "2026-11-18",
-      "lastError": "robots.txt of https://antixlinux.com could not be read (server error or no answer), so the host is closed for this run: https://antixlinux.com/download/"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -201,8 +201,8 @@
   },
   "linux-mint": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-19",
+      "lastError": "robots.txt of https://www.linuxmint.com could not be read (server error or no answer), so the host is closed for this run: https://www.linuxmint.com/download_all.php"
     },
     "mirrors": {
       "failingSince": null,

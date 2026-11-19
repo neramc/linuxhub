@@ -4,7 +4,7 @@
     "https://rockylinux.org/download",
     "https://docs.rockylinux.org/releases/"
   ],
-  "updated": "2026-11-17",
+  "updated": "2026-11-19",
   "releases": [
     {
       "version": "10.3",
@@ -652,7 +652,7 @@
               "size": 1563197440,
               "checksum": {
                 "type": "sha256",
-                "value": "ee3bc77985bb695b6701ce5ad7346f6e749f09b81790858bd115636e7b8368ef",
+                "value": "2fda244142dcf746dcbfb476acd66f3ca757081edfa560f907c125142c47617c",
                 "url": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
               },
               "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM.asc",
@@ -664,10 +664,10 @@
               "file": "Rocky-9.9-aarch64-boot.iso",
               "path": "9/isos/aarch64/Rocky-9.9-aarch64-boot.iso",
               "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/Rocky-9.9-aarch64-boot.iso",
-              "size": 1502406656,
+              "size": 1502394368,
               "checksum": {
                 "type": "sha256",
-                "value": "a30ba4b8eebec37292f8e37f0c96dd6d4a2f0e04943eb8de39351a2ef1d68984",
+                "value": "4f0bd148a7b9dad1c25f431125b6606afbf3b3f021ff379a5a6d3a9b7082cbd0",
                 "url": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM"
               },
               "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/aarch64/CHECKSUM.asc",
@@ -679,10 +679,10 @@
               "file": "Rocky-9.9-ppc64le-boot.iso",
               "path": "9/isos/ppc64le/Rocky-9.9-ppc64le-boot.iso",
               "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/Rocky-9.9-ppc64le-boot.iso",
-              "size": 1546233856,
+              "size": 1546231808,
               "checksum": {
                 "type": "sha256",
-                "value": "dc015fbdc271346a9650d9335eedd3b265fb13ffbea8c5279fc5e36a311c9f2e",
+                "value": "567d05c8aa6cb1db6f32d9de5f5ba17d8214f081384e6b0628bd41ea4626383a",
                 "url": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM"
               },
               "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/ppc64le/CHECKSUM.asc",
@@ -694,10 +694,10 @@
               "file": "Rocky-9.9-s390x-boot.iso",
               "path": "9/isos/s390x/Rocky-9.9-s390x-boot.iso",
               "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/Rocky-9.9-s390x-boot.iso",
-              "size": 546619392,
+              "size": 546627584,
               "checksum": {
                 "type": "sha256",
-                "value": "3420303882dcf32b4a62a5e084f1fc2a21800fa7785255cc858f14329de7f944",
+                "value": "25efd832d90651196b7af3f3c2c0e15cbebb22ef035b0c706794b49f3db2fa72",
                 "url": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM"
               },
               "signatureUrl": "https://download.rockylinux.org/pub/rocky/9/isos/s390x/CHECKSUM.asc",
