@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/CentOS?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-17",
+  "updated": "2026-11-20",
   "mirrors": [
     {
       "url": "https://mirrors.teamcloud.am/centos-stream/",
@@ -294,6 +294,14 @@
       "score": null
     },
     {
+      "url": "https://mr.heru.id/centos-stream/",
+      "country": "ID",
+      "name": "mr.heru.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://centos.is/centos-stream/",
       "country": "IS",
       "name": "centos.is",
@@ -305,22 +313,6 @@
       "url": "https://centos.mirror.garr.it/centos-stream/",
       "country": "IT",
       "name": "centos.mirror.garr.it",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://it1.mirror.vhosting-it.com/centos-stream-all/",
-      "country": "IT",
-      "name": "it1.mirror.vhosting-it.com",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://it2.mirror.vhosting-it.com/centos-stream-all/",
-      "country": "IT",
-      "name": "it2.mirror.vhosting-it.com",
       "lat": null,
       "lon": null,
       "score": null

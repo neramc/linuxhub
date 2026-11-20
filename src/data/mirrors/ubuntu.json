@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -241,6 +241,14 @@
       "url": "https://mirror.digitaloceans.dev/ubuntu-releases/",
       "country": "CA",
       "name": "mirror.digitaloceans.dev",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.esecuredata.com/ubuntu-releases/",
+      "country": "CA",
+      "name": "eSecureData",
       "lat": null,
       "lon": null,
       "score": null
@@ -1470,14 +1478,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.bgp.rodeo/ubuntu-releases/",
-      "country": "NL",
-      "name": "bgp.rodeo",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.digitalrepository.eu/ubuntu-releases/",
       "country": "NL",
       "name": "DigitalRepository.eu",
@@ -2297,6 +2297,14 @@
       "url": "https://mirrors.iu13.net/ubuntu-releases/",
       "country": "US",
       "name": "Lancaster-Lebanon IU13",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.lug.mtu.edu/ubuntu-releases/",
+      "country": "US",
+      "name": "MTU Linux Users Group",
       "lat": null,
       "lon": null,
       "score": null
