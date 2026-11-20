@@ -9,10 +9,10 @@
   "updated": "2026-11-20",
   "releases": [
     {
-      "version": "20261118",
+      "version": "20261119",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-11-18",
+      "releaseDate": "2026-11-19",
       "eol": null,
       "notesUrl": "https://doc.opensuse.org/release-notes/x86_64/openSUSE/Tumbleweed/",
       "editions": [
@@ -25,13 +25,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-DVD-x86_64-Snapshot20261118-Media.iso",
+              "file": "openSUSE-Tumbleweed-DVD-x86_64-Snapshot20261119-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso",
-              "size": 4666163200,
+              "size": 4667211776,
               "checksum": {
                 "type": "sha256",
-                "value": "1d63042cf3390f452f9d6876bb13e84628175e441c5e443420e9a991aeb7e77d",
+                "value": "604c10b58ebd80ce430084b62f08dc08c93d61039a19f1492f792d4470970891",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256.asc",
@@ -40,13 +40,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-DVD-aarch64-Snapshot20261117-Media.iso",
+              "file": "openSUSE-Tumbleweed-DVD-aarch64-Snapshot20261118-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-DVD-aarch64-Current.iso",
-              "size": 4235501568,
+              "size": 4234582016,
               "checksum": {
                 "type": "sha256",
-                "value": "ff1af3c0f254f33fd9faf4dce0963e4b1380797a158f6ef14b70eda8c7a34637",
+                "value": "e26507f379f3e4d407eb28165b06e0dbb803e4bf18a61cea9fd82023726244c1",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-DVD-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-DVD-aarch64-Current.iso.sha256.asc",
@@ -108,13 +108,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-x86_64-Snapshot20261118-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-x86_64-Snapshot20261119-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso",
               "size": 421527552,
               "checksum": {
                 "type": "sha256",
-                "value": "cb58a4307675a8916cabb500fdf17d5d53b0e0ddd4c7b3334c8f05ff1d5431f5",
+                "value": "4bb2419244f8459eefc03f3bc07997b8c3b46cea12bc3cc49e8fac81cd0539f3",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso.sha256.asc",
@@ -123,13 +123,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-NET-aarch64-Snapshot20261117-Media.iso",
+              "file": "openSUSE-Tumbleweed-NET-aarch64-Snapshot20261118-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso",
-              "size": 458489856,
+              "size": 458479616,
               "checksum": {
                 "type": "sha256",
-                "value": "ccef166aeeb39fea29b50e3c5440aa7258610b833ff293743f713b23ffd727f1",
+                "value": "ccced72e856a6d0be0c96069a15048b64e520aba9cefd1b1853562f53f267b67",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-NET-aarch64-Current.iso.sha256.asc",
@@ -194,10 +194,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2",
-              "size": 306774016,
+              "size": 306511872,
               "checksum": {
                 "type": "sha256",
-                "value": "7f8126114c9097902551e9469a1ade74a05c7e5bf7e14132c0923e9015cd7958",
+                "value": "3d0f628dd95a99f5fdf3bab66c64d399b9f00dea5d887da9229b1b345d977586",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256.asc",
@@ -209,10 +209,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2",
-              "size": 274595840,
+              "size": 274333696,
               "checksum": {
                 "type": "sha256",
-                "value": "09da92cbe3f965a1e1702d9586ddd31ade6a2ca8d440b4ce9300d0e163fd7eee",
+                "value": "e477aa03114bda8582bafcac30dc868e7dd137be26bff345fc927f043836242d",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-kvm-and-xen.qcow2.sha256.asc",
@@ -232,10 +232,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2",
-              "size": 294256640,
+              "size": 294060032,
               "checksum": {
                 "type": "sha256",
-                "value": "20fabff901559102610109bf5c1ee623a11baa402da7b190d7327c8c69be8406",
+                "value": "53b628029a5710bd567c0f957cefff4d4e7f1c553504cf894f0ecc7840af530b",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-kvm-and-xen-sdboot.qcow2.sha256.asc",
@@ -255,10 +255,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2",
-              "size": 317438464,
+              "size": 317721600,
               "checksum": {
                 "type": "sha256",
-                "value": "c1cb4f8eb3dd0b86d496ba78f10dc35fdfe062aab642b32ea0421b447e6ee1fb",
+                "value": "941eafeafc2361d7097652ff86e2f06ebb6ef654566687d0759af530fb53af5a",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.x86_64-Cloud.qcow2.sha256.asc",
@@ -270,10 +270,10 @@
               "file": "openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2",
-              "size": 289935872,
+              "size": 289865216,
               "checksum": {
                 "type": "sha256",
-                "value": "47675dba1903fb4d1c668f12dc0e80ca6f43ee0ee1918555a1449c3b8b108a53",
+                "value": "5bee4d09e3dd07cb36a1a42e569a347d6a51fe5f71d54e5d7c3ff5f5e280ab64",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/appliances/openSUSE-Tumbleweed-Minimal-VM.aarch64-Cloud.qcow2.sha256.asc",
@@ -290,13 +290,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-GNOME-Live-x86_64-Snapshot20261118-Media.iso",
+              "file": "openSUSE-Tumbleweed-GNOME-Live-x86_64-Snapshot20261119-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso",
-              "size": 1304907776,
+              "size": 1304977408,
               "checksum": {
                 "type": "sha256",
-                "value": "74dab44ea0338a55a7feef75aeea1ac89c67724c5e213beefb227df32edfffc0",
+                "value": "b5d5dd440577e028a142b9ca5ab3e050a15e4094b974a416511b60b12f39def1",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso.sha256.asc",
@@ -305,13 +305,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-GNOME-Live-aarch64-Snapshot20261117-Media.iso",
+              "file": "openSUSE-Tumbleweed-GNOME-Live-aarch64-Snapshot20261118-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-aarch64-Current.iso",
-              "size": 1459191808,
+              "size": 1459189760,
               "checksum": {
                 "type": "sha256",
-                "value": "6162f667ea08816ef0a0ca08e95bcf6bf325b2f1387d02c74fab685aa0c53280",
+                "value": "9f359d6a18d4f91e4aa4aacde372e937b88858a06354cd1fcfd65d4dd6fc6a9d",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-aarch64-Current.iso.sha256.asc",
@@ -328,13 +328,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20261118-Media.iso",
+              "file": "openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20261119-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
-              "size": 1300695040,
+              "size": 1300758528,
               "checksum": {
                 "type": "sha256",
-                "value": "52c46f160b2e60652442363c036ee26b7af8582fa79268ab93e1d558d453a971",
+                "value": "17ca4853ae917f7239f14690b50cb2b9a73beda55029c9333a67123b5b551dbd",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256.asc",
@@ -343,13 +343,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-KDE-Live-aarch64-Snapshot20261117-Media.iso",
+              "file": "openSUSE-Tumbleweed-KDE-Live-aarch64-Snapshot20261118-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-aarch64-Current.iso",
-              "size": 1467299840,
+              "size": 1467301888,
               "checksum": {
                 "type": "sha256",
-                "value": "5bd3c2db7a460c551ad0ab411eda3e13f4f9276f5f068681f0a1b391c76ff00b",
+                "value": "9e4bdb049c03c04c1471e5c683b385c6e2f08fde1a08050dba51977193f56e2d",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-aarch64-Current.iso.sha256.asc",
@@ -366,13 +366,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-XFCE-Live-x86_64-Snapshot20261118-Media.iso",
+              "file": "openSUSE-Tumbleweed-XFCE-Live-x86_64-Snapshot20261119-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso",
-              "size": 1259407360,
+              "size": 1259743232,
               "checksum": {
                 "type": "sha256",
-                "value": "68e33b294c70cd78ffb1f302288fe8d8f858b5fe28b74c9d0f154c22dc9d9a0d",
+                "value": "8b145b8343b64747dd218fd86319d9c503b7ff0f47528228ab6d7a639eecd6a5",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso.sha256.asc",
@@ -381,13 +381,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-XFCE-Live-aarch64-Snapshot20261117-Media.iso",
+              "file": "openSUSE-Tumbleweed-XFCE-Live-aarch64-Snapshot20261118-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-aarch64-Current.iso",
-              "size": 1423998976,
+              "size": 1423992832,
               "checksum": {
                 "type": "sha256",
-                "value": "3542cd8e4b1cfb134666bda26bef9931dcc78cb5e381575f312d24fe93b2f5e3",
+                "value": "032e43846cf16d819c70e554d91d60f90abeb0823c94ee90b4aa27b34b1ce7c4",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-aarch64-Current.iso.sha256.asc",
@@ -404,13 +404,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-Rescue-CD-x86_64-Snapshot20261118-Media.iso",
+              "file": "openSUSE-Tumbleweed-Rescue-CD-x86_64-Snapshot20261119-Media.iso",
               "path": "tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso",
               "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso",
-              "size": 907358208,
+              "size": 909068288,
               "checksum": {
                 "type": "sha256",
-                "value": "56b13c5a00b8d21f3c2b29e53ecb7fc7fc52444368491e4256e19ff7a26a0895",
+                "value": "c931b0d2c7dd346ce1decec562d21c6500755297354ce1c3606de0150cf4a7f8",
                 "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-x86_64-Current.iso.sha256.asc",
@@ -419,13 +419,13 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "openSUSE-Tumbleweed-Rescue-CD-aarch64-Snapshot20261117-Media.iso",
+              "file": "openSUSE-Tumbleweed-Rescue-CD-aarch64-Snapshot20261118-Media.iso",
               "path": null,
               "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-aarch64-Current.iso",
-              "size": 1094324224,
+              "size": 1093011456,
               "checksum": {
                 "type": "sha256",
-                "value": "38720693e230ffe727abb4d5809aa503fa9915a5e686f5f12d34b0a536630107",
+                "value": "dd925464d72f10f47bd67a2abd4935614356bba047158df8bebdfe2ea30abdc0",
                 "url": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-aarch64-Current.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-Tumbleweed-Rescue-CD-aarch64-Current.iso.sha256.asc",
@@ -445,10 +445,10 @@
               "file": "Tumbleweed-OEM.x86_64-GNOME.iso",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-GNOME.iso",
-              "size": 3228727296,
+              "size": 3230433280,
               "checksum": {
                 "type": "sha256",
-                "value": "b0b56156ec271e975066714755c6afb0fbb80ec752768abb60f93cca447884c5",
+                "value": "e478b46a374f404ccd2127c56ef3e11e4464c4d672bd7ab899c802048db89339",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-GNOME.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-GNOME.iso.sha256.asc",
@@ -468,10 +468,10 @@
               "file": "Tumbleweed-OEM.x86_64-GNOME.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-GNOME.raw.xz",
-              "size": 2508237292,
+              "size": 2510617108,
               "checksum": {
                 "type": "sha256",
-                "value": "9cb017e5b4c43a9b1e9a94f794f96be21d64e7d5ee2bd20f5e6eed6ba467a947",
+                "value": "36e002e9a9179f1951210d01834646e3b58aa81a03bd6cb01ddfbe4a81a6f283",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-GNOME.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-GNOME.raw.xz.sha256.asc",
@@ -491,10 +491,10 @@
               "file": "Tumbleweed-OEM.x86_64-KDE.iso",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-KDE.iso",
-              "size": 3305863168,
+              "size": 3304290304,
               "checksum": {
                 "type": "sha256",
-                "value": "c8f46fe89ab05e2ad93c7d01f250eaa0adab366bdc7a56d4b3ec60b6b3c579cd",
+                "value": "90150c963b2234f33bc24449b0774fd2b236841b453a55bffc5184eee9f91fd5",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-KDE.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/iso/Tumbleweed-OEM.x86_64-KDE.iso.sha256.asc",
@@ -514,10 +514,10 @@
               "file": "Tumbleweed-OEM.x86_64-KDE.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-KDE.raw.xz",
-              "size": 2588080064,
+              "size": 2587413832,
               "checksum": {
                 "type": "sha256",
-                "value": "a4a227a152974d857e57a67eb4a12444a813e38e3cb12582e2c2c00c5ca1e029",
+                "value": "645a7affc3695c2b9d9421c8c77ff2187e3678a866cf5d4033fa046dcfaba5c4",
                 "url": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-KDE.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/tumbleweed/appliances/Tumbleweed-OEM.x86_64-KDE.raw.xz.sha256.asc",
@@ -683,10 +683,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso",
-              "size": 1645504512,
+              "size": 1645897728,
               "checksum": {
                 "type": "sha256",
-                "value": "b764018d8a22972ef9770b8e932dfaa11a8b13c1b4b144ea37a0805aa64f117a",
+                "value": "810e440ef4955456fb073998b295f4aa48fec2d315f06908c7c5785e977db728",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso.sha256.asc",
@@ -698,10 +698,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso",
-              "size": 1568038912,
+              "size": 1567387648,
               "checksum": {
                 "type": "sha256",
-                "value": "b7c44c5db10cdcbf05d2d2ff9842abe733c547d8aaf376d936ed53bf6c91bd52",
+                "value": "dae6ef21badbfc855430c6ac3ecade1b730efd178f4d7c8cc5b11835ae7332f7",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso.sha256.asc",
@@ -721,10 +721,10 @@
               "file": "Leap-16.1-Minimal-VM.x86_64-kvm-and-xen.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-kvm-and-xen.qcow2",
-              "size": 326828032,
+              "size": 328138752,
               "checksum": {
                 "type": "sha256",
-                "value": "0acbb1909fbfb9563c494dad998cd6d1ee4333dc07e338f7403eaece1de88c0b",
+                "value": "133f2ababaa327132a2b7a29562b93edb0f82f239d6ecf952e25dea1125dc2c5",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-kvm-and-xen.qcow2.sha256.asc",
@@ -739,7 +739,7 @@
               "size": 309329920,
               "checksum": {
                 "type": "sha256",
-                "value": "efee66d5f24ddb05dee9408c50136e225a2bac9d2aed1e0fcbf29241d7f92d05",
+                "value": "110035e30b62ce3c61168f72cda266462d2bdc9d3320e6396275863fe7191091",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-kvm.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-kvm.qcow2.sha256.asc",
@@ -751,10 +751,10 @@
               "file": "Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2",
-              "size": 314245120,
+              "size": 314310656,
               "checksum": {
                 "type": "sha256",
-                "value": "ad613927d551ecdce2acf1abdf246b830ebc889a7dac0625a8671ff7577bc55c",
+                "value": "7276bf188c926a0546ada94033abe655dc83138d530d970505f17f83b1b1d9f3",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-qcow2.qcow2.sha256.asc",
@@ -766,10 +766,10 @@
               "file": "Leap-16.1-Minimal-VM.s390x-s390x-kvm.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-kvm.qcow2",
-              "size": 478651904,
+              "size": 512720384,
               "checksum": {
                 "type": "sha256",
-                "value": "c8c3a2921c1bbed752fa0036a937481e5849645dd41f24b507979af18fa3cfc7",
+                "value": "10d31b19e00979c99b83b1dff83e7335f6b2ef709fce1242fad644ea88da1291",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-kvm.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-kvm.qcow2.sha256.asc",
@@ -789,10 +789,10 @@
               "file": "Leap-16.1-Minimal-VM.x86_64-kvm-and-xen-encrypt.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-kvm-and-xen-encrypt.qcow2",
-              "size": 330235904,
+              "size": 329777152,
               "checksum": {
                 "type": "sha256",
-                "value": "137e2f4ecf67055751f4caaa015708f57e5f55b725ca62dbe2d873129d03df57",
+                "value": "be8d2b55bc3815c4389f40e56198f3512894b1e2e2adbd31c25364f0ad591342",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-kvm-and-xen-encrypt.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-kvm-and-xen-encrypt.qcow2.sha256.asc",
@@ -804,10 +804,10 @@
               "file": "Leap-16.1-Minimal-VM.aarch64-kvm-encrypt.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-kvm-encrypt.qcow2",
-              "size": 320929792,
+              "size": 323026944,
               "checksum": {
                 "type": "sha256",
-                "value": "9e606e00f23dae93c47c43aea912ae827d21c5b4188ef09ac85ee70642205e86",
+                "value": "46d0ef0fcea60a6662813cce1766830a79d2655dc361af2425d86608826d5ed5",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-kvm-encrypt.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-kvm-encrypt.qcow2.sha256.asc",
@@ -827,10 +827,10 @@
               "file": "Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2",
-              "size": 341519872,
+              "size": 341676544,
               "checksum": {
                 "type": "sha256",
-                "value": "2cbf0121ccb8eef5452b43e14685715452ffa049e6a618bb165382aa1f2aab3b",
+                "value": "32f11d6fb607b8cb1239b1b73e33a2f6b375194cc9f76f30f8c75bf4d34a2655",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2.sha256.asc",
@@ -845,7 +845,7 @@
               "size": 324009984,
               "checksum": {
                 "type": "sha256",
-                "value": "d810f634121df1fa5dcee5e958e24a107f5fc2ef6efa0d134fe1482946ddb93b",
+                "value": "91cce6ae53c16bbd59c8b939e355c8d8b5358a65be6fe540fdbcbb8c755a1293",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2.sha256.asc",
@@ -865,10 +865,10 @@
               "file": "Leap-16.1-Minimal-Image.aarch64-RaspberryPi.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-Image.aarch64-RaspberryPi.raw.xz",
-              "size": 375091392,
+              "size": 375787048,
               "checksum": {
                 "type": "sha256",
-                "value": "a37ba4862ea38d6af70038490185125c7ae0a520c730b11b195eb1a3ba33ed21",
+                "value": "b2bc394bb582a7766ca6288284b8988303ee7743063a5ce4bc46f2f29589ef15",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-Image.aarch64-RaspberryPi.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-Image.aarch64-RaspberryPi.raw.xz.sha256.asc",
@@ -888,10 +888,10 @@
               "file": "Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz",
-              "size": 204696620,
+              "size": 204878292,
               "checksum": {
                 "type": "sha256",
-                "value": "1fbf191ad505869e94a142004e71dab9cae72cab068fe3c1c306b8d9f01c5436",
+                "value": "f09033113d6c74893aef20debb559a3cd696e238ab42eefd8f13654e375c93b9",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.ppc64le-ppc64le-4096-raw.raw.xz.sha256.asc",
@@ -911,10 +911,10 @@
               "file": "Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2",
-              "size": 472990720,
+              "size": 472748544,
               "checksum": {
                 "type": "sha256",
-                "value": "264b66b4e152966d32bfbcae6f44e6fe549ab8dd2e8e2036086457d39e79e5ca",
+                "value": "9f3dee69670fb86481fc2859c1afc22b3fbebf71b39726465f6fc50323cf736d",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2.sha256.asc",
@@ -934,10 +934,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base.raw.xz",
-              "size": 1240732056,
+              "size": 1241425124,
               "checksum": {
                 "type": "sha256",
-                "value": "425b8b87e8c97b904c14733e2f567fee2833abb59ce1c66c6a5c32800942607a",
+                "value": "9b6033713a5c8511aea93c62eb70e4db1959d899d8047eb0445ce921330dd0da",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base.raw.xz.sha256.asc",
@@ -949,10 +949,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base.raw.xz",
-              "size": 1176513872,
+              "size": 1178834676,
               "checksum": {
                 "type": "sha256",
-                "value": "e07abd10a49f1a34539e0301646c36177f3a9c2c87bd55dd0716d9eb936ce6b2",
+                "value": "183f5851f34c283dfee03e8302a9ea7a09c85993cd2c3433ff7d268d13cebc13",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base.raw.xz.sha256.asc",
@@ -972,10 +972,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz",
-              "size": 2041125144,
+              "size": 2030990020,
               "checksum": {
                 "type": "sha256",
-                "value": "8ffbd00ebb1971d6aee21908ff3ba2575fceff6a0e2d6f4b8a1a99571cbcbae5",
+                "value": "ba587ebcb50d8de431722670aba99b150b3858b62891b53c0c06349ccf7f84f0",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz.sha256.asc",
@@ -995,10 +995,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-qcow.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-qcow.qcow2",
-              "size": 1424621568,
+              "size": 1423835136,
               "checksum": {
                 "type": "sha256",
-                "value": "c9e628fcf16cb31f3fad40a64b9d08f476dcfcb18c2edd092fc0f2432b743e61",
+                "value": "78291958ee7cbb78ecace5087b09389558e693ae9492ad36586c6a8ae29d0bc9",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-qcow.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-qcow.qcow2.sha256.asc",
@@ -1010,10 +1010,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-qcow.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-qcow.qcow2",
-              "size": 1351548928,
+              "size": 1350303744,
               "checksum": {
                 "type": "sha256",
-                "value": "158c82a51edc4ee6efc0de4d457636bb80c23df4b91b56087564d52b8387dbc6",
+                "value": "a580aca9fcf38fef8ed97d9a1b5c9d2e5605ac8eb2a79faa76ef8efc4702a5b4",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-qcow.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-qcow.qcow2.sha256.asc",
@@ -1025,10 +1025,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-qcow.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-qcow.qcow2",
-              "size": 1400295936,
+              "size": 1419409408,
               "checksum": {
                 "type": "sha256",
-                "value": "b3cf60b54fb978959aa4bc75688147c2219496997640f847063bec5b42fb11b2",
+                "value": "9d240e99a2d24958a2b78418f557327086ab5ef961234f3a995280db0e92d370",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-qcow.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-qcow.qcow2.sha256.asc",
@@ -1048,10 +1048,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso",
-              "size": 1648633856,
+              "size": 1649158144,
               "checksum": {
                 "type": "sha256",
-                "value": "c1e930dbe758aa9753a37b8774c3f99a93bf9a206934ce855d4b837dd3ff3a3c",
+                "value": "b8abeac28f6e2b99734eee01a70c6a4a7b4ad30df5db3ea4b4064d84f6a9f3b1",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso.sha256.asc",
@@ -1063,10 +1063,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso",
-              "size": 1567799296,
+              "size": 1566619648,
               "checksum": {
                 "type": "sha256",
-                "value": "25d417e9bea2a4070a26a1904d26ffcd2a0360bace70cbee38a0a50c2f1c8fde",
+                "value": "22fa643c51b4d491382d4d8218bb7f42563948237607427e11c6f860d4973daf",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso.sha256.asc",
@@ -1086,10 +1086,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-RT.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT.raw.xz",
-              "size": 1241460936,
+              "size": 1241251692,
               "checksum": {
                 "type": "sha256",
-                "value": "ed70cef2c5d4ea2829f43b9dd80e7745ec33d1e1e56d5b77b6ceae08ee00d2b0",
+                "value": "2e9d3ce2805232d6e099a717680ae66a714af465117c982cc0b16cca2ff067f8",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT.raw.xz.sha256.asc",
@@ -1101,10 +1101,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-RT.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-RT.raw.xz",
-              "size": 1177495260,
+              "size": 1175988808,
               "checksum": {
                 "type": "sha256",
-                "value": "9a43ca42c97718a3997c19d95049f23a82433fdbf7f796c5576c910e80d27fc0",
+                "value": "b8667983f7c75a4072351a0770cc2c1e1d420adcae795359c376cfccdbf1ee7f",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-RT.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-RT.raw.xz.sha256.asc",
@@ -1124,10 +1124,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz",
-              "size": 2022247244,
+              "size": 2032882792,
               "checksum": {
                 "type": "sha256",
-                "value": "9f47253b846a95256cfe93d8527296181ab7e3e9c0504771a0c3bbcb6415294b",
+                "value": "4d686dc18d2a91dfb9fa85b15ba33135c5a66443434145a56ad82f54ebff2600",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz.sha256.asc",
@@ -1147,10 +1147,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso",
-              "size": 1551171584,
+              "size": 1550188544,
               "checksum": {
                 "type": "sha256",
-                "value": "753e9892553d51564c69f8a8c6de45f14ff0ee9d3bacaddb918875e2d4aa4415",
+                "value": "f0ffd7fbafa28a7f68fc9c878be0b7e11f661ab6258a3ced21a843f12f111017",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso.sha256.asc",
@@ -1170,10 +1170,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz",
-              "size": 1164785972,
+              "size": 1168333284,
               "checksum": {
                 "type": "sha256",
-                "value": "97c3b1ab2818af6dbef7b827ba56fa846e57d685d8c29df248f0b55c14dfda3d",
+                "value": "88dd9d7a16a2010b2579bbbb41d95af057d32645354951bf037eb599c244cfee",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz.sha256.asc",
@@ -1193,10 +1193,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz",
-              "size": 2030294200,
+              "size": 2032298536,
               "checksum": {
                 "type": "sha256",
-                "value": "9b7b33430a5167f960405159eae237ffd86cc2944a4edc6cde7c257ff49e015b",
+                "value": "4740523e0d5da8b63ebfe9f1bec533d07036e887167855792a75ad33f08364ae",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz.sha256.asc",
@@ -1216,10 +1216,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-dasd.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-dasd.raw.xz",
-              "size": 1212910812,
+              "size": 1244162400,
               "checksum": {
                 "type": "sha256",
-                "value": "4bdea799340a9dfaa8e5b25bc73dacdf57a6ac1426051c722e592c9db64c79a8",
+                "value": "16f68fb87ee1355a1c0df95bc4331485b3a5989ebee4b1165e5da254322cb6ab",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-dasd.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-dasd.raw.xz.sha256.asc",
@@ -1239,10 +1239,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-fba.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fba.raw.xz",
-              "size": 1205332716,
+              "size": 1269750420,
               "checksum": {
                 "type": "sha256",
-                "value": "b42ef474f09cdfec6bbd7863bff3fae09b28abd3aab8da19efc6aaffcfe8bd8d",
+                "value": "ef34fe11b5f0c6ac471f53bfc12afeb51fb1dd7a1528d16225b28c0d4c27e79b",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fba.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fba.raw.xz.sha256.asc",
@@ -1262,10 +1262,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-fcp.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fcp.raw.xz",
-              "size": 1259171172,
+              "size": 1282919172,
               "checksum": {
                 "type": "sha256",
-                "value": "bced758eac68f2713a05eab2eb7f44d37660b54ba6b4e262298ab306145ce970",
+                "value": "6d9ca652e63025223b3e5168ad4b1c6194babd3b9643c5e9a07b7222aa82991f",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fcp.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fcp.raw.xz.sha256.asc",
@@ -1285,10 +1285,10 @@
               "file": "Leap-16.1-OEM.x86_64-GNOME.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-GNOME.iso",
-              "size": 2993801216,
+              "size": 2995636224,
               "checksum": {
                 "type": "sha256",
-                "value": "530c138821880a4c1d9fadf0117d6451dbf3b86c55e7593be11e16e416cd7251",
+                "value": "9eff4bfba5cf24656900e48b170c685d7f219c5e2daef2c960dbb6096e410e67",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-GNOME.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-GNOME.iso.sha256.asc",
@@ -1308,10 +1308,10 @@
               "file": "Leap-16.1-OEM.x86_64-GNOME.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-GNOME.raw.xz",
-              "size": 2316808016,
+              "size": 2321921552,
               "checksum": {
                 "type": "sha256",
-                "value": "a83ef4e8c379b6c50fe4603b59dec32f3319739f289e1dc12f213d82a91002f8",
+                "value": "912268c2d773b821e614435beb45443797bbee8c493d32dae823d341c3136029",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-GNOME.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-GNOME.raw.xz.sha256.asc",
@@ -1331,10 +1331,10 @@
               "file": "Leap-16.1-OEM.x86_64-KDE.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-KDE.iso",
-              "size": 3182723072,
+              "size": 3184164864,
               "checksum": {
                 "type": "sha256",
-                "value": "85fdf4e2d5da5e6faf4aa127ed093e9e1c3d599134da7a4551fea64e8a4a7766",
+                "value": "520a3e6ac57f6675a070628da96fd22b772646b0c73c4b32bf3dcd9e53acfd27",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-KDE.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-KDE.iso.sha256.asc",
@@ -1354,10 +1354,10 @@
               "file": "Leap-16.1-OEM.x86_64-KDE.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-KDE.raw.xz",
-              "size": 2502912844,
+              "size": 2506030392,
               "checksum": {
                 "type": "sha256",
-                "value": "0e8ee3032de249278fef97f4e1c297a177788da9d3aeb7af153d1219f15e8e46",
+                "value": "5e62241a20a54b3c149c8e658fb3ef979a10e020ee08de900cfcd2fe3925d55c",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-KDE.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-KDE.raw.xz.sha256.asc",

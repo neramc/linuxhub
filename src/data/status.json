@@ -151,8 +151,8 @@
   },
   "gentoo": {
     "releases": {
-      "failingSince": "2026-11-20",
-      "lastError": "newest version went backwards (20261115 → 20261101)"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -341,8 +341,8 @@
   },
   "puppy-linux": {
     "releases": {
-      "failingSince": "2026-11-20",
-      "lastError": "robots.txt of https://forum.puppylinux.com could not be read (server error or no answer), so the host is closed for this run: https://forum.puppylinux.com/puppy-linux-collection"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": "2026-11-13",
