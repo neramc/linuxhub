@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -177,14 +177,6 @@
       "url": "https://deb.campolargo.pr.gov.br/ubuntu/releases/",
       "country": "BR",
       "name": "Prefeitura Municipal de Campo Largo",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.pop-sc.rnp.br/mirror/ubuntu-releases/",
-      "country": "BR",
-      "name": "PoP-SC/RNP",
       "lat": null,
       "lon": null,
       "score": null
@@ -449,14 +441,6 @@
       "url": "https://mirror.dkm.cz/ubuntu-releases/",
       "country": "CZ",
       "name": "Vodafone Czech Republic a. s.",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.it4i.cz/ubuntu-releases/",
-      "country": "CZ",
-      "name": "IT4Innovations National Supercomputing Center",
       "lat": null,
       "lon": null,
       "score": null

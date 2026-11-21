@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -793,6 +793,14 @@
       "url": "https://mirror.accum.se/mirror/rockylinux.org/",
       "country": "SE",
       "name": "mirror.accum.se",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.admax.se/rocky/",
+      "country": "SE",
+      "name": "mirror.admax.se",
       "lat": null,
       "lon": null,
       "score": null
