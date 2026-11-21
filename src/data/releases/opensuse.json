@@ -6,7 +6,7 @@
     "https://get.opensuse.org/leap/16.1/",
     "https://endoflife.date/opensuse"
   ],
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "releases": [
     {
       "version": "20261119",
@@ -683,10 +683,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso",
-              "size": 1645897728,
+              "size": 1649895424,
               "checksum": {
                 "type": "sha256",
-                "value": "810e440ef4955456fb073998b295f4aa48fec2d315f06908c7c5785e977db728",
+                "value": "16e07dcd1477a5932044a8a49cdb73aff600cf444b0eadc2bc7e33a6569b68c5",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-SelfInstall.iso.sha256.asc",
@@ -698,10 +698,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso",
-              "size": 1567387648,
+              "size": 1568829440,
               "checksum": {
                 "type": "sha256",
-                "value": "dae6ef21badbfc855430c6ac3ecade1b730efd178f4d7c8cc5b11835ae7332f7",
+                "value": "79e1945427d8e3013c006246591586e19466aef36c084d5c50f732e0736f9059",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-SelfInstall.iso.sha256.asc",
@@ -827,10 +827,10 @@
               "file": "Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2",
-              "size": 341676544,
+              "size": 341696000,
               "checksum": {
                 "type": "sha256",
-                "value": "32f11d6fb607b8cb1239b1b73e33a2f6b375194cc9f76f30f8c75bf4d34a2655",
+                "value": "d30c848752e54d3e05d1c07de8438c4f0cbd23fc690e402942ae61e08d00c911",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.x86_64-Cloud.qcow2.sha256.asc",
@@ -842,10 +842,10 @@
               "file": "Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2",
-              "size": 324009984,
+              "size": 324927488,
               "checksum": {
                 "type": "sha256",
-                "value": "91cce6ae53c16bbd59c8b939e355c8d8b5358a65be6fe540fdbcbb8c755a1293",
+                "value": "e886cc891e17fbf6921ee9afe4a4c20286599138d03a5711f8156f406984872f",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.aarch64-Cloud.qcow2.sha256.asc",
@@ -911,10 +911,10 @@
               "file": "Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2",
-              "size": 472748544,
+              "size": 473007616,
               "checksum": {
                 "type": "sha256",
-                "value": "9f3dee69670fb86481fc2859c1afc22b3fbebf71b39726465f6fc50323cf736d",
+                "value": "6950e55291a7fe649a3ed3404b2cc4153eb0fbcdb993f349e8c12345602669b6",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Minimal-VM.s390x-s390x-Cloud.qcow2.sha256.asc",
@@ -934,10 +934,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base.raw.xz",
-              "size": 1241425124,
+              "size": 1238969364,
               "checksum": {
                 "type": "sha256",
-                "value": "9b6033713a5c8511aea93c62eb70e4db1959d899d8047eb0445ce921330dd0da",
+                "value": "b320ffbb9ba7af4b2325d8a6234012af122b7464f47b94e77159e1b22be1ef50",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base.raw.xz.sha256.asc",
@@ -949,10 +949,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base.raw.xz",
-              "size": 1178834676,
+              "size": 1176375672,
               "checksum": {
                 "type": "sha256",
-                "value": "183f5851f34c283dfee03e8302a9ea7a09c85993cd2c3433ff7d268d13cebc13",
+                "value": "4a61f9967f74d032448071bc6ba63a8dfcaf580782389e8c8ae5e498a4a01040",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base.raw.xz.sha256.asc",
@@ -972,10 +972,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz",
-              "size": 2030990020,
+              "size": 2033031628,
               "checksum": {
                 "type": "sha256",
-                "value": "ba587ebcb50d8de431722670aba99b150b3858b62891b53c0c06349ccf7f84f0",
+                "value": "65abb5f71f0aa21f69f0488681f40ab98650fe1739cb16c99c1d8e531a861d24",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-encrypted.raw.xz.sha256.asc",
@@ -995,10 +995,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-qcow.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-qcow.qcow2",
-              "size": 1423835136,
+              "size": 1424687104,
               "checksum": {
                 "type": "sha256",
-                "value": "78291958ee7cbb78ecace5087b09389558e693ae9492ad36586c6a8ae29d0bc9",
+                "value": "237f0b228689ac07c4fb6e805d3f1d38886c6e4e3de310f1e94ea19d06221a5d",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-qcow.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-qcow.qcow2.sha256.asc",
@@ -1010,10 +1010,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-qcow.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-qcow.qcow2",
-              "size": 1350303744,
+              "size": 1353187328,
               "checksum": {
                 "type": "sha256",
-                "value": "a580aca9fcf38fef8ed97d9a1b5c9d2e5605ac8eb2a79faa76ef8efc4702a5b4",
+                "value": "c6b00bb00ebcc174c1884b778c802397aecccc283b86acb818db740242cab42c",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-qcow.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-qcow.qcow2.sha256.asc",
@@ -1025,10 +1025,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-qcow.qcow2",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-qcow.qcow2",
-              "size": 1419409408,
+              "size": 1388272640,
               "checksum": {
                 "type": "sha256",
-                "value": "9d240e99a2d24958a2b78418f557327086ab5ef961234f3a995280db0e92d370",
+                "value": "7007c5a34240a54e56c91a289d259320a46e184a1a761e8ca01cb64781d9d2ae",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-qcow.qcow2.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-qcow.qcow2.sha256.asc",
@@ -1048,10 +1048,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso",
-              "size": 1649158144,
+              "size": 1649027072,
               "checksum": {
                 "type": "sha256",
-                "value": "b8abeac28f6e2b99734eee01a70c6a4a7b4ad30df5db3ea4b4064d84f6a9f3b1",
+                "value": "5917debaac13cf8be969b6ab6946ba0c9bba705c91439b147dfa49994aa0fdd5",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.x86_64-Base-RT-SelfInstall.iso.sha256.asc",
@@ -1063,10 +1063,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso",
-              "size": 1566619648,
+              "size": 1568323584,
               "checksum": {
                 "type": "sha256",
-                "value": "22fa643c51b4d491382d4d8218bb7f42563948237607427e11c6f860d4973daf",
+                "value": "7334bd0f874f382b00fcf639bca3d804d23e3b782be0b3b817a8bc33ac7c1edf",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-RT-SelfInstall.iso.sha256.asc",
@@ -1086,10 +1086,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-RT.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT.raw.xz",
-              "size": 1241251692,
+              "size": 1241085100,
               "checksum": {
                 "type": "sha256",
-                "value": "2e9d3ce2805232d6e099a717680ae66a714af465117c982cc0b16cca2ff067f8",
+                "value": "3d596cba0a1ce8fbec2cb24a4aca477bf95d63b0e5f27c7f71c94eeee56601a3",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT.raw.xz.sha256.asc",
@@ -1101,10 +1101,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-RT.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-RT.raw.xz",
-              "size": 1175988808,
+              "size": 1176552664,
               "checksum": {
                 "type": "sha256",
-                "value": "b8667983f7c75a4072351a0770cc2c1e1d420adcae795359c376cfccdbf1ee7f",
+                "value": "698d85a2e0a591384a9621bc74317374f05418347d3c78d8cc725b94927d4bdf",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-RT.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-RT.raw.xz.sha256.asc",
@@ -1124,10 +1124,10 @@
               "file": "Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz",
-              "size": 2032882792,
+              "size": 2032612088,
               "checksum": {
                 "type": "sha256",
-                "value": "4d686dc18d2a91dfb9fa85b15ba33135c5a66443434145a56ad82f54ebff2600",
+                "value": "e32914e4b49b5b0bc150d27e25d988c5ee26690b1fefb378b3cd14a0a71d10d5",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.x86_64-Base-RT-encrypted.raw.xz.sha256.asc",
@@ -1147,10 +1147,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso",
-              "size": 1550188544,
+              "size": 1550581760,
               "checksum": {
                 "type": "sha256",
-                "value": "f0ffd7fbafa28a7f68fc9c878be0b7e11f661ab6258a3ced21a843f12f111017",
+                "value": "0ea52576068a322483a63e37472f06620afe80c2e957c07a14203c319216a354",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-Immutable.aarch64-Base-64kb-SelfInstall.iso.sha256.asc",
@@ -1170,10 +1170,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz",
-              "size": 1168333284,
+              "size": 1168612304,
               "checksum": {
                 "type": "sha256",
-                "value": "88dd9d7a16a2010b2579bbbb41d95af057d32645354951bf037eb599c244cfee",
+                "value": "5c51292f0b891f23d574f92764958b4902c504b277ed30e70a777aaa183f5039",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb.raw.xz.sha256.asc",
@@ -1193,10 +1193,10 @@
               "file": "Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz",
-              "size": 2032298536,
+              "size": 2037606596,
               "checksum": {
                 "type": "sha256",
-                "value": "4740523e0d5da8b63ebfe9f1bec533d07036e887167855792a75ad33f08364ae",
+                "value": "81a8667e529485780b6797f4ee65b8c025d8594adb005eff47f73516d79692c0",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.aarch64-Base-64kb-encrypted.raw.xz.sha256.asc",
@@ -1216,10 +1216,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-dasd.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-dasd.raw.xz",
-              "size": 1244162400,
+              "size": 1233328732,
               "checksum": {
                 "type": "sha256",
-                "value": "16f68fb87ee1355a1c0df95bc4331485b3a5989ebee4b1165e5da254322cb6ab",
+                "value": "ada93c00d2de9c854700f7a94f293af702a9a847ba2f248f9d620319c1c48001",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-dasd.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-dasd.raw.xz.sha256.asc",
@@ -1239,10 +1239,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-fba.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fba.raw.xz",
-              "size": 1269750420,
+              "size": 1241066652,
               "checksum": {
                 "type": "sha256",
-                "value": "ef34fe11b5f0c6ac471f53bfc12afeb51fb1dd7a1528d16225b28c0d4c27e79b",
+                "value": "c029bfe3a4337ee4d9ef46b886d7935be2a800ad0b0762592b64abd24bc728ea",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fba.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fba.raw.xz.sha256.asc",
@@ -1262,10 +1262,10 @@
               "file": "Leap-16.1-Immutable.s390x-Base-fcp.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fcp.raw.xz",
-              "size": 1282919172,
+              "size": 1363324396,
               "checksum": {
                 "type": "sha256",
-                "value": "6d9ca652e63025223b3e5168ad4b1c6194babd3b9643c5e9a07b7222aa82991f",
+                "value": "b36c5be9d202ea1a01d8597d0c4f46255405f756afd752371b3048d206fbb8f3",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fcp.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-Immutable.s390x-Base-fcp.raw.xz.sha256.asc",
@@ -1285,10 +1285,10 @@
               "file": "Leap-16.1-OEM.x86_64-GNOME.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-GNOME.iso",
-              "size": 2995636224,
+              "size": 2995243008,
               "checksum": {
                 "type": "sha256",
-                "value": "9eff4bfba5cf24656900e48b170c685d7f219c5e2daef2c960dbb6096e410e67",
+                "value": "6545b00ad8a1e654ca47943cd3191e5d5c87527c833bf0db34425589609ff974",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-GNOME.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-GNOME.iso.sha256.asc",
@@ -1308,10 +1308,10 @@
               "file": "Leap-16.1-OEM.x86_64-GNOME.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-GNOME.raw.xz",
-              "size": 2321921552,
+              "size": 2317911932,
               "checksum": {
                 "type": "sha256",
-                "value": "912268c2d773b821e614435beb45443797bbee8c493d32dae823d341c3136029",
+                "value": "e85539e910241fc7b9d68ff6f67a6b8e27b933575377b9471c4494ee9284bf83",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-GNOME.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-GNOME.raw.xz.sha256.asc",
@@ -1331,10 +1331,10 @@
               "file": "Leap-16.1-OEM.x86_64-KDE.iso",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-KDE.iso",
-              "size": 3184164864,
+              "size": 3183509504,
               "checksum": {
                 "type": "sha256",
-                "value": "520a3e6ac57f6675a070628da96fd22b772646b0c73c4b32bf3dcd9e53acfd27",
+                "value": "470ee11d63a990229aa8198b32fc2ed06f237690e7a170f46eee0dae0642e3e2",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-KDE.iso.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/iso/Leap-16.1-OEM.x86_64-KDE.iso.sha256.asc",
@@ -1354,10 +1354,10 @@
               "file": "Leap-16.1-OEM.x86_64-KDE.raw.xz",
               "path": null,
               "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-KDE.raw.xz",
-              "size": 2506030392,
+              "size": 2504186088,
               "checksum": {
                 "type": "sha256",
-                "value": "5e62241a20a54b3c149c8e658fb3ef979a10e020ee08de900cfcd2fe3925d55c",
+                "value": "77e4b3c53837e1106c640c9832847012331180cfa8597c537fece9181e075123",
                 "url": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-KDE.raw.xz.sha256"
               },
               "signatureUrl": "https://download.opensuse.org/distribution/leap/16.1/appliances/Leap-16.1-OEM.x86_64-KDE.raw.xz.sha256.asc",
