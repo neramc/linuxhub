@@ -9,16 +9,13 @@
  *   `bazzite-gnome-nvidia`, `bazzite-deck`, `bazzite-deck-gnome`,
  *   `bazzite-deck-nvidia`, `bazzite-deck-nvidia-gnome`) and links, for each,
  *   the Live ISO (`<image>-stable-live-amd64.iso`, with its `-CHECKSUM` and
- *   `.sig`) and the "Legacy installer" ISO (`<image>-stable-amd64.iso` with
- *   its `-CHECKSUM`; the page says it will be phased out). The ten names are
- *   encoded here. The module reads the picker's option lists and the URL
- *   templates in its script on every run and throws when either changed, so a
- *   new device, desktop or file naming is never silently left out.
+ *   `.sig`). The ten names are encoded here. The module reads the picker's
+ *   option lists and the URL templates in its script on every run and throws
+ *   when either changed, so a new device, desktop or file naming is never
+ *   silently left out.
  * - download.bazzite.gg (Bazzite's download CDN): the ISOs and their
  *   `-CHECKSUM` files (SHA-256) and `.sig` signatures. A Live ISO without a
- *   checksum is a format change and throws. A legacy installer is skipped
- *   (and logged) when the CDN does not serve it: the page links
- *   `bazzite-gnome-nvidia-open-stable-amd64.iso`, which answers 404 today.
+ *   checksum is a format change and throws.
  * - ghcr.io/ublue-os/bazzite:stable (the OS image registry the picker links
  *   to; anonymous pull token, manifest annotations only): the version
  *   (`org.opencontainers.image.version`, e.g. 44.20261012.1) and build time
@@ -29,10 +26,13 @@
  *   testing and unstable builds, so the newest stable one drops out within
  *   days.
  *
- * The Live ISOs are rebuilt under fixed names with each stable build; the
- * legacy installers are frozen builds from October 2025 (their Last-Modified)
- * that update themselves after installing. They are listed as separate
- * editions because the page offers both for every image.
+ * The Live ISOs are rebuilt under fixed names with each stable build. The
+ * "Legacy installer" ISOs (`<image>-stable-amd64.iso`, frozen October 2025
+ * builds that update themselves after installing) were taken off the page in
+ * November 2026: the picker script no longer writes that name, and the result
+ * view offers only the Live ISO, its checksum and its signature. The CDN still
+ * serves those frozen ISOs, but the page no longer hands them out, so they are
+ * not listed.
  *
  * Excluded: testing and unstable builds, the FOSS Torrents link (a
  * third-party site, no torrent from the project: torrentUrl is null), and the
@@ -88,7 +88,6 @@ const PICKER_OPTIONS: Record<string, string[]> = {
 const SCRIPT_MARKERS = [
   "https://download.bazzite.gg/",
   "-stable-live-amd64.iso",
-  "-stable-amd64.iso",
   "-CHECKSUM",
   ".iso.sig",
   "'bazzite-deck'",
@@ -157,7 +156,7 @@ function artifact(file: string, sha256: string, checksumUrl: string, signatureUr
 export default defineSource({
   slug: "bazzite",
   hosts: ["download.bazzite.gg"],
-  async releases(ctx) {
+  async releases() {
     await checkPicker();
 
     const token = (await getJson<{ token?: string }>(TOKEN)).token;
@@ -176,11 +175,10 @@ export default defineSource({
     const built = isoDay(manifest.annotations?.["org.opencontainers.image.created"]);
 
     const live: Edition[] = [];
-    const legacy: Edition[] = [];
     for (const def of IMAGES) {
       const liveFile = `${def.image}-stable-live-amd64.iso`;
       const liveSum = await sha256Of(liveFile);
-      // The Live ISO is the picker's main download: a missing one is a format change.
+      // The Live ISO is the picker's only download: a missing one is a format change.
       if (!liveSum.sha256) throw new Error(`no checksum for ${liveFile} on ${CDN}`);
       const signatureUrl = `${CDN}${liveFile}.sig`;
       live.push({
@@ -197,20 +195,6 @@ export default defineSource({
           ),
         ],
       });
-
-      const legacyFile = `${def.image}-stable-amd64.iso`;
-      const old = await sha256Of(legacyFile);
-      if (!old.sha256 || !(await served(`${CDN}${legacyFile}`))) {
-        ctx.log(`legacy installer ${legacyFile} is not served by the CDN, left out`);
-        continue;
-      }
-      legacy.push({
-        id: `${def.image}-legacy`,
-        name: `${def.name} (legacy installer)`,
-        desktop: def.desktop,
-        kind: "desktop",
-        artifacts: [artifact(legacyFile, old.sha256, old.url, null)],
-      });
     }
 
     const releases: Release[] = [
@@ -221,7 +205,7 @@ export default defineSource({
         releaseDate: built,
         eol: null,
         notesUrl: `https://github.com/ublue-os/bazzite/releases/tag/${version}`,
-        editions: [...live, ...legacy],
+        editions: live,
       },
     ];
     return { sources: [HOME, REGISTRY], releases };

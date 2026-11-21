@@ -37,8 +37,12 @@
  *   makes it unreadable (below). BookwormPup64 lives in the tree itself: its
  *   newest numbered folder (10.0.12/) holds the ISO and `<iso>-checksum.txt`
  *   (SHA-256).
- * - puppylinux-woof-ce.github.io (home page, "Download Sites"): the official
- *   mirror list of that tree.
+ * - puppylinux-woof-ce.github.io (home page, "Ibiblio & mirrors" section): the
+ *   official mirror list of that tree. The page was rebuilt in November 2026:
+ *   the list used to be the "Download Sites" section (`id="download-sites"`)
+ *   and is now the `home-mirrors` section, still closed by the sentence
+ *   "Mirrors may take up to a day". It names Ibiblio, NLUUG, UoC, AARNet and
+ *   UMBC/LUG; Internode was dropped by the page.
  *
  * Shape. Puppy has no single version line, so a release is a base as the page
  * groups it: version = the base version of the row ("13", "12", "26.04",
@@ -62,9 +66,10 @@
  *   board, not on the page's table) and the SourceForge folders the page does
  *   not link (BookwormPup64-ghtest, the *_EOL folders).
  *
- * Mirrors: the HTTPS entries of the home page's list (ibiblio's own entry is
- * published as http://, upgraded because the collection page links it as
- * https://; UoC, AARNet and Internode are published as http:// only). They
+ * Mirrors: the HTTPS entries of the home page's "Ibiblio & mirrors" list
+ * (ibiblio's own entry is published as http://, upgraded because the
+ * collection page links it as https://; UoC and AARNet are published as
+ * http:// only). They
  * carry the ibiblio tree, so only BookwormPup64 (path set) is mirrored; the
  * SourceForge builds are downloaded from SourceForge's own redirector (path
  * null). Countries are not stated by the list except "USA" for UMBC: set from
@@ -401,10 +406,11 @@ export default defineSource({
   },
   async mirrors() {
     const home = await getText(HOME, { accept: "text/html" });
-    const at = home.indexOf('id="download-sites"');
-    if (at < 0) throw new Error(`no "Download Sites" section on ${HOME}`);
-    const stop = home.indexOf("Mirrors may take up to a day", at);
-    const section = home.slice(at, stop < 0 ? undefined : stop);
+    const start = home.search(/<section[^>]+class="[^"]*home-mirrors[^"]*"/);
+    if (start < 0) throw new Error(`no "Ibiblio & mirrors" section on ${HOME}`);
+    const stop = home.indexOf("</section>", start);
+    if (stop < 0) throw new Error(`unclosed "Ibiblio & mirrors" section on ${HOME}`);
+    const section = home.slice(start, stop);
     const mirrors: Mirror[] = [];
     for (const m of section.matchAll(/<a href="(https?:\/\/[^"]*puppylinux\/?)">([^<]+)<\/a>/g)) {
       const url = new URL(m[1] as string);
