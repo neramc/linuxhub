@@ -61,8 +61,8 @@
   },
   "cachyos": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-22",
+      "lastError": "Desktop Edition on https://cachyos.org/download/ no longer lists cdn77.cachyos.org as a web seed"
     },
     "mirrors": {
       "failingSince": null,
@@ -461,8 +461,8 @@
   },
   "vanilla-os": {
     "releases": {
-      "failingSince": "2026-11-22",
-      "lastError": "robots.txt of https://vanillaos.org could not be read (server error or no answer), so the host is closed for this run: https://vanillaos.org/feed.xml"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
