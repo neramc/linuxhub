@@ -33,12 +33,22 @@
  * `OracleLinux-R8-U10-aarch64-boot-uek.iso`. Such a file is kept with
  * `checksum: null` (logged) instead of guessing that the entry is meant for
  * it; any other file the checksum file does not list makes the sync throw.
+ *
+ * Known upstream quirk: the 9.9 checksum files are published as
+ * `OracleLinux-R9-U9-Server-<arch>.checksums` (plural), while the list links
+ * the singular `...checksum` name, which answers 404 (the directory index of
+ * linux.oracle.com/security/gpg/checksum/ lists only the plural file for 9.9
+ * and only the singular name for every other update). A linked checksum file
+ * that answers 404 is therefore retried once under the plural name in the same
+ * directory (logged); the URL that answered is the one in `checksum.url`. Any
+ * other failure still throws, so a checksum file Oracle has not published at
+ * all is not papered over.
  * Torrents are not published (torrentUrl null); sizes are left to run.ts
  * (one HEAD per ISO).
  */
 
 import type { Artifact, Edition, Release } from "../../../src/lib/data-schemas";
-import { getText } from "../http";
+import { getText, HttpError } from "../http";
 import { parseChecksums } from "../lib/checksums";
 import { endOfLife } from "../lib/endoflife";
 import { originAsMirror } from "../lib/mirrors";
@@ -111,6 +121,28 @@ function checksumLinks(html: string) {
   return out;
 }
 
+const PLURAL_CHKSUM = /-Server-[a-z0-9_]+\.checksum$/;
+
+/**
+ * The checksum file the list links, or the plural-named file beside it when the
+ * linked name answers 404 (see the second known quirk above). Returns the URL
+ * that answered, so `checksum.url` names the file the digest really came from.
+ */
+async function checksumFile(
+  url: string,
+  log: (message: string) => void,
+): Promise<{ url: string; sums: Map<string, string> }> {
+  try {
+    return { url, sums: parseChecksums(await getText(url)) };
+  } catch (error) {
+    const plural = url.replace(PLURAL_CHKSUM, (name) => `${name}s`);
+    if (!(error instanceof HttpError) || error.status !== 404 || plural === url) throw error;
+    const sums = parseChecksums(await getText(plural));
+    log(`${url}: 404, reading the checksum file Oracle published as ${plural}`);
+    return { url: plural, sums };
+  }
+}
+
 export default defineSource({
   slug: "oracle-linux",
   hosts: ["yum.oracle.com", "linux.oracle.com"],
@@ -143,10 +175,14 @@ export default defineSource({
       if (!files) throw new Error(`${GPG}: no checksum file for Oracle Linux ${version}`);
 
       const sums = new Map<string, Map<string, string>>();
+      const sumUrls = new Map<string, string>();
       for (const arch of new Set(ofMajor.filter((i) => i.update === update).map((i) => i.arch))) {
-        const url = files.get(arch);
-        if (!url) throw new Error(`${GPG}: no checksum file for Oracle Linux ${version} ${arch}`);
-        sums.set(arch, parseChecksums(await getText(url)));
+        const linked = files.get(arch);
+        if (!linked)
+          throw new Error(`${GPG}: no checksum file for Oracle Linux ${version} ${arch}`);
+        const file = await checksumFile(linked, ctx.log);
+        sums.set(arch, file.sums);
+        sumUrls.set(arch, file.url);
       }
 
       const editions: Edition[] = [];
@@ -156,7 +192,7 @@ export default defineSource({
           .map((i) => {
             const arch = ARCHES[i.arch] as Artifact["arch"];
             const url = `${ROOT}${i.path}`;
-            const sumUrl = files.get(i.arch) as string;
+            const sumUrl = sumUrls.get(i.arch) as string;
             const all = sums.get(i.arch) as Map<string, string>;
             const sha256 = all.get(i.file) ?? null;
             if (sha256 !== null && !/^[0-9a-f]{64}$/.test(sha256))
