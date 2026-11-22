@@ -81,8 +81,8 @@
   },
   "debian": {
     "releases": {
-      "failingSince": "2026-11-21",
-      "lastError": "HTTP 500"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
@@ -151,8 +151,8 @@
   },
   "gentoo": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-22",
+      "lastError": "newest version went backwards (20261115 → 20261101)"
     },
     "mirrors": {
       "failingSince": null,
@@ -461,8 +461,8 @@
   },
   "vanilla-os": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-22",
+      "lastError": "robots.txt of https://vanillaos.org could not be read (server error or no answer), so the host is closed for this run: https://vanillaos.org/feed.xml"
     },
     "mirrors": {
       "failingSince": null,
