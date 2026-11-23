@@ -291,8 +291,8 @@
   },
   "oracle-linux": {
     "releases": {
-      "failingSince": "2026-11-18",
-      "lastError": "HTTP 404 for https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-x86_64.checksum"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,

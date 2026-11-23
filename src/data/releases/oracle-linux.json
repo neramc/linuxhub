@@ -5,15 +5,15 @@
     "https://linux.oracle.com/security/gpg/",
     "https://endoflife.date/oracle-linux"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-11-23",
   "releases": [
     {
-      "version": "10.2",
+      "version": "10.3",
       "channel": "stable",
       "codename": null,
       "releaseDate": null,
       "eol": "2035-06-30",
-      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.2/",
+      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/10/relnotes10.3/",
       "editions": [
         {
           "id": "full-iso",
@@ -24,14 +24,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "OracleLinux-R10-U2-x86_64-dvd.iso",
-              "path": "OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-dvd.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-dvd.iso",
-              "size": 11304716288,
+              "file": "OracleLinux-R10-U3-x86_64-dvd.iso",
+              "path": "OL10/u3/x86_64/OracleLinux-R10-U3-x86_64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u3/x86_64/OracleLinux-R10-U3-x86_64-dvd.iso",
+              "size": 11915247616,
               "checksum": {
                 "type": "sha256",
-                "value": "1ce70064f677e9af4ef6ff3bcd0d2de26e956236b36d2c857b533588aa06958b",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-x86_64.checksum"
+                "value": "0f2c871bb0499c1ebd051a1111064c727bda58d1116418c475ecc5b4f8257ab3",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U3-Server-x86_64.checksum"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -39,14 +39,14 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "OracleLinux-R10-U2-aarch64-dvd.iso",
-              "path": "OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-dvd.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-dvd.iso",
-              "size": 10541289472,
+              "file": "OracleLinux-R10-U3-aarch64-dvd.iso",
+              "path": "OL10/u3/aarch64/OracleLinux-R10-U3-aarch64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u3/aarch64/OracleLinux-R10-U3-aarch64-dvd.iso",
+              "size": 11045048320,
               "checksum": {
                 "type": "sha256",
-                "value": "5b6c6512f2e3dc119679e29397ed42f041f7b7b349dc3c12b18c6f9dd36c3000",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-aarch64.checksum"
+                "value": "f7af00b2cd35b1e3c8811caf01c8d85b5ce32e22f29c431586395887c21248b0",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U3-Server-aarch64.checksum"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -62,14 +62,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "OracleLinux-R10-U2-x86_64-boot.iso",
-              "path": "OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot.iso",
-              "size": 1443205120,
+              "file": "OracleLinux-R10-U3-x86_64-boot.iso",
+              "path": "OL10/u3/x86_64/OracleLinux-R10-U3-x86_64-boot.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u3/x86_64/OracleLinux-R10-U3-x86_64-boot.iso",
+              "size": 1349191680,
               "checksum": {
                 "type": "sha256",
-                "value": "b15149fe6691844cfb82c764d6e79f97f9856286ea648ee45809bc5a4fa79aee",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-x86_64.checksum"
+                "value": "7913cc16ebbb4d6a51395815180334987942784ab1dd250a54f5cd72836f2ed5",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U3-Server-x86_64.checksum"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -85,14 +85,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "OracleLinux-R10-U2-x86_64-boot-uek.iso",
-              "path": "OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot-uek.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/x86_64/OracleLinux-R10-U2-x86_64-boot-uek.iso",
-              "size": 1406539776,
+              "file": "OracleLinux-R10-U3-x86_64-boot-uek.iso",
+              "path": "OL10/u3/x86_64/OracleLinux-R10-U3-x86_64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u3/x86_64/OracleLinux-R10-U3-x86_64-boot-uek.iso",
+              "size": 1381648384,
               "checksum": {
                 "type": "sha256",
-                "value": "8277b1364021e7aea11a1e25930e1ca1784c24de5102fa2b20021a762f2b331a",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-x86_64.checksum"
+                "value": "c219a63470d7de62b6cbeb2073957de7f8bc73098d1d6996ee8efbaebe6be628",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U3-Server-x86_64.checksum"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -100,14 +100,14 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "OracleLinux-R10-U2-aarch64-boot-uek.iso",
-              "path": "OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-boot-uek.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u2/aarch64/OracleLinux-R10-U2-aarch64-boot-uek.iso",
-              "size": 1548683264,
+              "file": "OracleLinux-R10-U3-aarch64-boot-uek.iso",
+              "path": "OL10/u3/aarch64/OracleLinux-R10-U3-aarch64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u3/aarch64/OracleLinux-R10-U3-aarch64-boot-uek.iso",
+              "size": 1453912064,
               "checksum": {
                 "type": "sha256",
-                "value": "b1e62e4cab34b6aec9ac8f31ba364ab5f05c9e1e55c0e3c8867fe21cbafbaa9a",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U2-Server-aarch64.checksum"
+                "value": "79f0a7e285adb58d99e0e9eac92a07b7b209ef4ed484d57fb9317148a408db39",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U3-Server-aarch64.checksum"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -117,12 +117,12 @@
       ]
     },
     {
-      "version": "9.8",
+      "version": "9.9",
       "channel": "stable",
       "codename": null,
-      "releaseDate": "2026-06-23",
+      "releaseDate": null,
       "eol": "2032-06-30",
-      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/9/relnotes9.8/",
+      "notesUrl": "https://docs.oracle.com/en/operating-systems/oracle-linux/9/relnotes9.9/",
       "editions": [
         {
           "id": "full-iso",
@@ -133,14 +133,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "OracleLinux-R9-U8-x86_64-dvd.iso",
-              "path": "OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-dvd.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-dvd.iso",
-              "size": 16489906176,
+              "file": "OracleLinux-R9-U9-x86_64-dvd.iso",
+              "path": "OL9/u9/x86_64/OracleLinux-R9-U9-x86_64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u9/x86_64/OracleLinux-R9-U9-x86_64-dvd.iso",
+              "size": 17069768704,
               "checksum": {
                 "type": "sha256",
-                "value": "91bb95cb8e4d1ad1c496c9a87efcba3bf9d5ec976474910e9950a3fa8576428b",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-x86_64.checksum"
+                "value": "d78cbb60d5e3477171006b0e3aa63538481075760cb3992eea4a980490eaade1",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-x86_64.checksums"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -148,14 +148,14 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "OracleLinux-R9-U8-aarch64-dvd.iso",
-              "path": "OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-dvd.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-dvd.iso",
-              "size": 14188539904,
+              "file": "OracleLinux-R9-U9-aarch64-dvd.iso",
+              "path": "OL9/u9/aarch64/OracleLinux-R9-U9-aarch64-dvd.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u9/aarch64/OracleLinux-R9-U9-aarch64-dvd.iso",
+              "size": 14719684608,
               "checksum": {
                 "type": "sha256",
-                "value": "5b7ccf99953dc5001e4df3d0b01c0673397590f23e5cab313df03bd0fa223ba6",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-aarch64.checksum"
+                "value": "c371a53261b46e903a3738df6bce5d1b94afd133e2c817523df233ce401e741c",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-aarch64.checksums"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -171,14 +171,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "OracleLinux-R9-U8-x86_64-boot.iso",
-              "path": "OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot.iso",
-              "size": 1561657344,
+              "file": "OracleLinux-R9-U9-x86_64-boot.iso",
+              "path": "OL9/u9/x86_64/OracleLinux-R9-U9-x86_64-boot.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u9/x86_64/OracleLinux-R9-U9-x86_64-boot.iso",
+              "size": 1614675968,
               "checksum": {
                 "type": "sha256",
-                "value": "fec471a2f0324e958d18a55e8704a61cd39a49f029448699664bd4e97496dd5f",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-x86_64.checksum"
+                "value": "d14fe7f199db92a994710984b871cfb39d7f93f4a165d18f0481c1d9f35deefd",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-x86_64.checksums"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -194,14 +194,14 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "OracleLinux-R9-U8-x86_64-boot-uek.iso",
-              "path": "OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot-uek.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/x86_64/OracleLinux-R9-U8-x86_64-boot-uek.iso",
-              "size": 1534459904,
+              "file": "OracleLinux-R9-U9-x86_64-boot-uek.iso",
+              "path": "OL9/u9/x86_64/OracleLinux-R9-U9-x86_64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u9/x86_64/OracleLinux-R9-U9-x86_64-boot-uek.iso",
+              "size": 1584496640,
               "checksum": {
                 "type": "sha256",
-                "value": "cc95730b408381762b225520de8916685be53133c708fad32cfe3b8519b4d190",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-x86_64.checksum"
+                "value": "e81b295032d62b40399b33516f129ce08412fc4fe40fd5ea7657fca2e4cd208f",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-x86_64.checksums"
               },
               "signatureUrl": null,
               "torrentUrl": null
@@ -209,14 +209,14 @@
             {
               "arch": "aarch64",
               "format": "iso",
-              "file": "OracleLinux-R9-U8-aarch64-boot-uek.iso",
-              "path": "OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-boot-uek.iso",
-              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u8/aarch64/OracleLinux-R9-U8-aarch64-boot-uek.iso",
-              "size": 1676046336,
+              "file": "OracleLinux-R9-U9-aarch64-boot-uek.iso",
+              "path": "OL9/u9/aarch64/OracleLinux-R9-U9-aarch64-boot-uek.iso",
+              "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u9/aarch64/OracleLinux-R9-U9-aarch64-boot-uek.iso",
+              "size": 1726212096,
               "checksum": {
                 "type": "sha256",
-                "value": "9460dcb6db3b07cbcacc3406013616442a69fad6040f57690543780cffeb5bd6",
-                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U8-Server-aarch64.checksum"
+                "value": "da32e00f586a6e2c767f03545c159f26999d999a2b7ed8f7d7ae225e378edbbd",
+                "url": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U9-Server-aarch64.checksums"
               },
               "signatureUrl": null,
               "torrentUrl": null
