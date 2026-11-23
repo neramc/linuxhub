@@ -3,7 +3,7 @@
   "sources": [
     "https://www.deepin.org/en/mirrors/releases/"
   ],
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "mirrors": [
     {
       "url": "https://mirror.aarnet.edu.au/deepin-cd/",
@@ -241,6 +241,14 @@
       "url": "https://deepin.mirror.garr.it/mirrors/deepin-cd/",
       "country": "IT",
       "name": "GARR",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.truenetwork.ru/deepin-cd/",
+      "country": "RU",
+      "name": "Truenetwork",
       "lat": null,
       "lon": null,
       "score": null

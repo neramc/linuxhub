@@ -4,7 +4,7 @@
     "https://cachyos.org/download/",
     "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachyos-mirrorlist/cachyos-mirrorlist"
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-23",
   "mirrors": [
     {
       "url": "https://at.cachyos.org/",
@@ -42,6 +42,14 @@
       "url": "https://mirrors.ustc.edu.cn/cachyos/",
       "country": "CN",
       "name": "mirrors.ustc.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mergedcloud.de/cachyos/",
+      "country": "DE",
+      "name": "mirror.mergedcloud.de",
       "lat": null,
       "lon": null,
       "score": null
@@ -138,14 +146,6 @@
       "url": "https://wan.metrosg.ru/cachyos/",
       "country": "RU",
       "name": "wan.metrosg.ru",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.zyner.org/mirror/cachyos/",
-      "country": "SE",
-      "name": "mirror.zyner.org",
       "lat": null,
       "lon": null,
       "score": null

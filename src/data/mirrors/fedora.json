@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-20",
+  "updated": "2026-11-23",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
@@ -473,6 +473,14 @@
       "url": "https://mirror.vpsnet.com/fedora/linux/",
       "country": "LT",
       "name": "mirror.vpsnet.com",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.marwan.ma/fedora/fedora/linux/",
+      "country": "MA",
+      "name": "mirror.marwan.ma",
       "lat": null,
       "lon": null,
       "score": null
