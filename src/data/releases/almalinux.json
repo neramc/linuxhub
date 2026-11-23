@@ -4,7 +4,7 @@
     "https://almalinux.org/get-almalinux/",
     "https://wiki.almalinux.org/release-notes/"
   ],
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "releases": [
     {
       "version": "10.3",
@@ -1313,10 +1313,10 @@
               "file": "AlmaLinux-8-GenericCloud-latest.x86_64.qcow2",
               "path": "8/cloud/x86_64/images/AlmaLinux-8-GenericCloud-latest.x86_64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/8/cloud/x86_64/images/AlmaLinux-8-GenericCloud-latest.x86_64.qcow2",
-              "size": 1664221184,
+              "size": 1807941632,
               "checksum": {
                 "type": "sha256",
-                "value": "e9e4e53fa4e9aef65ec6d16e80f1d18acbe1d1a44a47550f9095c4b1ca31f0d7",
+                "value": "5c3f62b9649fd5649faaaa204c763d0ce671ba7a3012168f73a20df7a219d9c2",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -1328,10 +1328,10 @@
               "file": "AlmaLinux-8-GenericCloud-latest.aarch64.qcow2",
               "path": "8/cloud/aarch64/images/AlmaLinux-8-GenericCloud-latest.aarch64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/8/cloud/aarch64/images/AlmaLinux-8-GenericCloud-latest.aarch64.qcow2",
-              "size": 1511653376,
+              "size": 1511915520,
               "checksum": {
                 "type": "sha256",
-                "value": "8f43457a5743e41038670e1daab02ddb37c8ff425fdd8d69a5c52f3f883eafa9",
+                "value": "6ba57ec8dca368820e949f8d1cb74ce397ba34c83d4cd6cd86ddcbef8a3d4399",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -1343,10 +1343,10 @@
               "file": "AlmaLinux-8-GenericCloud-latest.ppc64le.qcow2",
               "path": "8/cloud/ppc64le/images/AlmaLinux-8-GenericCloud-latest.ppc64le.qcow2",
               "url": "https://repo.almalinux.org/almalinux/8/cloud/ppc64le/images/AlmaLinux-8-GenericCloud-latest.ppc64le.qcow2",
-              "size": 598501376,
+              "size": 688605184,
               "checksum": {
                 "type": "sha256",
-                "value": "8fa20984998aed7947cf0f0444eb89e0f630746c270c4bddcfee84cb6cfabf01",
+                "value": "59e13bfb8b59d000c1d75c744700f99647319fb666abd5003fca317905fb3525",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -1358,10 +1358,10 @@
               "file": "AlmaLinux-8-GenericCloud-latest.s390x.qcow2",
               "path": "8/cloud/s390x/images/AlmaLinux-8-GenericCloud-latest.s390x.qcow2",
               "url": "https://repo.almalinux.org/almalinux/8/cloud/s390x/images/AlmaLinux-8-GenericCloud-latest.s390x.qcow2",
-              "size": 460402688,
+              "size": 460598272,
               "checksum": {
                 "type": "sha256",
-                "value": "570a1407be407aa1ea222ca4ad26034d21eefc86b7831cc38978ade0580891eb",
+                "value": "71c1e6350e10f5ee692299c99cf0b0736e04f64c8229d087f67524f524634df5",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -1381,10 +1381,10 @@
               "file": "AlmaLinux-8-OpenNebula-latest.x86_64.qcow2",
               "path": "8/cloud/x86_64/images/AlmaLinux-8-OpenNebula-latest.x86_64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/8/cloud/x86_64/images/AlmaLinux-8-OpenNebula-latest.x86_64.qcow2",
-              "size": 1556480000,
+              "size": 1787232256,
               "checksum": {
                 "type": "sha256",
-                "value": "2434633e958e27f9e193cade07d088dd3838d6b1eb2c89564a110b6fe6660a02",
+                "value": "10a374b1e139fd5cf8e26562f2ffb610fdc7660d1b86b07b185e0ac75ec08adb",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,
@@ -1396,10 +1396,10 @@
               "file": "AlmaLinux-8-OpenNebula-latest.aarch64.qcow2",
               "path": "8/cloud/aarch64/images/AlmaLinux-8-OpenNebula-latest.aarch64.qcow2",
               "url": "https://repo.almalinux.org/almalinux/8/cloud/aarch64/images/AlmaLinux-8-OpenNebula-latest.aarch64.qcow2",
-              "size": 1466236928,
+              "size": 1495138304,
               "checksum": {
                 "type": "sha256",
-                "value": "8a707b5640615a5f0f624f9380fd924374fc35602474ebb3ee289e9e2177105b",
+                "value": "35d9f37e5b3bcce6c1c3104813d4a8a95201f24545720ef6d9d7098e11a003e2",
                 "url": "https://almalinux.org/get-almalinux/"
               },
               "signatureUrl": null,

@@ -3,18 +3,18 @@
   "sources": [
     "https://cachyos.org/download/",
     "https://cachyos.org/blog/",
-    "https://mirror.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sha256",
+    "https://mirror.cachyos.org/ISO/desktop/261123/cachyos-desktop-linux-261123.iso.sha256",
     "https://mirror.cachyos.org/ISO/handheld/260628/cachyos-handheld-linux-260628.iso.sha256"
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-11-23",
   "releases": [
     {
-      "version": "260809",
+      "version": "261123",
       "channel": "rolling",
       "codename": null,
-      "releaseDate": "2026-08-09",
+      "releaseDate": "2026-11-23",
       "eol": null,
-      "notesUrl": "https://cachyos.org/blog/2608-august-release",
+      "notesUrl": "https://cachyos.org/blog/2611-november-release",
       "editions": [
         {
           "id": "desktop-edition",
@@ -25,17 +25,17 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "cachyos-desktop-linux-260809.iso",
-              "path": "ISO/desktop/260809/cachyos-desktop-linux-260809.iso",
-              "url": "https://cdn77.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso",
-              "size": 3188850688,
+              "file": "cachyos-desktop-linux-261123.iso",
+              "path": "ISO/desktop/261123/cachyos-desktop-linux-261123.iso",
+              "url": "https://cdn77.cachyos.org/ISO/desktop/261123/cachyos-desktop-linux-261123.iso",
+              "size": 3230695424,
               "checksum": {
                 "type": "sha256",
-                "value": "959f6577f45e25ee9fd8c220fd221b08e4ea79412c7315c0f922dd6d86d5e33c",
-                "url": "https://mirror.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sha256"
+                "value": "bb9d4c4091ef6445e78f1a67052d9d3f22bdff2608f3b2e226bac99bb0b708ec",
+                "url": "https://mirror.cachyos.org/ISO/desktop/261123/cachyos-desktop-linux-261123.iso.sha256"
               },
-              "signatureUrl": "https://mirror.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sig",
-              "torrentUrl": "https://torrents.soulharsh007-codewerkstatt.de/processed//cachyos-desktop-linux-260809.torrent"
+              "signatureUrl": "https://mirror.cachyos.org/ISO/desktop/261123/cachyos-desktop-linux-261123.iso.sig",
+              "torrentUrl": "https://torrents.soulharsh007-codewerkstatt.de/processed//cachyos-desktop-linux-261123.torrent"
             }
           ]
         }
