@@ -3,12 +3,20 @@
   "sources": [
     "https://parrotsec.org/docs/mirrors/mirrors-list/"
   ],
-  "updated": "2026-11-18",
+  "updated": "2026-11-24",
   "mirrors": [
     {
       "url": "https://mirror.ourhost.az/parrot/",
       "country": "AZ",
       "name": "mirror.ourhost.az",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yer.az/parrot/",
+      "country": "AZ",
+      "name": "mirror.yer.az",
       "lat": null,
       "lon": null,
       "score": null

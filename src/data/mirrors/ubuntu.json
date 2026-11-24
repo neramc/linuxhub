@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -105,6 +105,14 @@
       "url": "https://mirror.ourhost.az/ubuntu-releases/",
       "country": "AZ",
       "name": "OUR Host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.pipexbd.com/releases/",
+      "country": "BD",
+      "name": "Pipex Network",
       "lat": null,
       "lon": null,
       "score": null
@@ -2017,6 +2025,14 @@
       "url": "https://coresite.mm.fcix.net/ubuntu-releases/",
       "country": "US",
       "name": "Fremont Cabal Internet Exchange",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://dtw-mirror.rackgenius.com/ubuntu-releases/",
+      "country": "US",
+      "name": "RackGenius",
       "lat": null,
       "lon": null,
       "score": null

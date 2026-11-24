@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/Fedora/45/x86_64?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/fedora/linux/",
@@ -126,14 +126,6 @@
       "score": null
     },
     {
-      "url": "https://ipng.mm.fcix.net/fedora/linux/",
-      "country": "CH",
-      "name": "ipng.mm.fcix.net",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://linuxsoft.cern.ch/fedora/",
       "country": "CH",
       "name": "linuxsoft.cern.ch",
@@ -158,6 +150,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.bfsu.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirrors.bfsu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirrors.huaweicloud.com/repository/fedora/",
       "country": "CN",
       "name": "mirrors.huaweicloud.com",
@@ -177,6 +177,14 @@
       "url": "https://mirrors.qlu.edu.cn/fedora/",
       "country": "CN",
       "name": "mirrors.qlu.edu.cn",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirrors.tuna.tsinghua.edu.cn/fedora/",
+      "country": "CN",
+      "name": "mirrors.tuna.tsinghua.edu.cn",
       "lat": null,
       "lon": null,
       "score": null
