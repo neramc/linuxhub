@@ -63,10 +63,22 @@
  * for every architecture. Mirror paths exist only for stable images (older
  * lines live in the archive, which mirrors do not carry).
  *
+ * A line whose debian-installer page Debian no longer publishes is read from
+ * cdimage's archive tree instead. Debian removed bookworm's page on 2026-11-23
+ * (webwml "remove all unneeded info from obsolete release") while the release
+ * table still lists the line as supported until 2028-06-30 and its images stay
+ * in cdimage/archive/12.15.0/: the release page's link answers 403, so the sync
+ * reads the official tree of the point release the release page names — one
+ * directory per architecture, iso-cd holding the netinst image and iso-dvd the
+ * DVD set, each with its SHA512SUMS. That is the same set of images the page
+ * offered (the ports the data model cannot represent stay out), and mirrors do
+ * not carry the archive, so their paths are null like any older line's.
+ *
  * Fails closed when the release table or one of the pages changes shape, when
  * the page offers an image that its checksum file lacks, when the installer
- * images are not the point release the release page names, or when a cloud
- * image matches none of the newest builds (or is in none of them).
+ * images are not the point release the release page names, when a line's page is
+ * gone and its archive tree is missing or holds no images either, or when a
+ * cloud image matches none of the newest builds (or is in none of them).
  */
 
 import type { Artifact, Edition, Mirror, Release } from "../../../src/lib/data-schemas";
@@ -344,6 +356,11 @@ async function installerEditions(
       }),
     );
   }
+  return installerEditionList(line, netinst, dvd);
+}
+
+/** The netinst and DVD-1 editions every line offers, from their artifacts. */
+function installerEditionList(line: Line, netinst: Artifact[], dvd: Artifact[]): Edition[] {
   if (!netinst.length) throw new Error(`no netinst images for Debian ${line.major}`);
   const editions: Edition[] = [
     { id: "netinst", name: "netinst", desktop: null, kind: "netinst", artifacts: netinst },
@@ -351,6 +368,83 @@ async function installerEditions(
   if (dvd.length)
     editions.push({ id: "dvd-1", name: "DVD-1", desktop: null, kind: "other", artifacts: dvd });
   return editions;
+}
+
+/**
+ * The installer images of a line Debian publishes without a download page: the
+ * point release's directory in cdimage's archive. The tree is the release's own
+ * (one directory per architecture, iso-cd and iso-dvd inside), so it says what
+ * the removed page said; files are found by the release's own names in each
+ * directory's SHA512SUMS, which is also the checksum shown.
+ */
+async function archiveInstaller(
+  line: Line,
+  version: string,
+  log: (message: string) => void,
+): Promise<{ source: string; editions: Edition[] }> {
+  const build = (await listDirectory(`${CD}cdimage/archive/`))
+    .map((name) => name.match(/^(\d+\.\d+\.\d+)\/$/)?.[1])
+    .filter((name): name is string => Boolean(name))
+    .filter((name) => name.startsWith(`${version}.`))
+    .sort(compareVersions)
+    .pop();
+  if (!build) throw new Error(`no archived images for Debian ${version} in ${CD}cdimage/archive/`);
+  const base = `${CD}cdimage/archive/${build}`;
+  log(`${base}: the line's debian-installer page is gone, its images are in the archive tree`);
+  const netinst: Artifact[] = [];
+  const dvd: Artifact[] = [];
+  for (const entry of (await listDirectory(`${base}/`)).sort()) {
+    if (!entry.endsWith("/")) continue;
+    const debArch = entry.slice(0, -1);
+    // Not architectures, and ports the data model has no key for.
+    if (debArch === "source" || debArch === "trace") continue;
+    const arch = debianArch(debArch, base);
+    if (!arch) continue;
+    const dirs = await listDirectory(`${base}/${debArch}/`);
+    if (!dirs.includes("iso-cd/")) continue;
+    const cdDir = `${base}/${debArch}/iso-cd/`;
+    const cdSums = await sumsOf(cdDir);
+    const name = `debian-${build}-${debArch}-netinst.iso`;
+    const file = [...cdSums.values.keys()].find((f) => f === name);
+    if (!file) throw new Error(`${cdDir} has no ${name}`);
+    netinst.push(await artifact({ dir: cdDir, bt: "bt-cd", file, arch, path: null, sums: cdSums }));
+    if (!dirs.includes("iso-dvd/")) continue;
+    const dvdDir = `${base}/${debArch}/iso-dvd/`;
+    const dvdSums = await sumsOf(dvdDir);
+    const dvdFile = [...dvdSums.values.keys()].find((f) =>
+      new RegExp(`^debian-${build.replace(/\./g, "\\.")}-${debArch}-DVD-1\\.iso$`).test(f),
+    );
+    if (!dvdFile)
+      throw new Error(
+        `${base}/${debArch}/ has an iso-dvd directory but ${dvdSums.url} has no DVD-1`,
+      );
+    dvd.push(
+      await artifact({ dir: dvdDir, bt: "bt-dvd", file: dvdFile, arch, path: null, sums: dvdSums }),
+    );
+  }
+  return { source: `${base}/`, editions: installerEditionList(line, netinst, dvd) };
+}
+
+/**
+ * A line's installer editions, from its download page, or — when Debian no
+ * longer publishes that page (403/404) — from the release's archive tree.
+ */
+async function installerImages(
+  line: Line,
+  version: string,
+  page: string,
+  log: (message: string) => void,
+): Promise<{ source: string; editions: Edition[] }> {
+  let html: string;
+  try {
+    html = await getText(page);
+  } catch (error) {
+    if (!(error instanceof HttpError) || (error.status !== 403 && error.status !== 404))
+      throw error;
+    return archiveInstaller(line, version, log);
+  }
+  const installer = parseInstallerPage(html, page);
+  return { source: page, editions: await installerEditions(line, version, installer, page) };
 }
 
 const titleCase = (s: string) =>
@@ -518,7 +612,7 @@ export default defineSource({
     for (const line of lines) {
       const releasePage = `${WWW}releases/${line.codename}/`;
       const installerPage = `${releasePage}debian-installer/`;
-      sources.push(releasePage, installerPage);
+      sources.push(releasePage);
       const text = strip(await getText(releasePage));
       const named = text.match(
         /Debian (\d+\.\d+) was released on ([A-Z][a-z]+ \d{1,2}(?:st|nd|rd|th)?, \d{4})/,
@@ -528,8 +622,9 @@ export default defineSource({
       if (!version || !releaseDate || !version.startsWith(`${line.major}.`))
         throw new Error(`no "Debian ${line.major}.x was released on <date>" on ${releasePage}`);
 
-      const installer = parseInstallerPage(await getText(installerPage), installerPage);
-      const editions = await installerEditions(line, version, installer, installerPage);
+      const installer = await installerImages(line, version, installerPage, ctx.log);
+      sources.push(installer.source);
+      const editions = installer.editions;
       if (line.stable) {
         sources.push(LIVE_PAGE, DOWNLOAD_PAGE);
         editions.push(...(await liveEditions(line.major)));
