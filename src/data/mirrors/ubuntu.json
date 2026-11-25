@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -105,6 +105,14 @@
       "url": "https://mirror.ourhost.az/ubuntu-releases/",
       "country": "AZ",
       "name": "OUR Host",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.yer.az/ubuntu/releases/",
+      "country": "AZ",
+      "name": "YER Hosting",
       "lat": null,
       "lon": null,
       "score": null
@@ -1558,6 +1566,14 @@
       "score": null
     },
     {
+      "url": "https://ftp.icm.edu.pl/pub/Linux/ubuntu-releases/",
+      "country": "PL",
+      "name": "ICM - Interdisciplinary Centre for Mathematical and Computational Modelling",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ubuntu.man.lodz.pl/ubuntu-releases/",
       "country": "PL",
       "name": "Miejska Sieć Komputerowa LODMAN / Politechnika Łódzka UCI",
@@ -1838,6 +1854,14 @@
       "score": null
     },
     {
+      "url": "https://mirrors.psu.ac.th/ubuntu-releases/",
+      "country": "TH",
+      "name": "Prince of Songkla University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://ubuntu-releases.sit.kmutt.ac.th/",
       "country": "TH",
       "name": "School of Information Technology, KMUTT",
@@ -1929,14 +1953,6 @@
       "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
       "country": "TW",
       "name": "TaiChung City Education Network Center",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.ossplanet.net/ubuntu-releases/",
-      "country": "TW",
-      "name": "OSSPlanet",
       "lat": null,
       "lon": null,
       "score": null
