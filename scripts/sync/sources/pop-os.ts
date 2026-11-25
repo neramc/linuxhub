@@ -12,8 +12,11 @@
  *   artifact, and the page's headings tell the "LTS" channel.
  * - api.pop-os.org/builds/<version>/<channel>?arch=<amd64|arm64> (the build
  *   API the page's script uses): the current build of an image, with its URL,
- *   exact size and SHA-256. For an image the page lists in HTML, the API must
- *   return that same URL and SHA-256, or the sync throws.
+ *   exact size and SHA-256. For an image the page lists in HTML, the page's
+ *   SHA-256 must be the API's (the same image); the API's build is the one
+ *   published, because the page's static link can keep an older build number
+ *   of that image after a rebuild (24.04: page build 22, API build 29, same
+ *   SHA-256), and the API names the current one.
  * - iso.pop-os.org/<version>/<arch>/<channel>/<build>/SHA256SUMS (next to each
  *   image, on the origin host): the official checksum file (checksum.url). It
  *   must agree with the API, or the sync throws.
@@ -87,8 +90,11 @@ function parseOffers(html: string): Offer[] {
       arch: m[3] as ApiArch,
       listed: null,
     });
+  // The previous releases are plain HTML: the image's "SHA256 Sum" and the Download
+  // button's onclick. 22.04's Intel button carries its URL in a doubled quote
+  // (location.href=''https://…), so the opening quote is not taken as single.
   for (const m of html.matchAll(
-    /SHA256 Sum:\s*([0-9a-f]{64})[\s\S]{0,800}?location\.href='(https:\/\/iso\.pop-os\.org\/(\d+\.\d+)\/(amd64|arm64)\/([a-z]+)\/\d+\/[^']+\.iso)'/g,
+    /SHA256 Sum:\s*([0-9a-f]{64})[\s\S]{0,800}?location\.href='{1,2}(https:\/\/iso\.pop-os\.org\/(\d+\.\d+)\/(amd64|arm64)\/([a-z]+)\/\d+\/[^']+\.iso)'/g,
   ))
     offers.push({
       version: m[3] as string,
@@ -135,8 +141,15 @@ export default defineSource({
             `unexpected build answer for Pop!_OS ${version} ${offer.channel} ${offer.arch}`,
           );
         const file = m[4] as string;
-        if (offer.listed && (offer.listed.url !== build.url || offer.listed.sha !== build.sha_sum))
+        // The page's static listing can keep an older build number of the same image after a
+        // rebuild (24.04 stayed at build 22 while the API moved to 29 with the same SHA-256):
+        // the content is what has to agree, and the API names the current build of it.
+        if (offer.listed && offer.listed.sha !== build.sha_sum)
           throw new Error(`the Pop!_OS download page and API disagree for ${file}`);
+        if (offer.listed && offer.listed.url !== build.url)
+          ctx.log(
+            `${file}: the page lists ${offer.listed.url}, the build API's current build is ${build.url}`,
+          );
         const dir = build.url.slice(0, build.url.length - file.length);
         const sha = parseChecksums(await getText(`${dir}SHA256SUMS`)).get(file);
         if (sha !== build.sha_sum)
