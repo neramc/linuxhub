@@ -4,7 +4,7 @@
     "https://www.centos.org/download/",
     "https://endoflife.date/centos-stream"
   ],
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "releases": [
     {
       "version": "10",
@@ -94,10 +94,10 @@
               "file": "CentOS-Stream-GenericCloud-10-latest.x86_64.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-GenericCloud-10-latest.x86_64.qcow2",
-              "size": 1091436544,
+              "size": 1091698688,
               "checksum": {
                 "type": "sha256",
-                "value": "0bf94380398334112f4375683877876b6e3c71134e06a6c84ea3644d1ab11e0e",
+                "value": "66de9ff6dbfee457c672c005778d8b6e37c6e01260af31135b6830e02613889c",
                 "url": "https://cloud.centos.org/centos/10-stream/x86_64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -109,10 +109,10 @@
               "file": "CentOS-Stream-GenericCloud-10-latest.aarch64.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/10-stream/aarch64/images/CentOS-Stream-GenericCloud-10-latest.aarch64.qcow2",
-              "size": 930480128,
+              "size": 931069952,
               "checksum": {
                 "type": "sha256",
-                "value": "74ca2afba2de279487888e11dc9275be70ba29def5928f255a91b1c03e4494d6",
+                "value": "0680deb2c688c8a51803eefba3559a95a80e9f2f660ad20036dadb82c93f3dbe",
                 "url": "https://cloud.centos.org/centos/10-stream/aarch64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -124,10 +124,10 @@
               "file": "CentOS-Stream-GenericCloud-10-latest.ppc64le.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/10-stream/ppc64le/images/CentOS-Stream-GenericCloud-10-latest.ppc64le.qcow2",
-              "size": 933125632,
+              "size": 933756928,
               "checksum": {
                 "type": "sha256",
-                "value": "9178042b9d167096e20e65eb88a0a290701a0c7f3eb7d2571b662211d6de0a9f",
+                "value": "b406e8dd23a75e645b87d07eb72b468a89ba557cc1e70f67677164b5fe1f41a9",
                 "url": "https://cloud.centos.org/centos/10-stream/ppc64le/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -139,10 +139,10 @@
               "file": "CentOS-Stream-GenericCloud-10-latest.s390x.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/10-stream/s390x/images/CentOS-Stream-GenericCloud-10-latest.s390x.qcow2",
-              "size": 861129216,
+              "size": 860941312,
               "checksum": {
                 "type": "sha256",
-                "value": "445339a28b22fbc3d669c44dc639865ad2c0b00757a817be93b43af110c19a54",
+                "value": "0d2ca0c9910a4e61427831ab01c55acd6336f5f4d0d62850b89b0020c8b04ece",
                 "url": "https://cloud.centos.org/centos/10-stream/s390x/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -162,10 +162,10 @@
               "file": "CentOS-Stream-ec2-10-latest.x86_64.raw.xz",
               "path": null,
               "url": "https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-ec2-10-latest.x86_64.raw.xz",
-              "size": 955103036,
+              "size": 955484780,
               "checksum": {
                 "type": "sha256",
-                "value": "cdaa4106fdf52fe2cb08d33c16fe38012b81a79ce9146e243ea8bd23273f89fb",
+                "value": "d658c6f3f25392d0a2b178bd669823b27e4deb5f1d805a3963d641b5f30868aa",
                 "url": "https://cloud.centos.org/centos/10-stream/x86_64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -177,10 +177,10 @@
               "file": "CentOS-Stream-ec2-10-latest.aarch64.raw.xz",
               "path": null,
               "url": "https://cloud.centos.org/centos/10-stream/aarch64/images/CentOS-Stream-ec2-10-latest.aarch64.raw.xz",
-              "size": 776885728,
+              "size": 776694824,
               "checksum": {
                 "type": "sha256",
-                "value": "5d194ec97ac6ff8fd9b58a6e53262c6d8990534fa4449a8d819ccf09126d790e",
+                "value": "2ffa5f36210ff294e8347387e07bda2a98f3123cecc184545aa12b53c8095268",
                 "url": "https://cloud.centos.org/centos/10-stream/aarch64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -278,10 +278,10 @@
               "file": "CentOS-Stream-GenericCloud-9-latest.x86_64.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-latest.x86_64.qcow2",
-              "size": 1277362176,
+              "size": 1277493248,
               "checksum": {
                 "type": "sha256",
-                "value": "bc5f617303c0cf02f19c135bd29910d27f73e86339613b174998a5aee7f3f0cd",
+                "value": "ff634dc597a8e19ac04eeca177701edf6e4b6d7caa95d56a741d67ca8be1d014",
                 "url": "https://cloud.centos.org/centos/9-stream/x86_64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -293,10 +293,10 @@
               "file": "CentOS-Stream-GenericCloud-9-latest.aarch64.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/9-stream/aarch64/images/CentOS-Stream-GenericCloud-9-latest.aarch64.qcow2",
-              "size": 1191837696,
+              "size": 1192099840,
               "checksum": {
                 "type": "sha256",
-                "value": "166b30bfc8b4c1ac4e690fe0b7ebe004c40a3c94ddb983913d09801bb858e6ce",
+                "value": "473c356328888d2e2da349b451e6b966e839c4032a3bd6d7a5bef8662f71f840",
                 "url": "https://cloud.centos.org/centos/9-stream/aarch64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -308,10 +308,10 @@
               "file": "CentOS-Stream-GenericCloud-9-latest.ppc64le.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/9-stream/ppc64le/images/CentOS-Stream-GenericCloud-9-latest.ppc64le.qcow2",
-              "size": 1197658624,
+              "size": 1197185536,
               "checksum": {
                 "type": "sha256",
-                "value": "1d2c58e547e7e98cb2049d2f011cfeefe0c98d0e5254d571c95642dd92bde2e0",
+                "value": "09803bdf3fee6be611d363584e9b9c2b85639b29a36160b1142c564ae13e6cd8",
                 "url": "https://cloud.centos.org/centos/9-stream/ppc64le/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -323,10 +323,10 @@
               "file": "CentOS-Stream-GenericCloud-9-latest.s390x.qcow2",
               "path": null,
               "url": "https://cloud.centos.org/centos/9-stream/s390x/images/CentOS-Stream-GenericCloud-9-latest.s390x.qcow2",
-              "size": 1122919424,
+              "size": 1122862080,
               "checksum": {
                 "type": "sha256",
-                "value": "2a79a3c66e9b2ac840a9735633dd1fd09f3d25e8df193b140df2d26bcd538252",
+                "value": "60719c2cc63c4e8b3c8346dc7dad3ed130ae8ce7e8d40fc0191f4958e5e79ed2",
                 "url": "https://cloud.centos.org/centos/9-stream/s390x/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -346,10 +346,10 @@
               "file": "CentOS-Stream-ec2-9-latest.x86_64.raw.xz",
               "path": null,
               "url": "https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-ec2-9-latest.x86_64.raw.xz",
-              "size": 1209716292,
+              "size": 1210189156,
               "checksum": {
                 "type": "sha256",
-                "value": "0c75f84b73cc7a75d09774cedf498c1c4b9ea440eb81709fe6fce4f10b6c6640",
+                "value": "79cd4e116fcf83d29c9e4d254ff62fd1c5e59769e6a4034566036df47af5783b",
                 "url": "https://cloud.centos.org/centos/9-stream/x86_64/images/CHECKSUM"
               },
               "signatureUrl": null,
@@ -361,10 +361,10 @@
               "file": "CentOS-Stream-ec2-9-latest.aarch64.raw.xz",
               "path": null,
               "url": "https://cloud.centos.org/centos/9-stream/aarch64/images/CentOS-Stream-ec2-9-latest.aarch64.raw.xz",
-              "size": 1120484524,
+              "size": 1120145700,
               "checksum": {
                 "type": "sha256",
-                "value": "a6ad616f730ff64fcb1be082639d734bd086b965e2f86205f1e72b1d6a609d6e",
+                "value": "9f1904927557545221ce98f2526a44364705ea224caabf7ce75918e6a990008a",
                 "url": "https://cloud.centos.org/centos/9-stream/aarch64/images/CHECKSUM"
               },
               "signatureUrl": null,

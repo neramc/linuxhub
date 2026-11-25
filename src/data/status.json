@@ -51,8 +51,8 @@
   },
   "bodhi-linux": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-25",
+      "lastError": "robots.txt of https://www.bodhilinux.com could not be read (server error or no answer), so the host is closed for this run: https://www.bodhilinux.com/download/"
     },
     "mirrors": {
       "failingSince": null,
@@ -151,8 +151,8 @@
   },
   "gentoo": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-25",
+      "lastError": "newest version went backwards (20261122 → 20261101)"
     },
     "mirrors": {
       "failingSince": null,
@@ -291,8 +291,8 @@
   },
   "oracle-linux": {
     "releases": {
-      "failingSince": "2026-11-24",
-      "lastError": "HTTP 502"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,
