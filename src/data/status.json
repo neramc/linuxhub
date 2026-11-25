@@ -51,8 +51,8 @@
   },
   "bodhi-linux": {
     "releases": {
-      "failingSince": "2026-11-25",
-      "lastError": "robots.txt of https://www.bodhilinux.com could not be read (server error or no answer), so the host is closed for this run: https://www.bodhilinux.com/download/"
+      "failingSince": null,
+      "lastError": null
     },
     "mirrors": {
       "failingSince": null,

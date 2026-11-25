@@ -6,15 +6,15 @@
     "https://www.q4os.org/blog.html",
     "https://sourceforge.net/projects/q4os/files/stable/"
   ],
-  "updated": "2026-10-29",
+  "updated": "2026-11-25",
   "releases": [
     {
-      "version": "6.10",
+      "version": "6.11",
       "channel": "lts",
       "codename": "Andromeda",
-      "releaseDate": "2026-10-08",
+      "releaseDate": "2026-11-23",
       "eol": "2030-08-31",
-      "notesUrl": "https://www.q4os.org/blog.html#news261008",
+      "notesUrl": "https://www.q4os.org/blog.html#news261123",
       "editions": [
         {
           "id": "plasma-live",
@@ -25,13 +25,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "q4os-6.10-x64.r2.iso",
-              "path": "stable/q4os-6.10-x64.r2.iso",
-              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.10-x64.r2.iso/download",
-              "size": 1851392000,
+              "file": "q4os-6.11-x64.r1.iso",
+              "path": "stable/q4os-6.11-x64.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.11-x64.r1.iso/download",
+              "size": 1855488000,
               "checksum": {
                 "type": "sha256",
-                "value": "1df141eaa342bbfd0092791a60f1ae9cf5230e8ebb472f87fcb463203e3eb95d",
+                "value": "e29032193ac73f97184e520935ce6af24dbb2cd3bbf813fe25d4c33b89775463",
                 "url": "https://sourceforge.net/projects/q4os/files/stable/"
               },
               "signatureUrl": null,
@@ -48,13 +48,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "q4os-6.10-x64-tde.r2.iso",
-              "path": "stable/q4os-6.10-x64-tde.r2.iso",
-              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.10-x64-tde.r2.iso/download",
+              "file": "q4os-6.11-x64-tde.r1.iso",
+              "path": "stable/q4os-6.11-x64-tde.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.11-x64-tde.r1.iso/download",
               "size": 1478656000,
               "checksum": {
                 "type": "sha256",
-                "value": "12db3725ab50a349e9d5afdb95dc4995e957418de9ef09f46414b64e5ee3424b",
+                "value": "e1783b08b6ee128a0c3d6265f3b1c6abf831393a2da316af9d1e619614e69624",
                 "url": "https://sourceforge.net/projects/q4os/files/stable/"
               },
               "signatureUrl": null,
@@ -71,13 +71,13 @@
             {
               "arch": "x86_64",
               "format": "iso",
-              "file": "q4os-6.10-x64-instcd.r1.iso",
-              "path": "stable/q4os-6.10-x64-instcd.r1.iso",
-              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.10-x64-instcd.r1.iso/download",
-              "size": 1097564160,
+              "file": "q4os-6.11-x64-instcd.r1.iso",
+              "path": "stable/q4os-6.11-x64-instcd.r1.iso",
+              "url": "https://sourceforge.net/projects/q4os/files/stable/q4os-6.11-x64-instcd.r1.iso/download",
+              "size": null,
               "checksum": {
                 "type": "sha256",
-                "value": "9d7457fb20660e5df3cccbb2a20675574e62c5fd99f32be068e8df7a7291f9aa",
+                "value": "22b53d8a93ec30a0fb1ac501ec5c9831f55990498338d7ee2b2db4eb530cbadc",
                 "url": "https://sourceforge.net/projects/q4os/files/stable/"
               },
               "signatureUrl": null,
