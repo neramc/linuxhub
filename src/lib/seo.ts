@@ -96,6 +96,33 @@ export function sitemapXml(entries: readonly SitemapEntry[]): string {
   ].join("\n");
 }
 
+/**
+ * One step of a page's trail: the pages above it carry the `path` they link
+ * to (already localized, site-absolute); the page itself leaves it out.
+ */
+export interface Crumb {
+  name: string;
+  path?: string;
+}
+
+/**
+ * A trail as a BreadcrumbList (JSON-LD), home first, in the order the page's
+ * Breadcrumb shows it. The current page has no `item`, as Google asks of the
+ * last step.
+ */
+export function breadcrumbTrail(site: URL | string, trail: readonly Crumb[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      ...(crumb.path ? { item: new URL(crumb.path, site).href } : {}),
+    })),
+  };
+}
+
 /** The site as an Organization (JSON-LD publisher; its logo is the 180px app icon). */
 export function siteOrganization(site: URL | string, name: string) {
   return {

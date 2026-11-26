@@ -11,15 +11,29 @@ import Button from "~/components/adw/Button.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { GROUPS, getChapters, readingMinutes } from "~/lib/learn";
+import { breadcrumbTrail } from "~/lib/seo";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const chapters = await getChapters(locale);
 const first = chapters[0];
+const site = Astro.site ?? Astro.url;
+const jsonLd = [
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("learn.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("learn.title")} description={t("learn.lead")} image="/og/learn.png">
+<Base
+  locale={locale}
+  title={t("learn.title")}
+  description={t("learn.lead")}
+  image="/og/learn.png"
+  jsonLd={jsonLd}
+>
   <div class="container page narrow">
     <header class="page-header">
       <h1>{t("learn.title")}</h1>

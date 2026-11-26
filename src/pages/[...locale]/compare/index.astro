@@ -17,6 +17,7 @@ import CompareTable, {
 import { localePaths, localizePath, type MessageKey, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { featuredRelease, formatDate, getDistros, getReleases } from "~/lib/catalog";
+import { breadcrumbTrail } from "~/lib/seo";
 import {
   ARCHITECTURES,
   DESKTOPS,
@@ -107,9 +108,21 @@ const column = (id: string | undefined): CompareColumn | undefined => {
 };
 const columns = [0, 1, 2].map((i) => column(defaults[i]));
 const templates = sortedOptions.flatMap((d) => column(d.id) ?? []);
+const site = Astro.site ?? Astro.url;
+const jsonLd = [
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("compare.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("compare.title")} description={t("compare.lead")}>
+<Base
+  locale={locale}
+  title={t("compare.seoTitle")}
+  description={t("compare.lead")}
+  jsonLd={jsonLd}
+>
   <div class="container page">
     <header class="page-header">
       <h1>{t("compare.title")}</h1>

@@ -116,6 +116,7 @@ export const en = {
   },
   catalog: {
     title: "Distributions",
+    seoTitle: "Linux Distributions",
     lead: "{count} popular Linux distributions. Filter by what you need.",
     filter: "Filters",
     search: "Filter by name",
@@ -273,6 +274,7 @@ export const en = {
   },
   finder: {
     title: "Distro Finder",
+    seoTitle: "Linux Distro Finder",
     lead: "Answer a few questions and we’ll suggest distributions that fit, with the reasons why.",
     q: {
       experience: "How familiar are you with Linux?",
@@ -343,6 +345,7 @@ export const en = {
   },
   compare: {
     title: "Compare distributions",
+    seoTitle: "Compare Linux Distributions",
     lead: "Put up to three distributions side by side.",
     pick: "Distribution {n}",
     none: "None",
@@ -366,6 +369,7 @@ export const en = {
   },
   family: {
     title: "Family tree & history",
+    seoTitle: "Linux Distro Family Tree & Timeline",
     lead: "Most distributions build on another. See how the catalog’s distributions are related, and when each one began.",
     tree: "Family tree",
     timeline: "Timeline",
@@ -375,6 +379,7 @@ export const en = {
   },
   releases: {
     title: "Release news",
+    seoTitle: "Linux Distribution Releases",
     lead: "New versions of the distributions in our catalog, detected automatically from official sources.",
     empty: "No releases recorded yet.",
     feed: "Subscribe with RSS",

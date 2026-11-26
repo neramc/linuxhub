@@ -115,6 +115,7 @@ export const ko: DictionaryShape = {
   },
   catalog: {
     title: "배포판",
+    seoTitle: "리눅스 배포판 목록",
     lead: "인기 리눅스 배포판 {count}개. 필요한 조건으로 골라 보세요.",
     filter: "필터",
     search: "이름으로 찾기",
@@ -271,6 +272,7 @@ export const ko: DictionaryShape = {
   },
   finder: {
     title: "배포판 추천",
+    seoTitle: "리눅스 배포판 추천",
     lead: "몇 가지 질문에 답하면 잘 맞는 배포판을 이유와 함께 추천해 드립니다.",
     q: {
       experience: "리눅스를 얼마나 써 보셨나요?",
@@ -336,6 +338,7 @@ export const ko: DictionaryShape = {
   },
   compare: {
     title: "배포판 비교",
+    seoTitle: "리눅스 배포판 비교",
     lead: "최대 세 개의 배포판을 나란히 비교해 보세요.",
     pick: "배포판 {n}",
     none: "선택 안 함",
@@ -359,6 +362,7 @@ export const ko: DictionaryShape = {
   },
   family: {
     title: "계보와 역사",
+    seoTitle: "리눅스 배포판 계보와 역사",
     lead: "대부분의 배포판은 다른 배포판을 바탕으로 만들어집니다. 수록된 배포판이 어떻게 이어져 있는지, 언제 시작됐는지 살펴보세요.",
     tree: "계보도",
     timeline: "타임라인",
@@ -368,6 +372,7 @@ export const ko: DictionaryShape = {
   },
   releases: {
     title: "릴리스 소식",
+    seoTitle: "리눅스 배포판 릴리스 소식",
     lead: "수록된 배포판의 새 버전을 공식 소스에서 자동으로 감지해 보여 줍니다.",
     empty: "아직 기록된 릴리스가 없습니다.",
     feed: "RSS로 구독하기",

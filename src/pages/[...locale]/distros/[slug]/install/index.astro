@@ -23,7 +23,7 @@ import Toc from "~/components/Toc.astro";
 import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistroDoc, getDistros } from "~/lib/catalog";
-import { distroLabel, siteOrganization } from "~/lib/seo";
+import { breadcrumbTrail, distroLabel, siteOrganization } from "~/lib/seo";
 import { DIFFICULTIES, INSTALLERS, SECURE_BOOT } from "~/lib/taxonomy";
 import "~/styles/prose.css";
 
@@ -72,6 +72,14 @@ const jsonLd = doc
         author: siteOrganization(site, t("site.name")),
         publisher: siteOrganization(site, t("site.name")),
       },
+      // Same trail as the page's Breadcrumb. A guide that is still being
+      // written is noindex, so it gets nothing extra (ADR-0016).
+      breadcrumbTrail(site, [
+        { name: t("site.name"), path: localizePath("/", locale) },
+        { name: t("nav.distros"), path: localizePath("/distros/", locale) },
+        { name: distroLabel(d.name, d.nameKo, locale), path: distroHref },
+        { name: t("distro.installGuide") },
+      ]),
     ]
   : [];
 ---

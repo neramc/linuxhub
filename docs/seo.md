@@ -12,7 +12,7 @@ Linuxhub(https://linuxhub.kro.kr)를 Google, 네이버, Bing, Daum에 등록하�
 | RSS | `/rss.xml`, `/en/rss.xml` | 새 릴리스 소식. 네이버 서치어드바이저에 제출한다. |
 | 소유 확인 태그 | 홈(`/`, `/en/`)의 `<head>` | 아래 환경 변수를 넣으면 생긴다. |
 | 페이지 메타데이터 | `src/layouts/Base.astro` | 제목, 설명, canonical, hreflang(ko·en·x-default), `robots`(큰 이미지 미리보기 허용), Open Graph, favicon(svg, ico). |
-| 구조화 데이터 | 각 페이지 | 홈: WebSite·Organization. 배포판: SoftwareApplication·BreadcrumbList. 설치 가이드와 리눅스 가이드: TechArticle. |
+| 구조화 데이터 | 각 페이지 | 홈: WebSite·Organization. 배포판: SoftwareApplication·BreadcrumbList. 배포판 목록: CollectionPage·ItemList·BreadcrumbList. 목록·추천·비교·계보·릴리스·가이드·소개 페이지: BreadcrumbList. 설치 가이드와 리눅스 가이드: TechArticle·BreadcrumbList. |
 | 한글 이름 | 배포판 YAML의 `nameKo` | 한국어 배포판 페이지의 제목·설명·h1에 "우분투(Ubuntu)"처럼 한글 이름을 함께 쓴다. |
 | IndexNow | `.github/workflows/indexnow.yml` | 프로덕션 배포가 끝날 때마다 바뀐 페이지를 IndexNow(Bing, 네이버 등이 공유)에 알린다. 키 파일은 `public/b26e3336ffae790029ee6eec37086deb.txt`. |
 
@@ -110,5 +110,8 @@ SITE_URL=$SITE bun scripts/seo/indexnow.ts HEAD~5 HEAD --dry-run
 
 - **새 배포판:** 한국어로 흔히 쓰는 한글 이름이 있으면 YAML에 `nameKo`를 넣는다(예: `nameKo: 리눅스 민트`). 한국어 글에서도 라틴 이름을 그대로 쓰는 배포판(KDE neon, PCLinuxOS 등)은 비워 둔다.
 - **제목과 설명:** 페이지마다 다르게, 그 페이지가 실제로 보여 주는 내용으로 쓴다. 배포판 페이지는 `distro.seoTitle`·`seoDescription`(i18n)이 최신 버전을 넣어 만든다.
+- **허브 페이지 제목:** 배포판 목록·추천·비교·계보·릴리스 페이지는 `<h1>`을 짧게 두고 `<title>`만 `seoTitle`(i18n)로 검색어를 넣는다("배포판" → "리눅스 배포판 목록"). 배포판 상세 페이지의 제목 형식("우분투(Ubuntu) … 다운로드와 설치")은 바꾸지 않는다(`e2e/seo.spec.ts`가 지킨다).
+- **구조화 데이터:** 배포판 페이지의 SoftwareApplication은 `url`이 그 페이지의 canonical이고 공식 홈페이지는 `sameAs`에 둔다. BreadcrumbList는 화면의 탐색 경로와 같은 순서로, 첫 단계는 홈, 마지막(지금 페이지)은 `item` 없이 쓴다. 설치 가이드는 글이 있을 때만 넣는다(noindex 페이지에는 넣지 않는다).
+  - 홈의 SearchAction은 넣지 않는다: Google이 2024년에 사이트링크 검색창 지원을 끝냈고(ADR-0020), 사이트 검색은 `/distros/?q=`를 브라우저에서 거르는 방식이라 검색엔진이 읽을 결과 주소가 없다.
 - **검색 순위:** 검색엔진이 보는 것은 결국 내용이다. 순위를 위해 숨긴 텍스트나 키워드 나열을 넣지 않는다.
   - 공식 문서를 바탕으로 한 소개, 설치 가이드, 리눅스 가이드를 늘리는 것이 가장 효과적이다.

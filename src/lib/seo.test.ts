@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  breadcrumbTrail,
   daumRobotsLine,
   distroLabel,
   newest,
@@ -97,5 +98,30 @@ describe("notAfter", () => {
     expect(notAfter("2026-12-01", "2026-11-08")).toBe("2026-11-08");
     expect(notAfter("2026-11-01", "2026-11-08")).toBe("2026-11-01");
     expect(notAfter(undefined, "2026-11-08")).toBeUndefined();
+  });
+});
+
+describe("breadcrumbTrail", () => {
+  it("makes each step absolute and leaves the current page without an item", () => {
+    expect(
+      breadcrumbTrail("https://example.org", [
+        { name: "Example", path: "/" },
+        { name: "Distros", path: "/distros/" },
+        { name: "Ubuntu" },
+      ]),
+    ).toEqual({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Example", item: "https://example.org/" },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Distros",
+          item: "https://example.org/distros/",
+        },
+        { "@type": "ListItem", position: 3, name: "Ubuntu" },
+      ],
+    });
   });
 });
