@@ -4,7 +4,7 @@
     "https://download.tails.net/tails/?mirrorstats",
     "https://download.tails.net/tails/stable/tails-amd64-7.18/tails-amd64-7.18.img?mirrorlist"
   ],
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "mirrors": [
     {
       "url": "https://mirror.gofoss.xyz/tails/tails/",
@@ -140,6 +140,14 @@
       "name": "mirror.bouwhuis.network",
       "lat": 52.3109,
       "lon": 4.9453,
+      "score": null
+    },
+    {
+      "url": "https://mirror.ziesel.network/tails/",
+      "country": "NL",
+      "name": "mirror.ziesel.network",
+      "lat": 52.3716,
+      "lon": 4.8883,
       "score": null
     },
     {

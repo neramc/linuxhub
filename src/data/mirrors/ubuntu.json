@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1401,6 +1401,14 @@
       "url": "https://mirror.ihost.md/ubuntu-releases/",
       "country": "MD",
       "name": "iHost",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.mangohost.net/ubuntu-releases/",
+      "country": "MD",
+      "name": "MangoHost",
       "lat": null,
       "lon": null,
       "score": null
