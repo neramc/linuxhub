@@ -4,8 +4,41 @@
     "https://peppermintos.com/trixie-base-downloads/",
     "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/"
   ],
-  "updated": "2026-11-18",
+  "updated": "2026-11-26",
   "releases": [
+    {
+      "version": "2026-11-25",
+      "channel": "stable",
+      "codename": "Void Linux",
+      "releaseDate": "2026-11-25",
+      "eol": null,
+      "notesUrl": "https://sourceforge.net/p/peppermintos/pepwiki/BuildDate/",
+      "editions": [
+        {
+          "id": "loaded",
+          "name": "Loaded",
+          "desktop": "xfce",
+          "kind": "desktop",
+          "artifacts": [
+            {
+              "arch": "x86_64",
+              "format": "iso",
+              "file": "pepvoid-x86_64-linux-xfce-xlibre-loaded.iso",
+              "path": "isos/XFCE/pepvoid-x86_64-linux-xfce-xlibre-loaded.iso",
+              "url": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/pepvoid-x86_64-linux-xfce-xlibre-loaded.iso/download",
+              "size": null,
+              "checksum": {
+                "type": "sha256",
+                "value": "a37df93b3d409b6e92aa56ed567746ace8c4dd2ab90711be41398ef568e85ed5",
+                "url": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/"
+              },
+              "signatureUrl": "https://sourceforge.net/projects/peppermintos/files/isos/XFCE/pepvoid-x86_64-linux-xfce-xlibre-loaded.iso.asc/download",
+              "torrentUrl": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "version": "2026-11-18",
       "channel": "stable",
