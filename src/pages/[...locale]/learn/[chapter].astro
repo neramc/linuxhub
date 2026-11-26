@@ -20,7 +20,7 @@ import { LOCALES, type Locale, localeParam, localizePath, useTranslations } from
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import { getChapters, readingMinutes } from "~/lib/learn";
-import { siteOrganization } from "~/lib/seo";
+import { breadcrumbTrail, siteOrganization } from "~/lib/seo";
 import "~/styles/prose.css";
 
 export async function getStaticPaths() {
@@ -71,6 +71,11 @@ const jsonLd = [
       url: new URL(localizePath("/learn/", locale), site).href,
     },
   },
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("learn.title"), path: localizePath("/learn/", locale) },
+    { name: chapter.data.title },
+  ]),
 ];
 ---
 

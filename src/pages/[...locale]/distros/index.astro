@@ -21,9 +21,10 @@ import Icon from "~/components/adw/Icon.astro";
 import SearchEntry from "~/components/adw/SearchEntry.astro";
 import DistroCard from "~/components/DistroCard.astro";
 import UseCaseChips from "~/components/UseCaseChips.astro";
-import { localePaths, useTranslations } from "~/i18n";
+import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { featuredRelease, getDistros, getReleases } from "~/lib/catalog";
+import { breadcrumbTrail, distroLabel } from "~/lib/seo";
 import { DESKTOPS, DIFFICULTIES, FAMILIES, RELEASE_MODELS, USE_CASES } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
@@ -97,9 +98,42 @@ const lists = [
   facets.slice(0, 3).map((f) => ({ ...f, any: t("catalog.any") })),
   [...facets.slice(3).map((f) => ({ ...f, any: t("catalog.any") })), sort],
 ];
+const site = Astro.site ?? Astro.url;
+const catalogHref = localizePath("/distros/", locale);
+const lead = t("catalog.lead", { count: distros.length });
+// The catalog as a collection, with the distros it lists in page order.
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: t("catalog.seoTitle"),
+    description: lead,
+    url: new URL(catalogHref, site).href,
+    inLanguage: locale,
+    isPartOf: {
+      "@type": "WebSite",
+      name: t("site.name"),
+      url: new URL(localizePath("/", locale), site).href,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: distros.length,
+      itemListElement: distros.map((d, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: distroLabel(d.data.name, d.data.nameKo, locale),
+        url: new URL(localizePath(`/distros/${d.id}/`, locale), site).href,
+      })),
+    },
+  },
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("catalog.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("catalog.title")} description={t("catalog.lead", { count: distros.length })}>
+<Base locale={locale} title={t("catalog.seoTitle")} description={lead} jsonLd={jsonLd}>
   <div class="container page">
     <header class="page-header">
       <h1>{t("catalog.title")}</h1>

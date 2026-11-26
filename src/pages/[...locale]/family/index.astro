@@ -10,6 +10,7 @@ import FamilyNode from "~/components/FamilyNode.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { type Distro, getDistros } from "~/lib/catalog";
+import { breadcrumbTrail } from "~/lib/seo";
 import { FAMILIES, type Family } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
@@ -49,9 +50,21 @@ const decadeParts = (list: Distro[]) =>
     text: p.value,
     distro: p.type === "element" ? byId.get(p.value) : undefined,
   }));
+const site = Astro.site ?? Astro.url;
+const jsonLd = [
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("family.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("family.title")} description={t("family.lead")}>
+<Base
+  locale={locale}
+  title={t("family.seoTitle")}
+  description={t("family.lead")}
+  jsonLd={jsonLd}
+>
   <div class="container page narrow">
     <header class="page-header">
       <h1>{t("family.title")}</h1>

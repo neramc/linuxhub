@@ -12,6 +12,7 @@ import ExpanderRow from "~/components/adw/ExpanderRow.astro";
 import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
+import { breadcrumbTrail } from "~/lib/seo";
 import "~/styles/prose.css";
 import "~/styles/table.css";
 
@@ -23,9 +24,16 @@ const ko = locale === "ko";
 const repo = "https://github.com/neramc/linuxhub";
 /** English text on the Korean page. */
 const en = ko ? "en" : undefined;
+const site = Astro.site ?? Astro.url;
+const jsonLd = [
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("about.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("about.title")} description={t("about.lead")}>
+<Base locale={locale} title={t("about.title")} description={t("about.lead")} jsonLd={jsonLd}>
   <div class="container page narrow">
     <article class="prose">
       <h1>{t("about.title")}</h1>

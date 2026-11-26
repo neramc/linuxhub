@@ -15,6 +15,7 @@ import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros, getHistory, groupReleases, type ReleaseGroup } from "~/lib/catalog";
 import { formatDay, formatMonth } from "~/lib/format";
+import { breadcrumbTrail } from "~/lib/seo";
 
 export const getStaticPaths = localePaths;
 const { locale } = Astro.props;
@@ -27,9 +28,21 @@ for (const g of groups) {
 }
 const list = new Intl.ListFormat(locale, { style: "short", type: "unit" });
 const flavorList = new Intl.ListFormat(locale, { type: "conjunction" });
+const site = Astro.site ?? Astro.url;
+const jsonLd = [
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("releases.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("releases.title")} description={t("releases.lead")}>
+<Base
+  locale={locale}
+  title={t("releases.seoTitle")}
+  description={t("releases.lead")}
+  jsonLd={jsonLd}
+>
   <div class="container page narrow">
     <header class="page-header">
       <h1>{t("releases.title")}</h1>

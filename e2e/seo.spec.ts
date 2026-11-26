@@ -91,6 +91,59 @@ test("a Korean distro page leads with the Hangul name", async ({ page }) => {
   await expect(page).toHaveTitle(/^Ubuntu .+: download and install – Linuxhub$/);
 });
 
+test("a distro page describes the page itself, not just the project", async ({ page }) => {
+  await page.goto("/distros/ubuntu/");
+  const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+  const data = await page
+    .locator('script[type="application/ld+json"]')
+    .evaluateAll((els) => els.map((e) => JSON.parse(e.textContent ?? "{}")));
+  const app = data.find((x) => x["@type"] === "SoftwareApplication");
+  // The page is the URL; the project's own site identifies the same app.
+  expect(app?.url).toBe(canonical);
+  expect(app?.sameAs).toMatch(/^https:\/\/ubuntu\.com\//);
+  expect(app?.inLanguage).toBe("ko");
+  expect(app?.publisher?.["@type"]).toBe("Organization");
+  expect(app?.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+});
+
+test("the catalog is a collection page listing every distro", async ({ page }) => {
+  await page.goto("/distros/");
+  const data = await page
+    .locator('script[type="application/ld+json"]')
+    .evaluateAll((els) => els.map((e) => JSON.parse(e.textContent ?? "{}")));
+  const cards = await page.locator("[data-distro]").count();
+  const collection = data.find((x) => x["@type"] === "CollectionPage");
+  expect(collection?.inLanguage).toBe("ko");
+  expect(collection?.mainEntity?.["@type"]).toBe("ItemList");
+  expect(collection?.mainEntity?.numberOfItems).toBe(cards);
+  expect(collection?.mainEntity?.itemListElement).toHaveLength(cards);
+  expect(collection?.mainEntity?.itemListElement[0].url).toMatch(/\/distros\/[^/]+\/$/);
+  const crumb = data.find((x) => x["@type"] === "BreadcrumbList");
+  expect(crumb?.itemListElement.map((i: { name: string }) => i.name)).toEqual([
+    "Linuxhub",
+    "배포판",
+  ]);
+});
+
+test("hub page titles carry the words people search for", async ({ page }) => {
+  const titles: [string, string][] = [
+    ["/distros/", "리눅스 배포판 목록"],
+    ["/finder/", "리눅스 배포판 추천"],
+    ["/compare/", "리눅스 배포판 비교"],
+    ["/family/", "리눅스 배포판 계보와 역사"],
+    ["/releases/", "리눅스 배포판 릴리스 소식"],
+    ["/en/distros/", "Linux Distributions"],
+    ["/en/finder/", "Linux Distro Finder"],
+    ["/en/compare/", "Compare Linux Distributions"],
+    ["/en/family/", "Linux Distro Family Tree & Timeline"],
+    ["/en/releases/", "Linux Distribution Releases"],
+  ];
+  for (const [path, title] of titles) {
+    await page.goto(path);
+    await expect(page).toHaveTitle(`${title} – Linuxhub`);
+  }
+});
+
 test("noindex pages say so and stay out of the sitemap", async ({ page }) => {
   await page.goto("/distros/ubuntu/install/");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");

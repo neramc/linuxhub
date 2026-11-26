@@ -17,6 +17,7 @@ import { localePaths, localizePath, useTranslations } from "~/i18n";
 import Base from "~/layouts/Base.astro";
 import { getDistros } from "~/lib/catalog";
 import type { FinderDistro } from "~/lib/finder";
+import { breadcrumbTrail } from "~/lib/seo";
 import { DESKTOPS } from "~/lib/taxonomy";
 
 export const getStaticPaths = localePaths;
@@ -109,9 +110,21 @@ const why = {
   },
   privacy: t("finder.why.privacy"),
 };
+const site = Astro.site ?? Astro.url;
+const jsonLd = [
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("finder.title") },
+  ]),
+];
 ---
 
-<Base locale={locale} title={t("finder.title")} description={t("finder.lead")}>
+<Base
+  locale={locale}
+  title={t("finder.seoTitle")}
+  description={t("finder.lead")}
+  jsonLd={jsonLd}
+>
   <div class="container page narrow">
     <header class="page-header">
       <h1>{t("finder.title")}</h1>

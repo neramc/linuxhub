@@ -37,7 +37,7 @@ import {
   getStatus,
 } from "~/lib/catalog";
 import { relatedDistros } from "~/lib/related";
-import { distroLabel } from "~/lib/seo";
+import { breadcrumbTrail, distroLabel, newest, siteOrganization } from "~/lib/seo";
 import "~/styles/prose.css";
 
 export async function getStaticPaths() {
@@ -76,6 +76,9 @@ const vars = { name: label, tagline: d.tagline[locale], version: release?.versio
 const title = t(release ? "distro.seoTitle" : "distro.seoTitleNoVersion", vars);
 const description = t(release ? "distro.seoDescription" : "distro.seoDescriptionNoVersion", vars);
 const site = Astro.site ?? Astro.url;
+const pageHref = new URL(localizePath(`/distros/${slug}/`, locale), site).href;
+// What this page shows last changed with the newest release or overview review.
+const modified = newest(release?.releaseDate, overview?.data.lastReviewed);
 
 const jsonLd = [
   {
@@ -88,29 +91,20 @@ const jsonLd = [
     applicationCategory: "OperatingSystem",
     operatingSystem: "Linux",
     ...(release ? { softwareVersion: release.version } : {}),
-    url: d.links.home,
+    inLanguage: locale,
+    // The subject is this page; the project's own site identifies the same app.
+    url: pageHref,
+    sameAs: d.links.home,
     downloadUrl: d.links.download,
     offers: { "@type": "Offer", price: 0, priceCurrency: "USD" },
+    publisher: siteOrganization(site, t("site.name")),
+    ...(modified ? { dateModified: modified } : {}),
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: t("site.name"),
-        item: new URL(localizePath("/", locale), site).href,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: t("nav.distros"),
-        item: new URL(catalogHref, site).href,
-      },
-      { "@type": "ListItem", position: 3, name: label },
-    ],
-  },
+  breadcrumbTrail(site, [
+    { name: t("site.name"), path: localizePath("/", locale) },
+    { name: t("nav.distros"), path: catalogHref },
+    { name: label },
+  ]),
 ];
 ---
 
