@@ -81,8 +81,8 @@
   },
   "debian": {
     "releases": {
-      "failingSince": null,
-      "lastError": null
+      "failingSince": "2026-11-27",
+      "lastError": "HTTP 500"
     },
     "mirrors": {
       "failingSince": null,
@@ -152,7 +152,7 @@
   "gentoo": {
     "releases": {
       "failingSince": "2026-11-25",
-      "lastError": "HTTP 404 for https://distfiles.gentoo.org/releases/ppc/autobuilds/20261104T034557Z/install-ppc64le-minimal-20261104T034557Z.iso.DIGESTS"
+      "lastError": "newest version went backwards (20261122 → 20261101)"
     },
     "mirrors": {
       "failingSince": null,
