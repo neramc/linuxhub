@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrors.rockylinux.org/mirrormanager/mirrors"
   ],
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "mirrors": [
     {
       "url": "https://at.mirrors.cicku.me/rocky/",
@@ -393,6 +393,14 @@
       "url": "https://gb.mirrors.cicku.me/rocky/",
       "country": "GB",
       "name": "gb.mirrors.cicku.me",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.freethought.uk/rocky/",
+      "country": "GB",
+      "name": "mirror.freethought.uk",
       "lat": null,
       "lon": null,
       "score": null

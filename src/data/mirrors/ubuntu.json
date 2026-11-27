@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -369,6 +369,14 @@
       "url": "https://mirror.nju.edu.cn/ubuntu-releases/",
       "country": "CN",
       "name": "eScience Center, Nanjing University",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.nyist.edu.cn/ubuntu-releases/",
+      "country": "CN",
+      "name": "Nanyang Institute of Technology",
       "lat": null,
       "lon": null,
       "score": null
@@ -1609,6 +1617,14 @@
       "url": "https://glua.ua.pt/pub/ubuntu-releases/",
       "country": "PT",
       "name": "Grupo de Linux da Universidade de Aveiro",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.leitecastro.com/ubuntu-releases/",
+      "country": "PT",
+      "name": "Tomas Leite de Castro",
       "lat": null,
       "lon": null,
       "score": null

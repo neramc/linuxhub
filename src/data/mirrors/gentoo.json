@@ -3,7 +3,7 @@
   "sources": [
     "https://api.gentoo.org/mirrors/distfiles.xml"
   ],
-  "updated": "2026-11-19",
+  "updated": "2026-11-27",
   "mirrors": [
     {
       "url": "https://gentoo.zero.com.ar/gentoo/",
@@ -169,6 +169,14 @@
       "url": "https://pkg.adfinis-on-exoscale.ch/gentoo/",
       "country": "CH",
       "name": "Adfinis & Exoscale",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://elmirror.cl/gentoo/",
+      "country": "CL",
+      "name": "ElMirror.cl Team",
       "lat": null,
       "lon": null,
       "score": null
