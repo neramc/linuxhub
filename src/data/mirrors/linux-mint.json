@@ -3,7 +3,7 @@
   "sources": [
     "https://www.linuxmint.com/mirrors.php"
   ],
-  "updated": "2026-11-15",
+  "updated": "2026-11-28",
   "mirrors": [
     {
       "url": "https://mint.zero.com.ar/mintcd/",
@@ -41,14 +41,6 @@
       "url": "https://mirror.xeonbd.com/linuxmint.com/",
       "country": "BD",
       "name": "XeonBD",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://linuxmint.mirror-services.net/pub/iso/",
-      "country": "BE",
-      "name": "BOINC Team Belgium",
       "lat": null,
       "lon": null,
       "score": null
@@ -153,6 +145,14 @@
       "url": "https://mirror.gofoss.xyz/linuxmint-iso/",
       "country": "CH",
       "name": "GoFOSS",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://mirror.hb9hil.org/mint/",
+      "country": "CH",
+      "name": "HB9HIL",
       "lat": null,
       "lon": null,
       "score": null
@@ -550,6 +550,14 @@
       "score": null
     },
     {
+      "url": "https://mr.heru.id/linuxmint-iso/",
+      "country": "ID",
+      "name": "Heru.id",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.webworld.ie/linuxmint/iso/",
       "country": "IE",
       "name": "Webworld",
@@ -569,14 +577,6 @@
       "url": "https://mirrors.nxtgen.com/linuxmint-mirror/iso/",
       "country": "IN",
       "name": "NxtGen DataCenter",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirrors.piconets.webwerks.in/linuxmint-mirror/iso/",
-      "country": "IN",
-      "name": "PicoNets-WebWerks",
       "lat": null,
       "lon": null,
       "score": null
@@ -686,14 +686,6 @@
       "score": null
     },
     {
-      "url": "https://linuxmint-mirror.cloud.mu/iso/",
-      "country": "MU",
-      "name": "cloud.mu",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://ftp.nluug.nl/os/Linux/distr/linuxmint/iso/",
       "country": "NL",
       "name": "NLUUG",
@@ -734,14 +726,6 @@
       "score": null
     },
     {
-      "url": "https://mirror.nl.mirhosting.net/linuxmint/",
-      "country": "NL",
-      "name": "MIRhosting",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirrors.evoluso.com/linuxmint/",
       "country": "NL",
       "name": "Evoluso.com",
@@ -766,14 +750,6 @@
       "score": null
     },
     {
-      "url": "https://ftp.icm.edu.pl/pub/Linux/dist/linuxmint/isos/",
-      "country": "PL",
-      "name": "ICM - University of Warsaw",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://ftp.psnc.pl/linux/linuxmint/iso/",
       "country": "PL",
       "name": "Poznan Supercomputing and Networking Center",
@@ -782,9 +758,9 @@
       "score": null
     },
     {
-      "url": "https://mirrors.ptisp.pt/linuxmint-iso/",
+      "url": "https://ftp.rnl.tecnico.ulisboa.pt/pub/linuxmint/",
       "country": "PT",
-      "name": "PTISP",
+      "name": "RNL - Técnico Lisboa",
       "lat": null,
       "lon": null,
       "score": null
@@ -817,14 +793,6 @@
       "url": "https://mirror1.sox.rs/mint/",
       "country": "RS",
       "name": "SOX",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.hyperdedic.ru/linuxmint/",
-      "country": "RU",
-      "name": "HyperDedic",
       "lat": null,
       "lon": null,
       "score": null
@@ -958,14 +926,6 @@
       "score": null
     },
     {
-      "url": "https://mirrors.pendc.com/linuxmint/",
-      "country": "TR",
-      "name": "PEN DC Workspace",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://mirror.twds.com.tw/linuxmint-iso/",
       "country": "TW",
       "name": "Taiwan Digital Streaming Co.",
@@ -974,25 +934,9 @@
       "score": null
     },
     {
-      "url": "https://distrohub.kyiv.ua/linuxmintiso/",
-      "country": "UA",
-      "name": "Distrohub",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
       "url": "https://linuxmint.ip-connect.vn.ua/",
       "country": "UA",
       "name": "IP-Connect LLC",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.hostiko.network/linuxmint/",
-      "country": "UA",
-      "name": "Hostiko",
       "lat": null,
       "lon": null,
       "score": null
@@ -1113,14 +1057,6 @@
       "url": "https://mirrors.kernel.org/linuxmint/",
       "country": "US",
       "name": "kernel.org",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirrors.ocf.berkeley.edu/linux-mint/",
-      "country": "US",
-      "name": "Open Computing Facility at UC Berkeley",
       "lat": null,
       "lon": null,
       "score": null

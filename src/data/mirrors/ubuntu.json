@@ -3,7 +3,7 @@
   "sources": [
     "https://api.launchpad.net/devel/ubuntu/cdimage_mirrors"
   ],
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "mirrors": [
     {
       "url": "https://ae.releases.ubuntu.com/",
@@ -1102,6 +1102,14 @@
       "score": null
     },
     {
+      "url": "https://mirror.parsdev.com/ubuntu-releases/",
+      "country": "IR",
+      "name": "ParsDev",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://mirror.rasanegar.com/ubuntu-cd/",
       "country": "IR",
       "name": "Rasanegar ",
@@ -1977,6 +1985,14 @@
       "url": "https://ftp.tc.edu.tw/iso/Ubuntu/",
       "country": "TW",
       "name": "TaiChung City Education Network Center",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
+      "url": "https://ftp.ubuntu-tw.net/ubuntu-releases/",
+      "country": "TW",
+      "name": "Ubuntu-TW",
       "lat": null,
       "lon": null,
       "score": null

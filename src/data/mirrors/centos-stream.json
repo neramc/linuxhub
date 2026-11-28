@@ -3,7 +3,7 @@
   "sources": [
     "https://mirrormanager.fedoraproject.org/mirrors/CentOS?page_size=500&page_number=1"
   ],
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "mirrors": [
     {
       "url": "https://mirrors.teamcloud.am/centos-stream/",
@@ -510,6 +510,14 @@
       "score": null
     },
     {
+      "url": "https://distrohub.kyiv.ua/centos-stream/",
+      "country": "UA",
+      "name": "distrohub.kyiv.ua",
+      "lat": null,
+      "lon": null,
+      "score": null
+    },
+    {
       "url": "https://dfw.mirror.rackspace.com/centos-stream/",
       "country": "US",
       "name": "dfw.mirror.rackspace.com",
@@ -545,14 +553,6 @@
       "url": "https://linux-mirrors.fnal.gov/linux/centos-stream/",
       "country": "US",
       "name": "linux-mirrors.fnal.gov",
-      "lat": null,
-      "lon": null,
-      "score": null
-    },
-    {
-      "url": "https://mirror.pilotfiber.com/centos-stream/",
-      "country": "US",
-      "name": "mirror.pilotfiber.com",
       "lat": null,
       "lon": null,
       "score": null
